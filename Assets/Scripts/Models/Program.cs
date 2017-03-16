@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GameEvent
+namespace ProjectGreanLeader
 {
     class Program
     {
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.White;
-
-            Game game = new Game();
-
-            //game.DisplayRegion(game.regions[0]);
+            while (true)
+            {
+                Game game = new Game();
+                Console.ReadKey();
+            }
 
             Console.ReadKey();
         }

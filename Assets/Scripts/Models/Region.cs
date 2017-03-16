@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GameEvent
+namespace ProjectGreanLeader
 {
     //This class stores the values of the Regions
     public class Region
     {
         public string name { get; private set; }
-        public string regionType { get; private set; }
-        public Council council { get; private set; }
-        public Animal[] animals { get; private set; }
-        public Statistics statistics { get; private set; }
+        public RegionStatistics statistics { get; private set; }
         public List<Building> buildings { get; private set; }
 
-        public Region(string name, string regionType, Statistics statistics, Animal[] animals, Council council)
+        public Households households { get; private set; }
+        public Companies companies { get; set; }
+        public Agriculture agriculture { get; set; }
+
+        public Region(string name, RegionStatistics statistics)
         {
             this.name = name;
-            this.regionType = regionType;
-            this.council = council;
-            this.animals = animals;
             this.statistics = statistics;
             buildings = new List<Building>();
         }
@@ -29,23 +27,69 @@ namespace GameEvent
         public void CreateBuilding(Building newBuilding)
         {
             buildings.Add(newBuilding);
-            ImplementBuildingValues(newBuilding);
+            ImplementBuildingValues(newBuilding.statistics, true);
         }
 
-        private void ImplementBuildingValues(Building building)
+        public void ImplementBuildingValues(BuildingStatistics statistics, bool isAdded) //if a building is removed for example, isAdded is false
         {
-            statistics.ChangeIncome(building.statistics.income);
-            statistics.changeHappiness(building.statistics.happiness);
-            statistics.ChangePollutionMutation(building.statistics.pollution);
-            statistics.ChangeOxygenMutation(building.statistics.oxygen);
+            if (isAdded)
+            {
+                this.statistics.ChangeIncome(statistics.income);
+                this.statistics.ChangeProsperity(statistics.prosperity); //change households and companies instead of region prosperity
+
+                //temporary methods (incomplete)
+                this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
+                this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
+                this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
+            }
+
+            else
+            {
+                this.statistics.ChangeIncome(0 - statistics.income);
+                this.statistics.ChangeProsperity(0 - statistics.prosperity); //change households and companies instead of region prosperity
+
+                //temporary methods (incomplete)
+                this.statistics.pollution.ChangeAirPollutionMutation(0 - statistics.pollution.airPollutionIncrease);
+                this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
+                this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
+            }
+        }
+
+        public void ImplementStatisticValues(RegionStatistics statistics, bool isAdded) //if a statistic is removed for example, isAdded is false
+        {
+            if (isAdded)
+            {
+                this.statistics.ChangeIncome(statistics.income);
+                this.statistics.ChangeDonations(statistics.donations);
+                this.statistics.changeHappiness(statistics.happiness);
+                this.statistics.ChangeEcoAwareness(statistics.ecoAwareness);
+                this.statistics.ChangeProsperity(statistics.prosperity);
+
+                //temporary methods (incomplete)
+                this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
+                this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
+                this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
+            }
+
+            else
+            {
+                this.statistics.ChangeIncome(0 - statistics.income);
+                this.statistics.ChangeDonations(0 - statistics.donations);
+                this.statistics.changeHappiness(0 - statistics.happiness);
+                this.statistics.ChangeEcoAwareness(0 - statistics.ecoAwareness);
+                this.statistics.ChangeProsperity(0 - statistics.prosperity);
+
+                //temporary methods (incomplete)
+                this.statistics.pollution.ChangeAirPollutionMutation(0 - statistics.pollution.airPollutionIncrease);
+                this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
+                this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
+            }
         }
 
         //method to show all the values of the Region
-        public void DisplayRegionValues()
+        public void DisplayRegionValues(string textDistance)
         {
-            string textDistance = "{0,-15}";
             ShowRegion(textDistance);
-            ShowAnimals(textDistance);
             ShowStatistics(textDistance);
             ShowBuildings(textDistance);
         }
@@ -54,25 +98,11 @@ namespace GameEvent
         private void ShowRegion(string textDistance)
         {
             Console.Write(textDistance, "Region:");
-            Console.WriteLine("{0} ({1})", name, regionType);
-            Console.Write(textDistance, "Council:");
-            Console.WriteLine("{0} (Mood: {1})", council.name, council.currentMood);
+            Console.WriteLine("{0}", name);
             Console.WriteLine("===============================================================");
             Console.WriteLine();
         }
-
-        private void ShowAnimals(string textDistance)
-        {
-            Console.WriteLine("Animals");
-            Console.WriteLine("---------------------------------------------------------------");
-            foreach (Animal animal in animals)
-            {
-                Console.Write(textDistance, animal.name);
-                Console.WriteLine("[{0}]", animal.currentStatus);
-            }
-            Console.WriteLine();
-        }
-
+        
         //shows the current statistics of the region (changeable)
         private void ShowStatistics(string textDistance)
         {
@@ -82,20 +112,21 @@ namespace GameEvent
             Console.Write(textDistance, "Income: ");
             Console.WriteLine(statistics.income);
 
+            Console.Write(textDistance, "Donations: ");
+            Console.WriteLine(statistics.donations);
+
             Console.Write(textDistance, "Happiness: ");
             Console.WriteLine(statistics.happiness);
 
             Console.Write(textDistance, "Pollution: ");
-            if (statistics.pollutionIncrease >= 0)
-                Console.WriteLine("{0:0.0}% (+{1:0.0}% of pollution per year)", statistics.pollution, statistics.pollutionIncrease);
-            else
-                Console.WriteLine("{0:0.0}% ({1:0.0}% of pollution per year)", statistics.pollution, statistics.pollutionIncrease);
+            double value = (statistics.pollution.airPollution + statistics.pollution.naturePollution + statistics.pollution.waterPollution) / 3;
+            Console.WriteLine("{0:0.0}%", value);
 
-            Console.Write(textDistance, "Oxygen: ");
-            if (statistics.oxygenIncrease >= 0)
-                Console.WriteLine("{0:0.0}% (+{1:0.0}% of oxygen per year)", statistics.oxygen, statistics.oxygenIncrease);
-            else
-                Console.WriteLine("{0:0.0}% ({1:0.0}% of missing oxygen per year)", statistics.oxygen, statistics.oxygenIncrease);
+            Console.Write(textDistance, "Eco Awareness: ");
+            Console.WriteLine(statistics.ecoAwareness);
+
+            Console.Write(textDistance, "Prosperity: ");
+            Console.WriteLine(statistics.prosperity);
 
             Console.WriteLine();
         }
@@ -103,29 +134,33 @@ namespace GameEvent
         //shows the currently present buildings (changeable)
         private void ShowBuildings(string textDistance)
         {
+            /*
             string textValue;
             Console.WriteLine("Buildings");
             Console.WriteLine("---------------------------------------------------------------");
             Console.Write(textDistance, "Name");
             Console.Write(textDistance, "Income");
+            Console.Write(textDistance, "Donations");
             Console.Write(textDistance, "Happiness");
             Console.Write(textDistance, "Pollution");
-            Console.WriteLine(textDistance, "Oxygen");
+            Console.Write(textDistance, "Eco Awareness");
+            Console.Write(textDistance, "Prosperity");
+            Console.WriteLine();
 
             foreach (Building building in buildings)
             {
                 Console.Write(textDistance, building.name);
                 Console.Write(textDistance, building.statistics.income);
+                Console.Write(textDistance, building.statistics.donations);
                 Console.Write(textDistance, building.statistics.happiness);
-
-                textValue = (building.statistics.pollution + "% per year");
-                Console.Write(textDistance, textValue);
-
-                textValue = (building.statistics.oxygen + "% per year");
-                Console.Write(textDistance, textValue);
-
+                //textValue = (building.statistics.pollution + "% per year");
+                //Console.Write(textDistance, textValue);
+                Console.Write(textDistance, building.statistics.ecoAwareness);
+                Console.Write(textDistance, building.statistics.prosperity);
+                
                 Console.WriteLine();
             }
+            */
         }
     }
 }

@@ -4,45 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 
-namespace GameEvent
+namespace ProjectGreanLeader
 {
-    //calling this class will start a new game. Everything within the game is called from this class
     public class Game
     {
         //All Regions and region types planned for complete game
-        private string[] regionNames = { "North America", "South America", "Europe", "Africa", "Asia", "Australia",
-                                   "Atlantic Ocean", "Pacific Ocean", "Indian Ocean", "Arctic Ocean"};
-        private string[] regionTypes = { "Continent", "Ocean" };
+        private string[] regionNames = { "Noord Nederland", "West Nederland", "Oost Nederland", "Zuid Nederland"};
 
         public int currentYear { get; private set; }
         public int currentMonth { get; private set; }
-
         public Timer timeflowTimer { get; private set; }
-
         public List<Region> regions { get; private set; }
         public List<GameEvent> events { get; private set; }
+        public Random rnd { get; private set; }
 
-        public List<GameEvent> activeEvents { get; private set; }
+        //Game statistics
+        public GameStatistics gameStatistics { get; private set; } //money, population, energy
 
         public Game()
         {
-            currentYear = 1;
-            currentMonth = 1;
+            rnd = new Random();
+            events = new List<GameEvent>();
 
-            StartTimeflowTimer();
             GenerateRegions();
             GenerateGameEvents();
 
-            Console.WriteLine("Generating complete");
+            currentYear = 1;
+            currentMonth = 1;
+            StartTimeflowTimer();
 
-            //ActivateEvent(events[0]);
+            DisplayRegion(regions[0]);
         }
 
         private void StartTimeflowTimer()
         {
             timeflowTimer = new Timer();
             timeflowTimer.Elapsed += new ElapsedEventHandler(UpdateGameTime);
-            timeflowTimer.Interval = 2000;
+            timeflowTimer.Interval = 10;
             timeflowTimer.Enabled = true;
         }
 
@@ -54,7 +52,17 @@ namespace GameEvent
             {
                 currentMonth = currentMonth - 12;
                 currentYear++;
-                ExecuteNewYearMethods();
+                if (currentYear > 30)
+                {
+                    timeflowTimer.Stop();
+                    Console.Clear();
+                    DisplayRegion(regions[0]);
+                    return;
+                }
+                else
+                {
+                    ExecuteNewYearMethods();
+                }
             }
 
             ExecuteNewMonthMethods();
@@ -62,23 +70,50 @@ namespace GameEvent
 
         private void ExecuteNewMonthMethods()
         {
-            foreach (GameEvent activeEvent in activeEvents)
-            {
-                if (activeEvent.startMonth + activeEvent.eventDuration == currentYear * 12 + currentMonth)
+                int activeCount = 0;
+                foreach (GameEvent gameEvent in events)
                 {
-                    FinishEvent(activeEvent);
-                    Console.WriteLine("event finished");
+                    if (gameEvent.isActive)
+                    {
+                        if ((gameEvent.startMonth + gameEvent.eventDuration + gameEvent.startYear * 12) == (currentMonth + currentYear * 12))
+                        {
+                            gameEvent.CompleteEvent();
+                        }
+
+                        else
+                        {
+                            activeCount++;
+                        }
+                    }
+                }
+
+                if (rnd.Next(1, 61) <= 20 && activeCount < 3)
+                {
+                    timeflowTimer.Stop();
+                    StartNewEvent();
+                }
+
+                Console.Clear();
+                DisplayRegion(regions[0]);
+        }
+
+        private void StartNewEvent()
+        {
+            bool eventFound = false;
+            while (!eventFound)
+            {
+                int i = rnd.Next(0, events.Count());
+
+                if (!events[i].isActive)
+                {
+                    eventFound = true;
+                    events[i].ActivateEvent(currentYear, currentMonth, regions[0]);
+                    events[i].SetPickedChoice(rnd.Next(0, events[i].choices.Length));
                 }
             }
 
-            foreach (GameEvent gameEvent in events)
-            {
-                if (gameEvent.IsAvailable() && !activeEvents.Contains(gameEvent) && !gameEvent.isFinished)
-                {
-                    ActivateEvent(gameEvent);
-                    Console.WriteLine("event activated");
-                }
-            }
+            DisplayRegion(regions[0]);
+            timeflowTimer.Start();
         }
 
         private void ExecuteNewYearMethods()
@@ -87,70 +122,88 @@ namespace GameEvent
             {
                 region.statistics.mutateTimeBasedStatistics();
             }
+            Console.Clear();
+            DisplayRegion(regions[0]);
         }
 
         private void GenerateRegions()
         {
             regions = new List<Region>();
-            GenerateNorthAmerica();
+            GenerateNoordNederland();
         }
 
-        private void GenerateNorthAmerica()
+        private void GenerateNoordNederland()
         {
-            Random rnd = new Random();
-            Statistics statistics = new Statistics(5000, 10, 10, 95);
-            Council council = new Council("President of America");
-            Animal[] animals = { new Animal("Bald Eagle", rnd), new Animal("Bison", rnd), new Animal("Brown Bear", rnd),
-                                   new Animal("Elk", rnd), new Animal("Turkey", rnd), new Animal("Beaver", rnd) };
+            Pollution pollution = new Pollution(10, 10, 10, 5, 5, 5);
+            RegionStatistics statistics = new RegionStatistics(10000, 1000, 10, pollution, 5, 70);
 
-            Region north_America = new Region(regionNames[0], regionTypes[0], statistics, animals, council);
+            Region noord_Nederland = new Region(regionNames[0], statistics);
 
             Building building = new Building("Coal factory");
-            north_America.CreateBuilding(building);
+            noord_Nederland.CreateBuilding(building);
 
-            regions.Add(north_America);
+            regions.Add(noord_Nederland);
         }
 
         public void DisplayRegion(Region currentRegion)
         {
+            Console.Clear();
             foreach (Region region in regions)
             {
                 if (currentRegion.name == region.name)
                 {
-                    region.DisplayRegionValues();
+                    string textDistance = "{0,-15}";
+                    Console.Write(textDistance, "Year/Month:");
+                    Console.WriteLine("{0}/{1}", currentYear, currentMonth);
+
+                    region.DisplayRegionValues(textDistance);
                     break;
                 }
+            }
+
+            Console.WriteLine("Active events:");
+            foreach (GameEvent gameEvent in events)
+            {
+                if (gameEvent.isActive && gameEvent.region.name == currentRegion.name)
+                {
+                    Console.WriteLine("{0} ({1})", gameEvent.description, gameEvent.pickedChoiceNumber);
+                }
+
             }
         }
 
         private void GenerateGameEvents()
         {
-            events = new List<GameEvent>();
-            activeEvents = new List<GameEvent>();
+            string[] choices = { "Do stuff", "Negotiation", "Do nothing" };
+            RegionStatistics[] consequences1 = new RegionStatistics[choices.Length];
+            RegionStatistics[] consequences2 = new RegionStatistics[choices.Length];
+            RegionStatistics[] consequences3 = new RegionStatistics[choices.Length];
+            
+            string description;
 
-            GenerateFirstEvent();
-        }
+            description = "dummy event 1";
+            consequences1[0] = new RegionStatistics(-1000, 0, -1, new Pollution(0, 0, 0, -1, -1, -1), 0, -1);
+            consequences1[1] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, -2, -1, 0), 0, 0);
+            consequences1[2] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 1, 1, 1), 0, 0);
+            //consequences1[3] = new RegionStatistics(-3000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
+            GameEvent gameEvent1 = new GameEvent(description, 2, choices, consequences1);
+            events.Add(gameEvent1);
 
-        private void GenerateFirstEvent()
-        {
-            string description = "A Coal factory is causing pollution!";
-            string[] choices = { "Close the factory", "Negotiate with the Region Council", "Do nothing", "Research an alternative solution" };
-            List<GameEvent> previousEvents = new List<GameEvent>();
-            GameEvent firstEvent = new GameEvent(description, regions[0], true, 2, choices, previousEvents, false);
-
-            events.Add(firstEvent);
-        }
-
-        private void ActivateEvent(GameEvent gameEvent)
-        {
-            gameEvent.ActivateEvent(12 * currentYear + currentMonth);
-            activeEvents.Add(gameEvent);
-        }
-
-        private void FinishEvent(GameEvent gameEvent)
-        {
-            gameEvent.ActivatePickedChoice();
-            activeEvents.Remove(gameEvent);
+            description = "dummy event 2";
+            consequences2[0] = new RegionStatistics(-2000, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 2, 0);
+            consequences2[1] = new RegionStatistics(-1000, 125, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
+            consequences2[2] = new RegionStatistics(0, -250, -1, new Pollution(0, 0, 0, 0, 0, 0), -2, 0);
+            //consequences2[3] = new RegionStatistics(-2500, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
+            GameEvent gameEvent2 = new GameEvent(description, 1, choices, consequences2);
+            events.Add(gameEvent2);
+            
+            description = "dummy event 3";
+            consequences3[0] = new RegionStatistics(3000, 0, 2, new Pollution(0, 0, 0, -2, 0, 0), -1, 1);
+            consequences3[1] = new RegionStatistics(1500, 0, 1, new Pollution(0, 0, 0, -1, 0, -1), 0, 1);
+            consequences3[2] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, -2);
+            //consequences3[3] = new RegionStatistics(-1000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
+            GameEvent gameEvent3 = new GameEvent(description, 3, choices, consequences3);
+            events.Add(gameEvent3);
         }
     }
 }
