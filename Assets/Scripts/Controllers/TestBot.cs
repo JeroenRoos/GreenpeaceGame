@@ -24,6 +24,18 @@ public class TestBot : MonoBehaviour {
     void EventAction()
     {
         Debug.Log("Event occured");
+        int chosenOption;
+
+        foreach (GameEvent gameEvent in gameController.game.events)
+        {
+            if(gameEvent.isActive == true)
+            {
+                //chosenOption = UnityEngine.Random.Range(0, 2);
+                chosenOption = 1;
+                Debug.Log("Choose option " + chosenOption);
+                gameEvent.SetPickedChoice(chosenOption);
+            }
+        }
 
     }
 
