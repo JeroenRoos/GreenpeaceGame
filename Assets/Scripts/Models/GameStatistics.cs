@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProjectGreanLeader
-{
     public class GameStatistics
     {
         public double money { get; private set; }
@@ -19,4 +17,4 @@ namespace ProjectGreanLeader
         }
 
     }
-}
+

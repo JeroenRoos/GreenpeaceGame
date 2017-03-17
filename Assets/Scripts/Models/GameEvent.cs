@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProjectGreanLeader
-{
+
     //UNFINISHED
     public class GameEvent
     {
@@ -32,7 +31,7 @@ namespace ProjectGreanLeader
 
         public void ActivateEvent(int startYear, int startMonth, Region region)
         {
-            Console.Clear();
+
             this.startYear = startYear;
             this.startMonth = startMonth;
             this.region = region;
@@ -67,4 +66,4 @@ namespace ProjectGreanLeader
             this.pickedChoiceNumber = i;
         }
     }
-}
+
