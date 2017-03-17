@@ -31,13 +31,12 @@ using System.Text;
 
         public void ActivateEvent(int startYear, int startMonth, Region region)
         {
-
             this.startYear = startYear;
             this.startMonth = startMonth;
             this.region = region;
 
             isActive = true;
-            DisplayEvent();
+            //DisplayEvent();
         }
 
         public void CompleteEvent()
@@ -46,6 +45,7 @@ using System.Text;
             isActive = false;
         }
 
+        /*
         public void DisplayEvent()
         {
             Console.WriteLine("Region: {0}", region.name);
@@ -59,6 +59,7 @@ using System.Text;
                 i++;
             }
         }
+         */
         
         public void SetPickedChoice(int i) //string = Choice (class)
         {

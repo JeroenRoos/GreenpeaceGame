@@ -85,6 +85,7 @@ using System.Text;
             }
         }
 
+        /*
         //method to show all the values of the Region
         public void DisplayRegionValues(string textDistance)
         {
@@ -133,7 +134,6 @@ using System.Text;
         //shows the currently present buildings (changeable)
         private void ShowBuildings(string textDistance)
         {
-            /*
             string textValue;
             Console.WriteLine("Buildings");
             Console.WriteLine("---------------------------------------------------------------");
@@ -159,7 +159,7 @@ using System.Text;
                 
                 Console.WriteLine();
             }
-            */
         }
+         */
     }
 

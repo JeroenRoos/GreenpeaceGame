@@ -8,17 +8,20 @@ using UnityEngine;
 public class Game
 {
     //All Regions and region types planned for complete game
-    private string[] regionNames = { "Noord Nederland", "West Nederland", "Oost Nederland", "Zuid Nederland"};
+    private string[] regionNames = { "Noord Nederland", "West Nederland", "Oost Nederland", "Zuid Nederland" };
+    //public Dictionary<string, Region> regions;
 
     public int currentYear { get; private set; }
     public int currentMonth { get; private set; }
-    public Timer timeflowTimer { get; private set; }
     public List<Region> regions { get; private set; }
     public List<GameEvent> events { get; private set; }
     public System.Random rnd { get; private set; }
 
     //Game statistics
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
+
+    //public events declareren (unity)
+
 
     public Game()
     {
@@ -28,22 +31,14 @@ public class Game
         GenerateRegions();
         GenerateGameEvents();
 
+
         currentYear = 1;
         currentMonth = 1;
-        StartTimeflowTimer();
 
-        DisplayRegion(regions[0]);
+        //DisplayRegion(regions[0]);
     }
 
-    private void StartTimeflowTimer()
-    {
-        timeflowTimer = new Timer();
-        timeflowTimer.Elapsed += new ElapsedEventHandler(UpdateGameTime);
-        timeflowTimer.Interval = 10;
-        timeflowTimer.Enabled = true;
-    }
-
-    private void UpdateGameTime(object source, ElapsedEventArgs e)
+    public bool UpdateTime()
     {
         currentMonth++;
 
@@ -51,23 +46,14 @@ public class Game
         {
             currentMonth = currentMonth - 12;
             currentYear++;
-            if (currentYear > 30)
-            {
-                timeflowTimer.Stop();
-                    
-                DisplayRegion(regions[0]);
-                return;
-            }
-            else
-            {
-                ExecuteNewYearMethods();
-            }
+            ExecuteNewYearMethods();
         }
 
-        ExecuteNewMonthMethods();
+        bool isNewEvent = ExecuteNewMonthMethods();
+        return isNewEvent;
     }
 
-    private void ExecuteNewMonthMethods()
+    private bool ExecuteNewMonthMethods()
     {
         int activeCount = 0;
         foreach (GameEvent gameEvent in events)
@@ -87,17 +73,20 @@ public class Game
         }
 
         if (rnd.Next(1, 61) <= 20 && activeCount < 3)
-        {
-            timeflowTimer.Stop();
-            StartNewEvent();
-        }
-                
+            return true;
 
-        DisplayRegion(regions[0]);
+        else
+        {
+            /*Console.Clear();
+            DisplayRegion(regions[0]);*/
+            return false;
+        }
+
         EventManager.CallChangeMonth();
     }
 
-    private void StartNewEvent()
+
+    public void StartNewEvent()
     {
         bool eventFound = false;
         while (!eventFound)
@@ -112,8 +101,6 @@ public class Game
             }
         }
 
-        DisplayRegion(regions[0]);
-        timeflowTimer.Start();
         EventManager.CallShowEvent();
     }
 
@@ -123,8 +110,7 @@ public class Game
         {
             region.statistics.mutateTimeBasedStatistics();
         }
-            
-        DisplayRegion(regions[0]);
+
     }
 
     private void GenerateRegions()
@@ -142,36 +128,32 @@ public class Game
 
         Building building = new Building("Coal factory");
         noord_Nederland.CreateBuilding(building);
-
-        regions.Add(noord_Nederland);
     }
 
+    /*
     public void DisplayRegion(Region currentRegion)
     {
-            
-        foreach (Region region in regions)
+        if (currentRegion.name == region.name)
         {
-            if (currentRegion.name == region.name)
-            {
-                string textDistance = "{0,-15}";
-                Console.Write(textDistance, "Year/Month:");
-                Console.WriteLine("{0}/{1}", currentYear, currentMonth);
+            string textDistance = "{0,-15}";
+            Console.Write(textDistance, "Year/Month:");
+            Console.WriteLine("{0}/{1}", currentYear, currentMonth);
 
-                region.DisplayRegionValues(textDistance);
-                break;
-            }
-        }
-
-        Console.WriteLine("Active events:");
-        foreach (GameEvent gameEvent in events)
-        {
-            if (gameEvent.isActive && gameEvent.region.name == currentRegion.name)
-            {
-                Console.WriteLine("{0} ({1})", gameEvent.description, gameEvent.pickedChoiceNumber);
-            }
-
+            region.DisplayRegionValues(textDistance);
+            break;
         }
     }
+
+    Console.WriteLine("Active events:");
+    foreach (GameEvent gameEvent in events)
+    {
+        if (gameEvent.isActive && gameEvent.region.name == currentRegion.name)
+        {
+            Console.WriteLine("{0} ({1})", gameEvent.description, gameEvent.pickedChoiceNumber);
+        }
+
+    }
+     */
 
     private void GenerateGameEvents()
     {
@@ -179,7 +161,7 @@ public class Game
         RegionStatistics[] consequences1 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences2 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences3 = new RegionStatistics[choices.Length];
-            
+
         string description;
 
         description = "dummy event 1";
@@ -197,7 +179,7 @@ public class Game
         //consequences2[3] = new RegionStatistics(-2500, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
         GameEvent gameEvent2 = new GameEvent(description, 1, choices, consequences2);
         events.Add(gameEvent2);
-            
+
         description = "dummy event 3";
         consequences3[0] = new RegionStatistics(3000, 0, 2, new Pollution(0, 0, 0, -2, 0, 0), -1, 1);
         consequences3[1] = new RegionStatistics(1500, 0, 1, new Pollution(0, 0, 0, -1, 0, -1), 0, 1);
