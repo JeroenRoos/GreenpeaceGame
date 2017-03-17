@@ -86,6 +86,7 @@ namespace ProjectGreanLeader
             }
         }
 
+        /*
         //method to show all the values of the Region
         public void DisplayRegionValues(string textDistance)
         {
@@ -134,7 +135,6 @@ namespace ProjectGreanLeader
         //shows the currently present buildings (changeable)
         private void ShowBuildings(string textDistance)
         {
-            /*
             string textValue;
             Console.WriteLine("Buildings");
             Console.WriteLine("---------------------------------------------------------------");
@@ -160,7 +160,7 @@ namespace ProjectGreanLeader
                 
                 Console.WriteLine();
             }
-            */
         }
+         */
     }
 }

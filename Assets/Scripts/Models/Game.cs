@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Timers;
 
 namespace ProjectGreanLeader
 {
@@ -10,16 +9,19 @@ namespace ProjectGreanLeader
     {
         //All Regions and region types planned for complete game
         private string[] regionNames = { "Noord Nederland", "West Nederland", "Oost Nederland", "Zuid Nederland"};
+        //public Dictionary<string, Region> regions;
 
         public int currentYear { get; private set; }
         public int currentMonth { get; private set; }
-        public Timer timeflowTimer { get; private set; }
         public List<Region> regions { get; private set; }
         public List<GameEvent> events { get; private set; }
         public Random rnd { get; private set; }
-
+        
         //Game statistics
         public GameStatistics gameStatistics { get; private set; } //money, population, energy
+
+        //public events declareren (unity)
+
 
         public Game()
         {
@@ -31,20 +33,11 @@ namespace ProjectGreanLeader
 
             currentYear = 1;
             currentMonth = 1;
-            StartTimeflowTimer();
 
-            DisplayRegion(regions[0]);
+            //DisplayRegion(regions[0]);
         }
 
-        private void StartTimeflowTimer()
-        {
-            timeflowTimer = new Timer();
-            timeflowTimer.Elapsed += new ElapsedEventHandler(UpdateGameTime);
-            timeflowTimer.Interval = 10;
-            timeflowTimer.Enabled = true;
-        }
-
-        private void UpdateGameTime(object source, ElapsedEventArgs e)
+        public bool UpdateTime()
         {
             currentMonth++;
 
@@ -52,52 +45,45 @@ namespace ProjectGreanLeader
             {
                 currentMonth = currentMonth - 12;
                 currentYear++;
-                if (currentYear > 30)
+                ExecuteNewYearMethods();
+            }
+
+            bool isNewEvent = ExecuteNewMonthMethods();
+            return isNewEvent;
+        }
+
+        private bool ExecuteNewMonthMethods()
+        {
+            int activeCount = 0;
+            foreach (GameEvent gameEvent in events)
+            {
+                if (gameEvent.isActive)
                 {
-                    timeflowTimer.Stop();
-                    Console.Clear();
-                    DisplayRegion(regions[0]);
-                    return;
-                }
-                else
-                {
-                    ExecuteNewYearMethods();
+                    if ((gameEvent.startMonth + gameEvent.eventDuration + gameEvent.startYear * 12) == (currentMonth + currentYear * 12))
+                    {
+                        gameEvent.CompleteEvent();
+                    }
+
+                    else
+                    {
+                        activeCount++;
+                    }
                 }
             }
 
-            ExecuteNewMonthMethods();
+            if (rnd.Next(1, 61) <= 20 && activeCount < 3)
+                return true;
+
+            else
+            {
+                /*Console.Clear();
+                DisplayRegion(regions[0]);*/
+                return false;
+            }
+
         }
 
-        private void ExecuteNewMonthMethods()
-        {
-                int activeCount = 0;
-                foreach (GameEvent gameEvent in events)
-                {
-                    if (gameEvent.isActive)
-                    {
-                        if ((gameEvent.startMonth + gameEvent.eventDuration + gameEvent.startYear * 12) == (currentMonth + currentYear * 12))
-                        {
-                            gameEvent.CompleteEvent();
-                        }
-
-                        else
-                        {
-                            activeCount++;
-                        }
-                    }
-                }
-
-                if (rnd.Next(1, 61) <= 20 && activeCount < 3)
-                {
-                    timeflowTimer.Stop();
-                    StartNewEvent();
-                }
-
-                Console.Clear();
-                DisplayRegion(regions[0]);
-        }
-
-        private void StartNewEvent()
+        public void StartNewEvent()
         {
             bool eventFound = false;
             while (!eventFound)
@@ -112,8 +98,7 @@ namespace ProjectGreanLeader
                 }
             }
 
-            DisplayRegion(regions[0]);
-            timeflowTimer.Start();
+            //DisplayRegion(regions[0]);
         }
 
         private void ExecuteNewYearMethods()
@@ -122,8 +107,8 @@ namespace ProjectGreanLeader
             {
                 region.statistics.mutateTimeBasedStatistics();
             }
-            Console.Clear();
-            DisplayRegion(regions[0]);
+            /*Console.Clear();
+            DisplayRegion(regions[0]);*/
         }
 
         private void GenerateRegions()
@@ -145,6 +130,7 @@ namespace ProjectGreanLeader
             regions.Add(noord_Nederland);
         }
 
+        /*
         public void DisplayRegion(Region currentRegion)
         {
             Console.Clear();
@@ -171,6 +157,7 @@ namespace ProjectGreanLeader
 
             }
         }
+         */
 
         private void GenerateGameEvents()
         {
