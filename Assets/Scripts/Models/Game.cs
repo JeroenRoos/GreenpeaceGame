@@ -107,13 +107,10 @@ public class Game
     private void GenerateRegions()
     {
         regions = new Dictionary<string, Region>();
-        GenerateNoordNederland();
-    }
 
-    private void GenerateNoordNederland()
-    {
         Pollution pollution = new Pollution(10, 10, 10, 5, 5, 5);
         RegionStatistics statistics = new RegionStatistics(10000, 1000, 10, pollution, 5, 70);
+        //SectorStatistics stats = new SectorStatistics();
 
         Region noord_Nederland = new Region("Noord Nederland", statistics);
         Region oost_Nederland = new Region("Oost Nederland", statistics);

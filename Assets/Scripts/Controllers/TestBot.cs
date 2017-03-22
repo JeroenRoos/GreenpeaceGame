@@ -30,8 +30,8 @@ public class TestBot : MonoBehaviour {
         {
             if(gameEvent.isActive == true)
             {
-                //chosenOption = UnityEngine.Random.Range(0, 2);
-                chosenOption = 1;
+                chosenOption = UnityEngine.Random.Range(0, 3);
+                //chosenOption = 1;
                 Debug.Log("Choose option " + chosenOption);
                 gameEvent.SetPickedChoice(chosenOption);
             }
