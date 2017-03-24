@@ -46,10 +46,11 @@ public class GameController : MonoBehaviour
         time += Time.deltaTime;
         while (time > 0.1f)
         {
-            if(game.UpdateTime())
+            game.UpdateTime();
+            /*if(game.UpdateTime())
             {
                 game.StartNewEvent();
-            }
+            }*/
             time -= 0.1f;
         }
 
@@ -68,5 +69,7 @@ public class GameController : MonoBehaviour
 
         // Update Population text value in UI
         updateUI.updatePopulation(game.gameStatistics.population);
+
+        updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
     }
 }
