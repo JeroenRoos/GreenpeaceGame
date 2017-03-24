@@ -69,5 +69,7 @@ public class GameController : MonoBehaviour
 
         // Update Population text value in UI
         updateUI.updatePopulation(game.gameStatistics.population);
+
+        updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
     }
 }
