@@ -3,20 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b894b7f528e47001249c96fb9448c6ed9da6861
 //This class stores the values of the Regions
 public class Region
 {
     public string name { get; private set; }
     public RegionStatistics statistics { get; private set; }
     public List<Building> buildings { get; private set; }
-<<<<<<< HEAD
     public List<RegionAction> actions { get; private set; }
-=======
->>>>>>> 1b894b7f528e47001249c96fb9448c6ed9da6861
 
     public Households households { get; private set; }
     public Companies companies { get; set; }
@@ -27,7 +21,6 @@ public class Region
         this.name = name;
         this.statistics = statistics;
         buildings = new List<Building>();
-<<<<<<< HEAD
 
         actions = new List<RegionAction>();
         GenerateActions();
@@ -73,35 +66,6 @@ public class Region
             this.statistics.ChangeIncome(0 - statistics.income);
             this.statistics.ChangeProsperity(0 - statistics.prosperity); //change households and companies instead of region prosperity
 
-=======
-    }
-
-    //adds a building to the list of buildings the region has
-    public void CreateBuilding(Building newBuilding)
-    {
-        buildings.Add(newBuilding);
-        ImplementBuildingValues(newBuilding.statistics, true);
-    }
-
-    public void ImplementBuildingValues(BuildingStatistics statistics, bool isAdded) //if a building is removed for example, isAdded is false
-    {
-        if (isAdded)
-        {
-            this.statistics.ChangeIncome(statistics.income);
-            this.statistics.ChangeProsperity(statistics.prosperity); //change households and companies instead of region prosperity
-
-            //temporary methods (incomplete)
-            this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
-            this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
-            this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
-        }
-
-        else
-        {
-            this.statistics.ChangeIncome(0 - statistics.income);
-            this.statistics.ChangeProsperity(0 - statistics.prosperity); //change households and companies instead of region prosperity
-
->>>>>>> 1b894b7f528e47001249c96fb9448c6ed9da6861
             //temporary methods (incomplete)
             this.statistics.pollution.ChangeAirPollutionMutation(0 - statistics.pollution.airPollutionIncrease);
             this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
@@ -140,7 +104,6 @@ public class Region
         }
     }
 
-<<<<<<< HEAD
     private void GenerateActions()
     {
         string description;
@@ -158,8 +121,6 @@ public class Region
         actions.Add(action2);
     }
 
-=======
->>>>>>> 1b894b7f528e47001249c96fb9448c6ed9da6861
     /*
     //method to show all the values of the Region
     public void DisplayRegionValues(string textDistance)
@@ -237,7 +198,4 @@ public class Region
     }
         */
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b894b7f528e47001249c96fb9448c6ed9da6861

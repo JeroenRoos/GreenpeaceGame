@@ -5,17 +5,25 @@ using System.Text;
 
 public class GameStatistics
 {
+    // Game general statistics
     public double money { get; private set; }
     public double population { get; private set; }
-    public string energy { get; private set; } //Energy class
+    public Energy energy { get; private set; }
 
-    public GameStatistics(double money, double population, string energy)
+    // Regional averages
+    public double income { get; private set; }
+    public double donations { get; private set; }
+    public double happiness { get; private set; }
+    public double pollution { get; private set; }
+    public double ecoAwareness { get; private set; }
+    public double prosperity { get; private set; }
+
+    public GameStatistics(double money, double population, Energy energy)
     {
         this.money = money;
         this.population = population;
         this.energy = energy;
     }
-<<<<<<< HEAD
 
     public void ModifyMoney(double changevalue)
     {
@@ -59,6 +67,5 @@ public class GameStatistics
         ecoAwareness /= 4;
         prosperity   /= 4;
     }
-=======
->>>>>>> 1b894b7f528e47001249c96fb9448c6ed9da6861
 }
+
