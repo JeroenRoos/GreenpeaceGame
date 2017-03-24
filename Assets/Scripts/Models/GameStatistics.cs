@@ -25,6 +25,22 @@ public class GameStatistics
         this.energy = energy;
     }
 
+    public void ModifyMoney(double changevalue)
+    {
+        money += changevalue;
+    }
+
+    public void ModifyPopulation(double changevalue)
+    {
+        population += changevalue;
+    }
+
+    //moet voor Energyclass aansluiten
+    public void ModifyEnergy(double changevalue)
+    {
+        //energy += changevalue;
+    }
+
     public void UpdateRegionalAvgs(Game game)
     {
         income       = 0;
@@ -39,7 +55,7 @@ public class GameStatistics
             income       += region.statistics.income;
             donations    += region.statistics.donations;
             happiness    += region.statistics.happiness;
-            pollution    += region.statistics.pollution.avgPullution;
+            //pollution    += region.statistics.pollution.avgPullution;
             ecoAwareness += region.statistics.ecoAwareness;
             prosperity   += region.statistics.prosperity;
         }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 
 
-    public class Companies : RegionSector
+public class Companies : RegionSector
+{
+    public Companies(string sectorName, SectorStatistics statistics)
     {
-        public Companies(SectorStatistics statistics)
-        {
-            this.statistics = statistics;
-        }
+        this.sectorName = sectorName;
+        this.statistics = statistics;
     }
+}
