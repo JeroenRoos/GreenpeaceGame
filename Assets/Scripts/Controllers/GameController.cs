@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         game = new Game();
-        updateUI = new UpdateUI();
+        updateUI = GetComponent<UpdateUI>();
         //timer = new GameTimer();
         //timer.StartTimeflowTimer();
         //timer.Elapsed += new ElapsedEventHandler(UpdateGameTime);
