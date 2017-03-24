@@ -5,6 +5,8 @@ using System.Text;
 
 public class Pollution
 {
+    public double avgPullution { get; private set; }
+    
     public double airPollution { get; private set; }
     public double naturePollution { get; private set; }
     public double waterPollution { get; private set; }
@@ -25,24 +27,27 @@ public class Pollution
         this.naturePollutionIncrease = naturePollutionIncrease;
         this.waterPollutionIncrease = waterPollutionIncrease;
     }
-
+    
     public Pollution()
     {
         // UI Constructor
     }
-
+    
     public void ChangeAirPollutionMutation(double changeValue)
     {
         airPollutionIncrease = airPollutionIncrease + changeValue;
+        CalculateAvgPollution();
     }
 
     public void ChangeNaturePollutionMutation(double changeValue)
     {
         naturePollutionIncrease = naturePollutionIncrease + changeValue;
+        CalculateAvgPollution();
     }
     public void ChangeWaterPollutionMutation(double changeValue)
     {
         waterPollutionIncrease = waterPollutionIncrease + changeValue;
+        CalculateAvgPollution();
     }
 
 
@@ -62,6 +67,11 @@ public class Pollution
             waterPollution = waterPollution + (waterPollution / 100 * waterPollutionIncrease);
         else
             waterPollution = waterPollution + ((waterPollution + 20) / 100 * waterPollution);
+    }
+
+    private void CalculateAvgPollution()
+    {
+        avgPullution = ((airPollution + naturePollution + waterPollution) / 3);
     }
 }
 

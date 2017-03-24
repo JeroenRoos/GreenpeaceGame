@@ -6,18 +6,30 @@ using UnityEngine.EventSystems;
 public class TestBot : MonoBehaviour {
 
     GameController gameController;
+    double currentCurrency;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         gameController = GetComponent<GameController>();
         EventManager.ChangeMonth += CheckStatus;
         EventManager.ShowEvent  += EventAction;
     }
-	
+    
     // Month changed
     void CheckStatus()
     {
         Debug.Log("Month changed");
+
+        //currentCurrency = gameController.game.gameStatistics.money;
+
+        //foreach (KeyValuePair<string, Region> region in gameController.game.regions)
+        //{
+        //    Debug.Log(region.Value.statistics.pollution.avgPullution);
+        //    if (region.Value.statistics.pollution.avgPullution > 50 && currentCurrency > 2000)
+        //    {
+        //        // take anti-pollution action
+        //    }
+        //}
     }
 
     // Event occured
