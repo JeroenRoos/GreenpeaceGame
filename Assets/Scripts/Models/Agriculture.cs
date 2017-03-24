@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-    public class Agriculture : RegionSector
+public class Agriculture : RegionSector
+{
+    public Agriculture(string sectorName, SectorStatistics statistics)
     {
-        public Agriculture(SectorStatistics statistics)
-        {
-            this.statistics = statistics;
-        }
+        this.sectorName = sectorName;
+        this.statistics = statistics;
     }
+}
 

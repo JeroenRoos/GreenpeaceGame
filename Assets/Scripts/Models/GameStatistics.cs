@@ -25,6 +25,22 @@ public class GameStatistics
         this.energy = energy;
     }
 
+    public void ModifyMoney(double changevalue)
+    {
+        money += changevalue;
+    }
+
+    public void ModifyPopulation(double changevalue)
+    {
+        population += changevalue;
+    }
+
+    //moet voor Energyclass aansluiten
+    public void ModifyEnergy(double changevalue)
+    {
+        //energy += changevalue;
+    }
+
     public void UpdateRegionalAvgs(Game game)
     {
         income       = 0;
