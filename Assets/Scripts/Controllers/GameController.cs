@@ -54,13 +54,6 @@ public class GameController : MonoBehaviour
             time -= 0.1f;
         }
 
-    }
-
-    // Update is called once per frame
-    // Maak instance van UI en roep vanaf hier methodes aan
-    // Method UpdateUI in FixedUpdate() van GameController;
-    void FixedUpdate()
-    {
         // Update month and year text value in UI
         updateUI.updateDate(game.currentMonth, game.currentYear);
 
@@ -70,6 +63,25 @@ public class GameController : MonoBehaviour
         // Update Population text value in UI
         updateUI.updatePopulation(game.gameStatistics.population);
 
+        // Update Awarness color value in UI
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
+
+        // Update Pollution color value in UI
+        updateUI.updatePollution(game.gameStatistics.pollution);
+
+        // Update Energy color value in UI
+        updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
+
+        // Update Energy color value in UI
+        updateUI.updateHappiness(game.gameStatistics.happiness);
+
+    }
+
+    // Update is called once per frame
+    // Maak instance van UI en roep vanaf hier methodes aan
+    // Method UpdateUI in FixedUpdate() van GameController;
+    void FixedUpdate()
+    {
+
     }
 }
