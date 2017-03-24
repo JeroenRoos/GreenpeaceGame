@@ -42,10 +42,23 @@ public class Region
     }
     
     //adds a building to the list of buildings the region has
-    public void CreateBuilding(Building newBuilding)
+    public void CreateBuilding(string buildingName)
     {
+        Building newBuilding = new Building(buildingName);
         buildings.Add(newBuilding);
         ImplementBuildingValues(newBuilding.statistics, true);
+    }
+
+    public void DeleteBuilding(Building building)
+    {
+        ImplementBuildingValues(building.statistics, false);
+        buildings.Remove(building);
+    }
+
+    public void ModifyBuilding(Building building, BuildingStatistics statistics)
+    {
+        ImplementBuildingValues(statistics, true);
+        building.ModifyBuildingStatistics(statistics);
     }
 
     public void ImplementBuildingValues(BuildingStatistics statistics, bool isAdded) //if a building is removed for example, isAdded is false
@@ -120,82 +133,5 @@ public class Region
         RegionAction action2 = new RegionAction(description, consequence2, actionCost2, 2, 3);
         actions.Add(action2);
     }
-
-    /*
-    //method to show all the values of the Region
-    public void DisplayRegionValues(string textDistance)
-    {
-        ShowRegion(textDistance);
-        ShowStatistics(textDistance);
-        ShowBuildings(textDistance);
-    }
-
-    //shows region name, type, council name and local animals (fixed info)
-    private void ShowRegion(string textDistance)
-    {
-        Console.Write(textDistance, "Region:");
-        Console.WriteLine("{0}", name);
-        Console.WriteLine("===============================================================");
-        Console.WriteLine();
-    }
-        
-    //shows the current statistics of the region (changeable)
-    private void ShowStatistics(string textDistance)
-    {
-        Console.WriteLine("Statistics");
-        Console.WriteLine("---------------------------------------------------------------");
-
-        Console.Write(textDistance, "Income: ");
-        Console.WriteLine(statistics.income);
-
-        Console.Write(textDistance, "Donations: ");
-        Console.WriteLine(statistics.donations);
-
-        Console.Write(textDistance, "Happiness: ");
-        Console.WriteLine(statistics.happiness);
-
-        Console.Write(textDistance, "Pollution: ");
-        double value = (statistics.pollution.airPollution + statistics.pollution.naturePollution + statistics.pollution.waterPollution) / 3;
-        Console.WriteLine("{0:0.0}%", value);
-
-        Console.Write(textDistance, "Eco Awareness: ");
-        Console.WriteLine(statistics.ecoAwareness);
-
-        Console.Write(textDistance, "Prosperity: ");
-        Console.WriteLine(statistics.prosperity);
-
-        Console.WriteLine();
-    }
-
-    //shows the currently present buildings (changeable)
-    private void ShowBuildings(string textDistance)
-    {
-        string textValue;
-        Console.WriteLine("Buildings");
-        Console.WriteLine("---------------------------------------------------------------");
-        Console.Write(textDistance, "Name");
-        Console.Write(textDistance, "Income");
-        Console.Write(textDistance, "Donations");
-        Console.Write(textDistance, "Happiness");
-        Console.Write(textDistance, "Pollution");
-        Console.Write(textDistance, "Eco Awareness");
-        Console.Write(textDistance, "Prosperity");
-        Console.WriteLine();
-
-        foreach (Building building in buildings)
-        {
-            Console.Write(textDistance, building.name);
-            Console.Write(textDistance, building.statistics.income);
-            Console.Write(textDistance, building.statistics.donations);
-            Console.Write(textDistance, building.statistics.happiness);
-            //textValue = (building.statistics.pollution + "% per year");
-            //Console.Write(textDistance, textValue);
-            Console.Write(textDistance, building.statistics.ecoAwareness);
-            Console.Write(textDistance, building.statistics.prosperity);
-                
-            Console.WriteLine();
-        }
-    }
-        */
 }
 
