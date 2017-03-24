@@ -99,53 +99,6 @@ public class UpdateUI : MonoBehaviour
     void FixedUpdate()
     {
         popupController();
-        //iconController();
-    }
-
-    void iconController(Button btn, double value)
-    {
-        ColorBlock cb;
-
-        //foreach (Button btn in lstButtons)
-        //{
-        float f = (float)value / 100;
-        cb = btn.colors;
-        Debug.Log(value + " - " + f);
-
-        // Color based on third argument (value of given statistic / 100)
-        Color lerpColor = Color.Lerp(Color.red, Color.green, f);
-        cb.normalColor = lerpColor;
-        btn.colors = cb;
-        //}
-
-        //Color lerpColor = Color.Lerp(Color.red, Color.green, 0.5F);
-
-        /*
-        // Attempt to chose color based on value 
-        // http://stackoverflow.com/questions/38642587/making-a-gradient-and-change-colors-based-on-that-gradient-in-unity3d-c-sharp
-        Gradient gradient = new Gradient();
-        GradientColorKey[] colorKey = new GradientColorKey[2];
-        GradientAlphaKey[] alphaKey = new GradientAlphaKey[2];
-
-        // Set bottom and top value and color with that value??
-        colorKey[0].color = Color.red;
-        colorKey[0].time = 0.0F;        
-        colorKey[1].color = Color.green;
-        colorKey[1].time = 100.0F;
-
-        alphaKey[0].alpha = 1.0F;
-        alphaKey[0].time = 0.0F;
-        alphaKey[1].alpha = 0.0F;
-        alphaKey[1].time = 1.0F;
-
-        gradient.SetKeys(colorKey, alphaKey);
-
-        // Put color that goes with Evaluate(..) value to the Icon
-        cb = btnHappiness.colors;
-        Color c = gradient.Evaluate(50);
-        cb.normalColor = c;
-        btnHappiness.colors = cb; */
-
     }
 
     void popupController()
@@ -180,7 +133,6 @@ public class UpdateUI : MonoBehaviour
         string[] arrMonths = new string[12]
             { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" };
 
-        //Debug.Log(month + " - " + arrMonths[month]);
         txtDate.text = arrMonths[month] + " - " + year.ToString();
     }
 
@@ -197,6 +149,33 @@ public class UpdateUI : MonoBehaviour
     public void updateAwarness(double awareness)
     {
         iconController(btnAwareness, awareness);
+    }
+
+    public void updatePollution(double pollution)
+    {
+        iconController(btnPollution, pollution);
+    }
+
+    public void updateEnergy(double energy)
+    {
+        iconController(btnEnergy, energy);
+    }
+
+    public void updateHappiness(double happiness)
+    {
+        iconController(btnHappiness, happiness);
+    }
+
+    void iconController(Button btn, double value)
+    {
+        ColorBlock cb;
+        float f = (float)value / 100;
+        cb = btn.colors;
+
+        // Color based on third argument (value / 100)
+        Color lerpColor = Color.Lerp(Color.red, Color.green, f);
+        cb.normalColor = lerpColor;
+        btn.colors = cb;
     }
 
     void OnGUI()
