@@ -128,55 +128,6 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    public void updateDate(int month, int year)
-    {
-        string[] arrMonths = new string[12]
-            { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" };
-
-        txtDate.text = arrMonths[month] + " - " + year.ToString();
-    }
-
-    public void updateMoney(double money)
-    {
-        txtMoney.text = money.ToString();
-    }
-
-    public void updatePopulation(double population)
-    {
-        txtPopulation.text = population.ToString();
-    }
-
-    public void updateAwarness(double awareness)
-    {
-        iconController(btnAwareness, awareness);
-    }
-
-    public void updatePollution(double pollution)
-    {
-        iconController(btnPollution, pollution);
-    }
-
-    public void updateEnergy(double energy)
-    {
-        iconController(btnEnergy, energy);
-    }
-
-    public void updateHappiness(double happiness)
-    {
-        iconController(btnHappiness, happiness);
-    }
-
-    void iconController(Button btn, double value)
-    {
-        ColorBlock cb;
-        float f = (float)value / 100;
-        cb = btn.colors;
-
-        // Color based on third argument (value / 100)
-        Color lerpColor = Color.Lerp(Color.red, Color.green, f);
-        cb.normalColor = lerpColor;
-        btn.colors = cb;
-    }
 
     void OnGUI()
     {
@@ -247,8 +198,69 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+
+    #region Updating Text and Color Values of Icons
+    // Update Date and Month based on value
+    public void updateDate(int month, int year)
+    {
+        month = month - 1;
+        string[] arrMonths = new string[12]
+            { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" };
+
+        txtDate.text = arrMonths[month] + " - " + year.ToString();
+    }
+
+    // Update Money based on value
+    public void updateMoney(double money)
+    {
+        txtMoney.text = money.ToString();
+    }
+
+    // Update Population based on value
+    public void updatePopulation(double population)
+    {
+        txtPopulation.text = population.ToString();
+    }
+
+    // Update Awareness based on value
+    public void updateAwarness(double awareness)
+    {
+        iconController(btnAwareness, awareness);
+    }
+
+    // Update Pollution based on value
+    public void updatePollution(double pollution)
+    {
+        iconController(btnPollution, pollution);
+    }
+
+    // Update Energy based on value
+    public void updateEnergy(double energy)
+    {
+        iconController(btnEnergy, energy);
+    }
+
+    // Update Happiness based on value
+    public void updateHappiness(double happiness)
+    {
+        iconController(btnHappiness, happiness);
+    }
+
+    // Change color of the button based on value
+    void iconController(Button btn, double value)
+    {
+        ColorBlock cb;
+        float f = (float)value / 100;
+        cb = btn.colors;
+
+        // Color based on third argument (value / 100)
+        Color lerpColor = Color.Lerp(Color.red, Color.green, f);
+        cb.normalColor = lerpColor;
+        btn.colors = cb;
+    }
+    #endregion
+
     #region btnTimeline Code
-    // All code for the btnTimeline
     void btnTimelineClick()
     {
         if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)
@@ -260,7 +272,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    #region btnOrganization code
+    #region btnOrganization Code
     void btnOrganizationClick()
     {
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive)
@@ -286,6 +298,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Mouse Enter & Exit Code for Icons
     // OnEnter BtnMoney
     public void BtnMoneyEnter()
     {
@@ -349,6 +362,7 @@ public class UpdateUI : MonoBehaviour
     {
         btnEnergyHoverCheck = false;
     }
+    #endregion
 
 
     /*        Vector3 v3;
@@ -370,71 +384,71 @@ public class UpdateUI : MonoBehaviour
             //txtPopup.color = txtColor;*/
 
 
-        /*  Use this code when OnPointerEnter works!
-            Vector3 v3;
-            Text txtPopup = null;
-            Color backColor = new Color();
-            Color txtColor = new Color();
+    /*  Use this code when OnPointerEnter works!
+        Vector3 v3;
+        Text txtPopup = null;
+        Color backColor = new Color();
+        Color txtColor = new Color();
 
-            ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
-            ColorUtility.TryParseHtmlString("#05001a", out txtColor);
+        ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
+        ColorUtility.TryParseHtmlString("#05001a", out txtColor);
 
-            GameObject obj = eventData.selectedObject;
+        GameObject obj = eventData.selectedObject;
 
-            if (eventData.pointerEnter.gameObject == objBtnMenu)
-                Debug.Log("Arrived in 1st Tooltip Menu!");
+        if (eventData.pointerEnter.gameObject == objBtnMenu)
+            Debug.Log("Arrived in 1st Tooltip Menu!");
 
-            if (eventData.pointerEnter.gameObject == btnMenu.gameObject)
-                Debug.Log("Arrived in 2nd Tooltip Menu!");
+        if (eventData.pointerEnter.gameObject == btnMenu.gameObject)
+            Debug.Log("Arrived in 2nd Tooltip Menu!");
 
-            if (eventData.pointerEnter == objBtnMenu)
-                Debug.Log("Arrived in 3rd Tooltip Menu!");
+        if (eventData.pointerEnter == objBtnMenu)
+            Debug.Log("Arrived in 3rd Tooltip Menu!");
 
-            if (eventData.pointerEnter == btnMenu)
-                Debug.Log("Arrived in 4th Tooltip Menu!");
+        if (eventData.pointerEnter == btnMenu)
+            Debug.Log("Arrived in 4th Tooltip Menu!");
 
-            if (eventData.pointerEnter == btnMenu.gameObject)
-                Debug.Log("Arrived in 5th Tooltip Menu!");
+        if (eventData.pointerEnter == btnMenu.gameObject)
+            Debug.Log("Arrived in 5th Tooltip Menu!");
 
-            if (eventData.pointerEnter.Equals(btnMenu))
-                Debug.Log("Arrived in 6th Tooltip Menu!");
+        if (eventData.pointerEnter.Equals(btnMenu))
+            Debug.Log("Arrived in 6th Tooltip Menu!");
 
-            if (obj == btnMenu.gameObject)
-                Debug.Log("Arrived in 7th Tooltip Menu!");
+        if (obj == btnMenu.gameObject)
+            Debug.Log("Arrived in 7th Tooltip Menu!");
 
-            /* Make tooltip appear
-            if (eventData.pointerEnter.gameObject == objBtnMoney)//btnMoney.gameObject)
-            {
-                Debug.Log("Arrived in Tooltip Money!");
-                v3 = btnMoney.gameObject.transform.position;
-                txtPopup.text = "This is a tooltip for Money stats";
-                GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
-                GUI.backgroundColor = backColor;
+        /* Make tooltip appear
+        if (eventData.pointerEnter.gameObject == objBtnMoney)//btnMoney.gameObject)
+        {
+            Debug.Log("Arrived in Tooltip Money!");
+            v3 = btnMoney.gameObject.transform.position;
+            txtPopup.text = "This is a tooltip for Money stats";
+            GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
+            GUI.backgroundColor = backColor;
 
-                GUI.Label(new Rect(10, 10, 100, 100), txtPopup.text);
-                txtPopup.color = txtColor;
-            }
-            if (eventData.pointerEnter == btnHappiness)
-            {
+            GUI.Label(new Rect(10, 10, 100, 100), txtPopup.text);
+            txtPopup.color = txtColor;
+        }
+        if (eventData.pointerEnter == btnHappiness)
+        {
 
-            }
-            if (eventData.pointerEnter == btnAwareness)
-            {
+        }
+        if (eventData.pointerEnter == btnAwareness)
+        {
 
-            }
-            if (eventData.pointerEnter == btnEnergy)
-            {
+        }
+        if (eventData.pointerEnter == btnEnergy)
+        {
 
-            }
-            if (eventData.pointerEnter == btnPollution)
-            {
+        }
+        if (eventData.pointerEnter == btnPollution)
+        {
 
-            }
-            if (eventData.pointerEnter == btnPopulation)
-            {
+        }
+        if (eventData.pointerEnter == btnPopulation)
+        {
 
-            }
-            */
-    }
+        }
+        */
+}
 
 
