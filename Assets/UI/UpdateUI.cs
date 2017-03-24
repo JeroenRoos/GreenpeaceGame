@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;                       // Needed for UI
-using UnityEngine.EventSystems;             // Needed for Tooltips 
 using System;
 
 public class UpdateUI : MonoBehaviour
@@ -11,7 +10,7 @@ public class UpdateUI : MonoBehaviour
     // Text
     public Text txtMoney;
     public Text txtPopulation;
-    public Text popupTxt;
+    public Text txtDate;
 
     // Buttons 
     public Button btnMenu;
@@ -23,6 +22,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnEnergy;
     public Button btnPollution;
     public Button btnPopulation;
+    public List<Button> lstButtons = new List<Button>();
 
     // Canvas 
     public Canvas canvasMenuPopup;
@@ -31,19 +31,18 @@ public class UpdateUI : MonoBehaviour
 
     // Rectangles
     public Rect mainMenuRect;
+
+    public Color newColor;
     #endregion
 
     #region Boolean Variables
     // Booleans
-    public bool btnMenuCheck = false;
-    public bool btnTimelineCheck = false;
-    public bool hoverMenu = false;
-    public bool btnOrganizationCheck = false;
     public bool btnMoneyHoverCheck = false;
     public bool btnHappinessHoverCheck = false;
     public bool btnAwarenessHoverCheck = false;
     public bool btnPollutionHoverCheck = false;
     public bool btnEnergyHoverCheck = false;
+    public bool popupActive = false;
     #endregion
 
     // Use this for initialization
@@ -56,21 +55,31 @@ public class UpdateUI : MonoBehaviour
     #region Init UI Elements
     public void initButtons()
     {
-        /*Button btn = */btnMenu.GetComponent<Button>();
-        /*btn*/btnMenu.onClick.AddListener(btnMenuClick);
+        btnMenu.GetComponent<Button>();
+        btnMenu.onClick.AddListener(btnMenuClick);
 
-        /*btn = */btnTimeline.GetComponent<Button>();
-        /*btn*/btnTimeline.onClick.AddListener(btnTimelineClick);
+        btnTimeline.GetComponent<Button>();
+        btnTimeline.onClick.AddListener(btnTimelineClick);
 
-        /*btn = */btnOrganization.GetComponent<Button>();
-        /*btn*/btnOrganization.onClick.AddListener(btnOrganizationClick);
+        btnOrganization.GetComponent<Button>();
+        btnOrganization.onClick.AddListener(btnOrganizationClick);
 
-        /*btn = */btnMoney.GetComponent<Button>();
-        /*btn = */btnHappiness.GetComponent<Button>();
-        /*btn = */btnAwareness.GetComponent<Button>();
-        /*btn = */btnEnergy.GetComponent<Button>();
-        /*btn = */btnPollution.GetComponent<Button>();
-        /*btn = */btnPopulation.GetComponent<Button>();
+        btnMoney.GetComponent<Button>();
+        btnHappiness.GetComponent<Button>();
+        btnAwareness.GetComponent<Button>();
+        btnEnergy.GetComponent<Button>();
+        btnPollution.GetComponent<Button>();
+        btnPopulation.GetComponent<Button>();
+
+        addButtonToList();
+    }
+
+    void addButtonToList()
+    {
+        lstButtons.Add(btnHappiness);
+        lstButtons.Add(btnAwareness);
+        lstButtons.Add(btnEnergy);
+        lstButtons.Add(btnPollution);
     }
 
     public void initCanvas()
@@ -89,13 +98,94 @@ public class UpdateUI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        UpdateTextUI();
+        popupController();
+        iconController();
     }
 
-    void UpdateTextUI()
+    void iconController()
     {
-        txtMoney.text = "20.000";
-        txtPopulation.text = "17.123.987";
+        ColorBlock cb;
+
+        foreach (Button btn in lstButtons)
+        {
+            cb = btn.colors;
+
+            // Color based on third argument (value of given statistic / 100)
+            Color lerpColor = Color.Lerp(Color.red, Color.green, 0.1F);
+            cb.normalColor = lerpColor;
+            btn.colors = cb;
+        }
+
+        //Color lerpColor = Color.Lerp(Color.red, Color.green, 0.5F);
+
+        /*
+        // Attempt to chose color based on value 
+        // http://stackoverflow.com/questions/38642587/making-a-gradient-and-change-colors-based-on-that-gradient-in-unity3d-c-sharp
+        Gradient gradient = new Gradient();
+        GradientColorKey[] colorKey = new GradientColorKey[2];
+        GradientAlphaKey[] alphaKey = new GradientAlphaKey[2];
+
+        // Set bottom and top value and color with that value??
+        colorKey[0].color = Color.red;
+        colorKey[0].time = 0.0F;        
+        colorKey[1].color = Color.green;
+        colorKey[1].time = 100.0F;
+
+        alphaKey[0].alpha = 1.0F;
+        alphaKey[0].time = 0.0F;
+        alphaKey[1].alpha = 0.0F;
+        alphaKey[1].time = 1.0F;
+
+        gradient.SetKeys(colorKey, alphaKey);
+
+        // Put color that goes with Evaluate(..) value to the Icon
+        cb = btnHappiness.colors;
+        Color c = gradient.Evaluate(50);
+        cb.normalColor = c;
+        btnHappiness.colors = cb; */
+
+    }
+
+    void popupController()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (!popupActive)
+            {
+                canvasMenuPopup.gameObject.SetActive(true);
+                popupActive = true;
+            }
+            else if (canvasOrganizationPopup.gameObject.activeSelf)
+            {
+                canvasOrganizationPopup.gameObject.SetActive(false);
+                popupActive = false;
+            }
+            else if (canvasMenuPopup.gameObject.activeSelf)
+            {
+                canvasMenuPopup.gameObject.SetActive(false);
+                popupActive = false;
+            }
+            else if (canvasTimelinePopup.gameObject.activeSelf)
+            {
+                canvasTimelinePopup.gameObject.SetActive(false);
+                popupActive = false;
+            }
+        }
+    }
+
+    public void updateDate(int month, int year)
+    {
+        txtDate.text = month.ToString() + " - " + year.ToString();
+    }
+
+    public void updateMoney(double money)
+    {
+        txtMoney.text = money.ToString();
+    }
+
+    public void updatePopulation(double population)
+    {
+        txtPopulation.text = population.ToString();
     }
 
     void OnGUI()
@@ -107,63 +197,61 @@ public class UpdateUI : MonoBehaviour
         //ColorUtility.TryParseHtmlString("#05001a", out backColor);
         //ColorUtility.TryParseHtmlString("#ccac6f", out txtColor);
         string txtPopup = "";
+        //Text text = txt.GetComponent<Text>();
+       // txt.text = txtPopup;
 
         if (btnMoneyHoverCheck)
         {
-            Debug.Log("Arrived in Tooltip Money!");
             v3 = btnMoney.gameObject.transform.position;
             txtPopup = "This is a tooltip for Money stats\n";
             Rect lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtPopup), "Tooltip Money");
-            
-            lblReqt.x = v3.x; lblReqt.y = 40;
+
+            //GUI.Box(new Rect(v3.x, v3.z - 40, lblReqt.width, lblReqt.height), "Tooltip Money");
+            lblReqt.x = v3.x + 10; lblReqt.y = v3.z + 40;
             GUI.Label(lblReqt, "<color=#05001a>" + txtPopup + "</color>");
             //GUI.backgroundColor = backColor;
         }
 
         if (btnHappinessHoverCheck)
         {
-            Debug.Log("Arrived in Tooltip Happiness!");
             v3 = btnHappiness.gameObject.transform.position;
             txtPopup = "This is a tooltip for Happiness stats\n";
             Rect lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtPopup), "Tooltip Happiness");
 
-            lblReqt.x = v3.x; lblReqt.y = 40;
+            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;
             GUI.Label(lblReqt, "<color=#05001a>" + txtPopup + "</color>");
             //GUI.backgroundColor = backColor;
         }
 
         if (btnAwarenessHoverCheck)
         {
-            Debug.Log("Arrived in Tooltip Awareness!");
             v3 = btnAwareness.gameObject.transform.position;
             txtPopup = "This is a tooltip for Awareness stats\n";
             Rect lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtPopup), "Tooltip Awareness");
 
-            lblReqt.x = v3.x; lblReqt.y = 40;
+            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;//lblReqt.y = 40;
             GUI.Label(lblReqt, "<color=#05001a>" + txtPopup + "</color>");
             //GUI.backgroundColor = backColor;
         }
 
         if (btnPollutionHoverCheck)
         {
-            Debug.Log("Arrived in Tooltip Pollution!");
             v3 = btnPollution.gameObject.transform.position;
             txtPopup = "This is a tooltip for Pollution stats\n";
             Rect lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtPopup), "Tooltip Pollution");
 
-            lblReqt.x = v3.x; lblReqt.y = 40;
+            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;
             GUI.Label(lblReqt, "<color=#05001a>" + txtPopup + "</color>");
             //GUI.backgroundColor = backColor;
         }
 
         if (btnEnergyHoverCheck)
         {
-            Debug.Log("Arrived in Tooltip Energy!");
             v3 = btnEnergy.gameObject.transform.position;
             txtPopup = "This is a tooltip for Energy stats\n";
             Rect lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtPopup), "Tooltip Energy");
 
-            lblReqt.x = v3.x; lblReqt.y = 40;
+            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;
             GUI.Label(lblReqt, "<color=#05001a>" + txtPopup + "</color>");
             //GUI.backgroundColor = backColor;
         }
@@ -173,17 +261,11 @@ public class UpdateUI : MonoBehaviour
     // All code for the btnTimeline
     void btnTimelineClick()
     {
-        if (!btnTimelineCheck)
+        if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)
         {
-            btnTimelineCheck = true;
             canvasTimelinePopup.gameObject.SetActive(true);
             Debug.Log("Popup Timeline active!");
-        }
-        else
-        {
-            btnTimelineCheck = false;
-            canvasTimelinePopup.gameObject.SetActive(false);
-            Debug.Log("Popup Timeline not active!");
+            popupActive = true;
         }
     }
     #endregion
@@ -191,17 +273,11 @@ public class UpdateUI : MonoBehaviour
     #region btnOrganization code
     void btnOrganizationClick()
     {
-        if (!btnOrganizationCheck)
+        if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive)
         {
-            btnOrganizationCheck = true;
             canvasOrganizationPopup.gameObject.SetActive(true);
             Debug.Log("Popup Organization active!");
-        }
-        else
-        {
-            btnOrganizationCheck = false;
-            canvasOrganizationPopup.gameObject.SetActive(false);
-            Debug.Log("Popup Organization not active!");
+            popupActive = true;
         }
     }
     #endregion
@@ -211,17 +287,11 @@ public class UpdateUI : MonoBehaviour
     void btnMenuClick()
     {
         // Temporary close of popup
-        if (!btnMenuCheck)
+        if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
         {
-            btnMenuCheck = true;
             canvasMenuPopup.gameObject.SetActive(true);
             Debug.Log("Popup Menu active!");
-        }
-        else
-        {
-            btnMenuCheck = false;
-            canvasMenuPopup.gameObject.SetActive(false);
-            Debug.Log("Popup Menu not active!");
+            popupActive = true;
         }
     }
     #endregion
@@ -310,71 +380,71 @@ public class UpdateUI : MonoBehaviour
             //txtPopup.color = txtColor;*/
 
 
-    /*  Use this code when OnPointerEnter works!
-        Vector3 v3;
-        Text txtPopup = null;
-        Color backColor = new Color();
-        Color txtColor = new Color();
+        /*  Use this code when OnPointerEnter works!
+            Vector3 v3;
+            Text txtPopup = null;
+            Color backColor = new Color();
+            Color txtColor = new Color();
 
-        ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
-        ColorUtility.TryParseHtmlString("#05001a", out txtColor);
+            ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
+            ColorUtility.TryParseHtmlString("#05001a", out txtColor);
 
-        GameObject obj = eventData.selectedObject;
+            GameObject obj = eventData.selectedObject;
 
-        if (eventData.pointerEnter.gameObject == objBtnMenu)
-            Debug.Log("Arrived in 1st Tooltip Menu!");
+            if (eventData.pointerEnter.gameObject == objBtnMenu)
+                Debug.Log("Arrived in 1st Tooltip Menu!");
 
-        if (eventData.pointerEnter.gameObject == btnMenu.gameObject)
-            Debug.Log("Arrived in 2nd Tooltip Menu!");
+            if (eventData.pointerEnter.gameObject == btnMenu.gameObject)
+                Debug.Log("Arrived in 2nd Tooltip Menu!");
 
-        if (eventData.pointerEnter == objBtnMenu)
-            Debug.Log("Arrived in 3rd Tooltip Menu!");
+            if (eventData.pointerEnter == objBtnMenu)
+                Debug.Log("Arrived in 3rd Tooltip Menu!");
 
-        if (eventData.pointerEnter == btnMenu)
-            Debug.Log("Arrived in 4th Tooltip Menu!");
+            if (eventData.pointerEnter == btnMenu)
+                Debug.Log("Arrived in 4th Tooltip Menu!");
 
-        if (eventData.pointerEnter == btnMenu.gameObject)
-            Debug.Log("Arrived in 5th Tooltip Menu!");
+            if (eventData.pointerEnter == btnMenu.gameObject)
+                Debug.Log("Arrived in 5th Tooltip Menu!");
 
-        if (eventData.pointerEnter.Equals(btnMenu))
-            Debug.Log("Arrived in 6th Tooltip Menu!");
+            if (eventData.pointerEnter.Equals(btnMenu))
+                Debug.Log("Arrived in 6th Tooltip Menu!");
 
-        if (obj == btnMenu.gameObject)
-            Debug.Log("Arrived in 7th Tooltip Menu!");
+            if (obj == btnMenu.gameObject)
+                Debug.Log("Arrived in 7th Tooltip Menu!");
 
-        /* Make tooltip appear
-        if (eventData.pointerEnter.gameObject == objBtnMoney)//btnMoney.gameObject)
-        {
-            Debug.Log("Arrived in Tooltip Money!");
-            v3 = btnMoney.gameObject.transform.position;
-            txtPopup.text = "This is a tooltip for Money stats";
-            GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
-            GUI.backgroundColor = backColor;
+            /* Make tooltip appear
+            if (eventData.pointerEnter.gameObject == objBtnMoney)//btnMoney.gameObject)
+            {
+                Debug.Log("Arrived in Tooltip Money!");
+                v3 = btnMoney.gameObject.transform.position;
+                txtPopup.text = "This is a tooltip for Money stats";
+                GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
+                GUI.backgroundColor = backColor;
 
-            GUI.Label(new Rect(10, 10, 100, 100), txtPopup.text);
-            txtPopup.color = txtColor;
-        }
-        if (eventData.pointerEnter == btnHappiness)
-        {
+                GUI.Label(new Rect(10, 10, 100, 100), txtPopup.text);
+                txtPopup.color = txtColor;
+            }
+            if (eventData.pointerEnter == btnHappiness)
+            {
 
-        }
-        if (eventData.pointerEnter == btnAwareness)
-        {
+            }
+            if (eventData.pointerEnter == btnAwareness)
+            {
 
-        }
-        if (eventData.pointerEnter == btnEnergy)
-        {
+            }
+            if (eventData.pointerEnter == btnEnergy)
+            {
 
-        }
-        if (eventData.pointerEnter == btnPollution)
-        {
+            }
+            if (eventData.pointerEnter == btnPollution)
+            {
 
-        }
-        if (eventData.pointerEnter == btnPopulation)
-        {
+            }
+            if (eventData.pointerEnter == btnPopulation)
+            {
 
-        }
-        */
-}
+            }
+            */
+    }
 
 
