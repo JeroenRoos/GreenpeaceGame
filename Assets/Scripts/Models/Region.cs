@@ -12,16 +12,16 @@ public class Region
     public List<Building> buildings { get; private set; }
     public List<RegionAction> actions { get; private set; }
 
-    public Households households { get; private set; }
-    public Companies companies { get; set; }
-    public Agriculture agriculture { get; set; }
+    public Dictionary<string, RegionSector> sectors { get; private set; }
 
-    public Region(string name, RegionStatistics statistics)
+    public Region(string name, RegionStatistics statistics, Dictionary<string, RegionSector> sectors)
     {
         this.name = name;
         this.statistics = statistics;
-        buildings = new List<Building>();
+        this.sectors = sectors;
+        ImplementSectorValues();
 
+        buildings = new List<Building>();
         actions = new List<RegionAction>();
         GenerateActions();
     }
@@ -41,6 +41,19 @@ public class Region
         }
     }
     
+    public void ImplementSectorValues()
+    {
+        foreach (RegionSector sector in sectors.Values)
+        {
+            statistics.changeHappiness(sector.statistics.happiness);
+            statistics.ChangeEcoAwareness(sector.statistics.ecoAwareness);
+            statistics.ChangeProsperity(sector.statistics.prosperity);
+            statistics.pollution.ChangeAirPollutionMutation(sector.statistics.airPollutionContribution);
+            statistics.pollution.ChangeNaturePollutionMutation(sector.statistics.naturePollutionContribution);
+            statistics.pollution.ChangeWaterPollutionMutation(sector.statistics.waterPollutionContribution);
+        }
+    }
+
     //adds a building to the list of buildings the region has
     public void CreateBuilding(string buildingName)
     {

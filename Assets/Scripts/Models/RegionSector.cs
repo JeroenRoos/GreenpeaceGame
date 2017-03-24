@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 
 
-    public abstract class RegionSector
+    public class RegionSector
 {
-    public virtual string sectorName { get; protected set; }
-    public virtual SectorStatistics statistics { get; protected set; }
+    public string sectorName { get; protected set; }
+    public SectorStatistics statistics { get; protected set; }
 
-        public RegionSector()
-        {
-        }
+    public RegionSector(string sectorName, SectorStatistics statistics)
+    {
+        this.sectorName = sectorName;
+        this.statistics = statistics;
     }
+}

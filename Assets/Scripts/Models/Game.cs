@@ -10,7 +10,7 @@ public class Game
     //All Regions and region types planned for complete game
     public int currentYear { get; private set; }
     public int currentMonth { get; private set; }
-    public Dictionary<string, Region> regions;
+    public Dictionary<string, Region> regions { get; private set; }
     public List<GameEvent> events { get; private set; }
     public System.Random rnd { get; private set; }
 
@@ -123,7 +123,6 @@ public class Game
         {
             region.Value.statistics.mutateTimeBasedStatistics();
         }
-
     }
 
     private void GenerateRegions()
@@ -137,44 +136,72 @@ public class Game
 
     private void GenerateNoordNederland()
     {
+        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
+
         Pollution pollution = new Pollution(10, 40, 30, 5, 20, 10);
-        RegionStatistics statistics = new RegionStatistics(2500, 1000, 5, pollution, 10, 30);
+        RegionStatistics regionStatistics = new RegionStatistics(2500, 1000, 5, pollution, 10, 30);
 
-        Region noord_Nederland = new Region("Noord Nederland", statistics);
-
-        /*Building building = new Building("Coal factory");
-        noord_Nederland.CreateBuilding(building);*/
+        Region noord_Nederland = new Region("Noord Nederland", regionStatistics, sectors);
 
         regions.Add("Noord Nederland", noord_Nederland);
     }
 
     private void GenerateOostNederland()
     {
-        Pollution pollution = new Pollution(30, 20, 30, 10, 10, 10);
-        RegionStatistics statistics = new RegionStatistics(5000, 500, 5, pollution, 5, 50);
+        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
-        Region oost_Nederland = new Region("Oost Nederland", statistics);
+        Pollution pollution = new Pollution(30, 20, 30, 10, 10, 10);
+        RegionStatistics regionStatistics = new RegionStatistics(5000, 500, 5, pollution, 5, 50);
+
+        Region oost_Nederland = new Region("Oost Nederland", regionStatistics, sectors);
         regions.Add("Oost Nederland", oost_Nederland);
     }
 
     private void GenerateZuidNederland()
     {
-        Pollution pollution = new Pollution(50, 10, 10, 20, 10, 10);
-        RegionStatistics statistics = new RegionStatistics(7000, 0, 5, pollution, 0, 60);
+        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
-        Region zuid_Nederland = new Region("Zuid Nederland", statistics);
-        Region west_Nederland = new Region("West Nederland", statistics);
+        Pollution pollution = new Pollution(50, 10, 10, 20, 10, 10);
+        RegionStatistics regionStatistics = new RegionStatistics(7000, 0, 5, pollution, 0, 60);
+
+        Region zuid_Nederland = new Region("Zuid Nederland", regionStatistics, sectors);
 
         regions.Add("Zuid Nederland", zuid_Nederland);
     }
 
     private void GenerateWestNederland()
     {
-        Pollution pollution = new Pollution(40, 20, 20, 15, 10, 10);
-        RegionStatistics statistics = new RegionStatistics(10000, 1000, 5, pollution, 10, 70);
+        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
+        Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
-        Region west_Nederland = new Region("West Nederland", statistics);
+        Pollution pollution = new Pollution(40, 20, 20, 15, 10, 10);
+        RegionStatistics regionStatistics = new RegionStatistics(10000, 1000, 5, pollution, 10, 70);
+
+        Region west_Nederland = new Region("West Nederland", regionStatistics, sectors);
         regions.Add("West Nederland", west_Nederland);
+    }
+
+    private Dictionary<string, RegionSector> GenerateRegionSectors(SectorStatistics householdStatistics, SectorStatistics companyStatistics,
+                                                                   SectorStatistics agricultureStatistics)
+    {
+        Dictionary<string, RegionSector> sectors = new Dictionary<string, RegionSector>();
+
+        sectors.Add("Huishoudens", new RegionSector("Huishoudens", householdStatistics));
+        sectors.Add("Bedrijven", new RegionSector("Bedrijven", companyStatistics));
+        sectors.Add("Landbouw", new RegionSector("Landbouw", agricultureStatistics));
+
+        return sectors;
     }
 
     private void GenerateGameEvents()
