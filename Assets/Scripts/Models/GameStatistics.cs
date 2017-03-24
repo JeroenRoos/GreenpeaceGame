@@ -39,7 +39,7 @@ public class GameStatistics
             income       += region.statistics.income;
             donations    += region.statistics.donations;
             happiness    += region.statistics.happiness;
-            pollution    += region.statistics.pollution.avgPullution;
+            //pollution    += region.statistics.pollution.avgPullution;
             ecoAwareness += region.statistics.ecoAwareness;
             prosperity   += region.statistics.prosperity;
         }
