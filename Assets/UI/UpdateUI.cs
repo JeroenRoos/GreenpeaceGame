@@ -99,22 +99,24 @@ public class UpdateUI : MonoBehaviour
     void FixedUpdate()
     {
         popupController();
-        iconController();
+        //iconController();
     }
 
-    void iconController()
+    void iconController(Button btn, double value)
     {
         ColorBlock cb;
 
-        foreach (Button btn in lstButtons)
-        {
-            cb = btn.colors;
+        //foreach (Button btn in lstButtons)
+        //{
+        float f = (float)value / 100;
+        cb = btn.colors;
+        Debug.Log(value + " - " + f);
 
-            // Color based on third argument (value of given statistic / 100)
-            Color lerpColor = Color.Lerp(Color.red, Color.green, 0.1F);
-            cb.normalColor = lerpColor;
-            btn.colors = cb;
-        }
+        // Color based on third argument (value of given statistic / 100)
+        Color lerpColor = Color.Lerp(Color.red, Color.green, f);
+        cb.normalColor = lerpColor;
+        btn.colors = cb;
+        //}
 
         //Color lerpColor = Color.Lerp(Color.red, Color.green, 0.5F);
 
@@ -175,7 +177,11 @@ public class UpdateUI : MonoBehaviour
 
     public void updateDate(int month, int year)
     {
-        txtDate.text = month.ToString() + " - " + year.ToString();
+        string[] arrMonths = new string[12]
+            { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" };
+
+        //Debug.Log(month + " - " + arrMonths[month]);
+        txtDate.text = arrMonths[month] + " - " + year.ToString();
     }
 
     public void updateMoney(double money)
@@ -186,6 +192,11 @@ public class UpdateUI : MonoBehaviour
     public void updatePopulation(double population)
     {
         txtPopulation.text = population.ToString();
+    }
+
+    public void updateAwarness(double awareness)
+    {
+        iconController(btnAwareness, awareness);
     }
 
     void OnGUI()
