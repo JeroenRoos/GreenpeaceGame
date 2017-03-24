@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+namespace ProjectGreanLeader
+{
     public class SectorStatistics
     {
         public double happiness { get; private set; }
@@ -17,3 +18,4 @@ using System.Text;
             this.prosperity = prosperity;
         }
     }
+}

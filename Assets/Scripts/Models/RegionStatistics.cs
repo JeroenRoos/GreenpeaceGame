@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+namespace ProjectGreanLeader
+{
     public class RegionStatistics
     {
         public double income { get; private set; }
@@ -57,4 +58,4 @@ using System.Text;
             pollution.mutateTimeBasedStatistics();
         }
     }
-
+}

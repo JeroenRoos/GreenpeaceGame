@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+namespace ProjectGreanLeader
+{
     //This class stores the values of the Regions
     public class Region
     {
@@ -162,4 +163,4 @@ using System.Text;
         }
          */
     }
-
+}

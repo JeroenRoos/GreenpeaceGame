@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+namespace ProjectGreanLeader
+{
     //this class stores the values of the buildings in a region
     public class Building
     {
@@ -28,4 +29,4 @@ using System.Text;
             }
         }
     }
-
+}

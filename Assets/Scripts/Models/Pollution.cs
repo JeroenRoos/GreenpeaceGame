@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+namespace ProjectGreanLeader
+{
     public class Pollution
     {
         public double airPollution { get; private set; }
@@ -59,4 +61,4 @@ using System.Text;
                 waterPollution = waterPollution + ((waterPollution + 20) / 100 * waterPollution);
         }
     }
-
+}
