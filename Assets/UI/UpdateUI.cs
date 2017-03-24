@@ -11,6 +11,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtMoney;
     public Text txtPopulation;
     public Text txtDate;
+    public Text btnOrgNoordMoney;
+    public Text txtOrgOostMoney;
+    public Text txtOrgZuidMoney;
+    public Text txtOrgWestMoney;
 
     // Buttons 
     public Button btnMenu;
@@ -24,10 +28,12 @@ public class UpdateUI : MonoBehaviour
     public Button btnPopulation;
     public List<Button> lstButtons = new List<Button>();
 
+
     // Canvas 
     public Canvas canvasMenuPopup;
     public Canvas canvasOrganizationPopup;
     public Canvas canvasTimelinePopup;
+    public Canvas canvasRegioPopup;
 
     // Rectangles
     public Rect mainMenuRect;
@@ -92,6 +98,9 @@ public class UpdateUI : MonoBehaviour
 
         canvasTimelinePopup.GetComponent<Canvas>();
         canvasTimelinePopup.gameObject.SetActive(false);
+
+        canvasRegioPopup.GetComponent<Canvas>();
+        canvasRegioPopup.gameObject.SetActive(false);
     }
     #endregion
 
@@ -123,6 +132,11 @@ public class UpdateUI : MonoBehaviour
             else if (canvasTimelinePopup.gameObject.activeSelf)
             {
                 canvasTimelinePopup.gameObject.SetActive(false);
+                popupActive = false;
+            }
+            else if (canvasRegioPopup.gameObject.activeSelf)
+            {
+                canvasRegioPopup.gameObject.SetActive(false);
                 popupActive = false;
             }
         }
@@ -257,6 +271,18 @@ public class UpdateUI : MonoBehaviour
         Color lerpColor = Color.Lerp(Color.red, Color.green, f);
         cb.normalColor = lerpColor;
         btn.colors = cb;
+    }
+    #endregion
+
+    #region Regio Click Code
+    void regionClick()
+    {
+        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive)
+        {
+            canvasRegioPopup.gameObject.SetActive(true);
+            Debug.Log("Popup Regio active!");
+            popupActive = true;
+        }
     }
     #endregion
 
