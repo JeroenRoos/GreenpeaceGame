@@ -37,7 +37,7 @@ public class Game
         //DisplayRegion(regions[0]);
     }
 
-    public bool UpdateTime()
+    public void UpdateTime()
     {
         currentMonth++;
 
@@ -48,12 +48,13 @@ public class Game
             ExecuteNewYearMethods();
         }
 
-        bool isNewEvent = ExecuteNewMonthMethods();
+        //bool isNewEvent = ExecuteNewMonthMethods();
+        ExecuteNewMonthMethods();
         EventManager.CallChangeMonth();
-        return isNewEvent;
+        //return isNewEvent;
     }
 
-    private bool ExecuteNewMonthMethods()
+    private void ExecuteNewMonthMethods()
     {
         CompletefinishedActions();
         CompleteFinishedEvents();
@@ -62,15 +63,8 @@ public class Game
 
         if (rnd.Next(1, 61) <= 20 && activeCount < 3)
         {
+            StartNewEvent();
             EventManager.CallShowEvent();
-            return true;
-        }
-
-        else
-        {
-            /*Console.Clear();
-            DisplayRegion(regions[0]);*/
-            return false;
         }
     }
 
@@ -135,49 +129,53 @@ public class Game
     private void GenerateRegions()
     {
         regions = new Dictionary<string, Region>();
+        GenerateNoordNederland();
+        GenerateOostNederland();
+        GenerateWestNederland();
+        GenerateZuidNederland();
+    }
 
-        Pollution pollution = new Pollution(10, 10, 10, 5, 5, 5);
-        RegionStatistics statistics = new RegionStatistics(10000, 1000, 10, pollution, 5, 70);
-        //SectorStatistics stats = new SectorStatistics();
+    private void GenerateNoordNederland()
+    {
+        Pollution pollution = new Pollution(10, 40, 30, 5, 20, 10);
+        RegionStatistics statistics = new RegionStatistics(2500, 1000, 5, pollution, 10, 30);
 
         Region noord_Nederland = new Region("Noord Nederland", statistics);
+
+        /*Building building = new Building("Coal factory");
+        noord_Nederland.CreateBuilding(building);*/
+
+        regions.Add("Noord Nederland", noord_Nederland);
+    }
+
+    private void GenerateOostNederland()
+    {
+        Pollution pollution = new Pollution(30, 20, 30, 10, 10, 10);
+        RegionStatistics statistics = new RegionStatistics(5000, 500, 5, pollution, 5, 50);
+
         Region oost_Nederland = new Region("Oost Nederland", statistics);
+        regions.Add("Oost Nederland", oost_Nederland);
+    }
+
+    private void GenerateZuidNederland()
+    {
+        Pollution pollution = new Pollution(50, 10, 10, 20, 10, 10);
+        RegionStatistics statistics = new RegionStatistics(7000, 0, 5, pollution, 0, 60);
+
         Region zuid_Nederland = new Region("Zuid Nederland", statistics);
         Region west_Nederland = new Region("West Nederland", statistics);
 
-        Building building = new Building("Coal factory");
-        noord_Nederland.CreateBuilding(building);
-
-        regions.Add("Noord Nederland", noord_Nederland);
-        regions.Add("Oost Nederland", oost_Nederland);
         regions.Add("Zuid Nederland", zuid_Nederland);
+    }
+
+    private void GenerateWestNederland()
+    {
+        Pollution pollution = new Pollution(40, 20, 20, 15, 10, 10);
+        RegionStatistics statistics = new RegionStatistics(10000, 1000, 5, pollution, 10, 70);
+
+        Region west_Nederland = new Region("West Nederland", statistics);
         regions.Add("West Nederland", west_Nederland);
     }
-
-    /*
-    public void DisplayRegion(Region currentRegion)
-    {
-        if (currentRegion.name == region.name)
-        {
-            string textDistance = "{0,-15}";
-            Console.Write(textDistance, "Year/Month:");
-            Console.WriteLine("{0}/{1}", currentYear, currentMonth);
-
-            region.DisplayRegionValues(textDistance);
-            break;
-        }
-    }
-
-    Console.WriteLine("Active events:");
-    foreach (GameEvent gameEvent in events)
-    {
-        if (gameEvent.isActive && gameEvent.region.name == currentRegion.name)
-        {
-            Console.WriteLine("{0} ({1})", gameEvent.description, gameEvent.pickedChoiceNumber);
-        }
-
-    }
-     */
 
     private void GenerateGameEvents()
     {
