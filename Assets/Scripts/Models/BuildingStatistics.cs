@@ -19,12 +19,12 @@ public class BuildingStatistics
     
     public void ChangeIncome(double changeValue)
     {
-        income = income + changeValue;
+        income += changeValue;
     }
 
     public void ChangeProsperity(double changeValue)
     {
-        prosperity = prosperity + changeValue;
+        prosperity += changeValue;
     }
 }
 
