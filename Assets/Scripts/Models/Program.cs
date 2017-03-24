@@ -4,51 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 
-namespace ProjectGreanLeader
+class Program
 {
-    class Program
+    static Game game;
+    static Timer timeflowTimer;
+
+    static void Main(string[] args)
     {
-        static Game game;
-        static Timer timeflowTimer;
+        //Console.ForegroundColor = ConsoleColor.White;
 
-        static void Main(string[] args)
+        game = new Game();
+        StartTimeflowTimer();
+
+        //Console.ReadKey();
+    }
+    static void StartTimeflowTimer()
+    {
+        timeflowTimer = new Timer();
+        timeflowTimer.Elapsed += new ElapsedEventHandler(UpdateGameTime);
+        timeflowTimer.Interval = 10;
+        timeflowTimer.Enabled = true;
+    }
+
+    static void UpdateGameTime(object source, ElapsedEventArgs e)
+    {
+        if (game.currentYear > 30)
         {
-            //Console.ForegroundColor = ConsoleColor.White;
-
-            game = new Game();
-            StartTimeflowTimer();
-
-            //Console.ReadKey();
+            timeflowTimer.Stop();
+            //Console.Clear();
+            //game.DisplayRegion(game.regions[0]);
         }
-        static void StartTimeflowTimer()
-        {
-            timeflowTimer = new Timer();
-            timeflowTimer.Elapsed += new ElapsedEventHandler(UpdateGameTime);
-            timeflowTimer.Interval = 10;
-            timeflowTimer.Enabled = true;
-        }
 
-        static void UpdateGameTime(object source, ElapsedEventArgs e)
+        else
         {
-            if (game.currentYear > 30)
+            bool newEvent = game.UpdateTime();
+
+            if (newEvent)
             {
                 timeflowTimer.Stop();
-                //Console.Clear();
-                //game.DisplayRegion(game.regions[0]);
+                game.StartNewEvent();
+                timeflowTimer.Start();
             }
-
-            else
-            {
-                bool newEvent = game.UpdateTime();
-
-                if (newEvent)
-                {
-                    timeflowTimer.Stop();
-                    game.StartNewEvent();
-                    timeflowTimer.Start();
-                }
-            }
-            
         }
+            
     }
 }
