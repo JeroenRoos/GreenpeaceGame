@@ -35,18 +35,18 @@ public class Pollution
     
     public void ChangeAirPollutionMutation(double changeValue)
     {
-        airPollutionIncrease = airPollutionIncrease + changeValue;
+        airPollutionIncrease += changeValue;
         CalculateAvgPollution();
     }
 
     public void ChangeNaturePollutionMutation(double changeValue)
     {
-        naturePollutionIncrease = naturePollutionIncrease + changeValue;
+        naturePollutionIncrease += changeValue;
         CalculateAvgPollution();
     }
     public void ChangeWaterPollutionMutation(double changeValue)
     {
-        waterPollutionIncrease = waterPollutionIncrease + changeValue;
+        waterPollutionIncrease += changeValue;
         CalculateAvgPollution();
     }
 
