@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Timers;
-using UnityEngine;
 
 public class Game
 {
     //All Regions and region types planned for complete game
+    private string[] regionNames = { "Noord Nederland", "West Nederland", "Oost Nederland", "Zuid Nederland"};
+    //public Dictionary<string, Region> regions;
+
     public int currentYear { get; private set; }
     public int currentMonth { get; private set; }
-    public Dictionary<string, Region> regions;
+    public List<Region> regions { get; private set; }
     public List<GameEvent> events { get; private set; }
-    public System.Random rnd { get; private set; }
-
+    public Random rnd { get; private set; }
+        
     //Game statistics
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
 
@@ -22,14 +23,13 @@ public class Game
 
     public Game()
     {
-        rnd = new System.Random();
+        rnd = new Random();
         events = new List<GameEvent>();
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
 
         GenerateRegions();
         GenerateGameEvents();
-
 
         currentYear = 1;
         currentMonth = 1;
@@ -49,7 +49,6 @@ public class Game
         }
 
         bool isNewEvent = ExecuteNewMonthMethods();
-        EventManager.CallChangeMonth();
         return isNewEvent;
     }
 
@@ -61,10 +60,7 @@ public class Game
         int activeCount = getActiveEventCount();
 
         if (rnd.Next(1, 61) <= 20 && activeCount < 3)
-        {
-            EventManager.CallShowEvent();
             return true;
-        }
 
         else
         {
@@ -72,8 +68,8 @@ public class Game
             DisplayRegion(regions[0]);*/
             return false;
         }
-    }
 
+<<<<<<< HEAD
     public void CompletefinishedActions()
     {
         foreach (Region region in regions.Values)
@@ -111,73 +107,85 @@ public class Game
                 activeCount++;
         }
         return activeCount;
+=======
+>>>>>>> 1b894b7f528e47001249c96fb9448c6ed9da6861
     }
 
     public void StartNewEvent()
     {
-        // select event randomly from possible eventList
-        // testcode
-        if(events[0].isActive == false)
+        bool eventFound = false;
+        while (!eventFound)
         {
-            events[0].ActivateEvent(currentYear, currentMonth, regions["Noord Nederland"]);
+            int i = rnd.Next(0, events.Count());
+
+            if (!events[i].isActive)
+            {
+                eventFound = true;
+                events[i].ActivateEvent(currentYear, currentMonth, regions[0]);
+                events[i].SetPickedChoice(rnd.Next(0, events[i].choices.Length));
+            }
         }
+
+        //DisplayRegion(regions[0]);
     }
 
     private void ExecuteNewYearMethods()
     {
-        foreach (KeyValuePair<string, Region> region in regions)
+        foreach (Region region in regions)
         {
-            region.Value.statistics.mutateTimeBasedStatistics();
+            region.statistics.mutateTimeBasedStatistics();
         }
-
+        /*Console.Clear();
+        DisplayRegion(regions[0]);*/
     }
 
     private void GenerateRegions()
     {
-        regions = new Dictionary<string, Region>();
+        regions = new List<Region>();
+        GenerateNoordNederland();
+    }
 
+    private void GenerateNoordNederland()
+    {
         Pollution pollution = new Pollution(10, 10, 10, 5, 5, 5);
         RegionStatistics statistics = new RegionStatistics(10000, 1000, 10, pollution, 5, 70);
-        //SectorStatistics stats = new SectorStatistics();
 
-        Region noord_Nederland = new Region("Noord Nederland", statistics);
-        Region oost_Nederland = new Region("Oost Nederland", statistics);
-        Region zuid_Nederland = new Region("Zuid Nederland", statistics);
-        Region west_Nederland = new Region("West Nederland", statistics);
+        Region noord_Nederland = new Region(regionNames[0], statistics);
 
         Building building = new Building("Coal factory");
         noord_Nederland.CreateBuilding(building);
 
-        regions.Add("Noord Nederland", noord_Nederland);
-        regions.Add("Oost Nederland", oost_Nederland);
-        regions.Add("Zuid Nederland", zuid_Nederland);
-        regions.Add("West Nederland", west_Nederland);
+        regions.Add(noord_Nederland);
     }
 
     /*
     public void DisplayRegion(Region currentRegion)
     {
-        if (currentRegion.name == region.name)
+        Console.Clear();
+        foreach (Region region in regions)
         {
-            string textDistance = "{0,-15}";
-            Console.Write(textDistance, "Year/Month:");
-            Console.WriteLine("{0}/{1}", currentYear, currentMonth);
+            if (currentRegion.name == region.name)
+            {
+                string textDistance = "{0,-15}";
+                Console.Write(textDistance, "Year/Month:");
+                Console.WriteLine("{0}/{1}", currentYear, currentMonth);
 
-            region.DisplayRegionValues(textDistance);
-            break;
-        }
-    }
-
-    Console.WriteLine("Active events:");
-    foreach (GameEvent gameEvent in events)
-    {
-        if (gameEvent.isActive && gameEvent.region.name == currentRegion.name)
-        {
-            Console.WriteLine("{0} ({1})", gameEvent.description, gameEvent.pickedChoiceNumber);
+                region.DisplayRegionValues(textDistance);
+                break;
+            }
         }
 
+        Console.WriteLine("Active events:");
+        foreach (GameEvent gameEvent in events)
+        {
+            if (gameEvent.isActive && gameEvent.region.name == currentRegion.name)
+            {
+                Console.WriteLine("{0} ({1})", gameEvent.description, gameEvent.pickedChoiceNumber);
+            }
+
+        }
     }
-     */
+        */
 
     private void GenerateGameEvents()
     {
@@ -185,7 +193,7 @@ public class Game
         RegionStatistics[] consequences1 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences2 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences3 = new RegionStatistics[choices.Length];
-
+            
         string description;
 
         description = "dummy event 1";
@@ -203,7 +211,7 @@ public class Game
         //consequences2[3] = new RegionStatistics(-2500, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
         GameEvent gameEvent2 = new GameEvent(description, 1, choices, consequences2);
         events.Add(gameEvent2);
-
+            
         description = "dummy event 3";
         consequences3[0] = new RegionStatistics(3000, 0, 2, new Pollution(0, 0, 0, -2, 0, 0), -1, 1);
         consequences3[1] = new RegionStatistics(1500, 0, 1, new Pollution(0, 0, 0, -1, 0, -1), 0, 1);
@@ -213,4 +221,3 @@ public class Game
         events.Add(gameEvent3);
     }
 }
-
