@@ -25,6 +25,8 @@ public class Game
         rnd = new System.Random();
         events = new List<GameEvent>();
 
+        gameStatistics = new GameStatistics(20000, 17000000, new Energy());
+
         GenerateRegions();
         GenerateGameEvents();
 
@@ -53,22 +55,10 @@ public class Game
 
     private bool ExecuteNewMonthMethods()
     {
-        int activeCount = 0;
-        foreach (GameEvent gameEvent in events)
-        {
-            if (gameEvent.isActive)
-            {
-                if ((gameEvent.startMonth + gameEvent.eventDuration + gameEvent.startYear * 12) == (currentMonth + currentYear * 12))
-                {
-                    gameEvent.CompleteEvent();
-                }
+        CompletefinishedActions();
+        CompleteFinishedEvents();
 
-                else
-                {
-                    activeCount++;
-                }
-            }
-        }
+        int activeCount = getActiveEventCount();
 
         if (rnd.Next(1, 61) <= 20 && activeCount < 3)
         {
@@ -84,6 +74,44 @@ public class Game
         }
     }
 
+    public void CompletefinishedActions()
+    {
+        foreach (Region region in regions.Values)
+        {
+            foreach (RegionAction action in region.actions)
+            {
+                if (action.isActive &&
+                    ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
+                {
+                    region.ImplementStatisticValues(action.consequences, true);
+                    action.CompleteAction();
+                }
+            }
+        }
+    }
+
+    public void CompleteFinishedEvents()
+    {
+        foreach (GameEvent gameEvent in events)
+        {
+            if (gameEvent.isActive &&
+                ((gameEvent.startMonth + gameEvent.eventDuration + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
+            {
+                gameEvent.CompleteEvent();
+            }
+        }
+    }
+
+    public int getActiveEventCount()
+    {
+        int activeCount = 0;
+        foreach (GameEvent gameEvent in events)
+        {
+            if (gameEvent.isActive)
+                activeCount++;
+        }
+        return activeCount;
+    }
 
     public void StartNewEvent()
     {
@@ -107,13 +135,10 @@ public class Game
     private void GenerateRegions()
     {
         regions = new Dictionary<string, Region>();
-        GenerateNoordNederland();
-    }
 
-    private void GenerateNoordNederland()
-    {
         Pollution pollution = new Pollution(10, 10, 10, 5, 5, 5);
         RegionStatistics statistics = new RegionStatistics(10000, 1000, 10, pollution, 5, 70);
+        //SectorStatistics stats = new SectorStatistics();
 
         Region noord_Nederland = new Region("Noord Nederland", statistics);
         Region oost_Nederland = new Region("Oost Nederland", statistics);

@@ -33,35 +33,27 @@ public class CameraController : MonoBehaviour {
     void MoveCamera()
     {
         Camera mainCamera       = Camera.main;
-        Vector3 movement        = new Vector3(horizontalMovement, verticalMovement, 0f);
+        Vector3 movement        = new Vector3(horizontalMovement, 0f, verticalMovement);
         Vector3 newPosition     = mainCamera.transform.position + movement;
-        float verticalLength    = mainCamera.orthographicSize;
-        float aspectRatio       = mainCamera.aspect;
-
-        float topEdge   = newPosition.y + verticalLength;
-        float botEdge   = newPosition.y - verticalLength;
-        float leftEdge  = newPosition.x - verticalLength * aspectRatio;
-        float rightEdge = newPosition.x + verticalLength * aspectRatio;
-
 
         //  Check if camera is moving out of bounds. If so: adjust it to the edge
-        if (topEdge > 5)
+        if (newPosition.z < 3.5f)
         {
-            newPosition.y = 5 - verticalLength;
+            newPosition.z = 3.5f;
         }
-        if (botEdge < -5)
+        if (newPosition.z > 15.0f)
         {
-            newPosition.y = -5 + verticalLength;
+            newPosition.z = 15.0f;
         }
-        if (leftEdge < -10)
+        if (newPosition.x < 10.0f)
         {
-            newPosition.x = -10 + verticalLength * aspectRatio;
+            newPosition.x = 10.0f;
         }
-        if (rightEdge > 10)
+        if (newPosition.x > 15)
         {
-            newPosition.x = 10 - verticalLength * aspectRatio;
+            newPosition.x = 15;
         }
-        
+
         transform.position = newPosition;
     }
 }
