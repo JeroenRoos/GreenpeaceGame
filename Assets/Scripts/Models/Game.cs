@@ -146,7 +146,7 @@ public class Game
 
         Region noord_Nederland = new Region("Noord Nederland", regionStatistics, sectors);
 
-        regions.Add("Noord Nederland", noord_Nederland);
+        regions.Add("NoordNederland", noord_Nederland);
     }
 
     private void GenerateOostNederland()
@@ -160,7 +160,7 @@ public class Game
         RegionStatistics regionStatistics = new RegionStatistics(5000, 500, 5, pollution, 5, 50);
 
         Region oost_Nederland = new Region("Oost Nederland", regionStatistics, sectors);
-        regions.Add("Oost Nederland", oost_Nederland);
+        regions.Add("OostNederland", oost_Nederland);
     }
 
     private void GenerateZuidNederland()
@@ -175,7 +175,7 @@ public class Game
 
         Region zuid_Nederland = new Region("Zuid Nederland", regionStatistics, sectors);
 
-        regions.Add("Zuid Nederland", zuid_Nederland);
+        regions.Add("ZuidNederland", zuid_Nederland);
     }
 
     private void GenerateWestNederland()
@@ -189,7 +189,7 @@ public class Game
         RegionStatistics regionStatistics = new RegionStatistics(10000, 1000, 5, pollution, 10, 70);
 
         Region west_Nederland = new Region("West Nederland", regionStatistics, sectors);
-        regions.Add("West Nederland", west_Nederland);
+        regions.Add("WestNederland", west_Nederland);
     }
 
     private Dictionary<string, RegionSector> GenerateRegionSectors(SectorStatistics householdStatistics, SectorStatistics companyStatistics,

@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public Game game;
     private UpdateUI updateUI;
     public GameObject noordNederland;
-    public GameObject OostNederland;
+    public GameObject oostNederland;
     public GameObject zuidNederland;
     public GameObject westNederland;
 
@@ -22,6 +22,12 @@ public class GameController : MonoBehaviour
     {
         game = new Game();
         updateUI = GetComponent<UpdateUI>();
+
+        // setup Region Controllers
+        noordNederland.GetComponent<RegionController>().Init(this);
+        oostNederland.GetComponent<RegionController>().Init(this);
+        zuidNederland.GetComponent<RegionController>().Init(this);
+        westNederland.GetComponent<RegionController>().Init(this);
     }
 
     // Update is called once per frame
@@ -58,10 +64,12 @@ public class GameController : MonoBehaviour
         
     }
 
-    public static void OnRegionClick(GameObject region)
+    public void OnRegionClick(GameObject region)
     {
         // game.regions[region.name].statistics.ecoAwareness;
-        Debug.Log(region.name);
+        //Debug.Log(region.name);
         //region.GetComponent<Renderer>().material.color = Color.green; 
+        Region regionModel = game.regions[region.name];
+        updateUI.regionClick(regionModel);
     }
 }

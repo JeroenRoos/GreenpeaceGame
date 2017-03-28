@@ -275,8 +275,9 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Regio Click Code
-    void regionClick()
+    public void regionClick(Region region)
     {
+        Debug.Log(region.name + "'s Eco-awareness = " + region.statistics.ecoAwareness);
         if (!canvasRegioPopup.gameObject.activeSelf && !popupActive)
         {
             canvasRegioPopup.gameObject.SetActive(true);
