@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
 
     private float time;
 
+    public bool autoEndTurn = false;
+
     // Use this for initialization
     void Start()
     {
@@ -24,6 +26,11 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
+        if (Input.GetKeyDown(KeyCode.Return) || autoEndTurn)
+        {
+            game.UpdateTime();
+        }
+
         // Update month and year text value in UI
         updateUI.updateDate(game.currentMonth, game.currentYear);
 

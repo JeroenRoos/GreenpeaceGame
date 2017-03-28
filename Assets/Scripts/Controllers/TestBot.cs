@@ -20,16 +20,19 @@ public class TestBot : MonoBehaviour {
     {
         Debug.Log("Month changed");
 
-        //currentCurrency = gameController.game.gameStatistics.money;
+        currentCurrency = gameController.game.gameStatistics.money;
 
-        //foreach (KeyValuePair<string, Region> region in gameController.game.regions)
-        //{
-        //    Debug.Log(region.Value.statistics.pollution.avgPullution);
-        //    if (region.Value.statistics.pollution.avgPullution > 50 && currentCurrency > 2000)
-        //    {
-        //        // take anti-pollution action
-        //    }
-        //}
+        foreach (Region region in gameController.game.regions.Values)
+        {
+            //Debug.Log(region.statistics.pollution.avgPullution);
+
+            if (region.statistics.pollution.avgPullution < 50 && currentCurrency > 2000)
+            {
+                // take anti-pollution action
+                //Debug.Log(region.actions[0].description);
+                region.actions[0].ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
+            }
+        }
     }
 
     // Event occured
@@ -54,6 +57,10 @@ public class TestBot : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-		
+		if (Input.GetKey(KeyCode.RightControl) && Input.GetKeyDown(KeyCode.Return))
+        {
+            // toggle auto / manual end turn
+            gameController.autoEndTurn = !gameController.autoEndTurn;
+        }
 	}
 }
