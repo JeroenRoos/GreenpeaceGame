@@ -55,5 +55,6 @@ public class GameController : MonoBehaviour
     {
         // game.regions[region.name].statistics.ecoAwareness;
         Debug.Log(region.name);
+        //region.GetComponent<Renderer>().material.color = Color.green; 
     }
 }
