@@ -8,14 +8,34 @@ public class CameraController : MonoBehaviour {
     float horizontalMovement;
     float verticalMovement;
 
-    // Use this for initialization
-    void Start () {
-    }
+    // drag 
+    private Vector3 dragOrigin;
     
     // Update is called once per frame
+    void Update()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out hit, 10);
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            dragOrigin = hit.point;
+            return;
+        }
+
+        if (!Input.GetMouseButton(2)) return;
+        
+        Vector3 offset = dragOrigin - hit.point;
+        offset.y = 0;
+
+        Vector3 correctedPos = CorrectNewPosition(transform.position + offset);
+        transform.Translate(correctedPos - transform.position, Space.World);
+    }
+
     void FixedUpdate () {
         CheckInput();
-        MoveCamera();
+        MoveCamera(CalculateNewCameraPosition());
     }
 
     /**
@@ -26,16 +46,26 @@ public class CameraController : MonoBehaviour {
         horizontalMovement    = Input.GetAxis("Horizontal") * cameraSpeed;
         verticalMovement      = Input.GetAxis("Vertical") * cameraSpeed;
     }
+    
+    Vector3 CalculateNewCameraPosition()
+    {
+        Camera mainCamera = Camera.main;
+        Vector3 movement = new Vector3(horizontalMovement, 0f, verticalMovement);
+        Vector3 newPosition = mainCamera.transform.position + movement;        
+
+        return CorrectNewPosition(newPosition);
+    }
 
     /**
      * Calculates the movement of the camera and holds in within the game boundries
      */
-    void MoveCamera()
+    void MoveCamera(Vector3 newPosition)
     {
-        Camera mainCamera       = Camera.main;
-        Vector3 movement        = new Vector3(horizontalMovement, 0f, verticalMovement);
-        Vector3 newPosition     = mainCamera.transform.position + movement;
+        transform.position = newPosition;
+    }
 
+    Vector3 CorrectNewPosition(Vector3 newPosition)
+    {
         //  Check if camera is moving out of bounds. If so: adjust it to the edge
         if (newPosition.z < 3.5f)
         {
@@ -54,6 +84,6 @@ public class CameraController : MonoBehaviour {
             newPosition.x = 15;
         }
 
-        transform.position = newPosition;
+        return newPosition;
     }
 }
