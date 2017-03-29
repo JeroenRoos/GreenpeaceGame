@@ -33,10 +33,33 @@ public class SectorStatistics
     public void ModifyEcoAwareness(double changeValue)
     {
         ecoAwareness += changeValue;
+
+        double pollutionChangeValue = 0 - (changeValue / 10);
+        ModifyAirPollutionContribution(pollutionChangeValue);
+        ModifyNaturePollutionContribution(pollutionChangeValue);
+        ModifyWaterPollutionContribution(pollutionChangeValue);
     }
 
     public void ModifyProsperity(double changeValue)
     {
         prosperity += changeValue;
+
+        double happinessChangeValue = changeValue / 10;
+        ModifyHappiness(happinessChangeValue);
+    }
+
+    public void ModifyAirPollutionContribution(double changevalue)
+    {
+        airPollutionContribution += changevalue;
+    }
+
+    public void ModifyNaturePollutionContribution(double changevalue)
+    {
+        naturePollutionContribution += changevalue;
+    }
+
+    public void ModifyWaterPollutionContribution(double changevalue)
+    {
+        waterPollutionContribution += changevalue;
     }
 }
