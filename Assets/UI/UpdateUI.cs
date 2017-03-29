@@ -67,6 +67,9 @@ public class UpdateUI : MonoBehaviour
     public bool btnAwarenessHoverCheck;
     public bool btnPollutionHoverCheck;
     public bool btnEnergyHoverCheck;
+    public bool btnOrganizationCheck;
+    public bool btnMenuCheck;
+    public bool btnTimelineCheck;
     public bool popupActive;
     #endregion
 
@@ -113,6 +116,10 @@ public class UpdateUI : MonoBehaviour
         btnAwarenessHoverCheck = false;
         btnPollutionHoverCheck = false;
         btnEnergyHoverCheck = false;
+        btnOrganizationCheck = false;
+        btnTimelineCheck = false;
+        btnMenuCheck = false;
+
         popupActive = false;
     }
 
@@ -410,8 +417,8 @@ public class UpdateUI : MonoBehaviour
     #region Code for activating popups
     public void regionClick(Region region)
     {
-        //Debug.Log(region.name + "'s Eco-awareness = " + region.statistics.ecoAwareness);
-        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive)
+        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck 
+            && !btnMenuCheck && !btnTimelineCheck)
         {
             canvasRegioPopup.gameObject.SetActive(true);
             Debug.Log("Popup Regio active!");
@@ -444,7 +451,6 @@ public class UpdateUI : MonoBehaviour
     // Method that makes popup appear/disappear
     public void btnMenuClick()
     {
-        // Temporary close of popup
         if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
         {
             canvasMenuPopup.gameObject.SetActive(true);
@@ -519,6 +525,36 @@ public class UpdateUI : MonoBehaviour
     public void BtnEnergyExit()
     {
         btnEnergyHoverCheck = false;
+    }
+
+    public void btnOrganizationEnter()
+    {
+        btnOrganizationCheck = true;
+    }
+
+    public void btnOrganzationExit()
+    {
+        btnMenuCheck = false;
+    }
+
+    public void btnMenuEnter()
+    {
+        btnMenuCheck = true;
+    }
+
+    public void btnMenuExit()
+    {
+        btnOrganizationCheck = false;
+    }
+
+    public void btnTimelineEnter()
+    {
+        btnTimelineCheck = true;
+    }
+
+    public void btnTimelineExit()
+    {
+        btnTimelineCheck = false;
     }
     #endregion
 
