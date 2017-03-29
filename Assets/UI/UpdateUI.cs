@@ -11,16 +11,32 @@ public class UpdateUI : MonoBehaviour
     public Texture2D tooltipTexture;
     public GUIStyle tooltipStyle = new GUIStyle();
 
-    // Text
+    // Text Main UI
     public Text txtMoney;
     public Text txtPopulation;
     public Text txtDate;
+
+    // Text Organization Menu
     public Text txtOrgNoordMoney;
     public Text txtOrgOostMoney;
     public Text txtOrgZuidMoney;
     public Text txtOrgWestMoney;
     public Text txtOrgBank;
     double totalOrgBank;
+
+    // Text Region Menu
+    public Text txtRegionName;
+    public Text txtRegionHappiness;
+    public Text txtRegionAwareness;
+    public Text txtRegionPollution;
+    public Text txtRegionPollutionNature;
+    public Text txtRegionPollutionWater;
+    public Text txtRegionPollutionAir;
+    public Text txtRegionTraffic;
+    public Text txtRegionFarming;
+    public Text txtRegionHouseholds;
+    public Text txtRegionCompanies;
+
 
     // Buttons 
     public Button btnMenu;
@@ -32,7 +48,6 @@ public class UpdateUI : MonoBehaviour
     public Button btnEnergy;
     public Button btnPollution;
     public Button btnPopulation;
-    //public List<Button> lstButtons = new List<Button>();
 
 
     // Canvas 
@@ -334,6 +349,62 @@ public class UpdateUI : MonoBehaviour
         if (i == 3)
             totalOrgBank = 0;
     }
+
+    void checkWhichRegion(Region regio)
+    {
+        if (regio.name == "Noord Nederland")
+        {
+            txtRegionName.text = "Noord-Nederland";
+            updateRegionScreenUI(regio);
+        }
+        if (regio.name == "Oost Nederland")
+        {
+            txtRegionName.text = "Oost-Nederland";
+            updateRegionScreenUI(regio);
+        }
+        if (regio.name == "Zuid Nederland")
+        {
+            txtRegionName.text = "Zuid-Nederland";
+            updateRegionScreenUI(regio);
+        }
+        if (regio.name == "West Nederland")
+        {
+            txtRegionName.text = "West-Nederland";
+            updateRegionScreenUI(regio);
+        }
+    }
+
+    void updateRegionScreenUI(Region regio)
+    {
+        txtRegionHappiness.text = regio.statistics.happiness.ToString();
+        txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
+        txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.0");
+        txtRegionPollutionAir.text = regio.statistics.pollution.airPollution.ToString();
+        txtRegionPollutionNature.text = regio.statistics.pollution.naturePollution.ToString();
+        txtRegionPollutionWater.text = regio.statistics.pollution.waterPollution.ToString();
+        txtRegionTraffic.text = regio.statistics.publicTransport.ToString();
+        txtRegionFarming.text = "Comming soon!";
+        txtRegionCompanies.text = "Comming soon!";
+        // Ik ga ervanuit dat cityEviroment huishoudens is
+        txtRegionHouseholds.text = regio.statistics.cityEnvironment.ToString(); 
+        
+        
+    }
+
+    void updateRegionScreenUIOost(Region regio)
+    {
+
+    }
+
+    void updateRegionScreenUIZuid(Region regio)
+    {
+
+    }
+
+    void updateRegionScreenUIWest(Region regio)
+    {
+
+    }
     #endregion
 
     #region Code for activating popups
@@ -345,6 +416,8 @@ public class UpdateUI : MonoBehaviour
             canvasRegioPopup.gameObject.SetActive(true);
             Debug.Log("Popup Regio active!");
             popupActive = true;
+
+            checkWhichRegion(region);
         }
     }
 
@@ -377,6 +450,8 @@ public class UpdateUI : MonoBehaviour
             canvasMenuPopup.gameObject.SetActive(true);
             Debug.Log("Popup Menu active!");
             popupActive = true;
+
+            
         }
     }
     #endregion
