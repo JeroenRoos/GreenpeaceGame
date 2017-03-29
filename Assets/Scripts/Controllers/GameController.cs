@@ -37,26 +37,85 @@ public class GameController : MonoBehaviour
             game.UpdateTime();
         }
 
-        // Update month and year text value in UI
+        // Update the main screen UI (Icons and date)
+        updateUIMainScreen();
+        // Update the UI in popup screen
+        updateUIPopups();
+
+        // Update values in Tooltips for Icons in Main UI
+        updateUITooltips();
+    }
+
+    void updateUIMainScreen()
+    {
+        // Update Text and Color values in main UI
         updateUI.updateDate(game.currentMonth, game.currentYear);
-
-        // Update Money text value in UI
         updateUI.updateMoney(game.gameStatistics.money);
-
-        // Update Population text value in UI
         updateUI.updatePopulation(game.gameStatistics.population);
-
-        // Update Awarness color value in UI
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
-
-        // Update Pollution color value in UI
         updateUI.updatePollution(game.gameStatistics.pollution);
-
-        // Update Energy color value in UI
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
-
-        // Update Energy color value in UI
         updateUI.updateHappiness(game.gameStatistics.happiness);
+    }
+
+    void updateUITooltips()
+    {
+        if (updateUI.btnMoneyHoverCheck)
+            updateUI.updateMoneyTooltip();
+
+        if (updateUI.btnHappinessHoverCheck)
+            updateUI.updateHappinessTooltip();
+
+        if (updateUI.btnAwarenessHoverCheck)
+            updateUI.updateAwarnessTooltip();
+
+        if (updateUI.btnPollutionHoverCheck)
+            updateUI.updatePollutionTooltip();
+
+        if (updateUI.btnEnergyHoverCheck)
+            updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
+        game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
+    }
+
+    void updateUIPopups()
+    {
+        if (updateUI.canvasOrganizationPopup.gameObject.activeSelf)
+            updateUIOrganizationScreen();
+
+        if (updateUI.canvasMenuPopup.gameObject.activeSelf)
+            updateUIMainMenuScreen();
+
+        if (updateUI.canvasRegioPopup.gameObject.activeSelf)
+            updateUIRegioScreen();
+
+        if (updateUI.canvasTimelinePopup.gameObject.activeSelf)
+            updateUITimelineScreen();
+    }
+
+    void updateUIOrganizationScreen()
+    {
+        int i = 0;
+        foreach (Region region in game.regions.Values)
+        {
+            // Send the income for each region, use i to determine the region
+            updateUI.updateOrganizationScreenUI(region.statistics.income, i);
+            i++;
+        }
+    }
+
+    void updateUIMainMenuScreen()
+    {
+
+    }
+
+    void updateUIRegioScreen()
+    {
+
+    }
+
+    void updateUITimelineScreen()
+    {
+
     }
 
     void FixedUpdate()
