@@ -45,7 +45,7 @@ public class Region
     {
         foreach (RegionSector sector in sectors.Values)
         {
-            statistics.changeHappiness(sector.statistics.happiness);
+            statistics.ChangeHappiness(sector.statistics.happiness);
             statistics.ChangeEcoAwareness(sector.statistics.ecoAwareness);
             statistics.ChangeProsperity(sector.statistics.prosperity);
             statistics.pollution.ChangeAirPollutionMutation(sector.statistics.airPollutionContribution);
@@ -105,7 +105,7 @@ public class Region
         {
             this.statistics.ChangeIncome(statistics.income);
             this.statistics.ChangeDonations(statistics.donations);
-            this.statistics.changeHappiness(statistics.happiness);
+            this.statistics.ChangeHappiness(statistics.happiness);
             this.statistics.ChangeEcoAwareness(statistics.ecoAwareness);
             this.statistics.ChangeProsperity(statistics.prosperity);
 
@@ -119,7 +119,7 @@ public class Region
         {
             this.statistics.ChangeIncome(0 - statistics.income);
             this.statistics.ChangeDonations(0 - statistics.donations);
-            this.statistics.changeHappiness(0 - statistics.happiness);
+            this.statistics.ChangeHappiness(0 - statistics.happiness);
             this.statistics.ChangeEcoAwareness(0 - statistics.ecoAwareness);
             this.statistics.ChangeProsperity(0 - statistics.prosperity);
 
