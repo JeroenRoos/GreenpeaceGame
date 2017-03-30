@@ -10,6 +10,10 @@ public class UpdateUI : MonoBehaviour
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
     private GUIStyle tooltipStyle = new GUIStyle();
+    Region regio;
+    RegionAction regioAction;
+
+    public Dropdown dropdownRegio;
 
     // Text Main UI
     public Text txtMoney;
@@ -36,6 +40,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionFarming;
     public Text txtRegionHouseholds;
     public Text txtRegionCompanies;
+    public Text txtRegionActionName;
+    public Text txtRegionActionDuration;
+    public Text txtRegionActionCost;
+    public Text txtRegionActionConsequences;
 
 
     // Buttons 
@@ -48,6 +56,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnEnergy;
     public Button btnPollution;
     public Button btnPopulation;
+    public Button btnDoActionRegionMenu;
 
 
     // Canvas 
@@ -58,6 +67,7 @@ public class UpdateUI : MonoBehaviour
 
     // Tooltip Variables
     private string txtTooltip;
+    private string dropdownChoice;
     #endregion
 
     #region Boolean Variables
@@ -106,6 +116,8 @@ public class UpdateUI : MonoBehaviour
         btnPollution.GetComponent<Button>();
         btnPopulation.GetComponent<Button>();
 
+        btnDoActionRegionMenu.gameObject.SetActive(false);
+
         setBooleans();
     }
 
@@ -119,7 +131,6 @@ public class UpdateUI : MonoBehaviour
         btnOrganizationCheck = false;
         btnTimelineCheck = false;
         btnMenuCheck = false;
-
         popupActive = false;
     }
 
@@ -153,7 +164,6 @@ public class UpdateUI : MonoBehaviour
         // Open and close Timeline popup with T
         else if (Input.GetKeyUp(KeyCode.T))
             controllerTimelinePopup();
-
     }
 
     // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
@@ -401,9 +411,42 @@ public class UpdateUI : MonoBehaviour
         if (i == 3)
             totalOrgBank = 0;
     }
+    #endregion
 
-    void updateRegionScreenUI(Region regio)
+
+    #region Code for the Region Screen
+    public void regionClick(Region region)
     {
+        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
+            && !btnMenuCheck && !btnTimelineCheck)
+        {
+            regio = null;
+            regio = region;
+
+            canvasRegioPopup.gameObject.SetActive(true);
+            popupActive = true;
+
+            updateRegionScreenUI();
+        }
+    }
+
+    void updateRegionScreenUI()
+    {
+        Debug.Log("UpdateRegionScreenUI: " + regio.name);
+        updateRegionTextValues();
+
+        foreach (RegionAction action in regio.actions)
+        {
+            // ... 
+        }
+
+        // Set the right actions in the dropdown
+        initDropDownRegion();
+    }
+
+    void updateRegionTextValues()
+    {
+        Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name;
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
@@ -415,30 +458,73 @@ public class UpdateUI : MonoBehaviour
         txtRegionFarming.text = "Comming soon!";
         txtRegionCompanies.text = "Comming soon!";
         // Ik ga ervanuit dat cityEviroment huishoudens is
-        txtRegionHouseholds.text = regio.statistics.cityEnvironment.ToString(); 
+        txtRegionHouseholds.text = regio.statistics.cityEnvironment.ToString();
+
+        // Set text of actions to empty
+        txtRegionActionConsequences.text = "";
+        txtRegionActionCost.text = "";
+        txtRegionActionDuration.text = "";
+        txtRegionActionName.text = "";
+    }
+
+    void initDropDownRegion()
+    {
+        Debug.Log("initDropDownRegion: " + regio.name);
+        dropdownRegio.ClearOptions();
 
         foreach (RegionAction action in regio.actions)
         {
-            Debug.Log(action + "\n");
+            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.description });
         }
-        
-        
+    }
+
+    // Goes to this method from DropDownTrigger in Inspector
+    public void getDropDownValue()
+    {
+        for (int i = 0; i <= dropdownRegio.options.Count; i++)
+        {
+            if (dropdownRegio.value == i)
+                dropdownChoice = dropdownRegio.options[i].text;
+        }
+
+        Debug.Log("getDropDownValue: " + regio.name);
+
+        // Shows the right information with the chosen option in dropdown
+        showInfoDropDownRegion();
+    }
+
+    void showInfoDropDownRegion()
+    {
+        Debug.Log("showInfoDropDownRegion: " + regio.name);
+        foreach (RegionAction action in regio.actions)
+        {
+            if (action.description == dropdownChoice)
+            {
+                regioAction = action;
+                txtRegionActionName.text = action.description;
+                txtRegionActionCost.text = action.actionCosts.ToString();
+                txtRegionActionDuration.text = action.actionDuration.ToString();
+                txtRegionActionConsequences.text = action.consequences.ToString();
+
+                btnDoActionRegionMenu.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void btnDoActionRegionMenuClick()
+    {
+        Debug.Log("btnDoActionRegionMenuClick: " + regio.name);
+        //Debug.Log("Year: " + regioAction.startYear.GetValueOrDefault() + " Month: " + regioAction.startMonth.GetValueOrDefault());
+
+        regio.StartAction(regioAction.description, regioAction.startYear.GetValueOrDefault(), regioAction.startMonth.GetValueOrDefault());
+
+        updateRegionTextValues();
+        btnDoActionRegionMenu.gameObject.SetActive(false);
     }
     #endregion
 
+
     #region Code for activating popups
-    public void regionClick(Region region)
-    {
-        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck 
-            && !btnMenuCheck && !btnTimelineCheck)
-        {
-            canvasRegioPopup.gameObject.SetActive(true);
-            popupActive = true;
-
-            updateRegionScreenUI(region);
-        }
-    }
-
     public void btnTimelineClick()
     {
         if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)

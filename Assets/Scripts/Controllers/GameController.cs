@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
 
         // Update the main screen UI (Icons and date)
         updateUIMainScreen();
+
         // Update the UI in popup screen
         updateUIPopups();
 
@@ -82,9 +83,6 @@ public class GameController : MonoBehaviour
         if (updateUI.canvasOrganizationPopup.gameObject.activeSelf)
             updateUIOrganizationScreen();
 
-        if (updateUI.canvasMenuPopup.gameObject.activeSelf)
-            updateUIMainMenuScreen();
-
         if (updateUI.canvasRegioPopup.gameObject.activeSelf)
             updateUIRegioScreen();
 
@@ -101,11 +99,6 @@ public class GameController : MonoBehaviour
             updateUI.updateOrganizationScreenUI(region.statistics.income, i);
             i++;
         }
-    }
-
-    void updateUIMainMenuScreen()
-    {
-
     }
 
     void updateUIRegioScreen()
@@ -125,9 +118,6 @@ public class GameController : MonoBehaviour
 
     public void OnRegionClick(GameObject region)
     {
-        // game.regions[region.name].statistics.ecoAwareness;
-        //Debug.Log(region.name);
-        //region.GetComponent<Renderer>().material.color = Color.green; 
         Region regionModel = game.regions[region.name];
         updateUI.regionClick(regionModel);
     }
