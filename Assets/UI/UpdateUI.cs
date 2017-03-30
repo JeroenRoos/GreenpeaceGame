@@ -9,7 +9,7 @@ public class UpdateUI : MonoBehaviour
     #region UI Elements
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
-    public GUIStyle tooltipStyle = new GUIStyle();
+    private GUIStyle tooltipStyle = new GUIStyle();
 
     // Text Main UI
     public Text txtMoney;
@@ -55,22 +55,22 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasOrganizationPopup;
     public Canvas canvasTimelinePopup;
     public Canvas canvasRegioPopup;
-    #endregion
 
     // Tooltip Variables
     private string txtTooltip;
+    #endregion
 
     #region Boolean Variables
     // Booleans
-    public bool btnMoneyHoverCheck;
-    public bool btnHappinessHoverCheck;
-    public bool btnAwarenessHoverCheck;
-    public bool btnPollutionHoverCheck;
-    public bool btnEnergyHoverCheck;
-    public bool btnOrganizationCheck;
-    public bool btnMenuCheck;
-    public bool btnTimelineCheck;
-    public bool popupActive;
+    private bool btnMoneyHoverCheck;
+    private bool btnHappinessHoverCheck;
+    private bool btnAwarenessHoverCheck;
+    private bool btnPollutionHoverCheck;
+    private bool btnEnergyHoverCheck;
+    private bool btnOrganizationCheck;
+    private bool btnMenuCheck;
+    private bool btnTimelineCheck;
+    private bool popupActive;
     #endregion
 
     #region Start(), Update(), FixedUpdate()
@@ -142,33 +142,78 @@ public class UpdateUI : MonoBehaviour
     #region Code for controlling popups
     void popupController()
     {
+        // Close active popup with Escape / Open Menu popup with Escape if no popup is active
         if (Input.GetKeyUp(KeyCode.Escape))
+            closeWithEscape();
+
+        // Open and close Organization popup with O
+        else if (Input.GetKeyUp(KeyCode.O))
+            controllerOrganizationHotkey();
+
+        // Open and close Timeline popup with T
+        else if (Input.GetKeyUp(KeyCode.T))
+            controllerTimelinePopup();
+
+    }
+
+    // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
+    void closeWithEscape()
+    {
+        if (!popupActive)
         {
-            if (!popupActive)
-            {
-                canvasMenuPopup.gameObject.SetActive(true);
-                popupActive = true;
-            }
-            else if (canvasOrganizationPopup.gameObject.activeSelf)
-            {
-                canvasOrganizationPopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
-            else if (canvasMenuPopup.gameObject.activeSelf)
-            {
-                canvasMenuPopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
-            else if (canvasTimelinePopup.gameObject.activeSelf)
-            {
-                canvasTimelinePopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
-            else if (canvasRegioPopup.gameObject.activeSelf)
-            {
-                canvasRegioPopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
+            canvasMenuPopup.gameObject.SetActive(true);
+            popupActive = true;
+        }
+        else if (canvasOrganizationPopup.gameObject.activeSelf)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasMenuPopup.gameObject.activeSelf)
+        {
+            canvasMenuPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasTimelinePopup.gameObject.activeSelf)
+        {
+            canvasTimelinePopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasRegioPopup.gameObject.activeSelf)
+        {
+            canvasRegioPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+    }
+
+
+    // Open and close the Organization popup with the O key
+    void controllerOrganizationHotkey()
+    {
+        if (!popupActive)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(true);
+            popupActive = true;
+        }
+        else if (canvasOrganizationPopup.gameObject.activeSelf)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+    }
+
+    // Open and close the Timeline popup with the T key
+    void controllerTimelinePopup()
+    {
+        if (!popupActive)
+        {
+            canvasTimelinePopup.gameObject.SetActive(true);
+            popupActive = true;
+        }
+        else if (canvasTimelinePopup.gameObject.activeSelf)
+        {
+            canvasTimelinePopup.gameObject.SetActive(false);
+            popupActive = false;
         }
     }
     #endregion
@@ -357,32 +402,9 @@ public class UpdateUI : MonoBehaviour
             totalOrgBank = 0;
     }
 
-    void checkWhichRegion(Region regio)
-    {
-        if (regio.name == "Noord Nederland")
-        {
-            txtRegionName.text = "Noord-Nederland";
-            updateRegionScreenUI(regio);
-        }
-        if (regio.name == "Oost Nederland")
-        {
-            txtRegionName.text = "Oost-Nederland";
-            updateRegionScreenUI(regio);
-        }
-        if (regio.name == "Zuid Nederland")
-        {
-            txtRegionName.text = "Zuid-Nederland";
-            updateRegionScreenUI(regio);
-        }
-        if (regio.name == "West Nederland")
-        {
-            txtRegionName.text = "West-Nederland";
-            updateRegionScreenUI(regio);
-        }
-    }
-
     void updateRegionScreenUI(Region regio)
     {
+        txtRegionName.text = regio.name;
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
         txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.0");
@@ -394,23 +416,13 @@ public class UpdateUI : MonoBehaviour
         txtRegionCompanies.text = "Comming soon!";
         // Ik ga ervanuit dat cityEviroment huishoudens is
         txtRegionHouseholds.text = regio.statistics.cityEnvironment.ToString(); 
+
+        foreach (RegionAction action in regio.actions)
+        {
+            Debug.Log(action + "\n");
+        }
         
         
-    }
-
-    void updateRegionScreenUIOost(Region regio)
-    {
-
-    }
-
-    void updateRegionScreenUIZuid(Region regio)
-    {
-
-    }
-
-    void updateRegionScreenUIWest(Region regio)
-    {
-
     }
     #endregion
 
@@ -421,10 +433,9 @@ public class UpdateUI : MonoBehaviour
             && !btnMenuCheck && !btnTimelineCheck)
         {
             canvasRegioPopup.gameObject.SetActive(true);
-            Debug.Log("Popup Regio active!");
             popupActive = true;
 
-            checkWhichRegion(region);
+            updateRegionScreenUI(region);
         }
     }
 
@@ -433,7 +444,6 @@ public class UpdateUI : MonoBehaviour
         if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)
         {
             canvasTimelinePopup.gameObject.SetActive(true);
-            Debug.Log("Popup Timeline active!");
             popupActive = true;
         }
     }
@@ -443,21 +453,16 @@ public class UpdateUI : MonoBehaviour
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(true);
-            Debug.Log("Popup Organization active!");
             popupActive = true;
         }
     }
-
-    // Method that makes popup appear/disappear
+    
     public void btnMenuClick()
     {
         if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
         {
             canvasMenuPopup.gameObject.SetActive(true);
-            Debug.Log("Popup Menu active!");
             popupActive = true;
-
-            
         }
     }
     #endregion
@@ -558,94 +563,32 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Return Boolean Values
+    public bool getBtnMoneyHover()
+    {
+        return btnMoneyHoverCheck;
+    }
 
+    public bool getBtnHappinessHover()
+    {
+        return btnHappinessHoverCheck;
+    }
 
+    public bool getBtnAwarenessHover()
+    {
+        return btnAwarenessHoverCheck;
+    }
 
+    public bool getBtnPollutionHover()
+    {
+        return btnPollutionHoverCheck;
+    }
 
-
-    /*        Vector3 v3;
-
-            Color backColor = new Color();
-            Color txtColor = new Color();
-            string txtPopup = "";
-
-            ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
-            ColorUtility.TryParseHtmlString("#05001a", out txtColor);
-
-            Debug.Log("Arrived in Tooltip Money!");
-            v3 = btnMoney.gameObject.transform.position;
-            txtPopup = "This is a tooltip for Money stats";
-            GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
-            GUI.backgroundColor = backColor;
-
-            GUI.Label(new Rect(10, 10, 100, 100), txtPopup);
-            //txtPopup.color = txtColor;*/
-
-    /*  Use this code when OnPointerEnter works!
-        Vector3 v3;
-        Text txtPopup = null;
-        Color backColor = new Color();
-        Color txtColor = new Color();
-
-        ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
-        ColorUtility.TryParseHtmlString("#05001a", out txtColor);
-
-        GameObject obj = eventData.selectedObject;
-
-        if (eventData.pointerEnter.gameObject == objBtnMenu)
-            Debug.Log("Arrived in 1st Tooltip Menu!");
-
-        if (eventData.pointerEnter.gameObject == btnMenu.gameObject)
-            Debug.Log("Arrived in 2nd Tooltip Menu!");
-
-        if (eventData.pointerEnter == objBtnMenu)
-            Debug.Log("Arrived in 3rd Tooltip Menu!");
-
-        if (eventData.pointerEnter == btnMenu)
-            Debug.Log("Arrived in 4th Tooltip Menu!");
-
-        if (eventData.pointerEnter == btnMenu.gameObject)
-            Debug.Log("Arrived in 5th Tooltip Menu!");
-
-        if (eventData.pointerEnter.Equals(btnMenu))
-            Debug.Log("Arrived in 6th Tooltip Menu!");
-
-        if (obj == btnMenu.gameObject)
-            Debug.Log("Arrived in 7th Tooltip Menu!");
-
-        /* Make tooltip appear
-        if (eventData.pointerEnter.gameObject == objBtnMoney)//btnMoney.gameObject)
-        {
-            Debug.Log("Arrived in Tooltip Money!");
-            v3 = btnMoney.gameObject.transform.position;
-            txtPopup.text = "This is a tooltip for Money stats";
-            GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
-            GUI.backgroundColor = backColor;
-
-            GUI.Label(new Rect(10, 10, 100, 100), txtPopup.text);
-            txtPopup.color = txtColor;
-        }
-        if (eventData.pointerEnter == btnHappiness)
-        {
-
-        }
-        if (eventData.pointerEnter == btnAwareness)
-        {
-
-        }
-        if (eventData.pointerEnter == btnEnergy)
-        {
-
-        }
-        if (eventData.pointerEnter == btnPollution)
-        {
-
-        }
-        if (eventData.pointerEnter == btnPopulation)
-        {
-
-        }
-        */
+    public bool getBtnEnergyHover()
+    {
+        return btnEnergyHoverCheck;
+    }
+    #endregion
 }
 
 

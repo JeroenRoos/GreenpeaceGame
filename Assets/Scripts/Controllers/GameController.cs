@@ -60,19 +60,19 @@ public class GameController : MonoBehaviour
 
     void updateUITooltips()
     {
-        if (updateUI.btnMoneyHoverCheck)
+        if (updateUI.getBtnMoneyHover())
             updateUI.updateMoneyTooltip();
 
-        if (updateUI.btnHappinessHoverCheck)
+        if (updateUI.getBtnHappinessHover())
             updateUI.updateHappinessTooltip();
 
-        if (updateUI.btnAwarenessHoverCheck)
+        if (updateUI.getBtnAwarenessHover())
             updateUI.updateAwarnessTooltip();
 
-        if (updateUI.btnPollutionHoverCheck)
+        if (updateUI.getBtnPollutionHover())
             updateUI.updatePollutionTooltip();
 
-        if (updateUI.btnEnergyHoverCheck)
+        if (updateUI.getBtnEnergyHover())
             updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
         game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
     }
