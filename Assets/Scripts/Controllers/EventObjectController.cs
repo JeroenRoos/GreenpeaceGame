@@ -55,7 +55,7 @@ public class EventObjectController : MonoBehaviour {
 
     void ChooseOption(int option)
     {
-        eventModel.SetPickedChoice(option);
+        eventModel.SetPickedChoice(option, gameController.game);
     }
 
     Texture SelectTexture(string description)
