@@ -57,7 +57,18 @@ public class GameController : MonoBehaviour
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         updateUI.updateHappiness(game.gameStatistics.happiness);
+
+        /*
+        foreach (Region region in game.regions.Values)
+        {
+            foreach (RegionSector sector in region.sectors.Values)
+            {
+                sector.statistics.
+            }
+        }
+        */
     }
+    
 
     void updateUITooltips()
     {

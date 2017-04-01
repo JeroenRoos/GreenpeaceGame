@@ -677,4 +677,3 @@ public class UpdateUI : MonoBehaviour
     #endregion
 }
 
-
