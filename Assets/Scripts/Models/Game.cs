@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class Game
 {
+    public GameController gameController;
+
     //All Regions and region types planned for complete game
     public int currentYear { get; private set; }
     public int currentMonth { get; private set; }
@@ -19,7 +21,7 @@ public class Game
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
 
     //public events declareren (unity)
-
+    public GameObject eventObject;
 
     public Game()
     {
@@ -37,6 +39,12 @@ public class Game
         currentMonth = 1;
 
         //DisplayRegion(regions[0]);
+    }
+
+    public void Init(GameObject eventObject, GameController gameController)
+    {
+        this.eventObject = eventObject;
+        this.gameController = gameController;
     }
 
     public void ChangeLanguage(string language)
@@ -175,6 +183,8 @@ public class Game
             int pickedEvent = PickEvent(possibleEvents.Count);
             string pickedRegion = PickEventRegion();
             events[pickedEvent].ActivateEvent(currentYear, currentMonth, regions[pickedRegion]);
+            GameObject eventInstance = GameController.Instantiate(eventObject);
+            eventInstance.GetComponent<EventObjectController>().Init(gameController, events[pickedEvent]);
         }
     }
 

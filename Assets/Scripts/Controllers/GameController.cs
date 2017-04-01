@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public GameObject zuidNederland;
     public GameObject westNederland;
 
+    public GameObject eventObject;
+
    // private float time;
     public bool autoEndTurn = false;
 
@@ -28,6 +30,8 @@ public class GameController : MonoBehaviour
         oostNederland.GetComponent<RegionController>().Init(this);
         zuidNederland.GetComponent<RegionController>().Init(this);
         westNederland.GetComponent<RegionController>().Init(this);
+
+        game.Init(eventObject, this);
     }
 
     // Update is called once per frame

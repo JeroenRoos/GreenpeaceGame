@@ -7,22 +7,15 @@ public class EventObjectController : MonoBehaviour {
     public GameController gameController;
     public GameEvent eventModel;
     public bool areOptionsShown;
-    public Texture texture;
 
     public Texture[] allTextures;
-
-
-    void Start()
-    {
-        gameObject.GetComponent<Renderer>().material.mainTexture =
-        SelectTexture("Smog");
-    }
-
+    
     public void Init(GameController gameController, GameEvent eventModel)
     {
         this.gameController = gameController;
         this.eventModel = eventModel;
-        //gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
+        gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
+        transform.position = eventModel.region.eventPositions[Random.Range(0, 4)];
     }
 
     // hover over event
