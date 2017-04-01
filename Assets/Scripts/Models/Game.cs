@@ -88,10 +88,15 @@ public class Game
 
         int activeCount = getActiveEventCount();
 
-        if (rnd.Next(1, 61) <= 20 && activeCount < events.Count)
+        int eventChance = 35;
+        int eventChanceReduction = 10;
+
+        while (rnd.Next(1, 101) <= eventChance && activeCount < events.Count)
         {
             StartNewEvent();
             EventManager.CallShowEvent();
+
+            eventChance -= eventChanceReduction;
         }
     }
 
