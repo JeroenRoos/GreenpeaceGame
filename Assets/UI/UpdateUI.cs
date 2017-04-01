@@ -58,7 +58,9 @@ public class UpdateUI : MonoBehaviour
     public Button btnPollution;
     public Button btnPopulation;
     public Button btnDoActionRegionMenu;
-
+    public Button emptybtnHoverHouseholds;
+    public Button emptybtnHoverAgriculture;
+    public Button emptybtnHoverCompanies;
 
     // Canvas 
     public Canvas canvasMenuPopup;
@@ -68,8 +70,13 @@ public class UpdateUI : MonoBehaviour
 
     // Tooltip Variables
     private string txtTooltip;
+    private string txtTooltipCompany;
+    private string txtTooltipAgriculture;
+    private string txtTooltipHouseholds;
     private string dropdownChoice;
     string txttooltipPollution;
+
+    private Vector3 v3Tooltip;
 
     #endregion
 
@@ -85,6 +92,9 @@ public class UpdateUI : MonoBehaviour
     private bool btnTimelineCheck;
     private bool popupActive;
     private bool tooltipActive;
+    private bool regionHouseholdsCheck;
+    private bool regionAgricultureCheck;
+    private bool regionCompanyCheck;
     #endregion
 
     #region Start(), Update(), FixedUpdate()
@@ -95,7 +105,7 @@ public class UpdateUI : MonoBehaviour
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
     }
-    
+
     void Update()
     {
         popupController();
@@ -136,7 +146,10 @@ public class UpdateUI : MonoBehaviour
         btnTimelineCheck = false;
         btnMenuCheck = false;
         popupActive = false;
+        regionHouseholdsCheck = false;
         tooltipActive = false;
+        regionAgricultureCheck = false;
+        regionCompanyCheck = false;
     }
 
     void initCanvas()
@@ -235,54 +248,69 @@ public class UpdateUI : MonoBehaviour
 
     #region onGUI Code
     void OnGUI()
-    {
-        Vector3 v3;
+    { 
         Rect lblReqt;
 
-        if (btnMoneyHoverCheck)
-        {
-            v3 = btnMoney.gameObject.transform.position;
-            lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
+        lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
-            lblReqt.x = v3.x + 10; lblReqt.y = v3.z + 40;
+        if (checkTooltip())
+        {
+            lblReqt.x = v3Tooltip.x + 10; lblReqt.y = v3Tooltip.z + 40;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
         }
 
-        if (btnHappinessHoverCheck)
+        if (regionHouseholdsCheck)
         {
-            v3 = btnHappiness.gameObject.transform.position;
-            lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
-
-            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;
-            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
+            v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
+            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + - 20;
+            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipHouseholds + "</color>", tooltipStyle);
+            updateRegionSectors();
         }
-
-        if (btnAwarenessHoverCheck)
+        else if (regionAgricultureCheck)
         {
-            v3 = btnAwareness.gameObject.transform.position;
-            lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
-
-            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;
-            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
+            v3Tooltip = emptybtnHoverAgriculture.gameObject.transform.position;
+            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 100;
+            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipAgriculture + "</color>", tooltipStyle);
+            updateRegionSectors();
         }
+        else if (regionCompanyCheck)
+        {
+            v3Tooltip = emptybtnHoverCompanies.gameObject.transform.position;
+            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 220;
+            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipCompany + "</color>", tooltipStyle);
+            updateRegionSectors();
+        }
+    }
 
+    bool checkTooltip()
+    {
         if (btnPollutionHoverCheck)
         {
-            v3 = btnPollution.gameObject.transform.position;
-            lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
-
-            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;
-            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
+            v3Tooltip = btnPollution.gameObject.transform.position;
+            return true;
         }
-
-        if (btnEnergyHoverCheck)
+        else if (btnAwarenessHoverCheck)
         {
-            v3 = btnEnergy.gameObject.transform.position;
-            lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
-
-            lblReqt.x = v3.x; lblReqt.y = v3.z + 40;
-            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
+            v3Tooltip = btnAwareness.gameObject.transform.position;
+            return true;
         }
+        else if (btnMoneyHoverCheck)
+        {
+            v3Tooltip = btnMoney.gameObject.transform.position;
+            return true;
+        }
+        else if (btnEnergyHoverCheck)
+        {
+            v3Tooltip= btnEnergy.gameObject.transform.position;
+            return true;
+        }
+        else if (btnHappinessHoverCheck)
+        {
+            v3Tooltip = btnHappiness.gameObject.transform.position;
+            return true;
+        }
+        else
+            return false;
     }
     #endregion
 
@@ -337,6 +365,7 @@ public class UpdateUI : MonoBehaviour
     void iconController(Button btn, double value)
     {
         ColorBlock cb;
+        Color lerpColor;
         float f = (float)value / 100;
         cb = btn.colors;
 
@@ -344,21 +373,18 @@ public class UpdateUI : MonoBehaviour
         if (btn == btnPollution)
         {
             // Color based on third argument (value / 100)
-            Color lerpColor = Color.Lerp(Color.green, Color.red, f);
-            cb.normalColor = lerpColor;
-            cb.highlightedColor = lerpColor;
-            cb.pressedColor = lerpColor;
-            btn.colors = cb;
+            lerpColor = Color.Lerp(Color.green, Color.red, f);
         }
         else
         {
             // Color based on third argument (value / 100)
-            Color lerpColor = Color.Lerp(Color.red, Color.green, f);
-            cb.normalColor = lerpColor;
-            cb.highlightedColor = lerpColor;
-            cb.pressedColor = lerpColor;
-            btn.colors = cb;
+            lerpColor = Color.Lerp(Color.red, Color.green, f);
         }
+
+        cb.normalColor = lerpColor;
+        cb.highlightedColor = lerpColor;
+        cb.pressedColor = lerpColor;
+        btn.colors = cb;
     }
     #endregion
 
@@ -373,7 +399,7 @@ public class UpdateUI : MonoBehaviour
         switch (i)
         {
             case 0:
-                txtTooltip = "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + happ.ToString("0.00") + "\n";
+                txtTooltip = "Gemiddelde tevredenheid per regio:\nNoord-Nederland: " + happ.ToString("0.00") + "\n";
                 break;
             case 1:
                 txtTooltip += "Oost-Nederland: " + happ.ToString("0.00") + "\n";
@@ -406,7 +432,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    public void updatePollutionTooltip(double pollution, int i)//double[] arrRegionPollution)
+    public void updatePollutionTooltip(double pollution, int i)
     {
         switch (i)
         {
@@ -433,34 +459,26 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Update UI in Popups
-    public void updateOrganizationScreenUI(double value, int i)
+    public void updateOrganizationScreenUI(double value, int i, double money)
     {
         // Region are made in following order: North > East > West > South
         switch (i)
         {
             case 0:
                 txtOrgNoordMoney.text = value.ToString();
-                totalOrgBank += value;
                 break;
             case 1:
                 txtOrgOostMoney.text = value.ToString();
-                totalOrgBank += value;
                 break;
             case 2:
                 txtOrgWestMoney.text = value.ToString();
-                totalOrgBank += value;
                 break;
             case 3:
                 txtOrgZuidMoney.text = value.ToString();
-                totalOrgBank += value;
                 break;
         }
 
-        txtOrgBank.text = totalOrgBank.ToString();
-
-        // Reset to 0 to recalculate the next time popups opens
-        if (i == 3)
-            totalOrgBank = 0;
+        txtOrgBank.text = money.ToString();
     }
     #endregion
 
@@ -486,11 +504,6 @@ public class UpdateUI : MonoBehaviour
         // Debug.Log("UpdateRegionScreenUI: " + regio.name);
         updateRegionTextValues();
 
-        foreach (RegionAction action in regio.actions)
-        {
-            // ... 
-        }
-
         // Set the right actions in the dropdown
         initDropDownRegion();
     }
@@ -505,11 +518,6 @@ public class UpdateUI : MonoBehaviour
         txtRegionPollutionAir.text = regio.statistics.pollution.airPollution.ToString();
         txtRegionPollutionNature.text = regio.statistics.pollution.naturePollution.ToString();
         txtRegionPollutionWater.text = regio.statistics.pollution.waterPollution.ToString();
-        txtRegionTraffic.text = regio.statistics.publicTransport.ToString();
-        txtRegionFarming.text = "Comming soon!";
-        txtRegionCompanies.text = "Comming soon!";
-        // Ik ga ervanuit dat cityEviroment huishoudens is
-        txtRegionHouseholds.text = regio.statistics.cityEnvironment.ToString();
 
         // Set text of actions to empty
         txtRegionActionConsequences.text = "";
@@ -518,6 +526,35 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionName.text = "";
 
         updateActiveActions();
+    }
+
+    void updateRegionSectors()
+    {
+        foreach (RegionSector sector in regio.sectors.Values)
+        {
+            if (sector.sectorName == "Huishoudens")
+            {
+                Debug.Log(sector.sectorName);
+                txtTooltipHouseholds = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
+                    + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
+                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
+
+            }
+            else if (sector.sectorName == "Bedrijven")
+            {
+                Debug.Log(sector.sectorName);
+                txtTooltipCompany = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
+                    + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
+                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
+            }
+            else if (sector.sectorName == "Landbouw")
+            {
+                Debug.Log(sector.sectorName);   
+                txtTooltipAgriculture = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
+                    + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
+                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
+            }
+        }
     }
 
     void updateActiveActions()
@@ -551,8 +588,6 @@ public class UpdateUI : MonoBehaviour
     {
         for (int i = 1; i <= dropdownRegio.options.Count + 1; i++)
         {
-            //if (dropdownRegio.value == 0)
-             //   dropdownChoice = dropdownRegio.options[0].text;
             if (dropdownRegio.value == i)
                 dropdownChoice = dropdownRegio.options[i].text;
         }
@@ -727,6 +762,39 @@ public class UpdateUI : MonoBehaviour
     {
         btnTimelineCheck = false;
     }
+
+    public void regionHouseholdsEnter()
+    {
+        regionHouseholdsCheck = true;
+    }
+
+    public void regionHouseholdsExit()
+    {
+        regionHouseholdsCheck = false;
+    }
+
+    public void regionAgricultureEnter()
+    {
+        regionAgricultureCheck = true;
+    }
+
+    public void regionAgricultureExit()
+    {
+        regionAgricultureCheck = false;
+    }
+
+    public void regionCompanyEnter()
+    {
+        regionCompanyCheck = true;
+    }
+
+    public void regionCompanyExit()
+    {
+        regionCompanyCheck = false;
+    }
+
+
+    
     #endregion
 
     #region Return Boolean Values

@@ -61,14 +61,15 @@ public class GameController : MonoBehaviour
         updateUI.updateHappiness(game.gameStatistics.happiness);
 
         
-        /* foreach (Region region in game.regions.Values)
+        /*foreach (Region region in game.regions.Values)
         {
             region.statistics.
             foreach (RegionSector sector in region.sectors.Values)
             {
                 sector.statistics.
             }
-        } */
+        } 
+        */
         
     }
     
@@ -90,8 +91,6 @@ public class GameController : MonoBehaviour
         if (updateUI.getBtnEnergyHover())
             updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
             game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
-
-            
     }
 
     void updateHappiness()
@@ -150,7 +149,7 @@ public class GameController : MonoBehaviour
         foreach (Region region in game.regions.Values)
         {
             // Send the income for each region, use i to determine the region
-            updateUI.updateOrganizationScreenUI(region.statistics.income, i);
+            updateUI.updateOrganizationScreenUI(region.statistics.income, i, game.gameStatistics.money);
             i++;            
         }
     }
