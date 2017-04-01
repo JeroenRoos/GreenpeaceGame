@@ -147,7 +147,7 @@ public class Game
         foreach (GameEvent gameEvent in events)
         {
             if (gameEvent.isActive &&
-                ((gameEvent.startMonth + gameEvent.eventDuration + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
+                ((gameEvent.startMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
             {
                 gameEvent.CompleteEvent();
             }
