@@ -88,7 +88,7 @@ public class Game
 
         int activeCount = getActiveEventCount();
 
-        if (rnd.Next(1, 61) <= 20 && activeCount < 3)
+        if (rnd.Next(1, 61) <= 20 && activeCount < events.Count)
         {
             StartNewEvent();
             EventManager.CallShowEvent();
@@ -160,23 +160,58 @@ public class Game
         return activeCount;
     }
 
+    
     public void StartNewEvent()
     {
-        // select event randomly from possible eventList
-        // testcode
-        if(events[0].isActive == false)
+        List<GameEvent> possibleEvents = GetPossibleEvents();
+
+        if (possibleEvents.Count > 0)
         {
-            events[0].ActivateEvent(currentYear, currentMonth, regions["NoordNederland"]);
+            int pickedEvent = PickEvent(possibleEvents.Count);
+            string pickedRegion = PickEventRegion();
+            events[pickedEvent].ActivateEvent(currentYear, currentMonth, regions[pickedRegion]);
         }
     }
 
+    public List<GameEvent> GetPossibleEvents()
+    {
+        List<GameEvent> possibleEvents = new List<GameEvent>();
+        foreach (GameEvent gameEvent in events)
+        {
+            if (!gameEvent.isActive)
+                possibleEvents.Add(gameEvent);
+        }
+
+        return possibleEvents;
+    }
+
+    public int PickEvent(int availableEventsCount)
+    {
+        int pickedEvent = rnd.Next(0, availableEventsCount);
+        return pickedEvent;
+    }
+
+    public string PickEventRegion()
+    {
+        int x = rnd.Next(0, regions.Keys.Count);
+        if (x == 0)
+            return "NoordNederland";
+        else if (x == 1)
+            return "OostNederland";
+        else if (x == 2)
+            return "ZuidNederland";
+        else
+            return "WestNederland";
+    }
+
+    //Generates the 4 regions (currently hardcoded)
     private void GenerateRegions()
     {
         regions = new Dictionary<string, Region>();
         GenerateNoordNederland();
         GenerateOostNederland();
-        GenerateWestNederland();
         GenerateZuidNederland();
+        GenerateWestNederland();
     }
 
     private void GenerateNoordNederland()
@@ -256,6 +291,7 @@ public class Game
         return sectors;
     }
 
+    //Generates the game events (currently hardcoded)
     private void GenerateGameEvents()
     {
         string[,] choices = new string[2, 3] {
@@ -265,29 +301,32 @@ public class Game
         RegionStatistics[] consequences1 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences2 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences3 = new RegionStatistics[choices.Length];
-        
+
+        double[] choiceMoneyCost1 = { 0, 0, 0 };
         string[] description1 = { "nep event 1", "dummy event 1" };
         consequences1[0] = new RegionStatistics(-1000, 0, -1, new Pollution(0, 0, 0, -1, -1, -1), 0, -1);
         consequences1[1] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, -2, -1, 0), 0, 0);
         consequences1[2] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 1, 1, 1), 0, 0);
         //consequences1[3] = new RegionStatistics(-3000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
-        GameEvent gameEvent1 = new GameEvent(description1, 2, choices, consequences1);
+        GameEvent gameEvent1 = new GameEvent(description1, 2, choices, consequences1, choiceMoneyCost1);
         events.Add(gameEvent1);
 
+        double[] choiceMoneyCost2 = { 0, 0, 0 };
         string[] description2 = { "nep event 2", "dummy event 2" };
         consequences2[0] = new RegionStatistics(-2000, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 2, 0);
         consequences2[1] = new RegionStatistics(-1000, 125, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
         consequences2[2] = new RegionStatistics(0, -250, -1, new Pollution(0, 0, 0, 0, 0, 0), -2, 0);
         //consequences2[3] = new RegionStatistics(-2500, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
-        GameEvent gameEvent2 = new GameEvent(description2, 1, choices, consequences2);
+        GameEvent gameEvent2 = new GameEvent(description2, 1, choices, consequences2, choiceMoneyCost2);
         events.Add(gameEvent2);
 
+        double[] choiceMoneyCost3 = { 0, 0, 0 };
         string[] description3 = { "nep event 3", "dummy event 3" };
         consequences3[0] = new RegionStatistics(3000, 0, 2, new Pollution(0, 0, 0, -2, 0, 0), -1, 1);
         consequences3[1] = new RegionStatistics(1500, 0, 1, new Pollution(0, 0, 0, -1, 0, -1), 0, 1);
         consequences3[2] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, -2);
         //consequences3[3] = new RegionStatistics(-1000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
-        GameEvent gameEvent3 = new GameEvent(description3, 3, choices, consequences3);
+        GameEvent gameEvent3 = new GameEvent(description3, 3, choices, consequences3, choiceMoneyCost3);
         events.Add(gameEvent3);
     }
 }

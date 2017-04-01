@@ -58,7 +58,7 @@ public class Region
     }
 
     //adds a building to the list of buildings the region has
-    public void CreateBuilding(string buildingName)
+    public void CreateBuilding(string[] buildingName)
     {
         Building newBuilding = new Building(buildingName);
         buildings.Add(newBuilding);

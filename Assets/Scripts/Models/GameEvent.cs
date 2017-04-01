@@ -22,12 +22,13 @@ public class GameEvent
 
     public Region region { get; private set; }
 
-    public GameEvent(string[] description, int eventDuration, string[,] choices, RegionStatistics[] consequences)
+    public GameEvent(string[] description, int eventDuration, string[,] choices, RegionStatistics[] consequences, double[] eventChoiceMoneyCost)
     {
         this.description = description;
         this.eventDuration = eventDuration;
         this.choices = choices;
         this.consequences = consequences;
+        this.eventChoiceMoneyCost = eventChoiceMoneyCost;
     }
 
     public void ActivateEvent(int startYear, int startMonth, Region region)
