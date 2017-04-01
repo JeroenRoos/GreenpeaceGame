@@ -41,10 +41,12 @@ public class GameController : MonoBehaviour
         updateUIMainScreen();
 
         // Update the UI in popup screen
-        updateUIPopups();
+        if (updateUI.getPopupActive())
+            updateUIPopups();
 
         // Update values in Tooltips for Icons in Main UI
-        updateUITooltips();
+        if (updateUI.getTooltipActive())
+            updateUITooltips();
     }
 
     void updateUIMainScreen()
@@ -73,7 +75,7 @@ public class GameController : MonoBehaviour
     void updateUITooltips()
     {
         if (updateUI.getBtnMoneyHover())
-            updateUI.updateMoneyTooltip();
+            updateUI.updateMoneyTooltip(game.gameStatistics.donations, game.gameStatistics.income);
 
         if (updateUI.getBtnHappinessHover())
             updateUI.updateHappinessTooltip();
@@ -86,7 +88,9 @@ public class GameController : MonoBehaviour
 
         if (updateUI.getBtnEnergyHover())
             updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
-        game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
+            game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
+
+        
     }
 
     void updateUIPopups()

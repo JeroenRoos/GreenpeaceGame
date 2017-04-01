@@ -44,6 +44,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionActionDuration;
     public Text txtRegionActionCost;
     public Text txtRegionActionConsequences;
+    public Text txtActiveActions;
 
 
     // Buttons 
@@ -81,6 +82,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnMenuCheck;
     private bool btnTimelineCheck;
     private bool popupActive;
+    private bool tooltipActive;
     #endregion
 
     #region Start(), Update(), FixedUpdate()
@@ -132,6 +134,7 @@ public class UpdateUI : MonoBehaviour
         btnTimelineCheck = false;
         btnMenuCheck = false;
         popupActive = false;
+        tooltipActive = false;
     }
 
     void initCanvas()
@@ -289,7 +292,7 @@ public class UpdateUI : MonoBehaviour
         string[] arrMonths = new string[12]
             { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" };
 
-        txtDate.text = arrMonths[month] + " - " + year.ToString();
+        txtDate.text = arrMonths[month] + " - " + (year + 2019).ToString();
     }
 
     // Update Money based on value
@@ -341,6 +344,8 @@ public class UpdateUI : MonoBehaviour
             // Color based on third argument (value / 100)
             Color lerpColor = Color.Lerp(Color.green, Color.red, f);
             cb.normalColor = lerpColor;
+            cb.highlightedColor = lerpColor;
+            cb.pressedColor = lerpColor;
             btn.colors = cb;
         }
         else
@@ -348,15 +353,17 @@ public class UpdateUI : MonoBehaviour
             // Color based on third argument (value / 100)
             Color lerpColor = Color.Lerp(Color.red, Color.green, f);
             cb.normalColor = lerpColor;
+            cb.highlightedColor = lerpColor;
+            cb.pressedColor = lerpColor;
             btn.colors = cb;
         }
     }
     #endregion
 
     #region Update UI in Tooltips
-    public void updateMoneyTooltip()
+    public void updateMoneyTooltip(double donations, double income)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        txtTooltip = "Donaties: " + donations + "\nInkomen: " + income;
     }
 
     public void updateHappinessTooltip()
@@ -432,7 +439,7 @@ public class UpdateUI : MonoBehaviour
 
     void updateRegionScreenUI()
     {
-        Debug.Log("UpdateRegionScreenUI: " + regio.name);
+        // Debug.Log("UpdateRegionScreenUI: " + regio.name);
         updateRegionTextValues();
 
         foreach (RegionAction action in regio.actions)
@@ -446,7 +453,7 @@ public class UpdateUI : MonoBehaviour
 
     void updateRegionTextValues()
     {
-        Debug.Log("updateRegionTextValues: " + regio.name);
+        // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name;
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
@@ -465,11 +472,28 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionCost.text = "";
         txtRegionActionDuration.text = "";
         txtRegionActionName.text = "";
+
+        updateActiveActions();
+    }
+
+    void updateActiveActions()
+    {
+        string activeActionsRegio = "";
+        foreach (RegionAction action in regio.actions)
+        {
+            if (action.isActive)
+            {
+                Debug.Log(action.description + " is active!");
+                activeActionsRegio += action.description + "\n";
+            }
+
+            txtActiveActions.text = activeActionsRegio;
+        }
     }
 
     void initDropDownRegion()
     {
-        Debug.Log("initDropDownRegion: " + regio.name);
+        // Debug.Log("initDropDownRegion: " + regio.name);
         dropdownRegio.ClearOptions();
 
         foreach (RegionAction action in regio.actions)
@@ -481,13 +505,15 @@ public class UpdateUI : MonoBehaviour
     // Goes to this method from DropDownTrigger in Inspector
     public void getDropDownValue()
     {
-        for (int i = 0; i <= dropdownRegio.options.Count; i++)
+        for (int i = 1; i <= dropdownRegio.options.Count + 1; i++)
         {
+            //if (dropdownRegio.value == 0)
+             //   dropdownChoice = dropdownRegio.options[0].text;
             if (dropdownRegio.value == i)
                 dropdownChoice = dropdownRegio.options[i].text;
         }
 
-        Debug.Log("getDropDownValue: " + regio.name);
+        // Debug.Log("getDropDownValue: " + regio.name);
 
         // Shows the right information with the chosen option in dropdown
         showInfoDropDownRegion();
@@ -495,7 +521,7 @@ public class UpdateUI : MonoBehaviour
 
     void showInfoDropDownRegion()
     {
-        Debug.Log("showInfoDropDownRegion: " + regio.name);
+        // Debug.Log("showInfoDropDownRegion: " + regio.name);
         foreach (RegionAction action in regio.actions)
         {
             if (action.description == dropdownChoice)
@@ -513,7 +539,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoActionRegionMenuClick()
     {
-        Debug.Log("btnDoActionRegionMenuClick: " + regio.name);
+        // Debug.Log("btnDoActionRegionMenuClick: " + regio.name);
         //Debug.Log("Year: " + regioAction.startYear.GetValueOrDefault() + " Month: " + regioAction.startMonth.GetValueOrDefault());
 
         regio.StartAction(regioAction.description, regioAction.startYear.GetValueOrDefault(), regioAction.startMonth.GetValueOrDefault());
@@ -558,12 +584,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnMoneyEnter()
     {
         btnMoneyHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnMoney
     public void BtnMoneyExit()
     {
         btnMoneyHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -571,12 +599,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnHappinessEnter()
     {
         btnHappinessHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnHappiness
     public void BtnHappinessExit()
     {
         btnHappinessHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -584,12 +614,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnAwarenessEnter()
     {
         btnAwarenessHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnAwareness
     public void BtnAwarenessExit()
     {
         btnAwarenessHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -597,12 +629,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnPollutionEnter()
     {
         btnPollutionHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnPollution
     public void BtnPollutionExit()
     {
         btnPollutionHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -610,12 +644,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnEnergyEnter()
     {
         btnEnergyHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnEnergy
     public void BtnEnergyExit()
     {
         btnEnergyHoverCheck = false;
+        tooltipActive = false;
     }
 
     public void btnOrganizationEnter()
@@ -625,7 +661,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnOrganzationExit()
     {
-        btnMenuCheck = false;
+        btnOrganizationCheck = false;
     }
 
     public void btnMenuEnter()
@@ -635,7 +671,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnMenuExit()
     {
-        btnOrganizationCheck = false;
+        btnMenuCheck = false;
     }
 
     public void btnTimelineEnter()
@@ -673,6 +709,16 @@ public class UpdateUI : MonoBehaviour
     public bool getBtnEnergyHover()
     {
         return btnEnergyHoverCheck;
+    }
+
+    public bool getPopupActive()
+    {
+        return popupActive;
+    }
+
+    public bool getTooltipActive()
+    {
+        return tooltipActive;
     }
     #endregion
 }
