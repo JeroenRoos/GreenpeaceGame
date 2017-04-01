@@ -7,14 +7,14 @@ using System.Text;
 //This class stores the values of the Regions
 public class Region
 {
-    public string name { get; private set; }
+    public string[] name { get; private set; }
     public RegionStatistics statistics { get; private set; }
     public List<Building> buildings { get; private set; }
     public List<RegionAction> actions { get; private set; }
 
     public Dictionary<string, RegionSector> sectors { get; private set; }
 
-    public Region(string name, RegionStatistics statistics, Dictionary<string, RegionSector> sectors)
+    public Region(string[] name, RegionStatistics statistics, Dictionary<string, RegionSector> sectors)
     {
         this.name = name;
         this.statistics = statistics;
@@ -135,18 +135,16 @@ public class Region
 
     private void GenerateActions()
     {
-        string description;
-
-        description = "dummy action 1";
+        string[] description1 = { "actie 1", "action 1" };
         RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -1, -1), 1, 0);
         RegionStatistics actionCost1 = new RegionStatistics(-2000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action1 = new RegionAction(description, consequence1, actionCost1, 2, 3, 2000);
+        RegionAction action1 = new RegionAction(description1, consequence1, actionCost1, 2, 3, 2000);
         actions.Add(action1);
 
-        description = "dummy action 2";
+        string[] description2 = { "actie 2", "action 2" };
         RegionStatistics consequence2 = new RegionStatistics(500, 0, 1, new Pollution(0, 0, 0, 0, 0, 0), 0, 2);
         RegionStatistics actionCost2 = new RegionStatistics(-3000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action2 = new RegionAction(description, consequence2, actionCost2, 2, 3, 2000);
+        RegionAction action2 = new RegionAction(description2, consequence2, actionCost2, 2, 3, 2000);
         actions.Add(action2);
     }
 }

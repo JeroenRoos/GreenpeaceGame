@@ -13,6 +13,7 @@ public class Game
     public Dictionary<string, Region> regions { get; private set; }
     public List<GameEvent> events { get; private set; }
     public System.Random rnd { get; private set; }
+    public int language { get; private set; } //0 = Dutch, 1 = English
 
     //Game statistics
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
@@ -22,6 +23,7 @@ public class Game
 
     public Game()
     {
+        language = 0;
         rnd = new System.Random();
         events = new List<GameEvent>();
 
@@ -35,6 +37,14 @@ public class Game
         currentMonth = 1;
 
         //DisplayRegion(regions[0]);
+    }
+
+    public void ChangeLanguage(string language)
+    {
+        if (language == "english")
+            this.language = 1;
+        else if (language == "dutch")
+            this.language = 0;
     }
 
     public void NextTurn()
@@ -156,7 +166,7 @@ public class Game
         // testcode
         if(events[0].isActive == false)
         {
-            events[0].ActivateEvent(currentYear, currentMonth, regions["Noord Nederland"]);
+            events[0].ActivateEvent(currentYear, currentMonth, regions["NoordNederland"]);
         }
     }
 
@@ -179,7 +189,8 @@ public class Game
         Pollution pollution = new Pollution(10, 40, 30, 5, 20, 10);
         RegionStatistics regionStatistics = new RegionStatistics(2500, 1000, 5, pollution, 10, 30);
 
-        Region noord_Nederland = new Region("Noord Nederland", regionStatistics, sectors);
+        string[] name = { "Noord Nederland", "The Netherlands North" };
+        Region noord_Nederland = new Region(name, regionStatistics, sectors);
 
         regions.Add("NoordNederland", noord_Nederland);
     }
@@ -194,7 +205,8 @@ public class Game
         Pollution pollution = new Pollution(30, 20, 30, 10, 10, 10);
         RegionStatistics regionStatistics = new RegionStatistics(5000, 500, 5, pollution, 5, 50);
 
-        Region oost_Nederland = new Region("Oost Nederland", regionStatistics, sectors);
+        string[] name = { "Oost Nederland", "The Netherlands East" };
+        Region oost_Nederland = new Region(name, regionStatistics, sectors);
         regions.Add("OostNederland", oost_Nederland);
     }
 
@@ -208,7 +220,8 @@ public class Game
         Pollution pollution = new Pollution(50, 10, 10, 20, 10, 10);
         RegionStatistics regionStatistics = new RegionStatistics(7000, 0, 5, pollution, 0, 60);
 
-        Region zuid_Nederland = new Region("Zuid Nederland", regionStatistics, sectors);
+        string[] name = { "Zuid Nederland", "The Netherlands South" };
+        Region zuid_Nederland = new Region(name, regionStatistics, sectors);
 
         regions.Add("ZuidNederland", zuid_Nederland);
     }
@@ -223,7 +236,8 @@ public class Game
         Pollution pollution = new Pollution(40, 20, 20, 15, 10, 10);
         RegionStatistics regionStatistics = new RegionStatistics(10000, 1000, 5, pollution, 10, 70);
 
-        Region west_Nederland = new Region("West Nederland", regionStatistics, sectors);
+        string[] name = { "West Nederland", "The Netherlands West" };
+        Region west_Nederland = new Region(name, regionStatistics, sectors);
         regions.Add("WestNederland", west_Nederland);
     }
 
@@ -232,44 +246,48 @@ public class Game
     {
         Dictionary<string, RegionSector> sectors = new Dictionary<string, RegionSector>();
 
-        sectors.Add("Huishoudens", new RegionSector("Huishoudens", householdStatistics));
-        sectors.Add("Bedrijven", new RegionSector("Bedrijven", companyStatistics));
-        sectors.Add("Landbouw", new RegionSector("Landbouw", agricultureStatistics));
+        string[] nameHouseholds = { "Huishoudens", "Households" };
+        string[] nameCompanies = { "Bedrijven", "Companies" };
+        string[] nameAgriculture = { "Landbouw", "Agriculture" };
+        sectors.Add("Huishoudens", new RegionSector(nameHouseholds, householdStatistics));
+        sectors.Add("Bedrijven", new RegionSector(nameCompanies, companyStatistics));
+        sectors.Add("Landbouw", new RegionSector(nameAgriculture, agricultureStatistics));
 
         return sectors;
     }
 
     private void GenerateGameEvents()
     {
-        string[] choices = { "Do stuff", "Negotiation", "Do nothing" };
+        string[,] choices = new string[2, 3] {
+        { "optie 1", "optie 2", "optie 3" },
+        {"option 1", "option 2", "option 3" }
+        };
         RegionStatistics[] consequences1 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences2 = new RegionStatistics[choices.Length];
         RegionStatistics[] consequences3 = new RegionStatistics[choices.Length];
-
-        string description;
-
-        description = "dummy event 1";
+        
+        string[] description1 = { "nep event 1", "dummy event 1" };
         consequences1[0] = new RegionStatistics(-1000, 0, -1, new Pollution(0, 0, 0, -1, -1, -1), 0, -1);
         consequences1[1] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, -2, -1, 0), 0, 0);
         consequences1[2] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 1, 1, 1), 0, 0);
         //consequences1[3] = new RegionStatistics(-3000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
-        GameEvent gameEvent1 = new GameEvent(description, 2, choices, consequences1);
+        GameEvent gameEvent1 = new GameEvent(description1, 2, choices, consequences1);
         events.Add(gameEvent1);
 
-        description = "dummy event 2";
+        string[] description2 = { "nep event 2", "dummy event 2" };
         consequences2[0] = new RegionStatistics(-2000, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 2, 0);
         consequences2[1] = new RegionStatistics(-1000, 125, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
         consequences2[2] = new RegionStatistics(0, -250, -1, new Pollution(0, 0, 0, 0, 0, 0), -2, 0);
         //consequences2[3] = new RegionStatistics(-2500, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
-        GameEvent gameEvent2 = new GameEvent(description, 1, choices, consequences2);
+        GameEvent gameEvent2 = new GameEvent(description2, 1, choices, consequences2);
         events.Add(gameEvent2);
 
-        description = "dummy event 3";
+        string[] description3 = { "nep event 3", "dummy event 3" };
         consequences3[0] = new RegionStatistics(3000, 0, 2, new Pollution(0, 0, 0, -2, 0, 0), -1, 1);
         consequences3[1] = new RegionStatistics(1500, 0, 1, new Pollution(0, 0, 0, -1, 0, -1), 0, 1);
         consequences3[2] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, -2);
         //consequences3[3] = new RegionStatistics(-1000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0); //income reduction over duration of research
-        GameEvent gameEvent3 = new GameEvent(description, 3, choices, consequences3);
+        GameEvent gameEvent3 = new GameEvent(description3, 3, choices, consequences3);
         events.Add(gameEvent3);
     }
 }
