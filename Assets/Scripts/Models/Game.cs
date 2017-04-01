@@ -37,25 +37,40 @@ public class Game
         //DisplayRegion(regions[0]);
     }
 
-    public void UpdateTime()
+    public void NextTurn()
     {
-        currentMonth++;
-
-        if (currentMonth > 12)
-        {
-            currentMonth = currentMonth - 12;
-            currentYear++;
-            ExecuteNewYearMethods();
-        }
+        bool isNewYear = UpdateCurrentMonthAndYear();
 
         //bool isNewEvent = ExecuteNewMonthMethods();
         ExecuteNewMonthMethods();
         EventManager.CallChangeMonth();
         //return isNewEvent;
+
+        if (isNewYear)
+            ExecuteNewYearMethods();
+    }
+
+    public bool UpdateCurrentMonthAndYear()
+    {
+        currentMonth++;
+        if (currentMonth > 12)
+        {
+            currentMonth = currentMonth - 12;
+            currentYear++;
+            return true;
+        }
+
+        return false;
     }
 
     private void ExecuteNewMonthMethods()
     {
+        double monthlyIncome = GetMonthlyIncome();
+        gameStatistics.ModifyMoney(monthlyIncome);
+
+        double monthlyPopulation = GetMonthlyPopulation();
+        gameStatistics.ModifyPopulation(monthlyPopulation);
+
         CompletefinishedActions();
         CompleteFinishedEvents();
 
@@ -66,6 +81,24 @@ public class Game
             StartNewEvent();
             EventManager.CallShowEvent();
         }
+    }
+
+    public double GetMonthlyIncome()
+    {
+        double income = 0;
+
+        foreach (Region region in regions.Values)
+        {
+            income += region.statistics.income;
+        }
+
+        return income;
+    }
+
+    public double GetMonthlyPopulation()
+    {
+        double population = gameStatistics.population * 0.005;
+        return population;
     }
 
     public void CompletefinishedActions()
