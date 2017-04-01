@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 
 //This class stores the values of the Regions
@@ -13,6 +14,8 @@ public class Region
     public List<RegionAction> actions { get; private set; }
 
     public Dictionary<string, RegionSector> sectors { get; private set; }
+    public Vector3[] eventPositions;
+
 
     public Region(string[] name, RegionStatistics statistics, Dictionary<string, RegionSector> sectors)
     {
@@ -20,6 +23,11 @@ public class Region
         this.statistics = statistics;
         this.sectors = sectors;
         ImplementSectorValues();
+
+        eventPositions[0] = new Vector3(9, 1, 12);
+        eventPositions[1] = new Vector3(16, 1, 13);
+        eventPositions[2] = new Vector3(13, 1, 8);
+        eventPositions[3] = new Vector3(15, 1, 20);
 
         buildings = new List<Building>();
         actions = new List<RegionAction>();

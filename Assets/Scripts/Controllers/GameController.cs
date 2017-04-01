@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
     public GameObject westNederland;
 
    // private float time;
-
     public bool autoEndTurn = false;
 
     // Use this for initialization

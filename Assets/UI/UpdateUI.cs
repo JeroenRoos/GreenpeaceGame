@@ -116,7 +116,7 @@ public class UpdateUI : MonoBehaviour
     void Update()
     {
         popupController();
-        Debug.Log(taal);
+        //Debug.Log(taal);
     }
 
     void FixedUpdate()
