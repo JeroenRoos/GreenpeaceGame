@@ -69,6 +69,8 @@ public class UpdateUI : MonoBehaviour
     // Tooltip Variables
     private string txtTooltip;
     private string dropdownChoice;
+    string txttooltipPollution;
+
     #endregion
 
     #region Boolean Variables
@@ -366,19 +368,61 @@ public class UpdateUI : MonoBehaviour
         txtTooltip = "Donaties: " + donations + "\nInkomen: " + income;
     }
 
-    public void updateHappinessTooltip()
+    public void updateHappinessTooltip(double happ, int i)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        switch (i)
+        {
+            case 0:
+                txtTooltip = "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + happ.ToString("0.00") + "\n";
+                break;
+            case 1:
+                txtTooltip += "Oost-Nederland: " + happ.ToString("0.00") + "\n";
+                break;
+            case 2:
+                txtTooltip += "West-Nederland: " + happ.ToString("0.00") + "\n";
+                break;
+            case 3:
+                txtTooltip += "Zuid-Nederland: " + happ.ToString("0.00");
+                break;
+        }
     }
 
-    public void updateAwarnessTooltip()
+    public void updateAwarnessTooltip(double awareness, int i)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        switch (i)
+        {
+            case 0:
+                txtTooltip = "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 1:
+                txtTooltip += "Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 2:
+                txtTooltip += "West-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 3:
+                txtTooltip += "Zuid-Nederland: " + awareness.ToString("0.00");
+                break;
+        }
     }
 
-    public void updatePollutionTooltip()
+    public void updatePollutionTooltip(double pollution, int i)//double[] arrRegionPollution)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        switch (i)
+        {
+            case 0:
+                txtTooltip = "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 1:
+                txtTooltip += "Oost-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 2:
+                txtTooltip += "West-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 3:
+                txtTooltip += "Zuid-Nederland: " + pollution.ToString("0.00");
+                break;
+        }
     }
 
     public void updateEnergyTooltip(double green, double fossil, double nuclear)
@@ -457,7 +501,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionName.text = regio.name;
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
-        txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.0");
+        txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.00");
         txtRegionPollutionAir.text = regio.statistics.pollution.airPollution.ToString();
         txtRegionPollutionNature.text = regio.statistics.pollution.naturePollution.ToString();
         txtRegionPollutionWater.text = regio.statistics.pollution.waterPollution.ToString();

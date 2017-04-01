@@ -60,15 +60,16 @@ public class GameController : MonoBehaviour
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         updateUI.updateHappiness(game.gameStatistics.happiness);
 
-        /*
-        foreach (Region region in game.regions.Values)
+        
+        /* foreach (Region region in game.regions.Values)
         {
+            region.statistics.
             foreach (RegionSector sector in region.sectors.Values)
             {
                 sector.statistics.
             }
-        }
-        */
+        } */
+        
     }
     
 
@@ -78,19 +79,57 @@ public class GameController : MonoBehaviour
             updateUI.updateMoneyTooltip(game.gameStatistics.donations, game.gameStatistics.income);
 
         if (updateUI.getBtnHappinessHover())
-            updateUI.updateHappinessTooltip();
+            updateHappiness();
 
         if (updateUI.getBtnAwarenessHover())
-            updateUI.updateAwarnessTooltip();
+            updateAwareness();
 
         if (updateUI.getBtnPollutionHover())
-            updateUI.updatePollutionTooltip();
+            updatePollution();
 
         if (updateUI.getBtnEnergyHover())
             updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
             game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
 
-        
+            
+    }
+
+    void updateHappiness()
+    {
+        int i = 0;
+
+        foreach (Region region in game.regions.Values)
+        {
+            // Send average pollution for each region, determine the region with i
+            //updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
+            updateUI.updateHappinessTooltip(game.gameStatistics.happiness, i);
+            i++;
+        }
+    }
+
+    void updateAwareness()
+    {
+        int i = 0;
+
+        foreach (Region region in game.regions.Values)
+        {
+            // Send average pollution for each region, determine the region with i
+            //updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
+            updateUI.updateAwarnessTooltip(game.gameStatistics.ecoAwareness, i);
+            i++;
+        }
+    }
+
+    void updatePollution()
+    {
+        int i = 0;
+
+        foreach (Region region in game.regions.Values)
+        {
+            // Send average pollution for each region, determine the region with i
+            updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
+            i++;
+        }
     }
 
     void updateUIPopups()
@@ -112,7 +151,7 @@ public class GameController : MonoBehaviour
         {
             // Send the income for each region, use i to determine the region
             updateUI.updateOrganizationScreenUI(region.statistics.income, i);
-            i++;
+            i++;            
         }
     }
 
