@@ -12,6 +12,7 @@ public class GameEvent
     public int[] eventDuration { get; private set; } //in months
     public string[,] choices { get; private set; }
     public RegionStatistics[] consequences { get; private set; }
+    public RegionStatistics onStartConsequence { get; private set; }
     public double[] eventChoiceMoneyCost { get; private set; }
     public int eventCooldown { get; private set; }
     public RegionStatistics pickedChoice { get; private set; }
@@ -23,14 +24,15 @@ public class GameEvent
 
     public Region region { get; private set; }
 
-    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices,
-                    RegionStatistics[] consequences, double[] eventChoiceMoneyCost, int eventCooldown)
+    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
+                    RegionStatistics onStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown)
     {
         this.name = name;
         this.description = description;
         this.eventDuration = eventDuration;
         this.choices = choices;
         this.consequences = consequences;
+        this.onStartConsequence = onStartConsequence;
         this.eventChoiceMoneyCost = eventChoiceMoneyCost;
         this.eventCooldown = eventCooldown;
     }
@@ -42,7 +44,6 @@ public class GameEvent
         this.region = region;
 
         isActive = true;
-        //DisplayEvent();
     }
 
     public void CompleteEvent()
@@ -51,10 +52,23 @@ public class GameEvent
         isActive = false;
     }
 
-    public void SetPickedChoice(int i) //string = Choice (class)
+    public void SetPickedChoice(int i, Game game)
     {
-        this.pickedChoice = consequences[i];
-        this.pickedChoiceNumber = i;
+        if (game.gameStatistics.money > eventChoiceMoneyCost[i])
+        {
+            game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i]);
+            region.ImplementStatisticValues(onStartConsequences[i], true);
+            pickedChoice = consequences[i];
+            pickedChoiceNumber = i;
+
+            if (eventDuration[i] == 0)
+                CompleteEvent();
+        }
+
+        else
+        {
+            //not enough money popup message?
+        }
     }
 }
 
