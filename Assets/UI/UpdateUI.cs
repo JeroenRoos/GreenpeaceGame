@@ -592,11 +592,15 @@ public class UpdateUI : MonoBehaviour
     // Goes to this method from DropDownTrigger in Inspector
     public void getDropDownValue()
     {
-        for (int i = 1; i <= dropdownRegio.options.Count + 1; i++)
+        for (int i = 0; i <= dropdownRegio.options.Count; i++)
         {
             if (dropdownRegio.value == i)
+            {
                 dropdownChoice = dropdownRegio.options[i].text;
+                Debug.Log(dropdownRegio.options[i].text);
+            }
         }
+        Debug.Log(dropdownChoice);
 
         // Debug.Log("getDropDownValue: " + regio.name);
 
@@ -612,10 +616,10 @@ public class UpdateUI : MonoBehaviour
             if (action.description == dropdownChoice)
             {
                 regioAction = action;
-                txtRegionActionName.text = action.description;
-                txtRegionActionCost.text = action.actionCosts.ToString();
-                txtRegionActionDuration.text = action.actionDuration.ToString();
-                txtRegionActionConsequences.text = action.consequences.ToString();
+                txtRegionActionName.text = regioAction.description;
+                txtRegionActionCost.text = regioAction.actionCosts.ToString();
+                txtRegionActionDuration.text = regioAction.actionDuration.ToString();
+                txtRegionActionConsequences.text = regioAction.consequences.ToString();
 
                 btnDoActionRegionMenu.gameObject.SetActive(true);
             }
@@ -626,7 +630,7 @@ public class UpdateUI : MonoBehaviour
     {
         // Debug.Log("btnDoActionRegionMenuClick: " + regio.name);
         //Debug.Log("Year: " + regioAction.startYear.GetValueOrDefault() + " Month: " + regioAction.startMonth.GetValueOrDefault());
-
+        
         regio.StartAction(regioAction, game.currentYear, game.currentMonth, this.game);
 
         updateRegionTextValues();
