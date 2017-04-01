@@ -41,16 +41,16 @@ public class TestBot : MonoBehaviour {
         Debug.Log("Event occured");
         int chosenOption;
 
-        foreach (GameEvent gameEvent in gameController.game.events)
-        {
-            if(gameEvent.isActive == true)
-            {
-                chosenOption = UnityEngine.Random.Range(0, 3);
-                //chosenOption = 1;
-                Debug.Log("Choose option " + chosenOption);
-                gameEvent.SetPickedChoice(chosenOption, gameController.game);
-            }
-        }
+        //foreach (GameEvent gameEvent in gameController.game.events)
+        //{
+        //    if(gameEvent.isActive == true)
+        //    {
+        //        chosenOption = UnityEngine.Random.Range(0, 3);
+        //        //chosenOption = 1;
+        //        Debug.Log("Choose option " + chosenOption);
+        //        gameEvent.SetPickedChoice(chosenOption, gameController.game);
+        //    }
+        //}
 
     }
 
