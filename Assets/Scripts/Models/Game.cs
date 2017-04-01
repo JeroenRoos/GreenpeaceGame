@@ -29,7 +29,7 @@ public class Game
 
         GenerateRegions();
         GenerateGameEvents();
-
+        gameStatistics.UpdateRegionalAvgs(this);
 
         currentYear = 1;
         currentMonth = 1;
@@ -48,6 +48,8 @@ public class Game
 
         if (isNewYear)
             ExecuteNewYearMethods();
+        
+        gameStatistics.UpdateRegionalAvgs(this);
     }
 
     public bool UpdateCurrentMonthAndYear()
@@ -80,6 +82,14 @@ public class Game
         {
             StartNewEvent();
             EventManager.CallShowEvent();
+        }
+    }
+
+    private void ExecuteNewYearMethods()
+    {
+        foreach (Region region in regions.Values)
+        {
+            region.statistics.mutateTimeBasedStatistics();
         }
     }
 
@@ -147,14 +157,6 @@ public class Game
         if(events[0].isActive == false)
         {
             events[0].ActivateEvent(currentYear, currentMonth, regions["Noord Nederland"]);
-        }
-    }
-
-    private void ExecuteNewYearMethods()
-    {
-        foreach (KeyValuePair<string, Region> region in regions)
-        {
-            region.Value.statistics.mutateTimeBasedStatistics();
         }
     }
 

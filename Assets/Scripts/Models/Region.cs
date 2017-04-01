@@ -26,18 +26,21 @@ public class Region
         GenerateActions();
     }
 
-    public void StartAction(string description, int currentYear, int currentMonth) //methode moet van UI aangeroepen worden
+    public void StartAction(RegionAction action, int currentYear, int currentMonth, Game game) //methode moet van UI aangeroepen worden
     {
-        foreach (RegionAction action in actions)
+        if (game.gameStatistics.money > action.actionMoneyCost)
         {
-            if (action.description == description)
-            {
-                ImplementStatisticValues(action.actionCosts, true);
-                action.ActivateAction(currentYear, currentMonth);
-                if (action.actionDuration == 0)
-                    action.CompleteAction();
-                break;
-            }
+            game.gameStatistics.ModifyMoney(action.actionMoneyCost);
+            ImplementStatisticValues(action.actionCosts, true);
+            action.ActivateAction(currentYear, currentMonth);
+
+            if (action.actionDuration == 0)
+                action.CompleteAction();
+        }
+
+        else
+        {
+            //not enough money popup message?
         }
     }
     
@@ -137,13 +140,13 @@ public class Region
         description = "dummy action 1";
         RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -1, -1), 1, 0);
         RegionStatistics actionCost1 = new RegionStatistics(-2000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action1 = new RegionAction(description, consequence1, actionCost1, 2, 3);
+        RegionAction action1 = new RegionAction(description, consequence1, actionCost1, 2, 3, 2000);
         actions.Add(action1);
 
         description = "dummy action 2";
         RegionStatistics consequence2 = new RegionStatistics(500, 0, 1, new Pollution(0, 0, 0, 0, 0, 0), 0, 2);
         RegionStatistics actionCost2 = new RegionStatistics(-3000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action2 = new RegionAction(description, consequence2, actionCost2, 2, 3);
+        RegionAction action2 = new RegionAction(description, consequence2, actionCost2, 2, 3, 2000);
         actions.Add(action2);
     }
 }

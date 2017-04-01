@@ -10,6 +10,7 @@ public class GameEvent
     public string description { get; private set; }
     public string[] choices { get; private set; }
     public RegionStatistics[] consequences { get; private set; }
+    public double[] eventChoiceMoneyCost { get; private set; }
     public RegionStatistics pickedChoice { get; private set; }
     public int pickedChoiceNumber { get; private set; }
     public List<GameEvent> previousEvents { get; private set; }
