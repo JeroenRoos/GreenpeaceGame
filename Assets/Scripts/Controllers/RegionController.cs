@@ -13,7 +13,7 @@ public class RegionController : MonoBehaviour {
 
     public void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             gameController.OnRegionClick(gameObject);
         }
