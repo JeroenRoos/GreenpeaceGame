@@ -24,6 +24,7 @@ public class Region
         this.sectors = sectors;
         ImplementSectorValues();
 
+        eventPositions = new Vector3[4];
         eventPositions[0] = new Vector3(9, 1, 12);
         eventPositions[1] = new Vector3(16, 1, 13);
         eventPositions[2] = new Vector3(13, 1, 8);
