@@ -9,7 +9,12 @@ public class UpdateUI : MonoBehaviour
     #region UI Elements
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
-    public GUIStyle tooltipStyle = new GUIStyle();
+    private GUIStyle tooltipStyle = new GUIStyle();
+    Region regio;
+    RegionAction regioAction;
+    Game game;
+
+    public Dropdown dropdownRegio;
 
     // Text Main UI
     public Text txtMoney;
@@ -36,6 +41,11 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionFarming;
     public Text txtRegionHouseholds;
     public Text txtRegionCompanies;
+    public Text txtRegionActionName;
+    public Text txtRegionActionDuration;
+    public Text txtRegionActionCost;
+    public Text txtRegionActionConsequences;
+    public Text txtActiveActions;
 
 
     // Buttons 
@@ -48,6 +58,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnEnergy;
     public Button btnPollution;
     public Button btnPopulation;
+    public Button btnDoActionRegionMenu;
 
 
     // Canvas 
@@ -55,22 +66,26 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasOrganizationPopup;
     public Canvas canvasTimelinePopup;
     public Canvas canvasRegioPopup;
-    #endregion
 
     // Tooltip Variables
     private string txtTooltip;
+    private string dropdownChoice;
+    string txttooltipPollution;
+
+    #endregion
 
     #region Boolean Variables
     // Booleans
-    public bool btnMoneyHoverCheck;
-    public bool btnHappinessHoverCheck;
-    public bool btnAwarenessHoverCheck;
-    public bool btnPollutionHoverCheck;
-    public bool btnEnergyHoverCheck;
-    public bool btnOrganizationCheck;
-    public bool btnMenuCheck;
-    public bool btnTimelineCheck;
-    public bool popupActive;
+    private bool btnMoneyHoverCheck;
+    private bool btnHappinessHoverCheck;
+    private bool btnAwarenessHoverCheck;
+    private bool btnPollutionHoverCheck;
+    private bool btnEnergyHoverCheck;
+    private bool btnOrganizationCheck;
+    private bool btnMenuCheck;
+    private bool btnTimelineCheck;
+    private bool popupActive;
+    private bool tooltipActive;
     #endregion
 
     #region Start(), Update(), FixedUpdate()
@@ -105,6 +120,8 @@ public class UpdateUI : MonoBehaviour
         btnEnergy.GetComponent<Button>();
         btnPollution.GetComponent<Button>();
         btnPopulation.GetComponent<Button>();
+        //btnDoActionRegionMenu.gameObject.SetActive(false);
+
 
         setBooleans();
     }
@@ -119,8 +136,8 @@ public class UpdateUI : MonoBehaviour
         btnOrganizationCheck = false;
         btnTimelineCheck = false;
         btnMenuCheck = false;
-
         popupActive = false;
+        tooltipActive = false;
     }
 
     void initCanvas()
@@ -137,38 +154,87 @@ public class UpdateUI : MonoBehaviour
         canvasRegioPopup.GetComponent<Canvas>();
         canvasRegioPopup.gameObject.SetActive(false);
     }
+
+    public void LinkGame(Game game)
+    {
+        this.game = game;
+    }
     #endregion
 
     #region Code for controlling popups
     void popupController()
     {
+        // Close active popup with Escape / Open Menu popup with Escape if no popup is active
         if (Input.GetKeyUp(KeyCode.Escape))
+            closeWithEscape();
+
+        // Open and close Organization popup with O
+        else if (Input.GetKeyUp(KeyCode.O))
+            controllerOrganizationHotkey();
+
+        // Open and close Timeline popup with T
+        else if (Input.GetKeyUp(KeyCode.T))
+            controllerTimelinePopup();
+    }
+
+    // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
+    void closeWithEscape()
+    {
+        if (!popupActive)
         {
-            if (!popupActive)
-            {
-                canvasMenuPopup.gameObject.SetActive(true);
-                popupActive = true;
-            }
-            else if (canvasOrganizationPopup.gameObject.activeSelf)
-            {
-                canvasOrganizationPopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
-            else if (canvasMenuPopup.gameObject.activeSelf)
-            {
-                canvasMenuPopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
-            else if (canvasTimelinePopup.gameObject.activeSelf)
-            {
-                canvasTimelinePopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
-            else if (canvasRegioPopup.gameObject.activeSelf)
-            {
-                canvasRegioPopup.gameObject.SetActive(false);
-                popupActive = false;
-            }
+            canvasMenuPopup.gameObject.SetActive(true);
+            popupActive = true;
+        }
+        else if (canvasOrganizationPopup.gameObject.activeSelf)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasMenuPopup.gameObject.activeSelf)
+        {
+            canvasMenuPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasTimelinePopup.gameObject.activeSelf)
+        {
+            canvasTimelinePopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasRegioPopup.gameObject.activeSelf)
+        {
+            canvasRegioPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+    }
+
+
+    // Open and close the Organization popup with the O key
+    void controllerOrganizationHotkey()
+    {
+        if (!popupActive)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(true);
+            popupActive = true;
+        }
+        else if (canvasOrganizationPopup.gameObject.activeSelf)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+    }
+
+    // Open and close the Timeline popup with the T key
+    void controllerTimelinePopup()
+    {
+        if (!popupActive)
+        {
+            canvasTimelinePopup.gameObject.SetActive(true);
+            popupActive = true;
+        }
+        else if (canvasTimelinePopup.gameObject.activeSelf)
+        {
+            canvasTimelinePopup.gameObject.SetActive(false);
+            popupActive = false;
         }
     }
     #endregion
@@ -234,7 +300,7 @@ public class UpdateUI : MonoBehaviour
         string[] arrMonths = new string[12]
             { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" };
 
-        txtDate.text = arrMonths[month] + " - " + year.ToString();
+        txtDate.text = arrMonths[month] + " - " + (year + 2019).ToString();
     }
 
     // Update Money based on value
@@ -286,6 +352,8 @@ public class UpdateUI : MonoBehaviour
             // Color based on third argument (value / 100)
             Color lerpColor = Color.Lerp(Color.green, Color.red, f);
             cb.normalColor = lerpColor;
+            cb.highlightedColor = lerpColor;
+            cb.pressedColor = lerpColor;
             btn.colors = cb;
         }
         else
@@ -293,30 +361,74 @@ public class UpdateUI : MonoBehaviour
             // Color based on third argument (value / 100)
             Color lerpColor = Color.Lerp(Color.red, Color.green, f);
             cb.normalColor = lerpColor;
+            cb.highlightedColor = lerpColor;
+            cb.pressedColor = lerpColor;
             btn.colors = cb;
         }
     }
     #endregion
 
     #region Update UI in Tooltips
-    public void updateMoneyTooltip()
+    public void updateMoneyTooltip(double donations, double income)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        txtTooltip = "Donaties: " + donations + "\nInkomen: " + income;
     }
 
-    public void updateHappinessTooltip()
+    public void updateHappinessTooltip(double happ, int i)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        switch (i)
+        {
+            case 0:
+                txtTooltip = "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + happ.ToString("0.00") + "\n";
+                break;
+            case 1:
+                txtTooltip += "Oost-Nederland: " + happ.ToString("0.00") + "\n";
+                break;
+            case 2:
+                txtTooltip += "West-Nederland: " + happ.ToString("0.00") + "\n";
+                break;
+            case 3:
+                txtTooltip += "Zuid-Nederland: " + happ.ToString("0.00");
+                break;
+        }
     }
 
-    public void updateAwarnessTooltip()
+    public void updateAwarnessTooltip(double awareness, int i)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        switch (i)
+        {
+            case 0:
+                txtTooltip = "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 1:
+                txtTooltip += "Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 2:
+                txtTooltip += "West-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 3:
+                txtTooltip += "Zuid-Nederland: " + awareness.ToString("0.00");
+                break;
+        }
     }
 
-    public void updatePollutionTooltip()
+    public void updatePollutionTooltip(double pollution, int i)//double[] arrRegionPollution)
     {
-        txtTooltip = "Juiste waardes moeten nog gemaakt worden!";
+        switch (i)
+        {
+            case 0:
+                txtTooltip = "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 1:
+                txtTooltip += "Oost-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 2:
+                txtTooltip += "West-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 3:
+                txtTooltip += "Zuid-Nederland: " + pollution.ToString("0.00");
+                break;
+        }
     }
 
     public void updateEnergyTooltip(double green, double fossil, double nuclear)
@@ -356,36 +468,46 @@ public class UpdateUI : MonoBehaviour
         if (i == 3)
             totalOrgBank = 0;
     }
+    #endregion
 
-    void checkWhichRegion(Region regio)
+
+    #region Code for the Region Screen
+    public void regionClick(Region region)
     {
-        if (regio.name == "Noord Nederland")
+        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
+            && !btnMenuCheck && !btnTimelineCheck)
         {
-            txtRegionName.text = "Noord-Nederland";
-            updateRegionScreenUI(regio);
-        }
-        if (regio.name == "Oost Nederland")
-        {
-            txtRegionName.text = "Oost-Nederland";
-            updateRegionScreenUI(regio);
-        }
-        if (regio.name == "Zuid Nederland")
-        {
-            txtRegionName.text = "Zuid-Nederland";
-            updateRegionScreenUI(regio);
-        }
-        if (regio.name == "West Nederland")
-        {
-            txtRegionName.text = "West-Nederland";
-            updateRegionScreenUI(regio);
+            regio = null;
+            regio = region;
+
+            canvasRegioPopup.gameObject.SetActive(true);
+            popupActive = true;
+
+            updateRegionScreenUI();
         }
     }
 
-    void updateRegionScreenUI(Region regio)
+    void updateRegionScreenUI()
     {
+        // Debug.Log("UpdateRegionScreenUI: " + regio.name);
+        updateRegionTextValues();
+
+        foreach (RegionAction action in regio.actions)
+        {
+            // ... 
+        }
+
+        // Set the right actions in the dropdown
+        initDropDownRegion();
+    }
+
+    void updateRegionTextValues()
+    {
+        // Debug.Log("updateRegionTextValues: " + regio.name);
+        txtRegionName.text = regio.name;
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
-        txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.0");
+        txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.00");
         txtRegionPollutionAir.text = regio.statistics.pollution.airPollution.ToString();
         txtRegionPollutionNature.text = regio.statistics.pollution.naturePollution.ToString();
         txtRegionPollutionWater.text = regio.statistics.pollution.waterPollution.ToString();
@@ -393,47 +515,97 @@ public class UpdateUI : MonoBehaviour
         txtRegionFarming.text = "Comming soon!";
         txtRegionCompanies.text = "Comming soon!";
         // Ik ga ervanuit dat cityEviroment huishoudens is
-        txtRegionHouseholds.text = regio.statistics.cityEnvironment.ToString(); 
-        
-        
+        txtRegionHouseholds.text = regio.statistics.cityEnvironment.ToString();
+
+        // Set text of actions to empty
+        txtRegionActionConsequences.text = "";
+        txtRegionActionCost.text = "";
+        txtRegionActionDuration.text = "";
+        txtRegionActionName.text = "";
+
+        updateActiveActions();
     }
 
-    void updateRegionScreenUIOost(Region regio)
+    void updateActiveActions()
     {
-
-    }
-
-    void updateRegionScreenUIZuid(Region regio)
-    {
-
-    }
-
-    void updateRegionScreenUIWest(Region regio)
-    {
-
-    }
-    #endregion
-
-    #region Code for activating popups
-    public void regionClick(Region region)
-    {
-        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck 
-            && !btnMenuCheck && !btnTimelineCheck)
+        string activeActionsRegio = "";
+        foreach (RegionAction action in regio.actions)
         {
-            canvasRegioPopup.gameObject.SetActive(true);
-            Debug.Log("Popup Regio active!");
-            popupActive = true;
+            if (action.isActive)
+            {
+                Debug.Log(action.description + " is active!");
+                activeActionsRegio += action.description + "\n";
+            }
 
-            checkWhichRegion(region);
+            txtActiveActions.text = activeActionsRegio;
         }
     }
 
+    void initDropDownRegion()
+    {
+        // Debug.Log("initDropDownRegion: " + regio.name);
+        dropdownRegio.ClearOptions();
+
+        foreach (RegionAction action in regio.actions)
+        {
+            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.description });
+        }
+    }
+
+    // Goes to this method from DropDownTrigger in Inspector
+    public void getDropDownValue()
+    {
+        for (int i = 1; i <= dropdownRegio.options.Count + 1; i++)
+        {
+            //if (dropdownRegio.value == 0)
+             //   dropdownChoice = dropdownRegio.options[0].text;
+            if (dropdownRegio.value == i)
+                dropdownChoice = dropdownRegio.options[i].text;
+        }
+
+        // Debug.Log("getDropDownValue: " + regio.name);
+
+        // Shows the right information with the chosen option in dropdown
+        showInfoDropDownRegion();
+    }
+
+    void showInfoDropDownRegion()
+    {
+        // Debug.Log("showInfoDropDownRegion: " + regio.name);
+        foreach (RegionAction action in regio.actions)
+        {
+            if (action.description == dropdownChoice)
+            {
+                regioAction = action;
+                txtRegionActionName.text = action.description;
+                txtRegionActionCost.text = action.actionCosts.ToString();
+                txtRegionActionDuration.text = action.actionDuration.ToString();
+                txtRegionActionConsequences.text = action.consequences.ToString();
+
+                btnDoActionRegionMenu.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void btnDoActionRegionMenuClick()
+    {
+        // Debug.Log("btnDoActionRegionMenuClick: " + regio.name);
+        //Debug.Log("Year: " + regioAction.startYear.GetValueOrDefault() + " Month: " + regioAction.startMonth.GetValueOrDefault());
+
+        regio.StartAction(regioAction, game.currentYear, game.currentMonth, this.game);
+
+        updateRegionTextValues();
+        btnDoActionRegionMenu.gameObject.SetActive(false);
+    }
+    #endregion
+
+
+    #region Code for activating popups
     public void btnTimelineClick()
     {
         if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)
         {
             canvasTimelinePopup.gameObject.SetActive(true);
-            Debug.Log("Popup Timeline active!");
             popupActive = true;
         }
     }
@@ -443,21 +615,16 @@ public class UpdateUI : MonoBehaviour
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(true);
-            Debug.Log("Popup Organization active!");
             popupActive = true;
         }
     }
-
-    // Method that makes popup appear/disappear
+    
     public void btnMenuClick()
     {
         if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
         {
             canvasMenuPopup.gameObject.SetActive(true);
-            Debug.Log("Popup Menu active!");
             popupActive = true;
-
-            
         }
     }
     #endregion
@@ -467,12 +634,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnMoneyEnter()
     {
         btnMoneyHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnMoney
     public void BtnMoneyExit()
     {
         btnMoneyHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -480,12 +649,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnHappinessEnter()
     {
         btnHappinessHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnHappiness
     public void BtnHappinessExit()
     {
         btnHappinessHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -493,12 +664,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnAwarenessEnter()
     {
         btnAwarenessHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnAwareness
     public void BtnAwarenessExit()
     {
         btnAwarenessHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -506,12 +679,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnPollutionEnter()
     {
         btnPollutionHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnPollution
     public void BtnPollutionExit()
     {
         btnPollutionHoverCheck = false;
+        tooltipActive = false;
     }
 
 
@@ -519,12 +694,14 @@ public class UpdateUI : MonoBehaviour
     public void BtnEnergyEnter()
     {
         btnEnergyHoverCheck = true;
+        tooltipActive = true;
     }
 
     // OnExit BtnEnergy
     public void BtnEnergyExit()
     {
         btnEnergyHoverCheck = false;
+        tooltipActive = false;
     }
 
     public void btnOrganizationEnter()
@@ -534,7 +711,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnOrganzationExit()
     {
-        btnMenuCheck = false;
+        btnOrganizationCheck = false;
     }
 
     public void btnMenuEnter()
@@ -544,7 +721,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnMenuExit()
     {
-        btnOrganizationCheck = false;
+        btnMenuCheck = false;
     }
 
     public void btnTimelineEnter()
@@ -558,94 +735,41 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Return Boolean Values
+    public bool getBtnMoneyHover()
+    {
+        return btnMoneyHoverCheck;
+    }
 
+    public bool getBtnHappinessHover()
+    {
+        return btnHappinessHoverCheck;
+    }
 
+    public bool getBtnAwarenessHover()
+    {
+        return btnAwarenessHoverCheck;
+    }
 
+    public bool getBtnPollutionHover()
+    {
+        return btnPollutionHoverCheck;
+    }
 
+    public bool getBtnEnergyHover()
+    {
+        return btnEnergyHoverCheck;
+    }
 
-    /*        Vector3 v3;
+    public bool getPopupActive()
+    {
+        return popupActive;
+    }
 
-            Color backColor = new Color();
-            Color txtColor = new Color();
-            string txtPopup = "";
-
-            ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
-            ColorUtility.TryParseHtmlString("#05001a", out txtColor);
-
-            Debug.Log("Arrived in Tooltip Money!");
-            v3 = btnMoney.gameObject.transform.position;
-            txtPopup = "This is a tooltip for Money stats";
-            GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
-            GUI.backgroundColor = backColor;
-
-            GUI.Label(new Rect(10, 10, 100, 100), txtPopup);
-            //txtPopup.color = txtColor;*/
-
-    /*  Use this code when OnPointerEnter works!
-        Vector3 v3;
-        Text txtPopup = null;
-        Color backColor = new Color();
-        Color txtColor = new Color();
-
-        ColorUtility.TryParseHtmlString("#ccac6f", out backColor);
-        ColorUtility.TryParseHtmlString("#05001a", out txtColor);
-
-        GameObject obj = eventData.selectedObject;
-
-        if (eventData.pointerEnter.gameObject == objBtnMenu)
-            Debug.Log("Arrived in 1st Tooltip Menu!");
-
-        if (eventData.pointerEnter.gameObject == btnMenu.gameObject)
-            Debug.Log("Arrived in 2nd Tooltip Menu!");
-
-        if (eventData.pointerEnter == objBtnMenu)
-            Debug.Log("Arrived in 3rd Tooltip Menu!");
-
-        if (eventData.pointerEnter == btnMenu)
-            Debug.Log("Arrived in 4th Tooltip Menu!");
-
-        if (eventData.pointerEnter == btnMenu.gameObject)
-            Debug.Log("Arrived in 5th Tooltip Menu!");
-
-        if (eventData.pointerEnter.Equals(btnMenu))
-            Debug.Log("Arrived in 6th Tooltip Menu!");
-
-        if (obj == btnMenu.gameObject)
-            Debug.Log("Arrived in 7th Tooltip Menu!");
-
-        /* Make tooltip appear
-        if (eventData.pointerEnter.gameObject == objBtnMoney)//btnMoney.gameObject)
-        {
-            Debug.Log("Arrived in Tooltip Money!");
-            v3 = btnMoney.gameObject.transform.position;
-            txtPopup.text = "This is a tooltip for Money stats";
-            GUI.Box(new Rect(v3.x, (v3.y - 25), 200, 100), "Tooltip Money");
-            GUI.backgroundColor = backColor;
-
-            GUI.Label(new Rect(10, 10, 100, 100), txtPopup.text);
-            txtPopup.color = txtColor;
-        }
-        if (eventData.pointerEnter == btnHappiness)
-        {
-
-        }
-        if (eventData.pointerEnter == btnAwareness)
-        {
-
-        }
-        if (eventData.pointerEnter == btnEnergy)
-        {
-
-        }
-        if (eventData.pointerEnter == btnPollution)
-        {
-
-        }
-        if (eventData.pointerEnter == btnPopulation)
-        {
-
-        }
-        */
+    public bool getTooltipActive()
+    {
+        return tooltipActive;
+    }
+    #endregion
 }
-
 

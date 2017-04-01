@@ -26,18 +26,21 @@ public class Region
         GenerateActions();
     }
 
-    public void StartAction(string description, int currentYear, int currentMonth) //methode moet van UI aangeroepen worden
+    public void StartAction(RegionAction action, int currentYear, int currentMonth, Game game) //methode moet van UI aangeroepen worden
     {
-        foreach (RegionAction action in actions)
+        if (game.gameStatistics.money > action.actionMoneyCost)
         {
-            if (action.description == description)
-            {
-                ImplementStatisticValues(action.actionCosts, true);
-                action.ActivateAction(currentYear, currentMonth);
-                if (action.actionDuration == 0)
-                    action.CompleteAction();
-                break;
-            }
+            game.gameStatistics.ModifyMoney(action.actionMoneyCost);
+            ImplementStatisticValues(action.actionCosts, true);
+            action.ActivateAction(currentYear, currentMonth);
+
+            if (action.actionDuration == 0)
+                action.CompleteAction();
+        }
+
+        else
+        {
+            //not enough money popup message?
         }
     }
     
@@ -45,7 +48,7 @@ public class Region
     {
         foreach (RegionSector sector in sectors.Values)
         {
-            statistics.changeHappiness(sector.statistics.happiness);
+            statistics.ChangeHappiness(sector.statistics.happiness);
             statistics.ChangeEcoAwareness(sector.statistics.ecoAwareness);
             statistics.ChangeProsperity(sector.statistics.prosperity);
             statistics.pollution.ChangeAirPollutionMutation(sector.statistics.airPollutionContribution);
@@ -105,7 +108,7 @@ public class Region
         {
             this.statistics.ChangeIncome(statistics.income);
             this.statistics.ChangeDonations(statistics.donations);
-            this.statistics.changeHappiness(statistics.happiness);
+            this.statistics.ChangeHappiness(statistics.happiness);
             this.statistics.ChangeEcoAwareness(statistics.ecoAwareness);
             this.statistics.ChangeProsperity(statistics.prosperity);
 
@@ -119,7 +122,7 @@ public class Region
         {
             this.statistics.ChangeIncome(0 - statistics.income);
             this.statistics.ChangeDonations(0 - statistics.donations);
-            this.statistics.changeHappiness(0 - statistics.happiness);
+            this.statistics.ChangeHappiness(0 - statistics.happiness);
             this.statistics.ChangeEcoAwareness(0 - statistics.ecoAwareness);
             this.statistics.ChangeProsperity(0 - statistics.prosperity);
 
@@ -137,13 +140,13 @@ public class Region
         description = "dummy action 1";
         RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -1, -1), 1, 0);
         RegionStatistics actionCost1 = new RegionStatistics(-2000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action1 = new RegionAction(description, consequence1, actionCost1, 2, 3);
+        RegionAction action1 = new RegionAction(description, consequence1, actionCost1, 2, 3, 2000);
         actions.Add(action1);
 
         description = "dummy action 2";
         RegionStatistics consequence2 = new RegionStatistics(500, 0, 1, new Pollution(0, 0, 0, 0, 0, 0), 0, 2);
         RegionStatistics actionCost2 = new RegionStatistics(-3000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action2 = new RegionAction(description, consequence2, actionCost2, 2, 3);
+        RegionAction action2 = new RegionAction(description, consequence2, actionCost2, 2, 3, 2000);
         actions.Add(action2);
     }
 }

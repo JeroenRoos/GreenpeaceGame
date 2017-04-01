@@ -16,12 +16,19 @@ public class SectorStatistics
     public SectorStatistics(double happiness, double ecoAwareness, double prosperity, double airPollutionContribution,
                             double naturePollutionContribution, double waterPollutionContribution)
     {
-        this.happiness = happiness;
-        this.ecoAwareness = ecoAwareness;
-        this.prosperity = prosperity;
-        this.airPollutionContribution = airPollutionContribution;
-        this.naturePollutionContribution = naturePollutionContribution;
-        this.waterPollutionContribution = waterPollutionContribution;
+        this.happiness = 0;
+        this.ecoAwareness = 0;
+        this.prosperity = 0;
+        this.airPollutionContribution = 0;
+        this.naturePollutionContribution = 0;
+        this.waterPollutionContribution = 0;
+
+        ModifyHappiness(happiness);
+        ModifyEcoAwareness(ecoAwareness);
+        ModifyProsperity(prosperity);
+        ModifyAirPollutionContribution(airPollutionContribution);
+        ModifyNaturePollutionContribution(naturePollutionContribution);
+        ModifyWaterPollutionContribution(waterPollutionContribution);
     }
 
     //happiness = prosperity - pollution *formule*

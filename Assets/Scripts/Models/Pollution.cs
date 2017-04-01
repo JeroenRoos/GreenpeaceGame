@@ -23,9 +23,13 @@ public class Pollution
         this.naturePollution = naturePollution;
         this.waterPollution = waterPollution;
 
-        this.airPollutionIncrease = airPollutionIncrease;
-        this.naturePollutionIncrease = naturePollutionIncrease;
-        this.waterPollutionIncrease = waterPollutionIncrease;
+        this.airPollutionIncrease = 0;
+        this.naturePollutionIncrease = 0;
+        this.waterPollutionIncrease = 0;
+
+        ChangeAirPollutionMutation(airPollutionIncrease);
+        ChangeNaturePollutionMutation(naturePollutionIncrease);
+        ChangeWaterPollutionMutation(waterPollutionIncrease);
     }
     
     public Pollution()

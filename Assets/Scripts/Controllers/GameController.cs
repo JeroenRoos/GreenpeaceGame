@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     {
         game = new Game();
         updateUI = GetComponent<UpdateUI>();
+        updateUI.LinkGame(game);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
@@ -34,16 +35,19 @@ public class GameController : MonoBehaviour
     void Update () {
         if (Input.GetKeyDown(KeyCode.Return) || autoEndTurn)
         {
-            game.UpdateTime();
+            game.NextTurn();
         }
 
         // Update the main screen UI (Icons and date)
         updateUIMainScreen();
+
         // Update the UI in popup screen
-        updateUIPopups();
+        if (updateUI.getPopupActive())
+            updateUIPopups();
 
         // Update values in Tooltips for Icons in Main UI
-        updateUITooltips();
+        if (updateUI.getTooltipActive())
+            updateUITooltips();
     }
 
     void updateUIMainScreen()
@@ -56,34 +60,83 @@ public class GameController : MonoBehaviour
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         updateUI.updateHappiness(game.gameStatistics.happiness);
+
+        
+        /* foreach (Region region in game.regions.Values)
+        {
+            region.statistics.
+            foreach (RegionSector sector in region.sectors.Values)
+            {
+                sector.statistics.
+            }
+        } */
+        
     }
+    
 
     void updateUITooltips()
     {
-        if (updateUI.btnMoneyHoverCheck)
-            updateUI.updateMoneyTooltip();
+        if (updateUI.getBtnMoneyHover())
+            updateUI.updateMoneyTooltip(game.gameStatistics.donations, game.gameStatistics.income);
 
-        if (updateUI.btnHappinessHoverCheck)
-            updateUI.updateHappinessTooltip();
+        if (updateUI.getBtnHappinessHover())
+            updateHappiness();
 
-        if (updateUI.btnAwarenessHoverCheck)
-            updateUI.updateAwarnessTooltip();
+        if (updateUI.getBtnAwarenessHover())
+            updateAwareness();
 
-        if (updateUI.btnPollutionHoverCheck)
-            updateUI.updatePollutionTooltip();
+        if (updateUI.getBtnPollutionHover())
+            updatePollution();
 
-        if (updateUI.btnEnergyHoverCheck)
+        if (updateUI.getBtnEnergyHover())
             updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
-        game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
+            game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
+
+            
+    }
+
+    void updateHappiness()
+    {
+        int i = 0;
+
+        foreach (Region region in game.regions.Values)
+        {
+            // Send average pollution for each region, determine the region with i
+            //updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
+            updateUI.updateHappinessTooltip(game.gameStatistics.happiness, i);
+            i++;
+        }
+    }
+
+    void updateAwareness()
+    {
+        int i = 0;
+
+        foreach (Region region in game.regions.Values)
+        {
+            // Send average pollution for each region, determine the region with i
+            //updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
+            updateUI.updateAwarnessTooltip(game.gameStatistics.ecoAwareness, i);
+            i++;
+        }
+    }
+
+    void updatePollution()
+    {
+        int i = 0;
+
+        foreach (Region region in game.regions.Values)
+        {
+            // Send average pollution for each region, determine the region with i
+            updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
+            i++;
+        }
     }
 
     void updateUIPopups()
     {
         if (updateUI.canvasOrganizationPopup.gameObject.activeSelf)
             updateUIOrganizationScreen();
-
-        if (updateUI.canvasMenuPopup.gameObject.activeSelf)
-            updateUIMainMenuScreen();
 
         if (updateUI.canvasRegioPopup.gameObject.activeSelf)
             updateUIRegioScreen();
@@ -99,13 +152,8 @@ public class GameController : MonoBehaviour
         {
             // Send the income for each region, use i to determine the region
             updateUI.updateOrganizationScreenUI(region.statistics.income, i);
-            i++;
+            i++;            
         }
-    }
-
-    void updateUIMainMenuScreen()
-    {
-
     }
 
     void updateUIRegioScreen()
@@ -125,9 +173,6 @@ public class GameController : MonoBehaviour
 
     public void OnRegionClick(GameObject region)
     {
-        // game.regions[region.name].statistics.ecoAwareness;
-        //Debug.Log(region.name);
-        //region.GetComponent<Renderer>().material.color = Color.green; 
         Region regionModel = game.regions[region.name];
         updateUI.regionClick(regionModel);
     }

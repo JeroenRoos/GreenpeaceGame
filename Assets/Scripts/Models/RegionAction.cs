@@ -9,6 +9,7 @@ public class RegionAction
     public string description { get; private set; }
     public RegionStatistics consequences { get; private set; }
     public RegionStatistics actionCosts { get; private set; }
+    public double actionMoneyCost { get; private set; }
     public int actionDuration { get; private set; } //in months
     public int? startYear { get; private set; }
     public int? startMonth { get; private set; }
@@ -16,13 +17,15 @@ public class RegionAction
     public int actionCooldown { get; private set; } //in months
     public bool isActive { get; private set; }
 
-    public RegionAction(string description, RegionStatistics consequences, RegionStatistics actionCosts, int actionDuration, int actionCooldown)
+    public RegionAction(string description, RegionStatistics consequences, RegionStatistics actionCosts, int actionDuration, int actionCooldown,
+                        double actionMoneyCost)
     {
         this.description = description;
         this.consequences = consequences;
         this.actionDuration = actionDuration;
         this.actionCooldown = actionCooldown;
         this.actionCosts = actionCosts;
+        this.actionMoneyCost = actionMoneyCost;
         isActive = false;
     }
 
