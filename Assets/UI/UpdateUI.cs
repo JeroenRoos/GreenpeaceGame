@@ -62,6 +62,9 @@ public class UpdateUI : MonoBehaviour
     public Button emptybtnHoverHouseholds;
     public Button emptybtnHoverAgriculture;
     public Button emptybtnHoverCompanies;
+    public Button[] investDemonstrations;
+    public Button[] investResearch;
+    public Button[] investEcoGuarding;
 
     // Canvas 
     public Canvas canvasMenuPopup;
@@ -131,7 +134,6 @@ public class UpdateUI : MonoBehaviour
         btnPollution.GetComponent<Button>();
         btnPopulation.GetComponent<Button>();
         //btnDoActionRegionMenu.gameObject.SetActive(false);
-
 
         setBooleans();
     }
