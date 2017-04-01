@@ -8,6 +8,7 @@ using UnityEngine;
 //UNFINISHED
 public class GameEvent
 {
+    public string name { get; private set; } //id
     public string[] description { get; private set; }
     public int[] eventDuration { get; private set; } //in months
     public string[,] choices { get; private set; }
@@ -23,8 +24,10 @@ public class GameEvent
 
     public Region region { get; private set; }
 
-    public GameEvent(string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences, double[] eventChoiceMoneyCost, int eventCooldown)
+    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices,
+                    RegionStatistics[] consequences, double[] eventChoiceMoneyCost, int eventCooldown)
     {
+        this.name = name;
         this.description = description;
         this.eventDuration = eventDuration;
         this.choices = choices;
@@ -48,22 +51,6 @@ public class GameEvent
         region.ImplementStatisticValues(pickedChoice, true);
         isActive = false;
     }
-
-    /*
-    public void DisplayEvent()
-    {
-        Console.WriteLine("Region: {0}", region.name);
-        Console.WriteLine(description);
-        Console.WriteLine();
-        Console.WriteLine("What will you do?");
-        int i = 0;
-        foreach (string choice in choices)
-        {
-            Console.WriteLine("{0}: {1}", i, choice);
-            i++;
-        }
-    }
-     */
 
     public void SetPickedChoice(int i) //string = Choice (class)
     {
