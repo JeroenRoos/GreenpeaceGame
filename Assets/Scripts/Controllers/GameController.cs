@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     void Update () {
         if (Input.GetKeyDown(KeyCode.Return) || autoEndTurn)
         {
-            game.UpdateTime();
+            game.NextTurn();
         }
 
         // Update the main screen UI (Icons and date)

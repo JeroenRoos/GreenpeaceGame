@@ -29,7 +29,7 @@ public class Game
 
         GenerateRegions();
         GenerateGameEvents();
-
+        gameStatistics.UpdateRegionalAvgs(this);
 
         currentYear = 1;
         currentMonth = 1;
@@ -37,25 +37,42 @@ public class Game
         //DisplayRegion(regions[0]);
     }
 
-    public void UpdateTime()
+    public void NextTurn()
     {
-        currentMonth++;
-
-        if (currentMonth > 12)
-        {
-            currentMonth = currentMonth - 12;
-            currentYear++;
-            ExecuteNewYearMethods();
-        }
+        bool isNewYear = UpdateCurrentMonthAndYear();
 
         //bool isNewEvent = ExecuteNewMonthMethods();
         ExecuteNewMonthMethods();
         EventManager.CallChangeMonth();
         //return isNewEvent;
+
+        if (isNewYear)
+            ExecuteNewYearMethods();
+        
+        gameStatistics.UpdateRegionalAvgs(this);
+    }
+
+    public bool UpdateCurrentMonthAndYear()
+    {
+        currentMonth++;
+        if (currentMonth > 12)
+        {
+            currentMonth = currentMonth - 12;
+            currentYear++;
+            return true;
+        }
+
+        return false;
     }
 
     private void ExecuteNewMonthMethods()
     {
+        double monthlyIncome = GetMonthlyIncome();
+        gameStatistics.ModifyMoney(monthlyIncome);
+
+        double monthlyPopulation = GetMonthlyPopulation();
+        gameStatistics.ModifyPopulation(monthlyPopulation);
+
         CompletefinishedActions();
         CompleteFinishedEvents();
 
@@ -66,6 +83,32 @@ public class Game
             StartNewEvent();
             EventManager.CallShowEvent();
         }
+    }
+
+    private void ExecuteNewYearMethods()
+    {
+        foreach (Region region in regions.Values)
+        {
+            region.statistics.mutateTimeBasedStatistics();
+        }
+    }
+
+    public double GetMonthlyIncome()
+    {
+        double income = 0;
+
+        foreach (Region region in regions.Values)
+        {
+            income += region.statistics.income;
+        }
+
+        return income;
+    }
+
+    public double GetMonthlyPopulation()
+    {
+        double population = gameStatistics.population * 0.005;
+        return population;
     }
 
     public void CompletefinishedActions()
@@ -114,14 +157,6 @@ public class Game
         if(events[0].isActive == false)
         {
             events[0].ActivateEvent(currentYear, currentMonth, regions["Noord Nederland"]);
-        }
-    }
-
-    private void ExecuteNewYearMethods()
-    {
-        foreach (KeyValuePair<string, Region> region in regions)
-        {
-            region.Value.statistics.mutateTimeBasedStatistics();
         }
     }
 
