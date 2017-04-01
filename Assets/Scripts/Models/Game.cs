@@ -396,7 +396,7 @@ public class Game
 
         int[] eventDuration04 = new int[3]
         {
-            0, 0, 5
+            2, 0, 5
         };
 
         string[] description04 = { "Er is een bosbrand geweest dat schade heeft veroorzaakt.",

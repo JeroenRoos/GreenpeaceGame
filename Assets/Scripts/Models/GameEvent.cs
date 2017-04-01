@@ -57,7 +57,7 @@ public class GameEvent
         if (game.gameStatistics.money > eventChoiceMoneyCost[i])
         {
             game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i]);
-            region.ImplementStatisticValues(onStartConsequences[i], true);
+            region.ImplementStatisticValues(onStartConsequence, true);
             pickedChoice = consequences[i];
             pickedChoiceNumber = i;
 
