@@ -27,7 +27,9 @@ public class UpdateUI : MonoBehaviour
     public Text txtOrgZuidMoney;
     public Text txtOrgWestMoney;
     public Text txtOrgBank;
-    double totalOrgBank;
+
+    private int taal;
+  //  double totalOrgBank;
 
     // Text Region Menu
     public Text txtRegionName;
@@ -75,7 +77,7 @@ public class UpdateUI : MonoBehaviour
     private string txtTooltipAgriculture;
     private string txtTooltipHouseholds;
     private string dropdownChoice;
-    string txttooltipPollution;
+   // string txttooltipPollution;
 
     private Vector3 v3Tooltip;
 
@@ -105,11 +107,13 @@ public class UpdateUI : MonoBehaviour
         initButtons();
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
+        taal = game.language;
     }
 
     void Update()
     {
         popupController();
+        Debug.Log(taal);
     }
 
     void FixedUpdate()
@@ -340,7 +344,8 @@ public class UpdateUI : MonoBehaviour
     // Update Population based on value
     public void updatePopulation(double population)
     {
-        txtPopulation.text = population.ToString();
+        int popu = Convert.ToInt32(population);
+        txtPopulation.text = popu.ToString();
     }
 
     // Update Awareness based on value
@@ -517,7 +522,7 @@ public class UpdateUI : MonoBehaviour
     void updateRegionTextValues()
     {
         // Debug.Log("updateRegionTextValues: " + regio.name);
-        txtRegionName.text = regio.name;
+        txtRegionName.text = regio.name[0];
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
         txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.00");
@@ -538,7 +543,7 @@ public class UpdateUI : MonoBehaviour
     {
         foreach (RegionSector sector in regio.sectors.Values)
         {
-            if (sector.sectorName == "Huishoudens")
+            if (sector.sectorName[0] == "Huishoudens")
             {
                 Debug.Log(sector.sectorName);
                 txtTooltipHouseholds = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
@@ -546,14 +551,14 @@ public class UpdateUI : MonoBehaviour
                     + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
 
             }
-            else if (sector.sectorName == "Bedrijven")
+            else if (sector.sectorName[0] == "Bedrijven")
             {
                 Debug.Log(sector.sectorName);
                 txtTooltipCompany = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                     + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
                     + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
             }
-            else if (sector.sectorName == "Landbouw")
+            else if (sector.sectorName[0] == "Landbouw")
             {
                 Debug.Log(sector.sectorName);   
                 txtTooltipAgriculture = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
@@ -585,7 +590,7 @@ public class UpdateUI : MonoBehaviour
 
         foreach (RegionAction action in regio.actions)
         {
-            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.description });
+            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.description[0] });
         }
     }
 
@@ -613,10 +618,10 @@ public class UpdateUI : MonoBehaviour
         // Debug.Log("showInfoDropDownRegion: " + regio.name);
         foreach (RegionAction action in regio.actions)
         {
-            if (action.description == dropdownChoice)
+            if (action.description[0] == dropdownChoice)
             {
                 regioAction = action;
-                txtRegionActionName.text = regioAction.description;
+                txtRegionActionName.text = regioAction.description[0];
                 txtRegionActionCost.text = regioAction.actionCosts.ToString();
                 txtRegionActionDuration.text = regioAction.actionDuration.ToString();
                 txtRegionActionConsequences.text = regioAction.consequences.ToString();
