@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     public GameObject zuidNederland;
     public GameObject westNederland;
 
-    private float time;
+   // private float time;
 
     public bool autoEndTurn = false;
 

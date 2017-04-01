@@ -7,17 +7,17 @@ using System.Text;
 //this class stores the values of the buildings in a region
 public class Building
 {
-    public string buildingName { get; private set; }
+    public string[] buildingName { get; private set; }
 
     public BuildingStatistics statistics { get; private set; }
 
-    public Building(string buildingName)
+    public Building(string[] buildingName)
     {
         this.buildingName = buildingName;
         Pollution pollution;
-        switch (buildingName)
+        switch (buildingName[0])
         {
-            case "Coal factory":
+            case "kolenfabriek":
                 pollution = new Pollution(0, 0, 0, 5, 5, 5);
                 statistics = new BuildingStatistics(2000, pollution, 5);
                 break;

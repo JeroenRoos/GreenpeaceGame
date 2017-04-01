@@ -7,14 +7,14 @@ using System.Text;
 //UNFINISHED
 public class GameEvent
 {
-    public string description { get; private set; }
-    public string[] choices { get; private set; }
+    public string[] description { get; private set; }
+    public int[] eventDuration { get; private set; } //in months
+    public string[,] choices { get; private set; }
     public RegionStatistics[] consequences { get; private set; }
     public double[] eventChoiceMoneyCost { get; private set; }
+    public int eventCooldown { get; private set; }
     public RegionStatistics pickedChoice { get; private set; }
     public int pickedChoiceNumber { get; private set; }
-    public List<GameEvent> previousEvents { get; private set; }
-    public int eventDuration { get; private set; } //in months
     public int startYear { get; private set; }
     public int startMonth { get; private set; }
 
@@ -22,12 +22,14 @@ public class GameEvent
 
     public Region region { get; private set; }
 
-    public GameEvent(string description, int eventDuration, string[] choices, RegionStatistics[] consequences)
+    public GameEvent(string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences, double[] eventChoiceMoneyCost, int eventCooldown)
     {
         this.description = description;
         this.eventDuration = eventDuration;
         this.choices = choices;
         this.consequences = consequences;
+        this.eventChoiceMoneyCost = eventChoiceMoneyCost;
+        this.eventCooldown = eventCooldown;
     }
 
     public void ActivateEvent(int startYear, int startMonth, Region region)
