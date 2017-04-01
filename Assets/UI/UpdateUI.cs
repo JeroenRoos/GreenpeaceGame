@@ -329,10 +329,12 @@ public class UpdateUI : MonoBehaviour
     public void updateDate(int month, int year)
     {
         month = month - 1;
-        string[] arrMonths = new string[12]
-            { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" };
-
-        txtDate.text = arrMonths[month] + " - " + (year + 2019).ToString();
+        string[,] arrMonths = new string[2, 12]
+        {
+            { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" },
+            { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }
+        };
+        txtDate.text = arrMonths[taal, month] + " - " + (year + 2019).ToString();
     }
 
     // Update Money based on value
@@ -402,7 +404,9 @@ public class UpdateUI : MonoBehaviour
     #region Update UI in Tooltips
     public void updateMoneyTooltip(double donations, double income)
     {
-        txtTooltip = "Donaties: " + donations + "\nInkomen: " + income;
+        string[] tip = { "Donaties: " + donations + "\nInkomen: " + income,
+            "Donations: " + donations + "\nIncome: " + income };
+        txtTooltip = tip[taal];                 //"Donaties: " + donations + "\nInkomen: " + income;
     }
 
     public void updateHappinessTooltip(double happ, int i)
@@ -410,16 +414,24 @@ public class UpdateUI : MonoBehaviour
         switch (i)
         {
             case 0:
-                txtTooltip = "Gemiddelde tevredenheid per regio:\nNoord-Nederland: " + happ.ToString("0.00") + "\n";
+                string[] tip = { "Gemiddelde tevredenheid per regio:\nNoord-Nederland: "+ happ.ToString("0.00") + "\n",
+                    "Average happiness per region:\nThe Netherlands Northen: "+ happ.ToString("0.00") + "\n" };
+                txtTooltip = tip[taal];//"Gemiddelde tevredenheid per regio:\nNoord-Nederland: " + happ.ToString("0.00") + "\n";
                 break;
             case 1:
-                txtTooltip += "Oost-Nederland: " + happ.ToString("0.00") + "\n";
+                string[] tip2 = { "Oost-Nederland: " + happ.ToString("0.00") + "\n",
+                    "The Netherlands Eastern: " + happ.ToString("0.00") + "\n"};
+                txtTooltip += tip2[taal];//"Oost-Nederland: " + happ.ToString("0.00") + "\n";
                 break;
             case 2:
-                txtTooltip += "West-Nederland: " + happ.ToString("0.00") + "\n";
+                string[] tip3 = { "West-Nederland: " + happ.ToString("0.00") + "\n",
+                    "The Netherlands Western: " + happ.ToString("0.00") + "\n"};
+                txtTooltip += tip3[taal];//"West-Nederland: " + happ.ToString("0.00") + "\n";
                 break;
             case 3:
-                txtTooltip += "Zuid-Nederland: " + happ.ToString("0.00");
+                string[] tip4 = { "Zuid-Nederland: " + happ.ToString("0.00"),
+                    "The Netherlands Southern: " + happ.ToString("0.00") };
+                txtTooltip += tip4[taal];//"Zuid-Nederland: " + happ.ToString("0.00");
                 break;
         }
     }
@@ -429,16 +441,24 @@ public class UpdateUI : MonoBehaviour
         switch (i)
         {
             case 0:
-                txtTooltip = "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n";
+                string[] tip1 = { "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n",
+                    "Average eco awareness per region: \nThe Netherlands Northern: " + awareness.ToString("0.00") + "\n"};
+                txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 1:
-                txtTooltip += "Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                string[] tip2 = { "Oost-Nederland: " + awareness.ToString("0.00") + "\n",
+                    "The Netherlands Eastern: " + awareness.ToString("0.00") + "\n"};
+                txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 2:
-                txtTooltip += "West-Nederland: " + awareness.ToString("0.00") + "\n";
+                string[] tip3 = { "West-Nederland: " + awareness.ToString("0.00") + "\n",
+                    "The Netherlands Western: " + awareness.ToString("0.00") + "\n"};
+                txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 3:
-                txtTooltip += "Zuid-Nederland: " + awareness.ToString("0.00");
+                string[] tip4 = { "Zuid-Nederland: " + awareness.ToString("0.00"),
+                    "The Netherlands Southern: " + awareness.ToString("0.00")};
+                txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
         }
     }
@@ -447,6 +467,7 @@ public class UpdateUI : MonoBehaviour
     {
         switch (i)
         {
+            /*
             case 0:
                 txtTooltip = "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
                 break;
@@ -458,14 +479,38 @@ public class UpdateUI : MonoBehaviour
                 break;
             case 3:
                 txtTooltip += "Zuid-Nederland: " + pollution.ToString("0.00");
+                break;*/
+            case 0:
+                string[] tip1 = { "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n",
+                    "Average pollution per region: \nThe Netherlands Northern: " + pollution.ToString("0.00") + "\n"};
+                txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 1:
+                string[] tip2 = { "Oost-Nederland: " + pollution.ToString("0.00") + "\n",
+                    "The Netherlands Eastern: " + pollution.ToString("0.00") + "\n"};
+                txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 2:
+                string[] tip3 = { "West-Nederland: " + pollution.ToString("0.00") + "\n",
+                    "The Netherlands Western: " + pollution.ToString("0.00") + "\n"};
+                txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 3:
+                string[] tip4 = { "Zuid-Nederland: " + pollution.ToString("0.00"),
+                    "The Netherlands Southern: " + pollution.ToString("0.00")};
+                txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
         }
     }
 
     public void updateEnergyTooltip(double green, double fossil, double nuclear)
     {
-        txtTooltip = "Groene energie: " + green.ToString() + "\nFossiele energie: "
-            + fossil + "\nKernenergie: " + nuclear;
+        string[] tip = { "Groene energie: " + green.ToString() + "\nFossiele energie: "
+            + fossil + "\nKernenergie: " + nuclear ,
+            "Green energy " + green.ToString() + "\nFossil energy: "
+            + fossil + "\nNuclearenergy: " + nuclear};
+        txtTooltip = tip[taal];         //"Groene energie: " + green.ToString() + "\nFossiele energie: "
+                                        // + fossil + "\nKernenergie: " + nuclear;
     }
     #endregion
 
@@ -522,7 +567,7 @@ public class UpdateUI : MonoBehaviour
     void updateRegionTextValues()
     {
         // Debug.Log("updateRegionTextValues: " + regio.name);
-        txtRegionName.text = regio.name[0];
+        txtRegionName.text = regio.name[taal];
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
         txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.00");
@@ -543,27 +588,45 @@ public class UpdateUI : MonoBehaviour
     {
         foreach (RegionSector sector in regio.sectors.Values)
         {
-            if (sector.sectorName[0] == "Huishoudens")
+            if (sector.sectorName[taal] == "Huishoudens" || sector.sectorName[taal] == "Households")
             {
                 Debug.Log(sector.sectorName);
-                txtTooltipHouseholds = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                     + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
-                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
+                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity ,
+
+                    "Air pollution: " + sector.statistics.airPollutionContribution + "\nWater pollution: " + sector.statistics.waterPollutionContribution
+                    + "\nNature pollution: " + sector.statistics.naturePollutionContribution + "\nHappiness: " + sector.statistics.happiness
+                    + "\nEco-awareness: " + sector.statistics.ecoAwareness + "\nProsperity: " + sector.statistics.prosperity };
+                txtTooltipHouseholds = tip[taal];       /*"Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
+                                                        + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
+                                                        + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;*/
 
             }
-            else if (sector.sectorName[0] == "Bedrijven")
+            else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
                 Debug.Log(sector.sectorName);
-                txtTooltipCompany = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                     + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
-                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
+                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity ,
+
+                    "Air pollution: " + sector.statistics.airPollutionContribution + "\nWater pollution: " + sector.statistics.waterPollutionContribution
+                    + "\nNature pollution: " + sector.statistics.naturePollutionContribution + "\nHappiness: " + sector.statistics.happiness
+                    + "\nEco-awareness: " + sector.statistics.ecoAwareness + "\nProsperity: " + sector.statistics.prosperity };
+                txtTooltipCompany = tip[taal];
             }
-            else if (sector.sectorName[0] == "Landbouw")
+            else if (sector.sectorName[taal] == "Landbouw" || sector.sectorName[taal] == "Agriculture")
             {
-                Debug.Log(sector.sectorName);   
-                txtTooltipAgriculture = "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
+                Debug.Log(sector.sectorName);
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                     + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
-                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;
+                    + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity ,
+
+                    "Air pollution: " + sector.statistics.airPollutionContribution + "\nWater pollution: " + sector.statistics.waterPollutionContribution
+                    + "\nNature pollution: " + sector.statistics.naturePollutionContribution + "\nHappiness: " + sector.statistics.happiness
+                    + "\nEco-awareness: " + sector.statistics.ecoAwareness + "\nProsperity: " + sector.statistics.prosperity };
+
+                txtTooltipAgriculture = tip[taal];
             }
         }
     }
@@ -590,7 +653,7 @@ public class UpdateUI : MonoBehaviour
 
         foreach (RegionAction action in regio.actions)
         {
-            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.description[0] });
+            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.description[taal] });
         }
     }
 
@@ -618,7 +681,7 @@ public class UpdateUI : MonoBehaviour
         // Debug.Log("showInfoDropDownRegion: " + regio.name);
         foreach (RegionAction action in regio.actions)
         {
-            if (action.description[0] == dropdownChoice)
+            if (action.description[taal] == dropdownChoice)
             {
                 regioAction = action;
                 txtRegionActionName.text = regioAction.description[0];
@@ -645,6 +708,26 @@ public class UpdateUI : MonoBehaviour
 
 
     #region Code for activating popups
+    public void btnNLClick()
+    {
+        if (taal != 0)
+        {
+            Debug.Log("BTN NL");
+            game.ChangeLanguage("dutch");
+            taal = game.language;
+        }
+    }
+
+    public void btnENGClick()
+    {
+        if (taal != 1)
+        {
+            Debug.Log("BTN ENG");
+            game.ChangeLanguage("english");
+            taal = game.language;
+        }
+    }
+
     public void btnTimelineClick()
     {
         if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)
