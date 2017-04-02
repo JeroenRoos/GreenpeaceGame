@@ -306,6 +306,14 @@ public class Game
         return sectors;
     }
 
+
+
+
+
+
+
+
+
     //Generates the game events (currently hardcoded)
     private void GenerateGameEvents()
     {
@@ -313,7 +321,7 @@ public class Game
         string name01 = "AirPollutionConcern";
         string[,] choices01 = new string[2, 3]
         {
-            {"niets doen", "Campagne voeren over luchtervuiling", "campagne voeren voor organisatie" },
+            {"niets doen", "Campagne voeren over luchtvervuiling", "campagne voeren voor organisatie" },
             {"Do nothing", "Campaign over air pollution", "Campaign for organisation" }
         };
 
@@ -326,10 +334,10 @@ public class Game
             "A research from the organisation concludes that people are worried about the air pollution." };
         RegionStatistics[] consequences01 = new RegionStatistics[3];
         consequences01[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        consequences01[1] = new RegionStatistics(0, 0, 1, new Pollution(0, 0, 0, -2, 0, 0), 1, 0);
-        consequences01[2] = new RegionStatistics(0, 250, 1, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
+        consequences01[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, -2, 0, 0), 1, 0);
+        consequences01[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
         
-        RegionStatistics onStartConsequences01 = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        RegionStatistics onStartConsequences01 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
 
         double[] choiceMoneyCost01 = { 0, 2000, 2000 };
         int eventCooldown01 = 3;
@@ -423,6 +431,64 @@ public class Game
 
         GameEvent gameEvent04 = new GameEvent(name04, description04, eventDuration04, choices04, consequences04, onStartConsequences04, choiceMoneyCost04, eventCooldown04);
         events.Add(gameEvent04);
+
+
+        //Event 05 NaturePollutionConcern
+        string name05 = "NaturePollutionConcern";
+        string[,] choices05 = new string[2, 3]
+        {
+            {"niets doen", "Campagne voeren over natuurvervuiling", "campagne voeren voor organisatie" },
+            {"Do nothing", "Campaign over nature pollution", "Campaign for organisation" }
+        };
+
+        int[] eventDuration05 = new int[3]
+        {
+            0, 2, 2
+        };
+
+        string[] description05 = { "Uit een onderzoek is de organisatie erachter gekomen dat veel mensen zich zorgen maker over de natuurvervuiling.",
+            "A research from the organisation concludes that people are worried about the nature pollution." };
+        RegionStatistics[] consequences05 = new RegionStatistics[3];
+        consequences05[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences05[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -2, 0), 1, 0);
+        consequences05[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
+
+        RegionStatistics onStartConsequences05 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+
+        double[] choiceMoneyCost05 = { 0, 2000, 2000 };
+        int eventCooldown05 = 3;
+
+        GameEvent gameEvent05 = new GameEvent(name05, description05, eventDuration05, choices05, consequences05, onStartConsequences05, choiceMoneyCost05, eventCooldown05);
+        events.Add(gameEvent05);
+
+
+        //Event 06 WaterPollutionConcern
+        string name06 = "WaterPollutionConcern";
+        string[,] choices06 = new string[2, 3]
+        {
+            {"niets doen", "Campagne voeren over watervervuiling", "campagne voeren voor organisatie" },
+            {"Do nothing", "Campaign over water pollution", "Campaign for organisation" }
+        };
+
+        int[] eventDuration06 = new int[3]
+        {
+            0, 2, 2
+        };
+
+        string[] description06 = { "Uit een onderzoek is de organisatie erachter gekomen dat veel mensen zich zorgen maker over de watervervuiling.",
+            "A research from the organisation concludes that people are worried about the water pollution." };
+        RegionStatistics[] consequences06 = new RegionStatistics[3];
+        consequences06[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences06[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, -2), 1, 0);
+        consequences06[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
+
+        RegionStatistics onStartConsequences06 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+
+        double[] choiceMoneyCost06 = { 0, 2000, 2000 };
+        int eventCooldown06 = 3;
+
+        GameEvent gameEvent06 = new GameEvent(name06, description06, eventDuration06, choices06, consequences06, onStartConsequences06, choiceMoneyCost06, eventCooldown06);
+        events.Add(gameEvent06);
     }
 }
 
