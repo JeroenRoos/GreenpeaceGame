@@ -37,7 +37,7 @@ public class RegionAction //: MonoBehaviour
     public void ActivateAction(int startYear, int startMonth)
     {
         
-        if (lastCompleted == 0 || (lastCompleted != 0 && !(startYear * 12 + startMonth >= lastCompleted + actionCooldown)))
+        if (lastCompleted == 0 || (lastCompleted != 0 && (startYear * 12 + startMonth >= lastCompleted + actionCooldown)))
         {
             this.startYear = startYear;
             this.startMonth = startMonth;
