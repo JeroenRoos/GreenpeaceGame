@@ -62,19 +62,7 @@ public class GameController : MonoBehaviour
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
-        updateUI.updateHappiness(game.gameStatistics.happiness);
-
-        
-        /*foreach (Region region in game.regions.Values)
-        {
-            region.statistics.
-            foreach (RegionSector sector in region.sectors.Values)
-            {
-                sector.statistics.
-            }
-        } 
-        */
-        
+        updateUI.updateHappiness(game.gameStatistics.happiness);       
     }
     
 

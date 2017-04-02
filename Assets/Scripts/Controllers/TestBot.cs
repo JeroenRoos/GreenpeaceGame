@@ -39,7 +39,7 @@ public class TestBot : MonoBehaviour {
     void EventAction()
     {
         Debug.Log("Event occured");
-        int chosenOption;
+        //int chosenOption;
 
         //foreach (GameEvent gameEvent in gameController.game.events)
         //{
