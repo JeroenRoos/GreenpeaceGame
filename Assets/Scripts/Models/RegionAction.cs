@@ -31,7 +31,7 @@ public class RegionAction
 
     public void ActivateAction(int startYear, int startMonth)
     {
-        if (lastCompleted != null && !(startYear * 12 + startMonth >= lastCompleted + actionCooldown))
+        if (lastCompleted == null || (lastCompleted != null && !(startYear * 12 + startMonth >= lastCompleted + actionCooldown)))
         {
             this.startYear = startYear;
             this.startMonth = startMonth;

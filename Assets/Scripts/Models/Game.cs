@@ -92,6 +92,7 @@ public class Game
         gameStatistics.ModifyPopulation(monthlyPopulation);
 
         CompletefinishedActions();
+        CheckIdleEvents();
         CompleteFinishedEvents();
 
         int activeCount = getActiveEventCount();
@@ -150,12 +151,23 @@ public class Game
         }
     }
 
+    public void CheckIdleEvents()
+    {
+        foreach (GameEvent gameEvent in events)
+        {
+            if (gameEvent.isIdle)
+                gameEvent.SubtractIdleTurnsLeft();
+            if (gameEvent.idleTurnsLeft == 0)
+                gameEvent.SetPickedChoice(0, this);
+        }
+    }
+
     public void CompleteFinishedEvents()
     {
         foreach (GameEvent gameEvent in events)
         {
             if (gameEvent.isActive &&
-                ((gameEvent.startMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
+                ((gameEvent.startMonth + gameEvent.eventDuration[(int)gameEvent.pickedChoiceNumber] + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
             {
                 gameEvent.CompleteEvent();
             }
@@ -182,7 +194,8 @@ public class Game
         {
             int pickedEvent = PickEvent(possibleEvents.Count);
             string pickedRegion = PickEventRegion();
-            events[pickedEvent].ActivateEvent(currentYear, currentMonth, regions[pickedRegion]);
+            //events[pickedEvent].ActivateEvent(currentYear, currentMonth, regions[pickedRegion]);
+            events[pickedEvent].StartEvent(regions[pickedRegion]);
             GameObject eventInstance = GameController.Instantiate(eventObject);
             eventInstance.GetComponent<EventObjectController>().Init(gameController, events[pickedEvent]);
         }
@@ -306,6 +319,14 @@ public class Game
         return sectors;
     }
 
+
+
+
+
+
+
+
+
     //Generates the game events (currently hardcoded)
     private void GenerateGameEvents()
     {
@@ -313,7 +334,7 @@ public class Game
         string name01 = "AirPollutionConcern";
         string[,] choices01 = new string[2, 3]
         {
-            {"niets doen", "Campagne voeren over luchtervuiling", "campagne voeren voor organisatie" },
+            {"niets doen", "Campagne voeren over luchtvervuiling", "campagne voeren voor organisatie" },
             {"Do nothing", "Campaign over air pollution", "Campaign for organisation" }
         };
 
@@ -326,15 +347,16 @@ public class Game
             "A research from the organisation concludes that people are worried about the air pollution." };
         RegionStatistics[] consequences01 = new RegionStatistics[3];
         consequences01[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        consequences01[1] = new RegionStatistics(0, 0, 1, new Pollution(0, 0, 0, -2, 0, 0), 1, 0);
-        consequences01[2] = new RegionStatistics(0, 250, 1, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
+        consequences01[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, -2, 0, 0), 1, 0);
+        consequences01[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
         
-        RegionStatistics onStartConsequences01 = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        RegionStatistics onEventStartConsequence01 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
 
         double[] choiceMoneyCost01 = { 0, 2000, 2000 };
         int eventCooldown01 = 3;
 
-        GameEvent gameEvent01 = new GameEvent(name01, description01, eventDuration01, choices01, consequences01, onStartConsequences01, choiceMoneyCost01, eventCooldown01);
+        GameEvent gameEvent01 = new GameEvent(name01, description01, eventDuration01, choices01, consequences01,
+            onEventStartConsequence01, choiceMoneyCost01, eventCooldown01, false);
         events.Add(gameEvent01);
 
 
@@ -342,8 +364,8 @@ public class Game
         string name02 = "Earthquake";
         string[,] choices02 = new string[2, 3]
         {
-            {"Inwoners vergoeden", "Niets doen", "Toekomstige aardbevingen tegengaan (kansverlaging)" },
-            {"Refund citizens", "Do nothing", "Prevent future earthquakes (chance reduction)" }
+            {"Niets doen", "Inwoners vergoeden", "Toekomstige aardbevingen tegengaan (kansverlaging)" },
+            {"Do nothing", "Refund citizens", "Prevent future earthquakes (chance reduction)" }
         };
 
         int[] eventDuration02 = new int[3]
@@ -354,16 +376,17 @@ public class Game
         string[] description02 = { "Er is een aardbeving geweest dat schade heeft veroorzaakt.",
             "There has been an earthquake that caused damage." };
         RegionStatistics[] consequences02 = new RegionStatistics[3];
-        consequences02[0] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        consequences02[1] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences02[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences02[1] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         consequences02[2] = new RegionStatistics(-200, 0, 4, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         
-        RegionStatistics onStartConsequences02 = new RegionStatistics(0, 0, -2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        RegionStatistics onEventStartConsequence02 = new RegionStatistics(-50, 0,-1, new Pollution(0, 0, 0, 0, 0, 0), 0, -1);
 
-        double[] choiceMoneyCost02 = { 1000, 0, 4000 };
+        double[] choiceMoneyCost02 = { 0, 1000, 4000 };
         int eventCooldown02 = 9;
 
-        GameEvent gameEvent02 = new GameEvent(name02, description02, eventDuration02, choices02, consequences02, onStartConsequences02, choiceMoneyCost02, eventCooldown02);
+        GameEvent gameEvent02 = new GameEvent(name02, description02, eventDuration02, choices02, consequences02,
+            onEventStartConsequence02, choiceMoneyCost02, eventCooldown02, false);
         events.Add(gameEvent02);
 
 
@@ -371,8 +394,8 @@ public class Game
         string name03 = "Flood";
         string[,] choices03 = new string[2, 3]
         {
-            {"Inwoners vergoeden", "Niets doen", "Toekomstige overstromingen tegengaan (kansverlaging)" },
-            {"Refund citizens", "Do nothing", "Prevent future floods (chance reduction)" }
+            {"Niets doen", "Inwoners vergoeden", "Toekomstige overstromingen tegengaan (kansverlaging)" },
+            {"Do nothing", "Refund citizens", "Prevent future floods (chance reduction)" }
         };
 
         int[] eventDuration03 = new int[3]
@@ -383,16 +406,17 @@ public class Game
         string[] description03 = { "Er is een overstroming geweest dat schade heeft veroorzaakt.",
             "There has been a flood that caused damage." };
         RegionStatistics[] consequences03 = new RegionStatistics[3];
-        consequences03[0] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        consequences03[1] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences03[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences03[1] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         consequences03[2] = new RegionStatistics(-200, 0, 4, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        
+        RegionStatistics onEventStartConsequence03 = new RegionStatistics(-50, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, -1);
 
-        RegionStatistics onStartConsequences03 = new RegionStatistics(0, 0, -2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-
-        double[] choiceMoneyCost03 = { 1000, 0, 4000 };
+        double[] choiceMoneyCost03 = { 0, 1000, 4000 };
         int eventCooldown03 = 12;
 
-        GameEvent gameEvent03 = new GameEvent(name03, description03, eventDuration03, choices03, consequences03, onStartConsequences03, choiceMoneyCost03, eventCooldown03);
+        GameEvent gameEvent03 = new GameEvent(name03, description03, eventDuration03, choices03, consequences03,
+            onEventStartConsequence03, choiceMoneyCost03, eventCooldown03, false);
         events.Add(gameEvent03);
 
 
@@ -400,29 +424,90 @@ public class Game
         string name04 = "ForestFire";
         string[,] choices04 = new string[2, 3]
         {
-            {"Bomen herplanten", "Niets doen", "Toekomstige bosbranden tegengaan (kansverlaging)" },
-            {"Replant trees", "Do nothing", "Prevent future forest fires (chance reduction)" }
+            {"Niets doen", "Bomen herplanten", "Toekomstige bosbranden tegengaan (kansverlaging)" },
+            {"Do nothing", "Replant trees", "Prevent future forest fires (chance reduction)" }
         };
 
         int[] eventDuration04 = new int[3]
         {
-            2, 0, 5
+            0, 2, 5
         };
 
         string[] description04 = { "Er is een bosbrand geweest dat schade heeft veroorzaakt.",
             "There has been a forest fire that caused damage." };
         RegionStatistics[] consequences04 = new RegionStatistics[3];
-        consequences04[0] = new RegionStatistics(0, 0, 1, new Pollution(0, 0, 0, -1, -1, 0), 0, 0);
-        consequences04[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 2, 0), 0, 0);
+        consequences04[0] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 2, 0), 0, 0);
+        consequences04[1] = new RegionStatistics(0, 0, 1, new Pollution(0, 0, 0, -1, -1, 0), 0, 0);
         consequences04[2] = new RegionStatistics(-200, 0, 4, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        
+        RegionStatistics onEventStartConsequence04 = new RegionStatistics(-50, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, -1);
 
-        RegionStatistics onStartConsequences04 = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-
-        double[] choiceMoneyCost04 = { 1000, 0, 4000 };
+        double[] choiceMoneyCost04 = { 0, 1000, 4000 };
         int eventCooldown04 = 9;
 
-        GameEvent gameEvent04 = new GameEvent(name04, description04, eventDuration04, choices04, consequences04, onStartConsequences04, choiceMoneyCost04, eventCooldown04);
+        GameEvent gameEvent04 = new GameEvent(name04, description04, eventDuration04, choices04, consequences04,
+            onEventStartConsequence04, choiceMoneyCost04, eventCooldown04, false);
         events.Add(gameEvent04);
+
+
+        //Event 05 NaturePollutionConcern
+        string name05 = "NaturePollutionConcern";
+        string[,] choices05 = new string[2, 3]
+        {
+            {"niets doen", "Campagne voeren over natuurvervuiling", "campagne voeren voor organisatie" },
+            {"Do nothing", "Campaign over nature pollution", "Campaign for organisation" }
+        };
+
+        int[] eventDuration05 = new int[3]
+        {
+            0, 2, 2
+        };
+
+        string[] description05 = { "Uit een onderzoek is de organisatie erachter gekomen dat veel mensen zich zorgen maker over de natuurvervuiling.",
+            "A research from the organisation concludes that people are worried about the nature pollution." };
+        RegionStatistics[] consequences05 = new RegionStatistics[3];
+        consequences05[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences05[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -2, 0), 1, 0);
+        consequences05[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
+        
+        RegionStatistics onEventStartConsequence05 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+
+        double[] choiceMoneyCost05 = { 0, 2000, 2000 };
+        int eventCooldown05 = 3;
+
+        GameEvent gameEvent05 = new GameEvent(name05, description05, eventDuration05, choices05, consequences05,
+            onEventStartConsequence05, choiceMoneyCost05, eventCooldown05, false);
+        events.Add(gameEvent05);
+
+
+        //Event 06 WaterPollutionConcern
+        string name06 = "WaterPollutionConcern";
+        string[,] choices06 = new string[2, 3]
+        {
+            {"niets doen", "Campagne voeren over watervervuiling", "campagne voeren voor organisatie" },
+            {"Do nothing", "Campaign over water pollution", "Campaign for organisation" }
+        };
+
+        int[] eventDuration06 = new int[3]
+        {
+            0, 2, 2
+        };
+
+        string[] description06 = { "Uit een onderzoek is de organisatie erachter gekomen dat veel mensen zich zorgen maker over de watervervuiling.",
+            "A research from the organisation concludes that people are worried about the water pollution." };
+        RegionStatistics[] consequences06 = new RegionStatistics[3];
+        consequences06[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        consequences06[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, -2), 1, 0);
+        consequences06[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
+        
+        RegionStatistics onEventStartConsequence06 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+
+        double[] choiceMoneyCost06 = { 0, 2000, 2000 };
+        int eventCooldown06 = 3;
+
+        GameEvent gameEvent06 = new GameEvent(name06, description06, eventDuration06, choices06, consequences06,
+            onEventStartConsequence06, choiceMoneyCost06, eventCooldown06, false);
+        events.Add(gameEvent06);
     }
 }
 
