@@ -108,9 +108,9 @@ public class EventObjectController : MonoBehaviour
                         btnRect.y = v.y + 260;
 
                     string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuur: " + eventModel.eventDuration[i] + "\nConsequenties: "
+                        "\nDuur: " + eventModel.eventDuration[i]
                 , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuration: " + eventModel.eventDuration[i] + "\nConsequences: "  };
+                        "\nDuration: " + eventModel.eventDuration[i]  };
 
                     txtButton = tip[taal];
 
@@ -125,50 +125,50 @@ public class EventObjectController : MonoBehaviour
 
     string getConsequences(RegionStatistics s)
     {
-        string consequences = "";
+        string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
 
         if (s.donations != 0)
         {
-            string[] a = { "Consequenties: \nDonaties: " + s.donations, "Consequentes: \nDonations: " + s.donations };
-            consequences = a[taal];// "Consequenties: \nDonaties: " + s.donations;
+            string[] a = { "Donaties: " + s.donations, "Donations: " + s.donations };
+            consequences[taal] += a[taal];// "Consequenties: \nDonaties: " + s.donations;
         }
         if (s.ecoAwareness != 0)
         {
-            string[] b = { " Milieubewustheid: " + s.ecoAwareness, " Eco awareness: " + s.ecoAwareness };
-            consequences += b[taal];// " Milieubewustheid: " + s.ecoAwareness;
+            string[] b = { " - Milieubewustheid: " + s.ecoAwareness, " - Eco awareness: " + s.ecoAwareness };
+            consequences[taal] += b[taal];// " Milieubewustheid: " + s.ecoAwareness;
         }
         if (s.happiness != 0)
         {
-            string[] c = { " Tevredenheid: " + s.happiness, " Happiness: " + s.happiness };
-            consequences += c[taal];// " Tevredenheid: " + s.happiness;
+            string[] c = { " - Tevredenheid: " + s.happiness, " - Happiness: " + s.happiness };
+            consequences[taal] += c[taal];// " Tevredenheid: " + s.happiness;
         }
         if (s.income != 0)
         {
-            string[] d = { " Inkomen: " + s.income, " Income: " + s.income };
-            consequences += d[taal];// " Inkomen: " + s.income;
+            string[] d = { " - Inkomen: " + s.income, " - Income: " + s.income };
+            consequences[taal] += d[taal];// " Inkomen: " + s.income;
         }
         if (s.prosperity != 0)
         {
-            string[] e = { " Welvaart: " + s.prosperity, " Prosperity: " + s.prosperity };
-            consequences += e[taal];//" Welvaart: " + s.prosperity;
+            string[] e = { " - Welvaart: " + s.prosperity, " - Prosperity: " + s.prosperity };
+            consequences[taal] += e[taal];//" Welvaart: " + s.prosperity;
         }
         if (s.pollution.airPollutionIncrease != 0)
         {
-            string[] f = { " Luchtvervuiling: " + s.pollution.airPollutionIncrease, " Air pollution: " + s.pollution.airPollutionIncrease };
-            consequences += f[taal];// " Luchtvervuiling: " + s.pollution.airPollutionIncrease;
+            string[] f = { " - Luchtvervuiling: " + s.pollution.airPollutionIncrease, " - Air pollution: " + s.pollution.airPollutionIncrease };
+            consequences[taal] += f[taal];// " Luchtvervuiling: " + s.pollution.airPollutionIncrease;
         }
         if (s.pollution.naturePollutionIncrease != 0)
         {
-            string[] g = { " Natuurvervuiling: " + s.pollution.naturePollutionIncrease, " Nature pollution: " + s.pollution.naturePollutionIncrease };
-            consequences += g[taal];// " Natuurvervuiling: " + s.pollution.naturePollutionIncrease;
+            string[] g = { " - Natuurvervuiling: " + s.pollution.naturePollutionIncrease, " - Nature pollution: " + s.pollution.naturePollutionIncrease };
+            consequences[taal] += g[taal];// " Natuurvervuiling: " + s.pollution.naturePollutionIncrease;
         }
         if (s.pollution.waterPollutionIncrease != 0)
         {
-            string[] h = { " Watervervuiling: " + s.pollution.waterPollutionIncrease, " Water pollution: " + s.pollution.waterPollutionIncrease };
-            consequences += h[taal];// " Watervervuiling: " + s.pollution.waterPollutionIncrease;
+            string[] h = { " - Watervervuiling: " + s.pollution.waterPollutionIncrease, " - Water pollution: " + s.pollution.waterPollutionIncrease };
+            consequences[taal] += h[taal];// " Watervervuiling: " + s.pollution.waterPollutionIncrease;
         }
 
-        return consequences;
+        return consequences[taal];
     }
 
     void ShowOptions()
@@ -189,6 +189,7 @@ public class EventObjectController : MonoBehaviour
         eventModel.SetPickedChoice(option, gameController.game);
         areOptionsShown = false;
         eventHoverCheck = false;
+        Destroy(gameObject);
     }
 
     Texture SelectTexture(string description)
