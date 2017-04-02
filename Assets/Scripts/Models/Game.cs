@@ -355,7 +355,7 @@ public class Game
         int eventCooldown01 = 3;
 
         GameEvent gameEvent01 = new GameEvent(name01, description01, eventDuration01, choices01, consequences01,
-            onEventStartConsequence01, choiceMoneyCost01, eventCooldown01, false);
+            onEventStartConsequence01, choiceMoneyCost01, eventCooldown01, false, regions["NoordNederland"]);
         events.Add(gameEvent01);
 
 
@@ -385,7 +385,7 @@ public class Game
         int eventCooldown02 = 9;
 
         GameEvent gameEvent02 = new GameEvent(name02, description02, eventDuration02, choices02, consequences02,
-            onEventStartConsequence02, choiceMoneyCost02, eventCooldown02, false);
+            onEventStartConsequence02, choiceMoneyCost02, eventCooldown02, false, regions["NoordNederland"]);
         events.Add(gameEvent02);
 
 
@@ -415,7 +415,7 @@ public class Game
         int eventCooldown03 = 12;
 
         GameEvent gameEvent03 = new GameEvent(name03, description03, eventDuration03, choices03, consequences03,
-            onEventStartConsequence03, choiceMoneyCost03, eventCooldown03, false);
+            onEventStartConsequence03, choiceMoneyCost03, eventCooldown03, false, regions["NoordNederland"]);
         events.Add(gameEvent03);
 
 
@@ -445,7 +445,7 @@ public class Game
         int eventCooldown04 = 9;
 
         GameEvent gameEvent04 = new GameEvent(name04, description04, eventDuration04, choices04, consequences04,
-            onEventStartConsequence04, choiceMoneyCost04, eventCooldown04, false);
+            onEventStartConsequence04, choiceMoneyCost04, eventCooldown04, false, regions["NoordNederland"]);
         events.Add(gameEvent04);
 
 
@@ -475,7 +475,7 @@ public class Game
         int eventCooldown05 = 3;
 
         GameEvent gameEvent05 = new GameEvent(name05, description05, eventDuration05, choices05, consequences05,
-            onEventStartConsequence05, choiceMoneyCost05, eventCooldown05, false);
+            onEventStartConsequence05, choiceMoneyCost05, eventCooldown05, false, regions["NoordNederland"]);
         events.Add(gameEvent05);
 
 
@@ -505,7 +505,7 @@ public class Game
         int eventCooldown06 = 3;
 
         GameEvent gameEvent06 = new GameEvent(name06, description06, eventDuration06, choices06, consequences06,
-            onEventStartConsequence06, choiceMoneyCost06, eventCooldown06, false);
+            onEventStartConsequence06, choiceMoneyCost06, eventCooldown06, false, regions["NoordNederland"]);
         events.Add(gameEvent06);
     }
 }

@@ -32,7 +32,7 @@ public class GameEvent
     public Region region { get; private set; }
 
     public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences, 
-                    RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
+                    RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique, Region region)
     {
         this.name = name;
         this.description = description;
@@ -46,6 +46,7 @@ public class GameEvent
 
         isActive = false;
         isIdle = false;
+        this.region = region; //temporary fix
         pickedChoiceNumber = 0;
         startYear = 0;
         startMonth = 0;
