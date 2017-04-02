@@ -46,6 +46,7 @@ public class GameEvent
 
         isActive = false;
         isIdle = false;
+        pickedChoiceNumber = 0;
         startYear = 0;
         startMonth = 0;
         lastCompleted = 0;
@@ -68,7 +69,7 @@ public class GameEvent
 
     public void CompleteEvent()
     {
-        region.ImplementStatisticValues(consequences[(int)pickedChoiceNumber], true);
+        region.ImplementStatisticValues(consequences[pickedChoiceNumber], true);
 
         lastCompleted = startYear * 12 + startMonth + eventCooldown;
         startYear = 0;
