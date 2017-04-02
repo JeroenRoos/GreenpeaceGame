@@ -108,7 +108,7 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Start UpdateUI");
+        //Debug.Log("Start UpdateUI");
         initButtons();
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;

@@ -70,6 +70,7 @@ public class GameEvent
 
     public void CompleteEvent()
     {
+        Debug.Log("PickedChoiceNumber: " + pickedChoiceNumber);
         region.ImplementStatisticValues(consequences[pickedChoiceNumber], true);
 
         lastCompleted = startYear * 12 + startMonth + eventCooldown;
@@ -94,7 +95,10 @@ public class GameEvent
             isActive = true;
 
             if (eventDuration[i] == 0)
+            {
+                Debug.Log("In de SetPickedChoice method: " + i);
                 CompleteEvent();
+            }
         }
 
         else
