@@ -326,14 +326,6 @@ public class Game
         return sectors;
     }
 
-
-
-
-
-
-
-
-
     //Generates the game events (currently hardcoded)
     private void GenerateGameEvents()
     {
@@ -517,4 +509,3 @@ public class Game
         events.Add(gameEvent06);
     }
 }
-

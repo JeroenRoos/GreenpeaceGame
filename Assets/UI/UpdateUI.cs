@@ -633,18 +633,18 @@ public class UpdateUI : MonoBehaviour
         string activeEventsRegio = "";
         foreach (GameEvent e in game.events)
         {
-            //if (e.isActive)
-           // {
+            if (e.isActive || e.isIdle)
+            {
                 if (e.region == regio)
                 {
                     activeEventsRegio += e.name + "\n";
                 }
-           // }
+            }
         }
 
         txtActiveEvents.text = activeEventsRegio;
     }
-
+    
     void updateActiveActions()
     {
         string activeActionsRegio = "";
