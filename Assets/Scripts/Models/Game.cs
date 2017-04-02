@@ -131,7 +131,7 @@ public class Game
 
     public double GetMonthlyPopulation()
     {
-        double population = gameStatistics.population * 0.005;
+        double population = gameStatistics.population * 0.002;
         return population;
     }
 
