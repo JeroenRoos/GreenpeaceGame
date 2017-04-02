@@ -97,15 +97,22 @@ public class Game
 
         int activeCount = getActiveEventCount();
 
-        int eventChance = 35;
-        int eventChanceReduction = 10;
+        int eventChance = 100;
+        int eventChanceReduction = 100;
 
-        while (rnd.Next(1, 101) <= eventChance && activeCount < events.Count)
+        //voor demo vertical slice 1 active event max
+        /*while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
         {
             StartNewEvent();
             EventManager.CallShowEvent();
 
             eventChance -= eventChanceReduction;
+        }*/
+        //voor demo
+        if (activeCount < 1)
+        {
+            StartNewEvent();
+            EventManager.CallShowEvent();
         }
     }
 
@@ -131,7 +138,7 @@ public class Game
 
     public double GetMonthlyPopulation()
     {
-        double population = gameStatistics.population * 0.005;
+        double population = gameStatistics.population * 0.002;
         return population;
     }
 
@@ -179,7 +186,7 @@ public class Game
         int activeCount = 0;
         foreach (GameEvent gameEvent in events)
         {
-            if (gameEvent.isActive)
+            if (gameEvent.isActive || gameEvent.isIdle)
                 activeCount++;
         }
         return activeCount;
@@ -206,7 +213,7 @@ public class Game
         List<GameEvent> possibleEvents = new List<GameEvent>();
         foreach (GameEvent gameEvent in events)
         {
-            if (!gameEvent.isActive)
+            if (!gameEvent.isActive || !gameEvent.isIdle)
                 possibleEvents.Add(gameEvent);
         }
 
