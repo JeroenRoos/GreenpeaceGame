@@ -257,7 +257,7 @@ public class Game
         Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
         Pollution pollution = new Pollution(10, 40, 30, 5, 20, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(250, 0, 5, pollution, 2, 30);
+        RegionStatistics regionStatistics = new RegionStatistics(250, 0, 5, pollution, 2, 2);
 
         string[] name = { "Noord Nederland", "The Netherlands North" };
         Region noord_Nederland = new Region(name, regionStatistics, sectors);
@@ -273,7 +273,7 @@ public class Game
         Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
         Pollution pollution = new Pollution(30, 20, 30, 10, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(500, 0, 5, pollution, 0, 50);
+        RegionStatistics regionStatistics = new RegionStatistics(500, 0, 5, pollution, 0, 3);
 
         string[] name = { "Oost Nederland", "The Netherlands East" };
         Region oost_Nederland = new Region(name, regionStatistics, sectors);
@@ -288,7 +288,7 @@ public class Game
         Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
         Pollution pollution = new Pollution(50, 10, 10, 20, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(700, 0, 5, pollution, 0, 60);
+        RegionStatistics regionStatistics = new RegionStatistics(700, 0, 5, pollution, 0, 4);
 
         string[] name = { "Zuid Nederland", "The Netherlands South" };
         Region zuid_Nederland = new Region(name, regionStatistics, sectors);
@@ -304,7 +304,7 @@ public class Game
         Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
         Pollution pollution = new Pollution(40, 20, 20, 15, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(1000, 0, 5, pollution, 3, 70);
+        RegionStatistics regionStatistics = new RegionStatistics(1000, 0, 5, pollution, 3, 5);
 
         string[] name = { "West Nederland", "The Netherlands West" };
         Region west_Nederland = new Region(name, regionStatistics, sectors);
