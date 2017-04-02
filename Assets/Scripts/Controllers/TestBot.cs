@@ -30,7 +30,7 @@ public class TestBot : MonoBehaviour {
             {
                 // take anti-pollution action
                 //Debug.Log(region.actions[0].description);
-                region.actions[0].ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
+                //region.actions[0].ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
             }
         }
     }
