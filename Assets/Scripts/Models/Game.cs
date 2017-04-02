@@ -108,7 +108,7 @@ public class Game
 
             eventChance -= eventChanceReduction;
         }*/
-        //voor demo
+        //voor vertical slice
         if (activeCount < 1)
         {
             StartNewEvent();
@@ -148,8 +148,9 @@ public class Game
         {
             foreach (RegionAction action in region.actions)
             {
+
                 if (action.isActive &&
-                    ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
+                    (((int)action.startMonth + action.actionDuration + ((int)action.startYear * 12)) == (currentMonth + (currentYear * 12))))
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
@@ -174,7 +175,7 @@ public class Game
         foreach (GameEvent gameEvent in events)
         {
             if (gameEvent.isActive &&
-                ((gameEvent.startMonth + gameEvent.eventDuration[(int)gameEvent.pickedChoiceNumber] + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
+                (((int)gameEvent.startMonth + gameEvent.eventDuration[(int)gameEvent.pickedChoiceNumber] + ((int)gameEvent.startYear * 12)) == (currentMonth + (currentYear * 12))))
             {
                 gameEvent.CompleteEvent();
             }
