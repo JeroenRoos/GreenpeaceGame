@@ -11,19 +11,13 @@ public class EventObjectController : MonoBehaviour
     public bool areOptionsShown;
     public Texture[] allTextures;
 
-
-    //  private UpdateUI updateUI;
     private string txtTooltip;
     private string txtButton;
     public Texture2D tooltipTexture;
     private GUIStyle tooltipStyle = new GUIStyle();
-    private Vector3 v3Tooltip;
     public bool eventHoverCheck;
     public bool active;
     private int taal;
-
-
-
 
     private void Start()
     {
@@ -35,17 +29,7 @@ public class EventObjectController : MonoBehaviour
     }
     void Update()
     {
-        Vector3 mousePos = Input.mousePosition;
 
-        /*
-        foreach (GameEvent e in gameController.game.events)
-        {
-            if (e.isActive)
-            {
-
-            }
-        }
-        */
     }
 
     public void Init(GameController gameController, GameEvent eventModel)
@@ -95,7 +79,7 @@ public class EventObjectController : MonoBehaviour
         Vector3 v = eventModel.region.eventPositions[0];
 
         if (eventHoverCheck || areOptionsShown)
-        {
+        { 
             txtTooltip = eventModel.name + "\n" + eventModel.description[taal];
 
             lblReqt.x = v.x;
@@ -117,51 +101,17 @@ public class EventObjectController : MonoBehaviour
                 if (i == 2)
                     btnRect.y = v.y + 260;
 
-                txtButton = eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuur: " + eventModel.eventDuration[i] + "\nConsequenties: ";
+                string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
+                        "\nDuur: " + eventModel.eventDuration[i] + "\nConsequenties: "
+                , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
+                        "\nDuration: " + eventModel.eventDuration[i] + "\nConsequences: "  };
+
+                txtButton = tip[taal];
 
                     txtButton += getConsequences(eventModel.consequences[i]);
 
                     if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", tooltipStyle))
                         ChooseOption(i);
-//}
-  /*              else if (i == 1)
-                {
-                    btnRect.y = v.y + 150;
-
-                    txtButton = eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuur: " + eventModel.eventDuration[i] + "\nConsequenties: ";
-
-                    txtButton += getConsequences(eventModel.consequences[i]);
-
-                    if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", tooltipStyle))
-                        ChooseOption(i);
-
-                }
-                else if (i == 2)
-                {
-                    btnRect.y = v.y + 220;
-
-                    txtButton = eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuur: " + eventModel.eventDuration[i] + "\nConsequenties: ";
-
-                    txtButton += getConsequences(eventModel.consequences[i]);
-
-                    if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", tooltipStyle))
-                        ChooseOption(i);
-                }
-                else if (i == 3)
-                {
-                    btnRect.y = v.y + 220;
-
-                    txtButton = eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuur: " + eventModel.eventDuration[i] + "\nConsequenties: ";
-
-                    txtButton += getConsequences(eventModel.consequences[i]);
-
-                    if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", tooltipStyle))
-                        ChooseOption(i);
-                }*/
             }
         }
     }
@@ -172,35 +122,43 @@ public class EventObjectController : MonoBehaviour
 
         if (s.donations != 0)
         {
-            consequences = "Consequenties: \nDonaties: " + s.donations;
+            string[] a = { "Consequenties: \nDonaties: " + s.donations, "Consequentes: \nDonations: " + s.donations };
+            consequences = a[taal];// "Consequenties: \nDonaties: " + s.donations;
         }
         if (s.ecoAwareness != 0)
         {
-            consequences += " Milieubewustheid: " + s.ecoAwareness;
+            string[] b = { " Milieubewustheid: " + s.ecoAwareness, " Eco awareness: " + s.ecoAwareness };
+            consequences += b[taal];// " Milieubewustheid: " + s.ecoAwareness;
         }
         if (s.happiness != 0)
         {
-            consequences += " Tevredenheid: " + s.happiness;
+            string[] c = { " Tevredenheid: " + s.happiness, " Happiness: " + s.happiness };
+            consequences += c[taal];// " Tevredenheid: " + s.happiness;
         }
         if (s.income != 0)
         {
-            consequences += " Inkomen: " + s.income;
+            string[] d = { " Inkomen: " + s.income, " Income: " + s.income };
+            consequences += d[taal];// " Inkomen: " + s.income;
         }
         if (s.prosperity != 0)
         {
-            consequences += " Welvaart: " + s.prosperity;
+            string[] e = { " Welvaart: " + s.prosperity, " Prosperity: " + s.prosperity };
+            consequences += e[taal];//" Welvaart: " + s.prosperity;
         }
         if (s.pollution.airPollutionIncrease != 0)
         {
-            consequences += " Luchtvervuiling: " + s.pollution.airPollutionIncrease;
+            string[] f = { " Luchtvervuiling: " + s.pollution.airPollutionIncrease, " Air pollution: " + s.pollution.airPollutionIncrease };
+            consequences += f[taal];// " Luchtvervuiling: " + s.pollution.airPollutionIncrease;
         }
         if (s.pollution.naturePollutionIncrease != 0)
         {
-            consequences += " Natuurvervuiling: " + s.pollution.naturePollutionIncrease;
+            string[] g = { " Natuurvervuiling: " + s.pollution.naturePollutionIncrease, " Nature pollution: " + s.pollution.naturePollutionIncrease };
+            consequences += g[taal];// " Natuurvervuiling: " + s.pollution.naturePollutionIncrease;
         }
         if (s.pollution.waterPollutionIncrease != 0)
         {
-            consequences += " Watervervuiling: " + s.pollution.waterPollutionIncrease;
+            string[] h = { " Watervervuiling: " + s.pollution.waterPollutionIncrease, " Water pollution: " + s.pollution.waterPollutionIncrease };
+            consequences += h[taal];// " Watervervuiling: " + s.pollution.waterPollutionIncrease;
         }
 
         return consequences;

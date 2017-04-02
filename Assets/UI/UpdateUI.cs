@@ -470,19 +470,6 @@ public class UpdateUI : MonoBehaviour
     {
         switch (i)
         {
-            /*
-            case 0:
-                txtTooltip = "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
-                break;
-            case 1:
-                txtTooltip += "Oost-Nederland: " + pollution.ToString("0.00") + "\n";
-                break;
-            case 2:
-                txtTooltip += "West-Nederland: " + pollution.ToString("0.00") + "\n";
-                break;
-            case 3:
-                txtTooltip += "Zuid-Nederland: " + pollution.ToString("0.00");
-                break;*/
             case 0:
                 string[] tip1 = { "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n",
                     "Average pollution per region: \nThe Netherlands Northern: " + pollution.ToString("0.00") + "\n"};
@@ -635,13 +622,15 @@ public class UpdateUI : MonoBehaviour
 
     void updateActiveActions()
     {
+        
+
         string activeActionsRegio = "";
         foreach (RegionAction action in regio.actions)
         {
             if (action.isActive)
             {
                 Debug.Log(action.description + " is active!");
-                activeActionsRegio += action.description + "\n";
+                activeActionsRegio += action.description[taal] + "\n";
             }
 
             txtActiveActions.text = activeActionsRegio;
