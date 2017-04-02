@@ -164,9 +164,11 @@ public class Game
         foreach (GameEvent gameEvent in events)
         {
             if (gameEvent.isIdle)
+            {
                 gameEvent.SubtractIdleTurnsLeft();
-            if (gameEvent.idleTurnsLeft == 0)
-                gameEvent.SetPickedChoice(0, this);
+                if (gameEvent.idleTurnsLeft == 0)
+                    gameEvent.SetPickedChoice(0, this);
+            }
         }
     }
 
