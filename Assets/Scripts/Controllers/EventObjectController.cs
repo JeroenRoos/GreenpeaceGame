@@ -11,21 +11,25 @@ public class EventObjectController : MonoBehaviour
     public bool areOptionsShown;
     public Texture[] allTextures;
 
+    private UpdateUI updateUI;
     private string txtTooltip;
     private string txtButton;
     public Texture2D tooltipTexture;
     private GUIStyle tooltipStyle = new GUIStyle();
     public bool eventHoverCheck;
     public bool active;
+    private bool popupActive;
     private int taal;
 
-    private void Start()
+    void Start()
     {
         eventHoverCheck = false;
+        popupActive = false;
         tooltipStyle.normal.background = tooltipTexture;
         taal = gameController.game.language;
         areOptionsShown = false;
         active = false;
+        Debug.Log("Start EventObjectController");
     }
     void Update()
     {
@@ -78,40 +82,43 @@ public class EventObjectController : MonoBehaviour
 
         Vector3 v = eventModel.region.eventPositions[0];
 
-        if (eventHoverCheck || areOptionsShown)
-        { 
-            txtTooltip = eventModel.name + "\n" + eventModel.description[taal];
-
-            lblReqt.x = v.x;
-            lblReqt.y = v.y + 40;
-
-            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
-        }
-
-        if (areOptionsShown)
+        if (!popupActive)
         {
-            for (int i = 0; i < eventModel.choices.GetUpperBound(1) + 1; i++)
+            if (eventHoverCheck || areOptionsShown)
             {
-                btnRect.x = v.x;
+                txtTooltip = eventModel.name + "\n" + eventModel.description[taal];
 
-                if (i == 0)
-                    btnRect.y = v.y + 80;
-                if (i == 1)
-                    btnRect.y = v.y + 170;
-                if (i == 2)
-                    btnRect.y = v.y + 260;
+                lblReqt.x = v.x;
+                lblReqt.y = v.y + 40;
 
-                string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
+                GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
+            }
+
+            if (areOptionsShown)
+            {
+                for (int i = 0; i < eventModel.choices.GetUpperBound(1) + 1; i++)
+                {
+                    btnRect.x = v.x;
+
+                    if (i == 0)
+                        btnRect.y = v.y + 80;
+                    if (i == 1)
+                        btnRect.y = v.y + 170;
+                    if (i == 2)
+                        btnRect.y = v.y + 260;
+
+                    string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
                         "\nDuur: " + eventModel.eventDuration[i] + "\nConsequenties: "
                 , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
                         "\nDuration: " + eventModel.eventDuration[i] + "\nConsequences: "  };
 
-                txtButton = tip[taal];
+                    txtButton = tip[taal];
 
                     txtButton += getConsequences(eventModel.consequences[i]);
 
                     if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", tooltipStyle))
                         ChooseOption(i);
+                }
             }
         }
     }

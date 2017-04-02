@@ -48,6 +48,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionActionCost;
     public Text txtRegionActionConsequences;
     public Text txtActiveActions;
+    public Text txtActiveEvents;
 
 
     // Buttons 
@@ -107,6 +108,7 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log("Start UpdateUI");
         initButtons();
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
@@ -571,6 +573,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionName.text = "";
 
         updateActiveActions();
+        updateActiveEvents();
     }
 
     void updateRegionSectors()
@@ -620,10 +623,25 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    void updateActiveEvents()
+    {
+        string activeEventsRegio = "";
+        foreach (GameEvent e in game.events)
+        {
+            //if (e.isActive)
+           // {
+                if (e.region == regio)
+                {
+                    activeEventsRegio += e.name + "\n";
+                }
+           // }
+        }
+
+        txtActiveEvents.text = activeEventsRegio;
+    }
+
     void updateActiveActions()
     {
-        
-
         string activeActionsRegio = "";
         foreach (RegionAction action in regio.actions)
         {
@@ -747,9 +765,6 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoActionRegionMenuClick()
     {
-        // Debug.Log("btnDoActionRegionMenuClick: " + regio.name);
-        //Debug.Log("Year: " + regioAction.startYear.GetValueOrDefault() + " Month: " + regioAction.startMonth.GetValueOrDefault());
-
         regio.StartAction(regioAction, game.currentYear, game.currentMonth, this.game);
 
         updateRegionTextValues();
