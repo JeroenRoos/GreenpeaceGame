@@ -647,7 +647,6 @@ public class UpdateUI : MonoBehaviour
         {
             if (action.isActive)
             {
-                Debug.Log(action.description + " is active!");
                 activeActionsRegio += action.description[taal] + "\n";
             }
 
