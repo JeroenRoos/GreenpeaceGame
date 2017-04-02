@@ -144,15 +144,15 @@ public class Region
 
     private void GenerateActions()
     {
-        string[] description1 = { "actie 1", "action 1" };
-        RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -1, -1), 1, 0);
+        string[] description1 = { "Miliebewustheid campagne", "Eco awareness campaign" };
+        RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -1, -1), 5, 2);
         RegionStatistics actionCost1 = new RegionStatistics(-2000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         RegionAction action1 = new RegionAction(description1, consequence1, actionCost1, 2, 3, 2000);
         actions.Add(action1);
 
-        string[] description2 = { "actie 2", "action 2" };
-        RegionStatistics consequence2 = new RegionStatistics(500, 0, 1, new Pollution(0, 0, 0, 0, 0, 0), 0, 2);
-        RegionStatistics actionCost2 = new RegionStatistics(-3000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        string[] description2 = { "Geld inzamelen", "Raise money" };
+        RegionStatistics consequence2 = new RegionStatistics(5000, 0, 1, new Pollution(0, 0, 0, 0, 0, 0), 0, 2);
+        RegionStatistics actionCost2 = new RegionStatistics(50, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         RegionAction action2 = new RegionAction(description2, consequence2, actionCost2, 2, 3, 2000);
         actions.Add(action2);
     }

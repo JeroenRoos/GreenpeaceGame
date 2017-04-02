@@ -345,6 +345,7 @@ public class UpdateUI : MonoBehaviour
     // Update Money based on value
     public void updateMoney(double money)
     {
+        //Debug.Log(money);
         txtMoney.text = money.ToString();
     }
 
@@ -358,24 +359,28 @@ public class UpdateUI : MonoBehaviour
     // Update Awareness based on value
     public void updateAwarness(double awareness)
     {
+        //Debug.Log("Awareness: " + awareness);
         iconController(btnAwareness, awareness);
     }
 
     // Update Pollution based on value
     public void updatePollution(double pollution)
     {
+        //Debug.Log("Pollution: "+ pollution);
         iconController(btnPollution, pollution);
     }
 
     // Update Energy based on value
     public void updateEnergy(double energy)
     {
+        //Debug.Log("Energy: " + energy);
         iconController(btnEnergy, energy);
     }
 
     // Update Happiness based on value
     public void updateHappiness(double happiness)
     {
+        Debug.Log("Happiness: " + happiness);
         iconController(btnHappiness, happiness);
     }
 
