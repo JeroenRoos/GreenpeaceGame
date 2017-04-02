@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour
         // Update values in Tooltips for Icons in Main UI
         if (updateUI.getTooltipActive())
             updateUITooltips();
+
+        UpdateRegionColor();
     }
 
     void updateUIMainScreen()
@@ -177,5 +179,33 @@ public class GameController : MonoBehaviour
     {
         Region regionModel = game.regions[region.name];
         updateUI.regionClick(regionModel);
+    }
+
+    // update kleur van regio
+    public void UpdateRegionColor()
+    {
+        noordNederland.GetComponent<Renderer>().material.color = Color.Lerp(
+                Color.green, 
+                Color.red, 
+                (float)game.regions["NoordNederland"].statistics.pollution.avgPullution / 100
+            );
+
+        oostNederland.GetComponent<Renderer>().material.color = Color.Lerp(
+                Color.green,
+                Color.red,
+                (float)game.regions["OostNederland"].statistics.pollution.avgPullution / 100
+            );
+
+        westNederland.GetComponent<Renderer>().material.color = Color.Lerp(
+                Color.green,
+                Color.red,
+                (float)game.regions["WestNederland"].statistics.pollution.avgPullution / 100
+            );
+
+        zuidNederland.GetComponent<Renderer>().material.color = Color.Lerp(
+                Color.green,
+                Color.red,
+                (float)game.regions["ZuidNederland"].statistics.pollution.avgPullution / 100
+            );
     }
 }

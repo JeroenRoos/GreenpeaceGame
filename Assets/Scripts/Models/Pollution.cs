@@ -71,6 +71,8 @@ public class Pollution
             waterPollution = waterPollution + (waterPollution / 100 * waterPollutionIncrease);
         else
             waterPollution = waterPollution + ((waterPollution + 20) / 100 * waterPollution);
+
+        CalculateAvgPollution();
     }
 
     private void CalculateAvgPollution()
