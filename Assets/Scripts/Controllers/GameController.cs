@@ -181,6 +181,22 @@ public class GameController : MonoBehaviour
         updateUI.regionClick(regionModel);
     }
 
+    void CheckEndOfGame()
+    {
+        if (game.currentYear == 2050)
+        {
+            autoEndTurn = false;
+            if(game.gameStatistics.pollution < 20)
+            {
+                // you did it!
+            }
+            else
+            {
+                // objective failed.
+            }
+        }
+    }
+
     // update kleur van regio
     public void UpdateRegionColor()
     {

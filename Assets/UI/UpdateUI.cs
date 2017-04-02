@@ -29,7 +29,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtOrgBank;
 
     private int taal;
-  //  double totalOrgBank;
+    //  double totalOrgBank;
 
     // Text Region Menu
     public Text txtRegionName;
@@ -80,7 +80,7 @@ public class UpdateUI : MonoBehaviour
     private string txtTooltipAgriculture;
     private string txtTooltipHouseholds;
     private string dropdownChoice;
-   // string txttooltipPollution;
+    // string txttooltipPollution;
 
     private Vector3 v3Tooltip;
 
@@ -260,7 +260,7 @@ public class UpdateUI : MonoBehaviour
 
     #region onGUI Code
     void OnGUI()
-    { 
+    {
         Rect lblReqt;
 
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
@@ -274,9 +274,10 @@ public class UpdateUI : MonoBehaviour
         if (regionHouseholdsCheck)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
-            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + - 20;
+            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + -20;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipHouseholds + "</color>", tooltipStyle);
             updateRegionSectors();
+            
         }
         else if (regionAgricultureCheck)
         {
@@ -313,7 +314,7 @@ public class UpdateUI : MonoBehaviour
         }
         else if (btnEnergyHoverCheck)
         {
-            v3Tooltip= btnEnergy.gameObject.transform.position;
+            v3Tooltip = btnEnergy.gameObject.transform.position;
             return true;
         }
         else if (btnHappinessHoverCheck)
@@ -540,7 +541,6 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-
     #region Code for the Region Screen
     public void regionClick(Region region)
     {
@@ -700,7 +700,7 @@ public class UpdateUI : MonoBehaviour
     {
         // Debug.Log("btnDoActionRegionMenuClick: " + regio.name);
         //Debug.Log("Year: " + regioAction.startYear.GetValueOrDefault() + " Month: " + regioAction.startMonth.GetValueOrDefault());
-        
+
         regio.StartAction(regioAction, game.currentYear, game.currentMonth, this.game);
 
         updateRegionTextValues();
@@ -708,28 +708,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-
     #region Code for activating popups
-    public void btnNLClick()
-    {
-        if (taal != 0)
-        {
-            Debug.Log("BTN NL");
-            game.ChangeLanguage("dutch");
-            taal = game.language;
-        }
-    }
-
-    public void btnENGClick()
-    {
-        if (taal != 1)
-        {
-            Debug.Log("BTN ENG");
-            game.ChangeLanguage("english");
-            taal = game.language;
-        }
-    }
-
     public void btnTimelineClick()
     {
         if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)
@@ -747,13 +726,35 @@ public class UpdateUI : MonoBehaviour
             popupActive = true;
         }
     }
-    
+
     public void btnMenuClick()
     {
         if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
         {
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
+        }
+    }
+    #endregion
+
+    #region Language Change Code
+    public void btnNLClick()
+    {
+        if (taal != 0)
+        {
+            Debug.Log("BTN NL");
+            game.ChangeLanguage("dutch");
+            taal = game.language;
+        }
+    }
+
+    public void btnENGClick()
+    {
+        if (taal != 1)
+        {
+            Debug.Log("BTN ENG");
+            game.ChangeLanguage("english");
+            taal = game.language;
         }
     }
     #endregion
@@ -894,7 +895,7 @@ public class UpdateUI : MonoBehaviour
     }
 
 
-    
+
     #endregion
 
     #region Return Boolean Values
@@ -933,5 +934,21 @@ public class UpdateUI : MonoBehaviour
         return tooltipActive;
     }
     #endregion
+
+
+    public GUIStyle returnTooltipStyle()
+    {
+        return tooltipStyle;
+    }
+
+    public void enterEventHover()
+    {
+        Debug.Log("Event Hover ENTER!");
+    }
+
+    public void enterExitHover()
+    {
+        Debug.Log("Event Hover EXIT!");
+    }
 }
 
