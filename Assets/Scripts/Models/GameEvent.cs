@@ -73,9 +73,9 @@ public class GameEvent
         region.ImplementStatisticValues(consequences[pickedChoiceNumber], true);
 
         lastCompleted = startYear * 12 + startMonth + eventCooldown;
-        startYear = 0;
-        startMonth = 0;
-        pickedChoiceNumber = 0;
+        startYear = -1;
+        startMonth = -1;
+        pickedChoiceNumber = -1;
         isActive = false;
     }
 
@@ -90,7 +90,7 @@ public class GameEvent
             this.startMonth = game.currentMonth;
 
             isIdle = false;
-            idleTurnsLeft = 0;
+            idleTurnsLeft = -1;
             isActive = true;
 
             if (eventDuration[i] == 0)
