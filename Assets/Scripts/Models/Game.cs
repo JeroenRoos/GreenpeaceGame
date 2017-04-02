@@ -150,7 +150,7 @@ public class Game
             {
 
                 if (action.isActive &&
-                    (((int)action.startMonth + action.actionDuration + ((int)action.startYear * 12)) == (currentMonth + (currentYear * 12))))
+                    ((action.startMonth + action.actionDuration + ((int)action.startYear * 12)) == (currentMonth + (currentYear * 12))))
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
