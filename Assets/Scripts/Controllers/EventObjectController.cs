@@ -243,6 +243,12 @@ public class EventObjectController : MonoBehaviour
             case "AirPollutionConcern":
                 return allTextures[4];
 
+            case "NaturePollutionConcern":
+                return allTextures[4];
+
+            case "WaterPollutionConcern":
+                return allTextures[4];
+
             default: return allTextures[3];
         }
     }
