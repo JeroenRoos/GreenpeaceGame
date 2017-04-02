@@ -29,7 +29,7 @@ public class EventObjectController : MonoBehaviour
         taal = gameController.game.language;
         areOptionsShown = false;
         active = false;
-        Debug.Log("Start EventObjectController");
+        //Debug.Log("Start EventObjectController");
     }
     void Update()
     {
