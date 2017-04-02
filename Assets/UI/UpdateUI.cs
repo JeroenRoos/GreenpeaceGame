@@ -675,14 +675,74 @@ public class UpdateUI : MonoBehaviour
             if (action.description[taal] == dropdownChoice)
             {
                 regioAction = action;
-                txtRegionActionName.text = regioAction.description[0];
-                txtRegionActionCost.text = regioAction.actionCosts.ToString();
+                txtRegionActionName.text = regioAction.description[taal];
+                txtRegionActionCost.text = getActionCost(action.actionCosts); 
                 txtRegionActionDuration.text = regioAction.actionDuration.ToString();
-                txtRegionActionConsequences.text = regioAction.consequences.ToString();
+                txtRegionActionConsequences.text = getActionConsequences(action.consequences);
 
                 btnDoActionRegionMenu.gameObject.SetActive(true);
             }
         }
+    }
+
+    string getActionConsequences(RegionStatistics s)
+    {
+        string[] consequences = { "Consequenties:\n", "Consequences:\n" };
+
+        if (s.income != 0)
+        {
+            string[] a = { "Inkomen: " + s.income + "\n", "Income: " + s.income + "\n" };
+            consequences[taal] += a[taal];
+        }
+        if (s.donations != 0)
+        {
+            string[] b = { "Donaties: " + s.donations + "\n", "Donations: " + s.donations + "\n" };
+            consequences[taal] += b[taal];
+        }
+        if (s.happiness != 0)
+        {
+            string[] c = { "Tevredenheid: " + s.happiness + "\n", "Happiness: " + s.happiness + "\n" };
+            consequences[taal] += c[taal];
+        }
+        if (s.ecoAwareness != 0)
+        {
+            string[] d = { "Milieubewustheid: " + s.ecoAwareness + "\n", "Eco awareness: " + s.ecoAwareness + "\n" };
+            consequences[taal] += d[taal];
+        }
+        if (s.prosperity != 0)
+        {
+            string[] e = { "Welvaart: " + s.prosperity + "\n", "Prosperity: " + s.prosperity + "\n" };
+            consequences[taal] += e[taal];
+        }
+        if (s.pollution.airPollutionIncrease != 0)
+        {
+            string[] f = { "Luchtvervuiling: " + s.pollution.airPollutionIncrease + "\n", "Air pollution: " + s.pollution.airPollutionIncrease + "\n" };
+            consequences[taal] += f[taal];
+        }
+        if (s.pollution.waterPollutionIncrease != 0)
+        {
+            string[] g = { "Watervervuiling: " + s.pollution.waterPollutionIncrease + "\n", "Water pollution: " + s.pollution.waterPollutionIncrease + "\n" };
+            consequences[taal] += g[taal];
+        }
+        if (s.pollution.naturePollutionIncrease != 0)
+        {
+            string[] h = { "Natuurvervuiling: " + s.pollution.naturePollutionIncrease + "\n", "Nature pollution: " + s.pollution.naturePollutionIncrease + "\n" };
+            consequences[taal] += h[taal];
+        }
+
+        return consequences[taal];
+    }
+
+    string getActionCost(RegionStatistics s)
+    {
+        //string[] tip;
+        if (s.income != 0)
+        {
+            string[] tip = { "Kosten: " + s.income, "Cost: " + s.income };
+            return tip[taal];
+        }
+
+        return "0";
     }
 
     public void btnDoActionRegionMenuClick()
