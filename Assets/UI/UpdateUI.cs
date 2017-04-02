@@ -769,7 +769,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoActionRegionMenuClick()
     {
-        regio.StartAction(regioAction, game.currentYear, game.currentMonth, this.game);
+        regio.StartAction(regioAction, this.game);
 
         updateRegionTextValues();
         btnDoActionRegionMenu.gameObject.SetActive(false);

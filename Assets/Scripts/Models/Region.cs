@@ -35,13 +35,13 @@ public class Region
         GenerateActions();
     }
 
-    public void StartAction(RegionAction action, int currentYear, int currentMonth, Game game) //methode moet van UI aangeroepen worden
+    public void StartAction(RegionAction action, Game game) //methode moet van UI aangeroepen worden
     {
         if (game.gameStatistics.money > action.actionMoneyCost)
         {
             game.gameStatistics.ModifyMoney(-action.actionMoneyCost);
             ImplementStatisticValues(action.actionCosts, true);
-            action.ActivateAction(currentYear, currentMonth);
+            action.ActivateAction(game.currentYear, game.currentMonth);
 
             if (action.actionDuration == 0)
                 action.CompleteAction();

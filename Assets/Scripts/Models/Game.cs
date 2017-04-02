@@ -149,8 +149,7 @@ public class Game
             foreach (RegionAction action in region.actions)
             {
                 Debug.Log("Complete finished action FOR LOOP");
-                if (action.isActive &&
-                    ((action.startMonth + action.actionDuration + (action.startYear * 12)) == (currentMonth + (currentYear * 12))))
+                if (action.isActive && ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
@@ -176,7 +175,7 @@ public class Game
         foreach (GameEvent gameEvent in events)
         {
             if (gameEvent.isActive &&
-                ((gameEvent.startMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + (gameEvent.startYear * 12)) == (currentMonth + (currentYear * 12))))
+                ((gameEvent.startMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
             {
                 gameEvent.CompleteEvent();
                 
