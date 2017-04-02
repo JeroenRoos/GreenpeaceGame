@@ -21,12 +21,12 @@ public class GameEvent
     public double[] eventChoiceMoneyCost { get; private set; }
     
     //started events variables
-    public int? pickedChoiceNumber { get; private set; }
-    public int? startYear { get; private set; }
-    public int? startMonth { get; private set; }
-    public int? lastCompleted { get; private set; }
+    public int pickedChoiceNumber { get; private set; }
+    public int startYear { get; private set; }
+    public int startMonth { get; private set; }
+    public int lastCompleted { get; private set; }
     public bool isIdle { get; private set; }
-    public int? idleTurnsLeft { get; private set; } 
+    public int idleTurnsLeft { get; private set; } 
     public bool isActive { get; private set; }
 
     public Region region { get; private set; }
@@ -46,6 +46,10 @@ public class GameEvent
 
         isActive = false;
         isIdle = false;
+        startYear = 0;
+        startMonth = 0;
+        lastCompleted = 0;
+        idleTurnsLeft = 0;
     }
 
     public void StartEvent(Region region)
@@ -67,9 +71,9 @@ public class GameEvent
         region.ImplementStatisticValues(consequences[(int)pickedChoiceNumber], true);
 
         lastCompleted = startYear * 12 + startMonth + eventCooldown;
-        startYear = null;
-        startMonth = null;
-        pickedChoiceNumber = null;
+        startYear = 0;
+        startMonth = 0;
+        pickedChoiceNumber = 0;
         isActive = false;
     }
 
@@ -84,7 +88,7 @@ public class GameEvent
             this.startMonth = game.currentMonth;
 
             isIdle = false;
-            idleTurnsLeft = null;
+            idleTurnsLeft = 0;
             isActive = true;
 
             if (eventDuration[i] == 0)

@@ -12,9 +12,9 @@ public class RegionAction //: MonoBehaviour
     public RegionStatistics actionCosts { get; private set; }
     public double actionMoneyCost { get; private set; }
     public int actionDuration { get; private set; } //in months
-    public int? startYear { get; private set; }
-    public int? startMonth { get; private set; }
-    public int? lastCompleted { get; private set; } //in months
+    public int startYear { get; private set; }
+    public int startMonth { get; private set; }
+    public int lastCompleted { get; private set; } //in months
     public int actionCooldown { get; private set; } //in months
     public bool isActive { get; private set; }
 
@@ -28,12 +28,16 @@ public class RegionAction //: MonoBehaviour
         this.actionCosts = actionCosts;
         this.actionMoneyCost = actionMoneyCost;
         isActive = false;
+
+        startYear = 0;
+        startMonth = 0;
+        lastCompleted = 0;
     }
 
     public void ActivateAction(int startYear, int startMonth)
     {
         
-        if (lastCompleted == null || (lastCompleted != null && !(startYear * 12 + startMonth >= lastCompleted + actionCooldown)))
+        if (lastCompleted == 0 || (lastCompleted != 0 && !(startYear * 12 + startMonth >= lastCompleted + actionCooldown)))
         {
             this.startYear = startYear;
             this.startMonth = startMonth;
@@ -49,8 +53,8 @@ public class RegionAction //: MonoBehaviour
     public void CompleteAction()
     {
         lastCompleted = startYear * 12 + startMonth + actionDuration;
-        this.startYear = null;
-        this.startMonth = null;
+        this.startYear = 0;
+        this.startMonth = 0;
         isActive = false;
     }
 }

@@ -108,7 +108,7 @@ public class Game
 
             eventChance -= eventChanceReduction;
         }*/
-        //voor demo
+        //voor vertical slice
         if (activeCount < 1)
         {
             StartNewEvent();
@@ -144,26 +144,18 @@ public class Game
 
     public void CompletefinishedActions()
     {
-
         foreach (Region region in regions.Values)
         {
             foreach (RegionAction action in region.actions)
             {
-                Debug.Log("In de action foreach loop!");
                 if (action.isActive &&
-<<<<<<< HEAD
-                    ((action.startMonth + action.actionDuration + ((int)action.startYear * 12)) == (currentMonth + (currentYear * 12))))
-=======
                     ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
->>>>>>> 2152f7d3093146b88901751295438a9b072fbc43
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
-                    Debug.Log("Complete Finished Action!");
                 }
             }
         }
-
     }
 
     public void CheckIdleEvents()
