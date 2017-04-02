@@ -148,11 +148,13 @@ public class Game
         {
             foreach (RegionAction action in region.actions)
             {
+                Debug.Log("Complete finished action FOR LOOP");
                 if (action.isActive &&
                     ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
+                    Debug.Log("Complete finished action IF STATEMENT");
                 }
             }
         }
@@ -177,6 +179,7 @@ public class Game
                 ((gameEvent.startMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
             {
                 gameEvent.CompleteEvent();
+                
             }
         }
     }
