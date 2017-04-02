@@ -54,7 +54,7 @@ public class GameEvent
         region.ImplementStatisticValues(onEventStartConsequence, true);
 
         isIdle = true;
-        idleTurnsLeft = 3;
+        idleTurnsLeft = 100;
     }
 
     public void SubtractIdleTurnsLeft()
@@ -77,7 +77,7 @@ public class GameEvent
     {
         if (game.gameStatistics.money > eventChoiceMoneyCost[i])
         {
-            game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i]);
+            game.gameStatistics.ModifyMoney(-eventChoiceMoneyCost[i]);
 
             pickedChoiceNumber = i;
             this.startYear = game.currentYear;

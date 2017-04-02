@@ -64,7 +64,19 @@ public class GameController : MonoBehaviour
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
-        updateUI.updateHappiness(game.gameStatistics.happiness);       
+        updateUI.updateHappiness(game.gameStatistics.happiness);
+
+        
+        /*foreach (Region region in game.regions.Values)
+        {
+            region.statistics.
+            foreach (RegionSector sector in region.sectors.Values)
+            {
+                sector.statistics.
+            }
+        } 
+        */
+        
     }
     
 
@@ -167,6 +179,22 @@ public class GameController : MonoBehaviour
     {
         Region regionModel = game.regions[region.name];
         updateUI.regionClick(regionModel);
+    }
+
+    void CheckEndOfGame()
+    {
+        if (game.currentYear == 2050)
+        {
+            autoEndTurn = false;
+            if(game.gameStatistics.pollution < 20)
+            {
+                // you did it!
+            }
+            else
+            {
+                // objective failed.
+            }
+        }
     }
 
     // update kleur van regio
