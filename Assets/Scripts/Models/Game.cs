@@ -97,15 +97,22 @@ public class Game
 
         int activeCount = getActiveEventCount();
 
-        int eventChance = 35;
-        int eventChanceReduction = 10;
+        int eventChance = 100;
+        int eventChanceReduction = 100;
 
-        while (rnd.Next(1, 101) <= eventChance && activeCount < events.Count)
+        //voor demo vertical slice 1 active event max
+        /*while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
         {
             StartNewEvent();
             EventManager.CallShowEvent();
 
             eventChance -= eventChanceReduction;
+        }*/
+        //voor demo
+        if (activeCount < 1)
+        {
+            StartNewEvent();
+            EventManager.CallShowEvent();
         }
     }
 
@@ -131,7 +138,7 @@ public class Game
 
     public double GetMonthlyPopulation()
     {
-        double population = gameStatistics.population * 0.005;
+        double population = gameStatistics.population * 0.002;
         return population;
     }
 
@@ -179,7 +186,7 @@ public class Game
         int activeCount = 0;
         foreach (GameEvent gameEvent in events)
         {
-            if (gameEvent.isActive)
+            if (gameEvent.isActive || gameEvent.isIdle)
                 activeCount++;
         }
         return activeCount;
@@ -206,7 +213,7 @@ public class Game
         List<GameEvent> possibleEvents = new List<GameEvent>();
         foreach (GameEvent gameEvent in events)
         {
-            if (!gameEvent.isActive)
+            if (!gameEvent.isActive || !gameEvent.isIdle)
                 possibleEvents.Add(gameEvent);
         }
 
@@ -250,7 +257,7 @@ public class Game
         Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
         Pollution pollution = new Pollution(10, 40, 30, 5, 20, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(250, 1000, 5, pollution, 10, 30);
+        RegionStatistics regionStatistics = new RegionStatistics(250, 0, 5, pollution, 2, 30);
 
         string[] name = { "Noord Nederland", "The Netherlands North" };
         Region noord_Nederland = new Region(name, regionStatistics, sectors);
@@ -266,7 +273,7 @@ public class Game
         Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
         Pollution pollution = new Pollution(30, 20, 30, 10, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(500, 500, 5, pollution, 5, 50);
+        RegionStatistics regionStatistics = new RegionStatistics(500, 0, 5, pollution, 0, 50);
 
         string[] name = { "Oost Nederland", "The Netherlands East" };
         Region oost_Nederland = new Region(name, regionStatistics, sectors);
@@ -297,7 +304,7 @@ public class Game
         Dictionary<string, RegionSector> sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
 
         Pollution pollution = new Pollution(40, 20, 20, 15, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(1000, 1000, 5, pollution, 10, 70);
+        RegionStatistics regionStatistics = new RegionStatistics(1000, 0, 5, pollution, 3, 70);
 
         string[] name = { "West Nederland", "The Netherlands West" };
         Region west_Nederland = new Region(name, regionStatistics, sectors);

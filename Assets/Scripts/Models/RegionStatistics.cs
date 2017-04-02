@@ -52,7 +52,7 @@ public class RegionStatistics
     {
         ecoAwareness += changeValue;
 
-        double donationChangeValue = 100 * changeValue;
+        double donationChangeValue = 10 * changeValue;
         ChangeDonations(donationChangeValue);
 
         double pollutionChangeValue = 0 - (changeValue / 10);
@@ -68,7 +68,7 @@ public class RegionStatistics
         double happinessChangeValue = changeValue / 10;
         ChangeHappiness(happinessChangeValue);
 
-        double incomeChangeValue = changeValue * 1000;
+        double incomeChangeValue = changeValue * 20;
         ChangeIncome(incomeChangeValue);
     }
 
