@@ -42,7 +42,27 @@ public class EventObjectController : MonoBehaviour
         this.eventModel = eventModel;
 
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
-        transform.position = eventModel.region.eventPositions[Random.Range(0, 4)];
+        //transform.position = eventModel.region.eventPositions[Random.Range(0, 4)];
+
+        switch (eventModel.region.name[0])
+        {
+            case "West Nederland":
+                transform.position = eventModel.region.eventPositions[0];
+                break;
+            case "Oost Nederland":
+                transform.position = eventModel.region.eventPositions[1];
+                break;
+            case "Zuid Nederland":
+                transform.position = eventModel.region.eventPositions[2];
+                break;
+            case "Noord Nederland":
+                transform.position = eventModel.region.eventPositions[3];
+                break;
+            default:
+                transform.position = eventModel.region.eventPositions[Random.Range(0, 4)];
+                break;
+        }
+
     }
 
     // hover over event
