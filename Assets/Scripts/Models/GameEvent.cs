@@ -54,7 +54,7 @@ public class GameEvent
         region.ImplementStatisticValues(onEventStartConsequence, true);
 
         isIdle = true;
-        idleTurnsLeft = 3;
+        idleTurnsLeft = 100;
     }
 
     public void SubtractIdleTurnsLeft()
