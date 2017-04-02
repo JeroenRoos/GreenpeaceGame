@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 //namespace Assets.Scripts.Models
-public class RegionAction
+public class RegionAction //: MonoBehaviour
 {
     public string[] description { get; private set; }
     public RegionStatistics consequences { get; private set; }
@@ -31,17 +32,18 @@ public class RegionAction
 
     public void ActivateAction(int startYear, int startMonth)
     {
+        
         if (lastCompleted == null || (lastCompleted != null && !(startYear * 12 + startMonth >= lastCompleted + actionCooldown)))
         {
             this.startYear = startYear;
             this.startMonth = startMonth;
             isActive = true;
         }
-
         else
         {
             //toon dat action op cooldown is
         }
+       Debug.Log("RegionAction ActiveAction!");
     }
 
     public void CompleteAction()

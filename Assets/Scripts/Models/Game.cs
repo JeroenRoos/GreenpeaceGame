@@ -144,18 +144,22 @@ public class Game
 
     public void CompletefinishedActions()
     {
+
         foreach (Region region in regions.Values)
         {
             foreach (RegionAction action in region.actions)
             {
+                Debug.Log("In de action foreach loop!");
                 if (action.isActive &&
                     ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
+                    Debug.Log("Complete Finished Action!");
                 }
             }
         }
+
     }
 
     public void CheckIdleEvents()

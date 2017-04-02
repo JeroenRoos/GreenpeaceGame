@@ -380,7 +380,7 @@ public class UpdateUI : MonoBehaviour
     // Update Happiness based on value
     public void updateHappiness(double happiness)
     {
-        Debug.Log("Happiness: " + happiness);
+        //Debug.Log("Happiness: " + happiness);
         iconController(btnHappiness, happiness);
     }
 
@@ -587,7 +587,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (sector.sectorName[taal] == "Huishoudens" || sector.sectorName[taal] == "Households")
             {
-                Debug.Log(sector.sectorName);
+                //Debug.Log(sector.sectorName);
                 string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                     + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
                     + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity ,
@@ -602,7 +602,7 @@ public class UpdateUI : MonoBehaviour
             }
             else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
-                Debug.Log(sector.sectorName);
+               // Debug.Log(sector.sectorName);
                 string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                     + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
                     + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity ,
@@ -614,7 +614,7 @@ public class UpdateUI : MonoBehaviour
             }
             else if (sector.sectorName[taal] == "Landbouw" || sector.sectorName[taal] == "Agriculture")
             {
-                Debug.Log(sector.sectorName);
+                //Debug.Log(sector.sectorName);
                 string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                     + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
                     + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity ,
