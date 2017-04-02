@@ -77,7 +77,7 @@ public class GameEvent
     {
         if (game.gameStatistics.money > eventChoiceMoneyCost[i])
         {
-            game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i]);
+            game.gameStatistics.ModifyMoney(-eventChoiceMoneyCost[i]);
 
             pickedChoiceNumber = i;
             this.startYear = game.currentYear;
