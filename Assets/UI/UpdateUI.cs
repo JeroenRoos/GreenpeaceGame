@@ -699,7 +699,7 @@ public class UpdateUI : MonoBehaviour
                 regioAction = action;
                 txtRegionActionName.text = regioAction.description[taal];
                 txtRegionActionCost.text = getActionCost(action.actionCosts); 
-                txtRegionActionDuration.text = regioAction.actionDuration.ToString();
+                txtRegionActionDuration.text = "Duur: " + regioAction.actionDuration.ToString() + " maanden";
                 txtRegionActionConsequences.text = getActionConsequences(action.consequences);
 
                 btnDoActionRegionMenu.gameObject.SetActive(true);
