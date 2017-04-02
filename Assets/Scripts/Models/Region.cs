@@ -39,7 +39,7 @@ public class Region
     {
         if (game.gameStatistics.money > action.actionMoneyCost)
         {
-            game.gameStatistics.ModifyMoney(action.actionMoneyCost);
+            game.gameStatistics.ModifyMoney(-action.actionMoneyCost);
             ImplementStatisticValues(action.actionCosts, true);
             action.ActivateAction(currentYear, currentMonth);
 
@@ -145,15 +145,15 @@ public class Region
     private void GenerateActions()
     {
         string[] description1 = { "Miliebewustheid campagne", "Eco awareness campaign" };
-        RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -1, -1), 5, 2);
-        RegionStatistics actionCost1 = new RegionStatistics(-2000, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action1 = new RegionAction(description1, consequence1, actionCost1, 2, 3, 2000);
+        RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 5, 0);
+        RegionStatistics actionCost1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        RegionAction action1 = new RegionAction(description1, consequence1, actionCost1, 3, 6, 5000);
         actions.Add(action1);
 
-        string[] description2 = { "Geld inzamelen", "Raise money" };
-        RegionStatistics consequence2 = new RegionStatistics(5000, 0, 1, new Pollution(0, 0, 0, 0, 0, 0), 0, 2);
-        RegionStatistics actionCost2 = new RegionStatistics(50, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action2 = new RegionAction(description2, consequence2, actionCost2, 2, 3, 2000);
+        string[] description2 = { "Verhoog productie", "Improve production" };
+        RegionStatistics consequence2 = new RegionStatistics(250, 0, 0, new Pollution(0, 0, 0, 1, 1, 1), 0, 2);
+        RegionStatistics actionCost2 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        RegionAction action2 = new RegionAction(description2, consequence2, actionCost2, 6, 6, 10000);
         actions.Add(action2);
     }
 }
