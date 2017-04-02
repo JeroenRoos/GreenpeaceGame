@@ -350,12 +350,13 @@ public class Game
         consequences01[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, -2, 0, 0), 1, 0);
         consequences01[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
         
-        RegionStatistics onStartConsequences01 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        RegionStatistics onEventStartConsequence01 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
 
         double[] choiceMoneyCost01 = { 0, 2000, 2000 };
         int eventCooldown01 = 3;
 
-        GameEvent gameEvent01 = new GameEvent(name01, description01, eventDuration01, choices01, consequences01, onStartConsequences01, choiceMoneyCost01, eventCooldown01, false);
+        GameEvent gameEvent01 = new GameEvent(name01, description01, eventDuration01, choices01, consequences01,
+            onEventStartConsequence01, choiceMoneyCost01, eventCooldown01, false);
         events.Add(gameEvent01);
 
 
@@ -379,12 +380,13 @@ public class Game
         consequences02[1] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         consequences02[2] = new RegionStatistics(-200, 0, 4, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         
-        RegionStatistics onStartConsequences02 = new RegionStatistics(0, 0, -2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        RegionStatistics onEventStartConsequence02 = new RegionStatistics(-50, 0,-1, new Pollution(0, 0, 0, 0, 0, 0), 0, -1);
 
         double[] choiceMoneyCost02 = { 0, 1000, 4000 };
         int eventCooldown02 = 9;
 
-        GameEvent gameEvent02 = new GameEvent(name02, description02, eventDuration02, choices02, consequences02, onStartConsequences02, choiceMoneyCost02, eventCooldown02, false);
+        GameEvent gameEvent02 = new GameEvent(name02, description02, eventDuration02, choices02, consequences02,
+            onEventStartConsequence02, choiceMoneyCost02, eventCooldown02, false);
         events.Add(gameEvent02);
 
 
@@ -407,13 +409,14 @@ public class Game
         consequences03[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         consequences03[1] = new RegionStatistics(0, 0, 2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         consequences03[2] = new RegionStatistics(-200, 0, 4, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-
-        RegionStatistics onStartConsequences03 = new RegionStatistics(0, 0, -2, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        
+        RegionStatistics onEventStartConsequence03 = new RegionStatistics(-50, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, -1);
 
         double[] choiceMoneyCost03 = { 0, 1000, 4000 };
         int eventCooldown03 = 12;
 
-        GameEvent gameEvent03 = new GameEvent(name03, description03, eventDuration03, choices03, consequences03, onStartConsequences03, choiceMoneyCost03, eventCooldown03, false);
+        GameEvent gameEvent03 = new GameEvent(name03, description03, eventDuration03, choices03, consequences03,
+            onEventStartConsequence03, choiceMoneyCost03, eventCooldown03, false);
         events.Add(gameEvent03);
 
 
@@ -436,13 +439,14 @@ public class Game
         consequences04[0] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 2, 0), 0, 0);
         consequences04[1] = new RegionStatistics(0, 0, 1, new Pollution(0, 0, 0, -1, -1, 0), 0, 0);
         consequences04[2] = new RegionStatistics(-200, 0, 4, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-
-        RegionStatistics onStartConsequences04 = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        
+        RegionStatistics onEventStartConsequence04 = new RegionStatistics(-50, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, -1);
 
         double[] choiceMoneyCost04 = { 0, 1000, 4000 };
         int eventCooldown04 = 9;
 
-        GameEvent gameEvent04 = new GameEvent(name04, description04, eventDuration04, choices04, consequences04, onStartConsequences04, choiceMoneyCost04, eventCooldown04, false);
+        GameEvent gameEvent04 = new GameEvent(name04, description04, eventDuration04, choices04, consequences04,
+            onEventStartConsequence04, choiceMoneyCost04, eventCooldown04, false);
         events.Add(gameEvent04);
 
 
@@ -465,13 +469,14 @@ public class Game
         consequences05[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         consequences05[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, -2, 0), 1, 0);
         consequences05[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
-
-        RegionStatistics onStartConsequences05 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        
+        RegionStatistics onEventStartConsequence05 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
 
         double[] choiceMoneyCost05 = { 0, 2000, 2000 };
         int eventCooldown05 = 3;
 
-        GameEvent gameEvent05 = new GameEvent(name05, description05, eventDuration05, choices05, consequences05, onStartConsequences05, choiceMoneyCost05, eventCooldown05, false);
+        GameEvent gameEvent05 = new GameEvent(name05, description05, eventDuration05, choices05, consequences05,
+            onEventStartConsequence05, choiceMoneyCost05, eventCooldown05, false);
         events.Add(gameEvent05);
 
 
@@ -494,13 +499,14 @@ public class Game
         consequences06[0] = new RegionStatistics(0, 0, -1, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
         consequences06[1] = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, -2), 1, 0);
         consequences06[2] = new RegionStatistics(0, 250, 0, new Pollution(0, 0, 0, 0, 0, 0), 1, 0);
-
-        RegionStatistics onStartConsequences06 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
+        
+        RegionStatistics onEventStartConsequence06 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
 
         double[] choiceMoneyCost06 = { 0, 2000, 2000 };
         int eventCooldown06 = 3;
 
-        GameEvent gameEvent06 = new GameEvent(name06, description06, eventDuration06, choices06, consequences06, onStartConsequences06, choiceMoneyCost06, eventCooldown06, false);
+        GameEvent gameEvent06 = new GameEvent(name06, description06, eventDuration06, choices06, consequences06,
+            onEventStartConsequence06, choiceMoneyCost06, eventCooldown06, false);
         events.Add(gameEvent06);
     }
 }

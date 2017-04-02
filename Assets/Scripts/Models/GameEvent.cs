@@ -10,34 +10,36 @@ public class GameEvent
 {
     public string name { get; private set; } //id
     public string[] description { get; private set; }
+    public bool isUnique { get; private set; }
+
     public int[] eventDuration { get; private set; } //in months
+    public int eventCooldown { get; private set; } //in months
+
     public string[,] choices { get; private set; }
     public RegionStatistics[] consequences { get; private set; }
-    public RegionStatistics onStartConsequence { get; private set; }
+    public RegionStatistics onEventStartConsequence { get; private set; }
     public double[] eventChoiceMoneyCost { get; private set; }
-    public int eventCooldown { get; private set; }
-    //public RegionStatistics pickedChoice { get; private set; }
+    
+    //started events variables
     public int? pickedChoiceNumber { get; private set; }
     public int? startYear { get; private set; }
     public int? startMonth { get; private set; }
     public int? lastCompleted { get; private set; }
     public bool isIdle { get; private set; }
     public int? idleTurnsLeft { get; private set; } 
-
     public bool isActive { get; private set; }
-    public bool isUnique { get; private set; }
 
     public Region region { get; private set; }
 
-    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
-                    RegionStatistics onStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
+    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences, 
+                    RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
     {
         this.name = name;
         this.description = description;
         this.eventDuration = eventDuration;
         this.choices = choices;
         this.consequences = consequences;
-        this.onStartConsequence = onStartConsequence;
+        this.onEventStartConsequence = onEventStartConsequence;
         this.eventChoiceMoneyCost = eventChoiceMoneyCost;
         this.eventCooldown = eventCooldown;
         this.isUnique = isUnique;
@@ -49,6 +51,7 @@ public class GameEvent
     public void StartEvent(Region region)
     {
         this.region = region;
+        region.ImplementStatisticValues(onEventStartConsequence, true);
 
         isIdle = true;
         idleTurnsLeft = 3;
@@ -75,7 +78,6 @@ public class GameEvent
         if (game.gameStatistics.money > eventChoiceMoneyCost[i])
         {
             game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i]);
-            region.ImplementStatisticValues(onStartConsequence, true);
 
             pickedChoiceNumber = i;
             this.startYear = game.currentYear;
