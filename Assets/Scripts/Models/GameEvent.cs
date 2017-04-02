@@ -47,11 +47,11 @@ public class GameEvent
         isActive = false;
         isIdle = false;
         this.region = region; //temporary fix
-        pickedChoiceNumber = 0;
-        startYear = 0;
-        startMonth = 0;
-        lastCompleted = 0;
-        idleTurnsLeft = 0;
+        pickedChoiceNumber = -1;
+        startYear = -1;
+        startMonth = -1;
+        lastCompleted = -1;
+        idleTurnsLeft = -1;
     }
 
     public void StartEvent(Region region)
