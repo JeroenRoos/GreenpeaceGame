@@ -28,5 +28,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-Assets/NormalGame.unity
-Assets/NormalGame.unity.meta
