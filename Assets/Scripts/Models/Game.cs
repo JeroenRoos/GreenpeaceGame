@@ -37,8 +37,6 @@ public class Game
 
         currentYear = 1;
         currentMonth = 1;
-
-        //DisplayRegion(regions[0]);
     }
     
     public void Init(GameObject eventObject, GameController gameController)
@@ -176,13 +174,25 @@ public class Game
     {
         foreach (GameEvent gameEvent in events)
         {
+
             if (gameEvent.isActive &&
-                ((gameEvent.startMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.startYear * 12) == (currentMonth + currentYear * 12)))
+                ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (currentMonth + currentYear * 12)))
             {
                 gameEvent.CompleteEvent();
-                
+
             }
+
+            EndTemporaryEventConsequences(gameEvent);
         }
+    }
+
+    //niet perfect (in Event class schrijven?)
+    public void EndTemporaryEventConsequences(GameEvent gameEvent)
+    {
+        if (gameEvent.onEventStartYear == currentYear & gameEvent.onEventStartMonth == currentMonth)
+            gameEvent.EndTemporaryOnEventStartConsequences(gameEvent.onEventStartConsequence);
+        if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == currentMonth + currentYear * 12)
+            gameEvent.EndTemporaryConsequences(gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber]);
     }
 
     public int getActiveEventCount()
@@ -195,7 +205,6 @@ public class Game
         }
         return activeCount;
     }
-
     
     public void StartNewEvent()
     {
@@ -206,7 +215,7 @@ public class Game
             int pickedEvent = PickEvent(possibleEvents.Count);
             string pickedRegion = PickEventRegion();
             //events[pickedEvent].ActivateEvent(currentYear, currentMonth, regions[pickedRegion]);
-            events[pickedEvent].StartEvent(regions[pickedRegion]);
+            events[pickedEvent].StartEvent(regions[pickedRegion], currentYear, currentMonth);
             GameObject eventInstance = GameController.Instantiate(eventObject);
             eventInstance.GetComponent<EventObjectController>().Init(gameController, events[pickedEvent]);
         }
