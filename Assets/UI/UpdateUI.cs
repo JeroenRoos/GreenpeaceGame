@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;                      
+using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UpdateUI : MonoBehaviour
 {
@@ -1027,6 +1028,19 @@ public class UpdateUI : MonoBehaviour
     public void enterExitHover()
     {
         Debug.Log("Event Hover EXIT!");
+    }
+
+    public void buttonExitGameOnClick()
+    {
+        if (UnityEditor.EditorApplication.isPlaying)
+            UnityEditor.EditorApplication.isPlaying = false;
+        else
+            Application.Quit();
+    }
+
+    public void loadOtherScene(int index)
+    {
+        SceneManager.LoadSceneAsync(index);
     }
 }
 
