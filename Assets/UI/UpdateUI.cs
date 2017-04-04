@@ -97,7 +97,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnOrganizationCheck;
     private bool btnMenuCheck;
     private bool btnTimelineCheck;
-    private bool popupActive;
+    public bool popupActive;
     private bool tooltipActive;
     private bool regionHouseholdsCheck;
     private bool regionAgricultureCheck;
@@ -226,6 +226,8 @@ public class UpdateUI : MonoBehaviour
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
         }
+
+
     }
 
 
@@ -267,13 +269,13 @@ public class UpdateUI : MonoBehaviour
 
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
-        if (checkTooltip())
+        if (checkTooltip() && !popupActive)
         {
             lblReqt.x = v3Tooltip.x + 10; lblReqt.y = v3Tooltip.z + 40;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
         }
 
-        if (regionHouseholdsCheck)
+        if (regionHouseholdsCheck && popupActive)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + -20;
@@ -281,14 +283,14 @@ public class UpdateUI : MonoBehaviour
             updateRegionSectors();
             
         }
-        else if (regionAgricultureCheck)
+        else if (regionAgricultureCheck && popupActive)
         {
             v3Tooltip = emptybtnHoverAgriculture.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 100;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipAgriculture + "</color>", tooltipStyle);
             updateRegionSectors();
         }
-        else if (regionCompanyCheck)
+        else if (regionCompanyCheck && popupActive)
         {
             v3Tooltip = emptybtnHoverCompanies.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 220;
@@ -547,6 +549,9 @@ public class UpdateUI : MonoBehaviour
             canvasRegioPopup.gameObject.SetActive(true);
             popupActive = true;
 
+            dropdownRegio.ClearOptions();
+            dropdownRegio.RefreshShownValue();
+
             updateRegionScreenUI();
         }
     }
@@ -562,6 +567,9 @@ public class UpdateUI : MonoBehaviour
 
     void updateRegionTextValues()
     {
+        dropdownRegio.ClearOptions();
+        dropdownRegio.RefreshShownValue();
+
         // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name[taal];
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
@@ -579,6 +587,8 @@ public class UpdateUI : MonoBehaviour
 
         updateActiveActions();
         updateActiveEvents();
+
+        initDropDownRegion();
     }
 
     void updateRegionSectors()

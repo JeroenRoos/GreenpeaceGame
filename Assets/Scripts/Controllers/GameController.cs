@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public Game game;
+
+    private EventObjectController eventObjectController;
     private UpdateUI updateUI;
     public GameObject noordNederland;
     public GameObject oostNederland;
@@ -23,6 +25,7 @@ public class GameController : MonoBehaviour
     {
         game = new Game();
         updateUI = GetComponent<UpdateUI>();
+        eventObjectController = GetComponent<EventObjectController>();
         updateUI.LinkGame(game);
 
         // setup Region Controllers
@@ -64,19 +67,7 @@ public class GameController : MonoBehaviour
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
-        updateUI.updateHappiness(game.gameStatistics.happiness);
-
-        
-        /*foreach (Region region in game.regions.Values)
-        {
-            region.statistics.
-            foreach (RegionSector sector in region.sectors.Values)
-            {
-                sector.statistics.
-            }
-        } 
-        */
-        
+        updateUI.updateHappiness(game.gameStatistics.happiness);       
     }
     
 
@@ -139,6 +130,8 @@ public class GameController : MonoBehaviour
 
     void updateUIPopups()
     {
+        //eventObjectController.disableTooltipAndOptions();
+
         if (updateUI.canvasOrganizationPopup.gameObject.activeSelf)
             updateUIOrganizationScreen();
 
@@ -223,5 +216,10 @@ public class GameController : MonoBehaviour
                 Color.red,
                 (float)game.regions["ZuidNederland"].statistics.pollution.avgPullution / 100
             );
+    }
+
+    public bool getActivePopup()
+    {
+        return updateUI.getPopupActive();
     }
 }

@@ -11,29 +11,51 @@ public class EventObjectController : MonoBehaviour
     public bool areOptionsShown;
     public Texture[] allTextures;
 
+   // private GameController gameController;
     private UpdateUI updateUI;
     private string txtTooltip;
     private string txtButton;
     public Texture2D tooltipTexture;
+    public Texture2D buttonTexture;
     private GUIStyle tooltipStyle = new GUIStyle();
+    private GUIStyle buttonStyle = new GUIStyle();
     public bool eventHoverCheck;
     public bool active;
     private bool popupActive;
     private int taal;
+    private Vector2 clickPosition = new Vector2(0, 0);
+    bool checkActivePopup;
 
     void Start()
     {
         eventHoverCheck = false;
         popupActive = false;
         tooltipStyle.normal.background = tooltipTexture;
+        buttonStyle.normal.background = buttonTexture;
         taal = gameController.game.language;
         areOptionsShown = false;
         active = false;
-        //Debug.Log("Start EventObjectController");
+        clickPosition.x = 0;
+        clickPosition.y = 0;
+        updateUI = GetComponent<UpdateUI>();
+        checkActivePopup = false;
     }
     void Update()
     {
+        // Make the options dissapear if camera chances
+        if (Camera.main.transform.hasChanged)
+        {
+            areOptionsShown = false;
+            Camera.main.transform.hasChanged = false;
+        }
 
+        checkActivePopup = gameController.getActivePopup();
+
+        if (checkActivePopup)
+        {
+            areOptionsShown = false;
+            eventHoverCheck = false;
+        }
     }
 
     public void Init(GameController gameController, GameEvent eventModel)
@@ -42,7 +64,6 @@ public class EventObjectController : MonoBehaviour
         this.eventModel = eventModel;
 
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
-        //transform.position = eventModel.region.eventPositions[Random.Range(0, 4)];
 
         switch (eventModel.region.name[0])
         {
@@ -62,7 +83,6 @@ public class EventObjectController : MonoBehaviour
                 transform.position = eventModel.region.eventPositions[Random.Range(0, 4)];
                 break;
         }
-
     }
 
     // hover over event
@@ -94,52 +114,93 @@ public class EventObjectController : MonoBehaviour
 
     private void OnGUI()
     {
-        Rect lblReqt;
         Rect btnRect;
+        Rect lblReqt;
+  
+        
 
-        lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
-        btnRect = GUILayoutUtility.GetRect(new GUIContent(txtButton), tooltipStyle);
 
-        Vector3 v = eventModel.region.eventPositions[0];
+        Vector3 v3 = getEventPosition();
 
-        if (!popupActive)
-        {
-            if (eventHoverCheck || areOptionsShown)
+            lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
+
+            if (eventHoverCheck)
             {
                 txtTooltip = eventModel.name + "\n" + eventModel.description[taal];
+                Vector3 pos = Event.current.mousePosition;
+                lblReqt.x = pos.x + 10;
+                lblReqt.y = pos.y + 20;
 
-                lblReqt.x = v.x;
-                lblReqt.y = v.y + 40;
+                if (clickPosition.x == 0 && clickPosition.y == 0)
+                    clickPosition = pos;
 
                 GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
             }
 
-            if (areOptionsShown)
+        if (areOptionsShown)
+        {
+            for (int i = 0; i < eventModel.choices.GetUpperBound(1) + 1; i++)
             {
-                for (int i = 0; i < eventModel.choices.GetUpperBound(1) + 1; i++)
+                txtButton = "  " + eventModel.choices[taal, i] + "  ";//tip[taal];
+                btnRect = GUILayoutUtility.GetRect(new GUIContent(txtButton), buttonStyle);
+
+                btnRect.x = clickPosition.x;
+
+                var textWidth = GUI.skin.label.CalcSize(new GUIContent(txtButton));
+                btnRect.width = textWidth.x;
+
+                // Als er niet genoeg ruimte is om alle opties boven event te laten zien, zet ze er dan onder
+                if (clickPosition.y - 150 < 0)
                 {
-                    btnRect.x = v.x;
-
                     if (i == 0)
-                        btnRect.y = v.y + 80;
+                        btnRect.y = clickPosition.y + 20;//v3.y + 80
+
                     if (i == 1)
-                        btnRect.y = v.y + 170;
+                        btnRect.y = clickPosition.y + 60;//v3.y + 170;
+
                     if (i == 2)
-                        btnRect.y = v.y + 260;
-
-                    string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuur: " + eventModel.eventDuration[i]
-                , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
-                        "\nDuration: " + eventModel.eventDuration[i]  };
-
-                    txtButton = tip[taal];
-
-                    txtButton += getConsequences(eventModel.consequences[i]);
-
-                    if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", tooltipStyle))
-                        ChooseOption(i);
+                        btnRect.y = clickPosition.y + 100;//v3.y + 260;
                 }
+                else
+                {
+                    if (i == 0)
+                        btnRect.y = clickPosition.y - 40;//v3.y + 80
+
+                    if (i == 1)
+                        btnRect.y = clickPosition.y - 80;//v3.y + 170;
+
+                    if (i == 2)
+                        btnRect.y = clickPosition.y - 120;//v3.y + 260;
+                }
+
+                /*string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
+                    "\nDuur: " + eventModel.eventDuration[i]
+            , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
+                    "\nDuration: " + eventModel.eventDuration[i]  };*/
+
+
+                //txtButton += getConsequences(eventModel.consequences[i]);
+
+                if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", buttonStyle))
+                    ChooseOption(i);
             }
+        }
+    }
+
+     Vector3 getEventPosition()
+    {
+        switch (eventModel.region.name[0])
+        {
+            case "West Nederland":
+                return eventModel.region.eventPositions[0];
+            case "Oost Nederland":
+                return eventModel.region.eventPositions[1];
+            case "Zuid Nederland":
+                return eventModel.region.eventPositions[2];
+            case "Noord Nederland":
+                return eventModel.region.eventPositions[3];
+            default:
+                return eventModel.region.eventPositions[Random.Range(0, 4)];
         }
     }
 
@@ -193,12 +254,19 @@ public class EventObjectController : MonoBehaviour
 
     void ShowOptions()
     {
+        if (clickPosition.x == 0 && clickPosition.y == 0)
+        {
+            Debug.Log("CLICKPOS");
+            //clickPosition = Event.current.mousePosition;
+        }
         Debug.Log("Showing Options");
         areOptionsShown = true;
     }
 
     void HideOptions()
     {
+        clickPosition.x = 0;
+        clickPosition.y = 0;
         Debug.Log("Hiding options!");
         areOptionsShown = false;
     }
@@ -216,7 +284,6 @@ public class EventObjectController : MonoBehaviour
     {
         switch (description)
         {
-
             case "Earthquake":
                 return allTextures[1];
 
@@ -237,5 +304,11 @@ public class EventObjectController : MonoBehaviour
 
             default: return allTextures[3];
         }
+    }
+
+    public void disableTooltipAndOptions()
+    {
+        areOptionsShown = false;
+        eventHoverCheck = false;
     }
 }
