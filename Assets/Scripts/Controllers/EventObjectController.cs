@@ -21,7 +21,7 @@ public class EventObjectController : MonoBehaviour
     private GUIStyle buttonStyle = new GUIStyle();
     public bool eventHoverCheck;
     public bool active;
-    private bool popupActive;
+    //private bool popupActive;
     private int taal;
     private Vector2 clickPosition = new Vector2(0, 0);
     bool checkActivePopup;
@@ -29,7 +29,7 @@ public class EventObjectController : MonoBehaviour
     void Start()
     {
         eventHoverCheck = false;
-        popupActive = false;
+        //popupActive = false;
         tooltipStyle.normal.background = tooltipTexture;
         buttonStyle.normal.background = buttonTexture;
         taal = gameController.game.language;
@@ -56,6 +56,10 @@ public class EventObjectController : MonoBehaviour
             areOptionsShown = false;
             eventHoverCheck = false;
         }
+
+        // Event moet verwijderd worden als gekozen optie klaar is
+        if (!eventModel.isActive && !eventModel.isIdle)
+            Destroy(gameObject);
     }
 
     public void Init(GameController gameController, GameEvent eventModel)
@@ -277,7 +281,9 @@ public class EventObjectController : MonoBehaviour
         eventModel.SetPickedChoice(option, gameController.game);
         areOptionsShown = false;
         eventHoverCheck = false;
-        Destroy(gameObject);
+
+        if (eventModel.eventDuration[option] == 0)
+            Destroy(gameObject);
     }
 
     Texture SelectTexture(string description)

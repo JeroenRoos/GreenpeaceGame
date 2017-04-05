@@ -50,6 +50,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionActionConsequences;
     public Text txtActiveActions;
     public Text txtActiveEvents;
+    public Text txtRegionActionNoMoney;
 
 
     // Buttons 
@@ -589,7 +590,21 @@ public class UpdateUI : MonoBehaviour
         updateActiveActions();
         updateActiveEvents();
 
-        initDropDownRegion();
+        // Er kan maar 1 action per regio zijn
+        foreach (RegionAction a in regio.actions)
+        {
+            if (a.isActive)
+            {
+                dropdownRegio.gameObject.SetActive(false);
+                btnDoActionRegionMenu.gameObject.SetActive(false);
+                break;
+            }
+            else
+            {
+                dropdownRegio.gameObject.SetActive(true);
+                initDropDownRegion();
+            }
+        }
     }
 
     void updateRegionSectors()
@@ -713,7 +728,15 @@ public class UpdateUI : MonoBehaviour
                 txtRegionActionDuration.text = "Duur: " + regioAction.actionDuration.ToString() + " maanden";
                 txtRegionActionConsequences.text = getActionConsequences(action.consequences);
 
-                btnDoActionRegionMenu.gameObject.SetActive(true);
+                if (game.gameStatistics.money - action.actionCosts.income > 0)
+                {
+                    btnDoActionRegionMenu.gameObject.SetActive(true);
+                    txtRegionActionNoMoney.text = "";
+                }
+                else
+                {
+                    txtRegionActionNoMoney.text = "Niet genoeg geld om de actie te doen...";
+                }
             }
         }
     }

@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TestBot : MonoBehaviour {
+public class TestBot : MonoBehaviour
+{
 
     GameController gameController;
     double currentCurrency;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         gameController = GetComponent<GameController>();
         EventManager.ChangeMonth += CheckStatus;
         EventManager.ShowEvent  += EventAction;
@@ -18,7 +20,7 @@ public class TestBot : MonoBehaviour {
     // Month changed
     void CheckStatus()
     {
-        Debug.Log("Month changed");
+        //Debug.Log("Month changed");
 
         currentCurrency = gameController.game.gameStatistics.money;
 
@@ -26,12 +28,14 @@ public class TestBot : MonoBehaviour {
         {
             //Debug.Log(region.statistics.pollution.avgPullution);
 
-            if (region.statistics.pollution.avgPullution < 50 && currentCurrency > 2000)
-            {
+            //if (region.statistics.pollution.avgPullution < 50 && currentCurrency > 2000)
+            //{
                 // take anti-pollution action
                 //Debug.Log(region.actions[0].description);
                 //region.actions[0].ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
-            }
+            //}
+
+
         }
     }
 
