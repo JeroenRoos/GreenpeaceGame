@@ -83,8 +83,8 @@ public class TestBot : MonoBehaviour
                 if (gameEvent.isIdle)//isActive)
                 {
                     Debug.Log("BOT: EVENT: " + gameEvent.name + " is ACTIVE in Regio: " + gameEvent.region.name[0]);
-                    chosenOption = UnityEngine.Random.Range(0, gameEvent.choices.GetLength(1));
-                    Debug.Log("BOT: Gekozen optie: (" + chosenOption + ") - " + gameEvent.choices[0, chosenOption] + " bij EVENT: " + gameEvent.name[0]);
+                    chosenOption = UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
+                    Debug.Log("BOT: Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name[0]);
                     gameEvent.SetPickedChoice(chosenOption, gameController.game);
                 }
             }
@@ -147,7 +147,7 @@ public class TestBot : MonoBehaviour
 
     void getSectorStats(Region region)
     {
-        foreach (RegionSector sector in region.sectors.Values)
+        foreach (RegionSector sector in region.sectors)
         {
             Debug.Log("\n" + sector.sectorName[0] + " from Region " + region.name[0]);
             Debug.Log("\nHappiness: " + sector.statistics.happiness);

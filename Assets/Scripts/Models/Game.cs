@@ -248,10 +248,6 @@ public class Game
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
-<<<<<<< HEAD
-                    //Debug.Log("Complete finished action IF STATEMENT");
-=======
->>>>>>> 9a18dd158968cb1b2c4d7a415ab8f096ab168901
                 }
             }
         }

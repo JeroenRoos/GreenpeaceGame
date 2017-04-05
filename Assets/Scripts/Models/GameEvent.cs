@@ -15,14 +15,8 @@ public class GameEvent
 
     public int eventIdleDuration { get; private set; } //in months
     public int eventCooldown { get; private set; } //in months
-
-<<<<<<< HEAD
-    public string[,] choices { get; private set; }
-    
-=======
     public string[] choicesDutch { get; private set; }
     public string[] choicesEnglish { get; private set; }
->>>>>>> 9a18dd158968cb1b2c4d7a415ab8f096ab168901
     public int[] eventDuration { get; private set; } //in months
     public double[] eventChoiceMoneyCost { get; private set; }
 
