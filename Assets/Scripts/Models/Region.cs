@@ -6,6 +6,7 @@ using UnityEngine;
 
 
 //This class stores the values of the Regions
+[Serializable]
 public class Region
 {
     public string[] name { get; private set; }
@@ -13,11 +14,13 @@ public class Region
     public List<Building> buildings { get; private set; }
     public List<RegionAction> actions { get; private set; }
 
-    public Dictionary<string, RegionSector> sectors { get; private set; }
+    //public Dictionary<string, RegionSector> sectors { get; private set; }
+    public RegionSector[] sectors { get; private set; }
     public Vector3[] eventPositions;
 
+    private Region() { }
 
-    public Region(string[] name, RegionStatistics statistics, Dictionary<string, RegionSector> sectors)
+    public Region(string[] name, RegionStatistics statistics, RegionSector[] sectors)
     {
         this.name = name;
         this.statistics = statistics;
@@ -55,7 +58,7 @@ public class Region
     
     public void ImplementSectorValues()
     {
-        foreach (RegionSector sector in sectors.Values)
+        foreach (RegionSector sector in sectors)
         {
             statistics.ChangeHappiness(sector.statistics.happiness);
             statistics.ChangeEcoAwareness(sector.statistics.ecoAwareness);

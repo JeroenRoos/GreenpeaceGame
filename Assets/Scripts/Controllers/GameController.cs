@@ -196,25 +196,25 @@ public class GameController : MonoBehaviour
         noordNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green, 
                 Color.red, 
-                (float)game.regions["NoordNederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["Noord Nederland"].statistics.pollution.avgPullution / 100
             );
 
         oostNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["OostNederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["Oost Nederland"].statistics.pollution.avgPullution / 100
             );
 
         westNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["WestNederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["West Nederland"].statistics.pollution.avgPullution / 100
             );
 
         zuidNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["ZuidNederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["Zuid Nederland"].statistics.pollution.avgPullution / 100
             );
     }
 

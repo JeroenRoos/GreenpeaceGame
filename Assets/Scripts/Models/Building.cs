@@ -5,6 +5,7 @@ using System.Text;
 
 
 //this class stores the values of the buildings in a region
+[Serializable]
 public class Building
 {
     public string[] buildingName { get; private set; }
@@ -27,6 +28,8 @@ public class Building
                 break;
         }
     }
+
+    private Building() { }
 
     public void ModifyBuildingStatistics(BuildingStatistics statistics)
     {

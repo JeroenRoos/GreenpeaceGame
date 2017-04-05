@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+[Serializable]
 public class RegionStatistics
 {
     public double income { get; private set; }
@@ -16,6 +16,7 @@ public class RegionStatistics
     public double publicTransport { get; private set; } //public transport class
     public double cityEnvironment { get; private set; } //city environment class
 
+    private RegionStatistics() { }
 
     public RegionStatistics(double income, double donations, double happiness, Pollution pollution, double ecoAwareness, double prosperity)
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+[Serializable]
 public class SectorStatistics
 {
     public double happiness { get; private set; }
@@ -12,6 +12,8 @@ public class SectorStatistics
     public double airPollutionContribution { get; private set; }
     public double naturePollutionContribution { get; private set; }
     public double waterPollutionContribution { get; private set; }
+
+    public SectorStatistics() { }
 
     public SectorStatistics(double happiness, double ecoAwareness, double prosperity, double airPollutionContribution,
                             double naturePollutionContribution, double waterPollutionContribution)
