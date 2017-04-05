@@ -13,10 +13,10 @@ public class Region
     public RegionStatistics statistics { get; private set; }
     public List<Building> buildings { get; private set; }
     public List<RegionAction> actions { get; private set; }
-
-    //public Dictionary<string, RegionSector> sectors { get; private set; }
     public RegionSector[] sectors { get; private set; }
     public Vector3[] eventPositions;
+    
+    public List<GameEvent> inProgressGameEvents { get; private set; }
 
     private Region() { }
 
@@ -65,6 +65,65 @@ public class Region
             statistics.pollution.ChangeAirPollutionMutation(sector.statistics.airPollutionContribution);
             statistics.pollution.ChangeNaturePollutionMutation(sector.statistics.naturePollutionContribution);
             statistics.pollution.ChangeWaterPollutionMutation(sector.statistics.waterPollutionContribution);
+        }
+    }
+
+    public void AddGameEvent(GameEvent gameEvent)
+    {
+        inProgressGameEvents.Add(gameEvent);
+
+        ImplementStatisticValues(gameEvent.onEventStartConsequence, true);
+        ImplementStatisticValues(gameEvent.onEventStartTemporaryConsequence, true);
+    }
+
+    public void UpdateEvents(Game game)
+    {
+        foreach (GameEvent gameEvent in inProgressGameEvents)
+        {
+            if (gameEvent.isIdle)
+                {
+                    gameEvent.SubtractIdleTurnsLeft();
+                    if (gameEvent.idleTurnsLeft == 0)
+                    {
+                        gameEvent.SetPickedChoice(0, game);
+                        ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
+                    }
+                }
+
+            if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (game.currentMonth + game.currentYear * 12)))
+            {
+                CompleteEvent(gameEvent);
+            }
+
+            if (gameEvent.onEventStartYear == game.currentYear & gameEvent.onEventStartMonth == game.currentMonth)
+            {
+                ImplementStatisticValues(gameEvent.onEventStartTemporaryConsequence, false);
+            }
+
+            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
+            {
+                ImplementStatisticValues(gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false);
+                gameEvent.FinishEvent();
+            }
+        }
+        RemoveFinishedEvents();
+    }
+
+
+    public void CompleteEvent(GameEvent gameEvent)
+    {
+        ImplementStatisticValues(gameEvent.consequences[gameEvent.pickedChoiceNumber], true);
+        ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false);
+        ImplementStatisticValues(gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true);
+        gameEvent.CompleteEvent();
+    }
+
+    public void RemoveFinishedEvents()
+    {
+        for (int i = inProgressGameEvents.Count - 1; i >= 0; i--)
+        {
+            if (inProgressGameEvents[i].isFinished)
+                inProgressGameEvents.Remove(inProgressGameEvents[i]);
         }
     }
 

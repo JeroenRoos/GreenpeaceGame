@@ -8,6 +8,7 @@ public class EventObjectController : MonoBehaviour
 
     public GameController gameController;
     public GameEvent eventModel;
+    public Region regionModel;
     public bool areOptionsShown;
     public Texture[] allTextures;
 
@@ -62,29 +63,30 @@ public class EventObjectController : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void Init(GameController gameController, GameEvent eventModel)
+    public void Init(GameController gameController, Region regionModel, GameEvent eventModel)
     {
         this.gameController = gameController;
+        this.regionModel = regionModel;
         this.eventModel = eventModel;
 
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
 
-        switch (eventModel.region.name[0])
+        switch (regionModel.name[0])
         {
             case "West Nederland":
-                transform.position = eventModel.region.eventPositions[0];
+                transform.position = regionModel.eventPositions[0];
                 break;
             case "Oost Nederland":
-                transform.position = eventModel.region.eventPositions[1];
+                transform.position = regionModel.eventPositions[1];
                 break;
             case "Zuid Nederland":
-                transform.position = eventModel.region.eventPositions[2];
+                transform.position = regionModel.eventPositions[2];
                 break;
             case "Noord Nederland":
-                transform.position = eventModel.region.eventPositions[3];
+                transform.position = regionModel.eventPositions[3];
                 break;
             default:
-                transform.position = eventModel.region.eventPositions[Random.Range(0, 4)];
+                transform.position = regionModel.eventPositions[Random.Range(0, 4)];
                 break;
         }
     }
@@ -197,18 +199,18 @@ public class EventObjectController : MonoBehaviour
 
      Vector3 getEventPosition()
     {
-        switch (eventModel.region.name[0])
+        switch (regionModel.name[0])
         {
             case "West Nederland":
-                return eventModel.region.eventPositions[0];
+                return regionModel.eventPositions[0];
             case "Oost Nederland":
-                return eventModel.region.eventPositions[1];
+                return regionModel.eventPositions[1];
             case "Zuid Nederland":
-                return eventModel.region.eventPositions[2];
+                return regionModel.eventPositions[2];
             case "Noord Nederland":
-                return eventModel.region.eventPositions[3];
+                return regionModel.eventPositions[3];
             default:
-                return eventModel.region.eventPositions[Random.Range(0, 4)];
+                return regionModel.eventPositions[Random.Range(0, 4)];
         }
     }
 

@@ -239,7 +239,7 @@ public class Game
 
         CompletefinishedActions();
         CheckIdleEvents();
-        CompleteFinishedEvents();
+        UpdateRegionEvents();
 
         int activeCount = getActiveEventCount();
 
@@ -294,7 +294,6 @@ public class Game
         {
             foreach (RegionAction action in region.actions)
             {
-               // Debug.Log("Complete finished action FOR LOOP");
                 if (action.isActive && ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
                     region.ImplementStatisticValues(action.consequences, true);
@@ -306,39 +305,29 @@ public class Game
 
     public void CheckIdleEvents()
     {
-        foreach (GameEvent gameEvent in events)
+        foreach (Region region in regions.Values)
         {
-            if (gameEvent.isIdle)
+            foreach (GameEvent gameEvent in region.inProgressGameEvents)
             {
-                gameEvent.SubtractIdleTurnsLeft();
-                if (gameEvent.idleTurnsLeft == 0)
-                    gameEvent.SetPickedChoice(0, this);
+                if (gameEvent.isIdle)
+                {
+                    gameEvent.SubtractIdleTurnsLeft();
+                    if (gameEvent.idleTurnsLeft == 0)
+                    {
+                        gameEvent.SetPickedChoice(0, this);
+                        region.ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
+                    }
+                }
             }
         }
     }
 
-    public void CompleteFinishedEvents()
+    public void UpdateRegionEvents()
     {
-        foreach (GameEvent gameEvent in events)
+        foreach (Region region in regions.Values)
         {
-
-            if (gameEvent.isActive &&
-                ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (currentMonth + currentYear * 12)))
-            {
-                gameEvent.CompleteEvent();
-
-            }
-            EndTemporaryEventConsequences(gameEvent);
+            region.UpdateEvents(this);
         }
-    }
-
-    //niet perfect (in Event class schrijven?)
-    public void EndTemporaryEventConsequences(GameEvent gameEvent)
-    {
-        if (gameEvent.onEventStartYear == currentYear & gameEvent.onEventStartMonth == currentMonth)
-            gameEvent.EndTemporaryOnEventStartConsequences(gameEvent.onEventStartConsequence);
-        if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == currentMonth + currentYear * 12)
-            gameEvent.EndTemporaryConsequences(gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber]);
     }
 
     public int getActiveEventCount()
@@ -360,10 +349,10 @@ public class Game
         {
             int pickedEvent = PickEvent(possibleEvents.Count);
             string pickedRegion = PickEventRegion();
-            //events[pickedEvent].ActivateEvent(currentYear, currentMonth, regions[pickedRegion]);
-            events[pickedEvent].StartEvent(regions[pickedRegion], currentYear, currentMonth);
+            events[pickedEvent].StartEvent(currentYear, currentMonth);
+            regions[pickedRegion].AddGameEvent(events[pickedEvent]);
             GameObject eventInstance = GameController.Instantiate(eventObject);
-            eventInstance.GetComponent<EventObjectController>().Init(gameController, events[pickedEvent]);
+            eventInstance.GetComponent<EventObjectController>().Init(gameController, regions[pickedRegion], events[pickedEvent]);
         }
     }
 

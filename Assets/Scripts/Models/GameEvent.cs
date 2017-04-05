@@ -42,8 +42,12 @@ public class GameEvent
     public int idleTurnsLeft { get; private set; } 
     public bool isActive { get; private set; }
 
-    public Region region { get; private set; }
 
+    public bool isFinished { get; private set; }
+    public string[] possibleRegions { get; private set; }
+    public bool isGlobal { get; private set; }
+    public int successChance { get; private set; }
+    
     private GameEvent()
     {
     }
@@ -64,12 +68,15 @@ public class GameEvent
 
         isActive = false;
         isIdle = false;
-        //this.region = region; //temporary fix
+        isFinished = true;
         pickedChoiceNumber = 0;
         pickedChoiceStartYear = 0;
         pickedChoiceStartMonth = 0;
         lastCompleted = 0;
         idleTurnsLeft = 0;
+        possibleRegions = new string[] { "Noord Nederland", "Oost Nederland", "Zuid Nederland", "West Nederland" };
+        isGlobal = false;
+        successChance = 100;
 
         //temporary anti error code
         eventIdleDuration = 100;
@@ -88,48 +95,33 @@ public class GameEvent
             new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0) };
     }
 
-    public void StartEvent(Region region, int currentYear, int currentMonth)
+    public void StartEvent(int currentYear, int currentMonth)
     {
-        this.region = region;
-        region.ImplementStatisticValues(onEventStartConsequence, true);
-        region.ImplementStatisticValues(onEventStartTemporaryConsequence, true);
         onEventStartYear = currentYear;
         onEventStartMonth = currentMonth;
 
         isIdle = true;
         idleTurnsLeft = eventIdleDuration;
+        isFinished = false;
     }
 
     public void SubtractIdleTurnsLeft()
     {
         idleTurnsLeft--;
     }
-
-    public void EndTemporaryOnEventStartConsequences(RegionStatistics consequence)
+    
+    public void FinishEvent()
     {
-        region.ImplementStatisticValues(consequence, false);
-    }
-
-    //andere oplossing vinden voor temporary consequenties bijhouden!
-    public void EndTemporaryConsequences(RegionStatistics consequence)
-    {
-        region.ImplementStatisticValues(consequence, false);
-
         pickedChoiceStartYear = 0;
         pickedChoiceStartMonth = 0;
         onEventStartYear = 0;
         onEventStartMonth = 0;
         pickedChoiceNumber = 0;
-        isActive = false;
+        isFinished = true;
     }
 
     public void CompleteEvent()
     {
-        Debug.Log("PickedChoiceNumber: " + pickedChoiceNumber);
-        region.ImplementStatisticValues(consequences[pickedChoiceNumber], true);
-        region.ImplementStatisticValues(duringEventProgressConsequences[pickedChoiceNumber], false);
-        region.ImplementStatisticValues(temporaryConsequences[pickedChoiceNumber], true);
-
         lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
     }
 
@@ -146,12 +138,9 @@ public class GameEvent
             isIdle = false;
             idleTurnsLeft = 0;
             isActive = true;
-
-            region.ImplementStatisticValues(duringEventProgressConsequences[pickedChoiceNumber], true);
-
+            
             if (eventDuration[i] == 0)
             {
-                Debug.Log("In de SetPickedChoice method: " + i);
                 CompleteEvent();
             }
         }

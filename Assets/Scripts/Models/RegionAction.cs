@@ -47,13 +47,11 @@ public class RegionAction //: MonoBehaviour
             this.startYear = startYear;
             this.startMonth = startMonth;
             isActive = true;
-           // Debug.Log("RegionAction ActiveAction! IF STATEMENT");
         }
         else
         {
             //toon dat action op cooldown is
         }
-       //Debug.Log("RegionAction ActiveAction!");
     }
 
     public void CompleteAction()
