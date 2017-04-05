@@ -151,7 +151,7 @@ public class Game
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
-                    Debug.Log("Complete finished action IF STATEMENT");
+                    //Debug.Log("Complete finished action IF STATEMENT");
                 }
             }
         }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using System.IO;
 
 
 //UNFINISHED
 public class GameEvent
 {
     public string name { get; private set; } //id
+    
     public string[] description { get; private set; }
     public bool isUnique { get; private set; }
 
@@ -16,6 +18,7 @@ public class GameEvent
     public int eventCooldown { get; private set; } //in months
 
     public string[,] choices { get; private set; }
+    
     public int[] eventDuration { get; private set; } //in months
     public double[] eventChoiceMoneyCost { get; private set; }
 

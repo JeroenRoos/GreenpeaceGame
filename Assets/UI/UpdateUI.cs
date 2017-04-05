@@ -1065,5 +1065,10 @@ public class UpdateUI : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(index);
     }
+
+    public void nextTurnOnClick()
+    {
+        game.NextTurn();
+    }
 }
 
