@@ -96,11 +96,8 @@ public class GameController : MonoBehaviour
 
         foreach (Region region in game.regions.Values)
         {
-            // Send average pollution for each region, determine the region with i
-            //updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
             updateUI.updateHappinessTooltip(region.statistics.happiness, i);
             i++;
-            
         }
         
     }
@@ -111,9 +108,7 @@ public class GameController : MonoBehaviour
 
         foreach (Region region in game.regions.Values)
         {
-            // Send average pollution for each region, determine the region with i
-            //updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
-            updateUI.updateAwarnessTooltip(game.gameStatistics.ecoAwareness, i);
+            updateUI.updateAwarnessTooltip(region.statistics.ecoAwareness, i);
             i++;
         }
     }
@@ -124,7 +119,6 @@ public class GameController : MonoBehaviour
 
         foreach (Region region in game.regions.Values)
         {
-            // Send average pollution for each region, determine the region with i
             updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
             i++;
         }
