@@ -609,7 +609,7 @@ public class UpdateUI : MonoBehaviour
 
     void updateRegionSectors()
     {
-        foreach (RegionSector sector in regio.sectors.Values)
+        foreach (RegionSector sector in regio.sectors)
         {
             if (sector.sectorName[taal] == "Huishoudens" || sector.sectorName[taal] == "Households")
             {

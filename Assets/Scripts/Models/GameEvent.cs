@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-
-//UNFINISHED
+[Serializable]
 public class GameEvent
 {
     public string name { get; private set; } //id
@@ -15,7 +14,8 @@ public class GameEvent
     public int eventIdleDuration { get; private set; } //in months
     public int eventCooldown { get; private set; } //in months
 
-    public string[,] choices { get; private set; }
+    public string[] choicesDutch { get; private set; }
+    public string[] choicesEnglish { get; private set; }
     public int[] eventDuration { get; private set; } //in months
     public double[] eventChoiceMoneyCost { get; private set; }
 
@@ -43,13 +43,16 @@ public class GameEvent
 
     public Region region { get; private set; }
 
-    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences, 
-                    RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique, Region region)
+    private GameEvent() { }
+
+    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
+                    RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
     {
         this.name = name;
         this.description = description;
         this.eventDuration = eventDuration;
-        this.choices = choices;
+        this.choicesDutch = new string[3] { choices[0, 0], choices[0, 1], choices[0, 2] };
+        this.choicesEnglish = new string[3] { choices[1, 0], choices[1, 1], choices[1, 2] };
         this.consequences = consequences;
         this.onEventStartConsequence = onEventStartConsequence;
         this.eventChoiceMoneyCost = eventChoiceMoneyCost;
@@ -58,7 +61,7 @@ public class GameEvent
 
         isActive = false;
         isIdle = false;
-        this.region = region; //temporary fix
+        //this.region = region; //temporary fix
         pickedChoiceNumber = 0;
         pickedChoiceStartYear = 0;
         pickedChoiceStartMonth = 0;

@@ -143,9 +143,13 @@ public class EventObjectController : MonoBehaviour
 
         if (areOptionsShown)
         {
-            for (int i = 0; i < eventModel.choices.GetUpperBound(1) + 1; i++)
+            for (int i = 0; i < eventModel.choicesDutch.GetLength(0); i++)
             {
-                txtButton = "  " + eventModel.choices[taal, i] + "  ";//tip[taal];
+                if (taal == 0)
+                    txtButton = "  " + eventModel.choicesDutch[i] + "  ";//tip[taal];
+                else
+                    txtButton = "  " + eventModel.choicesEnglish[i] + "  ";//tip[taal];
+
                 btnRect = GUILayoutUtility.GetRect(new GUIContent(txtButton), buttonStyle);
 
                 btnRect.x = clickPosition.x;

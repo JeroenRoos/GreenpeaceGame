@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 
 //namespace Assets.Scripts.Models
+[Serializable]
 public class RegionAction //: MonoBehaviour
 {
     public string[] description { get; private set; }
@@ -17,6 +18,8 @@ public class RegionAction //: MonoBehaviour
     public int lastCompleted { get; private set; } //in months
     public int actionCooldown { get; private set; } //in months
     public bool isActive { get; private set; }
+
+    private RegionAction() { }
 
     public RegionAction(string[] description, RegionStatistics consequences, RegionStatistics actionCosts, int actionDuration, int actionCooldown,
                         double actionMoneyCost)
