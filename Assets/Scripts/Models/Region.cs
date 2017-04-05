@@ -35,7 +35,6 @@ public class Region
 
         buildings = new List<Building>();
         actions = new List<RegionAction>();
-        GenerateActions();
     }
 
     public void StartAction(RegionAction action, int currentYear, int currentMonth, Game game) //methode moet van UI aangeroepen worden
@@ -143,21 +142,6 @@ public class Region
             this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
             this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
         }
-    }
-
-    private void GenerateActions()
-    {
-        string[] description1 = { "Miliebewustheid campagne", "Eco awareness campaign" };
-        RegionStatistics consequence1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 5, 0);
-        RegionStatistics actionCost1 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action1 = new RegionAction(description1, consequence1, actionCost1, 3, 6, 5000);
-        actions.Add(action1);
-
-        string[] description2 = { "Verhoog productie", "Improve production" };
-        RegionStatistics consequence2 = new RegionStatistics(250, 0, 0, new Pollution(0, 0, 0, 1, 1, 1), 0, 2);
-        RegionStatistics actionCost2 = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        RegionAction action2 = new RegionAction(description2, consequence2, actionCost2, 6, 6, 10000);
-        actions.Add(action2);
     }
 }
 

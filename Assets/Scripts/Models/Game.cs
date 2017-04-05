@@ -21,6 +21,7 @@ public class Game
     public List<GameEvent> events { get; private set; }
     public System.Random rnd { get; private set; }
     public int language { get; private set; } //0 = Dutch, 1 = English
+    public List<RegionAction> actions { get; private set; }
 
     //Game statistics
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
@@ -34,6 +35,7 @@ public class Game
         rnd = new System.Random();
         events = new List<GameEvent>();
         regions = new Dictionary<string, Region>();
+        actions = new List<RegionAction>();
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
         
@@ -41,10 +43,10 @@ public class Game
 
         currentYear = 1;
         currentMonth = 1;
-
-        //SaveRegions();
-        //SaveGameEvents();
+        
+        
         LoadRegions();
+        LoadRegionActions();
         LoadGameEvents();
     }
 
@@ -55,7 +57,7 @@ public class Game
             XmlSerializer writer = new XmlSerializer(typeof(Region));
             foreach (Region region in regions.Values)
             {
-                Debug.Log("Serialiazing " + region.name[0]);
+                Debug.Log("Serializing " + region.name[0]);
                 var path = Application.dataPath + "/GameFiles/Regions/" + region.name[0] + ".xml";
                 FileStream file = File.Create(path);
                 writer.Serialize(file, region);
@@ -100,7 +102,7 @@ public class Game
             XmlSerializer writer = new XmlSerializer(typeof(GameEvent));
             foreach (GameEvent gameEvent in events)
             {
-                Debug.Log("Serialiazing " + gameEvent.name);
+                Debug.Log("Serializing " + gameEvent.name);
                 var path = Application.dataPath + "/GameFiles/GameEvents/" + gameEvent.name + ".xml";
                 FileStream file = File.Create(path);
                 writer.Serialize(file, gameEvent);
@@ -129,6 +131,55 @@ public class Game
                 events.Add(gameEvent);
 
                 Debug.Log(gameEvent.name + " loaded");
+            }
+        }
+
+        catch (Exception ex)
+        {
+            Debug.Log(ex);
+        }
+    }
+
+    public void SaveRegionActions()
+    {
+        try
+        {
+            XmlSerializer writer = new XmlSerializer(typeof(RegionAction));
+            foreach (RegionAction action in regions["Noord Nederland"].actions)
+            {
+                Debug.Log("Serializing " + action.name[0]);
+                var path = Application.dataPath + "/GameFiles/RegionActions/" + action.name[0] + ".xml";
+                FileStream file = File.Create(path);
+                writer.Serialize(file, action);
+                file.Close();
+                Debug.Log("Serialization update");
+            }
+            Debug.Log("Serialization finished");
+        }
+
+        catch (Exception ex)
+        {
+            Debug.Log(ex);
+        }
+    }
+
+    public void LoadRegionActions()
+    {
+        try
+        {
+            var folderPath = Application.dataPath + "/GameFiles/RegionActions/";
+            XmlSerializer reader = new XmlSerializer(typeof(RegionAction));
+
+            foreach (string file in Directory.GetFileSystemEntries(folderPath, "*.xml"))
+            {
+                foreach (Region region in regions.Values)
+                {
+                    var stream = File.OpenRead(file);
+                    RegionAction action = (RegionAction)reader.Deserialize(stream);
+                    region.actions.Add(action);
+
+                    Debug.Log(action + " loaded in " + region.name[0]);
+                }
             }
         }
 
