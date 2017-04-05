@@ -44,7 +44,9 @@ public class GameEvent
 
     public Region region { get; private set; }
 
-    private GameEvent() { }
+    private GameEvent()
+    {
+    }
 
     public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
                     RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)

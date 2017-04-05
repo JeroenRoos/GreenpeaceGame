@@ -8,6 +8,7 @@ using UnityEngine;
 [Serializable]
 public class RegionAction //: MonoBehaviour
 {
+    public string[] name { get; private set; }
     public string[] description { get; private set; }
     public RegionStatistics consequences { get; private set; }
     public RegionStatistics actionCosts { get; private set; }
@@ -21,9 +22,10 @@ public class RegionAction //: MonoBehaviour
 
     private RegionAction() { }
 
-    public RegionAction(string[] description, RegionStatistics consequences, RegionStatistics actionCosts, int actionDuration, int actionCooldown,
+    public RegionAction(string[] name, string[] description, RegionStatistics consequences, RegionStatistics actionCosts, int actionDuration, int actionCooldown,
                         double actionMoneyCost)
     {
+        this.name = name;
         this.description = description;
         this.consequences = consequences;
         this.actionDuration = actionDuration;
