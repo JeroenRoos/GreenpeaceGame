@@ -33,20 +33,66 @@ public class Game
         language = 0;
         rnd = new System.Random();
         events = new List<GameEvent>();
+        regions = new Dictionary<string, Region>();
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
-
-        GenerateRegions();
-        //GenerateGameEvents();
+        
         gameStatistics.UpdateRegionalAvgs(this);
 
         currentYear = 1;
         currentMonth = 1;
 
+        //SaveRegions();
         //SaveGameEvents();
+        LoadRegions();
         LoadGameEvents();
     }
-    
+
+    public void SaveRegions()
+    {
+        try
+        {
+            XmlSerializer writer = new XmlSerializer(typeof(Region));
+            foreach (Region region in regions.Values)
+            {
+                Debug.Log("Serialiazing " + region.name[0]);
+                var path = Application.dataPath + "/GameFiles/Regions/" + region.name[0] + ".xml";
+                FileStream file = File.Create(path);
+                writer.Serialize(file, region);
+                file.Close();
+            }
+            Debug.Log("Serialization finished");
+        }
+
+        catch (Exception ex)
+        {
+            Debug.Log(ex);
+        }
+    }
+
+    public void LoadRegions()
+    {
+        try
+        {
+            var folderPath = Application.dataPath + "/GameFiles/Regions/";
+            XmlSerializer reader = new XmlSerializer(typeof(Region));
+
+            foreach (string file in Directory.GetFileSystemEntries(folderPath, "*.xml"))
+            {
+                var stream = File.OpenRead(file);
+                Region region = (Region)reader.Deserialize(stream);
+                regions.Add(region.name[0], region);
+
+                Debug.Log(region.name[0] + " loaded");
+            }
+        }
+
+        catch (Exception ex)
+        {
+            Debug.Log(ex);
+        }
+    }
+
     public void SaveGameEvents()
     {
         try
@@ -54,7 +100,7 @@ public class Game
             XmlSerializer writer = new XmlSerializer(typeof(GameEvent));
             foreach (GameEvent gameEvent in events)
             {
-                Debug.Log("Seraliazing " + gameEvent.name);
+                Debug.Log("Serialiazing " + gameEvent.name);
                 var path = Application.dataPath + "/GameFiles/GameEvents/" + gameEvent.name + ".xml";
                 FileStream file = File.Create(path);
                 writer.Serialize(file, gameEvent);
@@ -67,7 +113,6 @@ public class Game
         {
             Debug.Log(ex);
         }
-
     }
 
     public void LoadGameEvents()
@@ -92,7 +137,6 @@ public class Game
             Debug.Log(ex);
         }
     }
-
 
     public void Init(GameObject eventObject, GameController gameController)
     {
@@ -119,7 +163,6 @@ public class Game
 
         if (isNewYear)
             ExecuteNewYearMethods();
-        
         gameStatistics.UpdateRegionalAvgs(this);
     }
 
@@ -132,7 +175,6 @@ public class Game
             currentYear++;
             return true;
         }
-
         return false;
     }
 
@@ -191,7 +233,7 @@ public class Game
 
     public double GetMonthlyPopulation()
     {
-        double population = gameStatistics.population * 0.002;
+        double population = gameStatistics.population * 0.0046 / 12;
         return population;
     }
 
@@ -206,7 +248,6 @@ public class Game
                 {
                     region.ImplementStatisticValues(action.consequences, true);
                     action.CompleteAction();
-                    Debug.Log("Complete finished action IF STATEMENT");
                 }
             }
         }
@@ -236,7 +277,6 @@ public class Game
                 gameEvent.CompleteEvent();
 
             }
-
             EndTemporaryEventConsequences(gameEvent);
         }
     }
@@ -298,104 +338,12 @@ public class Game
     {
         int x = rnd.Next(0, regions.Keys.Count);
         if (x == 0)
-            return "NoordNederland";
+            return "Noord Nederland";
         else if (x == 1)
-            return "OostNederland";
+            return "Oost Nederland";
         else if (x == 2)
-            return "ZuidNederland";
+            return "Zuid Nederland";
         else
-            return "WestNederland";
+            return "West Nederland";
     }
-
-    //Generates the 4 regions (currently hardcoded)
-    private void GenerateRegions()
-    {
-        regions = new Dictionary<string, Region>();
-        GenerateNoordNederland();
-        GenerateOostNederland();
-        GenerateZuidNederland();
-        GenerateWestNederland();
-    }
-
-    private void GenerateNoordNederland()
-    {
-        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        RegionSector[] sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
-
-        Pollution pollution = new Pollution(10, 40, 30, 5, 20, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(250, 0, 5, pollution, 2, 2);
-
-        string[] name = { "Noord Nederland", "The Netherlands North" };
-        Region noord_Nederland = new Region(name, regionStatistics, sectors);
-
-        regions.Add("NoordNederland", noord_Nederland);
-    }
-
-    private void GenerateOostNederland()
-    {
-        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        RegionSector[] sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
-
-        Pollution pollution = new Pollution(30, 20, 30, 10, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(500, 0, 5, pollution, 0, 3);
-
-        string[] name = { "Oost Nederland", "The Netherlands East" };
-        Region oost_Nederland = new Region(name, regionStatistics, sectors);
-        regions.Add("OostNederland", oost_Nederland);
-    }
-
-    private void GenerateZuidNederland()
-    {
-        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        RegionSector[] sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
-
-        Pollution pollution = new Pollution(50, 10, 10, 20, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(700, 0, 5, pollution, 0, 4);
-
-        string[] name = { "Zuid Nederland", "The Netherlands South" };
-        Region zuid_Nederland = new Region(name, regionStatistics, sectors);
-
-        regions.Add("ZuidNederland", zuid_Nederland);
-    }
-
-    private void GenerateWestNederland()
-    {
-        SectorStatistics householdStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics companyStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        SectorStatistics agricultureStatistics = new SectorStatistics(0, 0, 0, 0, 0, 0);
-        RegionSector[] sectors = GenerateRegionSectors(householdStatistics, companyStatistics, agricultureStatistics);
-
-        Pollution pollution = new Pollution(40, 20, 20, 15, 10, 10);
-        RegionStatistics regionStatistics = new RegionStatistics(1000, 0, 5, pollution, 3, 5);
-
-        string[] name = { "West Nederland", "The Netherlands West" };
-        Region west_Nederland = new Region(name, regionStatistics, sectors);
-        regions.Add("WestNederland", west_Nederland);
-    }
-
-    private RegionSector[] GenerateRegionSectors(SectorStatistics householdStatistics, SectorStatistics companyStatistics,
-                                                                   SectorStatistics agricultureStatistics)
-    {
-        RegionSector[] sectors = new RegionSector[3];
-
-        string[] nameHouseholds = { "Huishoudens", "Households" };
-        string[] nameCompanies = { "Bedrijven", "Companies" };
-        string[] nameAgriculture = { "Landbouw", "Agriculture" };
-        sectors[0] = new RegionSector(nameHouseholds, householdStatistics);
-        sectors[1] = new RegionSector(nameCompanies, companyStatistics);
-        sectors[2] = new RegionSector(nameAgriculture, agricultureStatistics);
-
-        return sectors;
-    }
-
-    //Generates the game events (hardcoded)
-    /*private void GenerateGameEvents()
-    {
-    }*/
 }
