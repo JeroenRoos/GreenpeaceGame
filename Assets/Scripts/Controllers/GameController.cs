@@ -98,9 +98,11 @@ public class GameController : MonoBehaviour
         {
             // Send average pollution for each region, determine the region with i
             //updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
-            updateUI.updateHappinessTooltip(game.gameStatistics.happiness, i);
+            updateUI.updateHappinessTooltip(region.statistics.happiness, i);
             i++;
+            
         }
+        
     }
 
     void updateAwareness()

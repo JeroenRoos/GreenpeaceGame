@@ -79,7 +79,7 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = true;
+        isEnabled = false;
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
@@ -106,10 +106,10 @@ public class TestBot : MonoBehaviour
 
         if (isEnabled)
         {
-            if (turnCounter % 12 == 0)
+            if (turnCounter % 12 == 0 || turnCounter == 359)
                 getNationalStats();
 
-            if (turnCounter % 12 == 0)
+            if (turnCounter % 12 == 0 || turnCounter == 359)
                 getRegionalStats();
 
 
