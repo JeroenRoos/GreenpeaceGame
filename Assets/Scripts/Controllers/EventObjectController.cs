@@ -278,7 +278,7 @@ public class EventObjectController : MonoBehaviour
     void ChooseOption(int option)
     {
         Debug.Log("Chosen option: " + option);
-        eventModel.SetPickedChoice(option, gameController.game);
+        eventModel.SetPickedChoice(option, gameController.game, regionModel);
         areOptionsShown = false;
         eventHoverCheck = false;
 

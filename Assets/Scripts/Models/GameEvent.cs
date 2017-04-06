@@ -19,6 +19,7 @@ public class GameEvent
     public string[] choicesEnglish { get; private set; }
     public int[] eventDuration { get; private set; } //in months
     public double[] eventChoiceMoneyCost { get; private set; }
+    public double[] eventChoiceMoneyReward { get; private set; }
 
     public SectorStatistics[] consequences { get; private set; }
     public SectorStatistics[] temporaryConsequences { get; private set; }
@@ -50,9 +51,7 @@ public class GameEvent
     public string[] possibleSectors { get; private set; }
     public bool[] pickedSectors { get; private set; }
 
-    private GameEvent()
-    {
-    }
+    private GameEvent() { }
     /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, SectorStatistics[] consequences,
                     SectorStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
     {
@@ -131,36 +130,27 @@ public class GameEvent
         isFinished = true;
     }
 
-    public void CompleteEvent()
+    public void CompleteEvent(Game game)
     {
         isActive = false;
+        game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
         lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
     }
 
-    public void SetPickedChoice(int i, Game game)
+    public void SetPickedChoice(int i, Game game, Region region)
     {
-        if (game.gameStatistics.money > eventChoiceMoneyCost[i])
-        {
-            game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i], false);
+        game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i], false);
 
-            pickedChoiceNumber = i;
-            this.pickedChoiceStartYear = game.currentYear;
-            this.pickedChoiceStartMonth = game.currentMonth;
+        pickedChoiceNumber = i;
+        this.pickedChoiceStartYear = game.currentYear;
+        this.pickedChoiceStartMonth = game.currentMonth;
 
-            isIdle = false;
-            idleTurnsLeft = 0;
-            isActive = true;
-            
-            if (eventDuration[i] == 0)
-            {
-                CompleteEvent();
-            }
-        }
+        isIdle = false;
+        idleTurnsLeft = 0;
+        isActive = true;
 
-        else
-        {
-            //not enough money popup message?
-        }
+        if (eventDuration[pickedChoiceNumber] == 0)
+            region.CompleteEvent(this, game);
     }
 }
 

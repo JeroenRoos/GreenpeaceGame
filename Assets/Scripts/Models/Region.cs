@@ -70,22 +70,22 @@ public class Region
                 gameEvent.SubtractIdleTurnsLeft();
                 if (gameEvent.idleTurnsLeft == 0)
                 {
-                    gameEvent.SetPickedChoice(0, game);
+                    gameEvent.SetPickedChoice(0, game, this);
                     ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
                 }
             }
 
-            if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (game.currentMonth + game.currentYear * 12)))
+            if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) <= (game.currentMonth + game.currentYear * 12)))
             {
-                CompleteEvent(gameEvent);
+                CompleteEvent(gameEvent, game);
             }
 
-            if (gameEvent.onEventStartYear == game.currentYear & gameEvent.onEventStartMonth == game.currentMonth)
+            if (gameEvent.onEventStartYear <= game.currentYear && gameEvent.onEventStartMonth <= game.currentMonth)
             {
                 ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, false);
             }
 
-            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
+            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] <= game.currentMonth + game.currentYear * 12)
             {
                 ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false);
                 gameEvent.FinishEvent();
@@ -94,12 +94,12 @@ public class Region
         RemoveFinishedEvents();
     }
 
-    public void CompleteEvent(GameEvent gameEvent)
+    public void CompleteEvent(GameEvent gameEvent, Game game)
     {
         ImplementEventConsequences(gameEvent, gameEvent.consequences[gameEvent.pickedChoiceNumber], true);
         ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false);
         ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true);
-        gameEvent.CompleteEvent();
+        gameEvent.CompleteEvent(game);
     }
 
     public void RemoveFinishedEvents()

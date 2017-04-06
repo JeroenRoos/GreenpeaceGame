@@ -41,12 +41,23 @@
         </pollution>
       </actionCosts>
       <actionMoneyCost>5000</actionMoneyCost>
+      <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>3</actionDuration>
       <startYear>0</startYear>
       <startMonth>0</startMonth>
       <lastCompleted>0</lastCompleted>
       <actionCooldown>6</actionCooldown>
       <isActive>false</isActive>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </RegionAction>
     <RegionAction>
       <name>
@@ -88,12 +99,23 @@
         </pollution>
       </actionCosts>
       <actionMoneyCost>10000</actionMoneyCost>
+      <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>6</actionDuration>
       <startYear>0</startYear>
       <startMonth>0</startMonth>
       <lastCompleted>0</lastCompleted>
       <actionCooldown>6</actionCooldown>
       <isActive>false</isActive>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </RegionAction>
     <RegionAction>
       <name>
@@ -135,12 +157,23 @@
         </pollution>
       </actionCosts>
       <actionMoneyCost>10000</actionMoneyCost>
+      <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>4</actionDuration>
       <startYear>0</startYear>
       <startMonth>0</startMonth>
       <lastCompleted>0</lastCompleted>
       <actionCooldown>0</actionCooldown>
       <isActive>false</isActive>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </RegionAction>
     <RegionAction>
       <name>
@@ -182,12 +215,23 @@
         </pollution>
       </actionCosts>
       <actionMoneyCost>0</actionMoneyCost>
+      <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>1</actionDuration>
       <startYear>0</startYear>
       <startMonth>0</startMonth>
       <lastCompleted>0</lastCompleted>
       <actionCooldown>12</actionCooldown>
       <isActive>false</isActive>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </RegionAction>
   </RegionActions>
 </RegionActionContainer>

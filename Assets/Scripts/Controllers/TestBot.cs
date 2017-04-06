@@ -191,13 +191,16 @@ public class TestBot : MonoBehaviour
     {
         if (isEnabled)
         {
-            foreach (GameEvent gameEvent in gameController.game.events)
+            foreach (Region region in gameController.game.regions.Values)
             {
-                if (gameEvent.isIdle)
+                foreach (GameEvent gameEvent in region.inProgressGameEvents)
                 {
-                    printRegion(gameEvent);                    
-                    int chosenOption = getLowestPollutionConsequenceEvent(gameEvent);//UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
-                    doChosenOption(gameEvent, chosenOption);
+                    if (gameEvent.isIdle)
+                    {
+                        printRegion(gameEvent);
+                        int chosenOption = getLowestPollutionConsequenceEvent(gameEvent);//UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
+                        doChosenOption(region, gameEvent, chosenOption);
+                    }
                 }
             }
         }
@@ -255,11 +258,11 @@ public class TestBot : MonoBehaviour
         return hightestIndex;
     }
 
-    void doChosenOption(GameEvent gameEvent, int chosenOption)
+    void doChosenOption(Region region, GameEvent gameEvent, int chosenOption)
     {
         Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
         Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);
-        gameEvent.SetPickedChoice(chosenOption, gameController.game);
+        gameEvent.SetPickedChoice(chosenOption, gameController.game, region);
     }
     #endregion
 

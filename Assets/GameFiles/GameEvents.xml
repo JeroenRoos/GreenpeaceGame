@@ -30,6 +30,11 @@
         <double>2000</double>
         <double>2000</double>
       </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
       <consequences>
         <SectorStatistics>
           <income>0</income>
@@ -184,6 +189,11 @@
         <double>1000</double>
         <double>4000</double>
       </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
       <consequences>
         <SectorStatistics>
           <income>0</income>
@@ -338,6 +348,11 @@
         <double>1000</double>
         <double>4000</double>
       </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
       <consequences>
         <SectorStatistics>
           <income>0</income>
@@ -492,6 +507,11 @@
         <double>1000</double>
         <double>4000</double>
       </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
       <consequences>
         <SectorStatistics>
           <income>0</income>
@@ -646,6 +666,11 @@
         <double>2000</double>
         <double>2000</double>
       </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
       <consequences>
         <SectorStatistics>
           <income>0</income>
@@ -800,6 +825,11 @@
         <double>2000</double>
         <double>2000</double>
       </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
       <consequences>
         <SectorStatistics>
           <income>0</income>
