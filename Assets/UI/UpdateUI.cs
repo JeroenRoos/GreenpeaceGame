@@ -34,6 +34,7 @@ public class UpdateUI : MonoBehaviour
 
     // Text Region Menu
     public Text txtRegionName;
+    public Text txtRegionMoney;
     public Text txtRegionHappiness;
     public Text txtRegionAwareness;
     public Text txtRegionPollution;
@@ -574,6 +575,7 @@ public class UpdateUI : MonoBehaviour
 
         // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name[taal];
+        txtRegionMoney.text = regio.statistics.income.ToString();
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString() + "%";
         txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.00") + "%";
