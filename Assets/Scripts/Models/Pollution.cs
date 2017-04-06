@@ -18,7 +18,7 @@ public class Pollution
     public double naturePollutionIncrease { get; private set; }
     public double waterPollutionIncrease { get; private set; }
     
-    public Pollution(double airPollution, double naturePollution, double waterPollution,
+    /*public Pollution(double airPollution, double naturePollution, double waterPollution,
                      double airPollutionIncrease, double naturePollutionIncrease, double waterPollutionIncrease)
     {
         this.airPollution = airPollution;
@@ -34,12 +34,9 @@ public class Pollution
         ChangeWaterPollutionMutation(waterPollutionIncrease);
 
         CalculateAvgPollution();
-    }
+    }*/
     
-    private Pollution()
-    {
-        // UI Constructor
-    }
+    public Pollution() { }
     
     public void ChangeAirPollutionMutation(double changeValue)
     {

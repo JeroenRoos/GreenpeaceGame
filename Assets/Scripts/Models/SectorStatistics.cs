@@ -15,18 +15,12 @@ public class SectorStatistics
 
     public SectorStatistics()
     {
-        this.income = 0;
-        this.happiness = 0;
-        this.ecoAwareness = 0;
-        this.prosperity = 0;
-        this.pollution = new Pollution(0, 0, 0, 0, 0, 0);
     }
 
-    public SectorStatistics(double happiness, double ecoAwareness, double prosperity, double airPollutionContribution,
+    /*public SectorStatistics(double happiness, double ecoAwareness, double prosperity, double airPollutionContribution,
                             double naturePollutionContribution, double waterPollutionContribution)
     {
-
-    }
+    }*/
 
     public void ModifyIncome(double changeValue)
     {

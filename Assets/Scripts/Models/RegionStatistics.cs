@@ -26,17 +26,6 @@ public class RegionStatistics
 
     private RegionStatistics()
     {
-        income = 0;
-        happiness = 0;
-        ecoAwareness = 0;
-        prosperity = 0;
-        avgPollution = 0;
-        avgAirPollution = 0;
-        avgNaturePollution = 0;
-        avgWaterPollution = 0;
-        avgAirPollutionIncrease = 0;
-        avgNaturePollutionIncrease = 0;
-        avgWaterPollutionIncrease = 0;
     }
 
     public void UpdateSectorAvgs(Region region)

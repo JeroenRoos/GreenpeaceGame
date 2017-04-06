@@ -52,8 +52,6 @@ public class GameEvent
 
     private GameEvent()
     {
-        possibleSectors = new string[] { "Huishoudens", "Bedrijven", "Landbouw" };
-        pickedSectors = new bool[] { false, false, false };
     }
     /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, SectorStatistics[] consequences,
                     SectorStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)

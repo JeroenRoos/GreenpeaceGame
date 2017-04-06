@@ -124,9 +124,6 @@ public class EventObjectController : MonoBehaviour
     {
         Rect btnRect;
         Rect lblReqt;
-  
-        
-
 
         Vector3 v3 = getEventPosition();
 

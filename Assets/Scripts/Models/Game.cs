@@ -44,7 +44,6 @@ public class Game
         currentYear = 1;
         currentMonth = 1;
         
-        
         LoadRegions();
         LoadRegionActions();
         LoadGameEvents();
@@ -140,11 +139,11 @@ public class Game
 
         int activeCount = getActiveEventCount();
 
-        int eventChance = 100;
+        //voor demo vertical slice 1 active event max
+        /*int eventChance = 100;
         int eventChanceReduction = 100;
 
-        //voor demo vertical slice 1 active event max
-        /*while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
+        while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
         {
             StartNewEvent();
             EventManager.CallShowEvent();

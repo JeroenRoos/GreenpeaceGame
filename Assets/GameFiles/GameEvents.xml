@@ -30,185 +30,21 @@
         <double>2000</double>
         <double>2000</double>
       </eventChoiceMoneyCost>
-      <consequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>-1</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>10</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-2.1</airPollutionIncrease>
-            <naturePollutionIncrease>-0.1</naturePollutionIncrease>
-            <waterPollutionIncrease>-0.1</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>1</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>260</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-0.1</airPollutionIncrease>
-            <naturePollutionIncrease>-0.1</naturePollutionIncrease>
-            <waterPollutionIncrease>-0.1</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>1</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </consequences>
-      <temporaryConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </temporaryConsequences>
+      <consequences />
+      <temporaryConsequences />
       <temporaryConsequencesDuration>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </temporaryConsequencesDuration>
-      <duringEventProgressConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </duringEventProgressConsequences>
+      <duringEventProgressConsequences />
       <onEventStartConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -216,17 +52,14 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartConsequence>
       <onEventStartTemporaryConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -234,10 +67,6 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartTemporaryConsequence>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <onEventStartMonth>0</onEventStartMonth>
@@ -267,6 +96,16 @@
         <int>0</int>
         <int>0</int>
       </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Earthquake</name>
@@ -297,185 +136,21 @@
         <double>1000</double>
         <double>4000</double>
       </eventChoiceMoneyCost>
-      <consequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>-1</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>2</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>-200</income>
-          <donations>0</donations>
-          <happiness>4</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </consequences>
-      <temporaryConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </temporaryConsequences>
+      <consequences />
+      <temporaryConsequences />
       <temporaryConsequencesDuration>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </temporaryConsequencesDuration>
-      <duringEventProgressConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </duringEventProgressConsequences>
+      <duringEventProgressConsequences />
       <onEventStartConsequence>
         <income>-70</income>
-        <donations>0</donations>
         <happiness>-1.1</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>-1</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -483,17 +158,14 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>-1</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartConsequence>
       <onEventStartTemporaryConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -501,10 +173,6 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartTemporaryConsequence>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <onEventStartMonth>0</onEventStartMonth>
@@ -534,6 +202,16 @@
         <int>0</int>
         <int>0</int>
       </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Flood</name>
@@ -564,185 +242,21 @@
         <double>1000</double>
         <double>4000</double>
       </eventChoiceMoneyCost>
-      <consequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>-1</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>2</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>-200</income>
-          <donations>0</donations>
-          <happiness>4</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </consequences>
-      <temporaryConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </temporaryConsequences>
+      <consequences />
+      <temporaryConsequences />
       <temporaryConsequencesDuration>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </temporaryConsequencesDuration>
-      <duringEventProgressConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </duringEventProgressConsequences>
+      <duringEventProgressConsequences />
       <onEventStartConsequence>
         <income>-70</income>
-        <donations>0</donations>
         <happiness>-1.1</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>-1</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -750,17 +264,14 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>-1</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartConsequence>
       <onEventStartTemporaryConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -768,10 +279,6 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartTemporaryConsequence>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <onEventStartMonth>0</onEventStartMonth>
@@ -801,6 +308,16 @@
         <int>0</int>
         <int>0</int>
       </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>ForestFire</name>
@@ -831,185 +348,21 @@
         <double>1000</double>
         <double>4000</double>
       </eventChoiceMoneyCost>
-      <consequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>2</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>1</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-1</airPollutionIncrease>
-            <naturePollutionIncrease>-1</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>-200</income>
-          <donations>0</donations>
-          <happiness>4</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </consequences>
-      <temporaryConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </temporaryConsequences>
+      <consequences />
+      <temporaryConsequences />
       <temporaryConsequencesDuration>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </temporaryConsequencesDuration>
-      <duringEventProgressConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </duringEventProgressConsequences>
+      <duringEventProgressConsequences />
       <onEventStartConsequence>
         <income>-70</income>
-        <donations>0</donations>
         <happiness>-1.1</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>-1</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -1017,17 +370,14 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>-1</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartConsequence>
       <onEventStartTemporaryConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -1035,10 +385,6 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartTemporaryConsequence>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <onEventStartMonth>0</onEventStartMonth>
@@ -1068,6 +414,16 @@
         <int>0</int>
         <int>0</int>
       </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NaturePollutionConcern</name>
@@ -1098,185 +454,21 @@
         <double>2000</double>
         <double>2000</double>
       </eventChoiceMoneyCost>
-      <consequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>-1</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>10</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-0.1</airPollutionIncrease>
-            <naturePollutionIncrease>-2.1</naturePollutionIncrease>
-            <waterPollutionIncrease>-0.1</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>1</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>260</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-0.1</airPollutionIncrease>
-            <naturePollutionIncrease>-0.1</naturePollutionIncrease>
-            <waterPollutionIncrease>-0.1</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>1</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </consequences>
-      <temporaryConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </temporaryConsequences>
+      <consequences />
+      <temporaryConsequences />
       <temporaryConsequencesDuration>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </temporaryConsequencesDuration>
-      <duringEventProgressConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </duringEventProgressConsequences>
+      <duringEventProgressConsequences />
       <onEventStartConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -1284,17 +476,14 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartConsequence>
       <onEventStartTemporaryConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -1302,10 +491,6 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartTemporaryConsequence>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <onEventStartMonth>0</onEventStartMonth>
@@ -1335,6 +520,16 @@
         <int>0</int>
         <int>0</int>
       </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>WaterPollutionConcern</name>
@@ -1365,185 +560,21 @@
         <double>2000</double>
         <double>2000</double>
       </eventChoiceMoneyCost>
-      <consequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>-1</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>10</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-0.1</airPollutionIncrease>
-            <naturePollutionIncrease>-0.1</naturePollutionIncrease>
-            <waterPollutionIncrease>-2.1</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>1</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>260</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-0.1</airPollutionIncrease>
-            <naturePollutionIncrease>-0.1</naturePollutionIncrease>
-            <waterPollutionIncrease>-0.1</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>1</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </consequences>
-      <temporaryConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </temporaryConsequences>
+      <consequences />
+      <temporaryConsequences />
       <temporaryConsequencesDuration>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </temporaryConsequencesDuration>
-      <duringEventProgressConsequences>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-        <RegionStatistics>
-          <income>0</income>
-          <donations>0</donations>
-          <happiness>0</happiness>
-          <pollution>
-            <avgPullution>0</avgPullution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
-            <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
-          </pollution>
-          <ecoAwareness>0</ecoAwareness>
-          <prosperity>0</prosperity>
-          <publicTransport>0</publicTransport>
-          <cityEnvironment>0</cityEnvironment>
-        </RegionStatistics>
-      </duringEventProgressConsequences>
+      <duringEventProgressConsequences />
       <onEventStartConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -1551,17 +582,14 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartConsequence>
       <onEventStartTemporaryConsequence>
         <income>0</income>
-        <donations>0</donations>
         <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
         <pollution>
-          <avgPullution>0</avgPullution>
+          <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
@@ -1569,10 +597,6 @@
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
-        <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
-        <publicTransport>0</publicTransport>
-        <cityEnvironment>0</cityEnvironment>
       </onEventStartTemporaryConsequence>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <onEventStartMonth>0</onEventStartMonth>
@@ -1602,6 +626,16 @@
         <int>0</int>
         <int>0</int>
       </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
     </GameEvent>
   </GameEvents>
 </GameEventContainer>

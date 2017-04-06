@@ -23,7 +23,6 @@ public class TestBot : MonoBehaviour
 
     double[] regionalIncome;
     double[] regionalHappiness;
-    double[] regionalDonations;
     double[] regionalEcoAwareness;
     double[] regionalProsperity;
 
@@ -64,7 +63,6 @@ public class TestBot : MonoBehaviour
 
         regionalIncome = new double[4];
         regionalHappiness = new double[4];
-        regionalDonations = new double[4];
         regionalEcoAwareness = new double[4];
         regionalProsperity = new double[4];
 
