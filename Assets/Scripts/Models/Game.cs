@@ -52,47 +52,19 @@ public class Game
 
     public void SaveRegions()
     {
-        try
-        {
-            XmlSerializer writer = new XmlSerializer(typeof(Region));
-            foreach (Region region in regions.Values)
-            {
-                Debug.Log("Serializing " + region.name[0]);
-                var path = Application.dataPath + "/GameFiles/Regions/" + region.name[0] + ".xml";
-                FileStream file = File.Create(path);
-                writer.Serialize(file, region);
-                file.Close();
-            }
-            Debug.Log("Serialization finished");
-        }
+        List<Region> templist = new List<Region>();
+        foreach (Region region in regions.Values)
+            templist.Add(region);
 
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-        }
+        RegionContainer regionContainer = new RegionContainer(templist);
+        regionContainer.Save();
     }
 
     public void LoadRegions()
     {
-        try
-        {
-            var folderPath = Application.dataPath + "/GameFiles/Regions/";
-            XmlSerializer reader = new XmlSerializer(typeof(Region));
-
-            foreach (string file in Directory.GetFileSystemEntries(folderPath, "*.xml"))
-            {
-                var stream = File.OpenRead(file);
-                Region region = (Region)reader.Deserialize(stream);
-                regions.Add(region.name[0], region);
-
-                Debug.Log(region.name[0] + " loaded");
-            }
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-        }
+        RegionContainer regionContainer = RegionContainer.Load();
+        foreach (Region region in regionContainer.regions)
+            regions.Add(region.name[0], region);
     }
 
     public void SaveGameEvents()
@@ -105,56 +77,20 @@ public class Game
     {
         GameEventContainer eventContainer = GameEventContainer.Load();
         events = eventContainer.events;
-        foreach (GameEvent gameEvent in events)
-            Debug.Log( gameEvent.name + " event loaded");
     }
 
     public void SaveRegionActions()
     {
-        try
-        {
-            XmlSerializer writer = new XmlSerializer(typeof(RegionAction));
-            foreach (RegionAction action in regions["Noord Nederland"].actions)
-            {
-                Debug.Log("Serializing " + action.name[0]);
-                var path = Application.dataPath + "/GameFiles/RegionActions/" + action.name[0] + ".xml";
-                FileStream file = File.Create(path);
-                writer.Serialize(file, action);
-                file.Close();
-                Debug.Log("Serialization update");
-            }
-            Debug.Log("Serialization finished");
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-        }
+        RegionActionContainer regionActionContainer = new RegionActionContainer(regions["Noord Nederland"].actions);
+        regionActionContainer.Save();
     }
 
     public void LoadRegionActions()
     {
-        try
+        foreach (Region region in regions.Values)
         {
-            var folderPath = Application.dataPath + "/GameFiles/RegionActions/";
-            XmlSerializer reader = new XmlSerializer(typeof(RegionAction));
-
-            foreach (string file in Directory.GetFileSystemEntries(folderPath, "*.xml"))
-            {
-                foreach (Region region in regions.Values)
-                {
-                    var stream = File.OpenRead(file);
-                    RegionAction action = (RegionAction)reader.Deserialize(stream);
-                    region.actions.Add(action);
-
-                    Debug.Log(action + " loaded in " + region.name[0]);
-                }
-            }
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
+            RegionActionContainer regionActionContainer = RegionActionContainer.Load();
+            region.LoadActions(regionActionContainer.actions);
         }
     }
 

@@ -37,6 +37,11 @@ public class Region
         actions = new List<RegionAction>();
     }
 
+    public void LoadActions(List<RegionAction> actions)
+    {
+        this.actions = actions;
+    }
+
     public void StartAction(RegionAction action, int currentYear, int currentMonth, Game game) //methode moet van UI aangeroepen worden
     {
         if (game.gameStatistics.money > action.actionMoneyCost)
