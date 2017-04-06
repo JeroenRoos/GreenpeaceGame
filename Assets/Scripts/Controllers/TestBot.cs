@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine; 
 using UnityEngine.EventSystems;
-using System.IO;
 
 public class TestBot : MonoBehaviour
 {
 
     GameController gameController;
-    double currentCurrency;
+    //double currentCurrency;
     int turnCounter;
     public bool isEnabled;
 
@@ -79,7 +78,7 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = false; 
+        isEnabled = true; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
@@ -102,18 +101,12 @@ public class TestBot : MonoBehaviour
     // Month changed
     void CheckStatus()
     {
-        Debug.Log("TURN: " + turnCounter);
-
         if (isEnabled)
         {
-            if (turnCounter % 12 == 0 || turnCounter == 359)
-                getNationalStats();
+            Debug.Log("TURN: " + turnCounter);
 
-            if (turnCounter % 12 == 0 || turnCounter == 359)
-                getRegionalStats();
+            showStatistics();
 
-
-            currentCurrency = gameController.game.gameStatistics.money;
             bool checkActive;
             System.Random rnd = new System.Random();
 
@@ -132,16 +125,64 @@ public class TestBot : MonoBehaviour
                 {
                     if (rnd.Next(1, 101) <= 25)
                     {
-                        int action = rnd.Next(0, region.actions.Count);
-                        RegionAction ra = region.actions[action];
-                        Debug.Log("NEW ACTION: " + ra.description[0] + " in Regio: " + region.name[0]);
-                        ra.ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
+                        int index = getLowestPollutionConsequence(region);
+                        doAction(region, index);
                     }
                 }
             }
-
             turnCounter++;
         }
+    }
+
+    void showStatistics()
+    {
+        if (turnCounter % 12 == 0 || turnCounter == 359)
+            getNationalStats();
+
+        if (turnCounter % 12 == 0 || turnCounter == 359)
+            getRegionalStats();
+    }
+
+    // Calculate 
+    int getLowestPollutionConsequence(Region region)
+    {
+        double tempPollutionSum = 0;
+        int index = 0;
+        int hightestIndex = 0;
+
+        foreach (RegionAction a in region.actions)
+        {
+            double pollutionSum = 0;
+
+            pollutionSum += a.consequences.pollution.airPollution;
+            pollutionSum += a.consequences.pollution.waterPollution;
+            pollutionSum += a.consequences.pollution.naturePollution;
+
+            if (pollutionSum < tempPollutionSum)
+            {
+                tempPollutionSum = pollutionSum;
+                hightestIndex = index;
+            }
+
+            index++;
+        }
+
+        if (hightestIndex == 0)
+        {
+            System.Random rnd = new System.Random();
+            hightestIndex = rnd.Next(0, region.actions.Count);
+        }
+
+        return hightestIndex;
+    }
+
+    void doAction(Region region, int index)
+    {
+        //int action = rnd.Next(0, region.actions.Count);
+        //RegionAction ra = region.actions[action];
+        RegionAction ra = region.actions[index];
+        Debug.Log("NEW ACTION: " + ra.description[0] + " in Regio: " + region.name[0]);
+        ra.ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
     }
     #endregion
 
