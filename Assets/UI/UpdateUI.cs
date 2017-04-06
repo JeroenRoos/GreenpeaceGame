@@ -577,9 +577,9 @@ public class UpdateUI : MonoBehaviour
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString();
         txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.00");
-        txtRegionPollutionAir.text = regio.statistics.pollution.airPollution.ToString();
-        txtRegionPollutionNature.text = regio.statistics.pollution.naturePollution.ToString();
-        txtRegionPollutionWater.text = regio.statistics.pollution.waterPollution.ToString();
+        txtRegionPollutionAir.text = regio.statistics.pollution.airPollution.ToString("0.00");
+        txtRegionPollutionNature.text = regio.statistics.pollution.naturePollution.ToString("0.00");
+        txtRegionPollutionWater.text = regio.statistics.pollution.waterPollution.ToString("0.00");
 
         // Set text of actions to empty
         txtRegionActionConsequences.text = "";
@@ -657,13 +657,26 @@ public class UpdateUI : MonoBehaviour
     void updateActiveEvents()
     {
         string activeEventsRegio = "";
+        bool breaking = false;
         foreach (GameEvent e in game.events)
         {
             if (e.isActive || e.isIdle)
             {
-                if (e.region == regio)
+                foreach (Region region in game.regions.Values)
                 {
-                    activeEventsRegio += e.name + "\n";
+                    foreach (GameEvent ev in region.inProgressGameEvents)
+                    {
+                        if (ev == e)
+                        {
+                            activeEventsRegio += e.name + "\n";
+                            breaking = true;
+                            break;
+                            
+                        }
+                    }
+
+                    if (breaking)
+                        break;
                 }
             }
         }

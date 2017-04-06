@@ -79,7 +79,7 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = false;
+        isEnabled = false; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
@@ -149,6 +149,7 @@ public class TestBot : MonoBehaviour
     // Event occured
     void EventAction()
     {
+        Debug.Log("Event!!!");
         if (isEnabled)
         {
             int chosenOption;
@@ -157,7 +158,23 @@ public class TestBot : MonoBehaviour
             {
                 if (gameEvent.isIdle)//isActive)
                 {
-                    Debug.Log("ACTIVE EVENT: " + gameEvent.name + " is ACTIVE in Regio: " + gameEvent.region.name[0]);
+                    bool breaking = false;
+                    foreach (Region region in gameController.game.regions.Values)
+                    {
+                        foreach (GameEvent ev in region.inProgressGameEvents)
+                        {
+                            if (ev == gameEvent)
+                            {
+                                Debug.Log("ACTIVE EVENT: " + gameEvent.name + " is ACTIVE in Regio: " + region.name[0]);
+                                breaking = true;
+                                break;
+                            }
+                        }
+
+                        if (breaking)
+                            break;
+                    }
+
                     chosenOption = UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
                     Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
                     Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);

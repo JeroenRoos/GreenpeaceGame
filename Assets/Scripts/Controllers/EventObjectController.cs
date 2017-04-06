@@ -60,7 +60,9 @@ public class EventObjectController : MonoBehaviour
 
         // Event moet verwijderd worden als gekozen optie klaar is
         if (!eventModel.isActive && !eventModel.isIdle)
+        {
             Destroy(gameObject);
+        }
     }
 
     public void Init(GameController gameController, Region regionModel, GameEvent eventModel)
