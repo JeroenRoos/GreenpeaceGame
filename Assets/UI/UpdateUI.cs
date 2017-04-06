@@ -417,10 +417,10 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Update UI in Tooltips
-    public void updateMoneyTooltip(double donations, double income)
+    public void updateMoneyTooltip(double income)
     {
-        string[] tip = { "Donaties: " + donations + "\nInkomen: " + income,
-            "Donations: " + donations + "\nIncome: " + income };
+        string[] tip = { "Inkomen: " + income,
+            "Income: " + income };
         txtTooltip = tip[taal];                 //"Donaties: " + donations + "\nInkomen: " + income;
     }
 
@@ -578,10 +578,10 @@ public class UpdateUI : MonoBehaviour
         txtRegionMoney.text = regio.statistics.income.ToString();
         txtRegionHappiness.text = regio.statistics.happiness.ToString();
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString() + "%";
-        txtRegionPollution.text = regio.statistics.pollution.avgPullution.ToString("0.00") + "%";
-        txtRegionPollutionAir.text = regio.statistics.pollution.airPollution.ToString("0.00") + "%";
-        txtRegionPollutionNature.text = regio.statistics.pollution.naturePollution.ToString("0.00") + "%";
-        txtRegionPollutionWater.text = regio.statistics.pollution.waterPollution.ToString("0.00") + "%";
+        txtRegionPollution.text = regio.statistics.avgPollution.ToString("0.00") + "%";
+        txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
+        txtRegionPollutionNature.text = regio.statistics.avgNaturePollution.ToString("0.00") + "%";
+        txtRegionPollutionWater.text = regio.statistics.avgWaterPollution.ToString("0.00") + "%";
 
         // Set text of actions to empty
         txtRegionActionConsequences.text = "";
@@ -616,12 +616,12 @@ public class UpdateUI : MonoBehaviour
             if (sector.sectorName[taal] == "Huishoudens" || sector.sectorName[taal] == "Households")
             {
                 //Debug.Log(sector.sectorName);
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "%\nWatervervuiling: " + sector.statistics.waterPollutionContribution
-                    + "%\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "%\nTevredenheid: " + sector.statistics.happiness
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution
+                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution + "%\nTevredenheid: " + sector.statistics.happiness
                     + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness + "%\nWelvaart: " + sector.statistics.prosperity  + "%",
 
-                    "Air pollution: " + sector.statistics.airPollutionContribution + "%\nWater pollution: " + sector.statistics.waterPollutionContribution
-                    + "%\nNature pollution: " + sector.statistics.naturePollutionContribution + "%\nHappiness: " + sector.statistics.happiness
+                    "Air pollution: " + sector.statistics.pollution.airPollution + "%\nWater pollution: " + sector.statistics.pollution.waterPollution
+                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution + "%\nHappiness: " + sector.statistics.happiness
                     + "%\nEco-awareness: " + sector.statistics.ecoAwareness + "%\nProsperity: " + sector.statistics.prosperity  + "%"};
                 txtTooltipHouseholds = tip[taal];       /*"Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
                                                         + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
@@ -631,24 +631,24 @@ public class UpdateUI : MonoBehaviour
             else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
                // Debug.Log(sector.sectorName);
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "%\nWatervervuiling: " + sector.statistics.waterPollutionContribution
-                    + "%\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "%\nTevredenheid: " + sector.statistics.happiness
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution
+                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution + "%\nTevredenheid: " + sector.statistics.happiness
                     + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness + "%\nWelvaart: " + sector.statistics.prosperity  + "%",
 
-                    "Air pollution: " + sector.statistics.airPollutionContribution + "%\nWater pollution: " + sector.statistics.waterPollutionContribution
-                    + "%\nNature pollution: " + sector.statistics.naturePollutionContribution + "%\nHappiness: " + sector.statistics.happiness
+                    "Air pollution: " + sector.statistics.pollution.airPollution + "%\nWater pollution: " + sector.statistics.pollution.waterPollution
+                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution + "%\nHappiness: " + sector.statistics.happiness
                     + "%\nEco-awareness: " + sector.statistics.ecoAwareness + "%\nProsperity: " + sector.statistics.prosperity  + "%"};
                 txtTooltipCompany = tip[taal];
             }
             else if (sector.sectorName[taal] == "Landbouw" || sector.sectorName[taal] == "Agriculture")
             {
                 //Debug.Log(sector.sectorName);
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.airPollutionContribution + "%\nWatervervuiling: " + sector.statistics.waterPollutionContribution
-                    + "%\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "%\nTevredenheid: " + sector.statistics.happiness
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution
+                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution + "%\nTevredenheid: " + sector.statistics.happiness
                     + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness + "%\nWelvaart: " + sector.statistics.prosperity  + "%",
 
-                    "Air pollution: " + sector.statistics.airPollutionContribution + "%\nWater pollution: " + sector.statistics.waterPollutionContribution
-                    + "%\nNature pollution: " + sector.statistics.naturePollutionContribution + "%\nHappiness: " + sector.statistics.happiness
+                    "Air pollution: " + sector.statistics.pollution.airPollution + "%\nWater pollution: " + sector.statistics.pollution.waterPollution
+                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution + "%\nHappiness: " + sector.statistics.happiness
                     + "%\nEco-awareness: " + sector.statistics.ecoAwareness + "%\nProsperity: " + sector.statistics.prosperity + "%"};
 
                 txtTooltipAgriculture = tip[taal];
@@ -756,7 +756,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    string getActionConsequences(RegionStatistics s)
+    string getActionConsequences(SectorStatistics s)
     {
         string[] consequences = { "Consequenties:\n", "Consequences:\n" };
 
@@ -764,11 +764,6 @@ public class UpdateUI : MonoBehaviour
         {
             string[] a = { "Inkomen: " + s.income + "\n", "Income: " + s.income + "\n" };
             consequences[taal] += a[taal];
-        }
-        if (s.donations != 0)
-        {
-            string[] b = { "Donaties: " + s.donations + "\n", "Donations: " + s.donations + "\n" };
-            consequences[taal] += b[taal];
         }
         if (s.happiness != 0)
         {
@@ -804,7 +799,7 @@ public class UpdateUI : MonoBehaviour
         return consequences[taal];
     }
 
-    string getActionCost(RegionStatistics s)
+    string getActionCost(SectorStatistics s)
     {
         //string[] tip;
         if (s.income != 0)

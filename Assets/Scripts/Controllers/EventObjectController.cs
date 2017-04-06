@@ -216,15 +216,10 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
-    string getConsequences(RegionStatistics s)
+    string getConsequences(SectorStatistics s)
     {
         string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
 
-        if (s.donations != 0)
-        {
-            string[] a = { "Donaties: " + s.donations, "Donations: " + s.donations };
-            consequences[taal] += a[taal];// "Consequenties: \nDonaties: " + s.donations;
-        }
         if (s.ecoAwareness != 0)
         {
             string[] b = { " - Milieubewustheid: " + s.ecoAwareness, " - Eco awareness: " + s.ecoAwareness };

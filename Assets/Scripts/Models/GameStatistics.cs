@@ -56,7 +56,7 @@ public class GameStatistics
             {
                 income += sector.statistics.income;
                 happiness += sector.statistics.happiness;
-                pollution += sector.statistics.pollution.avgPullution;
+                pollution += sector.statistics.pollution.avgPollution;
                 ecoAwareness += sector.statistics.ecoAwareness;
                 prosperity += sector.statistics.prosperity;
 

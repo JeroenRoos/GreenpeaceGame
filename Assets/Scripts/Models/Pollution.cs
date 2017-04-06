@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class Pollution
 {
-    public double avgPullution { get; private set; }
+    public double avgPollution { get; private set; }
     
     public double airPollution { get; private set; }
     public double naturePollution { get; private set; }
@@ -32,6 +32,8 @@ public class Pollution
         ChangeAirPollutionMutation(airPollutionIncrease);
         ChangeNaturePollutionMutation(naturePollutionIncrease);
         ChangeWaterPollutionMutation(waterPollutionIncrease);
+
+        CalculateAvgPollution();
     }
     
     private Pollution()
@@ -83,7 +85,7 @@ public class Pollution
 
     private void CalculateAvgPollution()
     {
-        avgPullution = ((airPollution + naturePollution + waterPollution) / 3);
+        avgPollution = ((airPollution + naturePollution + waterPollution) / 3);
     }
 }
 
