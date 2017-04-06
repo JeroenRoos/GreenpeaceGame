@@ -10,8 +10,8 @@ public class RegionAction //: MonoBehaviour
 {
     public string[] name { get; private set; }
     public string[] description { get; private set; }
-    public RegionStatistics consequences { get; private set; }
-    public RegionStatistics actionCosts { get; private set; }
+    public SectorStatistics consequences { get; private set; }
+    public SectorStatistics actionCosts { get; private set; }
     public double actionMoneyCost { get; private set; }
     public int actionDuration { get; private set; } //in months
     public int startYear { get; private set; }
@@ -22,7 +22,7 @@ public class RegionAction //: MonoBehaviour
 
     private RegionAction() { }
 
-    public RegionAction(string[] name, string[] description, RegionStatistics consequences, RegionStatistics actionCosts, int actionDuration, int actionCooldown,
+    public RegionAction(string[] name, string[] description, SectorStatistics consequences, SectorStatistics actionCosts, int actionDuration, int actionCooldown,
                         double actionMoneyCost)
     {
         this.name = name;

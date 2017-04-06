@@ -5,35 +5,34 @@ using System.Text;
 
 [Serializable]
 public class SectorStatistics
-{
+{    
+    public double income { get; private set; }
     public double happiness { get; private set; }
     public double ecoAwareness { get; private set; }
     public double prosperity { get; private set; }
-    public double airPollutionContribution { get; private set; }
-    public double naturePollutionContribution { get; private set; }
-    public double waterPollutionContribution { get; private set; }
 
-    public SectorStatistics() { }
+    public Pollution pollution { get; private set; }
+
+    public SectorStatistics()
+    {
+        this.income = 0;
+        this.happiness = 0;
+        this.ecoAwareness = 0;
+        this.prosperity = 0;
+        this.pollution = new Pollution(0, 0, 0, 0, 0, 0);
+    }
 
     public SectorStatistics(double happiness, double ecoAwareness, double prosperity, double airPollutionContribution,
                             double naturePollutionContribution, double waterPollutionContribution)
     {
-        this.happiness = 0;
-        this.ecoAwareness = 0;
-        this.prosperity = 0;
-        this.airPollutionContribution = 0;
-        this.naturePollutionContribution = 0;
-        this.waterPollutionContribution = 0;
 
-        ModifyHappiness(happiness);
-        ModifyEcoAwareness(ecoAwareness);
-        ModifyProsperity(prosperity);
-        ModifyAirPollutionContribution(airPollutionContribution);
-        ModifyNaturePollutionContribution(naturePollutionContribution);
-        ModifyWaterPollutionContribution(waterPollutionContribution);
     }
 
-    //happiness = prosperity - pollution *formule*
+    public void ModifyIncome(double changeValue)
+    {
+        income += changeValue;
+    }
+    
     public void ModifyHappiness(double changeValue)
     {
         happiness += changeValue;
@@ -44,9 +43,9 @@ public class SectorStatistics
         ecoAwareness += changeValue;
 
         double pollutionChangeValue = 0 - (changeValue / 10);
-        ModifyAirPollutionContribution(pollutionChangeValue);
-        ModifyNaturePollutionContribution(pollutionChangeValue);
-        ModifyWaterPollutionContribution(pollutionChangeValue);
+        pollution.ChangeAirPollutionMutation(pollutionChangeValue);
+        pollution.ChangeNaturePollutionMutation(pollutionChangeValue);
+        pollution.ChangeWaterPollutionMutation(pollutionChangeValue);
     }
 
     public void ModifyProsperity(double changeValue)
@@ -57,18 +56,8 @@ public class SectorStatistics
         ModifyHappiness(happinessChangeValue);
     }
 
-    public void ModifyAirPollutionContribution(double changevalue)
+    public void mutateTimeBasedStatistics()
     {
-        airPollutionContribution += changevalue;
-    }
-
-    public void ModifyNaturePollutionContribution(double changevalue)
-    {
-        naturePollutionContribution += changevalue;
-    }
-
-    public void ModifyWaterPollutionContribution(double changevalue)
-    {
-        waterPollutionContribution += changevalue;
+        pollution.mutateTimeBasedStatistics();
     }
 }

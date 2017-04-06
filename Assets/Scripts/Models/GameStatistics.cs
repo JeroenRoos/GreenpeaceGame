@@ -12,7 +12,6 @@ public class GameStatistics
 
     // Regional averages
     public double income { get; private set; }
-    public double donations { get; private set; }
     public double happiness { get; private set; }
     public double pollution { get; private set; }
     public double ecoAwareness { get; private set; }
@@ -44,28 +43,32 @@ public class GameStatistics
     public void UpdateRegionalAvgs(Game game)
     {
         income       = 0;
-        donations    = 0;
         happiness    = 0;
         pollution    = 0;
         ecoAwareness = 0;
         prosperity   = 0;
 
+        int divisionValue = 0;
+
         foreach (Region region in game.regions.Values)
         {
-            income       += region.statistics.income;
-            donations    += region.statistics.donations;
-            happiness    += region.statistics.happiness;
-            pollution    += region.statistics.pollution.avgPullution;
-            ecoAwareness += region.statistics.ecoAwareness;
-            prosperity   += region.statistics.prosperity;
+            foreach (RegionSector sector in region.sectors)
+            {
+                income += sector.statistics.income;
+                happiness += sector.statistics.happiness;
+                pollution += sector.statistics.pollution.avgPullution;
+                ecoAwareness += sector.statistics.ecoAwareness;
+                prosperity += sector.statistics.prosperity;
+
+                divisionValue++;
+            }
         }
-        
-        income       /= 4;
-        donations    /= 4;
-        happiness    /= 4;
-        pollution    /= 4;
-        ecoAwareness /= 4;
-        prosperity   /= 4;
+
+        income /= divisionValue;
+        happiness /= divisionValue;
+        pollution /= divisionValue;
+        ecoAwareness /= divisionValue;
+        prosperity /= divisionValue;
     }
 }
 

@@ -111,11 +111,9 @@ public class Game
     public void NextTurn()
     {
         bool isNewYear = UpdateCurrentMonthAndYear();
-
-        //bool isNewEvent = ExecuteNewMonthMethods();
+        
         ExecuteNewMonthMethods();
         EventManager.CallChangeMonth();
-        //return isNewEvent;
 
         if (isNewYear)
             ExecuteNewYearMethods();
@@ -136,11 +134,9 @@ public class Game
 
     private void ExecuteNewMonthMethods()
     {
-        MutateMonthlyStatistics();
-
         CompletefinishedActions();
-        CheckIdleEvents();
         UpdateRegionEvents();
+        MutateMonthlyStatistics();
 
         int activeCount = getActiveEventCount();
 
@@ -174,7 +170,11 @@ public class Game
 
         foreach (Region region in regions.Values)
         {
-            region.statistics.mutateTimeBasedStatistics();
+            foreach (RegionSector sector in region.sectors)
+            {
+                sector.statistics.mutateTimeBasedStatistics();
+            }
+            region.statistics.UpdateSectorAvgs(region);
         }
     }
 
@@ -184,7 +184,10 @@ public class Game
 
         foreach (Region region in regions.Values)
         {
-            income += region.statistics.income;
+            foreach (RegionSector sector in region.sectors)
+            {
+                income += region.statistics.income;
+            }
         }
 
         return income;
@@ -204,14 +207,14 @@ public class Game
             {
                 if (action.isActive && ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
-                    region.ImplementStatisticValues(action.consequences, true);
+                    region.ImplementActionConsequences(action, action.consequences, true);
                     action.CompleteAction();
                 }
             }
         }
     }
 
-    public void CheckIdleEvents()
+    /*public void CheckIdleEvents()
     {
         foreach (Region region in regions.Values)
         {
@@ -223,12 +226,13 @@ public class Game
                     if (gameEvent.idleTurnsLeft == 0)
                     {
                         gameEvent.SetPickedChoice(0, this);
-                        region.ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
+                        foreach (RegionSector sector in region.sectors)
+                            sector.ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
                     }
                 }
             }
         }
-    }
+    }*/
 
     public void UpdateRegionEvents()
     {
@@ -257,6 +261,8 @@ public class Game
         {
             int pickedEvent = PickEvent(possibleEvents.Count);
             string pickedRegion = PickEventRegion();
+            pickEventSector(events[pickedEvent]);
+
             events[pickedEvent].StartEvent(currentYear, currentMonth);
             regions[pickedRegion].AddGameEvent(events[pickedEvent]);
             GameObject eventInstance = GameController.Instantiate(eventObject);
@@ -293,5 +299,10 @@ public class Game
             return "Zuid Nederland";
         else
             return "West Nederland";
+    }
+
+    public void pickEventSector(GameEvent gameEvent)
+    {
+        gameEvent.pickedSectors[rnd.Next(0, gameEvent.possibleSectors.Count())] = true;
     }
 }

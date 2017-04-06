@@ -7,75 +7,51 @@ using System.Text;
 public class RegionStatistics
 {
     public double income { get; private set; }
-    public double donations { get; private set; }
+
+    //averages of sectors in the region
     public double happiness { get; private set; }
-    public Pollution pollution { get; private set; }
     public double ecoAwareness { get; private set; }
     public double prosperity { get; private set; }
+    public double avgPollution { get; private set; }
 
-    public double publicTransport { get; private set; } //public transport class
-    public double cityEnvironment { get; private set; } //city environment class
+    //public double publicTransport { get; private set; } //public transport class
+    //public double cityEnvironment { get; private set; } //city environment class
 
-    private RegionStatistics() { }
-
-    public RegionStatistics(double income, double donations, double happiness, Pollution pollution, double ecoAwareness, double prosperity)
+    private RegionStatistics()
     {
-        this.pollution = pollution;
         this.income = 0;
-        this.donations = 0;
         this.happiness = 0;
         this.ecoAwareness = 0;
         this.prosperity = 0;
-
-        ChangeIncome(income);
-        ChangeDonations(donations);
-        ChangeHappiness(happiness);
-        ChangeEcoAwareness(ecoAwareness);
-        ChangeProsperity(prosperity);
+        this.avgPollution = 0;
     }
 
-    public void ChangeIncome(double changeValue)
+    public void UpdateSectorAvgs(Region region)
     {
-        income += changeValue;
-    }
+        income = 0;
+        happiness = 0;
+        avgPollution = 0;
+        ecoAwareness = 0;
+        prosperity = 0;
 
-    public void ChangeDonations(double changeValue)
-    {
-        donations += changeValue;
-    }
+        int divisionValue = 0;
 
-    public void ChangeHappiness(double changeValue)
-    {
-        happiness +=changeValue;
-    }
+        foreach (RegionSector sector in region.sectors)
+        {
+            income += sector.statistics.income;
+            happiness += sector.statistics.happiness;
+            avgPollution += sector.statistics.pollution.avgPullution;
+            ecoAwareness += sector.statistics.ecoAwareness;
+            prosperity += sector.statistics.prosperity;
 
-    public void ChangeEcoAwareness(double changeValue)
-    {
-        ecoAwareness += changeValue;
+            divisionValue++;
+        }
 
-        double donationChangeValue = 10 * changeValue;
-        ChangeDonations(donationChangeValue);
-
-        double pollutionChangeValue = 0 - (changeValue / 10);
-        pollution.ChangeAirPollutionMutation(pollutionChangeValue);
-        pollution.ChangeNaturePollutionMutation(pollutionChangeValue);
-        pollution.ChangeWaterPollutionMutation(pollutionChangeValue);
-    }
-
-    public void ChangeProsperity(double changeValue)
-    {
-        prosperity += changeValue;
-
-        double happinessChangeValue = changeValue / 10;
-        ChangeHappiness(happinessChangeValue);
-
-        double incomeChangeValue = changeValue * 20;
-        ChangeIncome(incomeChangeValue);
-    }
-
-    public void mutateTimeBasedStatistics()
-    {
-        pollution.mutateTimeBasedStatistics();
+        income /= divisionValue;
+        happiness /= divisionValue;
+        avgPollution /= divisionValue;
+        ecoAwareness /= divisionValue;
+        prosperity /= divisionValue;
     }
 }
 

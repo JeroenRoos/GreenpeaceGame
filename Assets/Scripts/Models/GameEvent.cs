@@ -20,15 +20,14 @@ public class GameEvent
     public int[] eventDuration { get; private set; } //in months
     public double[] eventChoiceMoneyCost { get; private set; }
 
-    public RegionStatistics[] consequences { get; private set; }
-    public RegionStatistics[] temporaryConsequences { get; private set; }
+    public SectorStatistics[] consequences { get; private set; }
+    public SectorStatistics[] temporaryConsequences { get; private set; }
     public int[] temporaryConsequencesDuration { get; private set; }
 
-    public RegionStatistics[] duringEventProgressConsequences { get; private set; } //consequences after choosing an option until the event is completed
+    public SectorStatistics[] duringEventProgressConsequences { get; private set; } //consequences after choosing an option until the event is completed
 
-
-    public RegionStatistics onEventStartConsequence { get; private set; }
-    public RegionStatistics onEventStartTemporaryConsequence { get; private set; }
+    public SectorStatistics onEventStartConsequence { get; private set; }
+    public SectorStatistics onEventStartTemporaryConsequence { get; private set; }
     public int onEventStartTemporaryConsequenceDuration { get; private set; }
     public int onEventStartMonth { get; private set; }
     public int onEventStartYear { get; private set; }
@@ -48,12 +47,18 @@ public class GameEvent
     public int[] successChance { get; private set; }
     public int[] increasedConsequencesModifierChance { get; private set; }
     
+    public string[] possibleSectors { get; private set; }
+    public bool[] pickedSectors { get; private set; }
+
     private GameEvent()
     {
+        possibleSectors = new string[] { "Huishoudens", "Bedrijven", "Landbouw" };
+        for (int i = 0; i < possibleSectors.Count(); i++)
+            pickedSectors[i] = false;
     }
 
-    /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
-                    RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
+    /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, SectorStatistics[] consequences,
+                    SectorStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
     {
         this.name = name;
         this.description = description;
@@ -96,6 +101,7 @@ public class GameEvent
             new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0) };
     }
     */
+
     public void StartEvent(int currentYear, int currentMonth)
     {
         onEventStartYear = currentYear;
@@ -118,6 +124,9 @@ public class GameEvent
         onEventStartYear = 0;
         onEventStartMonth = 0;
         pickedChoiceNumber = 0;
+        for (int i = 0; i < possibleSectors.Count(); i++)
+            pickedSectors[i] = false;
+
         isFinished = true;
     }
 

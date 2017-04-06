@@ -25,7 +25,6 @@ public class Region
         this.name = name;
         this.statistics = statistics;
         this.sectors = sectors;
-        ImplementSectorValues();
 
         eventPositions = new Vector3[4];
         eventPositions[0] = new Vector3(9, 1, 12);
@@ -35,6 +34,8 @@ public class Region
 
         buildings = new List<Building>();
         actions = new List<RegionAction>();
+
+        this.statistics.UpdateSectorAvgs(this);
     }
 
     public void LoadActions(List<RegionAction> actions)
@@ -47,7 +48,7 @@ public class Region
         if (game.gameStatistics.money > action.actionMoneyCost)
         {
             game.gameStatistics.ModifyMoney(-action.actionMoneyCost);
-            ImplementStatisticValues(action.actionCosts, true);
+            ImplementActionConsequences(action, action.actionCosts, true);
             action.ActivateAction(currentYear, currentMonth);
 
             if (action.actionDuration == 0)
@@ -59,26 +60,13 @@ public class Region
             //not enough money popup message?
         }
     }
-    
-    public void ImplementSectorValues()
-    {
-        foreach (RegionSector sector in sectors)
-        {
-            statistics.ChangeHappiness(sector.statistics.happiness);
-            statistics.ChangeEcoAwareness(sector.statistics.ecoAwareness);
-            statistics.ChangeProsperity(sector.statistics.prosperity);
-            statistics.pollution.ChangeAirPollutionMutation(sector.statistics.airPollutionContribution);
-            statistics.pollution.ChangeNaturePollutionMutation(sector.statistics.naturePollutionContribution);
-            statistics.pollution.ChangeWaterPollutionMutation(sector.statistics.waterPollutionContribution);
-        }
-    }
 
     public void AddGameEvent(GameEvent gameEvent)
     {
         inProgressGameEvents.Add(gameEvent);
 
-        ImplementStatisticValues(gameEvent.onEventStartConsequence, true);
-        ImplementStatisticValues(gameEvent.onEventStartTemporaryConsequence, true);
+        ImplementEventConsequences(gameEvent, gameEvent.onEventStartConsequence, true);
+        ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, true);
     }
 
     public void UpdateEvents(Game game)
@@ -91,7 +79,7 @@ public class Region
                     if (gameEvent.idleTurnsLeft == 0)
                     {
                         gameEvent.SetPickedChoice(0, game);
-                        ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
+                    ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
                     }
                 }
 
@@ -102,24 +90,23 @@ public class Region
 
             if (gameEvent.onEventStartYear == game.currentYear & gameEvent.onEventStartMonth == game.currentMonth)
             {
-                ImplementStatisticValues(gameEvent.onEventStartTemporaryConsequence, false);
+                ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, false);
             }
 
             if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
             {
-                ImplementStatisticValues(gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false);
+                ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false);
                 gameEvent.FinishEvent();
             }
         }
         RemoveFinishedEvents();
     }
 
-
     public void CompleteEvent(GameEvent gameEvent)
     {
-        ImplementStatisticValues(gameEvent.consequences[gameEvent.pickedChoiceNumber], true);
-        ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false);
-        ImplementStatisticValues(gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true);
+        ImplementEventConsequences(gameEvent, gameEvent.consequences[gameEvent.pickedChoiceNumber], true);
+        ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false);
+        ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true);
         gameEvent.CompleteEvent();
     }
 
@@ -133,26 +120,26 @@ public class Region
     }
 
     //adds a building to the list of buildings the region has
-    public void CreateBuilding(string[] buildingName)
+    /*public void CreateBuilding(string[] buildingName)
     {
         Building newBuilding = new Building(buildingName);
         buildings.Add(newBuilding);
         ImplementBuildingValues(newBuilding.statistics, true);
-    }
+    }*/
 
-    public void DeleteBuilding(Building building)
+    /*public void DeleteBuilding(Building building)
     {
         ImplementBuildingValues(building.statistics, false);
         buildings.Remove(building);
-    }
+    }*/
 
-    public void ModifyBuilding(Building building, BuildingStatistics statistics)
+    /*public void ModifyBuilding(Building building, BuildingStatistics statistics)
     {
         ImplementBuildingValues(statistics, true);
         building.ModifyBuildingStatistics(statistics);
-    }
+    }*/
 
-    public void ImplementBuildingValues(BuildingStatistics statistics, bool isAdded) //if a building is removed for example, isAdded is false
+    /*public void ImplementBuildingValues(BuildingStatistics statistics, bool isAdded) //if a building is removed for example, isAdded is false
     {
         if (isAdded)
         {
@@ -175,36 +162,28 @@ public class Region
             this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
             this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
         }
+    }*/
+
+    public void ImplementEventConsequences(GameEvent gameEvent, SectorStatistics statistics, bool isAdded)
+    {
+        for (int i = 0; i < sectors.Count(); i++)
+        {
+            if (gameEvent.pickedSectors[i])
+            {
+                foreach (RegionSector sector in sectors)
+                {
+                    if (sector.sectorName[0] == gameEvent.possibleSectors[i])
+                        sector.ImplementStatisticValues(statistics, isAdded);
+                }
+            }
+        }
     }
 
-    public void ImplementStatisticValues(RegionStatistics statistics, bool isAdded) //if a statistic is removed for example, isAdded is false
+    public void ImplementActionConsequences(RegionAction gameEvent, SectorStatistics statistics, bool isAdded)
     {
-        if (isAdded)
+        foreach (RegionSector sector in sectors)
         {
-            this.statistics.ChangeIncome(statistics.income);
-            this.statistics.ChangeDonations(statistics.donations);
-            this.statistics.ChangeHappiness(statistics.happiness);
-            this.statistics.ChangeEcoAwareness(statistics.ecoAwareness);
-            this.statistics.ChangeProsperity(statistics.prosperity);
-
-            //temporary methods (incomplete)
-            this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
-            this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
-            this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
-        }
-
-        else
-        {
-            this.statistics.ChangeIncome(0 - statistics.income);
-            this.statistics.ChangeDonations(0 - statistics.donations);
-            this.statistics.ChangeHappiness(0 - statistics.happiness);
-            this.statistics.ChangeEcoAwareness(0 - statistics.ecoAwareness);
-            this.statistics.ChangeProsperity(0 - statistics.prosperity);
-
-            //temporary methods (incomplete)
-            this.statistics.pollution.ChangeAirPollutionMutation(0 - statistics.pollution.airPollutionIncrease);
-            this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
-            this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
+                sector.ImplementStatisticValues(statistics, isAdded);
         }
     }
 }
