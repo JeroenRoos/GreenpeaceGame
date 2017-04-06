@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 [Serializable]
 public class Pollution
@@ -41,40 +42,24 @@ public class Pollution
     public void ChangeAirPollutionMutation(double changeValue)
     {
         airPollutionIncrease += changeValue;
-        CalculateAvgPollution();
     }
 
     public void ChangeNaturePollutionMutation(double changeValue)
     {
         naturePollutionIncrease += changeValue;
-        CalculateAvgPollution();
     }
     public void ChangeWaterPollutionMutation(double changeValue)
     {
         waterPollutionIncrease += changeValue;
-        CalculateAvgPollution();
     }
-
 
     public void mutateTimeBasedStatistics()
     {
-        if (airPollution != 0)
-            airPollution = airPollution + (airPollution / 100 * airPollutionIncrease);
-        else
-            airPollution = airPollution + ((airPollution + 20) / 100 * airPollution);
-
-        if (naturePollution !=0)
-            naturePollution = naturePollution + (naturePollution / 100 * naturePollutionIncrease);
-        else
-            naturePollution = naturePollution + ((naturePollution + 20) / 100 * naturePollution);
-
-        if (waterPollution != 0)
-            waterPollution = waterPollution + (waterPollution / 100 * waterPollutionIncrease);
-        else
-            waterPollution = waterPollution + ((waterPollution + 20) / 100 * waterPollution);
+        airPollution += (airPollution * airPollutionIncrease / 100 / 12);
+        naturePollution += (naturePollution * naturePollutionIncrease / 100 / 12);
+        waterPollution += (waterPollution * waterPollutionIncrease / 100 / 12);
 
         KeepPollutionValuesWithinBoundaries();
-
         CalculateAvgPollution();
     }
 

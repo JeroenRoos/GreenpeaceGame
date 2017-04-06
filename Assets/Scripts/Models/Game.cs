@@ -136,11 +136,7 @@ public class Game
 
     private void ExecuteNewMonthMethods()
     {
-        double monthlyIncome = GetMonthlyIncome();
-        gameStatistics.ModifyMoney(monthlyIncome);
-
-        double monthlyPopulation = GetMonthlyPopulation();
-        gameStatistics.ModifyPopulation(monthlyPopulation);
+        MutateMonthlyStatistics();
 
         CompletefinishedActions();
         CheckIdleEvents();
@@ -166,9 +162,16 @@ public class Game
             EventManager.CallShowEvent();
         }
     }
+    public void ExecuteNewYearMethods() { }
 
-    private void ExecuteNewYearMethods()
+    public void MutateMonthlyStatistics()
     {
+        double monthlyIncome = GetMonthlyIncome();
+        gameStatistics.ModifyMoney(monthlyIncome);
+
+        double monthlyPopulation = GetMonthlyPopulation();
+        gameStatistics.ModifyPopulation(monthlyPopulation);
+
         foreach (Region region in regions.Values)
         {
             region.statistics.mutateTimeBasedStatistics();
