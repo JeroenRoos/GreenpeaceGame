@@ -58,22 +58,42 @@ public class Pollution
 
     public void mutateTimeBasedStatistics()
     {
-        if (airPollution > 0)
+        if (airPollution != 0)
             airPollution = airPollution + (airPollution / 100 * airPollutionIncrease);
         else
             airPollution = airPollution + ((airPollution + 20) / 100 * airPollution);
 
-        if (naturePollution > 0)
+        if (naturePollution !=0)
             naturePollution = naturePollution + (naturePollution / 100 * naturePollutionIncrease);
         else
             naturePollution = naturePollution + ((naturePollution + 20) / 100 * naturePollution);
 
-        if (waterPollution > 0)
+        if (waterPollution != 0)
             waterPollution = waterPollution + (waterPollution / 100 * waterPollutionIncrease);
         else
             waterPollution = waterPollution + ((waterPollution + 20) / 100 * waterPollution);
 
+        KeepPollutionValuesWithinBoundaries();
+
         CalculateAvgPollution();
+    }
+
+    public void KeepPollutionValuesWithinBoundaries()
+    {
+        if (airPollution > 100)
+            airPollution = 100;
+        else if (airPollution < 0)
+            airPollution = 0;
+
+        if (naturePollution > 100)
+            naturePollution = 100;
+        else if (airPollution < 0)
+            naturePollution = 0;
+
+        if (waterPollution > 100)
+            waterPollution = 100;
+        else if (airPollution < 0)
+            waterPollution = 0;
     }
 
     private void CalculateAvgPollution()
