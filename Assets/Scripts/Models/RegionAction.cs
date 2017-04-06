@@ -13,6 +13,7 @@ public class RegionAction //: MonoBehaviour
     public SectorStatistics consequences { get; private set; }
     public SectorStatistics actionCosts { get; private set; }
     public double actionMoneyCost { get; private set; }
+    public double actionMoneyReward { get; private set; }
     public int actionDuration { get; private set; } //in months
     public int startYear { get; private set; }
     public int startMonth { get; private set; }
@@ -20,7 +21,15 @@ public class RegionAction //: MonoBehaviour
     public int actionCooldown { get; private set; } //in months
     public bool isActive { get; private set; }
 
-    private RegionAction() { }
+    public string[] possibleSectors { get; private set; }
+    public bool[] pickedSectors { get; private set; }
+
+    private RegionAction()
+    {
+        actionMoneyReward = 0;
+        possibleSectors = new string[] { "Huishoudens", "Bedrijven", "Landbouw" };
+        pickedSectors = new bool[] { false, false, false };
+    }
 
     public RegionAction(string[] name, string[] description, SectorStatistics consequences, SectorStatistics actionCosts, int actionDuration, int actionCooldown,
                         double actionMoneyCost)
@@ -39,19 +48,12 @@ public class RegionAction //: MonoBehaviour
         lastCompleted = 0;
     }
 
-    public void ActivateAction(int startYear, int startMonth)
+    public void ActivateAction(int startYear, int startMonth, bool[] pickedSectors)
     {
-        
-        if (lastCompleted == 0 || (lastCompleted != 0 && (startYear * 12 + startMonth >= lastCompleted + actionCooldown)))
-        {
-            this.startYear = startYear;
-            this.startMonth = startMonth;
-            isActive = true;
-        }
-        else
-        {
-            //toon dat action op cooldown is
-        }
+        this.pickedSectors = pickedSectors;
+        this.startYear = startYear;
+        this.startMonth = startMonth;
+        isActive = true;
     }
 
     public void CompleteAction()

@@ -24,9 +24,12 @@ public class GameStatistics
         this.energy = energy;
     }
 
-    public void ModifyMoney(double changevalue)
+    public void ModifyMoney(double changevalue, bool isAdded)
     {
-        money += changevalue;
+        if (isAdded)
+            money += changevalue;
+        else
+            money -= changevalue;
     }
 
     public void ModifyPopulation(double changevalue)

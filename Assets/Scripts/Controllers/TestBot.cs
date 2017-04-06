@@ -180,7 +180,8 @@ public class TestBot : MonoBehaviour
         //RegionAction ra = region.actions[action];
         RegionAction ra = region.actions[index];
         Debug.Log("NEW ACTION: " + ra.description[0] + " in Regio: " + region.name[0]);
-        ra.ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
+        region.StartAction(ra, gameController.game, new bool[] { true, true, true });
+        //ra.ActivateAction(gameController.game.currentYear, gameController.game.currentMonth, new bool[] { true, true, true });
     }
     #endregion
 

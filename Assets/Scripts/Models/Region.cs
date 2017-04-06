@@ -15,7 +15,7 @@ public class Region
     public List<RegionAction> actions { get; private set; }
     public RegionSector[] sectors { get; private set; }
     public Vector3[] eventPositions;
-    
+
     public List<GameEvent> inProgressGameEvents { get; private set; }
 
     private Region() { }
@@ -43,22 +43,14 @@ public class Region
         this.actions = actions;
     }
 
-    public void StartAction(RegionAction action, int currentYear, int currentMonth, Game game) //methode moet van UI aangeroepen worden
+    public void StartAction(RegionAction action, Game game, bool[] pickedSectors)
     {
-        if (game.gameStatistics.money > action.actionMoneyCost)
-        {
-            game.gameStatistics.ModifyMoney(-action.actionMoneyCost);
-            ImplementActionConsequences(action, action.actionCosts, true);
-            action.ActivateAction(currentYear, currentMonth);
+        action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
+        game.gameStatistics.ModifyMoney(action.actionMoneyCost, false);
+        ImplementActionConsequences(action, action.actionCosts, false);
 
-            if (action.actionDuration == 0)
-                action.CompleteAction();
-        }
-
-        else
-        {
-            //not enough money popup message?
-        }
+        if (action.actionDuration == 0)
+            action.CompleteAction();
     }
 
     public void AddGameEvent(GameEvent gameEvent)
@@ -74,14 +66,14 @@ public class Region
         foreach (GameEvent gameEvent in inProgressGameEvents)
         {
             if (gameEvent.isIdle)
+            {
+                gameEvent.SubtractIdleTurnsLeft();
+                if (gameEvent.idleTurnsLeft == 0)
                 {
-                    gameEvent.SubtractIdleTurnsLeft();
-                    if (gameEvent.idleTurnsLeft == 0)
-                    {
-                        gameEvent.SetPickedChoice(0, game);
+                    gameEvent.SetPickedChoice(0, game);
                     ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
-                    }
                 }
+            }
 
             if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (game.currentMonth + game.currentYear * 12)))
             {
@@ -179,11 +171,18 @@ public class Region
         }
     }
 
-    public void ImplementActionConsequences(RegionAction gameEvent, SectorStatistics statistics, bool isAdded)
+    public void ImplementActionConsequences(RegionAction regionAction, SectorStatistics statistics, bool isAdded)
     {
-        foreach (RegionSector sector in sectors)
+        for (int i = 0; i < sectors.Count(); i++)
         {
-                sector.ImplementStatisticValues(statistics, isAdded);
+            if (regionAction.pickedSectors[i])
+            {
+                foreach (RegionSector sector in sectors)
+                {
+                    if (sector.sectorName[0] == regionAction.possibleSectors[i])
+                        sector.ImplementStatisticValues(statistics, isAdded);
+                }
+            }
         }
     }
 }

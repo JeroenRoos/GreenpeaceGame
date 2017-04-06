@@ -108,6 +108,11 @@ public class GameEvent
         isFinished = false;
     }
 
+    public void pickEventSector(System.Random rnd)
+    {
+        pickedSectors[rnd.Next(0, possibleSectors.Count())] = true;
+    }
+
     public void SubtractIdleTurnsLeft()
     {
         idleTurnsLeft--;
@@ -136,7 +141,7 @@ public class GameEvent
     {
         if (game.gameStatistics.money > eventChoiceMoneyCost[i])
         {
-            game.gameStatistics.ModifyMoney(-eventChoiceMoneyCost[i]);
+            game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i], false);
 
             pickedChoiceNumber = i;
             this.pickedChoiceStartYear = game.currentYear;

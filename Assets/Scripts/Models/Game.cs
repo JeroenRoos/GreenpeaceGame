@@ -125,11 +125,11 @@ public class Game
         bool isNewYear = UpdateCurrentMonthAndYear();
         
         ExecuteNewMonthMethods();
-        EventManager.CallChangeMonth();
 
         if (isNewYear)
             ExecuteNewYearMethods();
         gameStatistics.UpdateRegionalAvgs(this);
+        EventManager.CallChangeMonth();
     }
 
     public bool UpdateCurrentMonthAndYear()
@@ -175,7 +175,7 @@ public class Game
     public void MutateMonthlyStatistics()
     {
         double monthlyIncome = GetMonthlyIncome();
-        gameStatistics.ModifyMoney(monthlyIncome);
+        gameStatistics.ModifyMoney(monthlyIncome, true);
 
         double monthlyPopulation = GetMonthlyPopulation();
         gameStatistics.ModifyPopulation(monthlyPopulation);
@@ -220,6 +220,7 @@ public class Game
                 if (action.isActive && ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
                     region.ImplementActionConsequences(action, action.consequences, true);
+                    gameStatistics.ModifyMoney(action.actionMoneyReward, true);
                     action.CompleteAction();
                 }
             }
@@ -273,7 +274,7 @@ public class Game
         {
             int pickedEvent = PickEvent(possibleEvents.Count);
             string pickedRegion = PickEventRegion();
-            pickEventSector(events[pickedEvent]);
+            events[pickedEvent].pickEventSector(rnd);
 
             events[pickedEvent].StartEvent(currentYear, currentMonth);
             regions[pickedRegion].AddGameEvent(events[pickedEvent]);
@@ -311,10 +312,5 @@ public class Game
             return "Zuid Nederland";
         else
             return "West Nederland";
-    }
-
-    public void pickEventSector(GameEvent gameEvent)
-    {
-        gameEvent.pickedSectors[rnd.Next(0, gameEvent.possibleSectors.Count())] = true;
     }
 }
