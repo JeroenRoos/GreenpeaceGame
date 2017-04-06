@@ -36,7 +36,10 @@ public class Pollution
         CalculateAvgPollution();
     }*/
     
-    public Pollution() { }
+    public Pollution()
+    {
+        CalculateAvgPollution();
+    }
     
     public void ChangeAirPollutionMutation(double changeValue)
     {
@@ -80,7 +83,7 @@ public class Pollution
             waterPollution = 0;
     }
 
-    private void CalculateAvgPollution()
+    public void CalculateAvgPollution()
     {
         avgPollution = ((airPollution + naturePollution + waterPollution) / 3);
     }

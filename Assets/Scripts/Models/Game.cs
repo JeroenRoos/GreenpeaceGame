@@ -47,6 +47,19 @@ public class Game
         LoadRegions();
         LoadRegionActions();
         LoadGameEvents();
+        gameStatistics.UpdateRegionalAvgs(this);
+
+        /*foreach (Region region in regions.Values)
+        {
+            foreach (RegionSector sector in region.sectors)
+            {
+                sector.statistics.pollution.CalculateAvgPollution();
+            }
+            region.statistics.UpdateSectorAvgs(region);
+        }
+        SaveRegions();
+        SaveRegionActions();
+        SaveGameEvents();*/
     }
 
     public void SaveRegions()

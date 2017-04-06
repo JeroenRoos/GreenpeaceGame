@@ -60,8 +60,7 @@ public class RegionStatistics
 
             divisionValue++;
         }
-
-        income /= divisionValue;
+        
         happiness /= divisionValue;
         ecoAwareness /= divisionValue;
         prosperity /= divisionValue;
