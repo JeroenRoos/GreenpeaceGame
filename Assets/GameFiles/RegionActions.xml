@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<RegionActionContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RegionActions>
+    <RegionAction>
+      <name>
+        <string>Miliebewustheid campagne</string>
+        <string>Eco awareness campaign</string>
+      </name>
+      <description>
+        <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
+        <string>Campaign to increase the eco awareness within the region.</string>
+      </description>
+      <consequences>
+        <income>0</income>
+        <donations>50</donations>
+        <happiness>0</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>-0.5</airPollutionIncrease>
+          <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+          <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>5</ecoAwareness>
+        <prosperity>0</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </consequences>
+      <actionCosts>
+        <income>0</income>
+        <donations>0</donations>
+        <happiness>0</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </actionCosts>
+      <actionMoneyCost>5000</actionMoneyCost>
+      <actionDuration>3</actionDuration>
+      <startYear>0</startYear>
+      <startMonth>0</startMonth>
+      <lastCompleted>0</lastCompleted>
+      <actionCooldown>6</actionCooldown>
+      <isActive>false</isActive>
+    </RegionAction>
+    <RegionAction>
+      <name>
+        <string>Verhoog productie</string>
+        <string>Improve production</string>
+      </name>
+      <description>
+        <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
+        <string>Improve the production in the region to generate a higher income.</string>
+      </description>
+      <consequences>
+        <income>290</income>
+        <donations>0</donations>
+        <happiness>0.2</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>1</airPollutionIncrease>
+          <naturePollutionIncrease>1</naturePollutionIncrease>
+          <waterPollutionIncrease>1</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>2</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </consequences>
+      <actionCosts>
+        <income>0</income>
+        <donations>0</donations>
+        <happiness>0</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </actionCosts>
+      <actionMoneyCost>10000</actionMoneyCost>
+      <actionDuration>6</actionDuration>
+      <startYear>0</startYear>
+      <startMonth>0</startMonth>
+      <lastCompleted>0</lastCompleted>
+      <actionCooldown>6</actionCooldown>
+      <isActive>false</isActive>
+    </RegionAction>
+  </RegionActions>
+</RegionActionContainer>
