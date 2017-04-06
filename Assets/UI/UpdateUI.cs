@@ -483,8 +483,8 @@ public class UpdateUI : MonoBehaviour
         switch (i)
         {
             case 0:
-                string[] tip1 = { "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n",
-                    "Average pollution per region: \nThe Netherlands Northern: " + pollution.ToString("0.00") + "\n"};
+                string[] tip1 = { "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "%\n",
+                    "Average pollution per region: \nThe Netherlands Northern: " + pollution.ToString("0.00") + "%\n"};
                 txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
                 break;
             case 1:
