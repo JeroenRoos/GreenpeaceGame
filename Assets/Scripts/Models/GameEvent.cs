@@ -123,6 +123,7 @@ public class GameEvent
 
     public void CompleteEvent()
     {
+        isActive = false;
         lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
     }
 
