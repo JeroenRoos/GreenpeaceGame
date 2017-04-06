@@ -41,18 +41,18 @@ public class GameEvent
     public bool isIdle { get; private set; }
     public int idleTurnsLeft { get; private set; } 
     public bool isActive { get; private set; }
-
-
+    
     public bool isFinished { get; private set; }
     public string[] possibleRegions { get; private set; }
     public bool isGlobal { get; private set; }
-    public int successChance { get; private set; }
+    public int[] successChance { get; private set; }
+    public int[] increasedConsequencesModifierChance { get; private set; }
     
     private GameEvent()
     {
     }
 
-    public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
+    /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
                     RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
     {
         this.name = name;
@@ -76,7 +76,8 @@ public class GameEvent
         idleTurnsLeft = 0;
         possibleRegions = new string[] { "Noord Nederland", "Oost Nederland", "Zuid Nederland", "West Nederland" };
         isGlobal = false;
-        successChance = 100;
+        successChance = new int[] { 100, 100, 100 };
+        increasedConsequencesModifierChance = new int[] { 0, 0, 0 };
 
         //temporary anti error code
         eventIdleDuration = 100;
@@ -94,7 +95,7 @@ public class GameEvent
             new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0),
             new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0) };
     }
-
+    */
     public void StartEvent(int currentYear, int currentMonth)
     {
         onEventStartYear = currentYear;

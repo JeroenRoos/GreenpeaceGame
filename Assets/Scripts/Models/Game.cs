@@ -5,10 +5,10 @@ using System.Text;
 using System.Timers;
 using UnityEngine;
 using UnityEditor;
-using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-using System.Xml.Linq;
+//using System.Xml;
+//using System.Xml.Linq;
 
 public class Game
 {
@@ -97,47 +97,16 @@ public class Game
 
     public void SaveGameEvents()
     {
-        try
-        {
-            XmlSerializer writer = new XmlSerializer(typeof(GameEvent));
-            foreach (GameEvent gameEvent in events)
-            {
-                Debug.Log("Serializing " + gameEvent.name);
-                var path = Application.dataPath + "/GameFiles/GameEvents/" + gameEvent.name + ".xml";
-                FileStream file = File.Create(path);
-                writer.Serialize(file, gameEvent);
-                file.Close();
-            }
-            Debug.Log("Serialization finished");
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-        }
+        GameEventContainer eventContainer = new GameEventContainer(events);
+        eventContainer.Save();
     }
 
     public void LoadGameEvents()
     {
-        try
-        {
-            var folderPath = Application.dataPath + "/GameFiles/GameEvents/";
-            XmlSerializer reader = new XmlSerializer(typeof(GameEvent));
-
-            foreach (string file in Directory.GetFileSystemEntries(folderPath, "*.xml"))
-            {
-                var stream = File.OpenRead(file);
-                GameEvent gameEvent = (GameEvent)reader.Deserialize(stream);
-                events.Add(gameEvent);
-
-                Debug.Log(gameEvent.name + " loaded");
-            }
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-        }
+        GameEventContainer eventContainer = GameEventContainer.Load();
+        events = eventContainer.events;
+        foreach (GameEvent gameEvent in events)
+            Debug.Log( gameEvent.name + " event loaded");
     }
 
     public void SaveRegionActions()
