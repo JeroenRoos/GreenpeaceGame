@@ -144,7 +144,7 @@ public class GameController : MonoBehaviour
         foreach (Region region in game.regions.Values)
         {
             // Send the income for each region, use i to determine the region
-            updateUI.updateOrganizationScreenUI(region.statistics.income, i, game.gameStatistics.money);
+            updateUI.updateOrganizationScreenUI(region.statistics.income * 12, i, game.gameStatistics.money);
             i++;            
         }
     }

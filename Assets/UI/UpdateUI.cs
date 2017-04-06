@@ -455,23 +455,23 @@ public class UpdateUI : MonoBehaviour
         switch (i)
         {
             case 0:
-                string[] tip1 = { "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n",
-                    "Average eco awareness per region: \nThe Netherlands Northern: " + awareness.ToString("0.00") + "\n"};
+                string[] tip1 = { "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "%\n",
+                    "Average eco awareness per region: \nThe Netherlands Northern: " + awareness.ToString("0.00") + "%\n"};
                 txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 1:
-                string[] tip2 = { "Oost-Nederland: " + awareness.ToString("0.00") + "\n",
-                    "The Netherlands Eastern: " + awareness.ToString("0.00") + "\n"};
+                string[] tip2 = { "Oost-Nederland: " + awareness.ToString("0.00") + "%\n",
+                    "The Netherlands Eastern: " + awareness.ToString("0.00") + "%\n"};
                 txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 2:
                 string[] tip3 = { "West-Nederland: " + awareness.ToString("0.00") + "\n",
-                    "The Netherlands Western: " + awareness.ToString("0.00") + "\n"};
+                    "The Netherlands Western: " + awareness.ToString("0.00") + "%\n"};
                 txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 3:
-                string[] tip4 = { "Zuid-Nederland: " + awareness.ToString("0.00"),
-                    "The Netherlands Southern: " + awareness.ToString("0.00")};
+                string[] tip4 = { "Zuid-Nederland: " + awareness.ToString("0.00") + "%",
+                    "The Netherlands Southern: " + awareness.ToString("0.00") + "%"};
                 txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
         }
@@ -487,18 +487,18 @@ public class UpdateUI : MonoBehaviour
                 txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
                 break;
             case 1:
-                string[] tip2 = { "Oost-Nederland: " + pollution.ToString("0.00") + "\n",
-                    "The Netherlands Eastern: " + pollution.ToString("0.00") + "\n"};
+                string[] tip2 = { "Oost-Nederland: " + pollution.ToString("0.00") + "%\n",
+                    "The Netherlands Eastern: " + pollution.ToString("0.00") + "%\n"};
                 txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 2:
-                string[] tip3 = { "West-Nederland: " + pollution.ToString("0.00") + "\n",
-                    "The Netherlands Western: " + pollution.ToString("0.00") + "\n"};
+                string[] tip3 = { "West-Nederland: " + pollution.ToString("0.00") + "%\n",
+                    "The Netherlands Western: " + pollution.ToString("0.00") + "%\n"};
                 txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 3:
-                string[] tip4 = { "Zuid-Nederland: " + pollution.ToString("0.00"),
-                    "The Netherlands Southern: " + pollution.ToString("0.00")};
+                string[] tip4 = { "Zuid-Nederland: " + pollution.ToString("0.00") + "%",
+                    "The Netherlands Southern: " + pollution.ToString("0.00") + "%"};
                 txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
         }
@@ -506,10 +506,10 @@ public class UpdateUI : MonoBehaviour
 
     public void updateEnergyTooltip(double green, double fossil, double nuclear)
     {
-        string[] tip = { "Groene energie: " + green.ToString() + "\nFossiele energie: "
-            + fossil + "\nKernenergie: " + nuclear ,
-            "Green energy " + green.ToString() + "\nFossil energy: "
-            + fossil + "\nNuclearenergy: " + nuclear};
+        string[] tip = { "Groene energie: " + green.ToString() + "%\nFossiele energie: "
+            + fossil + "%\nKernenergie: " + nuclear + "%",
+            "Green energy " + green.ToString() + "%\nFossil energy: "
+            + fossil + "%\nNuclearenergy: " + nuclear + "%"};
         txtTooltip = tip[taal];         //"Groene energie: " + green.ToString() + "\nFossiele energie: "
                                         // + fossil + "\nKernenergie: " + nuclear;
     }
@@ -691,7 +691,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (action.isActive)
             {
-                activeActionsRegio += action.description[taal] + "\n";
+                activeActionsRegio += action.name[taal];// .description[taal] + "\n";
             }
 
             txtActiveActions.text = activeActionsRegio;
@@ -705,7 +705,7 @@ public class UpdateUI : MonoBehaviour
 
         foreach (RegionAction action in regio.actions)
         {
-            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.description[taal] });
+            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.name[taal] });
         }
     }
 

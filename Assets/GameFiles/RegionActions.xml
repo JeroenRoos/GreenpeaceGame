@@ -107,5 +107,114 @@
       <actionCooldown>6</actionCooldown>
       <isActive>false</isActive>
     </RegionAction>
+
+    <RegionAction>
+      <name>
+        <string>Afgesloten natuurgebied</string>
+        <string>Closed nature reserve</string>
+      </name>
+      <description>
+        <string>Sluit een een gebied in een regio af als natuurgebied.</string>
+        <string>Close an area in a region for a nature reserve.</string>
+      </description>
+      <consequences>
+        <income>0</income>
+        <donations>200</donations>
+        <happiness>5</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>-0.5</airPollutionIncrease>
+          <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+          <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>5</ecoAwareness>
+        <prosperity>0</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </consequences>
+      <actionCosts>
+        <income>0</income>
+        <donations>0</donations>
+        <happiness>0</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </actionCosts>
+      <actionMoneyCost>10000</actionMoneyCost>
+      <actionDuration>4</actionDuration>
+      <startYear>0</startYear>
+      <startMonth>0</startMonth>
+      <lastCompleted>0</lastCompleted>
+      <actionCooldown>0</actionCooldown>
+      <isActive>false</isActive>
+    </RegionAction>
+
+    <RegionAction>
+      <name>
+        <string>Geld inzamelen</string>
+        <string>Raise money</string>
+      </name>
+      <description>
+        <string>Doe een geld inzamelingsactie voor de eigen organisatie.</string>
+        <string>Raise money for your own organization.</string>
+      </description>
+      <consequences>
+        <income>0</income>
+        <donations>1000</donations>
+        <happiness>0</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>1</ecoAwareness>
+        <prosperity>0</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </consequences>
+      <actionCosts>
+        <income>0</income>
+        <donations>1000</donations>
+        <happiness>0</happiness>
+        <pollution>
+          <avgPullution>0</avgPullution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <publicTransport>0</publicTransport>
+        <cityEnvironment>0</cityEnvironment>
+      </actionCosts>
+      <actionMoneyCost>0</actionMoneyCost>
+      <actionDuration>1</actionDuration>
+      <startYear>0</startYear>
+      <startMonth>0</startMonth>
+      <lastCompleted>0</lastCompleted>
+      <actionCooldown>12</actionCooldown>
+      <isActive>false</isActive>
+    </RegionAction>
+
   </RegionActions>
 </RegionActionContainer>
