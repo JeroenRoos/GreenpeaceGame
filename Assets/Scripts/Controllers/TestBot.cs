@@ -78,7 +78,7 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = true; 
+        isEnabled = false; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
@@ -125,7 +125,7 @@ public class TestBot : MonoBehaviour
                 {
                     if (rnd.Next(1, 101) <= 25)
                     {
-                        int index = getLowestPollutionConsequence(region);
+                        int index = getLowestPollutionConsequenceAction(region);
                         doAction(region, index);
                     }
                 }
@@ -144,7 +144,7 @@ public class TestBot : MonoBehaviour
     }
 
     // Calculate 
-    int getLowestPollutionConsequence(Region region)
+    int getLowestPollutionConsequenceAction(Region region)
     {
         double tempPollutionSum = 0;
         int index = 0;
@@ -190,40 +190,77 @@ public class TestBot : MonoBehaviour
     // Event occured
     void EventAction()
     {
-        Debug.Log("Event!!!");
         if (isEnabled)
         {
-            int chosenOption;
-
             foreach (GameEvent gameEvent in gameController.game.events)
             {
-                if (gameEvent.isIdle)//isActive)
+                if (gameEvent.isIdle)
                 {
-                    bool breaking = false;
-                    foreach (Region region in gameController.game.regions.Values)
-                    {
-                        foreach (GameEvent ev in region.inProgressGameEvents)
-                        {
-                            if (ev == gameEvent)
-                            {
-                                Debug.Log("ACTIVE EVENT: " + gameEvent.name + " is ACTIVE in Regio: " + region.name[0]);
-                                breaking = true;
-                                break;
-                            }
-                        }
-
-                        if (breaking)
-                            break;
-                    }
-
-                    chosenOption = UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
-                    Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
-                    Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);
-                    gameEvent.SetPickedChoice(chosenOption, gameController.game);
+                    printRegion(gameEvent);                    
+                    int chosenOption = getLowestPollutionConsequenceEvent(gameEvent);//UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
+                    doChosenOption(gameEvent, chosenOption);
                 }
             }
         }
+    }
 
+    void printRegion(GameEvent gameEvent)
+    {
+        bool breaking = false;
+
+        foreach (Region region in gameController.game.regions.Values)
+        {
+            foreach (GameEvent ev in region.inProgressGameEvents)
+            {
+                if (ev == gameEvent)
+                {
+                    Debug.Log("ACTIVE EVENT: " + gameEvent.name + " is ACTIVE in Regio: " + region.name[0]);
+                    breaking = true;
+                    break;
+                }
+            }
+            if (breaking)
+                break;
+        }
+    }
+
+    int getLowestPollutionConsequenceEvent(GameEvent gameEvent)
+    {
+        double tempPollutionSum = 0;
+        int index = 0;
+        int hightestIndex = 0;
+        
+        foreach (RegionStatistics stats in gameEvent.consequences)
+        {
+            double pollutionSum = 0;
+
+            pollutionSum += stats.pollution.airPollution;
+            pollutionSum += stats.pollution.waterPollution;
+            pollutionSum += stats.pollution.naturePollution;
+
+            if (pollutionSum < tempPollutionSum)
+            {
+                tempPollutionSum = pollutionSum;
+                hightestIndex = index;
+            }
+
+            index++;
+        }
+
+        if (hightestIndex == 0)
+        {
+            System.Random rnd = new System.Random();
+            hightestIndex = rnd.Next(0, gameEvent.choicesDutch.Length);
+        }
+
+        return hightestIndex;
+    }
+
+    void doChosenOption(GameEvent gameEvent, int chosenOption)
+    {
+        Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
+        Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);
+        gameEvent.SetPickedChoice(chosenOption, gameController.game);
     }
     #endregion
 
