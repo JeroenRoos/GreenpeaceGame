@@ -17,17 +17,39 @@ public class UpdateUI : MonoBehaviour
 
     public Dropdown dropdownRegio;
 
+    // Text Menu Popup
+    public Text txtResume;
+    public Text txtSave;
+    public Text txtExitMenu;
+    public Text txtExitGame;
+
     // Text Main UI
     public Text txtMoney;
     public Text txtPopulation;
     public Text txtDate;
+    public Text btnNextTurnText;
+    public Text txtBtnMenu;
+    public Text txtBtnTimeline;
 
     // Text Organization Menu
+    public Text txtColumnLeft;
+    public Text txtColumnRight;
+    public Text txtOrgBankDescription;
+    public Text txtOrganizatonTitle;
+    public Text txtOrgNoordMoneyDescription;
+    public Text txtOrgOostMoneyDescription;
+    public Text txtOrgZuidMoneyDescription;
+    public Text txtOrgWestMoneyDescription;
     public Text txtOrgNoordMoney;
     public Text txtOrgOostMoney;
     public Text txtOrgZuidMoney;
     public Text txtOrgWestMoney;
     public Text txtOrgBank;
+    public Text txtYearlyBudget;
+    public Text txtDemonstration;
+    public Text txtResearch;
+    public Text txtEcoGuarding;
+    public Text txtBigDescription;
 
     private int taal;
     //  double totalOrgBank;
@@ -52,7 +74,22 @@ public class UpdateUI : MonoBehaviour
     public Text txtActiveActions;
     public Text txtActiveEvents;
     public Text txtRegionActionNoMoney;
-
+    public Text txtRegionIncomeDescription;
+    public Text txtRegionHappinessDescription;
+    public Text txtRegionEcoAwarenessDescription;
+    public Text txtRegionPollutionDescription;
+    public Text txtRegionWaterDescription;
+    public Text txtRegionAirDescription;
+    public Text txtRegionNatureDescription;
+    public Text txtRegionHouseholdsDescription;
+    public Text txtRegionAgricultureDescription;
+    public Text txtRegionCompainesDescription;
+    public Text txtRegionColumnLeft;
+    public Text txtRegionColumnCenter;
+    public Text txtRegionColumnRight;
+    public Text txtActiveActionDescription;
+    public Text txtActiveEventsDescription;
+    public Text btnDoActionText;
 
     // Buttons 
     public Button btnMenu;
@@ -121,7 +158,6 @@ public class UpdateUI : MonoBehaviour
     void Update()
     {
         popupController();
-        //Debug.Log(taal);
     }
 
     void FixedUpdate()
@@ -208,6 +244,7 @@ public class UpdateUI : MonoBehaviour
         {
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
+            initButtonText();
         }
         else if (canvasOrganizationPopup.gameObject.activeSelf)
         {
@@ -281,7 +318,7 @@ public class UpdateUI : MonoBehaviour
         if (regionHouseholdsCheck && popupActive)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
-            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + -20;
+            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 70;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipHouseholds + "</color>", tooltipStyle);
             updateRegionSectors();
             
@@ -289,14 +326,14 @@ public class UpdateUI : MonoBehaviour
         else if (regionAgricultureCheck && popupActive)
         {
             v3Tooltip = emptybtnHoverAgriculture.gameObject.transform.position;
-            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 100;
+            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 150;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipAgriculture + "</color>", tooltipStyle);
             updateRegionSectors();
         }
         else if (regionCompanyCheck && popupActive)
         {
             v3Tooltip = emptybtnHoverCompanies.gameObject.transform.position;
-            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 220;
+            lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 270;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipCompany + "</color>", tooltipStyle);
             updateRegionSectors();
         }
@@ -537,6 +574,41 @@ public class UpdateUI : MonoBehaviour
         }
 
         txtOrgBank.text = money.ToString();
+        initOtherText();
+    }
+
+    private void initOtherText()
+    {
+        string[] left = { "Budget", "Budget" };
+        string[] right = { "Investeringen", "Investments" };
+        string[] title = { "Organisatie", "Organization" };
+        string[] bank = { "Bank", "Storage" };
+        string[] noord = { "Noord-Nederland", "The Netherlands Northern" };
+        string[] oost = { "Oost-Nederland", "The Netherlands Eastern" };
+        string[] zuid = { "Zuid-Nederland", "The Netherlands Southern" };
+        string[] west = { "West-Nederland", "The Netherlands Western" };
+        string[] yearly = { "Jaarlijks budget per regio", "Yearly budget per region" };
+        string[] demonstration = { "Demonstraties", "Demonstrations" };
+        string[] research = { "Onderzoek", "Research" };
+        string[] guarding = { "Eco bescherming", "Eco guarding" };
+        string[] big = { "Hier kun je een gedeelte van het geld op je bank investeren in de " + 
+                "\norganistie. Als je meer geld in een onderdeel zet heb je en grotere" + 
+                "\nkans op succes in dat onderdeel. 1 vakje is 10000", "You can invest some of your budget in your " +
+                "own organization. If you invest more in one of the segments, you have a higher" + 
+                "chance of success. One block equals 10000" };
+        txtBigDescription.text = big[taal];
+        txtColumnLeft.text = left[taal];
+        txtColumnRight.text = right[taal];
+        txtOrganizatonTitle.text = title[taal];
+        txtOrgBankDescription.text = bank[taal];
+        txtOrgNoordMoneyDescription.text = noord[taal];
+        txtOrgOostMoneyDescription.text = oost[taal];
+        txtOrgWestMoneyDescription.text = west[taal];
+        txtOrgZuidMoneyDescription.text = zuid[taal];
+        txtYearlyBudget.text = yearly[taal];
+        txtDemonstration.text = demonstration[taal];
+        txtResearch.text = research[taal];
+        txtEcoGuarding.text = guarding[taal];
     }
     #endregion
 
@@ -559,8 +631,11 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    void updateRegionScreenUI()
+    private void updateRegionScreenUI()
     {
+        // Set the text in the popup based on language
+        initMainText();
+
         // Debug.Log("UpdateRegionScreenUI: " + regio.name);
         updateRegionTextValues();
 
@@ -568,7 +643,44 @@ public class UpdateUI : MonoBehaviour
         initDropDownRegion();
     }
 
-    void updateRegionTextValues()
+    private void initMainText()
+    {
+        string[] txtHappiness = { "Tevredenheid", "Happiness" };
+        string[] txtEcoAwareness = { "Milieubewustheid", "Eco awareness" };
+        string[] txtIncome = { "Inkomen", "Income" };
+        string[] txtPollution = { "Vervuiling", "Pollution" };
+        string[] txtAir = { "Luchtvervuiling", "Air pollution" };
+        string[] txtNature = { "Natuurvervuiling", "Nature pollution" };
+        string[] txtWater = { "Watervervuiling", "Water pollution" };
+        string[] txtHouseholds = { "Huishoudens", "Households" };
+        string[] txtAgriculture = { "Landbouw", "Agriculture" };
+        string[] txtCompaines = { "Bedrijven", "Companies" };
+        string[] txtCenter = { "Actief", "Active" };
+        string[] txtRight = { "Nieuwe actie", "New action" };
+        string[] txtLeft = { "Regiostatistieken", "Region statistics" };
+        string[] txtActiveEvents = { "Actieve events", "Active events" };
+        string[] txtActiveActions = { "Actieve acties", "Active actions" };
+        string[] btnDoAction = { "Doe actie", "Do action" };
+
+        txtRegionHappinessDescription.text = txtHappiness[taal];
+        txtRegionEcoAwarenessDescription.text = txtEcoAwareness[taal];
+        txtRegionIncomeDescription.text = txtIncome[taal];
+        txtRegionPollutionDescription.text = txtPollution[taal];
+        txtRegionAirDescription.text = txtAir[taal];
+        txtRegionNatureDescription.text = txtNature[taal];
+        txtRegionWaterDescription.text = txtWater[taal];
+        txtRegionHouseholdsDescription.text = txtHouseholds[taal];
+        txtRegionAgricultureDescription.text = txtAgriculture[taal];
+        txtRegionCompainesDescription.text = txtCompaines[taal];
+        txtRegionColumnLeft.text = txtLeft[taal];
+        txtRegionColumnRight.text = txtRight[taal];
+        txtRegionColumnCenter.text = txtCenter[taal];
+        txtActiveActionDescription.text = txtActiveActions[taal];
+        txtActiveEventsDescription.text = txtActiveEvents[taal];
+        btnDoActionText.text = btnDoAction[taal];
+    }
+
+    private void updateRegionTextValues()
     {
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
@@ -609,7 +721,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    void updateRegionSectors()
+    private void updateRegionSectors()
     {
         foreach (RegionSector sector in regio.sectors)
         {
@@ -627,7 +739,7 @@ public class UpdateUI : MonoBehaviour
                                                         + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
                                                         + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;*/
 
-            }
+    }
             else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
                // Debug.Log(sector.sectorName);
@@ -656,7 +768,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    void updateActiveEvents()
+    private void updateActiveEvents()
     {
         string activeEventsRegio = "";
         bool breaking = false;
@@ -685,24 +797,23 @@ public class UpdateUI : MonoBehaviour
 
         txtActiveEvents.text = activeEventsRegio;
     }
-    
-    void updateActiveActions()
+
+    private void updateActiveActions()
     {
         string activeActionsRegio = "";
         foreach (RegionAction action in regio.actions)
         {
             if (action.isActive)
             {
-                activeActionsRegio += action.name[taal];// .description[taal] + "\n";
+                activeActionsRegio += action.name[taal];
             }
 
             txtActiveActions.text = activeActionsRegio;
         }
     }
 
-    void initDropDownRegion()
+    private void initDropDownRegion()
     {
-        // Debug.Log("initDropDownRegion: " + regio.name);
         dropdownRegio.ClearOptions();
 
         foreach (RegionAction action in regio.actions)
@@ -724,15 +835,12 @@ public class UpdateUI : MonoBehaviour
         }
         Debug.Log(dropdownChoice);
 
-        // Debug.Log("getDropDownValue: " + regio.name);
-
         // Shows the right information with the chosen option in dropdown
         showInfoDropDownRegion();
     }
 
-    void showInfoDropDownRegion()
+    private void showInfoDropDownRegion()
     {
-        // Debug.Log("showInfoDropDownRegion: " + regio.name);
         foreach (RegionAction action in regio.actions)
         {
             if (action.description[taal] == dropdownChoice)
@@ -847,6 +955,19 @@ public class UpdateUI : MonoBehaviour
             popupActive = true;
         }
     }
+
+    private void initButtonText()
+    {
+        string[] resume = { "Verder spelen", "Resume" };
+        string[] save = { "Opslaan", "Save" };
+        string[] exitgame = { "Verlaat spel", "Exit Game" };
+        string[] exitmenu = { "Naar hoofdmenu", "Exit to menu" };
+
+        txtResume.text = resume[taal];
+        txtSave.text = save[taal];
+        txtExitGame.text = exitgame[taal];
+        txtExitMenu.text = exitmenu[taal];
+    }
     #endregion
 
     #region Language Change Code
@@ -857,6 +978,10 @@ public class UpdateUI : MonoBehaviour
             Debug.Log("BTN NL");
             game.ChangeLanguage("dutch");
             taal = game.language;
+            btnNextTurnText.text = "Volgende beurt";
+            txtBtnTimeline.text = "Tijdlijn";
+            txtBtnMenu.text = "Menu";
+            initButtonText();
         }
     }
 
@@ -867,6 +992,10 @@ public class UpdateUI : MonoBehaviour
             Debug.Log("BTN ENG");
             game.ChangeLanguage("english");
             taal = game.language;
+            btnNextTurnText.text = "Next turn";
+            txtBtnTimeline.text = "Timeline";
+            txtBtnMenu.text = "Menu";
+            initButtonText();
         }
     }
     #endregion

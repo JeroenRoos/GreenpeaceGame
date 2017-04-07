@@ -76,7 +76,7 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = false; 
+        isEnabled = true; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
@@ -132,7 +132,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    void showStatistics()
+    private void showStatistics()
     {
         if (turnCounter % 12 == 0 || turnCounter == 359)
             getNationalStats();
@@ -142,7 +142,7 @@ public class TestBot : MonoBehaviour
     }
 
     // Calculate 
-    int getLowestPollutionConsequenceAction(Region region)
+    private int getLowestPollutionConsequenceAction(Region region)
     {
         double tempPollutionSum = 0;
         int index = 0;
@@ -174,7 +174,7 @@ public class TestBot : MonoBehaviour
         return hightestIndex;
     }
 
-    void doAction(Region region, int index)
+    private void doAction(Region region, int index)
     {
         //int action = rnd.Next(0, region.actions.Count);
         //RegionAction ra = region.actions[action];
@@ -187,7 +187,7 @@ public class TestBot : MonoBehaviour
 
     #region Events
     // Event occured
-    void EventAction()
+    private void EventAction()
     {
         if (isEnabled)
         {
@@ -206,7 +206,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    void printRegion(GameEvent gameEvent)
+    private void printRegion(GameEvent gameEvent)
     {
         bool breaking = false;
 
@@ -226,7 +226,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    int getLowestPollutionConsequenceEvent(GameEvent gameEvent)
+    private int getLowestPollutionConsequenceEvent(GameEvent gameEvent)
     {
         double tempPollutionSum = 0;
         int index = 0;
@@ -258,6 +258,7 @@ public class TestBot : MonoBehaviour
         return hightestIndex;
     }
 
+
     void doChosenOption(Region region, GameEvent gameEvent, int chosenOption)
     {
         Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
@@ -267,7 +268,7 @@ public class TestBot : MonoBehaviour
     #endregion
 
     #region National Statistics Printing
-    void getNationalStats()
+    private void getNationalStats()
     {
         string[] arrMonths = new string[12]
             { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
@@ -319,7 +320,7 @@ public class TestBot : MonoBehaviour
     #endregion
 
     #region Regional Statistics Printing
-    void getRegionalStats()
+    private void getRegionalStats()
     {
         int i = 0;
         foreach (Region region in gameController.game.regions.Values)
@@ -338,7 +339,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    void getRegionalMainStats(Region region, int i)
+    private void getRegionalMainStats(Region region, int i)
     {
         if (regionalIncome[i] != region.statistics.income)
         {
@@ -362,7 +363,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    void getRegionalPollution(Region region, int i)
+    private void getRegionalPollution(Region region, int i)
     {
         if (regionalAvgPollution[i] != region.statistics.avgPollution)
         {
@@ -401,7 +402,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    void getSectorStats(Region region, int i)
+    private void getSectorStats(Region region, int i)
     {
         int j = 0;
         foreach (RegionSector sector in region.sectors)

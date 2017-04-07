@@ -196,7 +196,7 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
-     Vector3 getEventPosition()
+    private Vector3 getEventPosition()
     {
         switch (regionModel.name[0])
         {
@@ -212,6 +212,7 @@ public class EventObjectController : MonoBehaviour
                 return regionModel.eventPositions[Random.Range(0, 4)];
         }
     }
+
 
     string getConsequences(SectorStatistics s)
     {
@@ -256,7 +257,7 @@ public class EventObjectController : MonoBehaviour
         return consequences[taal];
     }
 
-    void ShowOptions()
+    private void ShowOptions()
     {
         if (clickPosition.x == 0 && clickPosition.y == 0)
         {
@@ -267,7 +268,7 @@ public class EventObjectController : MonoBehaviour
         areOptionsShown = true;
     }
 
-    void HideOptions()
+    private void HideOptions()
     {
         clickPosition.x = 0;
         clickPosition.y = 0;
@@ -275,7 +276,7 @@ public class EventObjectController : MonoBehaviour
         areOptionsShown = false;
     }
 
-    void ChooseOption(int option)
+    private void ChooseOption(int option)
     {
         Debug.Log("Chosen option: " + option);
         eventModel.SetPickedChoice(option, gameController.game, regionModel);
@@ -286,7 +287,7 @@ public class EventObjectController : MonoBehaviour
             Destroy(gameObject);
     }
 
-    Texture SelectTexture(string description)
+    private Texture SelectTexture(string description)
     {
         switch (description)
         {
