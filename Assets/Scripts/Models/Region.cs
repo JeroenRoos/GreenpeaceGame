@@ -20,24 +20,6 @@ public class Region
 
     private Region() { }
 
-    public Region(string[] name, RegionStatistics statistics, RegionSector[] sectors)
-    {
-        this.name = name;
-        this.statistics = statistics;
-        this.sectors = sectors;
-
-        eventPositions = new Vector3[4];
-        eventPositions[0] = new Vector3(9, 1, 12);
-        eventPositions[1] = new Vector3(16, 1, 13);
-        eventPositions[2] = new Vector3(13, 1, 8);
-        eventPositions[3] = new Vector3(15, 1, 20);
-
-        buildings = new List<Building>();
-        actions = new List<RegionAction>();
-
-        this.statistics.UpdateSectorAvgs(this);
-    }
-
     public void LoadActions(List<RegionAction> actions)
     {
         this.actions = actions;
@@ -50,7 +32,14 @@ public class Region
         ImplementActionConsequences(action, action.actionCosts, false);
 
         if (action.actionDuration == 0)
+        {
+            ImplementActionConsequences(action, action.temporaryConsequences, true);
             action.CompleteAction();
+        }
+        else
+        {
+            ImplementActionConsequences(action, action.duringActionConsequences, true);
+        }
     }
 
     public void AddGameEvent(GameEvent gameEvent)
@@ -75,17 +64,17 @@ public class Region
                 }
             }
 
-            if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) <= (game.currentMonth + game.currentYear * 12)))
+            if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (game.currentMonth + game.currentYear * 12)))
             {
                 CompleteEvent(gameEvent, game);
             }
 
-            if (gameEvent.onEventStartYear <= game.currentYear && gameEvent.onEventStartMonth <= game.currentMonth)
+            if (gameEvent.onEventStartYear == game.currentYear && gameEvent.onEventStartMonth == game.currentMonth)
             {
                 ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, false);
             }
 
-            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] <= game.currentMonth + game.currentYear * 12)
+            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
             {
                 ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false);
                 gameEvent.FinishEvent();
@@ -158,7 +147,7 @@ public class Region
 
     public void ImplementEventConsequences(GameEvent gameEvent, SectorStatistics statistics, bool isAdded)
     {
-        for (int i = 0; i < sectors.Count(); i++)
+        for (int i = 0; i < gameEvent.possibleSectors.Length; i++)
         {
             if (gameEvent.pickedSectors[i])
             {

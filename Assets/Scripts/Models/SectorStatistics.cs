@@ -13,14 +13,7 @@ public class SectorStatistics
 
     public Pollution pollution { get; private set; }
 
-    public SectorStatistics()
-    {
-    }
-
-    /*public SectorStatistics(double happiness, double ecoAwareness, double prosperity, double airPollutionContribution,
-                            double naturePollutionContribution, double waterPollutionContribution)
-    {
-    }*/
+    public SectorStatistics() { }
 
     public void ModifyIncome(double changeValue)
     {

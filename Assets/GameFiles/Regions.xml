@@ -90,6 +90,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -148,6 +180,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -206,6 +270,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>0</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -264,6 +360,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>12</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -432,6 +560,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -490,6 +650,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -548,6 +740,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>0</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -606,6 +830,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>12</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -774,6 +1030,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -832,6 +1120,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -890,6 +1210,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>0</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -948,6 +1300,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>12</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -1116,6 +1500,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -1174,6 +1590,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>6</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -1232,6 +1680,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>0</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -1290,6 +1770,38 @@
           <lastCompleted>0</lastCompleted>
           <actionCooldown>12</actionCooldown>
           <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
