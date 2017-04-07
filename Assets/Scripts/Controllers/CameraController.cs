@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour {
 
     float horizontalMovement;
     float verticalMovement;
+    float depthMovement;
 
     // drag 
     private Vector3 dragOrigin;
@@ -43,15 +44,22 @@ public class CameraController : MonoBehaviour {
      */
     void CheckInput()
     {
-        horizontalMovement    = Input.GetAxis("Horizontal") * cameraSpeed;
-        verticalMovement      = Input.GetAxis("Vertical") * cameraSpeed;
+        horizontalMovement = Input.GetAxis("Horizontal") * cameraSpeed;
+        verticalMovement = Input.GetAxis("Vertical") * cameraSpeed;
+        depthMovement = Input.GetAxis("Mouse ScrollWheel");
     }
     
     Vector3 CalculateNewCameraPosition()
     {
         Camera mainCamera = Camera.main;
         Vector3 movement = new Vector3(horizontalMovement, 0f, verticalMovement);
-        Vector3 newPosition = mainCamera.transform.position + movement;        
+        Vector3 newPosition = mainCamera.transform.position + movement;
+
+        mainCamera.orthographicSize -= depthMovement;
+        if (mainCamera.orthographicSize > 6)
+            mainCamera.orthographicSize = 6;
+        if (mainCamera.orthographicSize < 3)
+            mainCamera.orthographicSize = 3;
 
         return CorrectNewPosition(newPosition);
     }
