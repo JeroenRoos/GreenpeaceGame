@@ -17,6 +17,15 @@ public class UpdateUI : MonoBehaviour
 
     public Dropdown dropdownRegio;
 
+    public Toggle checkboxRegionHouseholds;
+    private bool checkboxHouseholds;
+
+    public Toggle checkboxRegionAgriculture;
+    private bool checkboxAgriculture;
+
+    public Toggle checkboxRegionCompanies;
+    private bool checkboxCompanies;
+
     // Text Menu Popup
     public Text txtResume;
     public Text txtSave;
@@ -90,6 +99,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtActiveActionDescription;
     public Text txtActiveEventsDescription;
     public Text btnDoActionText;
+    public Text txtActionSectorsDescription;
+    public Text txtCheckboxHouseholds;
+    public Text txtCheckboxAgriculture;
+    public Text txtCheckboxCompanies;
 
     // Buttons 
     public Button btnMenu;
@@ -158,6 +171,21 @@ public class UpdateUI : MonoBehaviour
     void Update()
     {
         popupController();
+
+        if (canvasRegioPopup.gameObject.activeSelf)
+        {
+            if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
+            {
+                btnDoActionRegionMenu.gameObject.SetActive(true);
+                txtRegionActionNoMoney.text = "";
+            }
+            else
+            {
+                string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
+                txtRegionActionNoMoney.text = error[taal];
+                btnDoActionRegionMenu.gameObject.SetActive(false);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -198,6 +226,9 @@ public class UpdateUI : MonoBehaviour
         tooltipActive = false;
         regionAgricultureCheck = false;
         regionCompanyCheck = false;
+        checkboxHouseholds = true;
+        checkboxCompanies = true;
+        checkboxAgriculture = true;
     }
 
     void initCanvas()
@@ -641,6 +672,11 @@ public class UpdateUI : MonoBehaviour
 
         // Set the right actions in the dropdown
         initDropDownRegion();
+
+        // Set toggles on not active
+        checkboxRegionHouseholds.gameObject.SetActive(false);
+        checkboxRegionAgriculture.gameObject.SetActive(false);
+        checkboxRegionCompanies.gameObject.SetActive(false);
     }
 
     private void initMainText()
@@ -678,6 +714,10 @@ public class UpdateUI : MonoBehaviour
         txtActiveActionDescription.text = txtActiveActions[taal];
         txtActiveEventsDescription.text = txtActiveEvents[taal];
         btnDoActionText.text = btnDoAction[taal];
+        txtCheckboxHouseholds.text = txtHouseholds[taal];
+        txtCheckboxAgriculture.text = txtAgriculture[taal];
+        txtCheckboxCompanies.text = txtCompaines[taal];
+
     }
 
     private void updateRegionTextValues()
@@ -700,6 +740,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionCost.text = "";
         txtRegionActionDuration.text = "";
         txtRegionActionName.text = "";
+        btnDoActionRegionMenu.gameObject.SetActive(false);
 
         updateActiveActions();
         updateActiveEvents();
@@ -710,7 +751,6 @@ public class UpdateUI : MonoBehaviour
             if (a.isActive)
             {
                 dropdownRegio.gameObject.SetActive(false);
-                btnDoActionRegionMenu.gameObject.SetActive(false);
                 break;
             }
             else
@@ -785,7 +825,6 @@ public class UpdateUI : MonoBehaviour
                             activeEventsRegio += e.name + "\n";
                             breaking = true;
                             break;
-                            
                         }
                     }
 
@@ -843,13 +882,17 @@ public class UpdateUI : MonoBehaviour
     {
         foreach (RegionAction action in regio.actions)
         {
-            if (action.description[taal] == dropdownChoice)
+            if (action.name[taal] == dropdownChoice)
             {
                 regioAction = action;
                 txtRegionActionName.text = regioAction.description[taal];
                 txtRegionActionCost.text = getActionCost(action.actionCosts); 
                 txtRegionActionDuration.text = "Duur: " + regioAction.actionDuration.ToString() + " maanden";
                 txtRegionActionConsequences.text = getActionConsequences(action.consequences);
+                string[] SectorDescription = { "Mogelijke sectoren", "Possible sectors" };
+                txtActionSectorsDescription.text = SectorDescription[taal];
+
+                setCheckboxes(action);
 
                 if (game.gameStatistics.money - action.actionCosts.income > 0)
                 {
@@ -858,13 +901,40 @@ public class UpdateUI : MonoBehaviour
                 }
                 else
                 {
+                    string[] error2 = { "Niet genoeg geld om de actie te doen", "You don't have enough money for this action" };
                     txtRegionActionNoMoney.text = "Niet genoeg geld om de actie te doen...";
                 }
             }
         }
     }
 
-    string getActionConsequences(SectorStatistics s)
+    private void setCheckboxes(RegionAction action)
+    {
+        checkboxRegionHouseholds.gameObject.SetActive(false);
+        checkboxRegionAgriculture.gameObject.SetActive(false);
+        checkboxRegionCompanies.gameObject.SetActive(false);
+
+        for (int i = 0; i < action.possibleSectors.Length; i++)
+        {
+            if (action.possibleSectors[i] == "Huishoudens")
+            {
+                checkboxRegionHouseholds.gameObject.SetActive(true);
+                checkboxRegionHouseholds.isOn = false;
+            }
+            if (action.possibleSectors[i] == "Bedrijven")
+            {
+                checkboxRegionAgriculture.gameObject.SetActive(true);
+                checkboxRegionAgriculture.isOn = false;
+            }
+            if (action.possibleSectors[i] == "Landbouw")
+            {
+                checkboxRegionCompanies.gameObject.SetActive(true);
+                checkboxRegionCompanies.isOn = false;
+            }
+        }
+    }
+
+    private string getActionConsequences(SectorStatistics s)
     {
         string[] consequences = { "Consequenties:\n", "Consequences:\n" };
 
@@ -907,7 +977,7 @@ public class UpdateUI : MonoBehaviour
         return consequences[taal];
     }
 
-    string getActionCost(SectorStatistics s)
+    private string getActionCost(SectorStatistics s)
     {
         //string[] tip;
         if (s.income != 0)
@@ -921,10 +991,13 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoActionRegionMenuClick()
     {
-        regio.StartAction(regioAction, game, new bool[] { true, true, true });
+        regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxRegionCompanies, checkboxRegionAgriculture });
 
         updateRegionTextValues();
         btnDoActionRegionMenu.gameObject.SetActive(false);
+        checkboxHouseholds = false;
+        checkboxCompanies = false;
+        checkboxAgriculture = false;
     }
     #endregion
 
@@ -1209,5 +1282,34 @@ public class UpdateUI : MonoBehaviour
     {
         game.NextTurn();
     }
-}
 
+    public void valueChangedHouseholds()
+    {
+        if (!checkboxHouseholds)
+            checkboxHouseholds = true;
+        else
+            checkboxHouseholds = false;
+
+        Debug.Log(checkboxHouseholds);
+    }
+
+    public void valueChangedAgriculture()
+    {
+        if (!checkboxAgriculture)
+            checkboxAgriculture = true;
+        else
+            checkboxAgriculture = false;
+
+        Debug.Log(checkboxAgriculture);
+    }
+
+    public void valueChangedCompanies()
+    {
+        if (!checkboxCompanies)
+            checkboxCompanies = true;
+        else
+            checkboxCompanies = false;
+
+        Debug.Log(checkboxCompanies);
+    }
+}
