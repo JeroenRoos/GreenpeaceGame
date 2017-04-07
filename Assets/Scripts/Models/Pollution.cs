@@ -18,28 +18,7 @@ public class Pollution
     public double naturePollutionIncrease { get; private set; }
     public double waterPollutionIncrease { get; private set; }
 
-    /*public Pollution(double airPollution, double naturePollution, double waterPollution,
-                     double airPollutionIncrease, double naturePollutionIncrease, double waterPollutionIncrease)
-    {
-        this.airPollution = airPollution;
-        this.naturePollution = naturePollution;
-        this.waterPollution = waterPollution;
-
-        this.airPollutionIncrease = 0;
-        this.naturePollutionIncrease = 0;
-        this.waterPollutionIncrease = 0;
-
-        ChangeAirPollutionMutation(airPollutionIncrease);
-        ChangeNaturePollutionMutation(naturePollutionIncrease);
-        ChangeWaterPollutionMutation(waterPollutionIncrease);
-
-        CalculateAvgPollution();
-    }*/
-
-    public Pollution()
-    {
-        CalculateAvgPollution();
-    }
+    public Pollution() { }
     
     public void ChangeAirPollutionMutation(double changeValue)
     {
