@@ -72,25 +72,8 @@ public class EventObjectController : MonoBehaviour
         this.eventModel = eventModel;
 
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
-
-        switch (regionModel.name[0])
-        {
-            case "West Nederland":
-                transform.position = regionModel.eventPositions[0];
-                break;
-            case "Oost Nederland":
-                transform.position = regionModel.eventPositions[1];
-                break;
-            case "Zuid Nederland":
-                transform.position = regionModel.eventPositions[2];
-                break;
-            case "Noord Nederland":
-                transform.position = regionModel.eventPositions[3];
-                break;
-            default:
-                transform.position = regionModel.eventPositions[Random.Range(0, 4)];
-                break;
-        }
+        
+        transform.position = regionModel.eventPosition;
     }
 
     // hover over event
@@ -124,23 +107,21 @@ public class EventObjectController : MonoBehaviour
     {
         Rect btnRect;
         Rect lblReqt;
+        
+        lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
-        Vector3 v3 = getEventPosition();
+        if (eventHoverCheck)
+        {
+            /*txtTooltip = eventModel.name + "\n" + */txtTooltip = eventModel.description[taal];
+            Vector3 pos = Event.current.mousePosition;
+            lblReqt.x = pos.x + 10;
+            lblReqt.y = pos.y + 20;
 
-            lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
+            if (clickPosition.x == 0 && clickPosition.y == 0)
+                clickPosition = pos;
 
-            if (eventHoverCheck)
-            {
-                /*txtTooltip = eventModel.name + "\n" + */txtTooltip = eventModel.description[taal];
-                Vector3 pos = Event.current.mousePosition;
-                lblReqt.x = pos.x + 10;
-                lblReqt.y = pos.y + 20;
-
-                if (clickPosition.x == 0 && clickPosition.y == 0)
-                    clickPosition = pos;
-
-                GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
-            }
+            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
+        }
 
         if (areOptionsShown)
         {
@@ -195,24 +176,6 @@ public class EventObjectController : MonoBehaviour
             }
         }
     }
-
-    private Vector3 getEventPosition()
-    {
-        switch (regionModel.name[0])
-        {
-            case "West Nederland":
-                return regionModel.eventPositions[0];
-            case "Oost Nederland":
-                return regionModel.eventPositions[1];
-            case "Zuid Nederland":
-                return regionModel.eventPositions[2];
-            case "Noord Nederland":
-                return regionModel.eventPositions[3];
-            default:
-                return regionModel.eventPositions[Random.Range(0, 4)];
-        }
-    }
-
 
     string getConsequences(SectorStatistics s)
     {

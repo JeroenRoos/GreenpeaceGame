@@ -46,20 +46,14 @@ public class CameraController : MonoBehaviour {
     {
         horizontalMovement = Input.GetAxis("Horizontal") * cameraSpeed;
         verticalMovement = Input.GetAxis("Vertical") * cameraSpeed;
-        depthMovement = Input.GetAxis("Mouse ScrollWheel");
+        depthMovement = Input.GetAxis("Mouse ScrollWheel") * 5f;
     }
     
     Vector3 CalculateNewCameraPosition()
     {
-        Camera mainCamera = Camera.main;
         Vector3 movement = new Vector3(horizontalMovement, 0f, verticalMovement);
-        Vector3 newPosition = mainCamera.transform.position + movement;
-
-        mainCamera.orthographicSize -= depthMovement;
-        if (mainCamera.orthographicSize > 6)
-            mainCamera.orthographicSize = 6;
-        if (mainCamera.orthographicSize < 3)
-            mainCamera.orthographicSize = 3;
+        Vector3 newPosition = Camera.main.transform.position + movement;
+        Camera.main.orthographicSize -= depthMovement;
 
         return CorrectNewPosition(newPosition);
     }
@@ -74,23 +68,31 @@ public class CameraController : MonoBehaviour {
 
     Vector3 CorrectNewPosition(Vector3 newPosition)
     {
+        float camSize = Camera.main.orthographicSize;
         //  Check if camera is moving out of bounds. If so: adjust it to the edge
-        if (newPosition.z < 3.5f)
+        if (newPosition.z < camSize)
         {
-            newPosition.z = 3.5f;
+            newPosition.z = camSize;
         }
-        if (newPosition.z > 15.0f)
+        if (newPosition.z > 15.0f - (camSize - 5f))
         {
-            newPosition.z = 15.0f;
+            newPosition.z = 15.0f - (camSize - 5f);
         }
-        if (newPosition.x < 10.0f)
+
+        //at the moment you can't move horizontally (intended)
+        if (newPosition.x < 12f)
         {
-            newPosition.x = 10.0f;
+            newPosition.x = 12f;
         }
-        if (newPosition.x > 15)
+        if (newPosition.x > 12f)
         {
-            newPosition.x = 15;
+            newPosition.x = 12f;
         }
+
+        if (Camera.main.orthographicSize > 10)
+            Camera.main.orthographicSize = 10;
+        if (Camera.main.orthographicSize < 3)
+            Camera.main.orthographicSize = 3;
 
         return newPosition;
     }

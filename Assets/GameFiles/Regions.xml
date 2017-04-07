@@ -2,28 +2,11 @@
 <RegionContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GameEvents>
     <GameEvent>
-      <eventPositions>
-        <Vector3>
-          <x>9</x>
-          <y>1</y>
-          <z>12</z>
-        </Vector3>
-        <Vector3>
-          <x>16</x>
-          <y>1</y>
-          <z>13</z>
-        </Vector3>
-        <Vector3>
-          <x>13</x>
-          <y>1</y>
-          <z>8</z>
-        </Vector3>
-        <Vector3>
-          <x>15</x>
-          <y>1</y>
-          <z>20</z>
-        </Vector3>
-      </eventPositions>
+      <eventPosition>
+        <x>15</x>
+        <y>1</y>
+        <z>20</z>
+      </eventPosition>
       <name>
         <string>Noord Nederland</string>
         <string>The Netherlands North</string>
@@ -464,28 +447,11 @@
       <inProgressGameEvents />
     </GameEvent>
     <GameEvent>
-      <eventPositions>
-        <Vector3>
-          <x>9</x>
-          <y>1</y>
-          <z>12</z>
-        </Vector3>
-        <Vector3>
-          <x>16</x>
-          <y>1</y>
-          <z>13</z>
-        </Vector3>
-        <Vector3>
-          <x>13</x>
-          <y>1</y>
-          <z>8</z>
-        </Vector3>
-        <Vector3>
-          <x>15</x>
-          <y>1</y>
-          <z>20</z>
-        </Vector3>
-      </eventPositions>
+      <eventPosition>
+        <x>16</x>
+        <y>1</y>
+        <z>13</z>
+      </eventPosition>
       <name>
         <string>Oost Nederland</string>
         <string>The Netherlands East</string>
@@ -926,28 +892,11 @@
       <inProgressGameEvents />
     </GameEvent>
     <GameEvent>
-      <eventPositions>
-        <Vector3>
-          <x>9</x>
-          <y>1</y>
-          <z>12</z>
-        </Vector3>
-        <Vector3>
-          <x>16</x>
-          <y>1</y>
-          <z>13</z>
-        </Vector3>
-        <Vector3>
-          <x>13</x>
-          <y>1</y>
-          <z>8</z>
-        </Vector3>
-        <Vector3>
-          <x>15</x>
-          <y>1</y>
-          <z>20</z>
-        </Vector3>
-      </eventPositions>
+      <eventPosition>
+        <x>9</x>
+        <y>1</y>
+        <z>12</z>
+      </eventPosition>
       <name>
         <string>West Nederland</string>
         <string>The Netherlands West</string>

@@ -14,7 +14,7 @@ public class Region
     public List<Building> buildings { get; private set; }
     public List<RegionAction> actions { get; private set; }
     public RegionSector[] sectors { get; private set; }
-    public Vector3[] eventPositions;
+    public Vector3 eventPosition;
 
     public List<GameEvent> inProgressGameEvents { get; private set; }
 
