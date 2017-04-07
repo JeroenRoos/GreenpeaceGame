@@ -17,7 +17,7 @@ public class Pollution
     public double airPollutionIncrease { get; private set; }
     public double naturePollutionIncrease { get; private set; }
     public double waterPollutionIncrease { get; private set; }
-    
+
     /*public Pollution(double airPollution, double naturePollution, double waterPollution,
                      double airPollutionIncrease, double naturePollutionIncrease, double waterPollutionIncrease)
     {
@@ -35,7 +35,7 @@ public class Pollution
 
         CalculateAvgPollution();
     }*/
-    
+
     public Pollution()
     {
         CalculateAvgPollution();
