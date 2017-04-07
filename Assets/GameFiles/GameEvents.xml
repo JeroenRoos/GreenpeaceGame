@@ -8,7 +8,7 @@
         <string>A research from the organisation concludes that people are worried about the air pollution.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -167,7 +167,7 @@
         <string>There has been an earthquake that caused damage.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>9</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -326,7 +326,7 @@
         <string>There has been a flood that caused damage.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -485,7 +485,7 @@
         <string>There has been a forest fire that caused damage.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>9</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -644,7 +644,7 @@
         <string>A research from the organisation concludes that people are worried about the nature pollution.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -803,7 +803,7 @@
         <string>A research from the organisation concludes that people are worried about the water pollution.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -962,7 +962,7 @@
         <string>The organisation wants to start a project to make the air cleaner.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -1121,7 +1121,7 @@
         <string>The organisation wants to start a project to make the air cleaner.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -1280,7 +1280,7 @@
         <string>The organisation wants to start a project to make the water cleaner.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -1439,7 +1439,7 @@
         <string>The agriculture has a high pollution.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -1594,7 +1594,7 @@
         <string>The households have a high pollution.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -1749,7 +1749,7 @@
         <string>The companies have a high pollution</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -1904,7 +1904,7 @@
         <string>The sector Households questions the dangers of pollution.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>6</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -2059,7 +2059,7 @@
         <string>The agriculture wants to work faster at the cost of the environment.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>8</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -2214,7 +2214,7 @@
         <string>The companies want more personal profit at the cost of the environment.</string>
       </description>
       <isUnique>false</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>8</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -2369,7 +2369,7 @@
         <string>the government rewards your company because of the good results against pollution.</string>
       </description>
       <isUnique>true</isUnique>
-      <eventIdleDuration>100</eventIdleDuration>
+      <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>0</eventCooldown>
       <choicesDutch>
         <string>niets doen</string>
@@ -2518,6 +2518,1571 @@
       <pickedSectors>
         <boolean>false</boolean>
         <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>GermanyPollution</name>
+      <description>
+        <string>Door de vervuiling in Duitsland stijgt de vervuiling ook in de regio.</string>
+        <string>Because of the pollution in Germany the pollution in the region is also increasing.</string>
+      </description>
+      <isUnique>false</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>60</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>vraag Duitsland om milieuvervuiling te verlagen</string>
+        <string>compenseer de extra milieuvervuiling door meer te investeren</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>ask Germany to lower the pollution</string>
+        <string>compensate the extra pollution by investing more</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>BelgiumPollution</name>
+      <description>
+        <string>Door de vervuiling in België stijgt de vervuiling ook in de regio.</string>
+        <string>Because of the pollution in Belgium the pollution in the region is also increasing.</string>
+      </description>
+      <isUnique>false</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>60</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>vraag Belgie om milieuvervuiling te verlagen</string>
+        <string>compenseer de extra milieuvervuiling door meer te investeren</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>ask Belgium to lower the pollution</string>
+        <string>compensate the extra pollution by investing more</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Zuid Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>SolarPanelProject</name>
+      <description>
+        <string>De organisatie wil een project starten om zonnepanelen te installeren voor huishoudens.</string>
+        <string>The organisation wants to start a project to install solar panels for households.</string>
+      </description>
+      <isUnique>false</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>24</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>project goedkeuren</string>
+        <string>breidt project uit met regenpanelen</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>approve project</string>
+        <string>expand project with rain panels</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>6</int>
+        <int>9</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>AgricultureEquipmentProject</name>
+      <description>
+        <string>De organisatie wil een project starten om de landbouw nieuwe milieuvriendelijke apparatuur te geven.</string>
+        <string>The organisation wants to start a project to give the agriculture new eco-friendly equipment.</string>
+      </description>
+      <isUnique>false</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>24</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>project goedkeuren</string>
+        <string>betrek landbouwexperts bij het project</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>approve project</string>
+        <string>involve agriculture experts with the project</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>6</int>
+        <int>9</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>GreenCompaniesRewardProject</name>
+      <description>
+        <string>De organisatie wil een project starten om de landbouw nieuwe milieuvriendelijke apparatuur te geven.</string>
+        <string>The organisation wants to start a project to give the agriculture new eco-friendly equipment.</string>
+      </description>
+      <isUnique>false</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>24</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>project goedkeuren</string>
+        <string>breidt project uit met investeren in milieuvriendelijke bedrijven</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>approve project</string>
+        <string>expand project with investing in eco-friendly companies</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>6</int>
+        <int>9</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Bedrijven</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>AirPollutionNewTech</name>
+      <description>
+        <string>Er is een nieuwe technologie beschikbaar op de markt waarmee de huidige luchtvervuiling eenmalig afneemt.</string>
+        <string>There is a new technology available on the market which reduces the current airpollution once.</string>
+      </description>
+      <isUnique>true</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>0</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>koop de technologie</string>
+        <string>investeer in de technologie voor permanent gebruik</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>buy the technology</string>
+        <string>invest in the technology for permanent use</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>1</int>
+        <int>6</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>NaturePollutionNewTech</name>
+      <description>
+        <string>Er is een nieuwe technologie beschikbaar op de markt waarmee de huidige natuurvervuiling eenmalig afneemt.</string>
+        <string>There is a new technology available on the market which reduces the current naturepollution once.</string>
+      </description>
+      <isUnique>true</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>0</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>koop de technologie</string>
+        <string>investeer in de technologie voor permanent gebruik</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>buy the technology</string>
+        <string>invest in the technology for permanent use</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>1</int>
+        <int>6</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>WaterPollutionNewTech</name>
+      <description>
+        <string>Er is een nieuwe technologie beschikbaar op de markt waarmee de huidige watervervuiling eenmalig afneemt.</string>
+        <string>There is a new technology available on the market which reduces the current waterpollution once.</string>
+      </description>
+      <isUnique>true</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>0</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>koop de technologie</string>
+        <string>investeer in de technologie voor permanent gebruik</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>buy the technology</string>
+        <string>invest in the technology for permanent use</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>1</int>
+        <int>6</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Huishoudens</string>
+        <string>Bedrijven</string>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>CompaniesEconomyUnhappy</name>
+      <description>
+        <string>De bedrijven in de regio zijn ontevreden over de huidige economie.</string>
+        <string>The companies in the region are unhappy about the current economy.</string>
+      </description>
+      <isUnique>false</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>9</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>investeer in welvaart</string>
+        <string>verhoog productie</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>invest in prosperity</string>
+        <string>increase production</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Bedrijven</string>
+      </possibleSectors>
+      <pickedSectors>
+        <boolean>false</boolean>
+      </pickedSectors>
+    </GameEvent>
+    <GameEvent>
+      <name>BadHarvest</name>
+      <description>
+        <string>Het was een slechte oogst in de landbouw waardoor de sector het nu zwaar heeft.</string>
+        <string>It was a bad harvest in the agriculture which has made it difficult for the sector.</string>
+      </description>
+      <isUnique>false</isUnique>
+      <eventIdleDuration>3</eventIdleDuration>
+      <eventCooldown>3</eventCooldown>
+      <choicesDutch>
+        <string>niets doen</string>
+        <string>compenseer de sector</string>
+        <string>laat de sector meer produceren in andere werkzaamheden</string>
+      </choicesDutch>
+      <choicesEnglish>
+        <string>do nothing</string>
+        <string>compensate the sector</string>
+        <string>let the sector producee more in different activities</string>
+      </choicesEnglish>
+      <eventDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventDuration>
+      <eventChoiceMoneyCost>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyCost>
+      <eventChoiceMoneyReward>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </eventChoiceMoneyReward>
+      <consequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </consequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
+      <duringEventProgressConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </duringEventProgressConsequences>
+      <onEventStartConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartConsequence>
+      <onEventStartTemporaryConsequence>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </onEventStartTemporaryConsequence>
+      <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
+      <onEventStartMonth>0</onEventStartMonth>
+      <onEventStartYear>0</onEventStartYear>
+      <pickedChoiceNumber>0</pickedChoiceNumber>
+      <pickedChoiceStartYear>0</pickedChoiceStartYear>
+      <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
+      <lastCompleted>0</lastCompleted>
+      <isIdle>false</isIdle>
+      <idleTurnsLeft>0</idleTurnsLeft>
+      <isActive>false</isActive>
+      <isFinished>true</isFinished>
+      <possibleRegions>
+        <string>Noord Nederland</string>
+        <string>Oost Nederland</string>
+        <string>Zuid Nederland</string>
+        <string>West Nederland</string>
+      </possibleRegions>
+      <isGlobal>false</isGlobal>
+      <successChance>
+        <int>100</int>
+        <int>100</int>
+        <int>100</int>
+      </successChance>
+      <increasedConsequencesModifierChance>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </increasedConsequencesModifierChance>
+      <possibleSectors>
+        <string>Landbouw</string>
+      </possibleSectors>
+      <pickedSectors>
         <boolean>false</boolean>
       </pickedSectors>
     </GameEvent>

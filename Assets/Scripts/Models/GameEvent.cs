@@ -96,7 +96,7 @@ public class GameEvent
             new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0) };
     }
     */
-
+    
     public void StartEvent(int currentYear, int currentMonth)
     {
         onEventStartYear = currentYear;
