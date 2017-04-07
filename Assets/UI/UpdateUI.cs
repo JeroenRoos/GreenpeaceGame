@@ -155,6 +155,7 @@ public class UpdateUI : MonoBehaviour
     private bool regionHouseholdsCheck;
     private bool regionAgricultureCheck;
     private bool regionCompanyCheck;
+    private bool dropdownChoiceMade;
     #endregion
 
     #region Start(), Update(), FixedUpdate()
@@ -172,8 +173,9 @@ public class UpdateUI : MonoBehaviour
     {
         popupController();
 
-        if (canvasRegioPopup.gameObject.activeSelf)
+        if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
         {
+            
             if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
             {
                 btnDoActionRegionMenu.gameObject.SetActive(true);
@@ -740,7 +742,12 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionCost.text = "";
         txtRegionActionDuration.text = "";
         txtRegionActionName.text = "";
+        txtRegionActionNoMoney.text = "";
+
+        txtRegionActionNoMoney.text = "";
+        txtActionSectorsDescription.text = "";
         btnDoActionRegionMenu.gameObject.SetActive(false);
+        dropdownChoiceMade = false;
 
         updateActiveActions();
         updateActiveEvents();
@@ -884,6 +891,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (action.name[taal] == dropdownChoice)
             {
+                dropdownChoiceMade = true;
                 regioAction = action;
                 txtRegionActionName.text = regioAction.description[taal];
                 txtRegionActionCost.text = getActionCost(action.actionCosts); 
@@ -995,6 +1003,9 @@ public class UpdateUI : MonoBehaviour
 
         updateRegionTextValues();
         btnDoActionRegionMenu.gameObject.SetActive(false);
+        checkboxRegionAgriculture.gameObject.SetActive(false);
+        checkboxRegionHouseholds.gameObject.SetActive(false);
+        checkboxRegionCompanies.gameObject.SetActive(false);
         checkboxHouseholds = false;
         checkboxCompanies = false;
         checkboxAgriculture = false;
