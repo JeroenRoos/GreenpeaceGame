@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         UpdateRegionColor();
     }
 
-    void updateUIMainScreen()
+    private void updateUIMainScreen()
     {
         // Update Text and Color values in main UI
         updateUI.updateDate(game.currentMonth, game.currentYear);
@@ -69,9 +69,9 @@ public class GameController : MonoBehaviour
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         updateUI.updateHappiness(game.gameStatistics.happiness);       
     }
-    
 
-    void updateUITooltips()
+
+    private void updateUITooltips()
     {
         if (updateUI.getBtnMoneyHover())
             updateUI.updateMoneyTooltip(game.gameStatistics.donations, game.gameStatistics.income);
@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
             game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
     }
 
-    void updateHappiness()
+    private void updateHappiness()
     {
         int i = 0;
 
@@ -102,7 +102,7 @@ public class GameController : MonoBehaviour
         
     }
 
-    void updateAwareness()
+    private void updateAwareness()
     {
         int i = 0;
 
@@ -113,7 +113,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void updatePollution()
+    private void updatePollution()
     {
         int i = 0;
 
@@ -124,7 +124,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void updateUIPopups()
+    private void updateUIPopups()
     {
         //eventObjectController.disableTooltipAndOptions();
 
@@ -138,7 +138,7 @@ public class GameController : MonoBehaviour
             updateUITimelineScreen();
     }
 
-    void updateUIOrganizationScreen()
+    private void updateUIOrganizationScreen()
     {
         int i = 0;
         foreach (Region region in game.regions.Values)
@@ -149,12 +149,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void updateUIRegioScreen()
+    private void updateUIRegioScreen()
     {
 
     }
 
-    void updateUITimelineScreen()
+    private void updateUITimelineScreen()
     {
 
     }
