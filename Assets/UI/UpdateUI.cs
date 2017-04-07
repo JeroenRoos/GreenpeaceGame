@@ -864,11 +864,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-    private string getActionConsequences(RegionStatistics s)
-=======
     string getActionConsequences(SectorStatistics s)
->>>>>>> cfb777628194bc4bfbd8fc5b1b62131395098039
     {
         string[] consequences = { "Consequenties:\n", "Consequences:\n" };
 
@@ -911,11 +907,7 @@ public class UpdateUI : MonoBehaviour
         return consequences[taal];
     }
 
-<<<<<<< HEAD
-    private string getActionCost(RegionStatistics s)
-=======
     string getActionCost(SectorStatistics s)
->>>>>>> cfb777628194bc4bfbd8fc5b1b62131395098039
     {
         //string[] tip;
         if (s.income != 0)

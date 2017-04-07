@@ -258,11 +258,8 @@ public class TestBot : MonoBehaviour
         return hightestIndex;
     }
 
-<<<<<<< HEAD
-    private void doChosenOption(GameEvent gameEvent, int chosenOption)
-=======
+
     void doChosenOption(Region region, GameEvent gameEvent, int chosenOption)
->>>>>>> cfb777628194bc4bfbd8fc5b1b62131395098039
     {
         Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
         Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);

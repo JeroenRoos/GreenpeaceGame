@@ -213,11 +213,8 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-    private string getConsequences(RegionStatistics s)
-=======
+
     string getConsequences(SectorStatistics s)
->>>>>>> cfb777628194bc4bfbd8fc5b1b62131395098039
     {
         string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
 
