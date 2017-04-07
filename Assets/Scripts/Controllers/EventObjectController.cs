@@ -59,7 +59,7 @@ public class EventObjectController : MonoBehaviour
         }
 
         // Event moet verwijderd worden als gekozen optie klaar is
-        if (!eventModel.isActive && !eventModel.isIdle)
+        if (/*!eventModel.isActive && */!eventModel.isIdle)
         {
             Destroy(gameObject);
         }
@@ -131,7 +131,7 @@ public class EventObjectController : MonoBehaviour
 
             if (eventHoverCheck)
             {
-                txtTooltip = eventModel.name + "\n" + eventModel.description[taal];
+                /*txtTooltip = eventModel.name + "\n" + */txtTooltip = eventModel.description[taal];
                 Vector3 pos = Event.current.mousePosition;
                 lblReqt.x = pos.x + 10;
                 lblReqt.y = pos.y + 20;
@@ -309,7 +309,7 @@ public class EventObjectController : MonoBehaviour
             case "WaterPollutionConcern":
                 return allTextures[4];
 
-            default: return allTextures[3];
+            default: return allTextures[5];
         }
     }
 
