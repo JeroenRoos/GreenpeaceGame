@@ -124,9 +124,6 @@ public class EventObjectController : MonoBehaviour
     {
         Rect btnRect;
         Rect lblReqt;
-  
-        
-
 
         Vector3 v3 = getEventPosition();
 
@@ -216,15 +213,14 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     private string getConsequences(RegionStatistics s)
+=======
+    string getConsequences(SectorStatistics s)
+>>>>>>> cfb777628194bc4bfbd8fc5b1b62131395098039
     {
         string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
 
-        if (s.donations != 0)
-        {
-            string[] a = { "Donaties: " + s.donations, "Donations: " + s.donations };
-            consequences[taal] += a[taal];// "Consequenties: \nDonaties: " + s.donations;
-        }
         if (s.ecoAwareness != 0)
         {
             string[] b = { " - Milieubewustheid: " + s.ecoAwareness, " - Eco awareness: " + s.ecoAwareness };
@@ -286,7 +282,7 @@ public class EventObjectController : MonoBehaviour
     private void ChooseOption(int option)
     {
         Debug.Log("Chosen option: " + option);
-        eventModel.SetPickedChoice(option, gameController.game);
+        eventModel.SetPickedChoice(option, gameController.game, regionModel);
         areOptionsShown = false;
         eventHoverCheck = false;
 

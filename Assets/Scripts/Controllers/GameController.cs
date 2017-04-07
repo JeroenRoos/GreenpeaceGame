@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
     private void updateUITooltips()
     {
         if (updateUI.getBtnMoneyHover())
-            updateUI.updateMoneyTooltip(game.gameStatistics.donations, game.gameStatistics.income);
+            updateUI.updateMoneyTooltip(game.gameStatistics.income);
 
         if (updateUI.getBtnHappinessHover())
             updateHappiness();
@@ -119,7 +119,7 @@ public class GameController : MonoBehaviour
 
         foreach (Region region in game.regions.Values)
         {
-            updateUI.updatePollutionTooltip(region.statistics.pollution.avgPullution, i);
+            updateUI.updatePollutionTooltip(region.statistics.avgPollution, i);
             i++;
         }
     }
@@ -192,25 +192,25 @@ public class GameController : MonoBehaviour
         noordNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green, 
                 Color.red, 
-                (float)game.regions["Noord Nederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["Noord Nederland"].statistics.avgPollution / 100
             );
 
         oostNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["Oost Nederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["Oost Nederland"].statistics.avgPollution / 100
             );
 
         westNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["West Nederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["West Nederland"].statistics.avgPollution / 100
             );
 
         zuidNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["Zuid Nederland"].statistics.pollution.avgPullution / 100
+                (float)game.regions["Zuid Nederland"].statistics.avgPollution / 100
             );
     }
 

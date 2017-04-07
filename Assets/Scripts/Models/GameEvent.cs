@@ -19,16 +19,16 @@ public class GameEvent
     public string[] choicesEnglish { get; private set; }
     public int[] eventDuration { get; private set; } //in months
     public double[] eventChoiceMoneyCost { get; private set; }
+    public double[] eventChoiceMoneyReward { get; private set; }
 
-    public RegionStatistics[] consequences { get; private set; }
-    public RegionStatistics[] temporaryConsequences { get; private set; }
+    public SectorStatistics[] consequences { get; private set; }
+    public SectorStatistics[] temporaryConsequences { get; private set; }
     public int[] temporaryConsequencesDuration { get; private set; }
 
-    public RegionStatistics[] duringEventProgressConsequences { get; private set; } //consequences after choosing an option until the event is completed
+    public SectorStatistics[] duringEventProgressConsequences { get; private set; } //consequences after choosing an option until the event is completed
 
-
-    public RegionStatistics onEventStartConsequence { get; private set; }
-    public RegionStatistics onEventStartTemporaryConsequence { get; private set; }
+    public SectorStatistics onEventStartConsequence { get; private set; }
+    public SectorStatistics onEventStartTemporaryConsequence { get; private set; }
     public int onEventStartTemporaryConsequenceDuration { get; private set; }
     public int onEventStartMonth { get; private set; }
     public int onEventStartYear { get; private set; }
@@ -48,12 +48,12 @@ public class GameEvent
     public int[] successChance { get; private set; }
     public int[] increasedConsequencesModifierChance { get; private set; }
     
-    private GameEvent()
-    {
-    }
+    public string[] possibleSectors { get; private set; }
+    public bool[] pickedSectors { get; private set; }
 
-    /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, RegionStatistics[] consequences,
-                    RegionStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
+    private GameEvent() { }
+    /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, SectorStatistics[] consequences,
+                    SectorStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
     {
         this.name = name;
         this.description = description;
@@ -96,6 +96,7 @@ public class GameEvent
             new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0) };
     }
     */
+
     public void StartEvent(int currentYear, int currentMonth)
     {
         onEventStartYear = currentYear;
@@ -104,6 +105,11 @@ public class GameEvent
         isIdle = true;
         idleTurnsLeft = eventIdleDuration;
         isFinished = false;
+    }
+
+    public void pickEventSector(System.Random rnd)
+    {
+        pickedSectors[rnd.Next(0, possibleSectors.Count())] = true;
     }
 
     public void SubtractIdleTurnsLeft()
@@ -118,39 +124,33 @@ public class GameEvent
         onEventStartYear = 0;
         onEventStartMonth = 0;
         pickedChoiceNumber = 0;
+        for (int i = 0; i < possibleSectors.Count(); i++)
+            pickedSectors[i] = false;
+
         isFinished = true;
     }
 
-    public void CompleteEvent()
+    public void CompleteEvent(Game game)
     {
         isActive = false;
+        game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
         lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
     }
 
-    public void SetPickedChoice(int i, Game game)
+    public void SetPickedChoice(int i, Game game, Region region)
     {
-        if (game.gameStatistics.money > eventChoiceMoneyCost[i])
-        {
-            game.gameStatistics.ModifyMoney(-eventChoiceMoneyCost[i]);
+        game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i], false);
 
-            pickedChoiceNumber = i;
-            this.pickedChoiceStartYear = game.currentYear;
-            this.pickedChoiceStartMonth = game.currentMonth;
+        pickedChoiceNumber = i;
+        this.pickedChoiceStartYear = game.currentYear;
+        this.pickedChoiceStartMonth = game.currentMonth;
 
-            isIdle = false;
-            idleTurnsLeft = 0;
-            isActive = true;
-            
-            if (eventDuration[i] == 0)
-            {
-                CompleteEvent();
-            }
-        }
+        isIdle = false;
+        idleTurnsLeft = 0;
+        isActive = true;
 
-        else
-        {
-            //not enough money popup message?
-        }
+        if (eventDuration[pickedChoiceNumber] == 0)
+            region.CompleteEvent(this, game);
     }
 }
 

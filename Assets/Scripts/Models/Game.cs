@@ -44,10 +44,22 @@ public class Game
         currentYear = 1;
         currentMonth = 1;
         
-        
         LoadRegions();
         LoadRegionActions();
         LoadGameEvents();
+        gameStatistics.UpdateRegionalAvgs(this);
+
+        /*foreach (Region region in regions.Values)
+        {
+            foreach (RegionSector sector in region.sectors)
+            {
+                sector.statistics.pollution.CalculateAvgPollution();
+            }
+            region.statistics.UpdateSectorAvgs(region);
+        }
+        SaveRegions();
+        SaveRegionActions();
+        SaveGameEvents();*/
     }
 
     public void SaveRegions()
@@ -111,15 +123,13 @@ public class Game
     public void NextTurn()
     {
         bool isNewYear = UpdateCurrentMonthAndYear();
-
-        //bool isNewEvent = ExecuteNewMonthMethods();
+        
         ExecuteNewMonthMethods();
-        EventManager.CallChangeMonth();
-        //return isNewEvent;
 
         if (isNewYear)
             ExecuteNewYearMethods();
         gameStatistics.UpdateRegionalAvgs(this);
+        EventManager.CallChangeMonth();
     }
 
     public bool UpdateCurrentMonthAndYear()
@@ -136,19 +146,17 @@ public class Game
 
     private void ExecuteNewMonthMethods()
     {
-        MutateMonthlyStatistics();
-
         CompletefinishedActions();
-        CheckIdleEvents();
         UpdateRegionEvents();
+        MutateMonthlyStatistics();
 
         int activeCount = getActiveEventCount();
 
-        int eventChance = 100;
+        //voor demo vertical slice 1 active event max
+        /*int eventChance = 100;
         int eventChanceReduction = 100;
 
-        //voor demo vertical slice 1 active event max
-        /*while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
+        while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
         {
             StartNewEvent();
             EventManager.CallShowEvent();
@@ -167,14 +175,18 @@ public class Game
     public void MutateMonthlyStatistics()
     {
         double monthlyIncome = GetMonthlyIncome();
-        gameStatistics.ModifyMoney(monthlyIncome);
+        gameStatistics.ModifyMoney(monthlyIncome, true);
 
         double monthlyPopulation = GetMonthlyPopulation();
         gameStatistics.ModifyPopulation(monthlyPopulation);
 
         foreach (Region region in regions.Values)
         {
-            region.statistics.mutateTimeBasedStatistics();
+            foreach (RegionSector sector in region.sectors)
+            {
+                sector.statistics.mutateTimeBasedStatistics();
+            }
+            region.statistics.UpdateSectorAvgs(region);
         }
     }
 
@@ -184,7 +196,10 @@ public class Game
 
         foreach (Region region in regions.Values)
         {
-            income += region.statistics.income;
+            foreach (RegionSector sector in region.sectors)
+            {
+                income += region.statistics.income;
+            }
         }
 
         return income;
@@ -204,14 +219,15 @@ public class Game
             {
                 if (action.isActive && ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
-                    region.ImplementStatisticValues(action.consequences, true);
+                    region.ImplementActionConsequences(action, action.consequences, true);
+                    gameStatistics.ModifyMoney(action.actionMoneyReward, true);
                     action.CompleteAction();
                 }
             }
         }
     }
 
-    public void CheckIdleEvents()
+    /*public void CheckIdleEvents()
     {
         foreach (Region region in regions.Values)
         {
@@ -223,12 +239,13 @@ public class Game
                     if (gameEvent.idleTurnsLeft == 0)
                     {
                         gameEvent.SetPickedChoice(0, this);
-                        region.ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
+                        foreach (RegionSector sector in region.sectors)
+                            sector.ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
                     }
                 }
             }
         }
-    }
+    }*/
 
     public void UpdateRegionEvents()
     {
@@ -257,6 +274,8 @@ public class Game
         {
             int pickedEvent = PickEvent(possibleEvents.Count);
             string pickedRegion = PickEventRegion();
+            events[pickedEvent].pickEventSector(rnd);
+
             events[pickedEvent].StartEvent(currentYear, currentMonth);
             regions[pickedRegion].AddGameEvent(events[pickedEvent]);
             GameObject eventInstance = GameController.Instantiate(eventObject);

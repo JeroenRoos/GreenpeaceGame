@@ -23,7 +23,6 @@ public class TestBot : MonoBehaviour
 
     double[] regionalIncome;
     double[] regionalHappiness;
-    double[] regionalDonations;
     double[] regionalEcoAwareness;
     double[] regionalProsperity;
 
@@ -64,7 +63,6 @@ public class TestBot : MonoBehaviour
 
         regionalIncome = new double[4];
         regionalHappiness = new double[4];
-        regionalDonations = new double[4];
         regionalEcoAwareness = new double[4];
         regionalProsperity = new double[4];
 
@@ -182,7 +180,8 @@ public class TestBot : MonoBehaviour
         //RegionAction ra = region.actions[action];
         RegionAction ra = region.actions[index];
         Debug.Log("NEW ACTION: " + ra.description[0] + " in Regio: " + region.name[0]);
-        ra.ActivateAction(gameController.game.currentYear, gameController.game.currentMonth);
+        region.StartAction(ra, gameController.game, new bool[] { true, true, true });
+        //ra.ActivateAction(gameController.game.currentYear, gameController.game.currentMonth, new bool[] { true, true, true });
     }
     #endregion
 
@@ -192,13 +191,16 @@ public class TestBot : MonoBehaviour
     {
         if (isEnabled)
         {
-            foreach (GameEvent gameEvent in gameController.game.events)
+            foreach (Region region in gameController.game.regions.Values)
             {
-                if (gameEvent.isIdle)
+                foreach (GameEvent gameEvent in region.inProgressGameEvents)
                 {
-                    printRegion(gameEvent);                    
-                    int chosenOption = getLowestPollutionConsequenceEvent(gameEvent);//UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
-                    doChosenOption(gameEvent, chosenOption);
+                    if (gameEvent.isIdle)
+                    {
+                        printRegion(gameEvent);
+                        int chosenOption = getLowestPollutionConsequenceEvent(gameEvent);//UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
+                        doChosenOption(region, gameEvent, chosenOption);
+                    }
                 }
             }
         }
@@ -230,7 +232,7 @@ public class TestBot : MonoBehaviour
         int index = 0;
         int hightestIndex = 0;
         
-        foreach (RegionStatistics stats in gameEvent.consequences)
+        foreach (SectorStatistics stats in gameEvent.consequences)
         {
             double pollutionSum = 0;
 
@@ -256,11 +258,15 @@ public class TestBot : MonoBehaviour
         return hightestIndex;
     }
 
+<<<<<<< HEAD
     private void doChosenOption(GameEvent gameEvent, int chosenOption)
+=======
+    void doChosenOption(Region region, GameEvent gameEvent, int chosenOption)
+>>>>>>> cfb777628194bc4bfbd8fc5b1b62131395098039
     {
         Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
         Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);
-        gameEvent.SetPickedChoice(chosenOption, gameController.game);
+        gameEvent.SetPickedChoice(chosenOption, gameController.game, region);
     }
     #endregion
 
@@ -343,11 +349,6 @@ public class TestBot : MonoBehaviour
             Debug.Log("Income: " + region.statistics.income);
             regionalIncome[i] = region.statistics.income;
         }
-        if (regionalDonations[i] != region.statistics.donations)
-        {
-            Debug.Log("Donations: " + region.statistics.donations);
-            regionalDonations[i] = region.statistics.donations;
-        }
         if (regionalHappiness[i] != region.statistics.happiness)
         {
             Debug.Log("Happiness: " + region.statistics.happiness);
@@ -367,40 +368,40 @@ public class TestBot : MonoBehaviour
 
     private void getRegionalPollution(Region region, int i)
     {
-        if (regionalAvgPollution[i] != region.statistics.pollution.avgPullution)
+        if (regionalAvgPollution[i] != region.statistics.avgPollution)
         {
-            Debug.Log("Average Pollution: " + region.statistics.pollution.avgPullution);
-            regionalAvgPollution[i] = region.statistics.pollution.avgPullution;
+            Debug.Log("Average Pollution: " + region.statistics.avgPollution);
+            regionalAvgPollution[i] = region.statistics.avgPollution;
         }
-        if (regionalWaterPollution[i] != region.statistics.pollution.waterPollution)
+        if (regionalWaterPollution[i] != region.statistics.avgWaterPollution)
         {
-            Debug.Log("Water Pollution: " + region.statistics.pollution.waterPollution);
-            regionalWaterPollution[i] = region.statistics.pollution.waterPollution;
+            Debug.Log("Water Pollution: " + region.statistics.avgWaterPollution);
+            regionalWaterPollution[i] = region.statistics.avgWaterPollution;
         }
-        if (regionalWaterPollutionIncrease[i] != region.statistics.pollution.waterPollutionIncrease)
+        if (regionalWaterPollutionIncrease[i] != region.statistics.avgWaterPollutionIncrease)
         {
-            Debug.Log("Water Pollution Increase: " + region.statistics.pollution.waterPollutionIncrease);
-            regionalWaterPollutionIncrease[i] = region.statistics.pollution.waterPollutionIncrease;
+            Debug.Log("Water Pollution Increase: " + region.statistics.avgWaterPollutionIncrease);
+            regionalWaterPollutionIncrease[i] = region.statistics.avgWaterPollutionIncrease;
         }
-        if (regionalAirPollution[i] != region.statistics.pollution.airPollution)
+        if (regionalAirPollution[i] != region.statistics.avgAirPollution)
         {
-            Debug.Log("Air Pollution: " + region.statistics.pollution.airPollution);
-            regionalAirPollution[i] = region.statistics.pollution.airPollution;
+            Debug.Log("Air Pollution: " + region.statistics.avgAirPollution);
+            regionalAirPollution[i] = region.statistics.avgAirPollution;
         }
-        if (regionalAirPollutionIncrease[i] != region.statistics.pollution.airPollutionIncrease)
+        if (regionalAirPollutionIncrease[i] != region.statistics.avgAirPollutionIncrease)
         {
-            Debug.Log("Air Pollution Increase: " + region.statistics.pollution.airPollutionIncrease);
-            regionalAirPollutionIncrease[i] = region.statistics.pollution.airPollutionIncrease;
+            Debug.Log("Air Pollution Increase: " + region.statistics.avgAirPollutionIncrease);
+            regionalAirPollutionIncrease[i] = region.statistics.avgAirPollutionIncrease;
         }
-        if (regionalNaturePollution[i] != region.statistics.pollution.naturePollution)
+        if (regionalNaturePollution[i] != region.statistics.avgNaturePollution)
         {
-            Debug.Log("Nature Pollution: " + region.statistics.pollution.naturePollution);
-            regionalNaturePollution[i] = region.statistics.pollution.naturePollution;
+            Debug.Log("Nature Pollution: " + region.statistics.avgNaturePollution);
+            regionalNaturePollution[i] = region.statistics.avgNaturePollution;
         }
-        if (regionalNaturePollutionIncrease[i] != region.statistics.pollution.naturePollutionIncrease)
+        if (regionalNaturePollutionIncrease[i] != region.statistics.avgNaturePollutionIncrease)
         {
-            Debug.Log("Nature Pollution Increase: " + region.statistics.pollution.naturePollutionIncrease);
-            regionalNaturePollutionIncrease[i] = region.statistics.pollution.naturePollutionIncrease;
+            Debug.Log("Nature Pollution Increase: " + region.statistics.avgNaturePollutionIncrease);
+            regionalNaturePollutionIncrease[i] = region.statistics.avgNaturePollutionIncrease;
         }
     }
 
@@ -426,20 +427,20 @@ public class TestBot : MonoBehaviour
                 Debug.Log("Eco-awareness: " + sector.statistics.ecoAwareness);
                 regionalSectorEcoAwareness[i, j] = sector.statistics.ecoAwareness;
             }
-            if (regionalSectorAirPollutionContribution[i, j] != sector.statistics.airPollutionContribution)
+            if (regionalSectorAirPollutionContribution[i, j] != sector.statistics.pollution.airPollution)
             {
-                Debug.Log("Air Pollution Contribution: " + sector.statistics.airPollutionContribution);
-                regionalSectorAirPollutionContribution[i, j] = sector.statistics.airPollutionContribution;
+                Debug.Log("Air Pollution Contribution: " + sector.statistics.pollution.airPollution);
+                regionalSectorAirPollutionContribution[i, j] = sector.statistics.pollution.airPollution;
             }
-            if (regionalSectorNaturePollutionContribution[i, j] != sector.statistics.naturePollutionContribution)
+            if (regionalSectorNaturePollutionContribution[i, j] != sector.statistics.pollution.naturePollution)
             {
-                Debug.Log("Nature Pollution Contribution: " + sector.statistics.naturePollutionContribution);
-                regionalSectorNaturePollutionContribution[i, j] = sector.statistics.naturePollutionContribution;
+                Debug.Log("Nature Pollution Contribution: " + sector.statistics.pollution.naturePollution);
+                regionalSectorNaturePollutionContribution[i, j] = sector.statistics.pollution.naturePollution;
             }
-            if (regionalSectorWaterPollutionContribution[i, j] != sector.statistics.waterPollutionContribution)
+            if (regionalSectorWaterPollutionContribution[i, j] != sector.statistics.pollution.waterPollution)
             {
-                Debug.Log("Water Pollution Contribution: " + sector.statistics.waterPollutionContribution);
-                regionalSectorWaterPollutionContribution[i, j] = sector.statistics.waterPollutionContribution;
+                Debug.Log("Water Pollution Contribution: " + sector.statistics.pollution.waterPollution);
+                regionalSectorWaterPollutionContribution[i, j] = sector.statistics.pollution.waterPollution;
             }
             
             j++;
