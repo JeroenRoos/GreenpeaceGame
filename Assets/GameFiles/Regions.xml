@@ -35,21 +35,22 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <consequences>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>5</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>-0.5</airPollutionIncrease>
-              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
-              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
-            </pollution>
-          </consequences>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
             <happiness>0</happiness>
@@ -65,16 +66,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </actionCosts>
-          <actionMoneyCost>5000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>3</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>5</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -105,16 +111,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -125,6 +126,37 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>20</income>
             <happiness>0.2</happiness>
@@ -140,31 +172,6 @@
               <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>6</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -195,16 +202,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -215,6 +217,37 @@
             <string>Sluit een een gebied in een regio af als natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>4</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>5</happiness>
@@ -230,31 +263,6 @@
               <waterPollutionIncrease>-0.5</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>4</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>0</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -285,16 +293,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -305,6 +308,37 @@
             <string>Doe een geld inzamelingsactie voor de eigen organisatie.</string>
             <string>Raise money for your own organization.</string>
           </description>
+          <actionMoneyCost>0</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>1</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -320,31 +354,6 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>1</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>12</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -375,6 +384,24 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog welvaart</string>
+            <string>Increase prosperity</string>
+          </name>
+          <description>
+            <string>Verhoog de welvaart door meer te investeren in de economie.</string>
+            <string>Increase the prosperity by investing more in the economy</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -385,6 +412,529 @@
             <boolean>false</boolean>
             <boolean>false</boolean>
           </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>2</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog tevredenheid</string>
+            <string>Increase happiness</string>
+          </name>
+          <description>
+            <string>Verhoog de tevrenheid door ideeën van het volk te implementeren.</string>
+            <string>Increase happiness by implementing ideas of the people.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>2</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag luchtvervuiling</string>
+            <string>Reduce airpollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de luchtvervuiling.</string>
+            <string>Take actions against the airpollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag natuurvervuiling</string>
+            <string>Reduce nature pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de natuurvervuiling.</string>
+            <string>Take actions against the nature pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag watervervuiling</string>
+            <string>Reduce current water pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de watervervuiling.</string>
+            <string>Take actions against the water pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag huidige vervuiling [UNIEK]</string>
+            <string>Reduce current pollution [UNIQUE]</string>
+          </name>
+          <description>
+            <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
+            <string>Reduce the current pollution in the chosen sectors with 5%.</string>
+          </description>
+          <actionMoneyCost>20000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>-5</airPollution>
+              <naturePollution>-5</naturePollution>
+              <waterPollution>-5</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
       </actions>
       <sectors>
@@ -488,21 +1038,22 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <consequences>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>5</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>-0.5</airPollutionIncrease>
-              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
-              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
-            </pollution>
-          </consequences>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
             <happiness>0</happiness>
@@ -518,16 +1069,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </actionCosts>
-          <actionMoneyCost>5000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>3</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>5</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -558,16 +1114,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -578,6 +1129,37 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>20</income>
             <happiness>0.2</happiness>
@@ -593,31 +1175,6 @@
               <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>6</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -648,16 +1205,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -668,6 +1220,37 @@
             <string>Sluit een een gebied in een regio af als natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>4</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>5</happiness>
@@ -683,31 +1266,6 @@
               <waterPollutionIncrease>-0.5</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>4</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>0</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -738,16 +1296,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -758,6 +1311,37 @@
             <string>Doe een geld inzamelingsactie voor de eigen organisatie.</string>
             <string>Raise money for your own organization.</string>
           </description>
+          <actionMoneyCost>0</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>1</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -773,31 +1357,6 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>1</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>12</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -828,6 +1387,24 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog welvaart</string>
+            <string>Increase prosperity</string>
+          </name>
+          <description>
+            <string>Verhoog de welvaart door meer te investeren in de economie.</string>
+            <string>Increase the prosperity by investing more in the economy</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -838,6 +1415,529 @@
             <boolean>false</boolean>
             <boolean>false</boolean>
           </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>2</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog tevredenheid</string>
+            <string>Increase happiness</string>
+          </name>
+          <description>
+            <string>Verhoog de tevrenheid door ideeën van het volk te implementeren.</string>
+            <string>Increase happiness by implementing ideas of the people.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>2</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag luchtvervuiling</string>
+            <string>Reduce airpollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de luchtvervuiling.</string>
+            <string>Take actions against the airpollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag natuurvervuiling</string>
+            <string>Reduce nature pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de natuurvervuiling.</string>
+            <string>Take actions against the nature pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag watervervuiling</string>
+            <string>Reduce current water pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de watervervuiling.</string>
+            <string>Take actions against the water pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag huidige vervuiling [UNIEK]</string>
+            <string>Reduce current pollution [UNIQUE]</string>
+          </name>
+          <description>
+            <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
+            <string>Reduce the current pollution in the chosen sectors with 5%.</string>
+          </description>
+          <actionMoneyCost>20000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>-5</airPollution>
+              <naturePollution>-5</naturePollution>
+              <waterPollution>-5</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
       </actions>
       <sectors>
@@ -941,21 +2041,22 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <consequences>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>5</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>-0.5</airPollutionIncrease>
-              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
-              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
-            </pollution>
-          </consequences>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
             <happiness>0</happiness>
@@ -971,16 +2072,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </actionCosts>
-          <actionMoneyCost>5000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>3</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>5</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1011,16 +2117,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -1031,6 +2132,37 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>20</income>
             <happiness>0.2</happiness>
@@ -1046,31 +2178,6 @@
               <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>6</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1101,16 +2208,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -1121,6 +2223,37 @@
             <string>Sluit een een gebied in een regio af als natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>4</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>5</happiness>
@@ -1136,31 +2269,6 @@
               <waterPollutionIncrease>-0.5</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>4</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>0</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1191,16 +2299,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -1211,6 +2314,37 @@
             <string>Doe een geld inzamelingsactie voor de eigen organisatie.</string>
             <string>Raise money for your own organization.</string>
           </description>
+          <actionMoneyCost>0</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>1</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1226,31 +2360,6 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>1</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>12</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1281,6 +2390,24 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog welvaart</string>
+            <string>Increase prosperity</string>
+          </name>
+          <description>
+            <string>Verhoog de welvaart door meer te investeren in de economie.</string>
+            <string>Increase the prosperity by investing more in the economy</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -1291,6 +2418,529 @@
             <boolean>false</boolean>
             <boolean>false</boolean>
           </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>2</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog tevredenheid</string>
+            <string>Increase happiness</string>
+          </name>
+          <description>
+            <string>Verhoog de tevrenheid door ideeën van het volk te implementeren.</string>
+            <string>Increase happiness by implementing ideas of the people.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>2</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag luchtvervuiling</string>
+            <string>Reduce airpollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de luchtvervuiling.</string>
+            <string>Take actions against the airpollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag natuurvervuiling</string>
+            <string>Reduce nature pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de natuurvervuiling.</string>
+            <string>Take actions against the nature pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag watervervuiling</string>
+            <string>Reduce current water pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de watervervuiling.</string>
+            <string>Take actions against the water pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag huidige vervuiling [UNIEK]</string>
+            <string>Reduce current pollution [UNIQUE]</string>
+          </name>
+          <description>
+            <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
+            <string>Reduce the current pollution in the chosen sectors with 5%.</string>
+          </description>
+          <actionMoneyCost>20000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>-5</airPollution>
+              <naturePollution>-5</naturePollution>
+              <waterPollution>-5</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
       </actions>
       <sectors>
@@ -1394,21 +3044,22 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <consequences>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>5</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>-0.5</airPollutionIncrease>
-              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
-              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
-            </pollution>
-          </consequences>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
             <happiness>0</happiness>
@@ -1424,16 +3075,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </actionCosts>
-          <actionMoneyCost>5000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>3</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>5</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1464,16 +3120,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -1484,6 +3135,37 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>6</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>20</income>
             <happiness>0.2</happiness>
@@ -1499,31 +3181,6 @@
               <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>6</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>6</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1554,16 +3211,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -1574,6 +3226,37 @@
             <string>Sluit een een gebied in een regio af als natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
+          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>4</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>5</happiness>
@@ -1589,31 +3272,6 @@
               <waterPollutionIncrease>-0.5</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>10000</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>4</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>0</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1644,16 +3302,11 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
-          <possibleSectors>
-            <string>Huishoudens</string>
-            <string>Bedrijven</string>
-            <string>Landbouw</string>
-          </possibleSectors>
-          <pickedSectors>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-            <boolean>false</boolean>
-          </pickedSectors>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
         <RegionAction>
           <name>
@@ -1664,6 +3317,37 @@
             <string>Doe een geld inzamelingsactie voor de eigen organisatie.</string>
             <string>Raise money for your own organization.</string>
           </description>
+          <actionMoneyCost>0</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>1</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
           <consequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1679,31 +3363,6 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </consequences>
-          <actionCosts>
-            <income>0</income>
-            <happiness>0</happiness>
-            <ecoAwareness>0</ecoAwareness>
-            <prosperity>0</prosperity>
-            <pollution>
-              <avgPollution>0</avgPollution>
-              <airPollution>0</airPollution>
-              <naturePollution>0</naturePollution>
-              <waterPollution>0</waterPollution>
-              <airPollutionIncrease>0</airPollutionIncrease>
-              <naturePollutionIncrease>0</naturePollutionIncrease>
-              <waterPollutionIncrease>0</waterPollutionIncrease>
-            </pollution>
-          </actionCosts>
-          <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
-          <actionDuration>1</actionDuration>
-          <startYear>0</startYear>
-          <startMonth>0</startMonth>
-          <lastCompleted>0</lastCompleted>
-          <actionCooldown>12</actionCooldown>
-          <isActive>false</isActive>
-          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
-          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <temporaryConsequences>
             <income>0</income>
             <happiness>0</happiness>
@@ -1734,6 +3393,24 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog welvaart</string>
+            <string>Increase prosperity</string>
+          </name>
+          <description>
+            <string>Verhoog de welvaart door meer te investeren in de economie.</string>
+            <string>Increase the prosperity by investing more in the economy</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>6</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
             <string>Bedrijven</string>
@@ -1744,6 +3421,529 @@
             <boolean>false</boolean>
             <boolean>false</boolean>
           </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>2</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verhoog tevredenheid</string>
+            <string>Increase happiness</string>
+          </name>
+          <description>
+            <string>Verhoog de tevrenheid door ideeën van het volk te implementeren.</string>
+            <string>Increase happiness by implementing ideas of the people.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>2</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag luchtvervuiling</string>
+            <string>Reduce airpollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de luchtvervuiling.</string>
+            <string>Take actions against the airpollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>-0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag natuurvervuiling</string>
+            <string>Reduce nature pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de natuurvervuiling.</string>
+            <string>Take actions against the nature pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag watervervuiling</string>
+            <string>Reduce current water pollution</string>
+          </name>
+          <description>
+            <string>Neem maatregelen tegen de watervervuiling.</string>
+            <string>Take actions against the water pollution.</string>
+          </description>
+          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>12</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
+        </RegionAction>
+        <RegionAction>
+          <name>
+            <string>Verlaag huidige vervuiling [UNIEK]</string>
+            <string>Reduce current pollution [UNIQUE]</string>
+          </name>
+          <description>
+            <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
+            <string>Reduce the current pollution in the chosen sectors with 5%.</string>
+          </description>
+          <actionMoneyCost>20000</actionMoneyCost>
+          <actionMoneyReward>0</actionMoneyReward>
+          <actionDuration>3</actionDuration>
+          <possibleSectors>
+            <string>Huishoudens</string>
+            <string>Bedrijven</string>
+            <string>Landbouw</string>
+          </possibleSectors>
+          <pickedSectors>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </pickedSectors>
+          <actionCooldown>0</actionCooldown>
+          <isUnique>false</isUnique>
+          <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
+          <actionCosts>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </actionCosts>
+          <consequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>-5</airPollution>
+              <naturePollution>-5</naturePollution>
+              <waterPollution>-5</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </consequences>
+          <temporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </temporaryConsequences>
+          <duringActionConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </duringActionConsequences>
+          <startYear>0</startYear>
+          <startMonth>0</startMonth>
+          <lastCompleted>0</lastCompleted>
+          <isActive>false</isActive>
+          <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
         </RegionAction>
       </actions>
       <sectors>

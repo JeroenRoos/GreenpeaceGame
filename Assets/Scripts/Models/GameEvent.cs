@@ -11,28 +11,28 @@ public class GameEvent
     public string name { get; private set; } //id
     
     public string[] description { get; private set; }
-    public bool isUnique { get; private set; }
-
-    public int eventIdleDuration { get; private set; } //in months
-    public int eventCooldown { get; private set; } //in months
     public string[] choicesDutch { get; private set; }
     public string[] choicesEnglish { get; private set; }
+    public bool isUnique { get; private set; }
+    public bool isGlobal { get; private set; }
+    public int eventIdleDuration { get; private set; } //in months
+    public int eventCooldown { get; private set; } //in months
     public int[] eventDuration { get; private set; } //in months
+    public int[] temporaryConsequencesDuration { get; private set; }
+    public int onEventStartTemporaryConsequenceDuration { get; private set; }
     public double[] eventChoiceMoneyCost { get; private set; }
     public double[] eventChoiceMoneyReward { get; private set; }
+    public string[] possibleRegions { get; private set; }
+    public int[] successChance { get; private set; }
+    public int[] increasedConsequencesModifierChance { get; private set; }
+    public string[] possibleSectors { get; private set; }
 
     public SectorStatistics[] consequences { get; private set; }
     public SectorStatistics[] temporaryConsequences { get; private set; }
-    public int[] temporaryConsequencesDuration { get; private set; }
-
     public SectorStatistics[] duringEventProgressConsequences { get; private set; } //consequences after choosing an option until the event is completed
-
     public SectorStatistics onEventStartConsequence { get; private set; }
     public SectorStatistics onEventStartTemporaryConsequence { get; private set; }
-    public int onEventStartTemporaryConsequenceDuration { get; private set; }
-    public int onEventStartMonth { get; private set; }
-    public int onEventStartYear { get; private set; }
-    
+
     //choice picked events variables
     public int pickedChoiceNumber { get; private set; }
     public int pickedChoiceStartYear { get; private set; }
@@ -41,14 +41,9 @@ public class GameEvent
     public bool isIdle { get; private set; }
     public int idleTurnsLeft { get; private set; } 
     public bool isActive { get; private set; }
-    
+    public int onEventStartMonth { get; private set; }
+    public int onEventStartYear { get; private set; }
     public bool isFinished { get; private set; }
-    public string[] possibleRegions { get; private set; }
-    public bool isGlobal { get; private set; }
-    public int[] successChance { get; private set; }
-    public int[] increasedConsequencesModifierChance { get; private set; }
-    
-    public string[] possibleSectors { get; private set; }
     public bool[] pickedSectors { get; private set; }
 
     private GameEvent() { }
