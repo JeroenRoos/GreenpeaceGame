@@ -10,6 +10,8 @@ public class TestBot : MonoBehaviour
     //double currentCurrency;
     int turnCounter;
     public bool isEnabled;
+    public string[] playstyles;
+    public string currentPlaystyle;
 
     #region Double Variables
     double nationalMoney;
@@ -76,13 +78,16 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = false; 
+        isEnabled = true; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
         gameController = GetComponent<GameController>();
         EventManager.ChangeMonth += CheckStatus;
         EventManager.ShowEvent  += EventAction;
+
+        playstyles = new string[] { "random", "pollutionFocused", "" };
+        currentPlaystyle = playstyles[1];
     }
 
     // Update is called once per frame
@@ -106,7 +111,14 @@ public class TestBot : MonoBehaviour
             showStatistics();
 
             bool checkActive;
-            System.Random rnd = new System.Random();
+
+            double avgPollution = 0;
+            foreach (Region region in gameController.game.regions.Values)
+            {
+                avgPollution += region.statistics.avgPollution;
+            }
+
+            avgPollution /= gameController.game.regions.Count;
 
             foreach (Region region in gameController.game.regions.Values)
             {
@@ -121,10 +133,26 @@ public class TestBot : MonoBehaviour
                 }
                 if (!checkActive)
                 {
-                    if (rnd.Next(1, 101) <= 25)
+
+                    if(currentPlaystyle == playstyles[0] && gameController.game.rnd.Next(0, 1) == 0)
                     {
-                        int index = getLowestPollutionConsequenceAction(region);
-                        doAction(region, index);
+                        doAction(region, region.actions[gameController.game.rnd.Next(0, region.actions.Count)]);
+                    }
+
+                    else if (currentPlaystyle == playstyles[1] && region.statistics.avgPollution > avgPollution * 0.7)
+                    {
+                        double money = gameController.game.gameStatistics.money;
+                        double regionIncome = region.statistics.income;
+
+                        if (money < 20000 || regionIncome < 1500)
+                        {
+                            getHighestIncomeConsequenceAction(region);
+
+                        }
+                        else
+                        {
+                            getLowestPollutionConsequenceAction(region);
+                        }
                     }
                 }
             }
@@ -141,47 +169,83 @@ public class TestBot : MonoBehaviour
             getRegionalStats();
     }
 
-    // Calculate 
-    private int getLowestPollutionConsequenceAction(Region region)
+    private void getHighestIncomeConsequenceAction(Region region)
     {
-        double tempPollutionSum = 0;
-        int index = 0;
-        int hightestIndex = 0;
+        int highestIncomeIndex = 0;
+        int highestMoneyIndex = 0;
+        bool actionFound = false;
 
-        foreach (RegionAction a in region.actions)
+        for (int i = 0; i < region.actions.Count; i++)
         {
-            double pollutionSum = 0;
-
-            pollutionSum += a.consequences.pollution.airPollution;
-            pollutionSum += a.consequences.pollution.waterPollution;
-            pollutionSum += a.consequences.pollution.naturePollution;
-
-            if (pollutionSum < tempPollutionSum)
+            if (region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money)
             {
-                tempPollutionSum = pollutionSum;
-                hightestIndex = index;
+                if (region.actions[i].consequences.income > highestMoneyIndex)
+                {
+                    highestIncomeIndex = i;
+                    actionFound = true;
+                }
+                if (region.actions[i].actionMoneyReward > highestMoneyIndex)
+                {
+                    highestMoneyIndex = i;
+                    actionFound = true;
+                }
             }
-
-            index++;
         }
 
-        if (hightestIndex == 0)
+        if (actionFound)
         {
-            System.Random rnd = new System.Random();
-            hightestIndex = rnd.Next(0, region.actions.Count);
+            if (gameController.game.rnd.Next(0, 2) == 0)
+                doAction(region, region.actions[highestIncomeIndex]);
+            else
+                doAction(region, region.actions[highestMoneyIndex]);
         }
 
-        return hightestIndex;
     }
 
-    private void doAction(Region region, int index)
+    // Calculate 
+    private void getLowestPollutionConsequenceAction(Region region)
     {
-        //int action = rnd.Next(0, region.actions.Count);
-        //RegionAction ra = region.actions[action];
-        RegionAction ra = region.actions[index];
+        int hightestIndex = 0;
+        double tempPollutionSum = 0;
+        bool actionFound = false;
+
+        for (int i = 0; i < region.actions.Count; i++)
+        {
+            if (region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money)
+            {
+                double pollutionSum = 0;
+
+                pollutionSum += region.actions[i].consequences.pollution.airPollution;
+                pollutionSum += region.actions[i].consequences.pollution.waterPollution;
+                pollutionSum += region.actions[i].consequences.pollution.naturePollution;
+
+                pollutionSum += region.actions[i].consequences.pollution.airPollutionIncrease;
+                pollutionSum += region.actions[i].consequences.pollution.naturePollutionIncrease;
+                pollutionSum += region.actions[i].consequences.pollution.waterPollutionIncrease;
+
+                if (pollutionSum < tempPollutionSum)
+                {
+                    tempPollutionSum = pollutionSum;
+                    hightestIndex = i;
+                    actionFound = true;
+                }
+                else if (pollutionSum == tempPollutionSum && gameController.game.rnd.Next(0,2) == 0)
+                {
+                    tempPollutionSum = pollutionSum;
+                    hightestIndex = i;
+                    actionFound = true;
+                }
+            }
+        }
+
+        if (actionFound)
+            doAction(region, region.actions[hightestIndex]);
+    }
+
+    private void doAction(Region region, RegionAction ra)
+    {
         Debug.Log("NEW ACTION: " + ra.description[0] + " in Regio: " + region.name[0]);
         region.StartAction(ra, gameController.game, new bool[] { true, true, true });
-        //ra.ActivateAction(gameController.game.currentYear, gameController.game.currentMonth, new bool[] { true, true, true });
     }
     #endregion
 
@@ -251,8 +315,7 @@ public class TestBot : MonoBehaviour
 
         if (hightestIndex == 0)
         {
-            System.Random rnd = new System.Random();
-            hightestIndex = rnd.Next(0, gameEvent.choicesDutch.Length);
+            hightestIndex = gameController.game.rnd.Next(0, gameEvent.choicesDutch.Length);
         }
 
         return hightestIndex;

@@ -142,9 +142,9 @@
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
-          <airPollutionIncrease>1</airPollutionIncrease>
-          <naturePollutionIncrease>1</naturePollutionIncrease>
-          <waterPollutionIncrease>1</waterPollutionIncrease>
+          <airPollutionIncrease>0.25</airPollutionIncrease>
+          <naturePollutionIncrease>0.25</naturePollutionIncrease>
+          <waterPollutionIncrease>0.25</waterPollutionIncrease>
         </pollution>
       </consequences>
       <temporaryConsequences>
@@ -224,7 +224,7 @@
         </pollution>
       </actionCosts>
       <consequences>
-        <income>-50</income>
+        <income>-20</income>
         <happiness>0</happiness>
         <ecoAwareness>2</ecoAwareness>
         <prosperity>0</prosperity>
@@ -233,9 +233,9 @@
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
-          <airPollutionIncrease>-0.5</airPollutionIncrease>
-          <naturePollutionIncrease>-0.5</naturePollutionIncrease>
-          <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+          <airPollutionIncrease>-1.0</airPollutionIncrease>
+          <naturePollutionIncrease>-1.0</naturePollutionIncrease>
+          <waterPollutionIncrease>-1.0</waterPollutionIncrease>
         </pollution>
       </consequences>
       <temporaryConsequences>
@@ -498,7 +498,7 @@
       </actionCosts>
       <consequences>
         <income>0</income>
-        <happiness>2</happiness>
+        <happiness>1</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <pollution>
@@ -597,7 +597,7 @@
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
-          <airPollutionIncrease>-0.5</airPollutionIncrease>
+          <airPollutionIncrease>-1.5</airPollutionIncrease>
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
@@ -689,7 +689,7 @@
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
           <airPollutionIncrease>0</airPollutionIncrease>
-          <naturePollutionIncrease>-0.5</naturePollutionIncrease>
+          <naturePollutionIncrease>-1.5</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
@@ -781,7 +781,7 @@
           <waterPollution>0</waterPollution>
           <airPollutionIncrease>0</airPollutionIncrease>
           <naturePollutionIncrease>0</naturePollutionIncrease>
-          <waterPollutionIncrease>-0.5</waterPollutionIncrease>
+          <waterPollutionIncrease>-1.5</waterPollutionIncrease>
         </pollution>
       </consequences>
       <temporaryConsequences>

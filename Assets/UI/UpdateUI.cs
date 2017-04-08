@@ -1059,13 +1059,14 @@ public class UpdateUI : MonoBehaviour
 
                 setCheckboxes(action);
 
-                if (game.gameStatistics.money - action.actionCosts.income > 0)
+                if (game.gameStatistics.money > action.actionMoneyCost)
                 {
-                    btnDoActionRegionMenu.gameObject.SetActive(true);
+                    btnDoActionRegionMenu.interactable = true;
                     txtRegionActionNoMoney.text = "";
                 }
                 else
                 {
+                    btnDoActionRegionMenu.interactable = false;
                     string[] error2 = { "Niet genoeg geld om de actie te doen", "You don't have enough money for this action" };
                     txtRegionActionNoMoney.text = "Niet genoeg geld om de actie te doen...";
                 }

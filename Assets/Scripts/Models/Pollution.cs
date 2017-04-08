@@ -23,16 +23,22 @@ public class Pollution
     public void ChangeAirPollution(double changeValue)
     {
         airPollution += changeValue;
+        if (airPollution < 0)
+            airPollution = 0;
     }
 
     public void ChangeNaturePollution(double changeValue)
     {
         naturePollution += changeValue;
+        if (naturePollution < 0)
+            naturePollution = 0;
     }
 
     public void ChangeWaterPollution(double changeValue)
     {
         waterPollution += changeValue;
+        if (waterPollution < 0)
+            waterPollution = 0;
     }
 
     public void ChangeAirPollutionMutation(double changeValue)
