@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+[Serializable]
 public class GameStatistics
 {
     // Game general statistics
@@ -16,6 +17,8 @@ public class GameStatistics
     public double pollution { get; private set; }
     public double ecoAwareness { get; private set; }
     public double prosperity { get; private set; }
+
+    public GameStatistics() { }
 
     public GameStatistics(double money, double population, Energy energy)
     {
@@ -53,7 +56,7 @@ public class GameStatistics
 
         int divisionValue = 0;
 
-        foreach (Region region in game.regions.Values)
+        foreach (Region region in game.regions)
         {
             foreach (RegionSector sector in region.sectors)
             {

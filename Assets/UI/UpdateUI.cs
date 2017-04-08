@@ -206,7 +206,7 @@ public class UpdateUI : MonoBehaviour
         taal = game.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = true;
+        tutorialActive = false;
 
         if (tutorialActive)
             initTutorialActive();
@@ -1108,7 +1108,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (e.isActive || e.isIdle)
             {
-                foreach (Region region in game.regions.Values)
+                foreach (Region region in game.regions)
                 {
                     foreach (GameEvent ev in region.inProgressGameEvents)
                     {

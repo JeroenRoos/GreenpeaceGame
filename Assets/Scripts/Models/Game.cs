@@ -16,7 +16,10 @@ public class Game
     //All Regions and region types planned for complete game
     public int currentYear { get; private set; }
     public int currentMonth { get; private set; }
-    public Dictionary<string, Region> regions { get; private set; }
+    //public Dictionary<string, Region> regions { get; private set; }
+
+    //0,1,2,3: Noord,Oost,West,Zuid
+    public List<Region> regions { get; private set; }
     public List<GameEvent> events { get; private set; }
     public System.Random rnd { get; private set; }
     public int language { get; private set; } //0 = Dutch, 1 = English
@@ -30,7 +33,7 @@ public class Game
         language = 0;
         rnd = new System.Random();
         events = new List<GameEvent>();
-        regions = new Dictionary<string, Region>();
+        regions = new List<Region>();
         actions = new List<RegionAction>();
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
@@ -62,7 +65,7 @@ public class Game
     public void SaveRegions()
     {
         List<Region> templist = new List<Region>();
-        foreach (Region region in regions.Values)
+        foreach (Region region in regions)
             templist.Add(region);
 
         RegionContainer regionContainer = new RegionContainer(templist);
@@ -72,8 +75,7 @@ public class Game
     public void LoadRegions()
     {
         RegionContainer regionContainer = RegionContainer.Load();
-        foreach (Region region in regionContainer.regions)
-            regions.Add(region.name[0], region);
+        regions = regionContainer.regions;
     }
 
     public void SaveGameEvents()
@@ -90,13 +92,13 @@ public class Game
 
     public void SaveRegionActions()
     {
-        RegionActionContainer regionActionContainer = new RegionActionContainer(regions["Noord Nederland"].actions);
+        RegionActionContainer regionActionContainer = new RegionActionContainer(regions[0].actions);
         regionActionContainer.Save();
     }
 
     public void LoadRegionActions()
     {
-        foreach (Region region in regions.Values)
+        foreach (Region region in regions)
         {
             RegionActionContainer regionActionContainer = RegionActionContainer.Load();
             region.LoadActions(regionActionContainer.actions);
@@ -150,7 +152,7 @@ public class Game
         double monthlyPopulation = GetMonthlyPopulation();
         gameStatistics.ModifyPopulation(monthlyPopulation);
 
-        foreach (Region region in regions.Values)
+        foreach (Region region in regions)
         {
             foreach (RegionSector sector in region.sectors)
             {
@@ -164,7 +166,7 @@ public class Game
     {
         double income = 0;
 
-        foreach (Region region in regions.Values)
+        foreach (Region region in regions)
         {
             foreach (RegionSector sector in region.sectors)
             {
@@ -183,7 +185,7 @@ public class Game
 
     public void CompletefinishedActions()
     {
-        foreach (Region region in regions.Values)
+        foreach (Region region in regions)
         {
             foreach (RegionAction action in region.actions)
             {
@@ -224,7 +226,7 @@ public class Game
 
     public void UpdateRegionEvents()
     {
-        foreach (Region region in regions.Values)
+        foreach (Region region in regions)
         {
             region.UpdateEvents(this);
         }
@@ -277,7 +279,7 @@ public class Game
     public Region PickEventRegion()
     {
         List<Region> possibleRegions = new List<Region>();
-        foreach (Region region in regions.Values)
+        foreach (Region region in regions)
         {
             bool isPossible = true;
             foreach (GameEvent gameEvent in region.inProgressGameEvents)
