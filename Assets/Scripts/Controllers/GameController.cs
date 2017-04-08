@@ -39,9 +39,12 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-        if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31)
+        if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9)
         {
             game.NextTurn();
+
+            if (!updateUI.tutorialNextTurnDone)
+                updateUI.tutorialNextTurnDone = true;
         }
 
         // Update the main screen UI (Icons and date)
