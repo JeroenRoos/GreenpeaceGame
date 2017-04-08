@@ -15,6 +15,7 @@ public class GameEvent
     public string[] choicesEnglish { get; private set; }
     public bool isUnique { get; private set; }
     public bool isGlobal { get; private set; }
+    public int eventStartChance { get; private set; } //chance to actually get the event when rolled (0-100)
     public int eventIdleDuration { get; private set; } //in months
     public int eventCooldown { get; private set; } //in months
     public int[] eventDuration { get; private set; } //in months
@@ -22,8 +23,9 @@ public class GameEvent
     public int onEventStartTemporaryConsequenceDuration { get; private set; }
     public double[] eventChoiceMoneyCost { get; private set; }
     public double[] eventChoiceMoneyReward { get; private set; }
+    public int[] eventChoiceEventStartChanceModifier { get; private set; }
     public string[] possibleRegions { get; private set; }
-    public int[] successChance { get; private set; }
+    public int[] successChance { get; private set; } //chance to succesfully perform the choice
     public int[] increasedConsequencesModifierChance { get; private set; }
     public string[] possibleSectors { get; private set; }
 
@@ -47,50 +49,6 @@ public class GameEvent
     public bool[] pickedSectors { get; private set; }
 
     private GameEvent() { }
-    /*public GameEvent(string name, string[] description, int[] eventDuration, string[,] choices, SectorStatistics[] consequences,
-                    SectorStatistics onEventStartConsequence, double[] eventChoiceMoneyCost, int eventCooldown, bool isUnique)
-    {
-        this.name = name;
-        this.description = description;
-        this.eventDuration = eventDuration;
-        this.choicesDutch = new string[3] { choices[0, 0], choices[0, 1], choices[0, 2] };
-        this.choicesEnglish = new string[3] { choices[1, 0], choices[1, 1], choices[1, 2] };
-        this.consequences = consequences;
-        this.onEventStartConsequence = onEventStartConsequence;
-        this.eventChoiceMoneyCost = eventChoiceMoneyCost;
-        this.eventCooldown = eventCooldown;
-        this.isUnique = isUnique;
-
-        isActive = false;
-        isIdle = false;
-        isFinished = true;
-        pickedChoiceNumber = 0;
-        pickedChoiceStartYear = 0;
-        pickedChoiceStartMonth = 0;
-        lastCompleted = 0;
-        idleTurnsLeft = 0;
-        possibleRegions = new string[] { "Noord Nederland", "Oost Nederland", "Zuid Nederland", "West Nederland" };
-        isGlobal = false;
-        successChance = new int[] { 100, 100, 100 };
-        increasedConsequencesModifierChance = new int[] { 0, 0, 0 };
-
-        //temporary anti error code
-        eventIdleDuration = 100;
-        onEventStartMonth = 0;
-        onEventStartYear = 0;
-        onEventStartTemporaryConsequence = new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0);
-        temporaryConsequencesDuration = new int[] { 0, 0, 0 };
-        temporaryConsequences = new RegionStatistics[] {
-            new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0),
-            new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0),
-            new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0) };
-        
-        duringEventProgressConsequences = new RegionStatistics[] {
-            new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0),
-            new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0),
-            new RegionStatistics(0, 0, 0, new Pollution(0, 0, 0, 0, 0, 0), 0, 0) };
-    }
-    */
     
     public void StartEvent(int currentYear, int currentMonth)
     {
@@ -128,6 +86,7 @@ public class GameEvent
     public void CompleteEvent(Game game)
     {
         isActive = false;
+        eventStartChance += eventChoiceEventStartChanceModifier[pickedChoiceNumber];
         game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
         lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
     }

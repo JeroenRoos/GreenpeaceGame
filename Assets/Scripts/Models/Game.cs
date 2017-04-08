@@ -48,7 +48,7 @@ public class Game
         LoadGameEvents();
         gameStatistics.UpdateRegionalAvgs(this);
 
-        /*foreach (Region region in regions.Values)
+        /*foreach (Region region in regions)
         {
             foreach (RegionSector sector in region.sectors)
             {
