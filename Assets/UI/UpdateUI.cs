@@ -127,6 +127,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasOrganizationPopup;
     public Canvas canvasTimelinePopup;
     public Canvas canvasRegioPopup;
+    public Canvas canvasTutorial;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -134,7 +135,11 @@ public class UpdateUI : MonoBehaviour
     private string txtTooltipAgriculture;
     private string txtTooltipHouseholds;
     private string dropdownChoice;
-    // string txttooltipPollution;
+
+    // Tutorial
+    public Text txtTurorialStep1;
+    public Text txtTutorialStep1BtnText;
+
 
     private Vector3 v3Tooltip;
 
@@ -151,6 +156,9 @@ public class UpdateUI : MonoBehaviour
     private bool btnMenuCheck;
     private bool btnTimelineCheck;
     public bool popupActive;
+    public bool tutorialActive;
+    private bool tutorialNoTooltip;
+    private bool tutorialStep2;
     private bool tooltipActive;
     private bool regionHouseholdsCheck;
     private bool regionAgricultureCheck;
@@ -166,11 +174,15 @@ public class UpdateUI : MonoBehaviour
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
         taal = game.language;
+        tutorialActive = true;
+        tutorialNoTooltip = true;
+        StartCoroutine(initTutorialText());
     }
 
     void Update()
     {
-        popupController();
+        if (!tutorialActive)
+            popupController();
 
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
         {
@@ -196,6 +208,26 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Init UI Elements
+    IEnumerator initTutorialText()
+    {
+        string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " + 
+                "De inwoners moeten begrijpen dat een groen land belangrijk is.", "Welcome! The government has given your organisation the task to make " +
+                "The Netherlands an country aware of the environment. The inhabitants need to understand the importance of a green country. "};
+        string[] btnText = { "Verder", "Next" };
+
+        txtTurorialStep1.text = step1[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
+
+        while (!tutorialStep2)
+            yield return null;
+
+        string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. Zoals je kunt zien zitten we nu in 2030. " +
+                "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. As you can see the current year is 2030. " +
+                "This means you have 30 years to reach this goal. "};
+        txtTurorialStep1.text = step2[taal];
+
+    }
+
     void initButtons()
     {
         btnMenu.GetComponent<Button>();
@@ -245,6 +277,9 @@ public class UpdateUI : MonoBehaviour
 
         canvasRegioPopup.GetComponent<Canvas>();
         canvasRegioPopup.gameObject.SetActive(false);
+
+        canvasTutorial.GetComponent<Canvas>();
+        canvasTutorial.gameObject.SetActive(true);
     }
 
     public void LinkGame(Game game)
@@ -341,13 +376,13 @@ public class UpdateUI : MonoBehaviour
 
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
-        if (checkTooltip() && !popupActive)
+        if (checkTooltip() && !popupActive && !tutorialNoTooltip)
         {
             lblReqt.x = v3Tooltip.x + 10; lblReqt.y = v3Tooltip.z + 40;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
         }
 
-        if (regionHouseholdsCheck && popupActive)
+        if (regionHouseholdsCheck && popupActive && !tutorialNoTooltip)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 70;
@@ -355,14 +390,14 @@ public class UpdateUI : MonoBehaviour
             updateRegionSectors();
             
         }
-        else if (regionAgricultureCheck && popupActive)
+        else if (regionAgricultureCheck && popupActive && !tutorialNoTooltip)
         {
             v3Tooltip = emptybtnHoverAgriculture.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 150;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipAgriculture + "</color>", tooltipStyle);
             updateRegionSectors();
         }
-        else if (regionCompanyCheck && popupActive)
+        else if (regionCompanyCheck && popupActive && !tutorialNoTooltip)
         {
             v3Tooltip = emptybtnHoverCompanies.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 270;
@@ -1035,7 +1070,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for activating popups
     public void btnTimelineClick()
     {
-        if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive)
+        if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive && !tutorialActive)
         {
             canvasTimelinePopup.gameObject.SetActive(true);
             popupActive = true;
@@ -1044,7 +1079,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnOrganizationClick()
     {
-        if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive)
+        if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive && !tutorialActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -1053,7 +1088,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnMenuClick()
     {
-        if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
+        if (!canvasMenuPopup.gameObject.activeSelf && !popupActive && !tutorialActive)
         {
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -1355,4 +1390,13 @@ public class UpdateUI : MonoBehaviour
         canvasMenuPopup.gameObject.SetActive(false);
         popupActive = false;
     }
+
+    #region Code for controlling Tutorial buttons presses
+    public void turorialButtonPress(int index)
+    {
+        if (index == 1)
+            tutorialStep2 = true;
+    }
+    #endregion
+
 }
