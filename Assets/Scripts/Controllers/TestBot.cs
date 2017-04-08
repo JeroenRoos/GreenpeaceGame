@@ -83,6 +83,7 @@ public class TestBot : MonoBehaviour
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
         gameController = GetComponent<GameController>();
+        EventManager.NewGame += CheckStatus;
         EventManager.ChangeMonth += CheckStatus;
         EventManager.ShowEvent  += EventAction;
 
@@ -109,7 +110,7 @@ public class TestBot : MonoBehaviour
             Debug.Log("TURN: " + turnCounter);
 
             showStatistics();
-            
+
             foreach (Region region in gameController.game.regions.Values)
             {
                 bool isAvailable = CheckIfActionAvailable(region);
@@ -161,17 +162,31 @@ public class TestBot : MonoBehaviour
 
     private void RandomPlaystyle(Region region)
     {
-        doAction(region, region.actions[gameController.game.rnd.Next(0, region.actions.Count)]);
+        int currentMonth = gameController.game.currentYear * 12 + gameController.game.currentMonth;
+        List<RegionAction> tempList = new List<RegionAction>();
+        foreach (RegionAction ra in region.actions)
+        {
+            if ((ra.actionMoneyCost < gameController.game.gameStatistics.money) &&
+                (ra.lastCompleted + ra.actionCooldown <= currentMonth || ra.lastCompleted == 0) &&
+                !(ra.isUnique && ra.lastCompleted > 0))
+                tempList.Add(ra);
+        }
+
+        doAction(region, tempList[gameController.game.rnd.Next(0, tempList.Count)]);
     }
 
     private void IncomePlaystyle(Region region)
     {
         bool actionStarted = false;
 
-        if (nationalPollution > 60 && !actionStarted)
+        //Regions that fall behind in pollution
+        if ((nationalPollution > 60 || nationalPollution < region.statistics.avgPollution * 0.8) && !actionStarted)
             actionStarted = getLowestPollutionConsequenceAction(region);
 
-        if (region.statistics.income < 1000 && !actionStarted)
+        if ((nationalPollution > 60 || nationalPollution < region.statistics.avgPollution * 0.8) && !actionStarted)
+            actionStarted = getHighestEcoAwarenessConsequenceAction(region);
+
+        if (region.statistics.income < 1500 && !actionStarted)
             actionStarted = getHighestIncomeConsequenceAction(region);
 
         if (region.statistics.prosperity < 20 && !actionStarted)
@@ -181,6 +196,9 @@ public class TestBot : MonoBehaviour
             actionStarted = getHighestEcoAwarenessConsequenceAction(region);
 
         if (region.statistics.avgPollution > 0 && !actionStarted)
+            actionStarted = getLowestPollutionConsequenceAction(region);
+
+        if (region.statistics.happiness > 0 && !actionStarted)
             actionStarted = getLowestPollutionConsequenceAction(region);
 
         if (!actionStarted)
@@ -191,8 +209,14 @@ public class TestBot : MonoBehaviour
     {
         bool actionStarted = false;
 
-        if (nationalPollution > 60 && !actionStarted)
+        if ((nationalPollution > 60 || nationalPollution < region.statistics.avgPollution * 0.8) && !actionStarted)
             actionStarted = getLowestPollutionConsequenceAction(region);
+
+        if ((nationalPollution > 60 || nationalPollution < region.statistics.avgPollution * 0.8) && !actionStarted)
+            actionStarted = getHighestEcoAwarenessConsequenceAction(region);
+        
+        if ((region.statistics.income < 400 && !actionStarted || nationalPollution > region.statistics.avgPollution * 0.8) && !actionStarted)
+            actionStarted = getHighestIncomeConsequenceAction(region);
 
         if (region.statistics.avgPollution > 0 && !actionStarted)
             actionStarted = getLowestPollutionConsequenceAction(region);
@@ -203,8 +227,11 @@ public class TestBot : MonoBehaviour
         if (region.statistics.prosperity < 20 && !actionStarted)
             actionStarted = getHighestProsperityConsequenceAction(region);
 
-        if (region.statistics.income < 400 && !actionStarted)
+        if (region.statistics.income < 1500 && !actionStarted)
             actionStarted = getHighestIncomeConsequenceAction(region);
+
+        if (region.statistics.happiness > 0 && !actionStarted)
+            actionStarted = getLowestPollutionConsequenceAction(region);
 
         if (!actionStarted)
             actionStarted = getHighestMoneyAction(region);
@@ -219,7 +246,8 @@ public class TestBot : MonoBehaviour
         for (int i = 0; i < region.actions.Count; i++)
         {
             if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
-                (region.actions[i].lastCompleted + region.actions[i].lastCompleted <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].actionMoneyReward > highestMoneyIndex))
             {
                 highestMoneyIndex = i;
@@ -242,7 +270,8 @@ public class TestBot : MonoBehaviour
         for (int i = 0; i < region.actions.Count; i++)
         {
             if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
-                (region.actions[i].lastCompleted + region.actions[i].lastCompleted <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].consequences.income > highestIncomeIndex))
             {
                 highestIncomeIndex = i;
@@ -265,7 +294,8 @@ public class TestBot : MonoBehaviour
         for (int i = 0; i < region.actions.Count; i++)
         {
             if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
-                (region.actions[i].lastCompleted + region.actions[i].lastCompleted <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].consequences.prosperity > highestProsperityIndex))
             {
                 highestProsperityIndex = i;
@@ -288,7 +318,8 @@ public class TestBot : MonoBehaviour
         for (int i = 0; i < region.actions.Count; i++)
         {
             if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
-                (region.actions[i].lastCompleted + region.actions[i].lastCompleted <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].consequences.ecoAwareness > highestEcoAwarenessIndex))
             {
                 highestEcoAwarenessIndex = i;
@@ -298,6 +329,30 @@ public class TestBot : MonoBehaviour
 
         if (actionFound)
             doAction(region, region.actions[highestEcoAwarenessIndex]);
+
+        return actionFound;
+    }
+
+    private bool getHighestHappinessConsequencesAction(Region region)
+    {
+        int highestHappinessIndex = 0;
+        bool actionFound = false;
+        int currentMonth = gameController.game.currentYear * 12 + gameController.game.currentMonth;
+
+        for (int i = 0; i < region.actions.Count; i++)
+        {
+            if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
+                (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
+                (region.actions[i].consequences.happiness > highestHappinessIndex))
+            {
+                highestHappinessIndex = i;
+                actionFound = true;
+            }
+        }
+
+        if (actionFound)
+            doAction(region, region.actions[highestHappinessIndex]);
 
         return actionFound;
     }
@@ -313,7 +368,8 @@ public class TestBot : MonoBehaviour
         for (int i = 0; i < region.actions.Count; i++)
         {
             if (region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money &&
-                (region.actions[i].lastCompleted + region.actions[i].lastCompleted <= currentMonth || region.actions[i].lastCompleted == 0))
+                (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
+                !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0))
             {
                 double pollutionSum = 0;
 

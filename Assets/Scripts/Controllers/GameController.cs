@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour
         westNederland.GetComponent<RegionController>().Init(this);
 
         game.Init(eventObject, this);
+        
+        EventManager.CallNewGame();
     }
 
     // Update is called once per frame

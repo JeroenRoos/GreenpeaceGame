@@ -28,6 +28,11 @@ public class SectorStatistics
     public void ModifyEcoAwareness(double changeValue)
     {
         ecoAwareness += changeValue;
+        if (ecoAwareness > 100)
+        {
+            changeValue = ecoAwareness - 100;
+            ecoAwareness = 100;
+        }
 
         double pollutionChangeValue = 0 - (changeValue / 20);
         pollution.ChangeAirPollutionMutation(pollutionChangeValue);

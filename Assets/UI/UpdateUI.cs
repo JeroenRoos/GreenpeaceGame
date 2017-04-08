@@ -1023,10 +1023,16 @@ public class UpdateUI : MonoBehaviour
     private void initDropDownRegion()
     {
         dropdownRegio.ClearOptions();
+        int currentMonth = game.currentYear * 12 + game.currentMonth;
 
         foreach (RegionAction action in regio.actions)
         {
-            dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.name[taal] });
+            if (!action.isActive &&
+                (action.lastCompleted + action.actionCooldown <= currentMonth || action.lastCompleted == 0) &&
+                !(action.isUnique && action.lastCompleted > 0))
+            {
+                dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.name[taal] });
+            }
         }
     }
 
