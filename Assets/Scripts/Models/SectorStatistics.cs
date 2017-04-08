@@ -29,7 +29,7 @@ public class SectorStatistics
     {
         ecoAwareness += changeValue;
 
-        double pollutionChangeValue = 0 - (changeValue / 10);
+        double pollutionChangeValue = 0 - (changeValue / 20);
         pollution.ChangeAirPollutionMutation(pollutionChangeValue);
         pollution.ChangeNaturePollutionMutation(pollutionChangeValue);
         pollution.ChangeWaterPollutionMutation(pollutionChangeValue);
@@ -39,8 +39,8 @@ public class SectorStatistics
     {
         prosperity += changeValue;
 
-        double happinessChangeValue = changeValue / 10;
-        ModifyHappiness(happinessChangeValue);
+        double incomeChangeValue = changeValue * 5;
+        ModifyIncome(incomeChangeValue);
     }
 
     public void mutateTimeBasedStatistics()

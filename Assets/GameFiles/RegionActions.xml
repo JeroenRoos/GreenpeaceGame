@@ -12,7 +12,7 @@
       </description>
       <actionMoneyCost>5000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>3</actionDuration>
+      <actionDuration>2</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -23,7 +23,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>12</actionCooldown>
+      <actionCooldown>6</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -103,7 +103,7 @@
       </description>
       <actionMoneyCost>10000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>6</actionDuration>
+      <actionDuration>3</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -114,7 +114,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>12</actionCooldown>
+      <actionCooldown>8</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -133,7 +133,7 @@
         </pollution>
       </actionCosts>
       <consequences>
-        <income>20</income>
+        <income>10</income>
         <happiness>0.5</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>1</prosperity>
@@ -194,7 +194,7 @@
       </description>
       <actionMoneyCost>10000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>4</actionDuration>
+      <actionDuration>3</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -224,7 +224,7 @@
         </pollution>
       </actionCosts>
       <consequences>
-        <income>-20</income>
+        <income>-40</income>
         <happiness>0</happiness>
         <ecoAwareness>2</ecoAwareness>
         <prosperity>0</prosperity>
@@ -296,7 +296,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>24</actionCooldown>
+      <actionCooldown>12</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -374,9 +374,9 @@
         <string>Verhoog de welvaart door meer te investeren in de economie.</string>
         <string>Increase the prosperity by investing more in the economy</string>
       </description>
-      <actionMoneyCost>5000</actionMoneyCost>
+      <actionMoneyCost>8000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>6</actionDuration>
+      <actionDuration>2</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -387,7 +387,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>12</actionCooldown>
+      <actionCooldown>6</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -465,9 +465,9 @@
         <string>Verhoog de tevrenheid door ideeën van het volk te implementeren.</string>
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
-      <actionMoneyCost>5000</actionMoneyCost>
+      <actionMoneyCost>7000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>3</actionDuration>
+      <actionDuration>2</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -478,7 +478,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>12</actionCooldown>
+      <actionCooldown>6</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -497,8 +497,8 @@
         </pollution>
       </actionCosts>
       <consequences>
-        <income>0</income>
-        <happiness>1</happiness>
+        <income>-20</income>
+        <happiness>2</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <pollution>
@@ -506,9 +506,9 @@
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
-          <airPollutionIncrease>0.5</airPollutionIncrease>
-          <naturePollutionIncrease>0.5</naturePollutionIncrease>
-          <waterPollutionIncrease>0.5</waterPollutionIncrease>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
       <temporaryConsequences>
@@ -556,9 +556,9 @@
         <string>Neem maatregelen tegen de luchtvervuiling.</string>
         <string>Take actions against the airpollution.</string>
       </description>
-      <actionMoneyCost>5000</actionMoneyCost>
+      <actionMoneyCost>10000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>3</actionDuration>
+      <actionDuration>2</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -569,7 +569,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>12</actionCooldown>
+      <actionCooldown>6</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -588,7 +588,7 @@
         </pollution>
       </actionCosts>
       <consequences>
-        <income>0</income>
+        <income>-10</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
@@ -597,7 +597,7 @@
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
-          <airPollutionIncrease>-1.5</airPollutionIncrease>
+          <airPollutionIncrease>-2</airPollutionIncrease>
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
@@ -647,9 +647,9 @@
         <string>Neem maatregelen tegen de natuurvervuiling.</string>
         <string>Take actions against the nature pollution.</string>
       </description>
-      <actionMoneyCost>5000</actionMoneyCost>
+      <actionMoneyCost>10000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>3</actionDuration>
+      <actionDuration>2</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -660,7 +660,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>12</actionCooldown>
+      <actionCooldown>6</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -679,7 +679,7 @@
         </pollution>
       </actionCosts>
       <consequences>
-        <income>0</income>
+        <income>-10</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
@@ -689,7 +689,7 @@
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
           <airPollutionIncrease>0</airPollutionIncrease>
-          <naturePollutionIncrease>-1.5</naturePollutionIncrease>
+          <naturePollutionIncrease>-2</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
@@ -738,9 +738,9 @@
         <string>Neem maatregelen tegen de watervervuiling.</string>
         <string>Take actions against the water pollution.</string>
       </description>
-      <actionMoneyCost>5000</actionMoneyCost>
+      <actionMoneyCost>10000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>3</actionDuration>
+      <actionDuration>2</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
@@ -751,7 +751,7 @@
         <boolean>false</boolean>
         <boolean>false</boolean>
       </pickedSectors>
-      <actionCooldown>12</actionCooldown>
+      <actionCooldown>6</actionCooldown>
       <isUnique>false</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
@@ -770,7 +770,7 @@
         </pollution>
       </actionCosts>
       <consequences>
-        <income>0</income>
+        <income>-10</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
@@ -781,7 +781,7 @@
           <waterPollution>0</waterPollution>
           <airPollutionIncrease>0</airPollutionIncrease>
           <naturePollutionIncrease>0</naturePollutionIncrease>
-          <waterPollutionIncrease>-1.5</waterPollutionIncrease>
+          <waterPollutionIncrease>-2</waterPollutionIncrease>
         </pollution>
       </consequences>
       <temporaryConsequences>
@@ -829,9 +829,9 @@
         <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
         <string>Reduce the current pollution in the chosen sectors with 5%.</string>
       </description>
-      <actionMoneyCost>20000</actionMoneyCost>
+      <actionMoneyCost>25000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
-      <actionDuration>3</actionDuration>
+      <actionDuration>2</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
         <string>Bedrijven</string>
