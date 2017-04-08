@@ -191,15 +191,16 @@ public class UpdateUI : MonoBehaviour
         taal = game.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = false;
+        tutorialActive = true;
 
-        if (tooltipActive)
+        if (tutorialActive)
         {
             tutorialNoTooltip = true;
             regionWestActivated = false;
             imgTutorialStep2Highlight1.enabled = false;
             imgTutorialStep2Highlight2.enabled = false;
             tutorialIndex = 1;
+            canvasTutorial.gameObject.SetActive(true);
             StartCoroutine(initTutorialText());
         }
         else
@@ -764,6 +765,7 @@ public class UpdateUI : MonoBehaviour
             if (region.name[0] == "West Nederland")
             {
                 startRegionPopup(region);
+                regionWestActivated = true;
                 StartCoroutine(tutorialRegionPopup());
             }
         }
@@ -1068,7 +1070,7 @@ public class UpdateUI : MonoBehaviour
                 {
                     btnDoActionRegionMenu.interactable = false;
                     string[] error2 = { "Niet genoeg geld om de actie te doen", "You don't have enough money for this action" };
-                    txtRegionActionNoMoney.text = "Niet genoeg geld om de actie te doen...";
+                    txtRegionActionNoMoney.text = error2[taal];
                 }
             }
         }
