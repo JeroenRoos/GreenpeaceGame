@@ -20,6 +20,21 @@ public class Pollution
 
     public Pollution() { }
     
+    public void ChangeAirPollution(double changeValue)
+    {
+        airPollution += changeValue;
+    }
+
+    public void ChangeNaturePollution(double changeValue)
+    {
+        naturePollution += changeValue;
+    }
+
+    public void ChangeWaterPollution(double changeValue)
+    {
+        waterPollution += changeValue;
+    }
+
     public void ChangeAirPollutionMutation(double changeValue)
     {
         airPollutionIncrease += changeValue;

@@ -25,6 +25,10 @@ public class RegionSector
             this.statistics.ModifyHappiness(statistics.happiness);
             this.statistics.ModifyEcoAwareness(statistics.ecoAwareness);
             this.statistics.ModifyProsperity(statistics.prosperity);
+            
+            this.statistics.pollution.ChangeAirPollution(statistics.pollution.airPollution);
+            this.statistics.pollution.ChangeNaturePollution(statistics.pollution.naturePollution);
+            this.statistics.pollution.ChangeWaterPollution(statistics.pollution.waterPollution);
 
             //temporary methods (incomplete)
             this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
