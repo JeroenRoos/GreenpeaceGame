@@ -300,7 +300,10 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialCheckActionDone && canvasRegioPopup.gameObject.activeSelf)
             yield return null;
 
-        
+        canvasTutorial.gameObject.SetActive(true);
+        string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. ",
+            "At the bottom of your screen you can go to the Organization menu by pressing the button. " };
+        txtTurorialStep1.text = step5[taal];
     }
 
     void initButtons()
