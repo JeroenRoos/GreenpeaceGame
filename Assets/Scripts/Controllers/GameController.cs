@@ -33,10 +33,22 @@ public class GameController : MonoBehaviour
         oostNederland.GetComponent<RegionController>().Init(this);
         zuidNederland.GetComponent<RegionController>().Init(this);
         westNederland.GetComponent<RegionController>().Init(this);
-
-        game.Init(eventObject, this);
-        
+                
         EventManager.CallNewGame();
+
+        //SaveGame();
+    }
+
+    public void SaveGame()
+    {
+        GameContainer gameContainer = new GameContainer(game);
+        gameContainer.Save();
+    }
+
+    public void LoadGame()
+    {
+        GameContainer gameContainer = GameContainer.Load();
+        game = gameContainer.game;
     }
 
     // Update is called once per frame
@@ -44,6 +56,9 @@ public class GameController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31)
         {
             game.NextTurn();
+            UpdateEvents();
+            game.gameStatistics.UpdateRegionalAvgs(game);
+            EventManager.CallChangeMonth();
         }
 
         // Update the main screen UI (Icons and date)
@@ -59,6 +74,42 @@ public class GameController : MonoBehaviour
 
         UpdateRegionColor();
     }
+
+    private void UpdateEvents()
+    {
+        int activeCount = game.getActiveEventCount();
+
+        //voor demo vertical slice 1 active event max
+        /*int eventChance = 100;
+        int eventChanceReduction = 100;
+
+        while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
+        {
+            StartNewEvent();
+            EventManager.CallShowEvent();
+
+            eventChance -= eventChanceReduction;
+        }*/
+
+        if (activeCount < 1)
+        {
+            if (game.PossibleEventCount() > 0)
+            {
+                Region pickedRegion = game.PickEventRegion();
+                GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
+                pickedEvent.pickEventSector(game.rnd);
+                pickedEvent.StartEvent(game.currentYear, game.currentMonth);
+                pickedRegion.AddGameEvent(pickedEvent);
+
+                GameObject eventInstance = GameController.Instantiate(eventObject);
+                eventInstance.GetComponent<EventObjectController>().Init(this, pickedRegion, pickedEvent);
+
+                EventManager.CallShowEvent();
+            }
+        }
+
+    }
+    
 
     private void updateUIMainScreen()
     {

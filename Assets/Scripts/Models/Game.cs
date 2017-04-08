@@ -12,7 +12,6 @@ using System.IO;
 
 public class Game
 {
-    public GameController gameController;
 
     //All Regions and region types planned for complete game
     public int currentYear { get; private set; }
@@ -25,9 +24,6 @@ public class Game
 
     //Game statistics
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
-
-    //public events declareren (unity)
-    public GameObject eventObject;
 
     public Game()
     {
@@ -107,12 +103,6 @@ public class Game
         }
     }
 
-    public void Init(GameObject eventObject, GameController gameController)
-    {
-        this.eventObject = eventObject;
-        this.gameController = gameController;
-    }
-
     public void ChangeLanguage(string language)
     {
         if (language == "english")
@@ -129,8 +119,6 @@ public class Game
 
         if (isNewYear)
             ExecuteNewYearMethods();
-        gameStatistics.UpdateRegionalAvgs(this);
-        EventManager.CallChangeMonth();
     }
 
     public bool UpdateCurrentMonthAndYear()
@@ -150,27 +138,8 @@ public class Game
         CompletefinishedActions();
         UpdateRegionEvents();
         MutateMonthlyStatistics();
-
-        int activeCount = getActiveEventCount();
-
-        //voor demo vertical slice 1 active event max
-        /*int eventChance = 100;
-        int eventChanceReduction = 100;
-
-        while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
-        {
-            StartNewEvent();
-            EventManager.CallShowEvent();
-
-            eventChance -= eventChanceReduction;
-        }*/
-        //voor vertical slice
-        if (activeCount < 1)
-        {
-            StartNewEvent();
-            EventManager.CallShowEvent();
-        }
     }
+
     public void ExecuteNewYearMethods() { }
 
     public void MutateMonthlyStatistics()
@@ -271,52 +240,59 @@ public class Game
         }
         return activeCount;
     }
-    
-    public void StartNewEvent()
+
+    public int PossibleEventCount()
     {
-        List<GameEvent> possibleEvents = GetPossibleEvents();
-
-        if (possibleEvents.Count > 0)
+        int possibleEventCount = 0;
+        foreach (GameEvent gameEvent in events)
         {
-            int pickedEvent = PickEvent(possibleEvents.Count);
-            string pickedRegion = PickEventRegion();
-            events[pickedEvent].pickEventSector(rnd);
-
-            events[pickedEvent].StartEvent(currentYear, currentMonth);
-            regions[pickedRegion].AddGameEvent(events[pickedEvent]);
-            GameObject eventInstance = GameController.Instantiate(eventObject);
-            eventInstance.GetComponent<EventObjectController>().Init(gameController, regions[pickedRegion], events[pickedEvent]);
+            if (!gameEvent.isActive || !gameEvent.isIdle)
+                possibleEventCount++;
         }
+
+        return possibleEventCount;
     }
 
-    public List<GameEvent> GetPossibleEvents()
+    public GameEvent GetPickedEvent(Region region)
     {
         List<GameEvent> possibleEvents = new List<GameEvent>();
         foreach (GameEvent gameEvent in events)
         {
             if (!gameEvent.isActive || !gameEvent.isIdle)
-                possibleEvents.Add(gameEvent);
+            {
+                foreach (string possibleRegion in gameEvent.possibleRegions)
+                {
+                    if (possibleRegion == region.name[0])
+                    {
+                        possibleEvents.Add(gameEvent);
+                        break;
+                    }
+                }
+            }
         }
 
-        return possibleEvents;
+        return possibleEvents[rnd.Next(0, possibleEvents.Count)];
     }
 
-    public int PickEvent(int availableEventsCount)
+    public Region PickEventRegion()
     {
-        int pickedEvent = rnd.Next(0, availableEventsCount);
-        return pickedEvent;
-    }
+        List<Region> possibleRegions = new List<Region>();
+        foreach (Region region in regions.Values)
+        {
+            bool isPossible = true;
+            foreach (GameEvent gameEvent in region.inProgressGameEvents)
+            {
+                if (gameEvent.isActive || gameEvent.isIdle)
+                {
+                    isPossible = false;
+                    break;
+                }
+            }
+            if (isPossible)
+                possibleRegions.Add(region);
+        }
 
-    public string PickEventRegion()
-    {
-        int x = rnd.Next(0, regions.Keys.Count);
-        if (x == 0)
-            return "Noord Nederland";
-        else if (x == 1)
-            return "Oost Nederland";
-        else if (x == 2)
-            return "Zuid Nederland";
-        else
-            return "West Nederland";
+        int value = rnd.Next(0, possibleRegions.Count);
+        return possibleRegions[value];
     }
 }
