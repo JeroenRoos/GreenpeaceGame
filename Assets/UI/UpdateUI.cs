@@ -162,7 +162,6 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //Debug.Log("Start UpdateUI");
         initButtons();
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
@@ -489,8 +488,8 @@ public class UpdateUI : MonoBehaviour
     #region Update UI in Tooltips
     public void updateMoneyTooltip(double income)
     {
-        string[] tip = { "Inkomen: " + income,
-            "Income: " + income };
+        string[] tip = { "Inkomen: " + income.ToString("0"),
+            "Income: " + income.ToString("0") };
         txtTooltip = tip[taal];                 //"Donaties: " + donations + "\nInkomen: " + income;
     }
 
@@ -629,6 +628,7 @@ public class UpdateUI : MonoBehaviour
                 "\nkans op succes in dat onderdeel. 1 vakje is 10000", "You can invest some of your budget in your " +
                 "own organization. If you invest more in one of the segments, you have a higher" + 
                 "chance of success. One block equals 10000" };
+
         txtBigDescription.text = big[taal];
         txtColumnLeft.text = left[taal];
         txtColumnRight.text = right[taal];
@@ -922,22 +922,26 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
 
+        if (checkboxHouseholds)
+            checkboxRegionHouseholds.isOn = false;
+        if (checkboxAgriculture)
+            checkboxRegionAgriculture.isOn = false;
+        if (checkboxCompanies)
+            checkboxRegionCompanies.isOn = false;
+
         for (int i = 0; i < action.possibleSectors.Length; i++)
         {
             if (action.possibleSectors[i] == "Huishoudens")
             {
                 checkboxRegionHouseholds.gameObject.SetActive(true);
-                checkboxRegionHouseholds.isOn = false;
             }
             if (action.possibleSectors[i] == "Bedrijven")
             {
                 checkboxRegionAgriculture.gameObject.SetActive(true);
-                checkboxRegionAgriculture.isOn = false;
             }
             if (action.possibleSectors[i] == "Landbouw")
             {
                 checkboxRegionCompanies.gameObject.SetActive(true);
-                checkboxRegionCompanies.isOn = false;
             }
         }
     }
@@ -1006,9 +1010,24 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
-        checkboxHouseholds = false;
-        checkboxCompanies = false;
-        checkboxAgriculture = false;
+
+        if (!checkboxHouseholds)
+        {
+            checkboxRegionHouseholds.isOn = true;
+            //checkboxHouseholds = true;
+        }
+
+        if (!checkboxAgriculture)
+        {
+            checkboxRegionAgriculture.isOn = true;
+            //checkboxAgriculture = true;
+        }
+
+        if (!checkboxCompanies)
+        {
+            checkboxRegionCompanies.isOn = true;
+            //checkboxCompanies = true;
+        }
     }
     #endregion
 
@@ -1296,31 +1315,43 @@ public class UpdateUI : MonoBehaviour
 
     public void valueChangedHouseholds()
     {
+        Debug.Log("Value of Households has changed!");
+
         if (!checkboxHouseholds)
             checkboxHouseholds = true;
         else
             checkboxHouseholds = false;
 
-        Debug.Log(checkboxHouseholds);
+        Debug.Log("Households: " + checkboxHouseholds);
     }
 
     public void valueChangedAgriculture()
     {
+        Debug.Log("Value of Agriculture has changed!");
+
         if (!checkboxAgriculture)
             checkboxAgriculture = true;
         else
             checkboxAgriculture = false;
 
-        Debug.Log(checkboxAgriculture);
+        Debug.Log("Agriculture: " + checkboxAgriculture);
     }
 
     public void valueChangedCompanies()
     {
+        Debug.Log("Value of Companies has changed!");
+
         if (!checkboxCompanies)
             checkboxCompanies = true;
         else
             checkboxCompanies = false;
 
-        Debug.Log(checkboxCompanies);
+        Debug.Log("Companies: " + checkboxCompanies);
+    }
+
+    public void btnResumeMenu()
+    {
+        canvasMenuPopup.gameObject.SetActive(false);
+        popupActive = false;
     }
 }
