@@ -206,7 +206,7 @@ public class UpdateUI : MonoBehaviour
         taal = game.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = false;
+        tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
