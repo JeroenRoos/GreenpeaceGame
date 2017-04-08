@@ -14,6 +14,7 @@ public class UpdateUI : MonoBehaviour
     Region regio;
     RegionAction regioAction;
     Game game;
+    public int tutorialIndex;
 
     public Dropdown dropdownRegio;
 
@@ -139,7 +140,12 @@ public class UpdateUI : MonoBehaviour
     // Tutorial
     public Text txtTurorialStep1;
     public Text txtTutorialStep1BtnText;
-
+    public Image imgTutorialStep2Highlight1;
+    public Image imgTutorialStep2Highlight2;
+    public Image imgTutorialRegion;
+    public Text txtTutorialRegion;
+    public Text txtTurorialReginoBtnText;
+    public Button btnTutorialRegion;
 
     private Vector3 v3Tooltip;
 
@@ -156,9 +162,18 @@ public class UpdateUI : MonoBehaviour
     private bool btnMenuCheck;
     private bool btnTimelineCheck;
     public bool popupActive;
+
     public bool tutorialActive;
     private bool tutorialNoTooltip;
     private bool tutorialStep2;
+    private bool tutorialStep3;
+    private bool tutorialStep4;
+    private bool tutorialStep5;
+    private bool regionWestActivated;
+    private bool tutorialStep6;
+    private bool tutorialStep7;
+    private bool tutorialCheckActionDone;
+
     private bool tooltipActive;
     private bool regionHouseholdsCheck;
     private bool regionAgricultureCheck;
@@ -174,14 +189,36 @@ public class UpdateUI : MonoBehaviour
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
         taal = game.language;
-        tutorialActive = false;
-        tutorialNoTooltip = false;
-        //StartCoroutine(initTutorialText());
+
+        // Use this boolean to start the game with or without the tutorial while testing
+        tutorialActive = true;
+
+        if (tutorialActive)
+        {
+            tutorialNoTooltip = true;
+            regionWestActivated = false;
+            imgTutorialStep2Highlight1.enabled = false;
+            imgTutorialStep2Highlight2.enabled = false;
+            tutorialIndex = 1;
+            canvasTutorial.gameObject.SetActive(true);
+            StartCoroutine(initTutorialText());
+        }
+        else
+        {
+            tutorialStep2 = true;
+            tutorialStep3 = true;
+            tutorialStep4 = true;
+            tutorialStep5 = true;
+            tutorialStep6 = true;
+            tutorialStep7 = true;
+            regionWestActivated = true;
+            tutorialCheckActionDone = true;
+        }
     }
 
     void Update()
     {
-        if (!tutorialActive)
+        if (tutorialStep6)
             popupController();
 
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
@@ -221,11 +258,52 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep2)
             yield return null;
 
+
+        //tutorialStep2 = false;
         string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. Zoals je kunt zien zitten we nu in 2030. " +
                 "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. As you can see the current year is 2030. " +
                 "This means you have 30 years to reach this goal. "};
         txtTurorialStep1.text = step2[taal];
+        imgTutorialStep2Highlight1.enabled = true;
+        imgTutorialStep2Highlight2.enabled = true;
 
+        while (!tutorialStep3)
+            yield return null;
+
+        //tutorialStep3 = false;
+        string[] step3 = { "Dit zijn jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het " +
+                "volk besluit om mee te werken met jouw beslissingen. Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Veruiling geeft de vervuiling in het land weer. " + 
+                "Tot slot wordt er getoont hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer. "+ 
+                "Als je meer informatie over de statistieken wil hebben kun je met je muis eroverheen gaan. Er verschijnt dan een tooltip met de extra informatie."
+                , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not" +
+                "A better Eco awareness means less pollution. The pollutions hows the pollution in the country. These icons show the averages from the different regions. " + 
+                "For more informations about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip."};
+        txtTurorialStep1.text = step3[taal];
+        imgTutorialStep2Highlight1.enabled = false;
+        imgTutorialStep2Highlight2.enabled = false;
+
+        while (!tutorialStep4)
+            yield return null;
+
+        //tutorialStep4 = false;
+        string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. " +
+                "Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en werlvaart. Deze statistieken verschillen weer per regio.\nGa naar West-Nederland door op de regio te klikken. "
+                , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West" +
+                "Each region has a income, happiness, pollution, eco-awareness and prosperity. These statistics differ foreach region.\n Go to The Netherlands West by clicking on the region. "};
+        txtTurorialStep1.text = step4[taal];
+
+        while (!tutorialStep5) // && !regionWestActivated)
+            yield return null;
+
+        canvasTutorial.gameObject.SetActive(false);
+
+        while (!tutorialCheckActionDone && canvasRegioPopup.gameObject.activeSelf)
+            yield return null;
+
+        canvasTutorial.gameObject.SetActive(true);
+        string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. ",
+            "At the bottom of your screen you can go to the Organization menu by pressing the button. " };
+        txtTurorialStep1.text = step5[taal];
     }
 
     void initButtons()
@@ -239,7 +317,6 @@ public class UpdateUI : MonoBehaviour
         btnEnergy.GetComponent<Button>();
         btnPollution.GetComponent<Button>();
         btnPopulation.GetComponent<Button>();
-        //btnDoActionRegionMenu.gameObject.SetActive(false);
 
         setBooleans();
     }
@@ -278,8 +355,11 @@ public class UpdateUI : MonoBehaviour
         canvasRegioPopup.GetComponent<Canvas>();
         canvasRegioPopup.gameObject.SetActive(false);
 
-        canvasTutorial.GetComponent<Canvas>();
-        canvasTutorial.gameObject.SetActive(false);
+        if (tutorialActive)
+        {
+            canvasTutorial.GetComponent<Canvas>();
+            canvasTutorial.gameObject.SetActive(true);
+        }
     }
 
     public void LinkGame(Game game)
@@ -376,13 +456,13 @@ public class UpdateUI : MonoBehaviour
 
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
-        if (checkTooltip() && !popupActive && !tutorialNoTooltip)
+        if (checkTooltip() && !popupActive && tutorialStep3)
         {
             lblReqt.x = v3Tooltip.x + 10; lblReqt.y = v3Tooltip.z + 40;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
         }
 
-        if (regionHouseholdsCheck && popupActive && !tutorialNoTooltip)
+        if (regionHouseholdsCheck && popupActive && tutorialStep3)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 70;
@@ -390,14 +470,14 @@ public class UpdateUI : MonoBehaviour
             updateRegionSectors();
             
         }
-        else if (regionAgricultureCheck && popupActive && !tutorialNoTooltip)
+        else if (regionAgricultureCheck && popupActive && tutorialStep3)
         {
             v3Tooltip = emptybtnHoverAgriculture.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 150;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipAgriculture + "</color>", tooltipStyle);
             updateRegionSectors();
         }
-        else if (regionCompanyCheck && popupActive && !tutorialNoTooltip)
+        else if (regionCompanyCheck && popupActive && tutorialStep3)
         {
             v3Tooltip = emptybtnHoverCompanies.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 270;
@@ -683,20 +763,67 @@ public class UpdateUI : MonoBehaviour
     #region Code for the Region Screen
     public void regionClick(Region region)
     {
-        if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-            && !btnMenuCheck && !btnTimelineCheck)
+        if (tutorialActive && tutorialStep5)
         {
-            regio = null;
-            regio = region;
-
-            canvasRegioPopup.gameObject.SetActive(true);
-            popupActive = true;
-
-            dropdownRegio.ClearOptions();
-            dropdownRegio.RefreshShownValue();
-
-            updateRegionScreenUI();
+            if (region.name[0] == "West Nederland")
+            {
+                startRegionPopup(region);
+                regionWestActivated = true;
+                StartCoroutine(tutorialRegionPopup());
+            }
         }
+        else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive)
+        {
+            startRegionPopup(region);
+            imgTutorialRegion.enabled = false;
+            txtTutorialRegion.enabled = false;
+            btnTutorialRegion.gameObject.SetActive(false);
+        }
+    }
+
+    private void startRegionPopup(Region region)
+    {
+        regio = null;
+        regio = region;
+        canvasRegioPopup.gameObject.SetActive(true);
+        popupActive = true;
+        dropdownRegio.ClearOptions();
+        dropdownRegio.RefreshShownValue();
+        updateRegionScreenUI();
+    }
+
+    IEnumerator tutorialRegionPopup()
+    {
+        string[] step1 = { "Elke regio bestaat uit 3 sectoren. Deze sectoren zijn Huishoudens, Landbouw en Bedrijven. De sectoren hebben statistieken voor " +
+                "tevredenheid, vervuiling, milieubewustheid en welvaart. Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. Je kunt deze secor statistieken zien door ." +
+                "met je muis over de sector te hoveren."
+                , "Each region has 3 sectors. These sectors are Households, Agriculture and Companies. These sectors have statistics for happiness, pollution, eco awareness and prosperity. " +
+                "These sector statistics create the averages which are the region statistics. It is important to keep each sector happy. You can view these sector statistics by using your mouse to hover over the sector. "};
+        string[] btnText = { "Verder", "Next" };
+
+        txtTutorialRegion.text = step1[taal];
+        txtTurorialReginoBtnText.text = btnText[taal];
+
+        while (!tutorialStep6)
+            yield return null;
+
+        string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. Je kunt maar 1 actie teglijk doen in een regio. " + 
+                "Sommige acties kunnen ook maar 1 keer of eens in de zoveel tijd gedaan worden. Als je een actie kiest krijg je een aantal gegevens over de actie te zien. Daarnaast kun je kiezen " +
+                "op welke sectoren je de actie invloed uitoefend. Sommige acties kunnen in elke sector gedaan worden, andere in 1 of 2 van de sectoren. Kies nu een actie, keer vervolgens terug naar de landkaart door op de ESC toets te drukken."
+                , "You can do actions in regions. These actions cost money and most of the time also time. You can do 1 action at the time in a region. " +
+                "Soms actions you can only do once, others you can do again after some time. When you chose an action you can see a few statistics about the action. You also have to chosoe in which sectors you want the action to do things. " +
+                "Some actions can be done in each sectors, others only in 1 or 2 of the sectors. Choose an action, after that, return to the map by pressing the ESC key."};
+
+        txtTutorialRegion.text = step2[taal];
+        txtTurorialReginoBtnText.text = btnText[taal];
+
+        while (!tutorialStep7)
+            yield return null;
+
+        imgTutorialRegion.enabled = false;
+        txtTutorialRegion.enabled = false;
+        btnTutorialRegion.gameObject.SetActive(false);
     }
 
     private void updateRegionScreenUI()
@@ -946,7 +1073,7 @@ public class UpdateUI : MonoBehaviour
                 {
                     btnDoActionRegionMenu.interactable = false;
                     string[] error2 = { "Niet genoeg geld om de actie te doen", "You don't have enough money for this action" };
-                    txtRegionActionNoMoney.text = "Niet genoeg geld om de actie te doen...";
+                    txtRegionActionNoMoney.text = error2[taal];
                 }
             }
         }
@@ -1048,22 +1175,17 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionCompanies.gameObject.SetActive(false);
 
         if (!checkboxHouseholds)
-        {
             checkboxRegionHouseholds.isOn = true;
-            //checkboxHouseholds = true;
-        }
 
         if (!checkboxAgriculture)
-        {
             checkboxRegionAgriculture.isOn = true;
-            //checkboxAgriculture = true;
-        }
 
         if (!checkboxCompanies)
-        {
             checkboxRegionCompanies.isOn = true;
-            //checkboxCompanies = true;
-        }
+
+        if (!tutorialCheckActionDone)
+            tutorialCheckActionDone = true;
+
     }
     #endregion
 
@@ -1392,10 +1514,42 @@ public class UpdateUI : MonoBehaviour
     }
 
     #region Code for controlling Tutorial buttons presses
-    public void turorialButtonPress(int index)
+    public void turorialButtonPress()
     {
-        if (index == 1)
+        if (tutorialIndex == 1)
+        {
             tutorialStep2 = true;
+            tutorialIndex++;
+        }
+        else if (tutorialIndex == 2)
+        {
+            tutorialStep3 = true;
+            tutorialIndex++;
+        }
+        else if (tutorialIndex == 3)
+        {
+            tutorialStep4 = true;
+            tutorialIndex++;
+        }
+        else if (tutorialIndex == 4)
+        {
+            tutorialStep5 = true;
+            tutorialIndex++;
+        }
+    }
+
+    public void tutorialRegionButtonPress()
+    {
+        if (tutorialIndex == 5)
+        {
+            tutorialStep6 = true;
+            tutorialIndex++;
+        }
+        else if (tutorialIndex == 6)
+        {
+            tutorialStep7 = true;
+            tutorialIndex++;
+        }
     }
     #endregion
 
