@@ -174,9 +174,9 @@ public class UpdateUI : MonoBehaviour
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
         taal = game.language;
-        tutorialActive = true;
-        tutorialNoTooltip = true;
-        StartCoroutine(initTutorialText());
+        tutorialActive = false;
+        tutorialNoTooltip = false;
+        //StartCoroutine(initTutorialText());
     }
 
     void Update()
@@ -279,7 +279,7 @@ public class UpdateUI : MonoBehaviour
         canvasRegioPopup.gameObject.SetActive(false);
 
         canvasTutorial.GetComponent<Canvas>();
-        canvasTutorial.gameObject.SetActive(true);
+        canvasTutorial.gameObject.SetActive(false);
     }
 
     public void LinkGame(Game game)
