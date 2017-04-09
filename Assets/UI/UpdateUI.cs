@@ -69,6 +69,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionMoney;
     public Text txtRegionHappiness;
     public Text txtRegionAwareness;
+    public Text txtRegionProsperity;
     public Text txtRegionPollution;
     public Text txtRegionPollutionNature;
     public Text txtRegionPollutionWater;
@@ -85,6 +86,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtActiveEvents;
     public Text txtRegionActionNoMoney;
     public Text txtRegionIncomeDescription;
+    public Text txtRegionProsperityDescription;
     public Text txtRegionHappinessDescription;
     public Text txtRegionEcoAwarenessDescription;
     public Text txtRegionPollutionDescription;
@@ -113,6 +115,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnHappiness;
     public Button btnAwareness;
     public Button btnEnergy;
+    public Button btnProsperity;
     public Button btnPollution;
     public Button btnPopulation;
     public Button btnDoActionRegionMenu;
@@ -164,6 +167,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnHappinessHoverCheck;
     private bool btnAwarenessHoverCheck;
     private bool btnPollutionHoverCheck;
+    private bool btnProsperityHoverCheck;
     private bool btnEnergyHoverCheck;
     private bool btnOrganizationCheck;
     private bool btnMenuCheck;
@@ -206,7 +210,7 @@ public class UpdateUI : MonoBehaviour
         taal = game.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = true;
+        tutorialActive = false;
 
         if (tutorialActive)
             initTutorialActive();
@@ -304,11 +308,11 @@ public class UpdateUI : MonoBehaviour
 
         //tutorialStep3 = false;
         string[] step3 = { "Dit zijn jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het " +
-                "volk besluit om mee te werken met jouw beslissingen. Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Veruiling geeft de vervuiling in het land weer. " + 
+                "volk besluit om mee te werken met jouw beslissingen. Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Veruiling geeft de vervuiling in het land weer. De welvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's." + 
                 "Tot slot wordt er getoont hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer. "+ 
                 "Als je meer informatie over de statistieken wil hebben kun je met je muis eroverheen gaan. Er verschijnt dan een tooltip met de extra informatie."
                 , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not" +
-                "A better Eco awareness means less pollution. The pollutions hows the pollution in the country. These icons show the averages from the different regions. " + 
+                "A better Eco awareness means less pollution. The pollutions shows the pollution in the country. These icons show the averages from the different regions. " + 
                 "For more informations about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip."};
         txtTurorialStep1.text = step3[taal];
         imgTutorialStep2Highlight1.enabled = false;
@@ -414,6 +418,7 @@ public class UpdateUI : MonoBehaviour
         btnEnergy.GetComponent<Button>();
         btnPollution.GetComponent<Button>();
         btnPopulation.GetComponent<Button>();
+        btnProsperity.GetComponent<Button>();
 
         setBooleans();
     }
@@ -424,6 +429,7 @@ public class UpdateUI : MonoBehaviour
         btnHappinessHoverCheck = false;
         btnAwarenessHoverCheck = false;
         btnPollutionHoverCheck = false;
+        btnProsperityHoverCheck = false;
         btnEnergyHoverCheck = false;
         btnOrganizationCheck = false;
         btnTimelineCheck = false;
@@ -605,6 +611,11 @@ public class UpdateUI : MonoBehaviour
             v3Tooltip = btnEnergy.gameObject.transform.position;
             return true;
         }
+        else if (btnProsperityHoverCheck)
+        {
+            v3Tooltip = btnProsperity.gameObject.transform.position;
+            return true;
+        }
         else if (btnHappinessHoverCheck)
         {
             v3Tooltip = btnHappiness.gameObject.transform.position;
@@ -663,6 +674,11 @@ public class UpdateUI : MonoBehaviour
         iconController(btnEnergy, energy);
     }
 
+    public void updateProsperity(double prosperity)
+    {
+        iconController(btnProsperity, prosperity);
+    }
+
     // Update Happiness based on value
     public void updateHappiness(double happiness)
     {
@@ -711,22 +727,22 @@ public class UpdateUI : MonoBehaviour
         {
             case 0:
                 string[] tip = { "Gemiddelde tevredenheid per regio:\nNoord-Nederland: "+ happ.ToString("0.00") + "\n",
-                    "Average happiness per region:\nThe Netherlands Northen: "+ happ.ToString("0.00") + "\n" };
+                    "Average happiness per region:\nThe Netherlands North: "+ happ.ToString("0.00") + "\n" };
                 txtTooltip = tip[taal];//"Gemiddelde tevredenheid per regio:\nNoord-Nederland: " + happ.ToString("0.00") + "\n";
                 break;
             case 1:
                 string[] tip2 = { "Oost-Nederland: " + happ.ToString("0.00") + "\n",
-                    "The Netherlands Eastern: " + happ.ToString("0.00") + "\n"};
+                    "The Netherlands East: " + happ.ToString("0.00") + "\n"};
                 txtTooltip += tip2[taal];//"Oost-Nederland: " + happ.ToString("0.00") + "\n";
                 break;
             case 2:
                 string[] tip3 = { "West-Nederland: " + happ.ToString("0.00") + "\n",
-                    "The Netherlands Western: " + happ.ToString("0.00") + "\n"};
+                    "The Netherlands West: " + happ.ToString("0.00") + "\n"};
                 txtTooltip += tip3[taal];//"West-Nederland: " + happ.ToString("0.00") + "\n";
                 break;
             case 3:
                 string[] tip4 = { "Zuid-Nederland: " + happ.ToString("0.00"),
-                    "The Netherlands Southern: " + happ.ToString("0.00") };
+                    "The Netherlands South: " + happ.ToString("0.00") };
                 txtTooltip += tip4[taal];//"Zuid-Nederland: " + happ.ToString("0.00");
                 break;
         }
@@ -738,22 +754,22 @@ public class UpdateUI : MonoBehaviour
         {
             case 0:
                 string[] tip1 = { "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "%\n",
-                    "Average eco awareness per region: \nThe Netherlands Northern: " + awareness.ToString("0.00") + "%\n"};
+                    "Average eco awareness per region: \nThe Netherlands North: " + awareness.ToString("0.00") + "%\n"};
                 txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 1:
                 string[] tip2 = { "Oost-Nederland: " + awareness.ToString("0.00") + "%\n",
-                    "The Netherlands Eastern: " + awareness.ToString("0.00") + "%\n"};
+                    "The Netherlands East: " + awareness.ToString("0.00") + "%\n"};
                 txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 2:
                 string[] tip3 = { "West-Nederland: " + awareness.ToString("0.00") + "\n",
-                    "The Netherlands Western: " + awareness.ToString("0.00") + "%\n"};
+                    "The Netherlands West: " + awareness.ToString("0.00") + "%\n"};
                 txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 3:
                 string[] tip4 = { "Zuid-Nederland: " + awareness.ToString("0.00") + "%",
-                    "The Netherlands Southern: " + awareness.ToString("0.00") + "%"};
+                    "The Netherlands South: " + awareness.ToString("0.00") + "%"};
                 txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
         }
@@ -765,22 +781,49 @@ public class UpdateUI : MonoBehaviour
         {
             case 0:
                 string[] tip1 = { "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "%\n",
-                    "Average pollution per region: \nThe Netherlands Northern: " + pollution.ToString("0.00") + "%\n"};
+                    "Average pollution per region: \nThe Netherlands North: " + pollution.ToString("0.00") + "%\n"};
                 txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
                 break;
             case 1:
                 string[] tip2 = { "Oost-Nederland: " + pollution.ToString("0.00") + "%\n",
-                    "The Netherlands Eastern: " + pollution.ToString("0.00") + "%\n"};
+                    "The Netherlands East: " + pollution.ToString("0.00") + "%\n"};
                 txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 2:
                 string[] tip3 = { "West-Nederland: " + pollution.ToString("0.00") + "%\n",
-                    "The Netherlands Western: " + pollution.ToString("0.00") + "%\n"};
+                    "The Netherlands West: " + pollution.ToString("0.00") + "%\n"};
                 txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
             case 3:
                 string[] tip4 = { "Zuid-Nederland: " + pollution.ToString("0.00") + "%",
-                    "The Netherlands Southern: " + pollution.ToString("0.00") + "%"};
+                    "The Netherlands South: " + pollution.ToString("0.00") + "%"};
+                txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+        }
+    }
+
+    public void updateProsperityTooltip(double prosperity, int i)
+    {
+        switch (i)
+        {
+            case 0:
+                string[] tip1 = { "Gemiddelde welvaart per regio:\nNoord-Nederland: " + prosperity.ToString("0.00") + "%\n",
+                    "Average prosperity per region: \nThe Netherlands North: " + prosperity.ToString("0.00") + "%\n"};
+                txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
+                break;
+            case 1:
+                string[] tip2 = { "Oost-Nederland: " + prosperity.ToString("0.00") + "%\n",
+                    "The Netherlands East: " + prosperity.ToString("0.00") + "%\n"};
+                txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 2:
+                string[] tip3 = { "West-Nederland: " + prosperity.ToString("0.00") + "%\n",
+                    "The Netherlands West: " + prosperity.ToString("0.00") + "%\n"};
+                txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                break;
+            case 3:
+                string[] tip4 = { "Zuid-Nederland: " + prosperity.ToString("0.00") + "%",
+                    "The Netherlands South: " + prosperity.ToString("0.00") + "%"};
                 txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
                 break;
         }
@@ -984,12 +1027,14 @@ public class UpdateUI : MonoBehaviour
         string[] txtActiveEvents = { "Actieve events", "Active events" };
         string[] txtActiveActions = { "Actieve acties", "Active actions" };
         string[] btnDoAction = { "Doe actie", "Do action" };
+        string[] txtProsperity = { "Welvaart", "Prosperity" };
 
         txtRegionHappinessDescription.text = txtHappiness[taal];
         txtRegionEcoAwarenessDescription.text = txtEcoAwareness[taal];
         txtRegionIncomeDescription.text = txtIncome[taal];
         txtRegionPollutionDescription.text = txtPollution[taal];
         txtRegionAirDescription.text = txtAir[taal];
+        txtRegionProsperityDescription.text = txtProsperity[taal];
         txtRegionNatureDescription.text = txtNature[taal];
         txtRegionWaterDescription.text = txtWater[taal];
         txtRegionHouseholdsDescription.text = txtHouseholds[taal];
@@ -1015,8 +1060,9 @@ public class UpdateUI : MonoBehaviour
         // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name[taal];
         txtRegionMoney.text = regio.statistics.income.ToString();
-        txtRegionHappiness.text = regio.statistics.happiness.ToString();
+        txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString() + "%";
+        txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
         txtRegionPollution.text = regio.statistics.avgPollution.ToString("0.00") + "%";
         txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
         txtRegionPollutionNature.text = regio.statistics.avgNaturePollution.ToString("0.00") + "%";
@@ -1465,6 +1511,19 @@ public class UpdateUI : MonoBehaviour
         tooltipActive = false;
     }
 
+    public void btnProsperityEnter()
+    {
+        btnProsperityHoverCheck = true;
+        tooltipActive = true;
+    }
+
+    public void btnProsperityExit()
+    {
+        btnProsperityHoverCheck = false;
+        tooltipActive = false;
+
+    }
+
     public void btnOrganizationEnter()
     {
         btnOrganizationCheck = true;
@@ -1548,6 +1607,11 @@ public class UpdateUI : MonoBehaviour
     public bool getBtnPollutionHover()
     {
         return btnPollutionHoverCheck;
+    }
+
+    public bool getBtnProsperityHover()
+    {
+        return btnProsperityHoverCheck;
     }
 
     public bool getBtnEnergyHover()
