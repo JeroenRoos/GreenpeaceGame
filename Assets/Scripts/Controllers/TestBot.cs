@@ -111,7 +111,7 @@ public class TestBot : MonoBehaviour
 
             showStatistics();
 
-            foreach (Region region in gameController.game.regions.Values)
+            foreach (Region region in gameController.game.regions)
             {
                 bool isAvailable = CheckIfActionAvailable(region);
 
@@ -415,7 +415,7 @@ public class TestBot : MonoBehaviour
     {
         if (isEnabled)
         {
-            foreach (Region region in gameController.game.regions.Values)
+            foreach (Region region in gameController.game.regions)
             {
                 foreach (GameEvent gameEvent in region.inProgressGameEvents)
                 {
@@ -434,7 +434,7 @@ public class TestBot : MonoBehaviour
     {
         bool breaking = false;
 
-        foreach (Region region in gameController.game.regions.Values)
+        foreach (Region region in gameController.game.regions)
         {
             foreach (GameEvent ev in region.inProgressGameEvents)
             {
@@ -546,7 +546,7 @@ public class TestBot : MonoBehaviour
     private void getRegionalStats()
     {
         int i = 0;
-        foreach (Region region in gameController.game.regions.Values)
+        foreach (Region region in gameController.game.regions)
         {
             string[] arrMonths = new string[12]
                 { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };

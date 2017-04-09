@@ -19,6 +19,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -42,6 +43,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -268,6 +274,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>9</eventCooldown>
       <eventDuration>
@@ -291,6 +298,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -517,6 +529,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <eventDuration>
@@ -540,6 +553,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -766,6 +784,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>9</eventCooldown>
       <eventDuration>
@@ -789,6 +808,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -1015,6 +1039,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -1038,6 +1063,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -1264,6 +1294,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -1287,6 +1318,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -1513,6 +1549,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <eventDuration>
@@ -1536,6 +1573,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -1762,6 +1804,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <eventDuration>
@@ -1785,6 +1828,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -2011,6 +2059,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <eventDuration>
@@ -2034,6 +2083,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -2260,6 +2314,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <eventDuration>
@@ -2283,6 +2338,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -2505,6 +2565,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <eventDuration>
@@ -2528,6 +2589,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -2750,6 +2816,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>12</eventCooldown>
       <eventDuration>
@@ -2773,6 +2840,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -2995,6 +3067,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>6</eventCooldown>
       <eventDuration>
@@ -3018,6 +3091,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -3240,6 +3318,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>8</eventCooldown>
       <eventDuration>
@@ -3263,6 +3342,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -3485,6 +3569,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>8</eventCooldown>
       <eventDuration>
@@ -3508,6 +3593,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -3730,6 +3820,7 @@
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>0</eventCooldown>
       <eventDuration>
@@ -3753,6 +3844,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -3979,6 +4075,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>60</eventCooldown>
       <eventDuration>
@@ -4002,6 +4099,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -4227,6 +4329,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>60</eventCooldown>
       <eventDuration>
@@ -4250,6 +4353,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Zuid Nederland</string>
       </possibleRegions>
@@ -4472,6 +4580,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <eventDuration>
@@ -4495,6 +4604,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -4717,6 +4831,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <eventDuration>
@@ -4740,6 +4855,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -4962,6 +5082,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>24</eventCooldown>
       <eventDuration>
@@ -4985,6 +5106,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -5207,6 +5333,7 @@
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>0</eventCooldown>
       <eventDuration>
@@ -5230,6 +5357,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -5456,6 +5588,7 @@
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>0</eventCooldown>
       <eventDuration>
@@ -5479,6 +5612,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -5705,6 +5843,7 @@
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>0</eventCooldown>
       <eventDuration>
@@ -5728,6 +5867,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -5954,6 +6098,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>9</eventCooldown>
       <eventDuration>
@@ -5977,6 +6122,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -6199,6 +6349,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -6222,6 +6373,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -6444,6 +6600,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -6467,6 +6624,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Zuid Nederland</string>
         <string>West Nederland</string>
@@ -6693,6 +6855,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -6716,6 +6879,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Zuid Nederland</string>
         <string>West Nederland</string>
@@ -6940,6 +7108,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -6963,6 +7132,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
       </possibleRegions>
@@ -7184,6 +7358,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -7207,6 +7382,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -7429,6 +7609,7 @@
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -7452,6 +7633,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -7678,6 +7864,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -7701,6 +7888,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -7923,6 +8115,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -7946,6 +8139,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Noord Nederland</string>
         <string>Oost Nederland</string>
@@ -8172,6 +8370,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -8195,6 +8394,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Oost Nederland</string>
         <string>Noord Nederland</string>
@@ -8417,6 +8621,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -8440,6 +8645,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Zuid Nederland</string>
         <string>West Nederland</string>
@@ -8660,6 +8870,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -8683,6 +8894,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Zuid Nederland</string>
         <string>West Nederland</string>
@@ -8904,6 +9120,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -8927,6 +9144,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Zuid Nederland</string>
         <string>West Nederland</string>
@@ -9153,6 +9375,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -9176,6 +9399,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Oost Nederland</string>
         <string>Zuid Nederland</string>
@@ -9399,6 +9627,7 @@
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
+      <eventStartChance>100</eventStartChance>
       <eventIdleDuration>3</eventIdleDuration>
       <eventCooldown>3</eventCooldown>
       <eventDuration>
@@ -9422,6 +9651,11 @@
         <double>0</double>
         <double>0</double>
       </eventChoiceMoneyReward>
+      <eventChoiceEventStartChanceModifier>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </eventChoiceEventStartChanceModifier>
       <possibleRegions>
         <string>Oost Nederland</string>
         <string>Noord Nederland</string>

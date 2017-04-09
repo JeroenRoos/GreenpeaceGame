@@ -233,9 +233,9 @@
           <airPollution>0</airPollution>
           <naturePollution>0</naturePollution>
           <waterPollution>0</waterPollution>
-          <airPollutionIncrease>-1.0</airPollutionIncrease>
-          <naturePollutionIncrease>-1.0</naturePollutionIncrease>
-          <waterPollutionIncrease>-1.0</waterPollutionIncrease>
+          <airPollutionIncrease>-1</airPollutionIncrease>
+          <naturePollutionIncrease>-1</naturePollutionIncrease>
+          <waterPollutionIncrease>-1</waterPollutionIncrease>
         </pollution>
       </consequences>
       <temporaryConsequences>

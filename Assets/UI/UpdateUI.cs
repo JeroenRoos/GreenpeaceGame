@@ -1108,7 +1108,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (e.isActive || e.isIdle)
             {
-                foreach (Region region in game.regions.Values)
+                foreach (Region region in game.regions)
                 {
                     foreach (GameEvent ev in region.inProgressGameEvents)
                     {

@@ -4,6 +4,13 @@ using UnityEngine;
 using System.Timers;
 using UnityEngine.UI;
 
+/*regions order:
+0 = noord
+1 = oost
+2 = west
+3 = zuid
+*/
+
 public class GameController : MonoBehaviour
 {
     public Game game;
@@ -12,12 +19,13 @@ public class GameController : MonoBehaviour
     private UpdateUI updateUI;
     public GameObject noordNederland;
     public GameObject oostNederland;
-    public GameObject zuidNederland;
     public GameObject westNederland;
+    public GameObject zuidNederland;
 
     public GameObject eventObject;
 
-   // private float time;
+    // private float time;
+    public bool autoSave = false;
     public bool autoEndTurn = false;
 
     // Use this for initialization
@@ -31,22 +39,35 @@ public class GameController : MonoBehaviour
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
         oostNederland.GetComponent<RegionController>().Init(this);
-        zuidNederland.GetComponent<RegionController>().Init(this);
         westNederland.GetComponent<RegionController>().Init(this);
-
-        game.Init(eventObject, this);
-        
+        zuidNederland.GetComponent<RegionController>().Init(this);
+                
         EventManager.CallNewGame();
+    }
+
+    public void SaveGame()
+    {
+        GameContainer gameContainer = new GameContainer(game);
+        gameContainer.Save();
+    }
+
+    public void LoadGame()
+    {
+        GameContainer gameContainer = GameContainer.Load();
+        game = gameContainer.game;
     }
 
     // Update is called once per frame
     void Update () {
-        if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9)
+        if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31)
         {
             game.NextTurn();
+            UpdateEvents();
+            game.gameStatistics.UpdateRegionalAvgs(game);
+            EventManager.CallChangeMonth();
 
-            if (!updateUI.tutorialNextTurnDone)
-                updateUI.tutorialNextTurnDone = true;
+            if (autoSave)
+                SaveGame();
         }
 
         // Update the main screen UI (Icons and date)
@@ -62,6 +83,42 @@ public class GameController : MonoBehaviour
 
         UpdateRegionColor();
     }
+
+    private void UpdateEvents()
+    {
+        int activeCount = game.getActiveEventCount();
+
+        //voor demo vertical slice 1 active event max
+        /*int eventChance = 100;
+        int eventChanceReduction = 100;
+
+        while (activeCount < events.Count && rnd.Next(1, 101) <= eventChance)
+        {
+            StartNewEvent();
+            EventManager.CallShowEvent();
+
+            eventChance -= eventChanceReduction;
+        }*/
+
+        if (activeCount < 1)
+        {
+            if (game.PossibleEventCount() > 0)
+            {
+                Region pickedRegion = game.PickEventRegion();
+                GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
+                pickedEvent.pickEventSector(game.rnd);
+                pickedEvent.StartEvent(game.currentYear, game.currentMonth);
+                pickedRegion.AddGameEvent(pickedEvent);
+
+                GameObject eventInstance = GameController.Instantiate(eventObject);
+                eventInstance.GetComponent<EventObjectController>().Init(this, pickedRegion, pickedEvent);
+
+                EventManager.CallShowEvent();
+            }
+        }
+
+    }
+    
 
     private void updateUIMainScreen()
     {
@@ -99,7 +156,7 @@ public class GameController : MonoBehaviour
     {
         int i = 0;
 
-        foreach (Region region in game.regions.Values)
+        foreach (Region region in game.regions)
         {
             updateUI.updateHappinessTooltip(region.statistics.happiness, i);
             i++;
@@ -111,7 +168,7 @@ public class GameController : MonoBehaviour
     {
         int i = 0;
 
-        foreach (Region region in game.regions.Values)
+        foreach (Region region in game.regions)
         {
             updateUI.updateAwarnessTooltip(region.statistics.ecoAwareness, i);
             i++;
@@ -122,7 +179,7 @@ public class GameController : MonoBehaviour
     {
         int i = 0;
 
-        foreach (Region region in game.regions.Values)
+        foreach (Region region in game.regions)
         {
             updateUI.updatePollutionTooltip(region.statistics.avgPollution, i);
             i++;
@@ -146,7 +203,7 @@ public class GameController : MonoBehaviour
     private void updateUIOrganizationScreen()
     {
         int i = 0;
-        foreach (Region region in game.regions.Values)
+        foreach (Region region in game.regions)
         {
             // Send the income for each region, use i to determine the region
             updateUI.updateOrganizationScreenUI(region.statistics.income * 12, i, game.gameStatistics.money);
@@ -171,7 +228,24 @@ public class GameController : MonoBehaviour
 
     public void OnRegionClick(GameObject region)
     {
-        Region regionModel = game.regions[region.name];
+        int pickedRegion = 0;
+        switch (region.name)
+        {
+            case "Noord Nederland":
+                pickedRegion = 0;
+                break;
+            case "Oost Nederland":
+                pickedRegion = 1;
+                break;
+            case "West Nederland":
+                pickedRegion = 2;
+                break;
+            case "Zuid Nederland":
+                pickedRegion = 3;
+                break;
+        }
+
+        Region regionModel = game.regions[pickedRegion];
         updateUI.regionClick(regionModel);
     }
 
@@ -197,25 +271,25 @@ public class GameController : MonoBehaviour
         noordNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green, 
                 Color.red, 
-                (float)game.regions["Noord Nederland"].statistics.avgPollution / 100
+                (float)game.regions[0].statistics.avgPollution / 100
             );
 
         oostNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["Oost Nederland"].statistics.avgPollution / 100
+                (float)game.regions[1].statistics.avgPollution / 100
             );
 
         westNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["West Nederland"].statistics.avgPollution / 100
+                (float)game.regions[2].statistics.avgPollution / 100
             );
 
         zuidNederland.GetComponent<Renderer>().material.color = Color.Lerp(
                 Color.green,
                 Color.red,
-                (float)game.regions["Zuid Nederland"].statistics.avgPollution / 100
+                (float)game.regions[3].statistics.avgPollution / 100
             );
     }
 
