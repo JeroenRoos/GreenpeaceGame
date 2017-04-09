@@ -843,6 +843,9 @@ public class UpdateUI : MonoBehaviour
     #region Update UI in Popups
     public void updateOrganizationScreenUI(double value, int i, double money)
     {
+        imgTutorialOrganization.enabled = false;
+        txtTutorialOrganization.enabled = false;
+        btnTutorialOrganization.gameObject.SetActive(false);
         // Region are made in following order: North > East > West > South
         switch (i)
         {
@@ -865,7 +868,11 @@ public class UpdateUI : MonoBehaviour
 
         if (tutorialStep8 && tutorialActive)
         {
+            imgTutorialOrganization.enabled = true;
+            txtTutorialOrganization.enabled = true;
+            btnTutorialOrganization.gameObject.SetActive(true);
             StartCoroutine(tutorialOrganizationPopup());
+
         }
     }
 
