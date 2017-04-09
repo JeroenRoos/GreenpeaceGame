@@ -30,16 +30,7 @@ public class Region
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
         game.gameStatistics.ModifyMoney(action.actionMoneyCost, false);
         ImplementActionConsequences(action, action.actionCosts, false);
-
-        if (action.actionDuration == 0)
-        {
-            ImplementActionConsequences(action, action.temporaryConsequences, true);
-            action.CompleteAction();
-        }
-        else
-        {
-            ImplementActionConsequences(action, action.duringActionConsequences, true);
-        }
+        ImplementActionConsequences(action, action.duringActionConsequences, true);
     }
 
     public void AddGameEvent(GameEvent gameEvent)
@@ -65,6 +56,7 @@ public class Region
 
             if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (game.currentMonth + game.currentYear * 12)))
             {
+                game.AddCompletedEventToReports(this, gameEvent);
                 CompleteEvent(gameEvent, game);
             }
 

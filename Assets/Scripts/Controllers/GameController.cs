@@ -61,10 +61,7 @@ public class GameController : MonoBehaviour
     void Update () {
         if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31)
         {
-            game.NextTurn();
-            UpdateRegionsPollutionInfluence();
-            UpdateEvents();
-            game.gameStatistics.UpdateRegionalAvgs(game);
+            NextTurn();
             EventManager.CallChangeMonth();
 
             if (autoSave)
@@ -83,6 +80,46 @@ public class GameController : MonoBehaviour
             updateUITooltips();
 
         UpdateRegionColor();
+    }
+
+    public void NextTurn()
+    {
+        bool isNewYear = game.UpdateCurrentMonthAndYear();
+
+        game.ExecuteNewMonthMethods();
+
+        UpdateRegionsPollutionInfluence();
+        UpdateEvents();
+        game.gameStatistics.UpdateRegionalAvgs(game);
+
+        GenerateMonthlyReport();
+        if (isNewYear)
+            GenerateYearlyReport();
+    }
+
+    private void GenerateMonthlyReport()
+    {
+        /* montly report generating
+         * 
+         * 
+         * 
+         * 
+         * 
+         */
+        game.monthlyReport.UpdateStatistics(game.regions);
+    }
+
+    private void GenerateYearlyReport()
+    {
+        /* montly report generating
+         * 
+         * 
+         * 
+         * 
+         * 
+         */
+        game.yearlyReport.UpdateStatistics(game.regions);
+
     }
 
     private void UpdateEvents()

@@ -28,6 +28,10 @@ public class Game
     //Game statistics
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
 
+    //new turn reports
+    public ProgressReport monthlyReport { get; private set; }
+    public ProgressReport yearlyReport { get; private set; }
+
     public Game()
     {
         language = 0;
@@ -35,6 +39,8 @@ public class Game
         events = new List<GameEvent>();
         regions = new List<Region>();
         actions = new List<RegionAction>();
+        monthlyReport = new ProgressReport();
+        yearlyReport = new ProgressReport();
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
         
@@ -47,6 +53,10 @@ public class Game
         LoadRegionActions();
         LoadGameEvents();
         gameStatistics.UpdateRegionalAvgs(this);
+
+        //set reports
+        monthlyReport.UpdateStatistics(regions);
+        yearlyReport.UpdateStatistics(regions);
 
         /*foreach (Region region in regions)
         {
@@ -113,15 +123,6 @@ public class Game
             this.language = 0;
     }
 
-    public void NextTurn()
-    {
-        bool isNewYear = UpdateCurrentMonthAndYear();
-        
-        ExecuteNewMonthMethods();
-
-        if (isNewYear)
-            ExecuteNewYearMethods();
-    }
 
     public bool UpdateCurrentMonthAndYear()
     {
@@ -135,14 +136,12 @@ public class Game
         return false;
     }
 
-    private void ExecuteNewMonthMethods()
+    public void ExecuteNewMonthMethods()
     {
         CompletefinishedActions();
         UpdateRegionEvents();
         MutateMonthlyStatistics();
     }
-
-    public void ExecuteNewYearMethods() { }
 
     public void MutateMonthlyStatistics()
     {
@@ -195,6 +194,7 @@ public class Game
                     region.ImplementActionConsequences(action, action.consequences, true);
                     region.ImplementActionConsequences(action, action.temporaryConsequences, true);
                     gameStatistics.ModifyMoney(action.actionMoneyReward, true);
+                    AddCompletedActionToReports(region, action);
                     action.CompleteAction();
                 }
 
@@ -202,6 +202,21 @@ public class Game
                     region.ImplementActionConsequences(action, action.temporaryConsequences, false);
             }
         }
+    }
+
+    public void AddCompletedActionToReports(Region region, RegionAction action)
+    {
+        Debug.Log("Adding action to report: " + action.name[0]);
+        monthlyReport.AddCompletedAction(region, action);
+        yearlyReport.AddCompletedAction(region, action);
+    }
+
+    public void AddCompletedEventToReports(Region region, GameEvent gameEvent)
+    {
+        Debug.Log("Adding event to report: " + gameEvent.name);
+        monthlyReport.AddCompletedGameEvent(region, gameEvent);
+        yearlyReport.AddCompletedGameEvent(region, gameEvent);
+
     }
 
     public void UpdateRegionEvents()

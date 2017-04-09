@@ -104,7 +104,10 @@ public class GameEvent
         region.ImplementEventConsequences(this, duringEventProgressConsequences[pickedChoiceNumber], true);
 
         if (eventDuration[pickedChoiceNumber] == 0)
+        {
+            game.AddCompletedEventToReports(region, this);
             region.CompleteEvent(this, game);
+        }
     }
 }
 
