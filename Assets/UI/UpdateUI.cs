@@ -69,6 +69,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionMoney;
     public Text txtRegionHappiness;
     public Text txtRegionAwareness;
+    public Text txtRegionProsperity;
     public Text txtRegionPollution;
     public Text txtRegionPollutionNature;
     public Text txtRegionPollutionWater;
@@ -85,6 +86,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtActiveEvents;
     public Text txtRegionActionNoMoney;
     public Text txtRegionIncomeDescription;
+    public Text txtRegionProsperityDescription;
     public Text txtRegionHappinessDescription;
     public Text txtRegionEcoAwarenessDescription;
     public Text txtRegionPollutionDescription;
@@ -306,11 +308,11 @@ public class UpdateUI : MonoBehaviour
 
         //tutorialStep3 = false;
         string[] step3 = { "Dit zijn jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het " +
-                "volk besluit om mee te werken met jouw beslissingen. Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Veruiling geeft de vervuiling in het land weer. " + 
+                "volk besluit om mee te werken met jouw beslissingen. Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Veruiling geeft de vervuiling in het land weer. De welvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's." + 
                 "Tot slot wordt er getoont hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer. "+ 
                 "Als je meer informatie over de statistieken wil hebben kun je met je muis eroverheen gaan. Er verschijnt dan een tooltip met de extra informatie."
                 , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not" +
-                "A better Eco awareness means less pollution. The pollutions hows the pollution in the country. These icons show the averages from the different regions. " + 
+                "A better Eco awareness means less pollution. The pollutions shows the pollution in the country. These icons show the averages from the different regions. " + 
                 "For more informations about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip."};
         txtTurorialStep1.text = step3[taal];
         imgTutorialStep2Highlight1.enabled = false;
@@ -1025,12 +1027,14 @@ public class UpdateUI : MonoBehaviour
         string[] txtActiveEvents = { "Actieve events", "Active events" };
         string[] txtActiveActions = { "Actieve acties", "Active actions" };
         string[] btnDoAction = { "Doe actie", "Do action" };
+        string[] txtProsperity = { "Welvaart", "Prosperity" };
 
         txtRegionHappinessDescription.text = txtHappiness[taal];
         txtRegionEcoAwarenessDescription.text = txtEcoAwareness[taal];
         txtRegionIncomeDescription.text = txtIncome[taal];
         txtRegionPollutionDescription.text = txtPollution[taal];
         txtRegionAirDescription.text = txtAir[taal];
+        txtRegionProsperityDescription.text = txtProsperity[taal];
         txtRegionNatureDescription.text = txtNature[taal];
         txtRegionWaterDescription.text = txtWater[taal];
         txtRegionHouseholdsDescription.text = txtHouseholds[taal];
@@ -1056,8 +1060,9 @@ public class UpdateUI : MonoBehaviour
         // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name[taal];
         txtRegionMoney.text = regio.statistics.income.ToString();
-        txtRegionHappiness.text = regio.statistics.happiness.ToString();
+        txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString() + "%";
+        txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
         txtRegionPollution.text = regio.statistics.avgPollution.ToString("0.00") + "%";
         txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
         txtRegionPollutionNature.text = regio.statistics.avgNaturePollution.ToString("0.00") + "%";
