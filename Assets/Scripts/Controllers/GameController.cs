@@ -113,7 +113,7 @@ public class GameController : MonoBehaviour
                 GameObject eventInstance = GameController.Instantiate(eventObject);
                 eventInstance.GetComponent<EventObjectController>().Init(this, pickedRegion, pickedEvent);
 
-                EventManager.CallShowEvent();
+                //EventManager.CallShowEvent();
             }
         }
 

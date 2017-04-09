@@ -12,8 +12,8 @@ class EventManager
     public delegate void MonthChanged();
     public static event MonthChanged ChangeMonth;
 
-    public delegate void EventOccured();
-    public static event EventOccured ShowEvent;
+    /*public delegate void EventOccured();
+    public static event EventOccured ShowEvent;*/
 
     public static void CallNewGame()
     {
@@ -25,9 +25,9 @@ class EventManager
         ChangeMonth();
     }
 
-    public static void CallShowEvent()
+    /*public static void CallShowEvent()
     {
         ShowEvent();
-    }
+    }*/
 
 }

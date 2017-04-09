@@ -93,15 +93,15 @@ public class GameEvent
 
     public void SetPickedChoice(int i, Game game, Region region)
     {
-        game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[i], false);
-
         pickedChoiceNumber = i;
-        this.pickedChoiceStartYear = game.currentYear;
-        this.pickedChoiceStartMonth = game.currentMonth;
-
+        pickedChoiceStartYear = game.currentYear;
+        pickedChoiceStartMonth = game.currentMonth;
         isIdle = false;
         idleTurnsLeft = 0;
         isActive = true;
+
+        game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[pickedChoiceNumber], false);
+        region.ImplementEventConsequences(this, duringEventProgressConsequences[pickedChoiceNumber], true);
 
         if (eventDuration[pickedChoiceNumber] == 0)
             region.CompleteEvent(this, game);
