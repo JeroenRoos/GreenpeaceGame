@@ -129,6 +129,7 @@ public class GameController : MonoBehaviour
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
+        updateUI.updateProsperity(game.gameStatistics.prosperity);
         updateUI.updateHappiness(game.gameStatistics.happiness);       
     }
 
@@ -147,6 +148,9 @@ public class GameController : MonoBehaviour
         if (updateUI.getBtnPollutionHover())
             updatePollution();
 
+        if (updateUI.getBtnProsperityHover())
+            updateProsperity();
+
         if (updateUI.getBtnEnergyHover())
             updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
             game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
@@ -154,35 +158,33 @@ public class GameController : MonoBehaviour
 
     private void updateHappiness()
     {
-        int i = 0;
-
-        foreach (Region region in game.regions)
+        for (int j = 0; j < game.regions.Count; j++)
         {
-            updateUI.updateHappinessTooltip(region.statistics.happiness, i);
-            i++;
+            updateUI.updateHappinessTooltip(game.regions[j].statistics.happiness, j);
         }
-        
     }
 
     private void updateAwareness()
     {
-        int i = 0;
-
-        foreach (Region region in game.regions)
+        for (int j = 0; j < game.regions.Count; j++)
         {
-            updateUI.updateAwarnessTooltip(region.statistics.ecoAwareness, i);
-            i++;
+            updateUI.updateAwarnessTooltip(game.regions[j].statistics.ecoAwareness, j);
         }
     }
 
     private void updatePollution()
     {
-        int i = 0;
-
-        foreach (Region region in game.regions)
+        for (int j = 0; j < game.regions.Count; j++)
         {
-            updateUI.updatePollutionTooltip(region.statistics.avgPollution, i);
-            i++;
+            updateUI.updatePollutionTooltip(game.regions[j].statistics.avgPollution, j);
+        }
+    }
+
+    private void updateProsperity()
+    {
+        for (int j = 0; j < game.regions.Count; j++)
+        {
+            updateUI.updateProsperityTooltip(game.regions[j].statistics.prosperity, j);
         }
     }
 
