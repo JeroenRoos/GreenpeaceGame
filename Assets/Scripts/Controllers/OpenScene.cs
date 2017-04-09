@@ -22,9 +22,9 @@ public class OpenScene : MonoBehaviour
 
     public void buttonExitOnClick()
     {
-        if (UnityEditor.EditorApplication.isPlaying)
-            UnityEditor.EditorApplication.isPlaying = false;
-        else
+        //if (UnityEditor.EditorApplication.isPlaying)
+        //    UnityEditor.EditorApplication.isPlaying = false;
+        //else
             Application.Quit();
 
     }

@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-        if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31)
+        if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9)
         {
             NextTurn();
         }
@@ -82,6 +82,9 @@ public class GameController : MonoBehaviour
     public void NextTurn()
     {
         bool isNewYear = game.UpdateCurrentMonthAndYear();
+
+        if (!updateUI.tutorialNextTurnDone)
+            updateUI.tutorialNextTurnDone = true;
 
         game.ExecuteNewMonthMethods();
 

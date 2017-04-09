@@ -213,7 +213,7 @@ public class UpdateUI : MonoBehaviour
         taal = game.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = false;
+        tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
@@ -327,8 +327,10 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep4)
             yield return null;
 
-        //tutorialStep4 = false;
-        imgTutorialOverworld.gameObject.transform.position.x = imgTutorialOverworld.gameObject.transform.position.x + 200;
+        Vector3 imgOldPos = imgTutorialOverworld.gameObject.transform.position;
+        Vector3 imgNewPos = imgOldPos;
+        imgNewPos.x = imgNewPos.x + Screen.width / 3;
+        imgTutorialOverworld.gameObject.transform.position = imgNewPos;
         string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. " +
                 "Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en werlvaart. Deze statistieken verschillen weer per regio.\nGa naar West-Nederland door op de regio te klikken. "
                 , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West" +
@@ -346,6 +348,8 @@ public class UpdateUI : MonoBehaviour
         while (canvasRegioPopup.gameObject.activeSelf)
             yield return null;
 
+
+        imgTutorialOverworld.gameObject.transform.position = imgOldPos;
         canvasTutorial.gameObject.SetActive(true);
         string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. ",
             "At the bottom of your screen you can go to the Organization menu by pressing the button. " };
@@ -897,9 +901,10 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep9)
             yield return null;
 
-        imgTutorialOrganization.enabled = false;
-        txtTutorialOrganization.enabled = false;
-        btnTutorialOrganization.gameObject.SetActive(false);
+        //imgTutorialOrganization.enabled = false;
+        //txtTutorialOrganization.enabled = false;
+        //btnTutorialOrganization.gameObject.SetActive(false);
+        imgTutorialOrganization.gameObject.SetActive(false);
         tutorialOrganizationDone = true;
     }
 
@@ -957,8 +962,9 @@ public class UpdateUI : MonoBehaviour
         && !btnMenuCheck && !btnTimelineCheck && !tutorialActive)
         {
             startRegionPopup(region);
-            imgTutorialRegion.enabled = false;
-            txtTutorialRegion.enabled = false;
+            //imgTutorialRegion.enabled = false;
+            //txtTutorialRegion.enabled = false;
+            imgTutorialRegion.gameObject.SetActive(false);
         }
     }
 
@@ -1001,9 +1007,10 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep7)// && canvasRegioPopup.gameObject.activeSelf)
             yield return null;
 
-        imgTutorialRegion.enabled = false;
-        txtTutorialRegion.enabled = false;
-        btnTutorialRegion.gameObject.SetActive(false);
+        //imgTutorialRegion.enabled = false;
+        //txtTutorialRegion.enabled = false;
+        //btnTutorialRegion.gameObject.SetActive(false);
+        imgTutorialRegion.gameObject.SetActive(false);
     }
 
     private void updateRegionScreenUI()
@@ -1662,9 +1669,9 @@ public class UpdateUI : MonoBehaviour
 
     public void buttonExitGameOnClick()
     {
-        if (UnityEditor.EditorApplication.isPlaying)
-            UnityEditor.EditorApplication.isPlaying = false;
-        else
+        //if (UnityEditor.EditorApplication.isPlaying)
+        //    UnityEditor.EditorApplication.isPlaying = false;
+        //else
             Application.Quit();
     }
 
