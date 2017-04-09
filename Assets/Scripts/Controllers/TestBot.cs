@@ -78,14 +78,13 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = false; 
+        isEnabled = true; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
         gameController = GetComponent<GameController>();
         EventManager.NewGame += CheckStatus;
         EventManager.ChangeMonth += CheckStatus;
-        EventManager.ShowEvent  += EventAction;
 
         playstyles = new string[] { "Random", "IncomeFocused", "PollutionFocused" };
         currentPlaystyle = playstyles[1];
@@ -113,8 +112,9 @@ public class TestBot : MonoBehaviour
 
             foreach (Region region in gameController.game.regions)
             {
-                bool isAvailable = CheckIfActionAvailable(region);
+                DoEvents(region);
 
+                bool isAvailable = CheckIfActionAvailable(region);
                 if (isAvailable)
                 {
                     if(currentPlaystyle == playstyles[0])
@@ -134,6 +134,28 @@ public class TestBot : MonoBehaviour
                 }
             }
             turnCounter++;
+        }
+    }
+
+    //do events based on most expensive choice
+    private void DoEvents(Region region)
+    {
+        foreach (GameEvent gameEvent in region.inProgressGameEvents)
+        {
+            if (gameEvent.isIdle)
+            {
+                int pickedOption = 0;
+
+                for (int i = 1; i < gameEvent.choicesDutch.Length; i++)
+                {
+                    if (gameEvent.eventChoiceMoneyCost[i] < gameController.game.gameStatistics.money &&
+                        gameEvent.eventChoiceMoneyCost[i] > gameEvent.eventChoiceMoneyCost[pickedOption])
+                        pickedOption = i;
+                }
+
+                Debug.Log("check");
+                doChosenOption(region, gameEvent, pickedOption);
+            }
         }
     }
 
@@ -164,15 +186,19 @@ public class TestBot : MonoBehaviour
     {
         int currentMonth = gameController.game.currentYear * 12 + gameController.game.currentMonth;
         List<RegionAction> tempList = new List<RegionAction>();
+        bool actionFound = false;
         foreach (RegionAction ra in region.actions)
         {
             if ((ra.actionMoneyCost < gameController.game.gameStatistics.money) &&
                 (ra.lastCompleted + ra.actionCooldown <= currentMonth || ra.lastCompleted == 0) &&
                 !(ra.isUnique && ra.lastCompleted > 0))
+            {
                 tempList.Add(ra);
+                actionFound = true;
+            }
         }
-
-        doAction(region, tempList[gameController.game.rnd.Next(0, tempList.Count)]);
+        if (actionFound)
+            doAction(region, tempList[gameController.game.rnd.Next(0, tempList.Count)]);
     }
 
     private void IncomePlaystyle(Region region)
@@ -408,48 +434,7 @@ public class TestBot : MonoBehaviour
         region.StartAction(ra, gameController.game, new bool[] { true, true, true });
     }
     #endregion
-
-    #region Events
-    // Event occured
-    private void EventAction()
-    {
-        if (isEnabled)
-        {
-            foreach (Region region in gameController.game.regions)
-            {
-                foreach (GameEvent gameEvent in region.inProgressGameEvents)
-                {
-                    if (gameEvent.isIdle)
-                    {
-                        printRegion(gameEvent);
-                        int chosenOption = getLowestPollutionConsequenceEvent(gameEvent);//UnityEngine.Random.Range(0, gameEvent.choicesDutch.GetLength(0));
-                        doChosenOption(region, gameEvent, chosenOption);
-                    }
-                }
-            }
-        }
-    }
-
-    private void printRegion(GameEvent gameEvent)
-    {
-        bool breaking = false;
-
-        foreach (Region region in gameController.game.regions)
-        {
-            foreach (GameEvent ev in region.inProgressGameEvents)
-            {
-                if (ev == gameEvent)
-                {
-                    Debug.Log("ACTIVE EVENT: " + gameEvent.name + " is ACTIVE in Regio: " + region.name[0]);
-                    breaking = true;
-                    break;
-                }
-            }
-            if (breaking)
-                break;
-        }
-    }
-
+    
     private int getLowestPollutionConsequenceEvent(GameEvent gameEvent)
     {
         double tempPollutionSum = 0;
@@ -488,14 +473,13 @@ public class TestBot : MonoBehaviour
         Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);
         gameEvent.SetPickedChoice(chosenOption, gameController.game, region);
     }
-    #endregion
 
     #region National Statistics Printing
     private void getNationalStats()
     {
         string[] arrMonths = new string[12]
             { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-        int month = gameController.game.currentMonth;
+        int month = gameController.game.currentMonth - 1;
 
         Debug.Log("\nNational statistics CHANGE - turn: " + turnCounter + " (" + arrMonths[month] + " - " + (gameController.game.currentYear + 2019) + ")");
 

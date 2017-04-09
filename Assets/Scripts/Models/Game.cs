@@ -204,26 +204,6 @@ public class Game
         }
     }
 
-    /*public void CheckIdleEvents()
-    {
-        foreach (Region region in regions.Values)
-        {
-            foreach (GameEvent gameEvent in region.inProgressGameEvents)
-            {
-                if (gameEvent.isIdle)
-                {
-                    gameEvent.SubtractIdleTurnsLeft();
-                    if (gameEvent.idleTurnsLeft == 0)
-                    {
-                        gameEvent.SetPickedChoice(0, this);
-                        foreach (RegionSector sector in region.sectors)
-                            sector.ImplementStatisticValues(gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
-                    }
-                }
-            }
-        }
-    }*/
-
     public void UpdateRegionEvents()
     {
         foreach (Region region in regions)
@@ -276,6 +256,27 @@ public class Game
         return possibleEvents[rnd.Next(0, possibleEvents.Count)];
     }
 
+    public int GetPossibleRegionsCount()
+    {
+        int possibleRegionsCount = 0;
+
+        foreach (Region region in regions)
+        {
+            bool isPossible = true;
+            foreach (GameEvent gameEvent in region.inProgressGameEvents)
+            {
+                if (gameEvent.isActive || gameEvent.isIdle)
+                {
+                    isPossible = false;
+                    break;
+                }
+            }
+            if (isPossible)
+                possibleRegionsCount++;
+        }
+        return possibleRegionsCount;
+    }
+
     public Region PickEventRegion()
     {
         List<Region> possibleRegions = new List<Region>();
@@ -295,6 +296,7 @@ public class Game
         }
 
         int value = rnd.Next(0, possibleRegions.Count);
+
         return possibleRegions[value];
     }
 }

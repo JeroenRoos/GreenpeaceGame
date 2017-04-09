@@ -27,12 +27,20 @@ public class SectorStatistics
 
     public void ModifyEcoAwareness(double changeValue)
     {
-        ecoAwareness += changeValue;
-        if (ecoAwareness > 100)
+        if (ecoAwareness + changeValue > 100)
         {
-            changeValue = ecoAwareness - 100;
+            changeValue = 100 - ecoAwareness;
             ecoAwareness = 100;
         }
+
+        else if (ecoAwareness + changeValue < 0)
+        {
+            changeValue = changeValue - ecoAwareness;
+            ecoAwareness = 0;
+        }
+
+        else
+            ecoAwareness += changeValue;
 
         double pollutionChangeValue = 0 - (changeValue / 20);
         pollution.ChangeAirPollutionMutation(pollutionChangeValue);
@@ -42,7 +50,17 @@ public class SectorStatistics
 
     public void ModifyProsperity(double changeValue)
     {
-        prosperity += changeValue;
+        if (prosperity + changeValue > 100)
+        {
+            changeValue = 100 - prosperity;
+            prosperity = 100;
+        }
+
+        else if (prosperity + changeValue < 0)
+        {
+            changeValue = changeValue - prosperity;
+            prosperity = 0;
+        }
 
         double incomeChangeValue = changeValue * 5;
         ModifyIncome(incomeChangeValue);

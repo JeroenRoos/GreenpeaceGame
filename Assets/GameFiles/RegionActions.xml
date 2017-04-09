@@ -843,7 +843,7 @@
         <boolean>false</boolean>
       </pickedSectors>
       <actionCooldown>0</actionCooldown>
-      <isUnique>false</isUnique>
+      <isUnique>true</isUnique>
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
         <income>0</income>

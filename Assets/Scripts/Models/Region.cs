@@ -60,7 +60,6 @@ public class Region
                 if (gameEvent.idleTurnsLeft == 0)
                 {
                     gameEvent.SetPickedChoice(0, game, this);
-                    ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], true);
                 }
             }
 
