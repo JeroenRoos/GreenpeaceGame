@@ -70,7 +70,7 @@ public class GameStatistics
             }
         }
 
-        income /= divisionValue;
+        //income /= divisionValue;
         happiness /= divisionValue;
         pollution /= divisionValue;
         ecoAwareness /= divisionValue;
