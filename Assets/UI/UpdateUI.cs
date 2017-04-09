@@ -1670,7 +1670,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (tutorialStep9)
         {
-            game.NextTurn();
+            EventManager.CallChangeMonth();
 
             if (!tutorialNextTurnDone)
                 tutorialNextTurnDone = true;

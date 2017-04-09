@@ -177,9 +177,6 @@ public class TestBot : MonoBehaviour
     {
         if (turnCounter % 12 == 0 || turnCounter == 359)
             getNationalStats();
-
-        if (turnCounter % 12 == 0 || turnCounter == 359)
-            getRegionalStats();
     }
 
     private void RandomPlaystyle(Region region)

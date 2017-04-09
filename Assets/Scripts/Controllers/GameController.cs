@@ -41,7 +41,8 @@ public class GameController : MonoBehaviour
         oostNederland.GetComponent<RegionController>().Init(this);
         westNederland.GetComponent<RegionController>().Init(this);
         zuidNederland.GetComponent<RegionController>().Init(this);
-                
+        
+        EventManager.ChangeMonth += NextTurn;
         EventManager.CallNewGame();
     }
 
@@ -62,10 +63,6 @@ public class GameController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31)
         {
             NextTurn();
-            EventManager.CallChangeMonth();
-
-            if (autoSave)
-                SaveGame();
         }
 
         // Update the main screen UI (Icons and date)
@@ -95,6 +92,9 @@ public class GameController : MonoBehaviour
         GenerateMonthlyReport();
         if (isNewYear)
             GenerateYearlyReport();
+        
+        if (autoSave)
+            SaveGame();
     }
 
     private void GenerateMonthlyReport()
