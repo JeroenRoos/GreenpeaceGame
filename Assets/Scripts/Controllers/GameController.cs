@@ -62,6 +62,7 @@ public class GameController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31)
         {
             game.NextTurn();
+            UpdateRegionsPollutionInfluence();
             UpdateEvents();
             game.gameStatistics.UpdateRegionalAvgs(game);
             EventManager.CallChangeMonth();
@@ -116,9 +117,28 @@ public class GameController : MonoBehaviour
                 //EventManager.CallShowEvent();
             }
         }
-
     }
     
+    private void UpdateRegionsPollutionInfluence()
+    {
+        game.gameStatistics.UpdateRegionalAvgs(game);
+
+        foreach (Region region in game.regions)
+        {
+            double pollutionDifference = game.gameStatistics.pollution - region.statistics.avgPollution;
+            double pollutionChangeValue = pollutionDifference * 0.3 / 12;
+            Debug.Log("Region: " + region + " diff with avg: " + pollutionDifference + " changevalue: " + pollutionChangeValue);
+            foreach (RegionSector regionSector in region.sectors)
+            {
+                regionSector.statistics.pollution.ChangeAirPollution(pollutionChangeValue);
+                regionSector.statistics.pollution.ChangeNaturePollution(pollutionChangeValue);
+                regionSector.statistics.pollution.ChangeWaterPollution(pollutionChangeValue);
+            }
+            region.statistics.UpdateSectorAvgs(region);
+        }
+
+        game.gameStatistics.UpdateRegionalAvgs(game);
+    }
 
     private void updateUIMainScreen()
     {

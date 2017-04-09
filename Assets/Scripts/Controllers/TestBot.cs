@@ -479,7 +479,7 @@ public class TestBot : MonoBehaviour
     {
         string[] arrMonths = new string[12]
             { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-        int month = gameController.game.currentMonth;
+        int month = gameController.game.currentMonth - 1;
 
         Debug.Log("\nNational statistics CHANGE - turn: " + turnCounter + " (" + arrMonths[month] + " - " + (gameController.game.currentYear + 2019) + ")");
 
