@@ -152,6 +152,9 @@ public class UpdateUI : MonoBehaviour
     public Text txtTutorialRegion;
     public Text txtTurorialReginoBtnText;
 
+    public Image imgTutorialOverworld;
+    public Button btnTutorialOverworld;
+    public Text txtTutorialOverworld;
     public Image imgTutorialOrganization;
     public Text txtTutorialOrganization;
     public Text txtTutorialOrganizationBtnText;
@@ -234,7 +237,10 @@ public class UpdateUI : MonoBehaviour
 
     private void initTutorialNotActive()
     {
+        imgTutorialOverworld.gameObject.SetActive(false);
+        btnTutorialOverworld.gameObject.SetActive(false);
         btnTutorialRegion.gameObject.SetActive(false);
+        txtTutorialOverworld.enabled = false;
         canvasTutorial.gameObject.SetActive(false);
         tutorialStep2 = true;
         tutorialStep3 = true;
@@ -322,6 +328,7 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         //tutorialStep4 = false;
+        imgTutorialOverworld.gameObject.transform.position.x = imgTutorialOverworld.gameObject.transform.position.x + 200;
         string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. " +
                 "Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en werlvaart. Deze statistieken verschillen weer per regio.\nGa naar West-Nederland door op de regio te klikken. "
                 , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West" +
