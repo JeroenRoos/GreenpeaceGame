@@ -292,8 +292,8 @@ public class UpdateUI : MonoBehaviour
 
 
         //tutorialStep2 = false;
-        string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. Zoals je kunt zien zitten we nu in 2030. " +
-                "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. As you can see the current year is 2030. " +
+        string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. Zoals je kunt zien zitten we nu in 2020. " +
+                "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. As you can see the current year is 2020. " +
                 "This means you have 30 years to reach this goal. "};
         txtTurorialStep1.text = step2[taal];
         imgTutorialStep2Highlight1.enabled = true;
@@ -919,7 +919,7 @@ public class UpdateUI : MonoBehaviour
     IEnumerator tutorialRegionPopup()
     {
         string[] step1 = { "Elke regio bestaat uit 3 sectoren. Deze sectoren zijn Huishoudens, Landbouw en Bedrijven. De sectoren hebben statistieken voor " +
-                "tevredenheid, vervuiling, milieubewustheid en welvaart. Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. Je kunt deze secor statistieken zien door ." +
+                "tevredenheid, vervuiling, milieubewustheid en welvaart. Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. Je kunt deze secor statistieken zien door " +
                 "met je muis over de sector te hoveren."
                 , "Each region has 3 sectors. These sectors are Households, Agriculture and Companies. These sectors have statistics for happiness, pollution, eco awareness and prosperity. " +
                 "These sector statistics create the averages which are the region statistics. It is important to keep each sector happy. You can view these sector statistics by using your mouse to hover over the sector. "};
@@ -931,7 +931,7 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep6)
             yield return null;
 
-        string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. Je kunt maar 1 actie teglijk doen in een regio. " + 
+        string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. Je kunt maar 1 actie tegelijk doen in een regio. " + 
                 "Sommige acties kunnen ook maar 1 keer of eens in de zoveel tijd gedaan worden. Als je een actie kiest krijg je een aantal gegevens over de actie te zien. Daarnaast kun je kiezen " +
                 "op welke sectoren je de actie invloed uitoefend. Sommige acties kunnen in elke sector gedaan worden, andere in 1 of 2 van de sectoren. Kies nu een actie, keer vervolgens terug naar de landkaart door op de ESC toets te drukken."
                 , "You can do actions in regions. These actions cost money and most of the time also time. You can do 1 action at the time in a region. " +
