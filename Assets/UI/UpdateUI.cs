@@ -1180,9 +1180,6 @@ public class UpdateUI : MonoBehaviour
 
     private void updateRegionTextValues()
     {
-        dropdownRegio.ClearOptions();
-        dropdownRegio.RefreshShownValue();
-
         // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name[taal];
         txtRegionMoney.text = regio.statistics.income.ToString("0.00");
@@ -1489,6 +1486,8 @@ public class UpdateUI : MonoBehaviour
         if (!tutorialCheckActionDone)
             tutorialCheckActionDone = true;
 
+        dropdownRegio.ClearOptions();
+        dropdownRegio.RefreshShownValue();
         updateRegionTextValues();
     }
     #endregion
@@ -1649,7 +1648,8 @@ public class UpdateUI : MonoBehaviour
             foreach (GameEvent e in game.monthlyReport.completedEvents[i])
             {
                 txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal] + "\n";
-                txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.consequences[e.pickedChoiceNumber]) + "\n\n";
+                txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.consequences[e.pickedChoiceNumber]);
+                txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
             }
         }
     }
@@ -1663,9 +1663,38 @@ public class UpdateUI : MonoBehaviour
             foreach (RegionAction a in game.monthlyReport.completedActions[i])
             {
                 txtAfterActionCompletedColumnRightDescription.text += a.name[taal] + " - " + a.description[taal];
-                txtAfterActionCompletedColumnRightDescription.text += getAfterActionConsequences(a.consequences) + "\n\n";
+                txtAfterActionCompletedColumnRightDescription.text += getChosenSectors(a.pickedSectors);
+                txtAfterActionCompletedColumnRightDescription.text += getAfterActionConsequences(a.consequences);
+
+                string[] line = { "Geld beloning: ", "Money reward: " };
+                txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
             }
         }
+    }
+
+    private string getChosenSectors(bool[] sectors)
+    {
+        string[] sectorsPicked = {"\nSectoren: ", "\nSectors: "};
+
+
+        if (sectors[0])
+        {
+            string[] a = { "Huishoudens ", "Households " };
+            sectorsPicked[taal] += a[taal];
+        }
+        if (sectors[1])
+        {
+            string[] a = { "Landbouw ", "Agriculture " };
+            sectorsPicked[taal] += a[taal];
+        }
+        if (sectors[2])
+        {
+            string[] a = { "Bedrijven ", "Companies " };
+            sectorsPicked[taal] += a[taal];
+        }
+
+        return sectorsPicked[taal];
+
     }
 
     private string getAfterActionConsequences(SectorStatistics s)
@@ -2202,3 +2231,4 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
 }
+ 
