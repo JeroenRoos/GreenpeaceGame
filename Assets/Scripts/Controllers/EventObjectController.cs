@@ -112,7 +112,7 @@ public class EventObjectController : MonoBehaviour
 
         if (eventHoverCheck)
         {
-            /*txtTooltip = eventModel.name + "\n" + */txtTooltip = eventModel.description[taal];
+            /*txtTooltip = eventModel.name + "\n" + */txtTooltip = eventModel.publicEventName[taal] + "\n" + eventModel.description[taal];
             Vector3 pos = Event.current.mousePosition;
             lblReqt.x = pos.x + 10;
             lblReqt.y = pos.y + 20;
