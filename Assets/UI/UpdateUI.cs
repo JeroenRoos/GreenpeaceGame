@@ -83,6 +83,13 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionWestPollutionD;
     public Text txtAfterActionWestProsperityD;
 
+    // Text AfterActionCompleted
+    public Text txtAfterActionCompletedTitle;
+    public Text txtAfterActionCompletedColumnLeft;
+    public Text txtAfterActionCompletedColumnRight;
+    public Text txtAfterActionCompletedColumnLeftDescription;
+    public Text txtAfterActionCompletedColumnRightDescription;
+
     // Text Menu Popup
     public Text txtResume;
     public Text txtSave;
@@ -184,6 +191,7 @@ public class UpdateUI : MonoBehaviour
     public Button[] investResearch;
     public Button[] investEcoGuarding;
     public Button btnAfterActionReportStats;
+    public Button btnAfterActionReportCompleted;
 
     // Canvas 
     public Canvas canvasMenuPopup;
@@ -192,6 +200,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasRegioPopup;
     public Canvas canvasTutorial;
     public Canvas canvasAfterActionStatsPopup;
+    public Canvas canvasAfterActionCompletedPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -237,6 +246,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnTimelineCheck;
     public bool popupActive;
     private bool btnAfterActionStatsCheck;
+    private bool btnAfterActionCompletedCheck;
 
     public bool tutorialActive;
     private bool tutorialNoTooltip;
@@ -516,6 +526,9 @@ public class UpdateUI : MonoBehaviour
         btnAfterActionReportStats.GetComponent<Button>();
         btnAfterActionReportStats.gameObject.SetActive(false);
 
+        btnAfterActionReportCompleted.GetComponent<Button>();
+        btnAfterActionReportCompleted.gameObject.SetActive(false);
+
         setBooleans();
     }
 
@@ -530,6 +543,7 @@ public class UpdateUI : MonoBehaviour
         btnOrganizationCheck = false;
         btnTimelineCheck = false;
         btnAfterActionStatsCheck = false;
+        btnAfterActionCompletedCheck = false;
         btnMenuCheck = false;
         popupActive = false;
         regionHouseholdsCheck = false;
@@ -557,6 +571,9 @@ public class UpdateUI : MonoBehaviour
 
         canvasAfterActionStatsPopup.GetComponent<Canvas>();
         canvasAfterActionStatsPopup.gameObject.SetActive(false);
+
+        canvasAfterActionCompletedPopup.GetComponent<Canvas>();
+        canvasAfterActionCompletedPopup.gameObject.SetActive(false);
 
         if (tutorialActive)
         {
@@ -622,6 +639,11 @@ public class UpdateUI : MonoBehaviour
         else if (canvasAfterActionStatsPopup.gameObject.activeSelf)
         {
             canvasAfterActionStatsPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
+        {
+            canvasAfterActionCompletedPopup.gameObject.SetActive(false);
             popupActive = false;
         }
     }
@@ -1049,7 +1071,7 @@ public class UpdateUI : MonoBehaviour
             }
         }
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck)
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck)
         {
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
@@ -1445,7 +1467,6 @@ public class UpdateUI : MonoBehaviour
     {
         regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
-        updateRegionTextValues();
         btnDoActionRegionMenu.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionHouseholds.gameObject.SetActive(false);
@@ -1462,6 +1483,8 @@ public class UpdateUI : MonoBehaviour
 
         if (!tutorialCheckActionDone)
             tutorialCheckActionDone = true;
+
+        updateRegionTextValues();
     }
     #endregion
 
@@ -1593,6 +1616,96 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for AfterActionCompleted
+    public void initAFterActionCompleted()
+    {
+        updateTextAfterActionCompleted();
+        showCompletedEvents();
+        showCompletedActions();
+    }
+
+    private void updateTextAfterActionCompleted()
+    {
+        string[] txtTitle = { "Einde beurt rapport", "End of turn view" };
+        string[] txtRight = { "Afgeronde acties", "Completed Actions" };
+        string[] txtLeft = { "Afgeronde events", "Completed events" };
+
+        txtAfterActionCompletedTitle.text = txtTitle[taal];
+        txtAfterActionCompletedColumnLeft.text = txtLeft[taal];
+        txtAfterActionCompletedColumnRight.text = txtRight[taal];
+    }
+
+    private void showCompletedEvents()
+    {
+        txtAfterActionCompletedColumnLeftDescription.text = "";
+
+        for (int i = 0; i < game.monthlyReport.completedEvents.Length; i++)
+        {
+            foreach (GameEvent e in game.monthlyReport.completedEvents[i])
+            {
+                txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal] + "\n";
+                txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.consequences[e.pickedChoiceNumber]) + "\n\n";
+            }
+        }
+    }
+
+    private void showCompletedActions()
+    {
+        txtAfterActionCompletedColumnRightDescription.text = "";
+
+        for (int i = 0; i < game.monthlyReport.completedActions.Length; i++)
+        {
+            foreach (RegionAction a in game.monthlyReport.completedActions[i])
+            {
+                txtAfterActionCompletedColumnRightDescription.text += a.name[taal] + " - " + a.description[taal];
+                txtAfterActionCompletedColumnRightDescription.text += getAfterActionConsequences(a.consequences) + "\n\n";
+            }
+        }
+    }
+
+    private string getAfterActionConsequences(SectorStatistics s)
+    {
+        string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
+        if (s.income != 0)
+        {
+            string[] a = { "\nInkomen: " + s.income + "\n", "\nIncome: " + s.income + "\n" };
+            consequences[taal] += a[taal];
+        }
+        if (s.happiness != 0)
+        {
+            string[] c = { "Tevredenheid: " + s.happiness + "\n", "Happiness: " + s.happiness + "\n" };
+            consequences[taal] += c[taal];
+        }
+        if (s.ecoAwareness != 0)
+        {
+            string[] d = { "Milieubewustheid: " + s.ecoAwareness + "\n", "Eco awareness: " + s.ecoAwareness + "\n" };
+            consequences[taal] += d[taal];
+        }
+        if (s.prosperity != 0)
+        {
+            string[] e = { "Welvaart: " + s.prosperity + "\n", "Prosperity: " + s.prosperity + "\n" };
+            consequences[taal] += e[taal];
+        }
+        if (s.pollution.airPollutionIncrease != 0)
+        {
+            string[] f = { "Luchtvervuiling: " + s.pollution.airPollutionIncrease + "\n", "Air pollution: " + s.pollution.airPollutionIncrease + "\n" };
+            consequences[taal] += f[taal];
+        }
+        if (s.pollution.waterPollutionIncrease != 0)
+        {
+            string[] g = { "Watervervuiling: " + s.pollution.waterPollutionIncrease + "\n", "Water pollution: " + s.pollution.waterPollutionIncrease + "\n" };
+            consequences[taal] += g[taal];
+        }
+        if (s.pollution.naturePollutionIncrease != 0)
+        {
+            string[] h = { "Natuurvervuiling: " + s.pollution.naturePollutionIncrease + "\n", "Nature pollution: " + s.pollution.naturePollutionIncrease + "\n" };
+            consequences[taal] += h[taal];
+        }
+
+        return consequences[taal];
+    }
+    #endregion
+
     #region Code for activating popups
     public void btnTimelineClick()
     {
@@ -1629,6 +1742,16 @@ public class UpdateUI : MonoBehaviour
             popupActive = true;
             updateTextAfterActionStats();
         } 
+    }
+
+    public void btnAfterActionCompletedClick()
+    {
+        if (!canvasAfterActionCompletedPopup.gameObject.activeSelf && !popupActive && !tutorialActive)
+        {
+            canvasAfterActionCompletedPopup.gameObject.SetActive(true);
+            popupActive = true;
+            updateTextAfterActionCompleted();
+        }
     }
 
     private void initButtonText()
@@ -1798,6 +1921,16 @@ public class UpdateUI : MonoBehaviour
     public void btnAfterActionStatsExit()
     {
         btnAfterActionStatsCheck = false;
+    }
+
+    public void btnAfterActionCompletedEnter()
+    {
+        btnAfterActionCompletedCheck = true;
+    }
+
+    public void btnAfterActionCompletedExit()
+    {
+        btnAfterActionCompletedCheck = false;
     }
 
     public void regionHouseholdsEnter()

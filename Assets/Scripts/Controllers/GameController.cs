@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     public GameObject westNederland;
     public GameObject zuidNederland;
 
+    public Vector3[] afterActionPosition;
+
     public GameObject eventObject;
 
     // private float time;
@@ -35,6 +37,11 @@ public class GameController : MonoBehaviour
         updateUI = GetComponent<UpdateUI>();
         eventObjectController = GetComponent<EventObjectController>();
         updateUI.LinkGame(game);
+
+        afterActionPosition = new Vector3[3];
+        afterActionPosition[0] = new Vector3( 5, 5, 0);
+        afterActionPosition[1] = new Vector3( 5, 60, 0);
+        afterActionPosition[1] = new Vector3( 5, 115, 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
@@ -111,12 +118,47 @@ public class GameController : MonoBehaviour
          * updateui.completedActionsButton(game.monthlyReport.regions, game.monthlyReport.completedActions)
          */
 
+        /*
+         * EVENTS + ACTIES
+         * - Laat zien dat hij completed is
+         * - Laat tijdelijke consequenties zijn voor het aantal maanden
+         */ 
+
         updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
         updateUI.InitAfterActionStats();
+        updateUI.btnAfterActionReportStats.gameObject.transform.position = afterActionPosition[0];
 
-
+        int index = 1;
+        if (checkActionAndEventEmpty())
+        {
+            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(true);
+            updateUI.initAFterActionCompleted();
+            updateUI.btnAfterActionReportCompleted.gameObject.transform.position = afterActionPosition[index];
+            index++;
+        }
+        else
+        {
+            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(false);
+        }
 
         game.monthlyReport.UpdateStatistics(game.regions);
+    }
+
+    private bool checkActionAndEventEmpty()
+    {
+        for (int i = 0; i < game.monthlyReport.completedActions.Length; i++)
+        {
+            if (game.monthlyReport.completedActions[i].Count != 0)
+                return true;
+        }
+
+        for (int j = 0; j < game.monthlyReport.completedEvents.Length; j++)
+        {
+            if (game.monthlyReport.completedEvents[j].Count != 0)
+                return true;
+        }
+
+        return false;
     }
 
     private void GenerateYearlyReport()
