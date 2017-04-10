@@ -2,21 +2,20 @@
 <QuestContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Quests>
     <Quest>
-      <questID>placeholderName</questID>
+      <questID>IncomeNS</questID>
       <name>
-        <string>dutchname</string>
-        <string>englishname</string>
+        <string>Verhoog inkomen</string>
+        <string>Increase income</string>
       </name>
       <description>
-        <string>dutchdescription</string>
-        <string>englishdescription</string>
+        <string>Verhoog het inkomen in Zuid-Nederland naar 700 per maand.</string>
+        <string>Increase the income in The Netherlands South to 700 per month.</string>
       </description>
-      <startYear>0</startYear>
-      <startMonth>0</startMonth>
-      <isGlobal>false</isGlobal>
-      <isRegional>false</isRegional>
+      <startYear>1</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>Zuid Nederland</questLocation>
       <questCompleteConditions>
-        <income>0</income>
+        <income>700</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
@@ -28,27 +27,26 @@
         <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
       </questCompleteConditions>
-      <questMoneyReward>0</questMoneyReward>
+      <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
     </Quest>
     <Quest>
-      <questID>placeholderName</questID>
+      <questID>EcoAwarenessNational</questID>
       <name>
-        <string>dutchname</string>
-        <string>englishname</string>
+        <string>Verhoog milieubewustheid</string>
+        <string>Increase Eco Awareness</string>
       </name>
       <description>
-        <string>dutchdescription</string>
-        <string>englishdescription</string>
+        <string>Verhoog de nationale milieubewustheid naar 50%.</string>
+        <string>Increase the national eco-awareness to 50%.</string>
       </description>
-      <startYear>0</startYear>
-      <startMonth>0</startMonth>
-      <isGlobal>false</isGlobal>
-      <isRegional>false</isRegional>
+      <startYear>3</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>National</questLocation>
       <questCompleteConditions>
         <income>0</income>
         <happiness>0</happiness>
-        <ecoAwareness>0</ecoAwareness>
+        <ecoAwareness>50</ecoAwareness>
         <prosperity>0</prosperity>
         <avgPollution>0</avgPollution>
         <avgAirPollution>0</avgAirPollution>
@@ -58,26 +56,25 @@
         <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
       </questCompleteConditions>
-      <questMoneyReward>0</questMoneyReward>
+      <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
     </Quest>
     <Quest>
-      <questID>placeholderName</questID>
+      <questID>HappinesNN</questID>
       <name>
-        <string>dutchname</string>
-        <string>englishname</string>
+        <string>Verhoog tevredenheid</string>
+        <string>Increase Happiness</string>
       </name>
       <description>
-        <string>dutchdescription</string>
-        <string>englishdescription</string>
+        <string>Verhoog de tevredenheid in Noord-Nederland naar 60%.</string>
+        <string>Increase the happines in The Netherlands North to 60%.</string>
       </description>
-      <startYear>0</startYear>
-      <startMonth>0</startMonth>
-      <isGlobal>false</isGlobal>
-      <isRegional>false</isRegional>
+      <startYear>5</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>Zuid Nederland</questLocation>
       <questCompleteConditions>
         <income>0</income>
-        <happiness>0</happiness>
+        <happiness>60</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <avgPollution>0</avgPollution>
@@ -88,29 +85,28 @@
         <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
       </questCompleteConditions>
-      <questMoneyReward>0</questMoneyReward>
+      <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
     </Quest>
     <Quest>
-      <questID>placeholderName</questID>
+      <questID>PollutionNW</questID>
       <name>
-        <string>dutchname</string>
-        <string>englishname</string>
+        <string>Verlaag vervuiling</string>
+        <string>Reduce pollution</string>
       </name>
       <description>
-        <string>dutchdescription</string>
-        <string>englishdescription</string>
+        <string>Verlaag de vervuiling in West Nederland naar 50%.</string>
+        <string>Reduce the pollution in The Netherlands West to 50%.</string>
       </description>
-      <startYear>0</startYear>
-      <startMonth>0</startMonth>
-      <isGlobal>false</isGlobal>
-      <isRegional>false</isRegional>
+      <startYear>7</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>West Nederland</questLocation>
       <questCompleteConditions>
         <income>0</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
-        <avgPollution>0</avgPollution>
+        <avgPollution>50</avgPollution>
         <avgAirPollution>0</avgAirPollution>
         <avgNaturePollution>0</avgNaturePollution>
         <avgWaterPollution>0</avgWaterPollution>
@@ -118,25 +114,53 @@
         <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
       </questCompleteConditions>
-      <questMoneyReward>0</questMoneyReward>
+      <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
     </Quest>
     <Quest>
-      <questID>placeholderName</questID>
+      <questID>PollutionNE</questID>
       <name>
-        <string>dutchname</string>
-        <string>englishname</string>
+        <string>Verlaag vervuiling</string>
+        <string>Reduce pollution</string>
       </name>
       <description>
-        <string>dutchdescription</string>
-        <string>englishdescription</string>
+        <string>Verlaag de vervuiling in Oost Nederland naar 40%.</string>
+        <string>Reduce the pollution in The Netherlands East to 40%.</string>
       </description>
-      <startYear>0</startYear>
-      <startMonth>0</startMonth>
-      <isGlobal>false</isGlobal>
-      <isRegional>false</isRegional>
+      <startYear>9</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>Oost Nederland</questLocation>
       <questCompleteConditions>
         <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <avgPollution>40</avgPollution>
+        <avgAirPollution>0</avgAirPollution>
+        <avgNaturePollution>0</avgNaturePollution>
+        <avgWaterPollution>0</avgWaterPollution>
+        <avgAirPollutionIncrease>0</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
+      </questCompleteConditions>
+      <questMoneyReward>20000</questMoneyReward>
+      <isActive>false</isActive>
+    </Quest>
+    <Quest>
+      <questID>IncomeNational</questID>
+      <name>
+        <string>Verhoog inkomen</string>
+        <string>Increase income</string>
+      </name>
+      <description>
+        <string>verhoog het nationaal inkomen per maand naar 10000.</string>
+        <string>Increase the national income to 10000 per month.</string>
+      </description>
+      <startYear>11</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>National</questLocation>
+      <questCompleteConditions>
+        <income>10000</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
@@ -148,7 +172,123 @@
         <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
       </questCompleteConditions>
-      <questMoneyReward>0</questMoneyReward>
+      <questMoneyReward>20000</questMoneyReward>
+      <isActive>false</isActive>
+    </Quest>
+    <Quest>
+      <questID>ProsperityNational</questID>
+      <name>
+        <string>Verhoog welvaart</string>
+        <string>Increase prosperity</string>
+      </name>
+      <description>
+        <string>Verhoog de nationale welvaart naar 80%.</string>
+        <string>Increase the national welfare to 80%.</string>
+      </description>
+      <startYear>13</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>National</questLocation>
+      <questCompleteConditions>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>80</prosperity>
+        <avgPollution>0</avgPollution>
+        <avgAirPollution>0</avgAirPollution>
+        <avgNaturePollution>0</avgNaturePollution>
+        <avgWaterPollution>0</avgWaterPollution>
+        <avgAirPollutionIncrease>0</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
+      </questCompleteConditions>
+      <questMoneyReward>20000</questMoneyReward>
+      <isActive>false</isActive>
+    </Quest>
+    <Quest>
+      <questID>PollutionNN</questID>
+      <name>
+        <string>Verlaag vervuiling</string>
+        <string>Reduce pollution</string>
+      </name>
+      <description>
+        <string>Verlaag de vervuiling in Noord Nederland naar 30%.</string>
+        <string>Reduce the pollution in The Netherlands North to 30%.</string>
+      </description>
+      <startYear>15</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>Noord Nederland</questLocation>
+      <questCompleteConditions>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <avgPollution>30</avgPollution>
+        <avgAirPollution>0</avgAirPollution>
+        <avgNaturePollution>0</avgNaturePollution>
+        <avgWaterPollution>0</avgWaterPollution>
+        <avgAirPollutionIncrease>0</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
+      </questCompleteConditions>
+      <questMoneyReward>20000</questMoneyReward>
+      <isActive>false</isActive>
+    </Quest>
+    <Quest>
+      <questID>EcoAwarenessNational2</questID>
+      <name>
+        <string>Verhoog milieubewustheid</string>
+        <string>Increase Eco Awareness</string>
+      </name>
+      <description>
+        <string>Verhoog de nationale milieubewustheid naar 80%.</string>
+        <string>Increase the national eco-awareness to 80%.</string>
+      </description>
+      <startYear>17</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>National</questLocation>
+      <questCompleteConditions>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>80</ecoAwareness>
+        <prosperity>0</prosperity>
+        <avgPollution>0</avgPollution>
+        <avgAirPollution>0</avgAirPollution>
+        <avgNaturePollution>0</avgNaturePollution>
+        <avgWaterPollution>0</avgWaterPollution>
+        <avgAirPollutionIncrease>0</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
+      </questCompleteConditions>
+      <questMoneyReward>20000</questMoneyReward>
+      <isActive>false</isActive>
+    </Quest>
+    <Quest>
+      <questID>PollutionNational</questID>
+      <name>
+        <string>Verlaag vervuiling</string>
+        <string>Reduce pollution</string>
+      </name>
+      <description>
+        <string>Verlaag de nationale vervuiling naar 20%.</string>
+        <string>Reduce the national pollution to 20%.</string>
+      </description>
+      <startYear>19</startYear>
+      <startMonth>6</startMonth>
+      <questLocation>National</questLocation>
+      <questCompleteConditions>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <avgPollution>20</avgPollution>
+        <avgAirPollution>0</avgAirPollution>
+        <avgNaturePollution>0</avgNaturePollution>
+        <avgWaterPollution>0</avgWaterPollution>
+        <avgAirPollutionIncrease>0</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>0</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>0</avgWaterPollutionIncrease>
+      </questCompleteConditions>
+      <questMoneyReward>30000</questMoneyReward>
       <isActive>false</isActive>
     </Quest>
   </Quests>

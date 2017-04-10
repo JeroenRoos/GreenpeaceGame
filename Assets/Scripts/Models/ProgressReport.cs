@@ -22,7 +22,7 @@ public class ProgressReport
 
     public ProgressReport()
     {
-        reportRegions = new string[4] { "Noord Nederland", "Oost Nederland", "Zuid Nederland", "West Nederland" };
+        reportRegions = new string[4] { "Noord Nederland", "Oost Nederland", "West Nederland", "Zuid Nederland" };
         oldIncome = new double[4] { 0, 0, 0, 0 };
         oldHappiness = new double[4] { 0, 0, 0, 0 };
         oldEcoAwareness = new double[4] { 0, 0, 0, 0 };

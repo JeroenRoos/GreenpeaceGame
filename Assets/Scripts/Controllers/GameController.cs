@@ -83,20 +83,21 @@ public class GameController : MonoBehaviour
     {
         bool isNewYear = game.UpdateCurrentMonthAndYear();
 
-        if (!updateUI.tutorialNextTurnDone)
-            updateUI.tutorialNextTurnDone = true;
-
         game.ExecuteNewMonthMethods();
 
         UpdateRegionsPollutionInfluence();
         UpdateEvents();
         game.gameStatistics.UpdateRegionalAvgs(game);
+        UpdateQuests();
 
         GenerateMonthlyReport();
 
         if (isNewYear)
             GenerateYearlyReport();
-        
+
+        if (!updateUI.tutorialNextTurnDone)
+            updateUI.tutorialNextTurnDone = true;
+
         if (autoSave)
             SaveGame();
     }
@@ -127,6 +128,61 @@ public class GameController : MonoBehaviour
          */
         game.yearlyReport.UpdateStatistics(game.regions);
 
+    }
+
+    private void UpdateQuests()
+    {
+        StartNewQuests();
+        CompleteActiveQuests();
+    }
+
+    private void CompleteActiveQuests()
+    {
+        foreach (Quest quest in game.quests)
+        {
+            //only check active quests
+            if (quest.isActive)
+            {
+                //National or regional
+                if (quest.questLocation == "National")
+                {
+                    //checks if conditions are met, (needs seperate "if" statement)
+                    if (quest.NationalCompleteConditionsMet(game.gameStatistics))
+                    {
+                        game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
+                        Debug.Log("Quest completed:" + quest.description[0]);
+                        quest.CompleteQuest();
+                    }
+                }
+                else
+                {
+                    foreach (Region r in game.regions)
+                    {
+                        //find quest region
+                        if (r.name[0] == quest.questLocation)
+                        {
+                            //checks if conditions are met, (needs seperate "if" statement)
+                            if (quest.RegionalCompleteConditionsMet(r.statistics))
+                            {
+                                game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
+                                Debug.Log("Quest completed:" + quest.description[0]);
+                                quest.CompleteQuest();
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void StartNewQuests()
+    {
+        foreach (Quest quest in game.quests)
+        {
+            if (quest.startYear == game.currentYear && quest.startMonth == game.currentMonth)
+                quest.StartQuest();
+        }
     }
 
     private void UpdateEvents()
