@@ -62,7 +62,6 @@ public class ProgressReport
         {
             if (region.name[0] == reportRegions[i])
             {
-                Debug.Log("completed action: " + action.name[0]);
                 completedActions[i].Add(action);
                 break;
             }
@@ -75,7 +74,6 @@ public class ProgressReport
         {
             if (region.name[0] == reportRegions[i])
             {
-                Debug.Log("new event: " + gameEvent.name);
                 newEvents[i].Add(gameEvent);
                 break;
             }
@@ -88,7 +86,6 @@ public class ProgressReport
         {
             if (region.name[0] == reportRegions[i])
             {
-                Debug.Log("completed event: " + gameEvent.name);
                 completedEvents[i].Add(gameEvent);
                 break;
             }

@@ -103,23 +103,22 @@ public class GameController : MonoBehaviour
     private void GenerateMonthlyReport()
     {
         /* montly report generating
-         * 
-         * 
-         * 
-         * 
-         * 
+         * updateui.StatisticsChangeButton(game.monthlyReport.regions, g.m.oldincome. g.m.oldhappines, etc., etc.)
+         * updateui.completedEventsButton(game.monthlyReport.regions, game.monthlyReport.completedEvents)
+         * updateui.newEventsButton(game.monthlyReport.regions, game.monthlyReport.newEvents)
+         * updateui.completedActionsButton(game.monthlyReport.regions, game.monthlyReport.completedActions)
          */
         game.monthlyReport.UpdateStatistics(game.regions);
     }
 
     private void GenerateYearlyReport()
     {
-        /* montly report generating
-         * 
-         * 
-         * 
-         * 
-         * 
+        /* yearly report generating
+         * updateui.StatisticsChangeButton(game.yearlyReport.regions, g.y.oldincome. g.y.oldhappines, etc., etc.)
+         * updateui.completedEventsButton(game.yearlyReport.regions, game.yearlyReport.completedEvents) 
+         * updateui.newEventsButton(game.yearlyReport.regions, game.yearlyReport.newEvents)
+         * completed/newEvents in 1 button?
+         * updateui.completedActionsButton(game.yearlyReport.regions, game.yearlyReport.completedActions)
          */
         game.yearlyReport.UpdateStatistics(game.regions);
 
