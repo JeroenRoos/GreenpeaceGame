@@ -107,6 +107,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtCheckboxHouseholds;
     public Text txtCheckboxAgriculture;
     public Text txtCheckboxCompanies;
+    public Text txtRegionActionSectorTotalCost;
+    public Text txtRegionActionSectorTotalCostDescription;
 
     // Buttons 
     public Button btnMenu;
@@ -1083,7 +1085,6 @@ public class UpdateUI : MonoBehaviour
         txtCheckboxHouseholds.text = txtHouseholds[taal];
         txtCheckboxAgriculture.text = txtAgriculture[taal];
         txtCheckboxCompanies.text = txtCompaines[taal];
-
     }
 
     private void updateRegionTextValues()
@@ -1108,6 +1109,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionDuration.text = "";
         txtRegionActionName.text = "";
         txtRegionActionNoMoney.text = "";
+        txtRegionActionSectorTotalCostDescription.text = "";
 
         txtRegionActionNoMoney.text = "";
         txtActionSectorsDescription.text = "";
@@ -1140,37 +1142,37 @@ public class UpdateUI : MonoBehaviour
             if (sector.sectorName[taal] == "Huishoudens" || sector.sectorName[taal] == "Households")
             {
                 //Debug.Log(sector.sectorName);
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution
-                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution + "%\nTevredenheid: " + sector.statistics.happiness
-                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness + "%\nWelvaart: " + sector.statistics.prosperity  + "%",
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
 
-                    "Air pollution: " + sector.statistics.pollution.airPollution + "%\nWater pollution: " + sector.statistics.pollution.waterPollution
-                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution + "%\nHappiness: " + sector.statistics.happiness
-                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness + "%\nProsperity: " + sector.statistics.prosperity  + "%"};
+                    "Air pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00")  + "%"};
                 txtTooltipHouseholds = tip[taal];       
     }
             else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
                // Debug.Log(sector.sectorName);
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution
-                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution + "%\nTevredenheid: " + sector.statistics.happiness
-                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness + "%\nWelvaart: " + sector.statistics.prosperity  + "%",
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
 
-                    "Air pollution: " + sector.statistics.pollution.airPollution + "%\nWater pollution: " + sector.statistics.pollution.waterPollution
-                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution + "%\nHappiness: " + sector.statistics.happiness
-                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness + "%\nProsperity: " + sector.statistics.prosperity  + "%"};
+                    "Air pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00")  + "%"};
                 txtTooltipCompany = tip[taal];
             }
             else if (sector.sectorName[taal] == "Landbouw" || sector.sectorName[taal] == "Agriculture")
             {
                 //Debug.Log(sector.sectorName);
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution
-                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution + "%\nTevredenheid: " + sector.statistics.happiness
-                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness + "%\nWelvaart: " + sector.statistics.prosperity  + "%",
+                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
 
-                    "Air pollution: " + sector.statistics.pollution.airPollution + "%\nWater pollution: " + sector.statistics.pollution.waterPollution
-                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution + "%\nHappiness: " + sector.statistics.happiness
-                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness + "%\nProsperity: " + sector.statistics.prosperity + "%"};
+                    "Air pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00") + "%"};
 
                 txtTooltipAgriculture = tip[taal];
             }
@@ -1266,6 +1268,8 @@ public class UpdateUI : MonoBehaviour
                     "Costs per sector: " + action.actionMoneyCost + " geld" };
                 string[] actionDurationText = { "Duur: " + regioAction.actionDuration.ToString() + " maanden",
                     "Duration: " + regioAction.actionDuration.ToString() + " months" };
+
+                string[] txtSectorMoney = { "Totale kosten", "Total cost" };
                 string[] sectorDescription = { "Mogelijke sectoren", "Possible sectors" };
                 dropdownChoiceMade = true;
 
@@ -1274,6 +1278,7 @@ public class UpdateUI : MonoBehaviour
                 txtRegionActionDuration.text = actionDurationText[taal];
                 //txtRegionActionConsequences.text = getActionConsequences(action.consequences);
                 txtActionSectorsDescription.text = sectorDescription[taal];
+                txtRegionActionSectorTotalCostDescription.text = txtSectorMoney[taal];
 
                 setCheckboxes(action);
             }
@@ -1711,6 +1716,7 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = false;
 
         Debug.Log("Households: " + checkboxHouseholds);
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
     }
 
     public void valueChangedAgriculture()
@@ -1734,6 +1740,7 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = false;
 
         Debug.Log("Agriculture: " + checkboxAgriculture);
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
     }
 
     public void valueChangedCompanies()
@@ -1757,6 +1764,7 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = false;
 
         Debug.Log("Companies: " + checkboxCompanies);
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
     }
 
     public void btnResumeMenu()
