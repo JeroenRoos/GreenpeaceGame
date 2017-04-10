@@ -176,6 +176,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnMenuCheck;
     private bool btnTimelineCheck;
     public bool popupActive;
+    private bool actionDone;
 
     public bool tutorialActive;
     private bool tutorialNoTooltip;
@@ -213,7 +214,7 @@ public class UpdateUI : MonoBehaviour
         taal = game.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = false;
+        tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
@@ -260,6 +261,8 @@ public class UpdateUI : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log("Update");
+
         if (tutorialStep6)
             popupController();
 
@@ -276,6 +279,15 @@ public class UpdateUI : MonoBehaviour
                 string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
                 txtRegionActionNoMoney.text = error[taal];
                 btnDoActionRegionMenu.gameObject.SetActive(false);
+            }
+
+            foreach (RegionAction action in regio.actions)
+            {
+                if (action.name[taal] == dropdownChoice)
+                {
+
+                    
+                }
             }
         }
     }
@@ -306,11 +318,32 @@ public class UpdateUI : MonoBehaviour
                 "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. As you can see the current year is 2020. " +
                 "This means you have 30 years to reach this goal. "};
         txtTurorialStep1.text = step2[taal];
-        imgTutorialStep2Highlight1.enabled = true;
-        imgTutorialStep2Highlight2.enabled = true;
+         imgTutorialStep2Highlight1.enabled = true;
+         imgTutorialStep2Highlight2.enabled = true;
+
+        ColorBlock cb = btnPollution.colors;
+        Color color;
 
         while (!tutorialStep3)
+        {
             yield return null;
+
+            /*
+            color = Color.red;
+            cb.normalColor = color;
+            cb.highlightedColor = color;
+            cb.pressedColor = color;
+            btnPollution.colors = cb;
+
+            yield return new WaitForSeconds(0.1f);
+
+            color = Color.white;
+            cb.normalColor = color;
+            cb.highlightedColor = color;
+            cb.pressedColor = color;
+            btnPollution.colors = cb;
+            */
+        }
 
         //tutorialStep3 = false;
         string[] step3 = { "Dit zijn jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het " +
@@ -1100,6 +1133,7 @@ public class UpdateUI : MonoBehaviour
         txtActionSectorsDescription.text = "";
         btnDoActionRegionMenu.gameObject.SetActive(false);
         dropdownChoiceMade = false;
+        actionDone = false;
 
         updateActiveActions();
         updateActiveEvents();
@@ -1258,8 +1292,6 @@ public class UpdateUI : MonoBehaviour
                 string[] SectorDescription = { "Mogelijke sectoren", "Possible sectors" };
                 txtActionSectorsDescription.text = SectorDescription[taal];
 
-                setCheckboxes(action);
-
                 if (game.gameStatistics.money > action.actionMoneyCost)
                 {
                     btnDoActionRegionMenu.interactable = true;
@@ -1271,6 +1303,8 @@ public class UpdateUI : MonoBehaviour
                     string[] error2 = { "Niet genoeg geld om de actie te doen", "You don't have enough money for this action" };
                     txtRegionActionNoMoney.text = error2[taal];
                 }
+
+                setCheckboxes(action);
             }
         }
     }
@@ -1382,6 +1416,7 @@ public class UpdateUI : MonoBehaviour
         if (!tutorialCheckActionDone)
             tutorialCheckActionDone = true;
 
+        actionDone = true;
     }
     #endregion
 
@@ -1672,7 +1707,7 @@ public class UpdateUI : MonoBehaviour
         //if (UnityEditor.EditorApplication.isPlaying)
         //    UnityEditor.EditorApplication.isPlaying = false;
         //else
-            Application.Quit();
+        Application.Quit();
     }
 
     public void loadOtherScene(int index)
