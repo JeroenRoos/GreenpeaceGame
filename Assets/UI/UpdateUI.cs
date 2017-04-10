@@ -16,6 +16,7 @@ public class UpdateUI : MonoBehaviour
     double regioActionCost;
     Game game;
     public int tutorialIndex;
+    public Scrollbar scrollbarAfterActionReport;
 
     public Dropdown dropdownRegio;
 
@@ -1643,9 +1644,17 @@ public class UpdateUI : MonoBehaviour
         {
             foreach (GameEvent e in game.monthlyReport.completedEvents[i])
             {
-                txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal] + "\n";
+                txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal];
                 txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.consequences[e.pickedChoiceNumber]);
-                txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
+                //txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
+
+                string[] sectorsPicked = { "Sectoren: ", "Sectors: " };
+                txtAfterActionCompletedColumnLeftDescription.text += sectorsPicked[taal];
+                foreach (string s in e.possibleSectors)
+                {
+                    txtAfterActionCompletedColumnLeftDescription.text += s + " ";
+                }
+                txtAfterActionCompletedColumnLeftDescription.text += "\n\n";
             }
         }
     }
@@ -1653,6 +1662,8 @@ public class UpdateUI : MonoBehaviour
     private void showCompletedActions()
     {
         txtAfterActionCompletedColumnRightDescription.text = "";
+        //scrollbarAfterActionReport.gameObject.SetActive(false);
+        int index = 0;
 
         for (int i = 0; i < game.monthlyReport.completedActions.Length; i++)
         {
@@ -1664,8 +1675,12 @@ public class UpdateUI : MonoBehaviour
 
                 string[] line = { "Geld beloning: ", "Money reward: " };
                 txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
+                index++;
             }
         }
+
+        //if (index > 2)
+        //    scrollbarAfterActionReport.gameObject.SetActive(true);
     }
 
     private string getChosenSectors(bool[] sectors)
