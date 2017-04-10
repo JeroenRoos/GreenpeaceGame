@@ -49,7 +49,6 @@ public class ProgressReport
                     completedActions[i] = new List<RegionAction>();
                     newEvents[i] = new List<GameEvent>();
                     completedEvents[i] = new List<GameEvent>();
-                    Debug.Log(region.name[0] + " report cleared");
                     break;
                 }
             }

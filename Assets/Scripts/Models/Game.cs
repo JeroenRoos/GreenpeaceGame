@@ -31,6 +31,8 @@ public class Game
     public ProgressReport monthlyReport { get; private set; }
     public ProgressReport yearlyReport { get; private set; }
 
+    public List<Quest> quests { get; private set; }
+
     public Game()
     {
         language = 0;
@@ -38,6 +40,7 @@ public class Game
         events = new List<GameEvent>();
         regions = new List<Region>();
         actions = new List<RegionAction>();
+        quests = new List<Quest>();
         monthlyReport = new ProgressReport();
         yearlyReport = new ProgressReport();
 
@@ -51,6 +54,7 @@ public class Game
         LoadRegions();
         LoadRegionActions();
         LoadGameEvents();
+        LoadQuests();
         gameStatistics.UpdateRegionalAvgs(this);
 
         //set reports
@@ -65,19 +69,16 @@ public class Game
             }
             region.statistics.UpdateSectorAvgs(region);
         }
-
+        
         SaveRegions();
         SaveRegionActions();
-        SaveGameEvents();*/
+        SaveGameEvents();
+        SaveQuests();*/
     }
 
     public void SaveRegions()
     {
-        List<Region> templist = new List<Region>();
-        foreach (Region region in regions)
-            templist.Add(region);
-
-        RegionContainer regionContainer = new RegionContainer(templist);
+        RegionContainer regionContainer = new RegionContainer(regions);
         regionContainer.Save();
     }
 
@@ -121,7 +122,18 @@ public class Game
         else if (language == "dutch")
             this.language = 0;
     }
+    
+    public void SaveQuests()
+    {
+        QuestContainer questContainer = new QuestContainer(quests);
+        questContainer.Save();
+    }
 
+    public void LoadQuests()
+    {
+        QuestContainer questContainer = QuestContainer.Load();
+        quests = questContainer.quests;
+    }
 
     public bool UpdateCurrentMonthAndYear()
     {
