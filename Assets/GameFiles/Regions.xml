@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <RegionContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <GameEvents>
-    <GameEvent>
+  <Regions>
+    <Region>
       <eventPosition>
         <x>15</x>
         <y>1</y>
@@ -13,9 +13,9 @@
       </name>
       <statistics>
         <income>900</income>
-        <happiness>2</happiness>
-        <ecoAwareness>3</ecoAwareness>
-        <prosperity>5.666666666666667</prosperity>
+        <happiness>36.666666666666664</happiness>
+        <ecoAwareness>26.666666666666668</ecoAwareness>
+        <prosperity>50</prosperity>
         <avgPollution>40</avgPollution>
         <avgAirPollution>36.666666666666664</avgAirPollution>
         <avgNaturePollution>43.333333333333336</avgNaturePollution>
@@ -35,7 +35,7 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <actionMoneyCost>7000</actionMoneyCost>
+          <actionMoneyCost>2000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -126,7 +126,7 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -217,7 +217,7 @@
             <string>Sluit een een gebied in een regio af voor een natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -309,7 +309,7 @@
             <string>Raise money for your own organization.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
+          <actionMoneyReward>1000</actionMoneyReward>
           <actionDuration>1</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
@@ -399,7 +399,7 @@
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
             <string>Increase the prosperity by investing more in the economy</string>
           </description>
-          <actionMoneyCost>9000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -490,7 +490,7 @@
             <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
-          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyCost>1500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -581,7 +581,7 @@
             <string>Neem maatregelen tegen de luchtvervuiling.</string>
             <string>Take actions against the airpollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -672,7 +672,7 @@
             <string>Neem maatregelen tegen de natuurvervuiling.</string>
             <string>Take actions against the nature pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -763,7 +763,7 @@
             <string>Neem maatregelen tegen de watervervuiling.</string>
             <string>Take actions against the water pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -854,7 +854,7 @@
             <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
             <string>Reduce the current pollution in the chosen sectors with 5%.</string>
           </description>
-          <actionMoneyCost>25000</actionMoneyCost>
+          <actionMoneyCost>8000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -868,7 +868,7 @@
             <boolean>false</boolean>
           </pickedSectors>
           <actionCooldown>0</actionCooldown>
-          <isUnique>false</isUnique>
+          <isUnique>true</isUnique>
           <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
@@ -945,9 +945,9 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>0</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>3</prosperity>
+            <happiness>30</happiness>
+            <ecoAwareness>40</ecoAwareness>
+            <prosperity>30</prosperity>
             <pollution>
               <avgPollution>30</avgPollution>
               <airPollution>30</airPollution>
@@ -966,9 +966,9 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>3</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>5</prosperity>
+            <happiness>40</happiness>
+            <ecoAwareness>10</ecoAwareness>
+            <prosperity>50</prosperity>
             <pollution>
               <avgPollution>20</avgPollution>
               <airPollution>20</airPollution>
@@ -987,9 +987,9 @@
           </sectorName>
           <statistics>
             <income>500</income>
-            <happiness>3</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>9</prosperity>
+            <happiness>40</happiness>
+            <ecoAwareness>30</ecoAwareness>
+            <prosperity>70</prosperity>
             <pollution>
               <avgPollution>70</avgPollution>
               <airPollution>60</airPollution>
@@ -1003,8 +1003,8 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
-    </GameEvent>
-    <GameEvent>
+    </Region>
+    <Region>
       <eventPosition>
         <x>16</x>
         <y>1</y>
@@ -1016,9 +1016,9 @@
       </name>
       <statistics>
         <income>900</income>
-        <happiness>3</happiness>
-        <ecoAwareness>3</ecoAwareness>
-        <prosperity>6.333333333333333</prosperity>
+        <happiness>43.333333333333336</happiness>
+        <ecoAwareness>20</ecoAwareness>
+        <prosperity>55</prosperity>
         <avgPollution>53.333333333333336</avgPollution>
         <avgAirPollution>46.666666666666664</avgAirPollution>
         <avgNaturePollution>60</avgNaturePollution>
@@ -1038,7 +1038,7 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <actionMoneyCost>7000</actionMoneyCost>
+          <actionMoneyCost>2000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -1129,7 +1129,7 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -1220,7 +1220,7 @@
             <string>Sluit een een gebied in een regio af voor een natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -1312,7 +1312,7 @@
             <string>Raise money for your own organization.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
+          <actionMoneyReward>1000</actionMoneyReward>
           <actionDuration>1</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
@@ -1402,7 +1402,7 @@
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
             <string>Increase the prosperity by investing more in the economy</string>
           </description>
-          <actionMoneyCost>9000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -1493,7 +1493,7 @@
             <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
-          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyCost>1500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -1584,7 +1584,7 @@
             <string>Neem maatregelen tegen de luchtvervuiling.</string>
             <string>Take actions against the airpollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -1675,7 +1675,7 @@
             <string>Neem maatregelen tegen de natuurvervuiling.</string>
             <string>Take actions against the nature pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -1766,7 +1766,7 @@
             <string>Neem maatregelen tegen de watervervuiling.</string>
             <string>Take actions against the water pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -1857,7 +1857,7 @@
             <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
             <string>Reduce the current pollution in the chosen sectors with 5%.</string>
           </description>
-          <actionMoneyCost>25000</actionMoneyCost>
+          <actionMoneyCost>8000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -1871,7 +1871,7 @@
             <boolean>false</boolean>
           </pickedSectors>
           <actionCooldown>0</actionCooldown>
-          <isUnique>false</isUnique>
+          <isUnique>true</isUnique>
           <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
@@ -1948,9 +1948,9 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>3</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>5</prosperity>
+            <happiness>40</happiness>
+            <ecoAwareness>20</ecoAwareness>
+            <prosperity>40</prosperity>
             <pollution>
               <avgPollution>50</avgPollution>
               <airPollution>40</airPollution>
@@ -1969,9 +1969,9 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>3</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>5</prosperity>
+            <happiness>30</happiness>
+            <ecoAwareness>20</ecoAwareness>
+            <prosperity>50</prosperity>
             <pollution>
               <avgPollution>50</avgPollution>
               <airPollution>40</airPollution>
@@ -1990,9 +1990,9 @@
           </sectorName>
           <statistics>
             <income>500</income>
-            <happiness>3</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>9</prosperity>
+            <happiness>60</happiness>
+            <ecoAwareness>20</ecoAwareness>
+            <prosperity>75</prosperity>
             <pollution>
               <avgPollution>60</avgPollution>
               <airPollution>60</airPollution>
@@ -2006,8 +2006,8 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
-    </GameEvent>
-    <GameEvent>
+    </Region>
+    <Region>
       <eventPosition>
         <x>9</x>
         <y>1</y>
@@ -2019,9 +2019,9 @@
       </name>
       <statistics>
         <income>1300</income>
-        <happiness>3.3333333333333335</happiness>
-        <ecoAwareness>3</ecoAwareness>
-        <prosperity>9.3333333333333339</prosperity>
+        <happiness>43.333333333333336</happiness>
+        <ecoAwareness>20</ecoAwareness>
+        <prosperity>60</prosperity>
         <avgPollution>54.44444444444445</avgPollution>
         <avgAirPollution>63.333333333333336</avgAirPollution>
         <avgNaturePollution>46.666666666666664</avgNaturePollution>
@@ -2041,7 +2041,7 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <actionMoneyCost>7000</actionMoneyCost>
+          <actionMoneyCost>2000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -2132,7 +2132,7 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -2223,7 +2223,7 @@
             <string>Sluit een een gebied in een regio af voor een natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -2315,7 +2315,7 @@
             <string>Raise money for your own organization.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
+          <actionMoneyReward>1000</actionMoneyReward>
           <actionDuration>1</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
@@ -2405,7 +2405,7 @@
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
             <string>Increase the prosperity by investing more in the economy</string>
           </description>
-          <actionMoneyCost>9000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -2496,7 +2496,7 @@
             <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
-          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyCost>1500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -2587,7 +2587,7 @@
             <string>Neem maatregelen tegen de luchtvervuiling.</string>
             <string>Take actions against the airpollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -2678,7 +2678,7 @@
             <string>Neem maatregelen tegen de natuurvervuiling.</string>
             <string>Take actions against the nature pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -2769,7 +2769,7 @@
             <string>Neem maatregelen tegen de watervervuiling.</string>
             <string>Take actions against the water pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -2860,7 +2860,7 @@
             <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
             <string>Reduce the current pollution in the chosen sectors with 5%.</string>
           </description>
-          <actionMoneyCost>25000</actionMoneyCost>
+          <actionMoneyCost>8000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -2874,7 +2874,7 @@
             <boolean>false</boolean>
           </pickedSectors>
           <actionCooldown>0</actionCooldown>
-          <isUnique>false</isUnique>
+          <isUnique>true</isUnique>
           <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
@@ -2951,9 +2951,9 @@
           </sectorName>
           <statistics>
             <income>750</income>
-            <happiness>3</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>12</prosperity>
+            <happiness>50</happiness>
+            <ecoAwareness>25</ecoAwareness>
+            <prosperity>80</prosperity>
             <pollution>
               <avgPollution>80</avgPollution>
               <airPollution>90</airPollution>
@@ -2972,9 +2972,9 @@
           </sectorName>
           <statistics>
             <income>500</income>
-            <happiness>6</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>15</prosperity>
+            <happiness>70</happiness>
+            <ecoAwareness>5</ecoAwareness>
+            <prosperity>90</prosperity>
             <pollution>
               <avgPollution>53.333333333333336</avgPollution>
               <airPollution>70</airPollution>
@@ -2993,9 +2993,9 @@
           </sectorName>
           <statistics>
             <income>50</income>
-            <happiness>1</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>1</prosperity>
+            <happiness>10</happiness>
+            <ecoAwareness>30</ecoAwareness>
+            <prosperity>10</prosperity>
             <pollution>
               <avgPollution>30</avgPollution>
               <airPollution>30</airPollution>
@@ -3009,8 +3009,8 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
-    </GameEvent>
-    <GameEvent>
+    </Region>
+    <Region>
       <eventPosition>
         <x>13</x>
         <y>1</y>
@@ -3022,9 +3022,9 @@
       </name>
       <statistics>
         <income>450</income>
-        <happiness>3.3333333333333335</happiness>
-        <ecoAwareness>2</ecoAwareness>
-        <prosperity>7.333333333333333</prosperity>
+        <happiness>46.666666666666664</happiness>
+        <ecoAwareness>11.666666666666666</ecoAwareness>
+        <prosperity>61.666666666666664</prosperity>
         <avgPollution>42.222222222222221</avgPollution>
         <avgAirPollution>40</avgAirPollution>
         <avgNaturePollution>46.666666666666664</avgNaturePollution>
@@ -3044,7 +3044,7 @@
             <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
             <string>Campaign to increase the eco awareness within the region.</string>
           </description>
-          <actionMoneyCost>7000</actionMoneyCost>
+          <actionMoneyCost>2000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -3135,7 +3135,7 @@
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
             <string>Improve the production in the region to generate a higher income.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -3226,7 +3226,7 @@
             <string>Sluit een een gebied in een regio af voor een natuurgebied.</string>
             <string>Close an area in a region for a nature reserve.</string>
           </description>
-          <actionMoneyCost>10000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>3</actionDuration>
           <possibleSectors>
@@ -3318,7 +3318,7 @@
             <string>Raise money for your own organization.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
-          <actionMoneyReward>0</actionMoneyReward>
+          <actionMoneyReward>1000</actionMoneyReward>
           <actionDuration>1</actionDuration>
           <possibleSectors>
             <string>Huishoudens</string>
@@ -3408,7 +3408,7 @@
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
             <string>Increase the prosperity by investing more in the economy</string>
           </description>
-          <actionMoneyCost>9000</actionMoneyCost>
+          <actionMoneyCost>3000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -3499,7 +3499,7 @@
             <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
-          <actionMoneyCost>5000</actionMoneyCost>
+          <actionMoneyCost>1500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -3590,7 +3590,7 @@
             <string>Neem maatregelen tegen de luchtvervuiling.</string>
             <string>Take actions against the airpollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -3681,7 +3681,7 @@
             <string>Neem maatregelen tegen de natuurvervuiling.</string>
             <string>Take actions against the nature pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -3772,7 +3772,7 @@
             <string>Neem maatregelen tegen de watervervuiling.</string>
             <string>Take actions against the water pollution.</string>
           </description>
-          <actionMoneyCost>7500</actionMoneyCost>
+          <actionMoneyCost>2500</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -3863,7 +3863,7 @@
             <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
             <string>Reduce the current pollution in the chosen sectors with 5%.</string>
           </description>
-          <actionMoneyCost>25000</actionMoneyCost>
+          <actionMoneyCost>8000</actionMoneyCost>
           <actionMoneyReward>0</actionMoneyReward>
           <actionDuration>2</actionDuration>
           <possibleSectors>
@@ -3877,7 +3877,7 @@
             <boolean>false</boolean>
           </pickedSectors>
           <actionCooldown>0</actionCooldown>
-          <isUnique>false</isUnique>
+          <isUnique>true</isUnique>
           <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
           <actionCosts>
             <income>0</income>
@@ -3954,9 +3954,9 @@
           </sectorName>
           <statistics>
             <income>250</income>
-            <happiness>4</happiness>
-            <ecoAwareness>2</ecoAwareness>
-            <prosperity>5</prosperity>
+            <happiness>40</happiness>
+            <ecoAwareness>10</ecoAwareness>
+            <prosperity>40</prosperity>
             <pollution>
               <avgPollution>50</avgPollution>
               <airPollution>40</airPollution>
@@ -3975,9 +3975,9 @@
           </sectorName>
           <statistics>
             <income>100</income>
-            <happiness>3</happiness>
-            <ecoAwareness>1</ecoAwareness>
-            <prosperity>8</prosperity>
+            <happiness>50</happiness>
+            <ecoAwareness>5</ecoAwareness>
+            <prosperity>70</prosperity>
             <pollution>
               <avgPollution>50</avgPollution>
               <airPollution>60</airPollution>
@@ -3996,9 +3996,9 @@
           </sectorName>
           <statistics>
             <income>100</income>
-            <happiness>3</happiness>
-            <ecoAwareness>3</ecoAwareness>
-            <prosperity>9</prosperity>
+            <happiness>50</happiness>
+            <ecoAwareness>20</ecoAwareness>
+            <prosperity>75</prosperity>
             <pollution>
               <avgPollution>26.666666666666668</avgPollution>
               <airPollution>20</airPollution>
@@ -4012,6 +4012,6 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
-    </GameEvent>
-  </GameEvents>
+    </Region>
+  </Regions>
 </RegionContainer>

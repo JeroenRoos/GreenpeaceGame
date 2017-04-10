@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
     void Update () {
         if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9)
         {
-            NextTurn();
+            EventManager.CallChangeMonth();
         }
 
         // Update the main screen UI (Icons and date)
