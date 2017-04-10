@@ -24,7 +24,7 @@ public class RegionStatistics
     //public double publicTransport { get; private set; } //public transport class
     //public double cityEnvironment { get; private set; } //city environment class
 
-    private RegionStatistics()
+    public RegionStatistics()
     {
     }
 

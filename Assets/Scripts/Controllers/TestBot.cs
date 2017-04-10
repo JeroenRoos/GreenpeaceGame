@@ -78,7 +78,7 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = true; 
+        isEnabled = false; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
