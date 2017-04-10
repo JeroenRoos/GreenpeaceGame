@@ -104,7 +104,6 @@ public class GameController : MonoBehaviour
 
     private void GenerateMonthlyReport()
     {
-        updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
         /* montly report generating
          * updateui.StatisticsChangeButton(game.monthlyReport.regions, g.m.oldincome. g.m.oldhappines, etc., etc.)
          * updateui.completedEventsButton(game.monthlyReport.regions, game.monthlyReport.completedEvents)
@@ -112,7 +111,10 @@ public class GameController : MonoBehaviour
          * updateui.completedActionsButton(game.monthlyReport.regions, game.monthlyReport.completedActions)
          */
 
-        
+        updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
+        updateUI.InitAfterActionStats();
+
+
 
         game.monthlyReport.UpdateStatistics(game.regions);
     }

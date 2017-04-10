@@ -28,6 +28,61 @@ public class UpdateUI : MonoBehaviour
     public Toggle checkboxRegionCompanies;
     private bool checkboxCompanies;
 
+    // Text AfterActionReportStats
+    public Text txtAfterActionStatsName;
+    public Text txtAfterActionStatsColumnLeft;
+    public Text txtAfterActionStatsColumnLeftMiddle;
+    public Text txtAfterActionStatsColumnRight;
+    public Text txtAfterActionStatsColumnRightMiddle;
+    public Text txtAfterActionStatsColumnLeftDescription;
+    public Text txtAfterActionStatsColumnLeftMiddleDescription;
+    public Text txtAfterActionStatsColumnRightDescription;
+    public Text txtAfterActionStatsColumnRightMiddleDescription;
+
+    public Text txtAfterActionNoordIncome;
+    public Text txtAfterActionNoordHappiness;
+    public Text txtAfterActionNoordEcoAwareness;
+    public Text txtAfterActionNoordPollution;
+    public Text txtAfterActionNoordProsperity;
+    public Text txtAfterActionNoordIncomeD;
+    public Text txtAfterActionNoordHappinessD;
+    public Text txtAfterActionNoordEcoAwarenessD;
+    public Text txtAfterActionNoordPollutionD;
+    public Text txtAfterActionNoordProsperityD;
+
+    public Text txtAfterActionOostIncome;
+    public Text txtAfterActionOostHappiness;
+    public Text txtAfterActionOostEcoAwareness;
+    public Text txtAfterActionOostPollution;
+    public Text txtAfterActionOostProsperity;
+    public Text txtAfterActionOostIncomeD;
+    public Text txtAfterActionOostHappinessD;
+    public Text txtAfterActionOostEcoAwarenessD;
+    public Text txtAfterActionOostPollutionD;
+    public Text txtAfterActionOostProsperityD;
+
+    public Text txtAfterActionZuidIncome;
+    public Text txtAfterActionZuidHappiness;
+    public Text txtAfterActionZuidEcoAwareness;
+    public Text txtAfterActionZuidPollution;
+    public Text txtAfterActionZuidProsperity;
+    public Text txtAfterActionZuidIncomeD;
+    public Text txtAfterActionZuidHappinessD;
+    public Text txtAfterActionZuidEcoAwarenessD;
+    public Text txtAfterActionZuidPollutionD;
+    public Text txtAfterActionZuidProsperityD;
+
+    public Text txtAfterActionWestIncome;
+    public Text txtAfterActionWestHappiness;
+    public Text txtAfterActionWestEcoAwareness;
+    public Text txtAfterActionWestPollution;
+    public Text txtAfterActionWestProsperity;
+    public Text txtAfterActionWestIncomeD;
+    public Text txtAfterActionWestHappinessD;
+    public Text txtAfterActionWestEcoAwarenessD;
+    public Text txtAfterActionWestPollutionD;
+    public Text txtAfterActionWestProsperityD;
+
     // Text Menu Popup
     public Text txtResume;
     public Text txtSave;
@@ -136,6 +191,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasTimelinePopup;
     public Canvas canvasRegioPopup;
     public Canvas canvasTutorial;
+    public Canvas canvasAfterActionStatsPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -499,6 +555,9 @@ public class UpdateUI : MonoBehaviour
         canvasRegioPopup.GetComponent<Canvas>();
         canvasRegioPopup.gameObject.SetActive(false);
 
+        canvasAfterActionStatsPopup.GetComponent<Canvas>();
+        canvasAfterActionStatsPopup.gameObject.SetActive(false);
+
         if (tutorialActive)
         {
             canvasTutorial.GetComponent<Canvas>();
@@ -558,6 +617,11 @@ public class UpdateUI : MonoBehaviour
         else if (canvasRegioPopup.gameObject.activeSelf)
         {
             canvasRegioPopup.gameObject.SetActive(false);
+            popupActive = false;
+        }
+        else if (canvasAfterActionStatsPopup.gameObject.activeSelf)
+        {
+            canvasAfterActionStatsPopup.gameObject.SetActive(false);
             popupActive = false;
         }
     }
@@ -1401,6 +1465,134 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for AfterActionStats
+    public void InitAfterActionStats()
+    {
+        updateTextAfterActionStats();
+        calculateDifference();
+    }
+
+    private void updateTextAfterActionStats()
+    {
+        string[] txtTitle = { "Einde beurt rapport", "End of turn view" };
+        string[] txtRight = { "West-Nederland", "The Netherlands West" };
+        string[] txtRightMiddle = { "Zuid-Nederland", "The Netherlands South" };
+        string[] txtLeftMiddle = { "Oost-Nederland", "The Netherlands East" };
+        string[] txtLeft = { "Noord-Nederland", "The Netherlands North" };
+        string[] txtIncomeDescription = { "Inkomen", "Income" };
+        string[] txtHappinessDescription = { "Tevredenheid", "Happiness" };
+        string[] txtEcoAwarenessDescription = { "Milieubewustheid", "Eco Awareness" };
+        string[] txtPollutionDescription = { "Vervuiling", "Pollution" };
+        string[] txtProsperityDescription = { "Welvaart", "Prosperity" };
+        string[] txtDescription = { "Veranderde waardes", "Changed values" };
+
+        txtAfterActionStatsName.text = txtTitle[taal];
+        txtAfterActionStatsColumnLeft.text = txtLeft[taal];
+        txtAfterActionStatsColumnLeftMiddle.text = txtLeftMiddle[taal];
+        txtAfterActionStatsColumnRight.text = txtRight[taal];
+        txtAfterActionStatsColumnRightMiddle.text = txtRightMiddle[taal];
+        txtAfterActionStatsColumnLeftDescription.text = txtDescription[taal];
+        txtAfterActionStatsColumnLeftMiddleDescription.text = txtDescription[taal];
+        txtAfterActionStatsColumnRightMiddleDescription.text = txtDescription[taal];
+        txtAfterActionStatsColumnRightDescription.text = txtDescription[taal];
+
+        txtAfterActionNoordIncomeD.text = txtIncomeDescription[taal];
+        txtAfterActionNoordHappinessD.text = txtHappinessDescription[taal];
+        txtAfterActionNoordEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
+        txtAfterActionNoordPollutionD.text = txtPollutionDescription[taal];
+        txtAfterActionNoordProsperityD.text = txtProsperityDescription[taal];
+
+        txtAfterActionOostIncomeD.text = txtIncomeDescription[taal];
+        txtAfterActionOostHappinessD.text = txtHappinessDescription[taal];
+        txtAfterActionOostEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
+        txtAfterActionOostPollutionD.text = txtPollutionDescription[taal];
+        txtAfterActionOostProsperityD.text = txtProsperityDescription[taal];
+
+        txtAfterActionZuidIncomeD.text = txtIncomeDescription[taal];
+        txtAfterActionZuidHappinessD.text = txtHappinessDescription[taal];
+        txtAfterActionZuidEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
+        txtAfterActionZuidPollutionD.text = txtPollutionDescription[taal];
+        txtAfterActionZuidProsperityD.text = txtProsperityDescription[taal];
+
+        txtAfterActionWestIncomeD.text = txtIncomeDescription[taal];
+        txtAfterActionWestHappinessD.text = txtHappinessDescription[taal];
+        txtAfterActionWestEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
+        txtAfterActionWestPollutionD.text = txtPollutionDescription[taal];
+        txtAfterActionWestProsperityD.text = txtProsperityDescription[taal];
+    }
+
+    private void calculateDifference()
+    {
+        double incomeDifference = 0;
+        double happinessDifference = 0;
+        double ecoAwarenessDifference = 0;
+        double pollutionDifference = 0;
+        double prosperityDifference = 0;
+
+        for (int i = 0; i < game.monthlyReport.reportRegions.Length; i++)
+        {
+            incomeDifference = game.regions[i].statistics.income - game.monthlyReport.oldIncome[i];
+            happinessDifference = game.regions[i].statistics.happiness - game.monthlyReport.oldHappiness[i];
+            ecoAwarenessDifference = game.regions[i].statistics.ecoAwareness - game.monthlyReport.oldEcoAwareness[i];
+            pollutionDifference = game.regions[i].statistics.avgPollution - game.monthlyReport.oldPollution[i];
+            prosperityDifference = game.regions[i].statistics.prosperity - game.monthlyReport.oldProsperity[i];
+
+            if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
+            {
+                setDifferenceTextValuesNoord(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+            }
+            else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
+            {
+                setDifferenceTextValuesOost(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+            }
+            else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
+            {
+                setDifferenceTextValuesZuid(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+            }
+            else if (game.monthlyReport.reportRegions[i] == "West Nederland")
+            {
+                setDifferenceTextValuesWest(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+            }
+        }
+    }
+
+    private void setDifferenceTextValuesNoord(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
+    {
+        txtAfterActionNoordIncome.text = incomeDifference.ToString("0.00");
+        txtAfterActionNoordHappiness.text = happinessDifference.ToString("0.00");
+        txtAfterActionNoordEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
+        txtAfterActionNoordPollution.text = pollutionDifference.ToString("0.00");
+        txtAfterActionNoordProsperity.text = prosperityDifference.ToString("0.00");
+    }
+
+    private void setDifferenceTextValuesOost(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
+    {
+        txtAfterActionOostIncome.text = incomeDifference.ToString("0.00");
+        txtAfterActionOostHappiness.text = happinessDifference.ToString("0.00");
+        txtAfterActionOostEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
+        txtAfterActionOostPollution.text = pollutionDifference.ToString("0.00");
+        txtAfterActionOostProsperity.text = prosperityDifference.ToString("0.00");
+    }
+
+    private void setDifferenceTextValuesZuid(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
+    {
+        txtAfterActionZuidIncome.text = incomeDifference.ToString("0.00");
+        txtAfterActionZuidHappiness.text = happinessDifference.ToString("0.00");
+        txtAfterActionZuidEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
+        txtAfterActionZuidPollution.text = pollutionDifference.ToString("0.00");
+        txtAfterActionZuidProsperity.text = prosperityDifference.ToString("0.00");
+    }
+
+    private void setDifferenceTextValuesWest(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
+    {
+        txtAfterActionWestIncome.text = incomeDifference.ToString("0.00");
+        txtAfterActionWestHappiness.text = happinessDifference.ToString("0.00");
+        txtAfterActionWestEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
+        txtAfterActionWestPollution.text = pollutionDifference.ToString("0.00");
+        txtAfterActionWestProsperity.text = prosperityDifference.ToString("0.00");
+    }
+    #endregion
+
     #region Code for activating popups
     public void btnTimelineClick()
     {
@@ -1431,11 +1623,12 @@ public class UpdateUI : MonoBehaviour
 
     public void btnAfterActionStatsClick()
     {
-        /* if (!Canvas && !popupActive && !tutorialActive)
+        if (!canvasAfterActionStatsPopup.gameObject.activeSelf && !popupActive && !tutorialActive)
         {
-            Canvas > true;
+            canvasAfterActionStatsPopup.gameObject.SetActive(true);
             popupActive = true;
-        } */
+            updateTextAfterActionStats();
+        } 
     }
 
     private void initButtonText()
@@ -1698,9 +1891,6 @@ public class UpdateUI : MonoBehaviour
 
     public void buttonExitGameOnClick()
     {
-        //if (UnityEditor.EditorApplication.isPlaying)
-        //    UnityEditor.EditorApplication.isPlaying = false;
-        //else
         Application.Quit();
     }
 
