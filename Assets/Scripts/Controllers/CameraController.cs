@@ -9,8 +9,8 @@ public class CameraController : MonoBehaviour {
     float verticalMovement;
     float depthMovement;
 
-    bool canMove = true;
-    bool firstTimeUse = true;
+    public bool canMove = true;
+    public bool firstTimeUse = true;
 
     // drag 
     private Vector3 dragOrigin;
@@ -18,11 +18,11 @@ public class CameraController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //temporary fix
         if (firstTimeUse)
         {
             EventManager.PopupIsActive += DisableMovement;
             EventManager.PopupIsDisabled += ActivateMovement;
+            firstTimeUse = false;
         }
 
         RaycastHit hit;
@@ -44,7 +44,8 @@ public class CameraController : MonoBehaviour {
         transform.Translate(correctedPos - transform.position, Space.World);
     }
 
-    void FixedUpdate () {
+    void FixedUpdate ()
+    {
         if (canMove)
         {
             CheckInput();
