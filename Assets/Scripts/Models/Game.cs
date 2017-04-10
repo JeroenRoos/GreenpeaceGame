@@ -205,14 +205,12 @@ public class Game
 
     public void AddCompletedActionToReports(Region region, RegionAction action)
     {
-        Debug.Log("Adding action to report: " + action.name[0]);
         monthlyReport.AddCompletedAction(region, action);
         yearlyReport.AddCompletedAction(region, action);
     }
 
     public void AddCompletedEventToReports(Region region, GameEvent gameEvent)
     {
-        Debug.Log("Adding event to report: " + gameEvent.name);
         monthlyReport.AddCompletedGameEvent(region, gameEvent);
         yearlyReport.AddCompletedGameEvent(region, gameEvent);
 
