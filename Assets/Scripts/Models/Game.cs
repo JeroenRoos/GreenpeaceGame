@@ -11,27 +11,29 @@ using System.IO;
 
 public class Game
 {
-
-    //All Regions and region types planned for complete game
+    //Game statistics
+    public GameStatistics gameStatistics { get; private set; } //money, population, energy
     public int currentYear { get; private set; }
     public int currentMonth { get; private set; }
-    //public Dictionary<string, Region> regions { get; private set; }
 
     //0,1,2,3: Noord,Oost,West,Zuid
     public List<Region> regions { get; private set; }
-    public List<GameEvent> events { get; private set; }
-    public System.Random rnd { get; private set; }
-    public int language { get; private set; } //0 = Dutch, 1 = English
-    public List<RegionAction> actions { get; private set; }
 
-    //Game statistics
-    public GameStatistics gameStatistics { get; private set; } //money, population, energy
+    //game elements
+    public List<GameEvent> events { get; private set; }
+    public List<RegionAction> actions { get; private set; }
+    public List<Quest> quests { get; private set; }
 
     //new turn reports
     public ProgressReport monthlyReport { get; private set; }
     public ProgressReport yearlyReport { get; private set; }
-
-    public List<Quest> quests { get; private set; }
+    
+    //advisors
+    public EconomyAdvisor economyAdvisor { get; private set; }
+    public PollutionAdvisor pollutionAdvisor { get; private set; }
+    
+    public int language { get; private set; } //0 = Dutch, 1 = English
+    public System.Random rnd { get; private set; }
 
     public Game()
     {
@@ -43,6 +45,9 @@ public class Game
         quests = new List<Quest>();
         monthlyReport = new ProgressReport();
         yearlyReport = new ProgressReport();
+        economyAdvisor = new EconomyAdvisor();
+        pollutionAdvisor = new PollutionAdvisor();
+
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
         
@@ -60,6 +65,8 @@ public class Game
         //set reports
         monthlyReport.UpdateStatistics(regions);
         yearlyReport.UpdateStatistics(regions);
+
+
 
         /*foreach (Region region in regions)
         {

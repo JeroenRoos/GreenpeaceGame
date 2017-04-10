@@ -97,8 +97,10 @@ public class GameController : MonoBehaviour
         game.gameStatistics.UpdateRegionalAvgs(game);
         UpdateQuests();
 
-        GenerateMonthlyReport();
+        game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
+        game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
 
+        GenerateMonthlyReport();
         if (isNewYear)
             GenerateYearlyReport();
 
