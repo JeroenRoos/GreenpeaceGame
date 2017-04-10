@@ -29,7 +29,6 @@ public class Region
     {
         foreach (bool isTrue in pickedSectors)
         {
-            Debug.Log(isTrue);
             if (isTrue)
             game.gameStatistics.ModifyMoney(action.actionMoneyCost, false);
         }
