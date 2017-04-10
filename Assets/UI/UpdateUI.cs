@@ -307,11 +307,32 @@ public class UpdateUI : MonoBehaviour
                 "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. As you can see the current year is 2020. " +
                 "This means you have 30 years to reach this goal. "};
         txtTurorialStep1.text = step2[taal];
-        imgTutorialStep2Highlight1.enabled = true;
-        imgTutorialStep2Highlight2.enabled = true;
+         imgTutorialStep2Highlight1.enabled = true;
+         imgTutorialStep2Highlight2.enabled = true;
+
+        ColorBlock cb = btnPollution.colors;
+        Color color;
 
         while (!tutorialStep3)
+        {
             yield return null;
+
+            /*
+            color = Color.red;
+            cb.normalColor = color;
+            cb.highlightedColor = color;
+            cb.pressedColor = color;
+            btnPollution.colors = cb;
+
+            yield return new WaitForSeconds(0.1f);
+
+            color = Color.white;
+            cb.normalColor = color;
+            cb.highlightedColor = color;
+            cb.pressedColor = color;
+            btnPollution.colors = cb;
+            */
+        }
 
         //tutorialStep3 = false;
         string[] step3 = { "Dit zijn jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het " +
@@ -1668,7 +1689,7 @@ public class UpdateUI : MonoBehaviour
         //if (UnityEditor.EditorApplication.isPlaying)
         //    UnityEditor.EditorApplication.isPlaying = false;
         //else
-            Application.Quit();
+        Application.Quit();
     }
 
     public void loadOtherScene(int index)
