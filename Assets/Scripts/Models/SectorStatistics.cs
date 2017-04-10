@@ -22,7 +22,23 @@ public class SectorStatistics
     
     public void ModifyHappiness(double changeValue)
     {
-        happiness += changeValue;
+        if (happiness + changeValue > 100)
+        {
+            changeValue = 100 - happiness;
+            happiness = 100;
+        }
+
+        else if (happiness + changeValue < 0)
+        {
+            happiness = changeValue - happiness;
+            happiness = 0;
+        }
+
+        else
+            happiness += changeValue;
+
+        //happiness decay
+        happiness *= (1 - 0.05 / 12);
     }
 
     public void ModifyEcoAwareness(double changeValue)
@@ -61,6 +77,9 @@ public class SectorStatistics
             changeValue = changeValue - prosperity;
             prosperity = 0;
         }
+
+        else
+            prosperity += changeValue;
 
         double incomeChangeValue = changeValue * 5;
         ModifyIncome(incomeChangeValue);

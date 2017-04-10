@@ -9,7 +9,7 @@ using System.IO;
 [Serializable]
 public class RegionContainer
 {
-    [XmlArray("GameEvents"), XmlArrayItem("GameEvent")]
+    [XmlArray("Regions"), XmlArrayItem("Region")]
     public List<Region> regions { get; private set; }
 
     public RegionContainer() { }

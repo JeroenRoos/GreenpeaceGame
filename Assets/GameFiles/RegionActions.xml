@@ -10,7 +10,7 @@
         <string>Voer campagne om de milieubewustheid te verhogen in de regio.</string>
         <string>Campaign to increase the eco awareness within the region.</string>
       </description>
-      <actionMoneyCost>7000</actionMoneyCost>
+      <actionMoneyCost>2000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -101,7 +101,7 @@
         <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
         <string>Improve the production in the region to generate a higher income.</string>
       </description>
-      <actionMoneyCost>10000</actionMoneyCost>
+      <actionMoneyCost>3000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>3</actionDuration>
       <possibleSectors>
@@ -192,7 +192,7 @@
         <string>Sluit een een gebied in een regio af voor een natuurgebied.</string>
         <string>Close an area in a region for a nature reserve.</string>
       </description>
-      <actionMoneyCost>10000</actionMoneyCost>
+      <actionMoneyCost>3000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>3</actionDuration>
       <possibleSectors>
@@ -284,7 +284,7 @@
         <string>Raise money for your own organization.</string>
       </description>
       <actionMoneyCost>0</actionMoneyCost>
-      <actionMoneyReward>0</actionMoneyReward>
+      <actionMoneyReward>1000</actionMoneyReward>
       <actionDuration>1</actionDuration>
       <possibleSectors>
         <string>Huishoudens</string>
@@ -374,7 +374,7 @@
         <string>Verhoog de welvaart door meer te investeren in de economie.</string>
         <string>Increase the prosperity by investing more in the economy</string>
       </description>
-      <actionMoneyCost>9000</actionMoneyCost>
+      <actionMoneyCost>3000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -465,7 +465,7 @@
         <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
-      <actionMoneyCost>5000</actionMoneyCost>
+      <actionMoneyCost>1500</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -556,7 +556,7 @@
         <string>Neem maatregelen tegen de luchtvervuiling.</string>
         <string>Take actions against the airpollution.</string>
       </description>
-      <actionMoneyCost>7500</actionMoneyCost>
+      <actionMoneyCost>2500</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -647,7 +647,7 @@
         <string>Neem maatregelen tegen de natuurvervuiling.</string>
         <string>Take actions against the nature pollution.</string>
       </description>
-      <actionMoneyCost>7500</actionMoneyCost>
+      <actionMoneyCost>2500</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -738,7 +738,7 @@
         <string>Neem maatregelen tegen de watervervuiling.</string>
         <string>Take actions against the water pollution.</string>
       </description>
-      <actionMoneyCost>7500</actionMoneyCost>
+      <actionMoneyCost>2500</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -829,7 +829,7 @@
         <string>verlaag de huidige vervuiling in de gekozen sectoren met 5%.</string>
         <string>Reduce the current pollution in the chosen sectors with 5%.</string>
       </description>
-      <actionMoneyCost>25000</actionMoneyCost>
+      <actionMoneyCost>8000</actionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
