@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 
 //monthly report class
@@ -16,6 +17,7 @@ public class ProgressReport
     public double[] oldPollution { get; private set; }
 
     public List<RegionAction>[] completedActions { get; private set; }
+    public List<GameEvent>[] newEvents { get; private set; }
     public List<GameEvent>[] completedEvents { get; private set; }
 
     public ProgressReport()
@@ -27,6 +29,7 @@ public class ProgressReport
         oldProsperity = new double[4] { 0, 0, 0, 0 };
         oldPollution = new double[4] { 0, 0, 0, 0 };
         completedActions = new List<RegionAction>[] { new List<RegionAction>(), new List<RegionAction>(), new List<RegionAction>(), new List<RegionAction>()};
+        newEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
         completedEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
     }
 
@@ -44,7 +47,9 @@ public class ProgressReport
                     oldProsperity[i] = region.statistics.prosperity;
                     oldPollution[i] = region.statistics.avgPollution;
                     completedActions[i] = new List<RegionAction>();
+                    newEvents[i] = new List<GameEvent>();
                     completedEvents[i] = new List<GameEvent>();
+                    Debug.Log(region.name[0] + " report cleared");
                     break;
                 }
             }
@@ -57,7 +62,21 @@ public class ProgressReport
         {
             if (region.name[0] == reportRegions[i])
             {
+                Debug.Log("completed action: " + action.name[0]);
                 completedActions[i].Add(action);
+                break;
+            }
+        }
+    }
+
+    public void AddNewGameEvent(Region region, GameEvent gameEvent)
+    {
+        for (int i = 0; i < reportRegions.Length; i++)
+        {
+            if (region.name[0] == reportRegions[i])
+            {
+                Debug.Log("new event: " + gameEvent.name);
+                newEvents[i].Add(gameEvent);
                 break;
             }
         }
@@ -69,6 +88,7 @@ public class ProgressReport
         {
             if (region.name[0] == reportRegions[i])
             {
+                Debug.Log("completed event: " + gameEvent.name);
                 completedEvents[i].Add(gameEvent);
                 break;
             }

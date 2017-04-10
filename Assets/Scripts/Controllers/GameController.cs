@@ -150,6 +150,7 @@ public class GameController : MonoBehaviour
                 pickedEvent.pickEventSector(game.rnd);
                 pickedEvent.StartEvent(game.currentYear, game.currentMonth);
                 pickedRegion.AddGameEvent(pickedEvent);
+                game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
 
                 GameObject eventInstance = GameController.Instantiate(eventObject);
                 eventInstance.GetComponent<EventObjectController>().Init(this, pickedRegion, pickedEvent);

@@ -209,6 +209,11 @@ public class Game
         yearlyReport.AddCompletedAction(region, action);
     }
 
+    public void AddNewEventToMonthlyReport(Region region, GameEvent gameEvent)
+    {
+        monthlyReport.AddNewGameEvent(region, gameEvent);
+    }
+
     public void AddCompletedEventToReports(Region region, GameEvent gameEvent)
     {
         monthlyReport.AddCompletedGameEvent(region, gameEvent);

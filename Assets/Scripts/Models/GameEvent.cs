@@ -9,6 +9,7 @@ using System.IO;
 public class GameEvent
 {
     public string name { get; private set; } //id
+    public string[] publicEventName { get; private set; }
     
     public string[] description { get; private set; }
     public string[] choicesDutch { get; private set; }
