@@ -16,6 +16,7 @@ public class UpdateUI : MonoBehaviour
     double regioActionCost;
     Game game;
     public int tutorialIndex;
+    public Scrollbar scrollbarAfterActionReport;
 
     public Dropdown dropdownRegio;
 
@@ -1505,15 +1506,26 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for AfterActionStats
-    public void InitAfterActionStats()
+    public void InitAfterActionStats(bool checkYearly)
     {
-        updateTextAfterActionStats();
-        calculateDifference();
+        if (!checkYearly)
+        {
+            string[] txtTitle = { "Einde maand rapport", "End of month view" };
+            txtAfterActionStatsName.text = txtTitle[taal];
+            updateTextAfterActionStats();
+            calculateDifference(game.monthlyReport.oldIncome, game.monthlyReport.oldHappiness, game.monthlyReport.oldEcoAwareness, game.monthlyReport.oldPollution, game.monthlyReport.oldProsperity);
+        }
+        else
+        {
+            string[] txtTitle = { "Einde jaar rapport", "End of year view" };
+            txtAfterActionStatsName.text = txtTitle[taal];
+            updateTextAfterActionStats();
+            calculateDifference(game.yearlyReport.oldIncome, game.yearlyReport.oldHappiness, game.yearlyReport.oldEcoAwareness, game.yearlyReport.oldPollution, game.yearlyReport.oldProsperity);
+        }
     }
 
     private void updateTextAfterActionStats()
     {
-        string[] txtTitle = { "Einde beurt rapport", "End of turn view" };
         string[] txtRight = { "West-Nederland", "The Netherlands West" };
         string[] txtRightMiddle = { "Zuid-Nederland", "The Netherlands South" };
         string[] txtLeftMiddle = { "Oost-Nederland", "The Netherlands East" };
@@ -1525,7 +1537,6 @@ public class UpdateUI : MonoBehaviour
         string[] txtProsperityDescription = { "Welvaart", "Prosperity" };
         string[] txtDescription = { "Veranderde waardes", "Changed values" };
 
-        txtAfterActionStatsName.text = txtTitle[taal];
         txtAfterActionStatsColumnLeft.text = txtLeft[taal];
         txtAfterActionStatsColumnLeftMiddle.text = txtLeftMiddle[taal];
         txtAfterActionStatsColumnRight.text = txtRight[taal];
@@ -1560,7 +1571,7 @@ public class UpdateUI : MonoBehaviour
         txtAfterActionWestProsperityD.text = txtProsperityDescription[taal];
     }
 
-    private void calculateDifference()
+    private void calculateDifference(double[] oldIncome, double[] oldHappiness, double[] oldEcoAwareness, double[] oldPollution, double[] oldProsperity)
     {
         double incomeDifference = 0;
         double happinessDifference = 0;
@@ -1570,11 +1581,11 @@ public class UpdateUI : MonoBehaviour
 
         for (int i = 0; i < game.monthlyReport.reportRegions.Length; i++)
         {
-            incomeDifference = game.regions[i].statistics.income - game.monthlyReport.oldIncome[i];
-            happinessDifference = game.regions[i].statistics.happiness - game.monthlyReport.oldHappiness[i];
-            ecoAwarenessDifference = game.regions[i].statistics.ecoAwareness - game.monthlyReport.oldEcoAwareness[i];
-            pollutionDifference = game.regions[i].statistics.avgPollution - game.monthlyReport.oldPollution[i];
-            prosperityDifference = game.regions[i].statistics.prosperity - game.monthlyReport.oldProsperity[i];
+            incomeDifference = game.regions[i].statistics.income - oldIncome[i];//game.monthlyReport.oldIncome[i];
+            happinessDifference = game.regions[i].statistics.happiness - oldHappiness[i];//game.monthlyReport.oldHappiness[i];
+            ecoAwarenessDifference = game.regions[i].statistics.ecoAwareness - oldEcoAwareness[i];//game.monthlyReport.oldEcoAwareness[i];
+            pollutionDifference = game.regions[i].statistics.avgPollution - oldPollution[i];//game.monthlyReport.oldPollution[i];
+            prosperityDifference = game.regions[i].statistics.prosperity - oldProsperity[i];//game.monthlyReport.oldProsperity[i];
 
             if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
             {
@@ -1659,9 +1670,17 @@ public class UpdateUI : MonoBehaviour
         {
             foreach (GameEvent e in game.monthlyReport.completedEvents[i])
             {
-                txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal] + "\n";
+                txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal];
                 txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.consequences[e.pickedChoiceNumber]);
-                txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
+                //txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
+
+                string[] sectorsPicked = { "Sectoren: ", "Sectors: " };
+                txtAfterActionCompletedColumnLeftDescription.text += sectorsPicked[taal];
+                foreach (string s in e.possibleSectors)
+                {
+                    txtAfterActionCompletedColumnLeftDescription.text += s + " ";
+                }
+                txtAfterActionCompletedColumnLeftDescription.text += "\n\n";
             }
         }
     }
@@ -1669,6 +1688,8 @@ public class UpdateUI : MonoBehaviour
     private void showCompletedActions()
     {
         txtAfterActionCompletedColumnRightDescription.text = "";
+        //scrollbarAfterActionReport.gameObject.SetActive(false);
+        int index = 0;
 
         for (int i = 0; i < game.monthlyReport.completedActions.Length; i++)
         {
@@ -1680,8 +1701,12 @@ public class UpdateUI : MonoBehaviour
 
                 string[] line = { "Geld beloning: ", "Money reward: " };
                 txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
+                index++;
             }
         }
+
+        //if (index > 2)
+        //    scrollbarAfterActionReport.gameObject.SetActive(true);
     }
 
     private string getChosenSectors(bool[] sectors)

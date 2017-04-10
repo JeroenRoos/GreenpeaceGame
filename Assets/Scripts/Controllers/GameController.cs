@@ -120,14 +120,8 @@ public class GameController : MonoBehaviour
          * updateui.completedActionsButton(game.monthlyReport.regions, game.monthlyReport.completedActions)
          */
 
-        /*
-         * EVENTS + ACTIES
-         * - Laat zien dat hij completed is
-         * - Laat tijdelijke consequenties zijn voor het aantal maanden
-         */ 
-
         updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
-        updateUI.InitAfterActionStats();
+        updateUI.InitAfterActionStats(false);
         updateUI.btnAfterActionReportStats.gameObject.transform.position = afterActionPosition[0];
 
         int index = 1;
@@ -172,6 +166,11 @@ public class GameController : MonoBehaviour
          * completed/newEvents in 1 button?
          * updateui.completedActionsButton(game.yearlyReport.regions, game.yearlyReport.completedActions)
          */
+
+        updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
+        updateUI.InitAfterActionStats(true);
+        updateUI.btnAfterActionReportStats.gameObject.transform.position = afterActionPosition[0];
+
         game.yearlyReport.UpdateStatistics(game.regions);
 
     }
