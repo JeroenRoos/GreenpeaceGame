@@ -78,7 +78,7 @@ public class TestBot : MonoBehaviour
         nationalPopulation = 0;
         #endregion
 
-        isEnabled = false; 
+        isEnabled = true; 
 
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
@@ -186,7 +186,7 @@ public class TestBot : MonoBehaviour
         bool actionFound = false;
         foreach (RegionAction ra in region.actions)
         {
-            if ((ra.actionMoneyCost < gameController.game.gameStatistics.money) &&
+            if ((ra.actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (ra.lastCompleted + ra.actionCooldown <= currentMonth || ra.lastCompleted == 0) &&
                 !(ra.isUnique && ra.lastCompleted > 0))
             {
@@ -268,7 +268,7 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].actionMoneyReward > highestMoneyIndex))
@@ -292,7 +292,7 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].consequences.income > highestIncomeIndex))
@@ -316,7 +316,7 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].consequences.prosperity > highestProsperityIndex))
@@ -340,7 +340,7 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].consequences.ecoAwareness > highestEcoAwarenessIndex))
@@ -364,7 +364,7 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].consequences.happiness > highestHappinessIndex))
@@ -390,7 +390,7 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if (region.actions[i].actionMoneyCost < gameController.game.gameStatistics.money &&
+            if (region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0))
             {
