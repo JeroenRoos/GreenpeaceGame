@@ -27,8 +27,13 @@ public class Region
 
     public void StartAction(RegionAction action, Game game, bool[] pickedSectors)
     {
+        foreach (bool isTrue in pickedSectors)
+        {
+            Debug.Log(isTrue);
+            if (isTrue)
+            game.gameStatistics.ModifyMoney(action.actionMoneyCost, false);
+        }
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
-        game.gameStatistics.ModifyMoney(action.actionMoneyCost, false);
         ImplementActionConsequences(action, action.actionCosts, false);
         ImplementActionConsequences(action, action.duringActionConsequences, true);
     }
@@ -153,7 +158,7 @@ public class Region
 
     public void ImplementActionConsequences(RegionAction regionAction, SectorStatistics statistics, bool isAdded)
     {
-        for (int i = 0; i < sectors.Count(); i++)
+        for (int i = 0; i < regionAction.possibleSectors.Count(); i++)
         {
             if (regionAction.pickedSectors[i])
             {

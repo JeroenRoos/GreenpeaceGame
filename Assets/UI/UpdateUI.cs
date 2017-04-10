@@ -13,6 +13,7 @@ public class UpdateUI : MonoBehaviour
     private GUIStyle tooltipStyle = new GUIStyle();
     Region regio;
     RegionAction regioAction;
+    double regioActionCost;
     Game game;
     public int tutorialIndex;
 
@@ -1249,28 +1250,23 @@ public class UpdateUI : MonoBehaviour
         {
             if (action.name[taal] == dropdownChoice)
             {
-                dropdownChoiceMade = true;
                 regioAction = action;
+                regioActionCost = regioAction.actionMoneyCost * 3;
+
+                string[] actionCostText = { "Kosten per sector: " + action.actionMoneyCost + " geld",
+                    "Costs per sector: " + action.actionMoneyCost + " geld" };
+                string[] actionDurationText = { "Duur: " + regioAction.actionDuration.ToString() + " maanden",
+                    "Duration: " + regioAction.actionDuration.ToString() + " months" };
+                string[] sectorDescription = { "Mogelijke sectoren", "Possible sectors" };
+                dropdownChoiceMade = true;
+
                 txtRegionActionName.text = regioAction.description[taal];
-                txtRegionActionCost.text = getActionCost(action.actionCosts); 
-                txtRegionActionDuration.text = "Duur: " + regioAction.actionDuration.ToString() + " maanden";
-                txtRegionActionConsequences.text = getActionConsequences(action.consequences);
-                string[] SectorDescription = { "Mogelijke sectoren", "Possible sectors" };
-                txtActionSectorsDescription.text = SectorDescription[taal];
+                txtRegionActionCost.text = actionCostText[taal];
+                txtRegionActionDuration.text = actionDurationText[taal];
+                //txtRegionActionConsequences.text = getActionConsequences(action.consequences);
+                txtActionSectorsDescription.text = sectorDescription[taal];
 
                 setCheckboxes(action);
-
-                if (game.gameStatistics.money > action.actionMoneyCost)
-                {
-                    btnDoActionRegionMenu.interactable = true;
-                    txtRegionActionNoMoney.text = "";
-                }
-                else
-                {
-                    btnDoActionRegionMenu.interactable = false;
-                    string[] error2 = { "Niet genoeg geld om de actie te doen", "You don't have enough money for this action" };
-                    txtRegionActionNoMoney.text = error2[taal];
-                }
             }
         }
     }
@@ -1305,7 +1301,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    private string getActionConsequences(SectorStatistics s)
+    /*private string getActionConsequences(SectorStatistics s)
     {
         string[] consequences = { "Consequenties:\n", "Consequences:\n" };
 
@@ -1346,7 +1342,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         return consequences[taal];
-    }
+    }*/
 
     private string getActionCost(SectorStatistics s)
     {
@@ -1362,7 +1358,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoActionRegionMenuClick()
     {
-        regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxRegionCompanies, checkboxRegionAgriculture });
+        regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
         updateRegionTextValues();
         btnDoActionRegionMenu.gameObject.SetActive(false);
@@ -1697,9 +1693,20 @@ public class UpdateUI : MonoBehaviour
         Debug.Log("Value of Households has changed!");
 
         if (!checkboxHouseholds)
+        {
             checkboxHouseholds = true;
+            regioActionCost += regioAction.actionMoneyCost;
+        }
         else
+        {
             checkboxHouseholds = false;
+            regioActionCost -= regioAction.actionMoneyCost;
+        }
+
+        if (game.gameStatistics.money > regioActionCost)
+            btnDoActionRegionMenu.interactable = true;
+        else
+            btnDoActionRegionMenu.interactable = false;
 
         Debug.Log("Households: " + checkboxHouseholds);
     }
@@ -1709,9 +1716,20 @@ public class UpdateUI : MonoBehaviour
         Debug.Log("Value of Agriculture has changed!");
 
         if (!checkboxAgriculture)
+        {
             checkboxAgriculture = true;
+            regioActionCost += regioAction.actionMoneyCost;
+        }
         else
+        {
             checkboxAgriculture = false;
+            regioActionCost -= regioAction.actionMoneyCost;
+        }
+
+        if (game.gameStatistics.money > regioActionCost)
+            btnDoActionRegionMenu.interactable = true;
+        else
+            btnDoActionRegionMenu.interactable = false;
 
         Debug.Log("Agriculture: " + checkboxAgriculture);
     }
@@ -1721,9 +1739,20 @@ public class UpdateUI : MonoBehaviour
         Debug.Log("Value of Companies has changed!");
 
         if (!checkboxCompanies)
+        {
             checkboxCompanies = true;
+            regioActionCost += regioAction.actionMoneyCost;
+        }
         else
+        {
             checkboxCompanies = false;
+            regioActionCost -= regioAction.actionMoneyCost;
+        }
+
+        if (game.gameStatistics.money > regioActionCost)
+            btnDoActionRegionMenu.interactable = true;
+        else
+            btnDoActionRegionMenu.interactable = false;
 
         Debug.Log("Companies: " + checkboxCompanies);
     }
