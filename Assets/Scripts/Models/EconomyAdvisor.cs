@@ -22,7 +22,7 @@ public class EconomyAdvisor : Advisor
 
     public override void DetermineDisplayMessage(int currentYear, int currentMonth, double avgIncome)
     {
-        if (avgIncome < 1000 + currentYear * 60 + currentMonth * 5)
+        if (avgIncome < (1000 + currentYear * 48 + currentMonth * 4) * 4)
         {
             displayMessage[0] = dutchStatusMessages[(int)statisticStatus.bad];
             displayMessage[1] = englishStatusMessages[(int)statisticStatus.bad];
