@@ -93,6 +93,7 @@ public class GameController : MonoBehaviour
         game.gameStatistics.UpdateRegionalAvgs(game);
 
         GenerateMonthlyReport();
+
         if (isNewYear)
             GenerateYearlyReport();
         
@@ -102,12 +103,16 @@ public class GameController : MonoBehaviour
 
     private void GenerateMonthlyReport()
     {
+        updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
         /* montly report generating
          * updateui.StatisticsChangeButton(game.monthlyReport.regions, g.m.oldincome. g.m.oldhappines, etc., etc.)
          * updateui.completedEventsButton(game.monthlyReport.regions, game.monthlyReport.completedEvents)
          * updateui.newEventsButton(game.monthlyReport.regions, game.monthlyReport.newEvents)
          * updateui.completedActionsButton(game.monthlyReport.regions, game.monthlyReport.completedActions)
          */
+
+        
+
         game.monthlyReport.UpdateStatistics(game.regions);
     }
 

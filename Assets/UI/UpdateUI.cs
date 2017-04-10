@@ -128,6 +128,7 @@ public class UpdateUI : MonoBehaviour
     public Button[] investDemonstrations;
     public Button[] investResearch;
     public Button[] investEcoGuarding;
+    public Button btnAfterActionReportStats;
 
     // Canvas 
     public Canvas canvasMenuPopup;
@@ -179,6 +180,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnMenuCheck;
     private bool btnTimelineCheck;
     public bool popupActive;
+    private bool btnAfterActionStatsCheck;
 
     public bool tutorialActive;
     private bool tutorialNoTooltip;
@@ -455,6 +457,9 @@ public class UpdateUI : MonoBehaviour
         btnPopulation.GetComponent<Button>();
         btnProsperity.GetComponent<Button>();
 
+        btnAfterActionReportStats.GetComponent<Button>();
+        btnAfterActionReportStats.gameObject.SetActive(false);
+
         setBooleans();
     }
 
@@ -468,6 +473,7 @@ public class UpdateUI : MonoBehaviour
         btnEnergyHoverCheck = false;
         btnOrganizationCheck = false;
         btnTimelineCheck = false;
+        btnAfterActionStatsCheck = false;
         btnMenuCheck = false;
         popupActive = false;
         regionHouseholdsCheck = false;
@@ -979,7 +985,7 @@ public class UpdateUI : MonoBehaviour
             }
         }
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive)
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck)
         {
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
@@ -1094,7 +1100,7 @@ public class UpdateUI : MonoBehaviour
 
         // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name[taal];
-        txtRegionMoney.text = regio.statistics.income.ToString();
+        txtRegionMoney.text = regio.statistics.income.ToString("0.00");
         txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0,00") + "%";
         txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
@@ -1423,6 +1429,15 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    public void btnAfterActionStatsClick()
+    {
+        /* if (!Canvas && !popupActive && !tutorialActive)
+        {
+            Canvas > true;
+            popupActive = true;
+        } */
+    }
+
     private void initButtonText()
     {
         string[] resume = { "Verder spelen", "Resume" };
@@ -1580,6 +1595,16 @@ public class UpdateUI : MonoBehaviour
     public void btnTimelineExit()
     {
         btnTimelineCheck = false;
+    }
+
+    public void btnAfterActionStatsEnter()
+    {
+        btnAfterActionStatsCheck = true;
+    }
+
+    public void btnAfterActionStatsExit()
+    {
+        btnAfterActionStatsCheck = false;
     }
 
     public void regionHouseholdsEnter()
