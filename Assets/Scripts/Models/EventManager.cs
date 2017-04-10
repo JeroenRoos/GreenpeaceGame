@@ -12,8 +12,15 @@ class EventManager
     public delegate void MonthChanged();
     public static event MonthChanged ChangeMonth;
 
+    public delegate void ActivePopup();
+    public static event ActivePopup PopupIsActive;
+
+    public delegate void DisabledPopup();
+    public static event ActivePopup PopupIsDisabled;
+
     /*public delegate void EventOccured();
     public static event EventOccured ShowEvent;*/
+
 
     public static void CallNewGame()
     {
@@ -23,6 +30,16 @@ class EventManager
     public static void CallChangeMonth()
     {
         ChangeMonth();
+    }
+
+    public static void CallPopupIsActive()
+    {
+        PopupIsActive();
+    }
+
+    public static void CallPopupIsDisabled()
+    {
+        PopupIsDisabled();
     }
 
     /*public static void CallShowEvent()

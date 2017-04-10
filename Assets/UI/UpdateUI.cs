@@ -614,37 +614,44 @@ public class UpdateUI : MonoBehaviour
         {
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
             initButtonText();
         }
         else if (canvasOrganizationPopup.gameObject.activeSelf)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
         else if (canvasMenuPopup.gameObject.activeSelf)
         {
             canvasMenuPopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
         else if (canvasTimelinePopup.gameObject.activeSelf)
         {
             canvasTimelinePopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
         else if (canvasRegioPopup.gameObject.activeSelf)
         {
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
         else if (canvasAfterActionStatsPopup.gameObject.activeSelf)
         {
             canvasAfterActionStatsPopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
         else if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
         {
             canvasAfterActionCompletedPopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
     }
 
@@ -655,11 +662,13 @@ public class UpdateUI : MonoBehaviour
         {
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
         }
         else if (canvasOrganizationPopup.gameObject.activeSelf)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
     }
 
@@ -670,11 +679,13 @@ public class UpdateUI : MonoBehaviour
         {
             canvasTimelinePopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
         }
         else if (canvasTimelinePopup.gameObject.activeSelf)
         {
             canvasTimelinePopup.gameObject.SetActive(false);
             popupActive = false;
+            EventManager.CallPopupIsDisabled();
         }
     }
     #endregion
@@ -1083,6 +1094,7 @@ public class UpdateUI : MonoBehaviour
         regio = region;
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
+        EventManager.CallPopupIsActive();
         //dropdownRegio.ClearOptions();
         //dropdownRegio.RefreshShownValue();
         updateRegionScreenUI();
@@ -1747,6 +1759,7 @@ public class UpdateUI : MonoBehaviour
         {
             canvasTimelinePopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
         }
     }
 
@@ -1756,6 +1769,7 @@ public class UpdateUI : MonoBehaviour
         {
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
         }
     }
 
@@ -1765,6 +1779,7 @@ public class UpdateUI : MonoBehaviour
         {
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
         }
     }
 
@@ -1774,6 +1789,7 @@ public class UpdateUI : MonoBehaviour
         {
             canvasAfterActionStatsPopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
             updateTextAfterActionStats();
         } 
     }
@@ -2154,6 +2170,7 @@ public class UpdateUI : MonoBehaviour
     {
         canvasMenuPopup.gameObject.SetActive(false);
         popupActive = false;
+        EventManager.CallPopupIsDisabled();
     }
 
     #region Code for controlling Tutorial buttons presses

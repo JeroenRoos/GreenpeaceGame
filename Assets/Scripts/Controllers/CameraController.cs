@@ -9,12 +9,22 @@ public class CameraController : MonoBehaviour {
     float verticalMovement;
     float depthMovement;
 
+    bool canMove = true;
+    bool firstTimeUse = true;
+
     // drag 
     private Vector3 dragOrigin;
-    
+
     // Update is called once per frame
     void Update()
     {
+        //temporary fix
+        if (firstTimeUse)
+        {
+            EventManager.PopupIsActive += DisableMovement;
+            EventManager.PopupIsDisabled += ActivateMovement;
+        }
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 10);
@@ -35,13 +45,23 @@ public class CameraController : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        CheckInput();
-        MoveCamera(CalculateNewCameraPosition());
+        if (canMove)
+        {
+            CheckInput();
+            MoveCamera(CalculateNewCameraPosition());
+        }
     }
 
-    /**
-     * Checks for player input
-     */
+    void DisableMovement()
+    {
+        canMove = false;
+    }
+
+    void ActivateMovement()
+    {
+        canMove = true;
+    }
+
     void CheckInput()
     {
         horizontalMovement = Input.GetAxis("Horizontal") * cameraSpeed;
