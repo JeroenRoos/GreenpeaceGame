@@ -310,8 +310,8 @@ public class UpdateUI : MonoBehaviour
          imgTutorialStep2Highlight1.enabled = true;
          imgTutorialStep2Highlight2.enabled = true;
 
-        ColorBlock cb = btnPollution.colors;
-        Color color;
+        //ColorBlock cb = btnPollution.colors;
+        //Color color;
 
         while (!tutorialStep3)
         {
@@ -359,12 +359,12 @@ public class UpdateUI : MonoBehaviour
                 "Each region has a income, happiness, pollution, eco-awareness and prosperity. These statistics differ foreach region.\n Go to The Netherlands West by clicking on the region. "};
         txtTurorialStep1.text = step4[taal];
 
-        while (!tutorialStep5) // && !regionWestActivated)
+        while (!tutorialStep5) 
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
 
-        while (!tutorialCheckActionDone)// && !canvasRegioPopup.gameObject.activeSelf)
+        while (!tutorialCheckActionDone)
             yield return null;
 
         while (canvasRegioPopup.gameObject.activeSelf)
@@ -384,7 +384,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStepOrgMenuHightlight.enabled = false;
         canvasTutorial.gameObject.SetActive(false);
 
-        while (!tutorialOrganizationDone)// && !canvasRegioPopup.gameObject.activeSelf)
+        while (!tutorialOrganizationDone)
             yield return null;
 
         while (canvasOrganizationPopup.gameObject.activeSelf)
@@ -788,22 +788,22 @@ public class UpdateUI : MonoBehaviour
             case 0:
                 string[] tip1 = { "Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "%\n",
                     "Average eco awareness per region: \nThe Netherlands North: " + awareness.ToString("0.00") + "%\n"};
-                txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip = tip1[taal];
                 break;
             case 1:
                 string[] tip2 = { "Oost-Nederland: " + awareness.ToString("0.00") + "%\n",
                     "The Netherlands East: " + awareness.ToString("0.00") + "%\n"};
-                txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip2[taal];
                 break;
             case 2:
                 string[] tip3 = { "West-Nederland: " + awareness.ToString("0.00") + "\n",
                     "The Netherlands West: " + awareness.ToString("0.00") + "%\n"};
-                txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip3[taal];
                 break;
             case 3:
                 string[] tip4 = { "Zuid-Nederland: " + awareness.ToString("0.00") + "%",
                     "The Netherlands South: " + awareness.ToString("0.00") + "%"};
-                txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip4[taal];
                 break;
         }
     }
@@ -815,22 +815,22 @@ public class UpdateUI : MonoBehaviour
             case 0:
                 string[] tip1 = { "Gemiddelde vervuiling per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "%\n",
                     "Average pollution per region: \nThe Netherlands North: " + pollution.ToString("0.00") + "%\n"};
-                txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
+                txtTooltip = tip1[taal];
                 break;
             case 1:
                 string[] tip2 = { "Oost-Nederland: " + pollution.ToString("0.00") + "%\n",
                     "The Netherlands East: " + pollution.ToString("0.00") + "%\n"};
-                txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip2[taal];
                 break;
             case 2:
                 string[] tip3 = { "West-Nederland: " + pollution.ToString("0.00") + "%\n",
                     "The Netherlands West: " + pollution.ToString("0.00") + "%\n"};
-                txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip3[taal];
                 break;
             case 3:
                 string[] tip4 = { "Zuid-Nederland: " + pollution.ToString("0.00") + "%",
                     "The Netherlands South: " + pollution.ToString("0.00") + "%"};
-                txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip4[taal];
                 break;
         }
     }
@@ -842,22 +842,22 @@ public class UpdateUI : MonoBehaviour
             case 0:
                 string[] tip1 = { "Gemiddelde welvaart per regio:\nNoord-Nederland: " + prosperity.ToString("0.00") + "%\n",
                     "Average prosperity per region: \nThe Netherlands North: " + prosperity.ToString("0.00") + "%\n"};
-                txtTooltip = tip1[taal];//"Gemiddelde milieubewustheid per regio:\nNoord-Nederland: " + pollution.ToString("0.00") + "\n";
+                txtTooltip = tip1[taal];
                 break;
             case 1:
                 string[] tip2 = { "Oost-Nederland: " + prosperity.ToString("0.00") + "%\n",
                     "The Netherlands East: " + prosperity.ToString("0.00") + "%\n"};
-                txtTooltip += tip2[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip2[taal];
                 break;
             case 2:
                 string[] tip3 = { "West-Nederland: " + prosperity.ToString("0.00") + "%\n",
                     "The Netherlands West: " + prosperity.ToString("0.00") + "%\n"};
-                txtTooltip += tip3[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip3[taal];
                 break;
             case 3:
                 string[] tip4 = { "Zuid-Nederland: " + prosperity.ToString("0.00") + "%",
                     "The Netherlands South: " + prosperity.ToString("0.00") + "%"};
-                txtTooltip += tip4[taal];//"Oost-Nederland: " + awareness.ToString("0.00") + "\n";
+                txtTooltip += tip4[taal];
                 break;
         }
     }
@@ -868,8 +868,7 @@ public class UpdateUI : MonoBehaviour
             + fossil + "%\nKernenergie: " + nuclear + "%",
             "Green energy " + green.ToString() + "%\nFossil energy: "
             + fossil + "%\nNuclearenergy: " + nuclear + "%"};
-        txtTooltip = tip[taal];         //"Groene energie: " + green.ToString() + "\nFossiele energie: "
-                                        // + fossil + "\nKernenergie: " + nuclear;
+        txtTooltip = tip[taal];         
     }
     #endregion
 
@@ -923,9 +922,6 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep9)
             yield return null;
 
-        //imgTutorialOrganization.enabled = false;
-        //txtTutorialOrganization.enabled = false;
-        //btnTutorialOrganization.gameObject.SetActive(false);
         imgTutorialOrganization.gameObject.SetActive(false);
         tutorialOrganizationDone = true;
     }
@@ -984,8 +980,6 @@ public class UpdateUI : MonoBehaviour
         && !btnMenuCheck && !btnTimelineCheck && !tutorialActive)
         {
             startRegionPopup(region);
-            //imgTutorialRegion.enabled = false;
-            //txtTutorialRegion.enabled = false;
             imgTutorialRegion.gameObject.SetActive(false);
         }
     }
@@ -1026,12 +1020,9 @@ public class UpdateUI : MonoBehaviour
         txtTutorialRegion.text = step2[taal];
         txtTurorialReginoBtnText.text = btnText[taal];
 
-        while (!tutorialStep7)// && canvasRegioPopup.gameObject.activeSelf)
+        while (!tutorialStep7)
             yield return null;
 
-        //imgTutorialRegion.enabled = false;
-        //txtTutorialRegion.enabled = false;
-        //btnTutorialRegion.gameObject.SetActive(false);
         imgTutorialRegion.gameObject.SetActive(false);
     }
 
@@ -1156,10 +1147,7 @@ public class UpdateUI : MonoBehaviour
                     "Air pollution: " + sector.statistics.pollution.airPollution + "%\nWater pollution: " + sector.statistics.pollution.waterPollution
                     + "%\nNature pollution: " + sector.statistics.pollution.naturePollution + "%\nHappiness: " + sector.statistics.happiness
                     + "%\nEco-awareness: " + sector.statistics.ecoAwareness + "%\nProsperity: " + sector.statistics.prosperity  + "%"};
-                txtTooltipHouseholds = tip[taal];       /*"Luchtvervuiling: " + sector.statistics.airPollutionContribution + "\nWatervervuiling: " + sector.statistics.waterPollutionContribution
-                                                        + "\nNatuurvervuiling: " + sector.statistics.naturePollutionContribution + "\nTevredenheid: " + sector.statistics.happiness
-                                                        + "\nMilieubewustheid: " + sector.statistics.ecoAwareness + "\nWelvaart: " + sector.statistics.prosperity;*/
-
+                txtTooltipHouseholds = tip[taal];       
     }
             else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
@@ -1398,7 +1386,6 @@ public class UpdateUI : MonoBehaviour
 
         if (!tutorialCheckActionDone)
             tutorialCheckActionDone = true;
-
     }
     #endregion
 
@@ -1489,7 +1476,6 @@ public class UpdateUI : MonoBehaviour
         tooltipActive = false;
     }
 
-
     // OnEnter BtnHappiness
     public void BtnHappinessEnter()
     {
@@ -1519,7 +1505,6 @@ public class UpdateUI : MonoBehaviour
         tooltipActive = false;
     }
 
-
     // OnEnter BtnPollution
     public void BtnPollutionEnter()
     {
@@ -1533,7 +1518,6 @@ public class UpdateUI : MonoBehaviour
         btnPollutionHoverCheck = false;
         tooltipActive = false;
     }
-
 
     // OnEnter BtnEnergy
     public void BtnEnergyEnter()
@@ -1621,9 +1605,6 @@ public class UpdateUI : MonoBehaviour
     {
         regionCompanyCheck = false;
     }
-
-
-
     #endregion
 
     #region Return Boolean Values
