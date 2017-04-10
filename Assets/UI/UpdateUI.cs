@@ -1080,12 +1080,11 @@ public class UpdateUI : MonoBehaviour
 
     private void startRegionPopup(Region region)
     {
-        regio = null;
         regio = region;
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
-        dropdownRegio.ClearOptions();
-        dropdownRegio.RefreshShownValue();
+        //dropdownRegio.ClearOptions();
+        //dropdownRegio.RefreshShownValue();
         updateRegionScreenUI();
     }
 
@@ -1317,7 +1316,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initDropDownRegion()
     {
-        dropdownRegio.ClearOptions();
+        //dropdownRegio.ClearOptions();
         int currentMonth = game.currentYear * 12 + game.currentMonth;
 
         foreach (RegionAction action in regio.actions)
@@ -1329,6 +1328,11 @@ public class UpdateUI : MonoBehaviour
                 dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.name[taal] });
             }
         }
+
+        //code to bypass Unity bug -> can't set .value outside the dropdown range
+        dropdownRegio.options.Add(new Dropdown.OptionData() { text = ""});
+        dropdownRegio.value = dropdownRegio.options.Count - 1;
+        dropdownRegio.options.RemoveAt(dropdownRegio.options.Count - 1);
     }
 
     // Goes to this method from DropDownTrigger in Inspector
