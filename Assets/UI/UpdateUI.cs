@@ -1468,6 +1468,7 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
+        regioActionCost = 0;
 
         if (!checkboxHouseholds)
             checkboxRegionHouseholds.isOn = true;
