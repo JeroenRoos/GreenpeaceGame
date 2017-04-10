@@ -4,8 +4,8 @@
     <GameEvent>
       <name>AirPollutionConcern</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Luchtvervuiling zorgen</string>
+        <string>Concern air pollution</string>
       </publicEventName>
       <description>
         <string>Uit een onderzoek is de organisatie erachter gekomen dat veel mensen zich zorgen maker over de luchtvervuiling.</string>
@@ -263,8 +263,8 @@
     <GameEvent>
       <name>Earthquake</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Aardbeving</string>
+        <string>Earthquake</string>
       </publicEventName>
       <description>
         <string>Er is een aardbeving geweest dat schade heeft veroorzaakt.</string>
@@ -519,8 +519,8 @@
     <GameEvent>
       <name>Flood</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Overstroming</string>
+        <string>Flood</string>
       </publicEventName>
       <description>
         <string>Er is een overstroming geweest dat schade heeft veroorzaakt.</string>
@@ -777,8 +777,8 @@
     <GameEvent>
       <name>ForestFire</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Bosbrand</string>
+        <string>Forest fire</string>
       </publicEventName>
       <description>
         <string>Er is een bosbrand geweest dat schade heeft veroorzaakt.</string>
@@ -1034,8 +1034,8 @@
     <GameEvent>
       <name>NaturePollutionConcern</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Natuurvervuiling zorgen</string>
+        <string>Concern nature pollution</string>
       </publicEventName>
       <description>
         <string>Uit een onderzoek is de organisatie erachter gekomen dat veel mensen zich zorgen maker over de natuurvervuiling.</string>
@@ -1293,8 +1293,8 @@
     <GameEvent>
       <name>WaterPollutionConcern</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Watervervuiling zorgen</string>
+        <string>Concern water pollution</string>
       </publicEventName>
       <description>
         <string>Uit een onderzoek is de organisatie erachter gekomen dat veel mensen zich zorgen maker over de watervervuiling.</string>
@@ -1552,8 +1552,8 @@
     <GameEvent>
       <name>CleanAirProject</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Project schone lucht</string>
+        <string>Project clean air</string>
       </publicEventName>
       <description>
         <string>De organisatie wil een project uitvoeren om de lucht schoner te maken.</string>
@@ -1811,8 +1811,8 @@
     <GameEvent>
       <name>CleanNatureProject</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Project schone natuur</string>
+        <string>Project clean nature</string>
       </publicEventName>
       <description>
         <string>De organisatie wil een project uitvoeren om de natuur schoner te maken.</string>
@@ -2070,8 +2070,8 @@
     <GameEvent>
       <name>CleanWaterProject</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Project schoon water</string>
+        <string>Project clean water</string>
       </publicEventName>
       <description>
         <string>De organisatie wil een project uitvoeren om het water schoner te maken.</string>
@@ -2329,8 +2329,8 @@
     <GameEvent>
       <name>AgricultureHighPollution</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Hoge vervuiling landbouw</string>
+        <string>Highpollution agriculture</string>
       </publicEventName>
       <description>
         <string>De landbouw heeft een hoge vervuiling.</string>
@@ -2584,8 +2584,8 @@
     <GameEvent>
       <name>HouseholdsHighPollution</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Hoge vervuiling huishoudens</string>
+        <string>High pollution households</string>
       </publicEventName>
       <description>
         <string>De huishoudens hebben een hoge vervuiling.</string>
@@ -2839,8 +2839,8 @@
     <GameEvent>
       <name>CompaniesHighPollution</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Hoge vervuiling bedrijven</string>
+        <string>High pollution companies</string>
       </publicEventName>
       <description>
         <string>De bedrijven hebben een hoge vervuiling.</string>
@@ -3094,8 +3094,8 @@
     <GameEvent>
       <name>HouseholdsPollutionDoubts</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Vervuiling twijfels huishoudens</string>
+        <string>Pollution doubts households</string>
       </publicEventName>
       <description>
         <string>De sector Huishoudens twijfelt aan de gevaren van vervuiling.</string>
@@ -3349,8 +3349,8 @@
     <GameEvent>
       <name>AgricultureFasterWork</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Landbouw sneller werken</string>
+        <string>Fast working agriculture</string>
       </publicEventName>
       <description>
         <string>De landbouw wil sneller werken ten koste van het milieu.</string>
@@ -3604,8 +3604,8 @@
     <GameEvent>
       <name>CompaniesPersonalProfit</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Winst boven milieu bedrijven</string>
+        <string>Profit before environment</string>
       </publicEventName>
       <description>
         <string>De bedrijven willen meer persoonlijke winst ten koste van het milieu.</string>
@@ -3859,8 +3859,8 @@
     <GameEvent>
       <name>GovernmentMoneyReward</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Geldbeloning</string>
+        <string>Money reward</string>
       </publicEventName>
       <description>
         <string>De overheid beloont jouw organisatie vanwege de goede resultaten tegen milieuvervuiling.</string>
@@ -4118,8 +4118,8 @@
     <GameEvent>
       <name>GermanyPollution</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Vervuiling uit Duitsland</string>
+        <string>Pollution from Germany</string>
       </publicEventName>
       <description>
         <string>Door de vervuiling in Duitsland stijgt de vervuiling ook in de regio.</string>
@@ -4376,8 +4376,8 @@
     <GameEvent>
       <name>BelgiumPollution</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Vervuiling uit België</string>
+        <string>Pollution from Belgium</string>
       </publicEventName>
       <description>
         <string>Door de vervuiling in België stijgt de vervuiling ook in de regio.</string>
@@ -4632,8 +4632,8 @@
     <GameEvent>
       <name>SolarPanelProject</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Zonnepanelen project</string>
+        <string>Solar panel project</string>
       </publicEventName>
       <description>
         <string>De organisatie wil een project starten om zonnepanelen te installeren voor huishoudens.</string>
@@ -4886,8 +4886,8 @@
     <GameEvent>
       <name>AgricultureEquipmentProject</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Milieuvriendelijke apparatuur landbouw</string>
+        <string>Eco friendly equipment agriculture</string>
       </publicEventName>
       <description>
         <string>De organisatie wil een project starten om de landbouw nieuwe milieuvriendelijke apparatuur te geven.</string>
@@ -5141,8 +5141,8 @@
     <GameEvent>
       <name>GreenCompaniesRewardProject</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Beloning milieuvriendelijke bedrijven</string>
+        <string>Reward eco friendly companies</string>
       </publicEventName>
       <description>
         <string>De organisatie wil een project starten om de landbouw nieuwe milieuvriendelijke apparatuur te geven.</string>
@@ -5396,8 +5396,8 @@
     <GameEvent>
       <name>AirPollutionNewTech</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Luchtvervuiling nieuwe technologie</string>
+        <string>Air pollution new technology</string>
       </publicEventName>
       <description>
         <string>Er is een nieuwe technologie beschikbaar op de markt waarmee de huidige luchtvervuiling eenmalig afneemt.</string>
@@ -5655,8 +5655,8 @@
     <GameEvent>
       <name>NaturePollutionNewTech</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Natuurvervuiling nieuwe technologie</string>
+        <string>Nature pollution new technologie</string>
       </publicEventName>
       <description>
         <string>Er is een nieuwe technologie beschikbaar op de markt waarmee de huidige natuurvervuiling eenmalig afneemt.</string>
@@ -5914,8 +5914,8 @@
     <GameEvent>
       <name>WaterPollutionNewTech</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Watervervuiling nieuwe technologie</string>
+        <string>Waterpollution new technology</string>
       </publicEventName>
       <description>
         <string>Er is een nieuwe technologie beschikbaar op de markt waarmee de huidige watervervuiling eenmalig afneemt.</string>
@@ -6173,8 +6173,8 @@
     <GameEvent>
       <name>CompaniesEconomyUnhappy</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Onvrede huidige economie</string>
+        <string>Unhappiness about current economy</string>
       </publicEventName>
       <description>
         <string>De bedrijven in de regio zijn ontevreden over de huidige economie.</string>
@@ -6428,8 +6428,8 @@
     <GameEvent>
       <name>BadHarvest</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Slechte oogst</string>
+        <string>Bad harvest</string>
       </publicEventName>
       <description>
         <string>Het was een slechte oogst in de landbouw waardoor de sector het nu zwaar heeft.</string>
@@ -6683,8 +6683,8 @@
     <GameEvent>
       <name>NuclearPlant</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Nieuwe kerncentrale</string>
+        <string>New nuclear plant</string>
       </publicEventName>
       <description>
         <string>De regio wil een nieuwe kerncentrale openen</string>
@@ -6942,8 +6942,8 @@
     <GameEvent>
       <name>Asbestos</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Vrijgekomen asbest</string>
+        <string>Released asbestos</string>
       </publicEventName>
       <description>
         <string>Er is een grote hoeveelheid asbest vrijgekomen</string>
@@ -7199,8 +7199,8 @@
     <GameEvent>
       <name>GasMining</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Aardbeving gaswinning</string>
+        <string>Earthquake gasmining</string>
       </publicEventName>
       <description>
         <string>Dankzij gasboringen is er een aardbeving geweest</string>
@@ -7453,8 +7453,8 @@
     <GameEvent>
       <name>Recycling</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Recyclen</string>
+        <string>Recycling</string>
       </publicEventName>
       <description>
         <string>Bedrijven zijn minder aan het recyclen</string>
@@ -7708,8 +7708,8 @@
     <GameEvent>
       <name>NoMoreGas</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Gasvoorraad Groningen op</string>
+        <string>Gas supply Groningen empty</string>
       </publicEventName>
       <description>
         <string>De gasvoorraad in Groningen is op</string>
@@ -7964,8 +7964,8 @@
     <GameEvent>
       <name>AccidentTransport</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Ongeluk transport gevaarlijke stoffen</string>
+        <string>Accident transport dangerous fabrics</string>
       </publicEventName>
       <description>
         <string>Er is een ongeluk geweest bij de transport van gevaarlijke stoffen</string>
@@ -8219,8 +8219,8 @@
     <GameEvent>
       <name>ClimateDeal</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Klimaat afspraken</string>
+        <string>Climate deal</string>
       </publicEventName>
       <description>
         <string>Meerdere landen hebben besloten de klimaat afspraken van Parijs uit 2015 niet na te leven</string>
@@ -8478,8 +8478,8 @@
     <GameEvent>
       <name>Firework</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Luchtvervuiling vuurwerk</string>
+        <string>Air pollution firework</string>
       </publicEventName>
       <description>
         <string>Door het vele afsteken van vuurwerk is er extra luchtvervuiling</string>
@@ -8733,8 +8733,8 @@
     <GameEvent>
       <name>MicroDust</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Uitstoot fijnstoffen</string>
+        <string>Emissions micro dust</string>
       </publicEventName>
       <description>
         <string>Bedrijven produceren teveel fijnstoffen</string>
@@ -8986,8 +8986,8 @@
     <GameEvent>
       <name>ToxicDump</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Dumpen giftige stoffen</string>
+        <string>Dumped toxic waste</string>
       </publicEventName>
       <description>
         <string>Bedrijven hebben giftige stoffen in de Rijn gedumped</string>
@@ -9240,8 +9240,8 @@
     <GameEvent>
       <name>CoalPlant</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Nieuwe kolencentrale</string>
+        <string>New coal plant</string>
       </publicEventName>
       <description>
         <string>De regio wil een nieuwe kolencentrale openen</string>
@@ -9499,8 +9499,8 @@
     <GameEvent>
       <name>TrafficJams</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Files</string>
+        <string>Traffic jams</string>
       </publicEventName>
       <description>
         <string>De hoeveelheid files in Nederland neemt toe, er is extra luchtvervuiling</string>
@@ -9755,8 +9755,8 @@
     <GameEvent>
       <name>PollutingManure</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Vervuilende mest</string>
+        <string>Polluting manure</string>
       </publicEventName>
       <description>
         <string>Boeren willen meer vervuilende mest gaan gebruiken</string>
@@ -10008,8 +10008,8 @@
     <GameEvent>
       <name>SchipholExpanding</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Uitbreiding Schiphol</string>
+        <string>Expansion Schiphol airport</string>
       </publicEventName>
       <description>
         <string>Schiphol wil uitbreiden waardoor er extra luchtvervuiling ontstaat.</string>
@@ -10264,8 +10264,8 @@
     <GameEvent>
       <name>RotterdamExpansion</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Uitbreiding haven Rotterdam</string>
+        <string>Expansion harbor Rotterdam</string>
       </publicEventName>
       <description>
         <string>De haven van Rotterdam wil uitbreiden waardoor er extra watervervuiling ontstaat.</string>
@@ -10518,8 +10518,8 @@
     <GameEvent>
       <name>IjsselmeerThrash</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Afval in Ijsselmeer</string>
+        <string>Trash in Ijsselmeer</string>
       </publicEventName>
       <description>
         <string>Er is veel afval in het Ijsselmeer.</string>
@@ -10776,8 +10776,8 @@
     <GameEvent>
       <name>MoreGasExtraction</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Meer gaswinning Groningen</string>
+        <string>More gas extraction Groningen</string>
       </publicEventName>
       <description>
         <string>De overheid wil meer gas gaan winnen in Groningen.</string>
@@ -11032,8 +11032,8 @@
     <GameEvent>
       <name>ProductionRuhrArea</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Meer productie Ruhrgebied</string>
+        <string>Extra production Ruhrarea</string>
       </publicEventName>
       <description>
         <string>De productie in het Ruhrgebied gaat omhoog.</string>
@@ -11289,8 +11289,8 @@
     <GameEvent>
       <name>NuclearReactorAccident</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Ongeluk kern reactor</string>
+        <string>Accident with nuclear reactor</string>
       </publicEventName>
       <description>
         <string>Er is een ongeluk gebeurt met een kern reactor.</string>
@@ -11545,8 +11545,8 @@
     <GameEvent>
       <name>AntwerpenExpansion</name>
       <publicEventName>
-        <string> </string>
-        <string> </string>
+        <string>Uitbreidingen haven Antwerpen</string>
+        <string>Expansion harbor Antwerpen</string>
       </publicEventName>
       <description>
         <string>De haven van Antwerpen gaat uitbreiden waardoor het bootverkeer in Zeeland toeneemt.</string>

@@ -1096,7 +1096,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionName.text = regio.name[taal];
         txtRegionMoney.text = regio.statistics.income.ToString();
         txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
-        txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString() + "%";
+        txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0,00") + "%";
         txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
         txtRegionPollution.text = regio.statistics.avgPollution.ToString("0.00") + "%";
         txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
@@ -1110,6 +1110,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionName.text = "";
         txtRegionActionNoMoney.text = "";
         txtRegionActionSectorTotalCostDescription.text = "";
+        txtRegionActionSectorTotalCost.text = "";
 
         txtRegionActionNoMoney.text = "";
         txtActionSectorsDescription.text = "";
@@ -1193,7 +1194,7 @@ public class UpdateUI : MonoBehaviour
                     {
                         if (ev == e)
                         {
-                            activeEventsRegio += e.name + "\n";
+                            activeEventsRegio += e.publicEventName[taal] + "\n";
                             breaking = true;
                             break;
                         }
