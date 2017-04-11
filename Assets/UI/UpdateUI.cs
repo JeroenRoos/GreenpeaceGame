@@ -267,6 +267,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasMonthlyReport;
     public Canvas canvasYearlyReport;
     public Canvas canvasAfterActionCompletedPopup;
+    public Canvas canvasQuestsPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -308,6 +309,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnProsperityHoverCheck;
     private bool btnEnergyHoverCheck;
     private bool btnOrganizationCheck;
+    private bool btnQuestsCheck;
     private bool btnMenuCheck;
     private bool btnTimelineCheck;
     public bool popupActive;
@@ -609,6 +611,7 @@ public class UpdateUI : MonoBehaviour
         btnProsperityHoverCheck = false;
         btnEnergyHoverCheck = false;
         btnOrganizationCheck = false;
+        btnQuestsCheck = false;
         btnTimelineCheck = false;
         btnAfterActionStatsCheck = false;
         btnAfterActionCompletedCheck = false;
@@ -646,6 +649,9 @@ public class UpdateUI : MonoBehaviour
         canvasAfterActionCompletedPopup.GetComponent<Canvas>();
         canvasAfterActionCompletedPopup.gameObject.SetActive(false);
 
+        canvasQuestsPopup.GetComponent<Canvas>();
+        canvasQuestsPopup.gameObject.SetActive(false);
+
         if (tutorialActive)
         {
             canvasTutorial.GetComponent<Canvas>();
@@ -672,7 +678,6 @@ public class UpdateUI : MonoBehaviour
                 controllerOrganizationHotkey();
 
             // Open and close Timeline popup with T
-
             else if (Input.GetKeyUp(KeyCode.T))
                 if (!tutorialActive)
                     controllerTimelinePopup();
@@ -727,6 +732,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
         {
             canvasAfterActionCompletedPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasQuestsPopup)
+        {
+            canvasQuestsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -1159,7 +1170,7 @@ public class UpdateUI : MonoBehaviour
             }
         }
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck)
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck)
         {
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
@@ -1600,6 +1611,7 @@ public class UpdateUI : MonoBehaviour
 
     private void updateTextAfterActionStats(bool isMonthly)
     {
+
         string[] txtRight = { "West-Nederland", "The Netherlands West" };
         string[] txtRightMiddle = { "Zuid-Nederland", "The Netherlands South" };
         string[] txtLeftMiddle = { "Oost-Nederland", "The Netherlands East" };
@@ -1808,7 +1820,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionOostPollution.text = pollutionDifference.ToString("0.00");
             txtAfterActionOostProsperity.text = prosperityDifference.ToString("0.00");
         }
-
         else
         {
             txtAfterActionOostIncomeYearly.text = incomeDifference.ToString("0.00");
@@ -1830,7 +1841,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionZuidPollution.text = pollutionDifference.ToString("0.00");
             txtAfterActionZuidProsperity.text = prosperityDifference.ToString("0.00");
         }
-
         else
         {
             txtAfterActionZuidIncomeYearly.text = incomeDifference.ToString("0.00");
@@ -1851,7 +1861,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionWestPollution.text = pollutionDifference.ToString("0.00");
             txtAfterActionWestProsperity.text = prosperityDifference.ToString("0.00");
         }
-
         else
         {
             txtAfterActionWestIncomeYearly.text = incomeDifference.ToString("0.00");
@@ -1924,9 +1933,6 @@ public class UpdateUI : MonoBehaviour
                 index++;
             }
         }
-
-        //if (index > 2)
-        //    scrollbarAfterActionReport.gameObject.SetActive(true);
     }
 
     private string getChosenSectors(bool[] sectors)
@@ -1956,41 +1962,56 @@ public class UpdateUI : MonoBehaviour
 
     private string getAfterActionConsequences(SectorStatistics s)
     {
+        bool noConsequences = false;
+
         string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
         if (s.income != 0)
         {
             string[] a = { "\nInkomen: " + s.income + "\n", "\nIncome: " + s.income + "\n" };
             consequences[taal] += a[taal];
+            noConsequences = true;
         }
         if (s.happiness != 0)
         {
             string[] c = { "Tevredenheid: " + s.happiness + "\n", "Happiness: " + s.happiness + "\n" };
             consequences[taal] += c[taal];
+            noConsequences = true;
         }
         if (s.ecoAwareness != 0)
         {
             string[] d = { "Milieubewustheid: " + s.ecoAwareness + "\n", "Eco awareness: " + s.ecoAwareness + "\n" };
             consequences[taal] += d[taal];
+            noConsequences = true;
         }
         if (s.prosperity != 0)
         {
             string[] e = { "Welvaart: " + s.prosperity + "\n", "Prosperity: " + s.prosperity + "\n" };
             consequences[taal] += e[taal];
+            noConsequences = true;
         }
         if (s.pollution.airPollutionIncrease != 0)
         {
             string[] f = { "Luchtvervuiling: " + s.pollution.airPollutionIncrease + "\n", "Air pollution: " + s.pollution.airPollutionIncrease + "\n" };
             consequences[taal] += f[taal];
+            noConsequences = true;
         }
         if (s.pollution.waterPollutionIncrease != 0)
         {
             string[] g = { "Watervervuiling: " + s.pollution.waterPollutionIncrease + "\n", "Water pollution: " + s.pollution.waterPollutionIncrease + "\n" };
             consequences[taal] += g[taal];
+            noConsequences = true;
         }
         if (s.pollution.naturePollutionIncrease != 0)
         {
             string[] h = { "Natuurvervuiling: " + s.pollution.naturePollutionIncrease + "\n", "Nature pollution: " + s.pollution.naturePollutionIncrease + "\n" };
             consequences[taal] += h[taal];
+            noConsequences = true;
+        }
+
+        if (!noConsequences)
+        {
+            string[] st = { "\nGeen consequences\n", "\nThere are no consequences\n" };
+            return st[taal];
         }
 
         return consequences[taal];
@@ -2013,6 +2034,16 @@ public class UpdateUI : MonoBehaviour
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive && tutorialStep8)
         {
             canvasOrganizationPopup.gameObject.SetActive(true);
+            popupActive = true;
+            EventManager.CallPopupIsActive();
+        }
+    }
+
+    public void btnQuestsClick()
+    {
+        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive && !tutorialActive)
+        {
+            canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
         }
@@ -2056,6 +2087,7 @@ public class UpdateUI : MonoBehaviour
         {
             canvasAfterActionCompletedPopup.gameObject.SetActive(true);
             popupActive = true;
+            EventManager.CallPopupIsActive();
             updateTextAfterActionCompleted();
         }
     }
@@ -2110,6 +2142,16 @@ public class UpdateUI : MonoBehaviour
     {
         btnMoneyHoverCheck = true;
         tooltipActive = true;
+    }
+
+    public void btnQuestsEnter()
+    {
+        btnQuestsCheck = true;
+    }
+
+    public void btnQuestsExit()
+    {
+        btnQuestsCheck = false;
     }
 
     // OnExit BtnMoney
