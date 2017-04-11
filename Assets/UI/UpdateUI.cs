@@ -359,7 +359,7 @@ public class UpdateUI : MonoBehaviour
         initButtons();
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
-        taal = game.language;
+        taal = 0;
 
         // Use this boolean to start the game with or without the tutorial while testing
         tutorialActive = false;
