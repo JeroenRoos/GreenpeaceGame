@@ -18,6 +18,8 @@ public class UpdateUI : MonoBehaviour
     public int tutorialIndex;
     public Scrollbar scrollbarAfterActionReport;
 
+    public Text test;
+
     public Dropdown dropdownRegio;
 
     public Toggle checkboxRegionHouseholds;
@@ -168,6 +170,24 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnMenu;
     public Text txtBtnTimeline;
 
+    // Text Event Popup
+    GameEvent gameEvent;
+    Region regionEvent;
+    public Text txtEventName;
+    public Text txtEventDescription;
+    public Toggle radioEventOption1;
+    public Text radioEventOption1Text;
+    private bool radioEventOption1Check;
+    public Toggle radioEventOption2;
+    public Text radioEventOption2Text;
+    private bool radioEventOption2Check;
+    public Toggle radioEventOption3;
+    public Text radioEventOption3Text;
+    private bool radioEventOption3Check;
+    public Button btnDoEvent;
+    public Text txtBtnDoEvent;
+    public Text txtEventAlreadyActive;
+
     // Text Quests Popup
     public Text txtQuestsTitle;
     public Text txtQuestsDescription;
@@ -276,6 +296,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasYearlyReport;
     public Canvas canvasAfterActionCompletedPopup;
     public Canvas canvasQuestsPopup;
+    public Canvas canvasEventPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -356,6 +377,7 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //test.text = Application.dataPath;
         initButtons();
         initCanvas();
         tooltipStyle.normal.background = tooltipTexture;
@@ -648,6 +670,9 @@ public class UpdateUI : MonoBehaviour
         checkboxHouseholds = true;
         checkboxCompanies = true;
         checkboxAgriculture = true;
+        radioEventOption1Check = true;
+        radioEventOption2Check = true;
+        radioEventOption3Check = true;
     }
 
     void initCanvas()
@@ -672,6 +697,9 @@ public class UpdateUI : MonoBehaviour
 
         canvasAfterActionCompletedPopup.GetComponent<Canvas>();
         canvasAfterActionCompletedPopup.gameObject.SetActive(false);
+
+        canvasEventPopup.GetComponent<Canvas>();
+        canvasEventPopup.gameObject.SetActive(false);
 
         canvasQuestsPopup.GetComponent<Canvas>();
         canvasQuestsPopup.gameObject.SetActive(false);
@@ -759,9 +787,15 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasQuestsPopup)
+        else if (canvasQuestsPopup.gameObject.activeSelf)
         {
             canvasQuestsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEventPopup.gameObject.activeSelf)
+        {
+            canvasEventPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -2093,6 +2127,136 @@ public class UpdateUI : MonoBehaviour
         }
 
         return consequences[taal];
+    }
+    #endregion
+
+    #region Code for Event Popup
+    public void initEventPopup(GameEvent e, Region r)
+    {
+        gameEvent = e;
+        regionEvent = r;
+        canvasEventPopup.gameObject.SetActive(true);
+        popupActive = true;
+        EventManager.CallPopupIsActive();
+
+        initEventUI();
+        initEventText(e);
+
+        if (e.isActive)
+        {
+            radioEventOption1.interactable = false;
+            radioEventOption2.interactable = false;
+            radioEventOption3.interactable = false;
+
+            string[] txt = { "Je hebt al een optie gekozen bij dit event.", "You already chose an option." } ;
+            txtEventAlreadyActive.text = "";
+        }
+    }
+
+    private void initEventUI()
+    {
+        if (radioEventOption1Check)
+            radioEventOption1.isOn = false;
+
+        if (radioEventOption2Check)
+            radioEventOption2.isOn = false;
+
+        if (radioEventOption3Check)
+            radioEventOption3.isOn = false;
+
+        btnDoEvent.interactable = false;
+    }
+
+    private void initEventText(GameEvent e)
+    {
+        string[] txtBtn = { "Bevestig", "Confirm" };
+
+        txtEventName.text = e.publicEventName[taal];
+        txtEventDescription.text = e.description[taal];
+        txtBtnDoEvent.text = txtBtn[taal];
+
+        if (game.language == 0)
+        {
+            radioEventOption1Text.text = e.choicesDutch[0];
+            radioEventOption2Text.text = e.choicesDutch[1];
+            radioEventOption3Text.text = e.choicesDutch[2];
+        }
+        else
+        {
+            radioEventOption1Text.text = e.choicesEnglish[0];
+            radioEventOption2Text.text = e.choicesEnglish[1];
+            radioEventOption3Text.text = e.choicesEnglish[2];
+        }
+    }
+
+    public void valueChangedOption1()
+    {
+        if (!radioEventOption1Check)
+        {
+            radioEventOption1Check = true;
+            radioEventOption2.isOn = false;
+            radioEventOption3.isOn = false;
+            btnDoEvent.interactable = true;
+        }
+        else
+            radioEventOption1Check = false;
+
+        checkIfAllFalse();
+    }
+
+    public void valueChangedOption2()
+    {
+        if (!radioEventOption2Check)
+        {
+            radioEventOption2Check = true;
+            radioEventOption1.isOn = false;
+            radioEventOption3.isOn = false;
+            btnDoEvent.interactable = true;
+        }
+        else
+            radioEventOption2Check = false;
+
+        checkIfAllFalse();
+    }
+
+    public void valueChangedOption3()
+    {
+        if (!radioEventOption3Check)
+        {
+            radioEventOption3Check = true;
+            radioEventOption1.isOn = false;
+            radioEventOption2.isOn = false;
+            btnDoEvent.interactable = true;
+        }
+        else
+            radioEventOption3Check = false;
+
+        checkIfAllFalse();
+    }
+
+    private void checkIfAllFalse()
+    {
+        if (!radioEventOption1Check && !radioEventOption2Check && !radioEventOption3Check)
+            btnDoEvent.interactable = false;
+    }
+
+    public void btnDoEventClick()
+    {
+        int option;
+
+        if (radioEventOption1Check)
+            option = 0;
+        else if (radioEventOption2Check)
+            option = 1;
+        else 
+            option = 2;
+
+        Debug.Log(option + " BtnCompleteEventCLICK!");
+
+        gameEvent.SetPickedChoice(option, game, regionEvent);
+        canvasEventPopup.gameObject.SetActive(false);
+        popupActive = false;
+        EventManager.CallPopupIsDisabled();
     }
     #endregion
 

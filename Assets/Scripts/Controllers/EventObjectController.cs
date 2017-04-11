@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +10,22 @@ public class EventObjectController : MonoBehaviour
     public GameController gameController;
     public GameEvent eventModel;
     public Region regionModel;
-    public bool areOptionsShown;
     public Texture[] allTextures;
-
-   // private GameController gameController;
     private UpdateUI updateUI;
-    private string txtTooltip;
+
+
+    //   public bool areOptionsShown;
+
+
+    //    private GameObject canvas;
+
+    //public UpdateUI update;
+
+
+
+    // private GameController gameController;
+
+    /*private string txtTooltip;
     private string txtButton;
     public Texture2D tooltipTexture;
     public Texture2D buttonTexture;
@@ -22,47 +33,54 @@ public class EventObjectController : MonoBehaviour
     private GUIStyle buttonStyle = new GUIStyle();
     public bool eventHoverCheck;
     public bool active;
-    //private bool popupActive;
     private int taal;
     private Vector2 clickPosition = new Vector2(0, 0);
-    bool checkActivePopup;
+    bool checkActivePopup;*/
 
     void Start()
     {
-        eventHoverCheck = false;
+        updateUI = gameController.GetComponent<UpdateUI>();
+
+        //eventHoverCheck = false;
         //popupActive = false;
-        tooltipStyle.normal.background = tooltipTexture;
-        buttonStyle.normal.background = buttonTexture;
-        taal = gameController.game.language;
-        areOptionsShown = false;
-        active = false;
-        clickPosition.x = 0;
-        clickPosition.y = 0;
-        updateUI = GetComponent<UpdateUI>();
-        checkActivePopup = false;
+        //tooltipStyle.normal.background = tooltipTexture;
+        //buttonStyle.normal.background = buttonTexture;
+        //taal = gameController.game.language;
+        //areOptionsShown = false;
+        //active = false;
+        //clickPosition.x = 0;
+        //clickPosition.y = 0;
+        //checkActivePopup = false;
     }
+
     void Update()
     {
         // Make the options dissapear if camera chances
-        if (Camera.main.transform.hasChanged)
-        {
-            areOptionsShown = false;
-            Camera.main.transform.hasChanged = false;
-        }
+        //if (Camera.main.transform.hasChanged)
+        //{
+        //    areOptionsShown = false;
+        //    Camera.main.transform.hasChanged = false;
+        //}
 
-        checkActivePopup = gameController.getActivePopup();
+        //checkActivePopup = gameController.getActivePopup();
 
-        if (checkActivePopup)
-        {
-            areOptionsShown = false;
-            eventHoverCheck = false;
-        }
+        // if (checkActivePopup)
+        // {
+        //   areOptionsShown = false;
+        // eventHoverCheck = false;
+        //}
 
         // Event moet verwijderd worden als gekozen optie klaar is
-        if (/*!eventModel.isActive && */!eventModel.isIdle)
+        if (!eventModel.isIdle)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void OnMouseDown()
+    {
+        updateUI.popupActive = false;
+        updateUI.initEventPopup(eventModel, regionModel);
     }
 
     public void Init(GameController gameController, Region regionModel, GameEvent eventModel)
@@ -72,38 +90,38 @@ public class EventObjectController : MonoBehaviour
         this.eventModel = eventModel;
 
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
-        
+
         transform.position = regionModel.eventPosition;
     }
 
+    /* public void OnMouseEnter()
+     {
+         eventHoverCheck = true;
+     }
+
+     public void OnMouseExit()
+     {
+         eventHoverCheck = false;
+     }*/
+
     // hover over event
-    public void OnMouseOver()
-    {
-        // Click on event
-        if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        {
-            if (!areOptionsShown)
-            {
-                ShowOptions();
-            }
-            else
-            {
-                HideOptions();
-            }
-        }
-    }
+    /* public void OnMouseOver()
+     {
+         // Click on event
+         if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+         {
+             if (!areOptionsShown)
+             {
+                 ShowOptions();
+             }
+             else
+             {
+                 HideOptions();
+             }
+         }
+     }*/
 
-    public void OnMouseEnter()
-    {
-        eventHoverCheck = true;
-    }
-
-    private void OnMouseExit()
-    {
-        eventHoverCheck = false;
-    }
-
-    private void OnGUI()
+    /*private void OnGUI()
     {
         Rect btnRect;
         Rect lblReqt;
@@ -112,7 +130,7 @@ public class EventObjectController : MonoBehaviour
 
         if (eventHoverCheck)
         {
-            /*txtTooltip = eventModel.name + "\n" + */txtTooltip = eventModel.publicEventName[taal] + "\n" + eventModel.description[taal];
+            txtTooltip = eventModel.publicEventName[taal] + "\n" + eventModel.description[taal];
             Vector3 pos = Event.current.mousePosition;
             lblReqt.x = pos.x + 10;
             lblReqt.y = pos.y + 20;
@@ -163,10 +181,10 @@ public class EventObjectController : MonoBehaviour
                         btnRect.y = clickPosition.y - 120;//v3.y + 260;
                 }
 
-                /*string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-                    "\nDuur: " + eventModel.eventDuration[i]
-            , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
-                    "\nDuration: " + eventModel.eventDuration[i]  };*/
+                //string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
+          //          "\nDuur: " + eventModel.eventDuration[i]
+          //  , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
+          //          "\nDuration: " + eventModel.eventDuration[i]  };
 
 
                 //txtButton += getConsequences(eventModel.consequences[i]);
@@ -175,9 +193,9 @@ public class EventObjectController : MonoBehaviour
                     ChooseOption(i);
             }
         }
-    }
+    }*/
 
-    string getConsequences(SectorStatistics s)
+    /*string getConsequences(SectorStatistics s)
     {
         string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
 
@@ -218,9 +236,9 @@ public class EventObjectController : MonoBehaviour
         }
 
         return consequences[taal];
-    }
+    }*/
 
-    private void ShowOptions()
+    /*private void ShowOptions()
     {
         if (clickPosition.x == 0 && clickPosition.y == 0)
         {
@@ -229,17 +247,17 @@ public class EventObjectController : MonoBehaviour
         }
         Debug.Log("Showing Options");
         areOptionsShown = true;
-    }
+    }*/
 
-    private void HideOptions()
-    {
-        clickPosition.x = 0;
-        clickPosition.y = 0;
-        Debug.Log("Hiding options!");
-        areOptionsShown = false;
-    }
+    /* private void HideOptions()
+     {
+         clickPosition.x = 0;
+         clickPosition.y = 0;
+         Debug.Log("Hiding options!");
+         areOptionsShown = false;
+     }*/
 
-    private void ChooseOption(int option)
+    /*private void ChooseOption(int option)
     {
         Debug.Log("Chosen option: " + option);
         eventModel.SetPickedChoice(option, gameController.game, regionModel);
@@ -248,7 +266,7 @@ public class EventObjectController : MonoBehaviour
 
         if (eventModel.eventDuration[option] == 0)
             Destroy(gameObject);
-    }
+    } */
 
     private Texture SelectTexture(string description)
     {
@@ -372,9 +390,9 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
-    public void disableTooltipAndOptions()
-    {
-        areOptionsShown = false;
-        eventHoverCheck = false;
-    }
+    //public void disableTooltipAndOptions()
+    // {
+    //    areOptionsShown = false;
+    //   eventHoverCheck = false;
+    // }
 }
