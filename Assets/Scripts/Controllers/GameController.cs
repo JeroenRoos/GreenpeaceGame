@@ -297,7 +297,7 @@ public class GameController : MonoBehaviour
         {
             double pollutionDifference = game.gameStatistics.pollution - region.statistics.avgPollution;
             double pollutionChangeValue = pollutionDifference * 0.3 / 12;
-            //Debug.Log("Region: " + region + " diff with avg: " + pollutionDifference + " changevalue: " + pollutionChangeValue);
+
             foreach (RegionSector regionSector in region.sectors)
             {
                 regionSector.statistics.pollution.ChangeAirPollution(pollutionChangeValue);
