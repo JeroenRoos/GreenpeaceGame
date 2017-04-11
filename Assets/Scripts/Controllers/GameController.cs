@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update () {
         if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9)
         {
             EventManager.CallChangeMonth();
@@ -111,57 +111,20 @@ public class GameController : MonoBehaviour
 
     private void GenerateMonthlyUpdates(bool isNewYear)
     {
-<<<<<<< HEAD
         int index = 0;
 
         GenerateMonthlyReport(index);
         index++;
         if (isNewYear)
-=======
-        /* montly report generating
-         * updateui.StatisticsChangeButton(game.monthlyReport.regions, g.m.oldincome. g.m.oldhappines, etc., etc.)
-         * updateui.completedEventsButton(game.monthlyReport.regions, game.monthlyReport.completedEvents)
-         * updateui.newEventsButton(game.monthlyReport.regions, game.monthlyReport.newEvents)
-         * updateui.completedActionsButton(game.monthlyReport.regions, game.monthlyReport.completedActions)
-         */
-
-        updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
-        updateUI.InitAfterActionStats(false);
-        if (checkNewEvents())
-        {
-            updateUI.initAfterActionStatsNewEvents();
-        }
-        updateUI.btnAfterActionReportStats.gameObject.transform.position = afterActionPosition[0];
-
-        int index = 1;
-        if (checkActionAndEventEmpty())
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
         {
             GenerateYearlyReport(index);
             index++;
             game.yearlyReport.UpdateStatistics(game.regions);
         }
-<<<<<<< HEAD
         GenerateCompletedEventsAndActions(index);
         index++;
-=======
-        else
-            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(false);
-
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
 
         game.monthlyReport.UpdateStatistics(game.regions);
-    } 
-
-    private bool checkNewEvents()
-    {
-        for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
-        {
-            if (game.monthlyReport.newEvents[i].Count != 0)
-                return true;
-        }
-
-        return false;
     }
 
     private void GenerateMonthlyReport(int index)

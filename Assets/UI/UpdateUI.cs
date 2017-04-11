@@ -1640,7 +1640,6 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
-<<<<<<< HEAD
             txtAfterActionStatsColumnLeftYearly.text = txtLeft[taal];
             txtAfterActionStatsColumnLeftMiddleYearly.text = txtLeftMiddle[taal];
             txtAfterActionStatsColumnRightYearly.text = txtRight[taal];
@@ -1677,112 +1676,6 @@ public class UpdateUI : MonoBehaviour
     }
 
     private void calculateDifference(double[] oldIncome, double[] oldHappiness, double[] oldEcoAwareness, double[] oldPollution, double[] oldProsperity, bool isMonthly)
-=======
-            string[] txtTitle = { "Einde jaar rapport", "End of year view" };
-            txtAfterActionStatsName.text = txtTitle[taal];
-            updateTextAfterActionStats();
-            calculateDifference(game.yearlyReport.oldIncome, game.yearlyReport.oldHappiness, game.yearlyReport.oldEcoAwareness, game.yearlyReport.oldPollution, game.yearlyReport.oldProsperity);
-        }
-    }
-
-    public void initAfterActionStatsNewEvents()
-    {
-        string[] txtNewEvent = { "Nieuwe events", "New events" };
-
-        foreach (Region r in game.regions)
-        {
-            foreach (GameEvent ge in r.inProgressGameEvents)
-            {
-                for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
-                {
-                    foreach (GameEvent e in game.monthlyReport.newEvents[i])
-                    {
-                        if (e == ge)
-                        {
-                            if (r.name[0] == "Noord Nederland")
-                                setNewEventsNoord(e);
-                            else if (r.name[0] == "Oost Nederland")
-                                setNewEventsOost(e);
-                            else if (r.name[0] == "Zuid Nederland")
-                                setNewEventsZuid(e);
-                            else if (r.name[0] == "West Nederland")
-                                setNewEventsWest(e);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void setNewEventsNoord(GameEvent e)
-    {
-
-    }
-
-    private void setNewEventsOost(GameEvent e)
-    {
-
-    }
-
-    private void setNewEventsZuid(GameEvent e)
-    {
-
-    }
-
-    private void setNewEventsWest(GameEvent e)
-    {
-
-    }
-
-    private void updateTextAfterActionStats()
-    {
-        string[] txtRight = { "West-Nederland", "The Netherlands West" };
-        string[] txtRightMiddle = { "Zuid-Nederland", "The Netherlands South" };
-        string[] txtLeftMiddle = { "Oost-Nederland", "The Netherlands East" };
-        string[] txtLeft = { "Noord-Nederland", "The Netherlands North" };
-        string[] txtIncomeDescription = { "Inkomen", "Income" };
-        string[] txtHappinessDescription = { "Tevredenheid", "Happiness" };
-        string[] txtEcoAwarenessDescription = { "Milieubewustheid", "Eco Awareness" };
-        string[] txtPollutionDescription = { "Vervuiling", "Pollution" };
-        string[] txtProsperityDescription = { "Welvaart", "Prosperity" };
-        string[] txtDescription = { "Veranderde waardes", "Changed values" };
-
-        txtAfterActionStatsColumnLeft.text = txtLeft[taal];
-        txtAfterActionStatsColumnLeftMiddle.text = txtLeftMiddle[taal];
-        txtAfterActionStatsColumnRight.text = txtRight[taal];
-        txtAfterActionStatsColumnRightMiddle.text = txtRightMiddle[taal];
-        txtAfterActionStatsColumnLeftDescription.text = txtDescription[taal];
-        txtAfterActionStatsColumnLeftMiddleDescription.text = txtDescription[taal];
-        txtAfterActionStatsColumnRightMiddleDescription.text = txtDescription[taal];
-        txtAfterActionStatsColumnRightDescription.text = txtDescription[taal];
-
-        txtAfterActionNoordIncomeD.text = txtIncomeDescription[taal];
-        txtAfterActionNoordHappinessD.text = txtHappinessDescription[taal];
-        txtAfterActionNoordEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-        txtAfterActionNoordPollutionD.text = txtPollutionDescription[taal];
-        txtAfterActionNoordProsperityD.text = txtProsperityDescription[taal];
-
-        txtAfterActionOostIncomeD.text = txtIncomeDescription[taal];
-        txtAfterActionOostHappinessD.text = txtHappinessDescription[taal];
-        txtAfterActionOostEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-        txtAfterActionOostPollutionD.text = txtPollutionDescription[taal];
-        txtAfterActionOostProsperityD.text = txtProsperityDescription[taal];
-
-        txtAfterActionZuidIncomeD.text = txtIncomeDescription[taal];
-        txtAfterActionZuidHappinessD.text = txtHappinessDescription[taal];
-        txtAfterActionZuidEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-        txtAfterActionZuidPollutionD.text = txtPollutionDescription[taal];
-        txtAfterActionZuidProsperityD.text = txtProsperityDescription[taal];
-
-        txtAfterActionWestIncomeD.text = txtIncomeDescription[taal];
-        txtAfterActionWestHappinessD.text = txtHappinessDescription[taal];
-        txtAfterActionWestEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-        txtAfterActionWestPollutionD.text = txtPollutionDescription[taal];
-        txtAfterActionWestProsperityD.text = txtProsperityDescription[taal];
-    }
-
-    private void calculateDifference(double[] oldIncome, double[] oldHappiness, double[] oldEcoAwareness, double[] oldPollution, double[] oldProsperity)
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
     {
         double incomeDifference = 0;
         double happinessDifference = 0;
@@ -1792,14 +1685,13 @@ public class UpdateUI : MonoBehaviour
 
         for (int i = 0; i < game.monthlyReport.reportRegions.Length; i++)
         {
-            incomeDifference = game.regions[i].statistics.income - oldIncome[i];
-            happinessDifference = game.regions[i].statistics.happiness - oldHappiness[i];
-            ecoAwarenessDifference = game.regions[i].statistics.ecoAwareness - oldEcoAwareness[i];
-            pollutionDifference = game.regions[i].statistics.avgPollution - oldPollution[i];
-            prosperityDifference = game.regions[i].statistics.prosperity - oldProsperity[i];
+            incomeDifference = game.regions[i].statistics.income - oldIncome[i];//game.monthlyReport.oldIncome[i];
+            happinessDifference = game.regions[i].statistics.happiness - oldHappiness[i];//game.monthlyReport.oldHappiness[i];
+            ecoAwarenessDifference = game.regions[i].statistics.ecoAwareness - oldEcoAwareness[i];//game.monthlyReport.oldEcoAwareness[i];
+            pollutionDifference = game.regions[i].statistics.avgPollution - oldPollution[i];//game.monthlyReport.oldPollution[i];
+            prosperityDifference = game.regions[i].statistics.prosperity - oldProsperity[i];//game.monthlyReport.oldProsperity[i];
 
             if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
-<<<<<<< HEAD
             {
                 setDifferenceTextValuesNoord(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference, isMonthly);
             }
@@ -1815,25 +1707,11 @@ public class UpdateUI : MonoBehaviour
             {
                 setDifferenceTextValuesWest(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference, isMonthly);
             }
-=======
-                setDifferenceTextValuesNoord(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-
-            else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
-                setDifferenceTextValuesOost(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-
-            else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
-                setDifferenceTextValuesZuid(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-
-            else if (game.monthlyReport.reportRegions[i] == "West Nederland")
-                setDifferenceTextValuesWest(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
         }
     }
 
     private void setDifferenceTextValuesNoord(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
     {
-<<<<<<< HEAD
         if (isMonthly)
         {
             txtAfterActionNoordIncome.text = incomeDifference.ToString("0.00");
@@ -1852,18 +1730,10 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionNoordProsperityYearly.text = prosperityDifference.ToString("0.00");
 
         }
-=======
-        txtAfterActionNoordIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionNoordHappiness.text = happinessDifference.ToString("0.00") + "%";
-        txtAfterActionNoordEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
-        txtAfterActionNoordPollution.text = pollutionDifference.ToString("0.00") + "%";
-        txtAfterActionNoordProsperity.text = prosperityDifference.ToString("0.00") + "%";
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
     }
 
     private void setDifferenceTextValuesOost(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
     {
-<<<<<<< HEAD
         if (isMonthly)
         {
             txtAfterActionOostIncome.text = incomeDifference.ToString("0.00");
@@ -1882,18 +1752,10 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionOostProsperityYearly.text = prosperityDifference.ToString("0.00");
 
         }
-=======
-        txtAfterActionOostIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionOostHappiness.text = happinessDifference.ToString("0.00") + "%";
-        txtAfterActionOostEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
-        txtAfterActionOostPollution.text = pollutionDifference.ToString("0.00") + "%";
-        txtAfterActionOostProsperity.text = prosperityDifference.ToString("0.00") + "%";
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
     }
 
     private void setDifferenceTextValuesZuid(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
     {
-<<<<<<< HEAD
         if (isMonthly)
         {
             txtAfterActionZuidIncome.text = incomeDifference.ToString("0.00");
@@ -1911,18 +1773,10 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionZuidPollutionYearly.text = pollutionDifference.ToString("0.00");
             txtAfterActionZuidProsperityYearly.text = prosperityDifference.ToString("0.00");
         }
-=======
-        txtAfterActionZuidIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionZuidHappiness.text = happinessDifference.ToString("0.00") + "%";
-        txtAfterActionZuidEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
-        txtAfterActionZuidPollution.text = pollutionDifference.ToString("0.00") + "%";
-        txtAfterActionZuidProsperity.text = prosperityDifference.ToString("0.00") + "%";
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
     }
 
     private void setDifferenceTextValuesWest(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
     {
-<<<<<<< HEAD
         if (isMonthly)
         {
             txtAfterActionWestIncome.text = incomeDifference.ToString("0.00");
@@ -1940,13 +1794,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionWestPollutionYearly.text = pollutionDifference.ToString("0.00");
             txtAfterActionWestProsperityYearly.text = prosperityDifference.ToString("0.00");
         }
-=======
-        txtAfterActionWestIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionWestHappiness.text = happinessDifference.ToString("0.00") + "%";
-        txtAfterActionWestEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
-        txtAfterActionWestPollution.text = pollutionDifference.ToString("0.00") + "%";
-        txtAfterActionWestProsperity.text = prosperityDifference.ToString("0.00") + "%";
->>>>>>> d681fe2adbddbde1a7bfc971822b49e450956468
     }
     #endregion
 
