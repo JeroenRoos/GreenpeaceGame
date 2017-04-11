@@ -39,16 +39,16 @@ public class GameController : MonoBehaviour
         updateUI.LinkGame(game);
 
         afterActionPosition = new Vector3[3];
-        afterActionPosition[0] = new Vector3( 5, 5, 0);
-        afterActionPosition[1] = new Vector3( 5, 60, 0);
-        afterActionPosition[1] = new Vector3( 5, 115, 0);
+        afterActionPosition[0] = new Vector3(5, 5, 0);
+        afterActionPosition[1] = new Vector3(5, 60, 0);
+        afterActionPosition[1] = new Vector3(5, 115, 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
         oostNederland.GetComponent<RegionController>().Init(this);
         westNederland.GetComponent<RegionController>().Init(this);
         zuidNederland.GetComponent<RegionController>().Init(this);
-        
+
         EventManager.ChangeMonth += NextTurn;
         EventManager.CallNewGame();
     }
@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
         if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9)
         {
             EventManager.CallChangeMonth();
@@ -133,12 +133,11 @@ public class GameController : MonoBehaviour
             index++;
         }
         else
-        {
             updateUI.btnAfterActionReportCompleted.gameObject.SetActive(false);
-        }
+
 
         game.monthlyReport.UpdateStatistics(game.regions);
-    }
+    } 
 
     private bool checkActionAndEventEmpty()
     {

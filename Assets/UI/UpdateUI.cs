@@ -1609,37 +1609,37 @@ public class UpdateUI : MonoBehaviour
     private void setDifferenceTextValuesNoord(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
     {
         txtAfterActionNoordIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionNoordHappiness.text = happinessDifference.ToString("0.00");
-        txtAfterActionNoordEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
-        txtAfterActionNoordPollution.text = pollutionDifference.ToString("0.00");
-        txtAfterActionNoordProsperity.text = prosperityDifference.ToString("0.00");
+        txtAfterActionNoordHappiness.text = happinessDifference.ToString("0.00") + "%";
+        txtAfterActionNoordEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
+        txtAfterActionNoordPollution.text = pollutionDifference.ToString("0.00") + "%";
+        txtAfterActionNoordProsperity.text = prosperityDifference.ToString("0.00") + "%";
     }
 
     private void setDifferenceTextValuesOost(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
     {
         txtAfterActionOostIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionOostHappiness.text = happinessDifference.ToString("0.00");
-        txtAfterActionOostEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
-        txtAfterActionOostPollution.text = pollutionDifference.ToString("0.00");
-        txtAfterActionOostProsperity.text = prosperityDifference.ToString("0.00");
+        txtAfterActionOostHappiness.text = happinessDifference.ToString("0.00") + "%";
+        txtAfterActionOostEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
+        txtAfterActionOostPollution.text = pollutionDifference.ToString("0.00") + "%";
+        txtAfterActionOostProsperity.text = prosperityDifference.ToString("0.00") + "%";
     }
 
     private void setDifferenceTextValuesZuid(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
     {
         txtAfterActionZuidIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionZuidHappiness.text = happinessDifference.ToString("0.00");
-        txtAfterActionZuidEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
-        txtAfterActionZuidPollution.text = pollutionDifference.ToString("0.00");
-        txtAfterActionZuidProsperity.text = prosperityDifference.ToString("0.00");
+        txtAfterActionZuidHappiness.text = happinessDifference.ToString("0.00") + "%";
+        txtAfterActionZuidEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
+        txtAfterActionZuidPollution.text = pollutionDifference.ToString("0.00") + "%";
+        txtAfterActionZuidProsperity.text = prosperityDifference.ToString("0.00") + "%";
     }
 
     private void setDifferenceTextValuesWest(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
     {
         txtAfterActionWestIncome.text = incomeDifference.ToString("0.00");
-        txtAfterActionWestHappiness.text = happinessDifference.ToString("0.00");
-        txtAfterActionWestEcoAwareness.text = ecoAwarenessDifference.ToString("0.00");
-        txtAfterActionWestPollution.text = pollutionDifference.ToString("0.00");
-        txtAfterActionWestProsperity.text = prosperityDifference.ToString("0.00");
+        txtAfterActionWestHappiness.text = happinessDifference.ToString("0.00") + "%";
+        txtAfterActionWestEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
+        txtAfterActionWestPollution.text = pollutionDifference.ToString("0.00") + "%";
+        txtAfterActionWestProsperity.text = prosperityDifference.ToString("0.00") + "%";
     }
     #endregion
 
