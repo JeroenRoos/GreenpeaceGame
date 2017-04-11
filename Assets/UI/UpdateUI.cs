@@ -1173,8 +1173,7 @@ public class UpdateUI : MonoBehaviour
             }
         }
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck)
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnMonthlyReportCheck && !btnYearlyReportCheck && !btnAfterActionCompletedCheck)
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnMonthlyReportCheck && !btnYearlyReportCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck)
         {
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
