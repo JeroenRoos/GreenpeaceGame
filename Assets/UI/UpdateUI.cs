@@ -885,7 +885,6 @@ public class UpdateUI : MonoBehaviour
     // Update Money based on value
     public void updateMoney(double money)
     {
-        //Debug.Log(money);
         txtMoney.text = money.ToString();
     }
 
@@ -899,21 +898,18 @@ public class UpdateUI : MonoBehaviour
     // Update Awareness based on value
     public void updateAwarness(double awareness)
     {
-        //Debug.Log("Awareness: " + awareness);
         iconController(btnAwareness, awareness);
     }
 
     // Update Pollution based on value
     public void updatePollution(double pollution)
     {
-        //Debug.Log("Pollution: "+ pollution);
         iconController(btnPollution, pollution);
     }
 
     // Update Energy based on value
     public void updateEnergy(double energy)
     {
-        //Debug.Log("Energy: " + energy);
         iconController(btnEnergy, energy);
     }
 
@@ -925,7 +921,6 @@ public class UpdateUI : MonoBehaviour
     // Update Happiness based on value
     public void updateHappiness(double happiness)
     {
-        //Debug.Log("Happiness: " + happiness);
         iconController(btnHappiness, happiness);
     }
 
@@ -1242,7 +1237,6 @@ public class UpdateUI : MonoBehaviour
         // Set the text in the popup based on language
         initMainText();
 
-        // Debug.Log("UpdateRegionScreenUI: " + regio.name);
         updateRegionTextValues();
 
         // Set the right actions in the dropdown
@@ -1298,7 +1292,6 @@ public class UpdateUI : MonoBehaviour
 
     private void updateRegionTextValues()
     {
-        // Debug.Log("updateRegionTextValues: " + regio.name);
         txtRegionName.text = regio.name[taal];
         txtRegionMoney.text = regio.statistics.income.ToString("0.00");
         txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
@@ -1348,7 +1341,6 @@ public class UpdateUI : MonoBehaviour
         {
             if (sector.sectorName[taal] == "Huishoudens" || sector.sectorName[taal] == "Households")
             {
-                //Debug.Log(sector.sectorName);
                 string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
                     + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
                     + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
@@ -1360,7 +1352,6 @@ public class UpdateUI : MonoBehaviour
     }
             else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
-               // Debug.Log(sector.sectorName);
                 string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
                     + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
                     + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
@@ -1372,7 +1363,6 @@ public class UpdateUI : MonoBehaviour
             }
             else if (sector.sectorName[taal] == "Landbouw" || sector.sectorName[taal] == "Agriculture")
             {
-                //Debug.Log(sector.sectorName);
                 string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
                     + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
                     + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
@@ -1458,10 +1448,8 @@ public class UpdateUI : MonoBehaviour
             if (dropdownRegio.value == i)
             {
                 dropdownChoice = dropdownRegio.options[i].text;
-                Debug.Log(dropdownRegio.options[i].text);
             }
         }
-        Debug.Log(dropdownChoice);
 
         // Shows the right information with the chosen option in dropdown
         showInfoDropDownRegion();
@@ -2133,7 +2121,6 @@ public class UpdateUI : MonoBehaviour
     {
         if (taal != 0)
         {
-            Debug.Log("BTN NL");
             game.ChangeLanguage("dutch");
             taal = game.language;
             btnNextTurnText.text = "Volgende beurt";
@@ -2147,7 +2134,6 @@ public class UpdateUI : MonoBehaviour
     {
         if (taal != 1)
         {
-            Debug.Log("BTN ENG");
             game.ChangeLanguage("english");
             taal = game.language;
             btnNextTurnText.text = "Next turn";
@@ -2394,12 +2380,10 @@ public class UpdateUI : MonoBehaviour
 
     public void enterEventHover()
     {
-        Debug.Log("Event Hover ENTER!");
     }
 
     public void enterExitHover()
     {
-        Debug.Log("Event Hover EXIT!");
     }
 
     public void buttonExitGameOnClick()
