@@ -122,6 +122,10 @@ public class GameController : MonoBehaviour
 
         updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
         updateUI.InitAfterActionStats(false);
+        if (checkNewEvents())
+        {
+            updateUI.initAfterActionStatsNewEvents();
+        }
         updateUI.btnAfterActionReportStats.gameObject.transform.position = afterActionPosition[0];
 
         int index = 1;
@@ -138,6 +142,17 @@ public class GameController : MonoBehaviour
 
         game.monthlyReport.UpdateStatistics(game.regions);
     } 
+
+    private bool checkNewEvents()
+    {
+        for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
+        {
+            if (game.monthlyReport.newEvents[i].Count != 0)
+                return true;
+        }
+
+        return false;
+    }
 
     private bool checkActionAndEventEmpty()
     {

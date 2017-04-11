@@ -1524,6 +1524,55 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    public void initAfterActionStatsNewEvents()
+    {
+        string[] txtNewEvent = { "Nieuwe events", "New events" };
+
+        foreach (Region r in game.regions)
+        {
+            foreach (GameEvent ge in r.inProgressGameEvents)
+            {
+                for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
+                {
+                    foreach (GameEvent e in game.monthlyReport.newEvents[i])
+                    {
+                        if (e == ge)
+                        {
+                            if (r.name[0] == "Noord Nederland")
+                                setNewEventsNoord(e);
+                            else if (r.name[0] == "Oost Nederland")
+                                setNewEventsOost(e);
+                            else if (r.name[0] == "Zuid Nederland")
+                                setNewEventsZuid(e);
+                            else if (r.name[0] == "West Nederland")
+                                setNewEventsWest(e);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void setNewEventsNoord(GameEvent e)
+    {
+
+    }
+
+    private void setNewEventsOost(GameEvent e)
+    {
+
+    }
+
+    private void setNewEventsZuid(GameEvent e)
+    {
+
+    }
+
+    private void setNewEventsWest(GameEvent e)
+    {
+
+    }
+
     private void updateTextAfterActionStats()
     {
         string[] txtRight = { "West-Nederland", "The Netherlands West" };
@@ -1581,28 +1630,24 @@ public class UpdateUI : MonoBehaviour
 
         for (int i = 0; i < game.monthlyReport.reportRegions.Length; i++)
         {
-            incomeDifference = game.regions[i].statistics.income - oldIncome[i];//game.monthlyReport.oldIncome[i];
-            happinessDifference = game.regions[i].statistics.happiness - oldHappiness[i];//game.monthlyReport.oldHappiness[i];
-            ecoAwarenessDifference = game.regions[i].statistics.ecoAwareness - oldEcoAwareness[i];//game.monthlyReport.oldEcoAwareness[i];
-            pollutionDifference = game.regions[i].statistics.avgPollution - oldPollution[i];//game.monthlyReport.oldPollution[i];
-            prosperityDifference = game.regions[i].statistics.prosperity - oldProsperity[i];//game.monthlyReport.oldProsperity[i];
+            incomeDifference = game.regions[i].statistics.income - oldIncome[i];
+            happinessDifference = game.regions[i].statistics.happiness - oldHappiness[i];
+            ecoAwarenessDifference = game.regions[i].statistics.ecoAwareness - oldEcoAwareness[i];
+            pollutionDifference = game.regions[i].statistics.avgPollution - oldPollution[i];
+            prosperityDifference = game.regions[i].statistics.prosperity - oldProsperity[i];
 
             if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
-            {
                 setDifferenceTextValuesNoord(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-            }
+
             else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
-            {
                 setDifferenceTextValuesOost(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-            }
+
             else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
-            {
                 setDifferenceTextValuesZuid(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-            }
+
             else if (game.monthlyReport.reportRegions[i] == "West Nederland")
-            {
                 setDifferenceTextValuesWest(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-            }
+
         }
     }
 
