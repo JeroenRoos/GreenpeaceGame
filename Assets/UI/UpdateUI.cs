@@ -2055,6 +2055,7 @@ public class UpdateUI : MonoBehaviour
                 Debug.Log(q.name[taal] + " is active");
                 activeQuests[taal] += q.name[taal] + " - " + q.description[taal] + "\n";
                 activeQuests[taal] += getCompleteConditions(q.questCompleteConditions) + "\n\n";
+                txtQuestsActive.text = activeQuests[taal];
                 activeQuest = true;
             }
         }
@@ -2064,7 +2065,7 @@ public class UpdateUI : MonoBehaviour
 
     private string getCompleteConditions(RegionStatistics r)
     {
-        string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
+        string[] consequences = { "\nVereisten: ", "\nRequirements: " };
         if (r.income != 0)
         {
             string[] a = { "\nInkomen: " + r.income + "\n", "\nIncome: " + r.income + "\n" };
