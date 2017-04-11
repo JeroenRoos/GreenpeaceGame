@@ -168,6 +168,11 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnMenu;
     public Text txtBtnTimeline;
 
+    // Text Quests Popup
+    public Text txtQuestsTitle;
+    public Text txtQuestsDescription;
+    public Text txtQuestsActive;
+
     // Text Organization Menu
     public Text txtColumnLeft;
     public Text txtColumnRight;
@@ -355,7 +360,7 @@ public class UpdateUI : MonoBehaviour
         taal = game.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = true;
+        tutorialActive = false;
 
         if (tutorialActive)
             initTutorialActive();
@@ -2040,6 +2045,98 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for Quests Popup
+    private void initQuestsPopup()
+    {
+        string[] title = { "Missies", "Quests" };
+        string[] description = { "Actieve missies", "Active quests" };
+        string[] activeQuests = { "", "" };
+        string[] noActiveQuests = { "Er zijn geen actieve missies", "There are no active quests" };
+
+        bool activeQuest = false;
+
+        txtQuestsTitle.text = title[taal];
+        txtQuestsDescription.text = description[taal];
+
+        foreach (Quest q in game.quests)
+        {
+            Debug.Log(q.name[taal]);
+
+            if (q.isActive)
+            {
+                Debug.Log(q.name[taal] + " is active");
+                activeQuests[taal] += q.name[taal] + " - " + q.description[taal] + "\n";
+                activeQuests[taal] += getCompleteConditions(q.questCompleteConditions) + "\n\n";
+                activeQuest = true;
+            }
+        }
+        if (!activeQuest)
+            txtQuestsActive.text = noActiveQuests[taal];
+    }
+
+    private string getCompleteConditions(RegionStatistics r)
+    {
+        string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
+        if (r.income != 0)
+        {
+            string[] a = { "\nInkomen: " + r.income + "\n", "\nIncome: " + r.income + "\n" };
+            consequences[taal] += a[taal];
+        }
+        if (r.happiness != 0)
+        {
+            string[] c = { "Tevredenheid: " + r.happiness + "\n", "Happiness: " + r.happiness + "\n" };
+            consequences[taal] += c[taal];
+        }
+        if (r.ecoAwareness != 0)
+        {
+            string[] d = { "Milieubewustheid: " + r.ecoAwareness + "\n", "Eco awareness: " + r.ecoAwareness + "\n" };
+            consequences[taal] += d[taal];
+        }
+        if (r.prosperity != 0)
+        {
+            string[] e = { "Welvaart: " + r.prosperity + "\n", "Prosperity: " + r.prosperity + "\n" };
+            consequences[taal] += e[taal];
+        }
+        if (r.avgAirPollution != 0)
+        {
+            string[] f = { "Luchtvervuiling: " + r.avgAirPollution + "\n", "Air pollution: " + r.avgAirPollution + "\n" };
+            consequences[taal] += f[taal];
+        }
+        if (r.avgAirPollutionIncrease != 0)
+        {
+            string[] g = { "Watervervuiling: " + r.avgAirPollutionIncrease + "\n", "Water pollution: " + r.avgAirPollutionIncrease + "\n" };
+            consequences[taal] += g[taal];
+        }
+        if (r.avgNaturePollution != 0)
+        {
+            string[] h = { "Natuurvervuiling: " + r.avgNaturePollution + "\n", "Nature pollution: " + r.avgNaturePollution + "\n" };
+            consequences[taal] += h[taal];
+        }
+        if (r.avgNaturePollutionIncrease != 0)
+        {
+            string[] h = { "Natuurvervuiling: " + r.avgNaturePollutionIncrease + "\n", "Nature pollution: " + r.avgNaturePollutionIncrease + "\n" };
+            consequences[taal] += h[taal];
+        }
+        if (r.avgPollution != 0)
+        {
+            string[] h = { "Natuurvervuiling: " + r.avgPollution + "\n", "Nature pollution: " + r.avgPollution + "\n" };
+            consequences[taal] += h[taal];
+        }
+        if (r.avgWaterPollution != 0)
+        {
+            string[] h = { "Natuurvervuiling: " + r.avgWaterPollution + "\n", "Nature pollution: " + r.avgWaterPollution + "\n" };
+            consequences[taal] += h[taal];
+        }
+        if (r.avgWaterPollutionIncrease != 0)
+        {
+            string[] h = { "Natuurvervuiling: " + r.avgWaterPollutionIncrease + "\n", "Nature pollution: " + r.avgWaterPollutionIncrease + "\n" };
+            consequences[taal] += h[taal];
+        }
+
+        return consequences[taal];
+    }
+    #endregion
+
     #region Code for activating popups
     public void btnTimelineClick()
     {
@@ -2068,6 +2165,7 @@ public class UpdateUI : MonoBehaviour
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+            initQuestsPopup();
         }
     }
 
