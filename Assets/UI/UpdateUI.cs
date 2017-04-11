@@ -240,6 +240,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnMenu;
     public Button btnTimeline;
     public Button btnOrganization;
+    public Button btnQuests;
     public Button btnMoney;
     public Button btnHappiness;
     public Button btnAwareness;
@@ -593,6 +594,11 @@ public class UpdateUI : MonoBehaviour
         btnPopulation.GetComponent<Button>();
         btnProsperity.GetComponent<Button>();
 
+        btnQuests.GetComponent<Button>();
+        btnQuests.gameObject.SetActive(false);
+
+        StartCoroutine(showBtnQuests());
+
         btnMonthlyReportStats.GetComponent<Button>();
         btnYearlyReportStats.GetComponent<Button>();
         btnMonthlyReportStats.gameObject.SetActive(false);
@@ -602,6 +608,14 @@ public class UpdateUI : MonoBehaviour
         btnAfterActionReportCompleted.gameObject.SetActive(false);
 
         setBooleans();
+    }
+
+    IEnumerator showBtnQuests()
+    {
+        while (game.currentMonth != 5)
+            yield return null;
+
+        btnQuests.gameObject.SetActive(true);
     }
 
     void setBooleans()
@@ -1173,8 +1187,8 @@ public class UpdateUI : MonoBehaviour
             }
         }
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck)
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnMonthlyReportCheck && !btnYearlyReportCheck && !btnAfterActionCompletedCheck)
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck && !btnMonthlyReportCheck && !btnYearlyReportCheck)
+       // && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnMonthlyReportCheck && !btnYearlyReportCheck && !btnAfterActionCompletedCheck)
         {
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
