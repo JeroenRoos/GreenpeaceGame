@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -40,7 +41,7 @@ public class GameEventContainer
 
     public static GameEventContainer Load()
     {
-        try
+        /*try
         {
             var file = Application.dataPath + "/GameFiles/GameEvents.xml";
             XmlSerializer reader = new XmlSerializer(typeof(GameEventContainer));
@@ -56,6 +57,14 @@ public class GameEventContainer
             Debug.Log(ex);
             Debug.Log("Event loading failed");
             return new GameEventContainer();
-        }
+        }*/
+
+        //resources reading for build
+        TextAsset textAsset = (TextAsset)Resources.Load("GameEvents");
+        XmlDocument xml = new XmlDocument();
+        xml.LoadXml(textAsset.text);
+        XmlSerializer serializer = new XmlSerializer(typeof(GameEventContainer));
+        StringReader reader = new StringReader(xml.OuterXml);
+        return serializer.Deserialize(reader) as GameEventContainer;
     }
 }

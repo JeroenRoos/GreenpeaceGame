@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -40,7 +41,7 @@ public class RegionActionContainer
 
     public static RegionActionContainer Load()
     {
-        try
+        /*try
         {
             var file = Application.dataPath + "/GameFiles/RegionActions.xml";
             XmlSerializer reader = new XmlSerializer(typeof(RegionActionContainer));
@@ -56,6 +57,14 @@ public class RegionActionContainer
             Debug.Log(ex);
             Debug.Log("RegionAction loading failed");
             return new RegionActionContainer();
-        }
+        }*/
+
+        //resources reading for build
+        TextAsset textAsset = (TextAsset)Resources.Load("RegionActions");
+        XmlDocument xml = new XmlDocument();
+        xml.LoadXml(textAsset.text);
+        XmlSerializer serializer = new XmlSerializer(typeof(RegionActionContainer));
+        StringReader reader = new StringReader(xml.OuterXml);
+        return serializer.Deserialize(reader) as RegionActionContainer;
     }
 }

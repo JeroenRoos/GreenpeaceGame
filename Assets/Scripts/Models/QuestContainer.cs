@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -40,7 +41,7 @@ public class QuestContainer
 
     public static QuestContainer Load()
     {
-        try
+        /*try
         {
             var file = Application.dataPath + "/GameFiles/Quests.xml";
             XmlSerializer reader = new XmlSerializer(typeof(QuestContainer));
@@ -56,6 +57,14 @@ public class QuestContainer
             Debug.Log(ex);
             Debug.Log("Quests loading failed");
             return new QuestContainer();
-        }
+        }*/
+
+        //resources reading for build
+        TextAsset textAsset = (TextAsset)Resources.Load("Quests");
+        XmlDocument xml = new XmlDocument();
+        xml.LoadXml(textAsset.text);
+        XmlSerializer serializer = new XmlSerializer(typeof(QuestContainer));
+        StringReader reader = new StringReader(xml.OuterXml);
+        return serializer.Deserialize(reader) as QuestContainer;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
@@ -40,7 +41,7 @@ public class RegionContainer
 
     public static RegionContainer Load()
     {
-        try
+        /*try
         {
             var file = Application.dataPath + "/GameFiles/Regions.xml";
             XmlSerializer reader = new XmlSerializer(typeof(RegionContainer));
@@ -56,7 +57,15 @@ public class RegionContainer
             Debug.Log(ex);
             Debug.Log("Region loading failed");
             return new RegionContainer();
-        }
+        }*/
+
+        //resources reading for build
+        TextAsset textAsset = (TextAsset)Resources.Load("Regions");
+        XmlDocument xml = new XmlDocument();
+        xml.LoadXml(textAsset.text);
+        XmlSerializer serializer = new XmlSerializer(typeof(RegionContainer));
+        StringReader reader = new StringReader(xml.OuterXml);
+        return serializer.Deserialize(reader) as RegionContainer;
     }
 }
 
