@@ -67,7 +67,7 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-        if ((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9)
+        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9))
         {
             EventManager.CallChangeMonth();
         }
@@ -88,25 +88,28 @@ public class GameController : MonoBehaviour
 
     public void NextTurn()
     {
-        bool isNewYear = game.UpdateCurrentMonthAndYear();
+        if (!updateUI.popupActive)
+        {
+            bool isNewYear = game.UpdateCurrentMonthAndYear();
 
-        game.ExecuteNewMonthMethods();
+            game.ExecuteNewMonthMethods();
 
-        UpdateRegionsPollutionInfluence();
-        UpdateEvents();
-        game.gameStatistics.UpdateRegionalAvgs(game);
-        UpdateQuests();
+            UpdateRegionsPollutionInfluence();
+            UpdateEvents();
+            game.gameStatistics.UpdateRegionalAvgs(game);
+            UpdateQuests();
 
-        GenerateMonthlyUpdates(isNewYear);
+            GenerateMonthlyUpdates(isNewYear);
 
-        game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
-        game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
+            game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
+            game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
 
-        if (!updateUI.tutorialNextTurnDone)
-            updateUI.tutorialNextTurnDone = true;
+            if (!updateUI.tutorialNextTurnDone)
+                updateUI.tutorialNextTurnDone = true;
 
-        if (autoSave)
-            SaveGame();
+            if (autoSave)
+                SaveGame();
+        }
     }
 
     private void GenerateMonthlyUpdates(bool isNewYear)

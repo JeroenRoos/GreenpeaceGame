@@ -312,6 +312,8 @@ public class UpdateUI : MonoBehaviour
     private bool btnTimelineCheck;
     public bool popupActive;
     private bool btnAfterActionStatsCheck;
+    private bool btnMonthlyReportCheck;
+    private bool btnYearlyReportCheck;
     private bool btnAfterActionCompletedCheck;
 
     public bool tutorialActive;
@@ -610,7 +612,8 @@ public class UpdateUI : MonoBehaviour
         btnEnergyHoverCheck = false;
         btnOrganizationCheck = false;
         btnTimelineCheck = false;
-        btnAfterActionStatsCheck = false;
+        btnMonthlyReportCheck = false;
+        btnYearlyReportCheck = false;
         btnAfterActionCompletedCheck = false;
         btnMenuCheck = false;
         popupActive = false;
@@ -712,19 +715,19 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasMonthlyReport.gameObject.activeSelf)
+        if (canvasMonthlyReport.gameObject.activeSelf)
         {
             canvasMonthlyReport.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasYearlyReport.gameObject.activeSelf)
+        if (canvasYearlyReport.gameObject.activeSelf)
         {
             canvasYearlyReport.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
+        if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
         {
             canvasAfterActionCompletedPopup.gameObject.SetActive(false);
             popupActive = false;
@@ -1159,7 +1162,7 @@ public class UpdateUI : MonoBehaviour
             }
         }
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck)
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnMonthlyReportCheck && !btnYearlyReportCheck && !btnAfterActionCompletedCheck)
         {
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
@@ -2223,14 +2226,24 @@ public class UpdateUI : MonoBehaviour
         btnTimelineCheck = false;
     }
 
-    public void btnAfterActionStatsEnter()
+    public void btnMonthlyReportEnter()
     {
-        btnAfterActionStatsCheck = true;
+        btnMonthlyReportCheck = true;
     }
 
-    public void btnAfterActionStatsExit()
+    public void btnMonthlyReportExit()
     {
-        btnAfterActionStatsCheck = false;
+        btnMonthlyReportCheck = false;
+    }
+
+    public void btnYearlyReportEnter()
+    {
+        btnYearlyReportCheck = true;
+    }
+
+    public void btnYearlyReportExit()
+    {
+        btnYearlyReportCheck = false;
     }
 
     public void btnAfterActionCompletedEnter()
