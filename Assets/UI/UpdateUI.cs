@@ -50,6 +50,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionNoordEcoAwarenessD;
     public Text txtAfterActionNoordPollutionD;
     public Text txtAfterActionNoordProsperityD;
+    public Text txtAfterActionNoordEventD;
+    public Text txtAfterActionNoordEvent;
 
     public Text txtAfterActionOostIncome;
     public Text txtAfterActionOostHappiness;
@@ -61,6 +63,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionOostEcoAwarenessD;
     public Text txtAfterActionOostPollutionD;
     public Text txtAfterActionOostProsperityD;
+    public Text txtAfterActionOostEventD;
+    public Text txtAfterActionOostEvent;
 
     public Text txtAfterActionZuidIncome;
     public Text txtAfterActionZuidHappiness;
@@ -72,6 +76,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionZuidEcoAwarenessD;
     public Text txtAfterActionZuidPollutionD;
     public Text txtAfterActionZuidProsperityD;
+    public Text txtAfterActionZuidEventD;
+    public Text txtAfterActionZuidEvent;
 
     public Text txtAfterActionWestIncome;
     public Text txtAfterActionWestHappiness;
@@ -83,6 +89,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionWestEcoAwarenessD;
     public Text txtAfterActionWestPollutionD;
     public Text txtAfterActionWestProsperityD;
+    public Text txtAfterActionWestEventD;
+    public Text txtAfterActionWestEvent;
 
     // Text YearlyAfterActionReportStats
     public Text txtAfterActionStatsNameYearly;
@@ -1594,16 +1602,17 @@ public class UpdateUI : MonoBehaviour
 
     private void updateTextAfterActionStats(bool isMonthly)
     {
-            string[] txtRight = { "West-Nederland", "The Netherlands West" };
-            string[] txtRightMiddle = { "Zuid-Nederland", "The Netherlands South" };
-            string[] txtLeftMiddle = { "Oost-Nederland", "The Netherlands East" };
-            string[] txtLeft = { "Noord-Nederland", "The Netherlands North" };
-            string[] txtIncomeDescription = { "Inkomen", "Income" };
-            string[] txtHappinessDescription = { "Tevredenheid", "Happiness" };
-            string[] txtEcoAwarenessDescription = { "Milieubewustheid", "Eco Awareness" };
-            string[] txtPollutionDescription = { "Vervuiling", "Pollution" };
-            string[] txtProsperityDescription = { "Welvaart", "Prosperity" };
-            string[] txtDescription = { "Veranderde waardes", "Changed values" };
+        string[] txtRight = { "West-Nederland", "The Netherlands West" };
+        string[] txtRightMiddle = { "Zuid-Nederland", "The Netherlands South" };
+        string[] txtLeftMiddle = { "Oost-Nederland", "The Netherlands East" };
+        string[] txtLeft = { "Noord-Nederland", "The Netherlands North" };
+        string[] txtIncomeDescription = { "Inkomen", "Income" };
+        string[] txtHappinessDescription = { "Tevredenheid", "Happiness" };
+        string[] txtEcoAwarenessDescription = { "Milieubewustheid", "Eco Awareness" };
+        string[] txtPollutionDescription = { "Vervuiling", "Pollution" };
+        string[] txtProsperityDescription = { "Welvaart", "Prosperity" };
+        string[] txtDescription = { "Veranderde waardes", "Changed values" };
+        string[] txtNewEventDescription = { "Nieuwe events", "New events" };
 
         if (isMonthly)
         {
@@ -1621,24 +1630,28 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionNoordEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
             txtAfterActionNoordPollutionD.text = txtPollutionDescription[taal];
             txtAfterActionNoordProsperityD.text = txtProsperityDescription[taal];
+            txtAfterActionNoordEventD.text = txtNewEventDescription[taal];
 
             txtAfterActionOostIncomeD.text = txtIncomeDescription[taal];
             txtAfterActionOostHappinessD.text = txtHappinessDescription[taal];
             txtAfterActionOostEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
             txtAfterActionOostPollutionD.text = txtPollutionDescription[taal];
             txtAfterActionOostProsperityD.text = txtProsperityDescription[taal];
+            txtAfterActionOostEventD.text = txtNewEventDescription[taal];
 
             txtAfterActionZuidIncomeD.text = txtIncomeDescription[taal];
             txtAfterActionZuidHappinessD.text = txtHappinessDescription[taal];
             txtAfterActionZuidEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
             txtAfterActionZuidPollutionD.text = txtPollutionDescription[taal];
             txtAfterActionZuidProsperityD.text = txtProsperityDescription[taal];
+            txtAfterActionZuidEventD.text = txtNewEventDescription[taal];
 
             txtAfterActionWestIncomeD.text = txtIncomeDescription[taal];
             txtAfterActionWestHappinessD.text = txtHappinessDescription[taal];
             txtAfterActionWestEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
             txtAfterActionWestPollutionD.text = txtPollutionDescription[taal];
             txtAfterActionWestProsperityD.text = txtProsperityDescription[taal];
+            txtAfterActionWestEventD.text = txtNewEventDescription[taal];
         }
         else
         {
@@ -1675,6 +1688,59 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionWestPollutionDYearly.text = txtPollutionDescription[taal];
             txtAfterActionWestProsperityDYearly.text = txtProsperityDescription[taal];
         }
+    }
+
+    public void initAfterActionStatsNewEvents()
+    {
+        string[] txtNewEvent = { "Nieuwe events", "New events" };
+        txtAfterActionNoordEvent.text = "";
+        txtAfterActionOostEvent.text = "";
+        txtAfterActionZuidEvent.text = "";
+        txtAfterActionWestEvent.text = "";
+
+        foreach (Region r in game.regions)
+        {
+            foreach (GameEvent ge in r.inProgressGameEvents)
+            {
+                for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
+                {
+                    foreach (GameEvent e in game.monthlyReport.newEvents[i])
+                    {
+                        if (e == ge)
+                        {
+                            if (r.name[0] == "Noord Nederland")
+                                setNewEventsNoord(e);
+                            else if (r.name[0] == "Oost Nederland")
+                                setNewEventsOost(e);
+                            else if (r.name[0] == "Zuid Nederland")
+                                setNewEventsZuid(e);
+                            else if (r.name[0] == "West Nederland")
+                                setNewEventsWest(e);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void setNewEventsNoord(GameEvent e)
+    {
+        txtAfterActionNoordEvent.text = e.publicEventName[taal];
+    }
+
+    private void setNewEventsOost(GameEvent e)
+    {
+        txtAfterActionOostEvent.text = e.publicEventName[taal];
+    }
+
+    private void setNewEventsZuid(GameEvent e)
+    {
+        txtAfterActionZuidEvent.text = e.publicEventName[taal];
+    }
+
+    private void setNewEventsWest(GameEvent e)
+    {
+        txtAfterActionWestEvent.text = e.publicEventName[taal];
     }
 
     private void calculateDifference(double[] oldIncome, double[] oldHappiness, double[] oldEcoAwareness, double[] oldPollution, double[] oldProsperity, bool isMonthly)

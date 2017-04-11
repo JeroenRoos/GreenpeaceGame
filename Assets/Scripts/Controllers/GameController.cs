@@ -131,8 +131,25 @@ public class GameController : MonoBehaviour
     {
         updateUI.btnMonthlyReportStats.gameObject.SetActive(true);
         updateUI.InitMonthlyReport();
+
+        if (checkNewEvents())
+        {
+            updateUI.initAfterActionStatsNewEvents();
+        }
+
         updateUI.btnMonthlyReportStats.gameObject.transform.position = afterActionPosition[index];
         index++;
+    }
+
+    private bool checkNewEvents()
+    {
+        for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
+        {
+            if (game.monthlyReport.newEvents[i].Count != 0)
+                return true;
+        }
+
+        return false;
     }
 
     private bool FindCompletedActionsAndEvents()
