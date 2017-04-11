@@ -1675,6 +1675,55 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    public void initAfterActionStatsNewEvents()
+    {
+        string[] txtNewEvent = { "Nieuwe events", "New events" };
+
+        foreach (Region r in game.regions)
+        {
+            foreach (GameEvent ge in r.inProgressGameEvents)
+            {
+                for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
+                {
+                    foreach (GameEvent e in game.monthlyReport.newEvents[i])
+                    {
+                        if (e == ge)
+                        {
+                            if (r.name[0] == "Noord Nederland")
+                                setNewEventsNoord(e);
+                            else if (r.name[0] == "Oost Nederland")
+                                setNewEventsOost(e);
+                            else if (r.name[0] == "Zuid Nederland")
+                                setNewEventsZuid(e);
+                            else if (r.name[0] == "West Nederland")
+                                setNewEventsWest(e);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void setNewEventsNoord(GameEvent e)
+    {
+
+    }
+
+    private void setNewEventsOost(GameEvent e)
+    {
+
+    }
+
+    private void setNewEventsZuid(GameEvent e)
+    {
+
+    }
+
+    private void setNewEventsWest(GameEvent e)
+    {
+
+    }
+
     private void calculateDifference(double[] oldIncome, double[] oldHappiness, double[] oldEcoAwareness, double[] oldPollution, double[] oldProsperity, bool isMonthly)
     {
         double incomeDifference = 0;
