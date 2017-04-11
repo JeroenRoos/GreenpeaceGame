@@ -2442,7 +2442,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-
+    #region Return Other Values
     public GUIStyle returnTooltipStyle()
     {
         return tooltipStyle;
@@ -2455,17 +2455,9 @@ public class UpdateUI : MonoBehaviour
     public void enterExitHover()
     {
     }
+    #endregion
 
-    public void buttonExitGameOnClick()
-    {
-        Application.Quit();
-    }
-
-    public void loadOtherScene(int index)
-    {
-        SceneManager.LoadSceneAsync(index);
-    }
-
+    #region Next Turn Button Code
     public void nextTurnOnClick()
     {
         if (tutorialStep9)
@@ -2477,7 +2469,9 @@ public class UpdateUI : MonoBehaviour
 
         }
     }
+    #endregion
 
+    #region Checkboxes RegionActions Code
     public void valueChangedHouseholds()
     {
         if (!checkboxHouseholds)
@@ -2540,13 +2534,26 @@ public class UpdateUI : MonoBehaviour
         
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
     }
+    #endregion
 
+    #region Menu Popup Buttons Code
     public void btnResumeMenu()
     {
         canvasMenuPopup.gameObject.SetActive(false);
         popupActive = false;
         EventManager.CallPopupIsDisabled();
     }
+
+    public void buttonExitGameOnClick()
+    {
+        Application.Quit();
+    }
+
+    public void loadOtherScene(int index)
+    {
+        SceneManager.LoadSceneAsync(index);
+    }
+    #endregion
 
     #region Code for controlling Tutorial buttons presses
     public void turorialButtonPress()
@@ -2621,6 +2628,5 @@ public class UpdateUI : MonoBehaviour
         }
     }
     #endregion
-
 }
  
