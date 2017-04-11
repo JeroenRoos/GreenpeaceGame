@@ -1164,8 +1164,8 @@ public class UpdateUI : MonoBehaviour
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
         EventManager.CallPopupIsActive();
-        //dropdownRegio.ClearOptions();
-        //dropdownRegio.RefreshShownValue();
+        dropdownRegio.ClearOptions();
+        dropdownRegio.RefreshShownValue();
         updateRegionScreenUI();
     }
 
@@ -1394,7 +1394,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initDropDownRegion()
     {
-        //dropdownRegio.ClearOptions();
+        dropdownRegio.ClearOptions();
         int currentMonth = game.currentYear * 12 + game.currentMonth;
 
         foreach (RegionAction action in regio.actions)
@@ -1408,7 +1408,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         //code to bypass Unity bug -> can't set .value outside the dropdown range
-        dropdownRegio.options.Add(new Dropdown.OptionData() { text = ""});
+        dropdownRegio.options.Add(new Dropdown.OptionData() { text = " "});
         dropdownRegio.value = dropdownRegio.options.Count - 1;
         dropdownRegio.options.RemoveAt(dropdownRegio.options.Count - 1);
     }
@@ -1437,7 +1437,6 @@ public class UpdateUI : MonoBehaviour
             if (action.name[taal] == dropdownChoice)
             {
                 regioAction = action;
-                regioActionCost = regioAction.actionMoneyCost * 3;
 
                 string[] actionCostText = { "Kosten per sector: " + action.actionMoneyCost + " geld",
                     "Costs per sector: " + action.actionMoneyCost + " geld" };
@@ -1454,8 +1453,11 @@ public class UpdateUI : MonoBehaviour
                 //txtRegionActionConsequences.text = getActionConsequences(action.consequences);
                 txtActionSectorsDescription.text = sectorDescription[taal];
                 txtRegionActionSectorTotalCostDescription.text = txtSectorMoney[taal];
+                txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
 
                 setCheckboxes(action);
+                regioActionCost = 0;
+                txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
             }
         }
     }
@@ -2286,8 +2288,6 @@ public class UpdateUI : MonoBehaviour
 
     public void valueChangedHouseholds()
     {
-        Debug.Log("Value of Households has changed!");
-
         if (!checkboxHouseholds)
         {
             checkboxHouseholds = true;
@@ -2303,15 +2303,12 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
-
-        Debug.Log("Households: " + checkboxHouseholds);
+        
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
     }
 
     public void valueChangedAgriculture()
     {
-        Debug.Log("Value of Agriculture has changed!");
-
         if (!checkboxAgriculture)
         {
             checkboxAgriculture = true;
@@ -2327,15 +2324,12 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
-
-        Debug.Log("Agriculture: " + checkboxAgriculture);
+        
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
     }
 
     public void valueChangedCompanies()
     {
-        Debug.Log("Value of Companies has changed!");
-
         if (!checkboxCompanies)
         {
             checkboxCompanies = true;
@@ -2351,8 +2345,7 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
-
-        Debug.Log("Companies: " + checkboxCompanies);
+        
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
     }
 
