@@ -1586,16 +1586,12 @@ public class UpdateUI : MonoBehaviour
     #region Code for AfterActionStats
     public void InitMonthlyReport()
     {
-        string[] txtTitleMonthly = { "Maandelijks rapport", "Monthly report" };
-        txtAfterActionStatsName.text = txtTitleMonthly[taal];
         updateTextAfterActionStats(true);
         calculateDifference(game.monthlyReport.oldIncome, game.monthlyReport.oldHappiness, game.monthlyReport.oldEcoAwareness, game.monthlyReport.oldPollution, game.monthlyReport.oldProsperity, true);
     }
 
     public void InitYearlyReport()
     {
-        string[] txtTitleYearly = { "Jaarlijks rapport", "Yearly report" };
-        txtAfterActionStatsNameYearly.text = txtTitleYearly[taal];
         updateTextAfterActionStats(false);
         calculateDifference(game.yearlyReport.oldIncome, game.yearlyReport.oldHappiness, game.yearlyReport.oldEcoAwareness, game.yearlyReport.oldPollution, game.yearlyReport.oldProsperity, false);
     }
@@ -1616,6 +1612,9 @@ public class UpdateUI : MonoBehaviour
 
         if (isMonthly)
         {
+            string[] txtTitleMonthly = { "Maandelijks rapport", "Monthly report" };
+            txtAfterActionStatsName.text = txtTitleMonthly[taal];
+
             txtAfterActionStatsColumnLeft.text = txtLeft[taal];
             txtAfterActionStatsColumnLeftMiddle.text = txtLeftMiddle[taal];
             txtAfterActionStatsColumnRight.text = txtRight[taal];
@@ -1655,6 +1654,9 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
+            string[] txtTitleYearly = { "Jaarlijks rapport", "Yearly report" };
+            txtAfterActionStatsNameYearly.text = txtTitleYearly[taal];
+
             txtAfterActionStatsColumnLeftYearly.text = txtLeft[taal];
             txtAfterActionStatsColumnLeftMiddleYearly.text = txtLeftMiddle[taal];
             txtAfterActionStatsColumnRightYearly.text = txtRight[taal];
