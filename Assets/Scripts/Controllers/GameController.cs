@@ -40,8 +40,8 @@ public class GameController : MonoBehaviour
 
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5, 0);
-        afterActionPosition[1] = new Vector3( 5, 60, 0);
-        afterActionPosition[1] = new Vector3( 5, 115, 0);
+        afterActionPosition[1] = new Vector3( 5, 105, 0);
+        afterActionPosition[2] = new Vector3( 5, 205, 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
@@ -97,12 +97,10 @@ public class GameController : MonoBehaviour
         game.gameStatistics.UpdateRegionalAvgs(game);
         UpdateQuests();
 
+        GenerateMonthlyUpdates(isNewYear);
+
         game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
         game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
-
-        GenerateMonthlyReport();
-        if (isNewYear)
-            GenerateYearlyReport();
 
         if (!updateUI.tutorialNextTurnDone)
             updateUI.tutorialNextTurnDone = true;
@@ -111,36 +109,33 @@ public class GameController : MonoBehaviour
             SaveGame();
     }
 
-    private void GenerateMonthlyReport()
+    private void GenerateMonthlyUpdates(bool isNewYear)
     {
-        /* montly report generating
-         * updateui.StatisticsChangeButton(game.monthlyReport.regions, g.m.oldincome. g.m.oldhappines, etc., etc.)
-         * updateui.completedEventsButton(game.monthlyReport.regions, game.monthlyReport.completedEvents)
-         * updateui.newEventsButton(game.monthlyReport.regions, game.monthlyReport.newEvents)
-         * updateui.completedActionsButton(game.monthlyReport.regions, game.monthlyReport.completedActions)
-         */
+        int index = 0;
 
-        updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
-        updateUI.InitAfterActionStats(false);
-        updateUI.btnAfterActionReportStats.gameObject.transform.position = afterActionPosition[0];
-
-        int index = 1;
-        if (checkActionAndEventEmpty())
+        GenerateMonthlyReport(index);
+        index++;
+        if (isNewYear)
         {
-            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(true);
-            updateUI.initAFterActionCompleted();
-            updateUI.btnAfterActionReportCompleted.gameObject.transform.position = afterActionPosition[index];
+            GenerateYearlyReport(index);
             index++;
+            game.yearlyReport.UpdateStatistics(game.regions);
         }
-        else
-        {
-            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(false);
-        }
+        GenerateCompletedEventsAndActions(index);
+        index++;
 
         game.monthlyReport.UpdateStatistics(game.regions);
     }
 
-    private bool checkActionAndEventEmpty()
+    private void GenerateMonthlyReport(int index)
+    {
+        updateUI.btnMonthlyReportStats.gameObject.SetActive(true);
+        updateUI.InitMonthlyReport();
+        updateUI.btnMonthlyReportStats.gameObject.transform.position = afterActionPosition[index];
+        index++;
+    }
+
+    private bool FindCompletedActionsAndEvents()
     {
         for (int i = 0; i < game.monthlyReport.completedActions.Length; i++)
         {
@@ -157,21 +152,26 @@ public class GameController : MonoBehaviour
         return false;
     }
 
-    private void GenerateYearlyReport()
+    private void GenerateYearlyReport(int index)
     {
-        /* yearly report generating
-         * updateui.StatisticsChangeButton(game.yearlyReport.regions, g.y.oldincome. g.y.oldhappines, etc., etc.)
-         * updateui.completedEventsButton(game.yearlyReport.regions, game.yearlyReport.completedEvents) 
-         * updateui.newEventsButton(game.yearlyReport.regions, game.yearlyReport.newEvents)
-         * completed/newEvents in 1 button?
-         * updateui.completedActionsButton(game.yearlyReport.regions, game.yearlyReport.completedActions)
-         */
+        updateUI.btnYearlyReportStats.gameObject.SetActive(true);
+        updateUI.InitYearlyReport();
+        updateUI.btnYearlyReportStats.gameObject.transform.position = afterActionPosition[index];
+    }
 
-        updateUI.btnAfterActionReportStats.gameObject.SetActive(true);
-        updateUI.InitAfterActionStats(true);
-        updateUI.btnAfterActionReportStats.gameObject.transform.position = afterActionPosition[0];
-
-        game.yearlyReport.UpdateStatistics(game.regions);
+    private void GenerateCompletedEventsAndActions(int index)
+    {
+        if (FindCompletedActionsAndEvents())
+        {
+            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(true);
+            updateUI.initAFterActionCompleted();
+            updateUI.btnAfterActionReportCompleted.gameObject.transform.position = afterActionPosition[index];
+            index++;
+        }
+        else
+        {
+            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(false);
+        }
 
     }
 
