@@ -187,10 +187,9 @@ public class Game
         {
             foreach (RegionSector sector in region.sectors)
             {
-                income += region.statistics.income;
+                income += sector.statistics.income;
             }
         }
-
         return income;
     }
 
