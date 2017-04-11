@@ -17,7 +17,7 @@ public class OpenScene : MonoBehaviour
         SceneManager.LoadSceneAsync(index);
 
         // New GameController to start game, not sure about this one
-        //GameController c = new GameController();
+        GameController c = new GameController();
     }
 
     public void buttonExitOnClick()

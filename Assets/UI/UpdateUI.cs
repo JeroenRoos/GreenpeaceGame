@@ -192,6 +192,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtResearch;
     public Text txtEcoGuarding;
     public Text txtBigDescription;
+    public Text txtAdviserEconomic;
+    public Text txtAdviserPollution;
 
     private int taal;
     //  double totalOrgBank;
@@ -1083,30 +1085,28 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Update UI in Popups
-    public void updateOrganizationScreenUI(double value, int i, double money)
+    public void updateOrganizationScreenUI()
     {
+        foreach (Region region in game.regions)
+        {
+            if (region.name[0] == "Noord Nederland")
+                txtOrgNoordMoney.text = (region.statistics.income * 12).ToString();
+            else if (region.name[0] == "Oost Nederland")
+                txtOrgOostMoney.text = (region.statistics.income * 12).ToString();
+            else if (region.name[0] == "Zuid Nederland")
+                txtOrgZuidMoney.text = (region.statistics.income * 12).ToString();
+            else if (region.name[0] == "West Nederland")
+                txtOrgWestMoney.text = (region.statistics.income * 12).ToString();
+        }
+
+        txtOrgBank.text = game.gameStatistics.money.ToString();
+
         imgTutorialOrganization.enabled = false;
         txtTutorialOrganization.enabled = false;
         btnTutorialOrganization.gameObject.SetActive(false);
-        // Region are made in following order: North > East > West > South
-        switch (i)
-        {
-            case 0:
-                txtOrgNoordMoney.text = value.ToString();
-                break;
-            case 1:
-                txtOrgOostMoney.text = value.ToString();
-                break;
-            case 2:
-                txtOrgWestMoney.text = value.ToString();
-                break;
-            case 3:
-                txtOrgZuidMoney.text = value.ToString();
-                break;
-        }
 
-        txtOrgBank.text = money.ToString();
         initOtherText();
+        initAdvisersText();
 
         if (tutorialStep8 && tutorialActive)
         {
@@ -1114,7 +1114,6 @@ public class UpdateUI : MonoBehaviour
             txtTutorialOrganization.enabled = true;
             btnTutorialOrganization.gameObject.SetActive(true);
             StartCoroutine(tutorialOrganizationPopup());
-
         }
     }
 
@@ -1139,7 +1138,7 @@ public class UpdateUI : MonoBehaviour
     private void initOtherText()
     {
         string[] left = { "Budget", "Budget" };
-        string[] right = { "Investeringen", "Investments" };
+        string[] right = { "Adviseurs", "Advisers" };
         string[] title = { "Organisatie", "Organization" };
         string[] bank = { "Bank", "Storage" };
         string[] noord = { "Noord-Nederland", "The Netherlands Northern" };
@@ -1147,14 +1146,8 @@ public class UpdateUI : MonoBehaviour
         string[] zuid = { "Zuid-Nederland", "The Netherlands Southern" };
         string[] west = { "West-Nederland", "The Netherlands Western" };
         string[] yearly = { "Jaarlijks budget per regio", "Yearly budget per region" };
-        string[] demonstration = { "Demonstraties", "Demonstrations" };
-        string[] research = { "Onderzoek", "Research" };
-        string[] guarding = { "Eco bescherming", "Eco guarding" };
-        string[] big = { "Hier kun je een gedeelte van het geld op je bank investeren in de " + 
-                "\norganistie. Als je meer geld in een onderdeel zet heb je en grotere" + 
-                "\nkans op succes in dat onderdeel. 1 vakje is 10000", "You can invest some of your budget in your " +
-                "own organization. If you invest more in one of the segments, you have a higher" + 
-                "chance of success. One block equals 10000" };
+        string[] big = {"Zie hier het advies van je economische adviseur en je vervuilingsadviseur.",
+                        "Here you can see the advice of your economic adviser and your pollution adviser. " };
 
         txtBigDescription.text = big[taal];
         txtColumnLeft.text = left[taal];
@@ -1166,9 +1159,27 @@ public class UpdateUI : MonoBehaviour
         txtOrgWestMoneyDescription.text = west[taal];
         txtOrgZuidMoneyDescription.text = zuid[taal];
         txtYearlyBudget.text = yearly[taal];
-        txtDemonstration.text = demonstration[taal];
-        txtResearch.text = research[taal];
-        txtEcoGuarding.text = guarding[taal];
+
+        // Oude investeringen text
+        /* "Hier kun je een gedeelte van het geld op je bank investeren in de " + 
+     "\norganistie. Als je meer geld in een onderdeel zet heb je en grotere" + 
+     "\nkans op succes in dat onderdeel. 1 vakje is 10000", "You can invest some of your budget in your " +
+     "own organization. If you invest more in one of the segments, you have a higher" + 
+     "chance of success. One block equals 10000" }; */
+
+        // string[] demonstration = { "Demonstraties", "Demonstrations" };
+        // string[] research = { "Onderzoek", "Research" };
+        // string[] guarding = { "Eco bescherming", "Eco guarding" };
+
+        // txtDemonstration.text = demonstration[taal];
+        // txtResearch.text = research[taal];
+        // txtEcoGuarding.text = guarding[taal];
+    }
+
+    private void initAdvisersText()
+    {
+        txtAdviserEconomic.text = game.economyAdvisor.name[taal] + "\n" + game.economyAdvisor.displayMessage[taal];
+        txtAdviserPollution.text = game.pollutionAdvisor.name[taal] + "\n" + game.pollutionAdvisor.displayMessage[taal];
     }
     #endregion
 
@@ -1521,49 +1532,6 @@ public class UpdateUI : MonoBehaviour
             }
         }
     }
-
-    /*private string getActionConsequences(SectorStatistics s)
-    {
-        string[] consequences = { "Consequenties:\n", "Consequences:\n" };
-
-        if (s.income != 0)
-        {
-            string[] a = { "Inkomen: " + s.income + "\n", "Income: " + s.income + "\n" };
-            consequences[taal] += a[taal];
-        }
-        if (s.happiness != 0)
-        {
-            string[] c = { "Tevredenheid: " + s.happiness + "\n", "Happiness: " + s.happiness + "\n" };
-            consequences[taal] += c[taal];
-        }
-        if (s.ecoAwareness != 0)
-        {
-            string[] d = { "Milieubewustheid: " + s.ecoAwareness + "\n", "Eco awareness: " + s.ecoAwareness + "\n" };
-            consequences[taal] += d[taal];
-        }
-        if (s.prosperity != 0)
-        {
-            string[] e = { "Welvaart: " + s.prosperity + "\n", "Prosperity: " + s.prosperity + "\n" };
-            consequences[taal] += e[taal];
-        }
-        if (s.pollution.airPollutionIncrease != 0)
-        {
-            string[] f = { "Luchtvervuiling: " + s.pollution.airPollutionIncrease + "\n", "Air pollution: " + s.pollution.airPollutionIncrease + "\n" };
-            consequences[taal] += f[taal];
-        }
-        if (s.pollution.waterPollutionIncrease != 0)
-        {
-            string[] g = { "Watervervuiling: " + s.pollution.waterPollutionIncrease + "\n", "Water pollution: " + s.pollution.waterPollutionIncrease + "\n" };
-            consequences[taal] += g[taal];
-        }
-        if (s.pollution.naturePollutionIncrease != 0)
-        {
-            string[] h = { "Natuurvervuiling: " + s.pollution.naturePollutionIncrease + "\n", "Nature pollution: " + s.pollution.naturePollutionIncrease + "\n" };
-            consequences[taal] += h[taal];
-        }
-
-        return consequences[taal];
-    }*/
 
     private string getActionCost(SectorStatistics s)
     {
@@ -2040,6 +2008,7 @@ public class UpdateUI : MonoBehaviour
         string[] description = { "Actieve missies", "Active quests" };
         string[] activeQuests = { "", "" };
         string[] noActiveQuests = { "Er zijn geen actieve missies", "There are no active quests" };
+        string[] beloning = { "Beloning: ", "Reward: " };
 
         bool activeQuest = false;
 
@@ -2052,9 +2021,10 @@ public class UpdateUI : MonoBehaviour
 
             if (q.isActive)
             {
-                Debug.Log(q.name[taal] + " is active");
+                Debug.Log(q.name[taal] + " (" + q.questLocation + ") " + " is active");
                 activeQuests[taal] += q.name[taal] + " - " + q.description[taal] + "\n";
-                activeQuests[taal] += getCompleteConditions(q.questCompleteConditions) + "\n\n";
+                activeQuests[taal] += getCompleteConditions(q.questCompleteConditions);
+                activeQuests[taal] += beloning[taal] + q.questMoneyReward + "\n\n";
                 txtQuestsActive.text = activeQuests[taal];
                 activeQuest = true;
             }
@@ -2065,7 +2035,7 @@ public class UpdateUI : MonoBehaviour
 
     private string getCompleteConditions(RegionStatistics r)
     {
-        string[] consequences = { "\nVereisten: ", "\nRequirements: " };
+        string[] consequences = { "Vereisten: ", "Requirements: " };
         if (r.income != 0)
         {
             string[] a = { "\nInkomen: " + r.income + "\n", "\nIncome: " + r.income + "\n" };
@@ -2144,6 +2114,7 @@ public class UpdateUI : MonoBehaviour
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+            updateOrganizationScreenUI();
         }
     }
 

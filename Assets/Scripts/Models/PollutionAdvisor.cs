@@ -15,8 +15,8 @@ public class PollutionAdvisor : Advisor
     public PollutionAdvisor()
     {
         name = new string[2] { "Vervuiling adviseur", "Pollution advisor" };
-        dutchStatusMessages = new string[2] { "De vervuiling is laag genoeg op het moment.", "The pollution is low enough at the moment." };
-        englishStatusMessages = new string[2] { "The pollution is low enough at the moment", "The income is too low at the moment." };
+        dutchStatusMessages = new string[2] { "De vervuiling is laag genoeg op het moment.", "De vervuiling is te hoog op het moment." };
+        englishStatusMessages = new string[2] { "The pollution is low enough at the moment", "The pollution is too high at the moment." };
         displayMessage = new string[2] { dutchStatusMessages[1], englishStatusMessages[1] };
     }
 

@@ -394,13 +394,13 @@ public class GameController : MonoBehaviour
 
     private void updateUIOrganizationScreen()
     {
-        int i = 0;
-        foreach (Region region in game.regions)
-        {
+        //int i = 0;
+        //foreach (Region region in game.regions)
+        //{
             // Send the income for each region, use i to determine the region
-            updateUI.updateOrganizationScreenUI(region.statistics.income * 12, i, game.gameStatistics.money);
-            i++;            
-        }
+         //   updateUI.updateOrganizationScreenUI(region.statistics.income * 12, i, game.gameStatistics.money);
+          //  i++;            
+       // }
     }
 
     private void updateUIRegioScreen()
