@@ -8,26 +8,21 @@ using System.Text;
 [Serializable]
 public class Building
 {
+    public string buildingID { get; private set; }
     public string[] buildingName { get; private set; }
+    public double incomeModifier { get; private set; }
+    public double pollutionModifier { get; private set; }
+    public double happinessModifier { get; private set; }
+    public double buildingMoneyCost { get; private set; }
 
-    public BuildingStatistics statistics { get; private set; }
-
-    public Building(string[] buildingName)
+    public Building()
     {
-        this.buildingName = buildingName;
-    }
-
-    private Building() { }
-
-    public void ModifyBuildingStatistics(BuildingStatistics statistics)
-    {
-        this.statistics.ChangeIncome(statistics.income);
-        this.statistics.ChangeProsperity(statistics.prosperity);
-
-        //temporary methods (incomplete)
-        this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
-        this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
-        this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
+        buildingID = "placeholderName";
+        buildingName = new string[2] { "dutch name", "english name" };
+        incomeModifier = 0;
+        pollutionModifier = 0;
+        happinessModifier = 0;
+        buildingMoneyCost = 0;
     }
 }
 

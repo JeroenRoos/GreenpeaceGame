@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
             LoadRegionActions();
             LoadGameEvents();
             LoadQuests();
+            //LoadBuildings();
             game.gameStatistics.UpdateRegionalAvgs(game);
 
             /*foreach (Region region in game.regions)
@@ -55,6 +56,7 @@ public class GameController : MonoBehaviour
 
             SaveRegions();
             SaveRegionActions();
+            //SaveBuildings();
             SaveGameEvents();
             SaveQuests();*/
         }
@@ -131,6 +133,22 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void SaveBuildings()
+    {
+        BuildingContainer buildingContainer = new BuildingContainer(game.regions[0].buildings);
+        buildingContainer.Save();
+
+    }
+
+    public void LoadBuildings()
+    {
+        foreach (Region region in game.regions)
+        {
+            BuildingContainer buildingContainer = BuildingContainer.Load();
+            region.LoadBuildings(buildingContainer.buildings);
+        }
+    }
+
     public void SaveQuests()
     {
         QuestContainer questContainer = new QuestContainer(game.quests);
@@ -142,7 +160,6 @@ public class GameController : MonoBehaviour
         QuestContainer questContainer = QuestContainer.Load();
         game.LoadQuests(questContainer.quests);
     }
-
 
     // Update is called once per frame
     void Update () {
