@@ -1483,6 +1483,8 @@ public class UpdateUI : MonoBehaviour
     private void updateActiveEvents()
     {
         string activeEventsRegio = "";
+
+        /*JEROEN CODE
         bool breaking = false;
         foreach (GameEvent e in game.events)
         {
@@ -1504,7 +1506,15 @@ public class UpdateUI : MonoBehaviour
                         break;
                 }
             }
+        }*/
+
+        //NORMALE CODE
+        foreach (GameEvent ge in regio.inProgressGameEvents)
+        {
+            if (ge.isActive || ge.isIdle)
+                activeEventsRegio += ge.publicEventName[taal] + "\n";
         }
+        //
 
         txtActiveEvents.text = activeEventsRegio;
     }
