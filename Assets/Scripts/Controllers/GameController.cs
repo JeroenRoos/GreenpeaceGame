@@ -234,11 +234,6 @@ public class GameController : MonoBehaviour
         updateUI.btnMonthlyReportStats.gameObject.SetActive(true);
         updateUI.InitMonthlyReport();
 
-        if (checkNewEvents())
-        {
-            updateUI.initAfterActionStatsNewEvents();
-        }
-
         updateUI.btnMonthlyReportStats.gameObject.transform.position = afterActionPosition[index];
         index++;
     }
