@@ -94,7 +94,7 @@ public class EventObjectController : MonoBehaviour
 
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
 
-        transform.position = regionModel.eventPosition;
+        transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
     }
 
     /* public void OnMouseEnter()

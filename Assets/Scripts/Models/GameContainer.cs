@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 [Serializable]
@@ -20,7 +21,7 @@ public class GameContainer
 
     public void Save()
     {
-        try
+        /*try
         {
             XmlSerializer writer = new XmlSerializer(typeof(GameContainer));
             Debug.Log("Saving game...");
@@ -34,12 +35,20 @@ public class GameContainer
         catch (Exception ex)
         {
             Debug.Log(ex);
+        }*/
+
+        Debug.Log(Application.persistentDataPath + "/Savestate.gd");
+        var path = Application.persistentDataPath + "/Savestate.gd";
+        using (Stream stream = File.Open(path, FileMode.OpenOrCreate))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, this);
         }
     }
 
     public static GameContainer Load()
     {
-        try
+        /*try
         {
             var file = Application.dataPath + "/Saves/Savestate.xml";
             XmlSerializer reader = new XmlSerializer(typeof(GameContainer));
@@ -55,7 +64,17 @@ public class GameContainer
             Debug.Log(ex);
             Debug.Log("loading game failed");
             return new GameContainer();
+        }*/
+        var path = Application.persistentDataPath + "/Savestate.gd";
+        if (File.Exists(path))
+        {
+            using (Stream stream = File.OpenRead(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                return formatter.Deserialize(stream) as GameContainer;
+            }
         }
+        return null;
     }
 }
 

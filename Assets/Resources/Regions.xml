@@ -2,11 +2,11 @@
 <RegionContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Regions>
     <Region>
-      <eventPosition>
-        <x>15</x>
-        <y>1</y>
-        <z>20</z>
-      </eventPosition>
+      <eventPositions>
+        <float>15</float>
+        <float>1</float>
+        <float>20</float>
+      </eventPositions>
       <name>
         <string>Noord Nederland</string>
         <string>The Netherlands North</string>
@@ -487,7 +487,7 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
+            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>
@@ -1005,11 +1005,11 @@
       <inProgressGameEvents />
     </Region>
     <Region>
-      <eventPosition>
-        <x>16</x>
-        <y>1</y>
-        <z>13</z>
-      </eventPosition>
+      <eventPositions>
+        <float>16</float>
+        <float>1</float>
+        <float>13</float>
+      </eventPositions>
       <name>
         <string>Oost Nederland</string>
         <string>The Netherlands East</string>
@@ -1490,7 +1490,7 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
+            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>
@@ -2008,11 +2008,11 @@
       <inProgressGameEvents />
     </Region>
     <Region>
-      <eventPosition>
-        <x>9</x>
-        <y>1</y>
-        <z>12</z>
-      </eventPosition>
+      <eventPositions>
+        <float>9</float>
+        <float>1</float>
+        <float>12</float>
+      </eventPositions>
       <name>
         <string>West Nederland</string>
         <string>The Netherlands West</string>
@@ -2493,7 +2493,7 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
+            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>
@@ -3011,11 +3011,11 @@
       <inProgressGameEvents />
     </Region>
     <Region>
-      <eventPosition>
-        <x>13</x>
-        <y>1</y>
-        <z>8</z>
-      </eventPosition>
+      <eventPositions>
+        <float>13</float>
+        <float>1</float>
+        <float>8</float>
+      </eventPositions>
       <name>
         <string>Zuid Nederland</string>
         <string>The Netherlands South</string>
@@ -3496,7 +3496,7 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
+            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
             <string>Increase happiness by implementing ideas of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>

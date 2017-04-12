@@ -9,6 +9,7 @@ using System.IO;
 //using System.Xml;
 //using System.Xml.Linq;
 
+[Serializable]
 public class Game
 {
     //Game statistics
@@ -50,76 +51,28 @@ public class Game
 
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
-        
-        gameStatistics.UpdateRegionalAvgs(this);
 
         currentYear = 1;
         currentMonth = 1;
-        
-        LoadRegions();
-        LoadRegionActions();
-        LoadGameEvents();
-        LoadQuests();
-        gameStatistics.UpdateRegionalAvgs(this);
 
         //set reports
         monthlyReport.UpdateStatistics(regions);
         yearlyReport.UpdateStatistics(regions);
-
-
-
-        /*foreach (Region region in regions)
-        {
-            foreach (RegionSector sector in region.sectors)
-            {
-                sector.statistics.pollution.CalculateAvgPollution();
-            }
-            region.statistics.UpdateSectorAvgs(region);
-        }
-        
-        SaveRegions();
-        SaveRegionActions();
-        SaveGameEvents();
-        SaveQuests();*/
     }
 
-    public void SaveRegions()
+    public void LoadRegions(List<Region> regions)
     {
-        RegionContainer regionContainer = new RegionContainer(regions);
-        regionContainer.Save();
+        this.regions = regions;
     }
 
-    public void LoadRegions()
+    public void LoadGameEvents(List<GameEvent> events)
     {
-        RegionContainer regionContainer = RegionContainer.Load();
-        regions = regionContainer.regions;
+        this.events = events;
     }
 
-    public void SaveGameEvents()
+    public void LoadQuests(List<Quest> quests)
     {
-        GameEventContainer eventContainer = new GameEventContainer(events);
-        eventContainer.Save();
-    }
-
-    public void LoadGameEvents()
-    {
-        GameEventContainer eventContainer = GameEventContainer.Load();
-        events = eventContainer.events;
-    }
-
-    public void SaveRegionActions()
-    {
-        RegionActionContainer regionActionContainer = new RegionActionContainer(regions[0].actions);
-        regionActionContainer.Save();
-    }
-
-    public void LoadRegionActions()
-    {
-        foreach (Region region in regions)
-        {
-            RegionActionContainer regionActionContainer = RegionActionContainer.Load();
-            region.LoadActions(regionActionContainer.actions);
-        }
+        this.quests = quests;
     }
 
     public void ChangeLanguage(string language)
@@ -128,18 +81,6 @@ public class Game
             this.language = 1;
         else if (language == "dutch")
             this.language = 0;
-    }
-    
-    public void SaveQuests()
-    {
-        QuestContainer questContainer = new QuestContainer(quests);
-        questContainer.Save();
-    }
-
-    public void LoadQuests()
-    {
-        QuestContainer questContainer = QuestContainer.Load();
-        quests = questContainer.quests;
     }
 
     public bool UpdateCurrentMonthAndYear()

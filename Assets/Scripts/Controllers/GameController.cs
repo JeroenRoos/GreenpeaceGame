@@ -29,11 +29,38 @@ public class GameController : MonoBehaviour
     // private float time;
     public bool autoSave = false;
     public bool autoEndTurn = false;
+    public bool loadGame = false;
 
     // Use this for initialization
     void Start()
     {
-        game = new Game();
+        if (!loadGame)
+        {
+            game = new Game();
+
+            LoadRegions();
+            LoadRegionActions();
+            LoadGameEvents();
+            LoadQuests();
+            game.gameStatistics.UpdateRegionalAvgs(game);
+
+            /*foreach (Region region in game.regions)
+            {
+                foreach (RegionSector sector in region.sectors)
+                {
+                    sector.statistics.pollution.CalculateAvgPollution();
+                }
+                region.statistics.UpdateSectorAvgs(region);
+            }
+
+            SaveRegions();
+            SaveRegionActions();
+            SaveGameEvents();
+            SaveQuests();*/
+        }
+        else
+            LoadGame();
+
         updateUI = GetComponent<UpdateUI>();
         eventObjectController = GetComponent<EventObjectController>();
         updateUI.LinkGame(game);
@@ -48,7 +75,7 @@ public class GameController : MonoBehaviour
         oostNederland.GetComponent<RegionController>().Init(this);
         westNederland.GetComponent<RegionController>().Init(this);
         zuidNederland.GetComponent<RegionController>().Init(this);
-        
+
         EventManager.ChangeMonth += NextTurn;
         EventManager.CallNewGame();
     }
@@ -64,6 +91,58 @@ public class GameController : MonoBehaviour
         GameContainer gameContainer = GameContainer.Load();
         game = gameContainer.game;
     }
+
+    public void SaveRegions()
+    {
+        RegionContainer regionContainer = new RegionContainer(game.regions);
+        regionContainer.Save();
+    }
+
+    public void LoadRegions()
+    {
+        RegionContainer regionContainer = RegionContainer.Load();
+        game.LoadRegions(regionContainer.regions);
+    }
+
+    public void SaveGameEvents()
+    {
+        GameEventContainer eventContainer = new GameEventContainer(game.events);
+        eventContainer.Save();
+    }
+
+    public void LoadGameEvents()
+    {
+        GameEventContainer eventContainer = GameEventContainer.Load();
+        game.LoadGameEvents(eventContainer.events);
+    }
+
+    public void SaveRegionActions()
+    {
+        RegionActionContainer regionActionContainer = new RegionActionContainer(game.regions[0].actions);
+        regionActionContainer.Save();
+    }
+
+    public void LoadRegionActions()
+    {
+        foreach (Region region in game.regions)
+        {
+            RegionActionContainer regionActionContainer = RegionActionContainer.Load();
+            region.LoadActions(regionActionContainer.actions);
+        }
+    }
+
+    public void SaveQuests()
+    {
+        QuestContainer questContainer = new QuestContainer(game.quests);
+        questContainer.Save();
+    }
+
+    public void LoadQuests()
+    {
+        QuestContainer questContainer = QuestContainer.Load();
+        game.LoadQuests(questContainer.quests);
+    }
+
 
     // Update is called once per frame
     void Update () {
