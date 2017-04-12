@@ -72,8 +72,8 @@ public class GameController : MonoBehaviour
 
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5, 0);
-        afterActionPosition[1] = new Vector3( 5, rt.rect.height * 2 + (rt.rect.height / 4), 0);
-        afterActionPosition[2] = new Vector3( 5, rt.rect.height * 3 + (rt.rect.height / 4), 0);
+        afterActionPosition[1] = new Vector3( 5, rt.rect.height * 2 + 30, 0);
+        afterActionPosition[2] = new Vector3( 5, rt.rect.height * 3 + 30, 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
