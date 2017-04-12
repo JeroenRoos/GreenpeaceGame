@@ -6443,7 +6443,7 @@
       <choicesEnglish>
         <string>do nothing</string>
         <string>compensate the sector</string>
-        <string>let the sector producee more in different activities</string>
+        <string>let the sector produce more in different activities</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
