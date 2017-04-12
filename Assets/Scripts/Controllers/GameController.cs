@@ -169,6 +169,9 @@ public class GameController : MonoBehaviour
     {
         if (!updateUI.popupActive)
         {
+            if (!updateUI.tutorialNextTurnDone)
+                updateUI.tutorialNextTurnDone = true;
+
             bool isNewYear = game.UpdateCurrentMonthAndYear();
 
             game.ExecuteNewMonthMethods();
@@ -182,9 +185,6 @@ public class GameController : MonoBehaviour
 
             game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
-
-            if (!updateUI.tutorialNextTurnDone)
-                updateUI.tutorialNextTurnDone = true;
 
             if (autoSave)
                 SaveGame();
