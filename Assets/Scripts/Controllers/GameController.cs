@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public Game game;
 
     private EventObjectController eventObjectController;
+    public Button AfterTurnButton;
     private UpdateUI updateUI;
     public GameObject noordNederland;
     public GameObject oostNederland;
@@ -66,11 +67,13 @@ public class GameController : MonoBehaviour
         updateUI = GetComponent<UpdateUI>();
         eventObjectController = GetComponent<EventObjectController>();
         updateUI.LinkGame(game);
+        RectTransform rt = AfterTurnButton.image.rectTransform;
+        Debug.Log(rt.rect.height);
 
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5, 0);
-        afterActionPosition[1] = new Vector3( 5, 105, 0);
-        afterActionPosition[2] = new Vector3( 5, 205, 0);
+        afterActionPosition[1] = new Vector3( 5, rt.rect.height * 2 + (rt.rect.height / 4), 0);
+        afterActionPosition[2] = new Vector3( 5, rt.rect.height * 3 + (rt.rect.height / 4), 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);

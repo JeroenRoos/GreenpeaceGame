@@ -382,8 +382,12 @@ public class UpdateUI : MonoBehaviour
     public bool tutorialEventsDone;
     public bool tutorialNexTurnPossibe;
     public bool tutorialQuestsActive;
+    public bool tutorialOrganizationActive;
     public bool tutorialeventsClickable;
     private bool tutorialRegionsClickable;
+    public bool tutorialRegionActive;
+    public bool tutorialEventsActive;
+    private bool doTuto;
 
     private bool tooltipActive;
     private bool regionHouseholdsCheck;
@@ -425,13 +429,17 @@ public class UpdateUI : MonoBehaviour
         tutorialNexTurnPossibe = false;
         tutorialNextTurnDone = false;
         tutorialQuestsActive = false;
+        tutorialOrganizationActive = false;
         tutorialeventsClickable = false;
         tutorialRegionsClickable = false;
+        tutorialRegionActive = false;
+        tutorialEventsActive = false;
         StartCoroutine(initTutorialText());
     }
 
     private void initTutorialNotActive()
     {
+        doTuto = false;
         imgTutorialOverworld.gameObject.SetActive(false);
         btnTutorialOverworld.gameObject.SetActive(false);
         btnTutorialRegion.gameObject.SetActive(false);
@@ -457,9 +465,13 @@ public class UpdateUI : MonoBehaviour
         tutorialStep17 = true;
         regionWestActivated = true;
         tutorialCheckActionDone = true;
-        tutorialQuestsActive = true;
+        tutorialQuestsActive = false;
+        
         tutorialeventsClickable = true;
         tutorialRegionsClickable = true;
+        tutorialRegionActive = false;
+        tutorialEventsActive = false;
+        tutorialOrganizationActive = false;
     }
 
     void Update()
@@ -493,6 +505,7 @@ public class UpdateUI : MonoBehaviour
     #region Init UI Elements
     IEnumerator initTutorialText()
     {
+        doTuto = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " +
                 "De inwoners moeten begrijpen dat een groen land belangrijk is.", "Welcome! The government has given your organisation the task to make " +
                 "The Netherlands an country aware of the environment. The inhabitants need to understand the importance of a green country. "};
@@ -676,9 +689,9 @@ public class UpdateUI : MonoBehaviour
 
         btnQuests.gameObject.SetActive(true);
 
-        tutorialActive = true;
+        //tutorialActive = true;
 
-        if (tutorialActive)
+        if (doTuto)
         {
             canvasTutorial.gameObject.SetActive(true);
             imgTutorialStep2Highlight1.enabled = false;
@@ -776,7 +789,7 @@ public class UpdateUI : MonoBehaviour
     void popupController()
     {
         // Close active popup with Escape / Open Menu popup with Escape if no popup is active
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && !tutorialRegionActive && !tutorialEventsActive && !tutorialQuestsActive && !tutorialOrganizationActive)
             closeWithEscape();
 
         // Open and close Organization popup with O
@@ -1208,6 +1221,7 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialOrganizationPopup()
     {
+        tutorialOrganizationActive = true;
         string[] step1 = { "In het organisatie menu kun je het jaarlijks inkomen zien van elke regio. Handig dus om te bepalen hoeveel je kan uitgeven het komende jaar. " +
                 "Verder kun je hier advies zien van je economische adviseur en je vervuilingsadviseur op basis van de status van die statistieken. Je kunt dit menu sluiten door op de ESC toets te drukken."
                 , "In the organization menu you can view the yearly income of each regio. This can come in handy when deciding your expanses the comming year. " +
@@ -1222,6 +1236,7 @@ public class UpdateUI : MonoBehaviour
 
         imgTutorialOrganization.gameObject.SetActive(false);
         tutorialOrganizationDone = true;
+        tutorialOrganizationActive = false;
     }
 
     private void initOtherText()
@@ -1307,6 +1322,8 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialRegionPopup()
     {
+        tutorialRegionActive = true;
+
         string[] step1 = { "Elke regio bestaat uit 3 sectoren. Deze sectoren zijn Huishoudens, Landbouw en Bedrijven. De sectoren hebben statistieken voor " +
                 "tevredenheid, vervuiling, milieubewustheid en welvaart. Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. Je kunt deze secor statistieken zien door " +
                 "met je muis over de sector te hoveren."
@@ -1328,12 +1345,17 @@ public class UpdateUI : MonoBehaviour
                 "Some actions can be done in each sectors, others only in 1 or 2 of the sectors. Choose an action, after that, return to the map by pressing the ESC key."};
 
         txtTutorialRegion.text = step2[taal];
-        txtTurorialReginoBtnText.text = btnText[taal];
+        btnTutorialRegion.gameObject.SetActive(false);
+        Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
+        Vector3 imgNewPos = imgOldPos;
+        imgNewPos.x = imgNewPos.x - Screen.width / 4;
+        imgTutorialRegion.gameObject.transform.position = imgNewPos;
 
-        while (!tutorialStep7)
+        while (!tutorialCheckActionDone)
             yield return null;
 
         imgTutorialRegion.gameObject.SetActive(false);
+        tutorialRegionActive = false;
     }
 
     private void updateRegionScreenUI()
@@ -1484,37 +1506,13 @@ public class UpdateUI : MonoBehaviour
     {
         string activeEventsRegio = "";
 
-        /*JEROEN CODE
-        bool breaking = false;
-        foreach (GameEvent e in game.events)
-        {
-            if (e.isActive || e.isIdle)
-            {
-                foreach (Region region in game.regions)
-                {
-                    foreach (GameEvent ev in region.inProgressGameEvents)
-                    {
-                        if (ev == e)
-                        {
-                            activeEventsRegio += e.publicEventName[taal] + "\n";
-                            breaking = true;
-                            break;
-                        }
-                    }
-
-                    if (breaking)
-                        break;
-                }
-            }
-        }*/
-
-        //NORMALE CODE
+        // Eat facking shit dipshit
         foreach (GameEvent ge in regio.inProgressGameEvents)
         {
             if (ge.isActive || ge.isIdle)
                 activeEventsRegio += ge.publicEventName[taal] + "\n";
         }
-        //
+        // Klootzak
 
         txtActiveEvents.text = activeEventsRegio;
     }
@@ -2114,7 +2112,7 @@ public class UpdateUI : MonoBehaviour
         txtQuestsTitle.text = title[taal];
         txtQuestsDescription.text = description[taal];
 
-        if (tutorialQuestsActive)
+        if (tutorialQuestsActive && doTuto)
             StartCoroutine(tutorialQuests());
 
         foreach (Quest q in game.quests)
@@ -2148,6 +2146,7 @@ public class UpdateUI : MonoBehaviour
 
 
         imgTutorialQuests.gameObject.SetActive(false);
+        tutorialQuestsActive = false;
 
         while (canvasQuestsPopup.gameObject.activeSelf)
             yield return null;
@@ -2171,8 +2170,7 @@ public class UpdateUI : MonoBehaviour
         tutorialeventsClickable = true;
         tutorialRegionsClickable = true;
         tutorialNexTurnPossibe = true;
-        tutorialActive = false;
-        tutorialQuestsActive = false;
+        //tutorialActive = false;
     }
     
     private string getCompleteConditions(RegionStatistics r)
@@ -2269,6 +2267,7 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator eventTutorial()
     {
+        tutorialEventsActive = true;
         string[] txtTutorial = { "Bij elk event heb je altijd 3 keuzes. Van elke keuze kun je de kosten en de duur zien. Elke keuze brengt weer andere consequencies met zich mee voor de verschillende statistieken. " +
                 "Het is dus cruciaal dat je goed nadenkt over je beslissingen.\n\nLos nu dit event op door een oplossing te kiezen."
                 , "You always have 3 choices foreach event. You can see the cost and duration from each choice. Each choice brings other consequences for the different statistics. " + 
@@ -2392,6 +2391,9 @@ public class UpdateUI : MonoBehaviour
 
         if (!tutorialEventsDone)
             tutorialEventsDone = true;
+
+        if (tutorialEventsActive)
+            tutorialEventsActive = false;
     }
     #endregion
 
@@ -2440,7 +2442,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnMonthlyReportClick()
     {
-        if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)// && !tutorialActive && !tutorialQuestsActive)
+        if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)
         {
             canvasMonthlyReport.gameObject.SetActive(true);
             popupActive = true;
@@ -2451,7 +2453,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnYearlyReportClick()
     {
-        if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)// && !tutorialActive && !tutorialQuestsActive)
+        if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)
         {
             canvasYearlyReport.gameObject.SetActive(true);
             popupActive = true;
@@ -2462,7 +2464,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnAfterActionCompletedClick()
     {
-        if (!canvasAfterActionCompletedPopup.gameObject.activeSelf && !popupActive)// && !tutorialActive && !tutorialQuestsActive)
+        if (!canvasAfterActionCompletedPopup.gameObject.activeSelf && !popupActive)
         {
             canvasAfterActionCompletedPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -2486,7 +2488,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnPopupCloseClick()
     {
-        if (canvasOrganizationPopup.gameObject.activeSelf)
+        if (canvasOrganizationPopup.gameObject.activeSelf && !tutorialOrganizationActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
@@ -2504,7 +2506,7 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasRegioPopup.gameObject.activeSelf)
+        else if (canvasRegioPopup.gameObject.activeSelf && !tutorialRegionActive)
         {
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
@@ -2528,13 +2530,13 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasQuestsPopup.gameObject.activeSelf)
+        else if (canvasQuestsPopup.gameObject.activeSelf && !tutorialQuestsActive)
         {
             canvasQuestsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasEventPopup.gameObject.activeSelf)
+        else if (canvasEventPopup.gameObject.activeSelf && !tutorialEventsActive)
         {
             canvasEventPopup.gameObject.SetActive(false);
             popupActive = false;
@@ -2978,12 +2980,13 @@ public class UpdateUI : MonoBehaviour
         {
             tutorialStep6 = true;
             tutorialIndex++;
-        }
-        else if (tutorialIndex == 6)
-        {
-            tutorialStep7 = true;
             tutorialIndex++;
         }
+        //else if (tutorialIndex == 6)
+        //{
+        //    tutorialStep7 = true;
+        //    tutorialIndex++;
+        //}
     }
 
     public void tutorialOrganizationButtonPress()
