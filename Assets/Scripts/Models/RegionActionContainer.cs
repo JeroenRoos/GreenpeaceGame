@@ -26,7 +26,7 @@ public class RegionActionContainer
         {
             XmlSerializer writer = new XmlSerializer(typeof(RegionActionContainer));
             Debug.Log("Serializing RegionActions");
-            var path = Application.dataPath + "/GameFiles/RegionActions.xml";
+            var path = Application.dataPath + "/Resources/RegionActions.xml";
             FileStream file = File.Create(path);
             writer.Serialize(file, this);
             file.Close();

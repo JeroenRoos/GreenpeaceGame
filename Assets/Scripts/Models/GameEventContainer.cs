@@ -26,7 +26,7 @@ public class GameEventContainer
         {
             XmlSerializer writer = new XmlSerializer(typeof(GameEventContainer));
             Debug.Log("Serializing GameEvents");
-            var path = Application.dataPath + "/GameFiles/GameEvents.xml";
+            var path = Application.dataPath + "/Resources/GameEvents.xml";
             FileStream file = File.Create(path);
             writer.Serialize(file, this);
             file.Close();

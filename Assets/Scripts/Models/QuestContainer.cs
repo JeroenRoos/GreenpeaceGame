@@ -26,7 +26,7 @@ public class QuestContainer
         {
             XmlSerializer writer = new XmlSerializer(typeof(QuestContainer));
             Debug.Log("Serializing Quests");
-            var path = Application.dataPath + "/GameFiles/Quests.xml";
+            var path = Application.dataPath + "/Resources/Quests.xml";
             FileStream file = File.Create(path);
             writer.Serialize(file, this);
             file.Close();

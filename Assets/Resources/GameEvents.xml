@@ -4376,11 +4376,11 @@
     <GameEvent>
       <name>BelgiumPollution</name>
       <publicEventName>
-        <string>Vervuiling uit België</string>
+        <string>Vervuiling uit Belgi</string>
         <string>Pollution from Belgium</string>
       </publicEventName>
       <description>
-        <string>Door de vervuiling in België stijgt de vervuiling ook in de regio.</string>
+        <string>Door de vervuiling in Belgi stijgt de vervuiling ook in de regio.</string>
         <string>Because of the pollution in Belgium the pollution in the region is also increasing.</string>
       </description>
       <choicesDutch>
