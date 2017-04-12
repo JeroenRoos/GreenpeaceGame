@@ -407,7 +407,7 @@ public class UpdateUI : MonoBehaviour
         taal = 0;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = false;
+        tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
@@ -2819,7 +2819,7 @@ public class UpdateUI : MonoBehaviour
     #region Next Turn Button Code
     public void nextTurnOnClick()
     {
-        if (tutorialNexTurnPossibe)
+        if (tutorialNexTurnPossibe && game.currentYear < 31)
         {
             EventManager.CallChangeMonth();
 
