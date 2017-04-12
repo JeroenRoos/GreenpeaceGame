@@ -2440,7 +2440,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnMonthlyReportClick()
     {
-        if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive && !tutorialActive && !tutorialQuestsActive)
+        if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)// && !tutorialActive && !tutorialQuestsActive)
         {
             canvasMonthlyReport.gameObject.SetActive(true);
             popupActive = true;
@@ -2451,7 +2451,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnYearlyReportClick()
     {
-        if (!canvasYearlyReport.gameObject.activeSelf && !popupActive && !tutorialActive && !tutorialQuestsActive)
+        if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)// && !tutorialActive && !tutorialQuestsActive)
         {
             canvasYearlyReport.gameObject.SetActive(true);
             popupActive = true;
@@ -2462,7 +2462,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnAfterActionCompletedClick()
     {
-        if (!canvasAfterActionCompletedPopup.gameObject.activeSelf && !popupActive && !tutorialActive && !tutorialQuestsActive)
+        if (!canvasAfterActionCompletedPopup.gameObject.activeSelf && !popupActive)// && !tutorialActive && !tutorialQuestsActive)
         {
             canvasAfterActionCompletedPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -2482,6 +2482,64 @@ public class UpdateUI : MonoBehaviour
         txtSave.text = save[taal];
         txtExitGame.text = exitgame[taal];
         txtExitMenu.text = exitmenu[taal];
+    }
+
+    public void btnPopupCloseClick()
+    {
+        if (canvasOrganizationPopup.gameObject.activeSelf)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasMenuPopup.gameObject.activeSelf)
+        {
+            canvasMenuPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasTimelinePopup.gameObject.activeSelf)
+        {
+            canvasTimelinePopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasRegioPopup.gameObject.activeSelf)
+        {
+            canvasRegioPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasMonthlyReport.gameObject.activeSelf)
+        {
+            canvasMonthlyReport.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasYearlyReport.gameObject.activeSelf)
+        {
+            canvasYearlyReport.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
+        {
+            canvasAfterActionCompletedPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasQuestsPopup.gameObject.activeSelf)
+        {
+            canvasQuestsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEventPopup.gameObject.activeSelf)
+        {
+            canvasEventPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
     }
     #endregion
 
