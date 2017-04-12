@@ -312,6 +312,12 @@ public class UpdateUI : MonoBehaviour
     public Image imgTutorialStep2Highlight2;
     public Image imgTutorialStepOrgMenuHightlight;
 
+    public Image imgTutorialEvents;
+    public Button btnTutorialEvent;
+    public Text txtTutorialEvent;
+    public Text txtTutorialEventBtn;
+
+
     public Image imgTutorialRegion;
     public Button btnTutorialRegion;
     public Text txtTutorialRegion;
@@ -361,10 +367,12 @@ public class UpdateUI : MonoBehaviour
     public bool tutorialStep9;
     private bool tutorialStep10;
     private bool tutorialstep11;
-    private bool tutorialstep12;
+    public bool tutorialstep12;
     private bool tutorialStep13;
     private bool tutorialOrganizationDone;
     public bool tutorialNextTurnDone;
+    public bool tutorialEventsDone;
+    public bool tutorialNexTurnPossibe;
 
     private bool tooltipActive;
     private bool regionHouseholdsCheck;
@@ -384,7 +392,7 @@ public class UpdateUI : MonoBehaviour
         taal = 0;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = false;
+        tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
@@ -403,6 +411,8 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStepOrgMenuHightlight.enabled = false;
         tutorialIndex = 1;
         canvasTutorial.gameObject.SetActive(true);
+        tutorialNexTurnPossibe = false;
+        tutorialNextTurnDone = false;
         StartCoroutine(initTutorialText());
     }
 
@@ -422,6 +432,8 @@ public class UpdateUI : MonoBehaviour
         tutorialStep8 = true;
         tutorialStep9 = true;
         tutorialStep10 = true;
+        tutorialNexTurnPossibe = true;
+        tutorialEventsDone = true;
         tutorialstep11 = true;
         tutorialstep12 = true;
         tutorialStep13 = true;
@@ -513,6 +525,7 @@ public class UpdateUI : MonoBehaviour
                 "A better Eco awareness means less pollution. The pollutions shows the pollution in the country. These icons show the averages from the different regions. " + 
                 "For more informations about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip."};
         txtTurorialStep1.text = step3[taal];
+        txtTurorialStep1.fontSize = 8;
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
 
@@ -528,6 +541,7 @@ public class UpdateUI : MonoBehaviour
                 , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West" +
                 "Each region has a income, happiness, pollution, eco-awareness and prosperity. These statistics differ foreach region.\n Go to The Netherlands West by clicking on the region. "};
         txtTurorialStep1.text = step4[taal];
+        txtTurorialStep1.fontSize = 9;
 
         while (!tutorialStep5) 
             yield return null;
@@ -561,19 +575,23 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         canvasTutorial.gameObject.SetActive(true);
-        string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende beurt knop rechtsonderin. Je kunt ook op de ENTER toets drukken om naar de volgende maand te gaan. ",
-            "You can go to the next month / turn by pressing the Next turn button in the bottomright of your screen. You can also press the ENTER key to got to the next turn." };
+        string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende beurt knop rechtsonderin.  ",
+            "You can go to the next month / turn by pressing the Next turn button in the bottomright of your screen. " };
         txtTurorialStep1.text = step6[taal];
 
         while (!tutorialStep10)
             yield return null;
 
+        tutorialNexTurnPossibe = true;
         canvasTutorial.gameObject.SetActive(false);
 
         while (!tutorialNextTurnDone)
             yield return null;
 
+        tutorialNexTurnPossibe = false;
+
         canvasTutorial.gameObject.SetActive(true);
+        imgTutorialOverworld.gameObject.transform.position = imgNewPos;
         string[] step7 = { "Er is een nieuwe maand en we hebben nog veel te doen. Er is namelijk een event bezig. Er kunnen elke nieuwe turn enkele events ontstaan. Er kan maar 1 event " +
                 "tegelijk in een regio zijn. Er kunnen wel meerdere events tegelijk zijn in meerdere regio's. Voor elk event heb je een aantal beurten om te beslissen wat je met de event gaat doen. "
                 , "It's a new month and there is lots to do. There is an active event running at the moment. Each turn there will be new events. There can only be one event in a region at the same time. " +
@@ -583,13 +601,20 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialstep11)
             yield return null;
 
-        string[] step8 = { "Door met je muis over de event te hoveren krijg je extra informatie over de event te zien. Door op de event de klikken krijg je te zien welke keuzes je hebt om het op te lossen. " +
-                "Bij elk event heb je altijd 3 keuzes. Elke keuze brengt weer andere consequencies met zich mee voor de verschillende statistieken. Het is dus cruciaal dat je goed nadenkt over je beslissingen. " 
-                , "You can get extra information from an event by hovering over the event icon with your mouse. You can see the choices you have by clicking on the event. You always have 3 choices foreach event. " +
-                "Each choice brings other consequences for the different statistics. This means it's crucial to think about what you want to achieve before making a choice. "};
+        string[] step8 = { "Door op het icoon van de event te klikken krijg je een popup. In deze popup kun je kiezen welke actie je bij dit event wil nemen. " +
+                "Klik nu op het icoontje van de event. "
+                , "By clicking on the icon of the event you get a popup. In this popup you can chose which action you want to take with this event.  Click on the icon of the event to open the popup."};
         txtTurorialStep1.text = step8[taal];
 
         while (!tutorialstep12)
+            yield return null;
+
+        canvasTutorial.gameObject.SetActive(false);
+
+        while (!tutorialEventsDone)
+            yield return null;
+
+        while (!canvasEventPopup.gameObject.activeSelf)
             yield return null;
 
         string[] step9 = { "Vergeet niet dat je voor 2050 de vervuiling onder 5% moet hebben. Houdt verder de verschillende statistieken goed in de gaten bij het doen van acties en het oplossen van events. " +
@@ -598,12 +623,12 @@ public class UpdateUI : MonoBehaviour
                 "Now you can complete the event by making a choice you think is right."};
         txtTurorialStep1.text = step9[taal];
 
-        string[] btnText2 = { "Handleiding voltooien", "Complete tutorial" };
+        //string[] btnText2 = { "Handleiding voltooien", "Complete tutorial" };
 
-        txtTutorialStep1BtnText.text = btnText2[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
 
-        while (!tutorialStep13)
-            yield return null;
+        // while (!tutorialStep13)
+        //    yield return null;
 
         tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
@@ -645,6 +670,28 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         btnQuests.gameObject.SetActive(true);
+
+        if (tutorialActive)
+        {
+            Vector3 imgOldPos = imgTutorialOverworld.gameObject.transform.position;
+            Vector3 imgNewPos = imgOldPos;
+            imgNewPos.x = imgNewPos.x + Screen.width / 3;
+            imgTutorialOverworld.gameObject.transform.position = imgNewPos;
+            //tutorialActive = true;
+            canvasTutorial.gameObject.SetActive(true);
+            imgTutorialStep2Highlight1.enabled = false;
+            imgTutorialStep2Highlight2.enabled = false;
+            imgTutorialStepOrgMenuHightlight.enabled = false;
+            imgTutorialOverworld.gameObject.SetActive(true);
+            tutorialNexTurnPossibe = false;
+
+
+            string[] step5 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. Open het Missies menu door op de Missies knop te drukken. ",
+            "You can see that an extra button just appeard next to the Organization menu button. This is the button for you Quests. Open the Quests menu by pressing the Quests button " };
+            txtTurorialStep1.text = step5[taal];
+
+
+        }
     }
 
     void setBooleans()
@@ -2142,6 +2189,12 @@ public class UpdateUI : MonoBehaviour
         initEventUI();
         initEventText(e);
 
+        if (tutorialActive && tutorialstep12)
+        {
+            imgTutorialEvents.gameObject.SetActive(true);
+            StartCoroutine(eventTutorial());
+        }
+
         if (e.isActive)
         {
             radioEventOption1.interactable = false;
@@ -2151,6 +2204,22 @@ public class UpdateUI : MonoBehaviour
             string[] txt = { "Je hebt al een optie gekozen bij dit event.", "You already chose an option." } ;
             txtEventAlreadyActive.text = "";
         }
+    }
+
+    IEnumerator eventTutorial()
+    {
+        string[] txtTutorial = { "Bij elk event heb je altijd 3 keuzes. Van elke keuze kun je de kosten en de duur zien. Elke keuze brengt weer andere consequencies met zich mee voor de verschillende statistieken. " +
+                "Het is dus cruciaal dat je goed nadenkt over je beslissingen.Los nu dit event op door een oplossing te kiezen."
+                , "You always have 3 choices foreach event. You can see the cost and duration from each choice. Each choice brings other consequences for the different statistics. " + 
+                "This means it's crucial to think about what you want to achieve before making a choice." };
+        string[] txtBtn = { "Volgende", "Next" };
+        txtTutorialEvent.text = txtTutorial[taal];
+        txtTutorialEventBtn.text = txtBtn[taal];
+
+        while (!tutorialStep13)
+            yield return null;
+
+        imgTutorialEvents.gameObject.SetActive(false);
     }
 
     private void initEventUI()
@@ -2259,6 +2328,9 @@ public class UpdateUI : MonoBehaviour
         canvasEventPopup.gameObject.SetActive(false);
         popupActive = false;
         EventManager.CallPopupIsDisabled();
+
+        if (!tutorialEventsDone)
+            tutorialEventsDone = true;
     }
     #endregion
 
@@ -2626,7 +2698,7 @@ public class UpdateUI : MonoBehaviour
     #region Next Turn Button Code
     public void nextTurnOnClick()
     {
-        if (tutorialStep9)
+        if (tutorialNexTurnPossibe)
         {
             EventManager.CallChangeMonth();
 
@@ -2764,11 +2836,6 @@ public class UpdateUI : MonoBehaviour
             tutorialstep12 = true;
             tutorialIndex++;
         }
-        else if (tutorialIndex == 12)
-        {
-            tutorialStep13 = true;
-            tutorialIndex++;
-        }
     }
 
     public void tutorialRegionButtonPress()
@@ -2790,6 +2857,15 @@ public class UpdateUI : MonoBehaviour
         if (tutorialIndex == 8)
         {
             tutorialStep9 = true;
+            tutorialIndex++;
+        }
+    }
+
+    public void tutorialEventButtonPress()
+    {
+        if (tutorialIndex == 12)
+        {
+            tutorialStep13 = true;
             tutorialIndex++;
         }
     }

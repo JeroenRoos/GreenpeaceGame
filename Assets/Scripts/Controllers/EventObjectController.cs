@@ -79,8 +79,11 @@ public class EventObjectController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        updateUI.popupActive = false;
-        updateUI.initEventPopup(eventModel, regionModel);
+        if (updateUI.tutorialstep12)
+        {
+            updateUI.popupActive = false;
+            updateUI.initEventPopup(eventModel, regionModel);
+        }
     }
 
     public void Init(GameController gameController, Region regionModel, GameEvent eventModel)
