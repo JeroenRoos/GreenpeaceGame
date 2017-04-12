@@ -18,7 +18,15 @@ public class Region
 
     public List<GameEvent> inProgressGameEvents { get; private set; }
 
+    public List<Building> possibleBuildings { get; private set; }
+    public Building activeBuilding { get; private set; }
+
     private Region() { }
+
+    public void LoadBuildings(List<Building> buildings)
+    {
+        this.possibleBuildings = buildings;
+    }
 
     public void LoadActions(List<RegionAction> actions)
     {
@@ -94,14 +102,17 @@ public class Region
                 inProgressGameEvents.Remove(inProgressGameEvents[i]);
         }
     }
-
-    //adds a building to the list of buildings the region has
-    /*public void CreateBuilding(string[] buildingName)
+    
+    public void SetBuilding(string buildingID)
     {
-        Building newBuilding = new Building(buildingName);
-        buildings.Add(newBuilding);
-        ImplementBuildingValues(newBuilding.statistics, true);
-    }*/
+        foreach (Building b in buildings)
+        {
+            if (b.buildingID == buildingID)
+            {
+                activeBuilding = b;
+            }
+        }
+    }
 
     /*public void DeleteBuilding(Building building)
     {
