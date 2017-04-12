@@ -317,6 +317,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtTutorialEvent;
     public Text txtTutorialEventBtn;
 
+    public Image imgTutorialQuests;
+    public Button btTutorialQuests;
+    public Text txtTutorialQuests;
+    public Text txtTutorialQuestsBtn;
 
     public Image imgTutorialRegion;
     public Button btnTutorialRegion;
@@ -371,11 +375,13 @@ public class UpdateUI : MonoBehaviour
     private bool tutorialStep13;
     private bool tutorialStep14;
     private bool tutorialStep15;
+    private bool tutorialStep16 = true;
     private bool tutorialOrganizationDone;
     public bool tutorialNextTurnDone;
     public bool tutorialEventsDone;
     public bool tutorialNexTurnPossibe;
     public bool tutorialQuestsActive;
+    public bool tutorialeventsClickable;
 
     private bool tooltipActive;
     private bool regionHouseholdsCheck;
@@ -417,6 +423,7 @@ public class UpdateUI : MonoBehaviour
         tutorialNexTurnPossibe = false;
         tutorialNextTurnDone = false;
         tutorialQuestsActive = false;
+        tutorialeventsClickable = false;
         StartCoroutine(initTutorialText());
     }
 
@@ -443,9 +450,11 @@ public class UpdateUI : MonoBehaviour
         tutorialStep13 = true;
         tutorialStep14 = true;
         tutorialStep15 = true;
+        tutorialStep16 = true;
         regionWestActivated = true;
         tutorialCheckActionDone = true;
         tutorialQuestsActive = true;
+        tutorialeventsClickable = true;
     }
 
     void Update()
@@ -590,6 +599,7 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialstep11)
             yield return null;
 
+        tutorialeventsClickable = true;
         string[] step8 = { "Door op het icoon van de event te klikken krijg je een popup. In deze popup kun je kiezen welke actie je bij dit event wil nemen. " +
                 "Klik nu op het icoontje van de event. "
                 , "By clicking on the icon of the event you get a popup. In this popup you can chose which action you want to take with this event.  Click on the icon of the event to open the popup."};
@@ -605,6 +615,7 @@ public class UpdateUI : MonoBehaviour
 
         while (canvasEventPopup.gameObject.activeSelf)
             yield return null;
+        tutorialeventsClickable = false;
 
         canvasTutorial.gameObject.SetActive(true);
         string[] step9 = { "Verder kun je linksonder in je beeld buttons zien. Deze knoppen geven een overzicht van de veranderingen tussen de huidige en de vorige maand. Je krijgt dit rapport elke maand.  " +
@@ -620,6 +631,7 @@ public class UpdateUI : MonoBehaviour
         tutorialNexTurnPossibe = true;
         tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
+        tutorialeventsClickable = true;
     }
 
     void initButtons()
@@ -661,15 +673,14 @@ public class UpdateUI : MonoBehaviour
 
         if (tutorialActive)
         {
-            //Vector3 imgOldPos = imgTutorialOverworld.gameObject.transform.position;
-            //Vector3 imgNewPos = imgOldPos;
-            //imgNewPos.x = imgNewPos.x + Screen.width / 3;
-            //imgTutorialOverworld.gameObject.transform.position = imgNewPos;
             canvasTutorial.gameObject.SetActive(true);
             imgTutorialStep2Highlight1.enabled = false;
             imgTutorialStep2Highlight2.enabled = false;
             imgTutorialStepOrgMenuHightlight.enabled = false;
             imgTutorialOverworld.gameObject.SetActive(true);
+
+            tutorialQuestsActive = true;
+            tutorialeventsClickable = false;
             tutorialNexTurnPossibe = false;
 
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. Open het Missies menu door op de Missies knop te drukken. ",
@@ -680,9 +691,6 @@ public class UpdateUI : MonoBehaviour
                 yield return null;
 
             canvasTutorial.gameObject.SetActive(false);
-
-            while (!canvasEventPopup.gameObject.activeSelf)
-                yield return null;
         }
     }
 
@@ -1382,9 +1390,9 @@ public class UpdateUI : MonoBehaviour
     private void updateRegionTextValues()
     {
         txtRegionName.text = regio.name[taal];
-        txtRegionMoney.text = regio.statistics.income.ToString("0.00");
+        txtRegionMoney.text = regio.statistics.income.ToString("0");
         txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
-        txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0,00") + "%";
+        txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0.00") + "%";
         txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
         txtRegionPollution.text = regio.statistics.avgPollution.ToString("0.00") + "%";
         txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
@@ -2104,7 +2112,33 @@ public class UpdateUI : MonoBehaviour
         }
         if (!activeQuest)
             txtQuestsActive.text = noActiveQuests[taal];
+
+        if (tutorialQuestsActive)
+            StartCoroutine(tutorialQuests());        
     }
+
+    IEnumerator tutorialQuests()
+    {
+        imgTutorialQuests.gameObject.SetActive(true);
+
+        string[] step2 = { "In deze popup kun je zien welke actieve missies je hebt. Je krijgt om de 2 jaar een nieuwe missie. Als je aan de juiste condities voldoet haal je de missie en krijg je een beloning.",
+            "In this popup you can see your active quests. You get a new quest each time 2 years pass. If you reach the quest conditions you get a reward." };
+        string[] txtBtn = { "Volgende", "Next" };
+
+        txtTutorialQuests.text = step2[taal];
+        txtTutorialQuestsBtn.text = txtBtn[taal];
+
+        while (!tutorialStep16)
+            yield return null;
+
+        imgTutorialQuests.gameObject.SetActive(false);
+
+        while (canvasQuestsPopup.gameObject.activeSelf)
+            yield return null;
+    }
+
+
+
 
     private string getCompleteConditions(RegionStatistics r)
     {
@@ -2350,7 +2384,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnQuestsClick()
     {
-        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)
+        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive && tutorialStep15)
         {
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -2868,6 +2902,15 @@ public class UpdateUI : MonoBehaviour
         if (tutorialIndex == 12)
         {
             tutorialStep13 = true;
+            tutorialIndex++;
+        }
+    }
+
+    public void tutorialQuestsButtonPress()
+    {
+        if (tutorialIndex == 15)
+        {
+            tutorialStep16 = true;
             tutorialIndex++;
         }
     }

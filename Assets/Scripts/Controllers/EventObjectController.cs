@@ -79,7 +79,7 @@ public class EventObjectController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (updateUI.tutorialstep12)
+        if (updateUI.tutorialstep12 && updateUI.tutorialeventsClickable)
         {
             updateUI.popupActive = false;
             updateUI.initEventPopup(eventModel, regionModel);
