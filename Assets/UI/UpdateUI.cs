@@ -2170,6 +2170,8 @@ public class UpdateUI : MonoBehaviour
     private void initEventText(GameEvent e)
     {
         string[] txtBtn = { "Bevestig", "Confirm" };
+        string[] txtKosten = { "\nKosten: ", "\nCost: " };
+        string[] txtDuur = { "\nDuur: ", "\nDuration: " };
 
         txtEventName.text = e.publicEventName[taal];
         txtEventDescription.text = e.description[taal];
@@ -2177,15 +2179,15 @@ public class UpdateUI : MonoBehaviour
 
         if (game.language == 0)
         {
-            radioEventOption1Text.text = e.choicesDutch[0];
-            radioEventOption2Text.text = e.choicesDutch[1];
-            radioEventOption3Text.text = e.choicesDutch[2];
+            radioEventOption1Text.text = e.choicesDutch[0] + txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtDuur[taal] + e.eventDuration[0];
+            radioEventOption2Text.text = e.choicesDutch[1] + txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtDuur[taal] + e.eventDuration[1];
+            radioEventOption3Text.text = e.choicesDutch[2] + txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtDuur[taal] + e.eventDuration[2];
         }
         else
         {
-            radioEventOption1Text.text = e.choicesEnglish[0];
-            radioEventOption2Text.text = e.choicesEnglish[1];
-            radioEventOption3Text.text = e.choicesEnglish[2];
+            radioEventOption1Text.text = e.choicesEnglish[0] + txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtDuur[taal] + e.eventDuration[0];
+            radioEventOption2Text.text = e.choicesEnglish[1] + txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtDuur[taal] + e.eventDuration[1];
+            radioEventOption3Text.text = e.choicesEnglish[2] + txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtDuur[taal] + e.eventDuration[2];
         }
     }
 
