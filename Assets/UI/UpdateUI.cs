@@ -689,7 +689,7 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator showBtnQuests()
     {
-        while (game.currentMonth != 6)
+        while (game.currentMonth < 6)
             yield return null;
 
         btnQuests.gameObject.SetActive(true);

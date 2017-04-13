@@ -22,7 +22,8 @@ public class OpenScene : MonoBehaviour
     public void loadSceneByIndex(int index)
     {
         Debug.Log("NewGame Button Click!");
-        GameController.loadGame = false;
+        //GameController.loadGame = false;
+        ApplicationModel.loadGame = false;
         Debug.Log(index);
         SceneManager.LoadSceneAsync(index);
     }
@@ -34,8 +35,8 @@ public class OpenScene : MonoBehaviour
 
     public void buttonLoadGameClick()
     {
-        //gameController.loadgame = true;
-        GameController.loadGame = true;
+        ApplicationModel.loadGame = true;
+        SceneManager.LoadSceneAsync(1);
         gameController.LoadGame();
     }
 }
