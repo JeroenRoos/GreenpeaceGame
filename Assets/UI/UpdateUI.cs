@@ -2323,7 +2323,7 @@ public class UpdateUI : MonoBehaviour
         txtEventDescription.text = e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
 
-        if (game.language == 0)
+        if (ApplicationModel.language == 0)
         {
             radioEventOption1Text.text = e.choicesDutch[0] + txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtDuur[taal] + e.eventDuration[0];
             radioEventOption2Text.text = e.choicesDutch[1] + txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtDuur[taal] + e.eventDuration[1];
@@ -2568,7 +2568,7 @@ public class UpdateUI : MonoBehaviour
         if (taal != 0)
         {
             game.ChangeLanguage("dutch");
-            taal = game.language;
+            taal = ApplicationModel.language;
             btnNextTurnText.text = "Volgende beurt";
             txtBtnTimeline.text = "Tijdlijn";
             txtBtnMenu.text = "Menu";
@@ -2581,7 +2581,7 @@ public class UpdateUI : MonoBehaviour
         if (taal != 1)
         {
             game.ChangeLanguage("english");
-            taal = game.language;
+            taal = ApplicationModel.language;
             btnNextTurnText.text = "Next turn";
             txtBtnTimeline.text = "Timeline";
             txtBtnMenu.text = "Menu";
