@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (ApplicationModel.loadGame)
+        if (!ApplicationModel.loadGame)
         {
             game = new Game();
 
