@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log("GameController START!");
+
         if (!loadGame)
         {
             game = new Game();

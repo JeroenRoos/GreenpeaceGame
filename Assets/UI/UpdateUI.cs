@@ -2908,6 +2908,11 @@ public class UpdateUI : MonoBehaviour
         Application.Quit();
     }
 
+    public void buttonSaveGame()
+    {
+        
+    }
+
     public void loadOtherScene(int index)
     {
         SceneManager.LoadSceneAsync(index);
