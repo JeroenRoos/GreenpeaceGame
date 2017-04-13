@@ -16,12 +16,13 @@ public class OpenScene : MonoBehaviour
     void Start()
     {
         Debug.Log("OpenScene START!");
-        gameController = GetComponent<GameController>();
+        gameController = new GameController();
     }
 
     public void loadSceneByIndex(int index)
     {
         Debug.Log("NewGame Button Click!");
+        GameController.loadGame = false;
         Debug.Log(index);
         SceneManager.LoadSceneAsync(index);
     }
@@ -33,6 +34,8 @@ public class OpenScene : MonoBehaviour
 
     public void buttonLoadGameClick()
     {
+        //gameController.loadgame = true;
+        GameController.loadGame = true;
         gameController.LoadGame();
     }
 }
