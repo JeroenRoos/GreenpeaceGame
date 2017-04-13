@@ -77,23 +77,23 @@ public class GameController : MonoBehaviour
         }
         updateUI.LinkGame(game);
         StartCoroutine(updateUI.showBtnQuests());
-        RectTransform rt = AfterTurnButton.image.rectTransform;
+
+        //afterActionPosition = new Vector3[3];
+        //afterActionPosition[0] = new Vector3( 5, 5, 0);
+        //afterActionPosition[1] = new Vector3( 5, 115, 0);
+        //afterActionPosition[2] = new Vector3( 5, 225, 0);
+
+        //float width = Screen.width / (1920 / 45);
+        float height = Screen.height / (1080 / 65);
+        //MonthlyReportButon.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+        //YearlyReportButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+        //CompletedButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+
 
         afterActionPosition = new Vector3[3];
-        afterActionPosition[0] = new Vector3( 5, 5, 0);
-        afterActionPosition[1] = new Vector3( 5, 115, 0);
-        afterActionPosition[2] = new Vector3( 5, 225, 0);
-        float width = Screen.width / 38;
-        float height = Screen.height / 21;
-        MonthlyReportButon.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-        YearlyReportButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-        CompletedButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-
-
-        afterActionPosition = new Vector3[3];
-        afterActionPosition[0] = new Vector3( 5, (Screen.height / 10) * 1 - 100, 0);
-        afterActionPosition[1] = new Vector3( 5, (Screen.height / 10) * 2 - 100, 0);
-        afterActionPosition[2] = new Vector3( 5, (Screen.height / 10) * 3 - 100, 0);
+        afterActionPosition[0] = new Vector3( 5, 5 + height * 2 * 0, 0);
+        afterActionPosition[1] = new Vector3( 5, 5 + height * 2 * 1, 0);
+        afterActionPosition[2] = new Vector3( 5, 5 + height * 2 * 2, 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
