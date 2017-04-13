@@ -16,7 +16,9 @@ public class GameController : MonoBehaviour
     public Game game;
 
     private EventObjectController eventObjectController;
-    public Button AfterTurnButton;
+    public Button MonthlyReportButon;
+    public Button YearlyReportButton;
+    public Button CompletedButton;
     private UpdateUI updateUI;
     public GameObject noordNederland;
     public GameObject oostNederland;
@@ -75,13 +77,17 @@ public class GameController : MonoBehaviour
         }
         updateUI.LinkGame(game);
         StartCoroutine(updateUI.showBtnQuests());
-        RectTransform rt = AfterTurnButton.image.rectTransform;
-        Debug.Log(rt.rect.height);
+        float width = Screen.width / 38;
+        float height = Screen.height / 21;
+        MonthlyReportButon.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+        YearlyReportButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+        CompletedButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
+
 
         afterActionPosition = new Vector3[3];
-        afterActionPosition[0] = new Vector3( 5, 5, 0);
-        afterActionPosition[1] = new Vector3( 5, rt.rect.height * 2 + 30, 0);
-        afterActionPosition[2] = new Vector3( 5, rt.rect.height * 3 + 30, 0);
+        afterActionPosition[0] = new Vector3( 5, (Screen.height / 10) * 1 - 100, 0);
+        afterActionPosition[1] = new Vector3( 5, (Screen.height / 10) * 2 - 100, 0);
+        afterActionPosition[2] = new Vector3( 5, (Screen.height / 10) * 3 - 100, 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
@@ -317,7 +323,7 @@ public class GameController : MonoBehaviour
                     if (quest.NationalCompleteConditionsMet(game.gameStatistics))
                     {
                         game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
-                        Debug.Log("Quest completed:" + quest.description[0]);
+                        //Debug.Log("Quest completed:" + quest.description[0]);
                         quest.CompleteQuest();
                     }
                 }
@@ -332,7 +338,7 @@ public class GameController : MonoBehaviour
                             if (quest.RegionalCompleteConditionsMet(r.statistics))
                             {
                                 game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
-                                Debug.Log("Quest completed:" + quest.description[0]);
+                                //Debug.Log("Quest completed:" + quest.description[0]);
                                 quest.CompleteQuest();
                             }
                             break;

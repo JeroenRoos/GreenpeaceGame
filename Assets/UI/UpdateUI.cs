@@ -404,7 +404,7 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("UpdateUI Start!");
+        //Debug.Log("UpdateUI Start!");
         //test.text = Application.dataPath;
         initButtons();
         initCanvas();
@@ -2398,7 +2398,7 @@ public class UpdateUI : MonoBehaviour
         else 
             option = 2;
 
-        Debug.Log(option + " BtnCompleteEventCLICK!");
+        //Debug.Log(option + " BtnCompleteEventCLICK!");
 
         gameEvent.SetPickedChoice(option, game, regionEvent);
         canvasEventPopup.gameObject.SetActive(false);

@@ -15,13 +15,13 @@ public class OpenScene : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("OpenScene START!");
+        //Debug.Log("OpenScene START!");
         gameController = new GameController();
     }
 
     public void loadSceneByIndex(int index)
     {
-        Debug.Log("NewGame Button Click!");
+        //Debug.Log("NewGame Button Click!");
         //GameController.loadGame = false;
         ApplicationModel.loadGame = false;
         Debug.Log(index);
