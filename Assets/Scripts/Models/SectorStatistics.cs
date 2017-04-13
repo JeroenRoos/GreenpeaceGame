@@ -36,9 +36,6 @@ public class SectorStatistics
 
         else
             happiness += changeValue;
-
-        //happiness decay
-        happiness *= (1 - 0.05 / 12);
     }
 
     public void ModifyEcoAwareness(double changeValue)

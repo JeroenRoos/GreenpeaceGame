@@ -6692,12 +6692,12 @@
       </description>
       <choicesDutch>
         <string>niets doen</string>
-        <string>demonstreren</string>
+        <string>protesteren</string>
         <string>campagne voor schone energie</string>
       </choicesDutch>
       <choicesEnglish>
         <string>do nothing</string>
-        <string>demonstrate</string>
+        <string>protest</string>
         <string>campaign for clean energy</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
@@ -7463,12 +7463,12 @@
       <choicesDutch>
         <string>niets doen</string>
         <string>campange voor recyclen</string>
-        <string>demonstratie tegen de bedrijven</string>
+        <string>prosteren tegen de bedrijven</string>
       </choicesDutch>
       <choicesEnglish>
         <string>do nothing</string>
         <string>campaign for recycling</string>
-        <string>demonstration against the companies</string>
+        <string>protest against the companies</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -7717,8 +7717,8 @@
       </description>
       <choicesDutch>
         <string>niets doen</string>
-        <string>campange voor kernenergie</string>
-        <string>demonstratie voor groene energie</string>
+        <string>campagne voor kernenergie</string>
+        <string>campagne voor groene energie</string>
       </choicesDutch>
       <choicesEnglish>
         <string>do nothing</string>
@@ -9249,12 +9249,12 @@
       </description>
       <choicesDutch>
         <string>niets doen</string>
-        <string>demonstreren</string>
+        <string>protesteren</string>
         <string>campagne voor schone energie</string>
       </choicesDutch>
       <choicesEnglish>
         <string>do nothing</string>
-        <string>demonstrate</string>
+        <string>protesteren</string>
         <string>campaign for clean energy</string>
       </choicesEnglish>
       <isUnique>false</isUnique>

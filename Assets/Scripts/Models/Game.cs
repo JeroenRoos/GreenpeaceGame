@@ -54,10 +54,6 @@ public class Game
 
         currentYear = 1;
         currentMonth = 1;
-
-        //set reports
-        monthlyReport.UpdateStatistics(regions);
-        yearlyReport.UpdateStatistics(regions);
     }
 
     public void LoadRegions(List<Region> regions)

@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        autoSave = true;
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
@@ -46,6 +47,10 @@ public class GameController : MonoBehaviour
             LoadQuests();
             //LoadBuildings();
             game.gameStatistics.UpdateRegionalAvgs(game);
+
+            //set reports
+            game.monthlyReport.UpdateStatistics(game.regions);
+            game.yearlyReport.UpdateStatistics(game.regions);
 
             /*foreach (Region region in game.regions)
             {
