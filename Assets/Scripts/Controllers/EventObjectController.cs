@@ -86,7 +86,7 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
-    public void Init(GameController gameController, Region regionModel, GameEvent eventModel)
+    public void PlaceEventIcons(GameController gameController, Region regionModel, GameEvent eventModel)
     {
         this.gameController = gameController;
         this.regionModel = regionModel;

@@ -65,7 +65,16 @@ public class GameController : MonoBehaviour
 
         updateUI = GetComponent<UpdateUI>();
         eventObjectController = GetComponent<EventObjectController>();
+        foreach (Region r in game.regions)
+        {
+            foreach (GameEvent e in r.inProgressGameEvents)
+            {
+                GameObject eventInstance = GameController.Instantiate(eventObject);
+                eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, r, e);
+            }
+        }
         updateUI.LinkGame(game);
+        StartCoroutine(updateUI.showBtnQuests());
         RectTransform rt = AfterTurnButton.image.rectTransform;
         Debug.Log(rt.rect.height);
 
@@ -371,7 +380,7 @@ public class GameController : MonoBehaviour
                 game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
 
                 GameObject eventInstance = GameController.Instantiate(eventObject);
-                eventInstance.GetComponent<EventObjectController>().Init(this, pickedRegion, pickedEvent);
+                eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, pickedRegion, pickedEvent);
             }
 
             eventChance -= eventChanceReduction;
