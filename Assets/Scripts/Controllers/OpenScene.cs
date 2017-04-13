@@ -4,19 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.UI;
+using System.IO;
 
 public class OpenScene : MonoBehaviour
 {
     public Text txtNewGameBtn;
     public Text txtLoadGame;
     public Text Quit;
+    public Button btnLoad;
     private GameController gameController;
-    
+
 
     void Start()
     {
         //Debug.Log("OpenScene START!");
         gameController = new GameController();
+        var path = Application.persistentDataPath + "/Savestate.gd";
+        if (File.Exists(path))
+        {
+            btnLoad.interactable = true;
+        }
     }
 
     public void loadSceneByIndex(int index)

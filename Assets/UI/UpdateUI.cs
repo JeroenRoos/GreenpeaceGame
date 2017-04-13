@@ -412,7 +412,8 @@ public class UpdateUI : MonoBehaviour
         taal = 0;
 
         // Use this boolean to start the game with or without the tutorial while testing
-        tutorialActive = false;
+        if (!ApplicationModel.loadGame)
+            tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
