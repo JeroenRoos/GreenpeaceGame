@@ -33,12 +33,12 @@ public class Game
     public EconomyAdvisor economyAdvisor { get; private set; }
     public PollutionAdvisor pollutionAdvisor { get; private set; }
     
-    public int language { get; private set; } //0 = Dutch, 1 = English
+    //public int language { get; private set; } //0 = Dutch, 1 = English
     public System.Random rnd { get; private set; }
 
     public Game()
     {
-        language = 0;
+        //language = 0;
         rnd = new System.Random();
         events = new List<GameEvent>();
         regions = new List<Region>();
@@ -78,9 +78,9 @@ public class Game
     public void ChangeLanguage(string language)
     {
         if (language == "english")
-            this.language = 1;
+            ApplicationModel.language = 1;
         else if (language == "dutch")
-            this.language = 0;
+            ApplicationModel.language = 0;
     }
 
     public bool UpdateCurrentMonthAndYear()
