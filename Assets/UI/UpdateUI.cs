@@ -682,12 +682,11 @@ public class UpdateUI : MonoBehaviour
 
         btnQuests.GetComponent<Button>();
         btnQuests.gameObject.SetActive(false);
-        StartCoroutine(showBtnQuests());
 
         setBooleans();
     }
 
-    IEnumerator showBtnQuests()
+    public IEnumerator showBtnQuests()
     {
         while (game.currentMonth < 6)
             yield return null;
