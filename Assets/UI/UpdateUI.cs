@@ -18,6 +18,10 @@ public class UpdateUI : MonoBehaviour
     public int tutorialIndex;
     public Scrollbar scrollbarAfterActionReport;
 
+    private List<GameEvent>[] monthlyNewEvents;
+    private List<GameEvent>[] monthlyCompletedEvents;
+    private List<RegionAction>[] monthlyCompletedActions;
+
     public Text test;
 
     public Dropdown dropdownRegio;
@@ -1246,10 +1250,10 @@ public class UpdateUI : MonoBehaviour
         string[] right = { "Adviseurs", "Advisers" };
         string[] title = { "Organisatie", "Organization" };
         string[] bank = { "Bank", "Storage" };
-        string[] noord = { "Noord-Nederland", "The Netherlands Northern" };
-        string[] oost = { "Oost-Nederland", "The Netherlands Eastern" };
-        string[] zuid = { "Zuid-Nederland", "The Netherlands Southern" };
-        string[] west = { "West-Nederland", "The Netherlands Western" };
+        string[] noord = { "Noord-Nederland", "The Netherlands North" };
+        string[] oost = { "Oost-Nederland", "The Netherlands East" };
+        string[] zuid = { "Zuid-Nederland", "The Netherlands South" };
+        string[] west = { "West-Nederland", "The Netherlands West" };
         string[] yearly = { "Jaarlijks budget per regio", "Yearly budget per region" };
         string[] big = {"Zie hier het advies van je economische adviseur en je vervuilingsadviseur.",
                         "Here you can see the advice of your economic adviser and your pollution adviser. " };
@@ -1673,6 +1677,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for AfterActionStats Popup
     public void InitMonthlyReport()
     {
+        monthlyNewEvents = (List<GameEvent>[])game.monthlyReport.newEvents.Clone();
         updateTextAfterActionStats(true);
         calculateDifference(game.monthlyReport.oldIncome, game.monthlyReport.oldHappiness, game.monthlyReport.oldEcoAwareness, game.monthlyReport.oldPollution, game.monthlyReport.oldProsperity, true);
     }
@@ -1739,6 +1744,7 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionWestPollutionD.text = txtPollutionDescription[taal];
             txtAfterActionWestProsperityD.text = txtProsperityDescription[taal];
             txtAfterActionWestEventD.text = txtNewEventDescription[taal];
+            initAfterActionStatsNewEvents();
         }
         else
         {
@@ -1792,9 +1798,9 @@ public class UpdateUI : MonoBehaviour
         {
             foreach (GameEvent ge in r.inProgressGameEvents)
             {
-                for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
+                for (int i = 0; i < monthlyNewEvents.Length; i++)
                 {
-                    foreach (GameEvent e in game.monthlyReport.newEvents[i])
+                    foreach (GameEvent e in monthlyNewEvents[i])
                     {
                         if (e == ge)
                         {
@@ -1955,9 +1961,9 @@ public class UpdateUI : MonoBehaviour
     #region Code for AfterActionCompleted Popup
     public void initAFterActionCompleted()
     {
+        monthlyCompletedEvents = (List<GameEvent>[])game.monthlyReport.completedEvents.Clone();
+        monthlyCompletedActions = (List<RegionAction>[])game.monthlyReport.completedActions.Clone();
         updateTextAfterActionCompleted();
-        showCompletedEvents();
-        showCompletedActions();
     }
 
     private void updateTextAfterActionCompleted()
@@ -1969,15 +1975,18 @@ public class UpdateUI : MonoBehaviour
         txtAfterActionCompletedTitle.text = txtTitle[taal];
         txtAfterActionCompletedColumnLeft.text = txtLeft[taal];
         txtAfterActionCompletedColumnRight.text = txtRight[taal];
+
+        showCompletedEvents();
+        showCompletedActions();
     }
 
     private void showCompletedEvents()
     {
         txtAfterActionCompletedColumnLeftDescription.text = "";
 
-        for (int i = 0; i < game.monthlyReport.completedEvents.Length; i++)
+        for (int i = 0; i < monthlyCompletedEvents.Length; i++)
         {
-            foreach (GameEvent e in game.monthlyReport.completedEvents[i])
+            foreach (GameEvent e in monthlyCompletedEvents[i])
             {
                 txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal];
                 txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.consequences[e.pickedChoiceNumber]);
@@ -1987,7 +1996,14 @@ public class UpdateUI : MonoBehaviour
                 txtAfterActionCompletedColumnLeftDescription.text += sectorsPicked[taal];
                 foreach (string s in e.possibleSectors)
                 {
-                    txtAfterActionCompletedColumnLeftDescription.text += s + " ";
+                    foreach (RegionSector sector in game.regions[0].sectors)
+                    {
+                        if (sector.sectorName[0] == s)
+                        {
+                            txtAfterActionCompletedColumnLeftDescription.text += sector.sectorName[taal] + " ";
+                            break;
+                        }
+                    }
                 }
                 txtAfterActionCompletedColumnLeftDescription.text += "\n\n";
             }
@@ -2000,9 +2016,9 @@ public class UpdateUI : MonoBehaviour
         //scrollbarAfterActionReport.gameObject.SetActive(false);
         int index = 0;
 
-        for (int i = 0; i < game.monthlyReport.completedActions.Length; i++)
+        for (int i = 0; i < monthlyCompletedActions.Length; i++)
         {
-            foreach (RegionAction a in game.monthlyReport.completedActions[i])
+            foreach (RegionAction a in monthlyCompletedActions[i])
             {
                 txtAfterActionCompletedColumnRightDescription.text += a.name[taal] + " - " + a.description[taal];
                 txtAfterActionCompletedColumnRightDescription.text += getChosenSectors(a.pickedSectors);
@@ -2820,7 +2836,7 @@ public class UpdateUI : MonoBehaviour
     #region Next Turn Button Code
     public void nextTurnOnClick()
     {
-        if (tutorialNexTurnPossibe)
+        if (tutorialNexTurnPossibe && game.currentYear < 31)
         {
             EventManager.CallChangeMonth();
 

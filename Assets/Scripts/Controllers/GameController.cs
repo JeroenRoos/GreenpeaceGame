@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     // private float time;
     public bool autoSave = false;
     public bool autoEndTurn = false;
-    public bool loadGame = false;
+    static public bool loadGame = false;
 
     // Use this for initialization
     void Start()
@@ -235,11 +235,6 @@ public class GameController : MonoBehaviour
     {
         updateUI.btnMonthlyReportStats.gameObject.SetActive(true);
         updateUI.InitMonthlyReport();
-
-        if (checkNewEvents())
-        {
-            updateUI.initAfterActionStatsNewEvents();
-        }
 
         updateUI.btnMonthlyReportStats.gameObject.transform.position = afterActionPosition[index];
         index++;
