@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     public GameObject eventObject;
 
     // private float time;
-    public bool autoSave = false;
+    public bool autoSave = true;
     public bool autoEndTurn = false;
 
     // Use this for initialization
@@ -85,11 +85,10 @@ public class GameController : MonoBehaviour
 
         //float width = Screen.width / (1920 / 45);
         //float height = Screen.height / (1080 / MonthlyReportButon.GetComponent<RectTransform>().sizeDelta.y);
-        float height = Screen.height / (1080 / 65);
+        float height = Screen.height / (1080 / 55);
         //MonthlyReportButon.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
         //YearlyReportButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
         //CompletedButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-
 
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5 + height * 2 * 0, 0);
