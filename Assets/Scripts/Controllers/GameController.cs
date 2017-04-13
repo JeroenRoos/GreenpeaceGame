@@ -84,6 +84,7 @@ public class GameController : MonoBehaviour
         //afterActionPosition[2] = new Vector3( 5, 225, 0);
 
         //float width = Screen.width / (1920 / 45);
+        //float height = Screen.height / (1080 / MonthlyReportButon.GetComponent<RectTransform>().sizeDelta.y);
         float height = Screen.height / (1080 / 65);
         //MonthlyReportButon.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
         //YearlyReportButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
