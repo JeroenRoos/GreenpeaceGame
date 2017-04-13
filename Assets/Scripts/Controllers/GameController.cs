@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     // private float time;
     public bool autoSave = false;
     public bool autoEndTurn = false;
-    public bool loadGame = false;
+    static public bool loadGame = false;
 
     // Use this for initialization
     void Start()
