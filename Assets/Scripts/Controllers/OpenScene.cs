@@ -3,29 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 public class OpenScene : MonoBehaviour
 {
+    public Text txtNewGameBtn;
+    public Text txtLoadGame;
+    public Text Quit;
+    private GameController gameController;
+    
+
     void Start()
     {
-
+        Debug.Log("OpenScene START!");
+        gameController = new GameController();
     }
 
     public void loadSceneByIndex(int index)
     {
+        Debug.Log("NewGame Button Click!");
+        GameController.loadGame = false;
         Debug.Log(index);
         SceneManager.LoadSceneAsync(index);
-
-        // New GameController to start game, not sure about this one
-        //GameController c = new GameController();
     }
 
     public void buttonExitOnClick()
     {
-        //if (UnityEditor.EditorApplication.isPlaying)
-        //    UnityEditor.EditorApplication.isPlaying = false;
-        //else
             Application.Quit();
+    }
 
+    public void buttonLoadGameClick()
+    {
+        //gameController.loadgame = true;
+        GameController.loadGame = true;
+        gameController.LoadGame();
     }
 }

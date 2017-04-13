@@ -404,6 +404,7 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log("UpdateUI Start!");
         //test.text = Application.dataPath;
         initButtons();
         initCanvas();
@@ -2922,6 +2923,11 @@ public class UpdateUI : MonoBehaviour
     public void buttonExitGameOnClick()
     {
         Application.Quit();
+    }
+
+    public void buttonSaveGame()
+    {
+        
     }
 
     public void loadOtherScene(int index)
