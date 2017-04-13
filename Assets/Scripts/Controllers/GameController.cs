@@ -76,12 +76,11 @@ public class GameController : MonoBehaviour
         updateUI.LinkGame(game);
         StartCoroutine(updateUI.showBtnQuests());
         RectTransform rt = AfterTurnButton.image.rectTransform;
-        Debug.Log(rt.rect.height);
 
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5, 0);
-        afterActionPosition[1] = new Vector3( 5, rt.rect.height * 2 + 30, 0);
-        afterActionPosition[2] = new Vector3( 5, rt.rect.height * 3 + 30, 0);
+        afterActionPosition[1] = new Vector3( 5, 115, 0);
+        afterActionPosition[2] = new Vector3( 5, 225, 0);
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this);
