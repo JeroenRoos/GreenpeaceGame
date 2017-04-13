@@ -400,6 +400,7 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Debug.Log("UpdateUI Start!");
         //test.text = Application.dataPath;
         initButtons();
         initCanvas();
