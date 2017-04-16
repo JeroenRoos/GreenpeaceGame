@@ -529,6 +529,7 @@ public class UpdateUI : MonoBehaviour
                 "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. As you can see the current year is 2020. " +
                 "This means you have 30 years to reach this goal. "};
         txtTurorialStep1.text = step2[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
         imgTutorialStep2Highlight1.enabled = true;
         imgTutorialStep2Highlight2.enabled = true;
 
@@ -545,7 +546,8 @@ public class UpdateUI : MonoBehaviour
                 + "Er verschijnt dan een tooltip met de extra informatie."
                 , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not. A better Eco awareness means less pollution. "
                 + "The pollutions shows the pollution in the country. These icons show the averages from the different regions. For more information about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip." };
-   txtTurorialStep1.text = step3[taal];
+        txtTurorialStep1.text = step3[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 8;
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
@@ -562,6 +564,7 @@ public class UpdateUI : MonoBehaviour
                 , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West. Each region has an income, happiness, pollution, eco-awareness and prosperity. " 
                 + "These statistics differ for each region. Go to The Netherlands West by clicking on the region. "};
         txtTurorialStep1.text = step4[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 9;
 
         while (!tutorialStep5)
@@ -582,6 +585,7 @@ public class UpdateUI : MonoBehaviour
         string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. ",
             "At the bottom of your screen you can go to the Organization menu by pressing the button. " };
         txtTurorialStep1.text = step5[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
         imgTutorialStepOrgMenuHightlight.enabled = true;
 
         while (!tutorialStep8)
@@ -600,6 +604,7 @@ public class UpdateUI : MonoBehaviour
         string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende beurt knop rechtsonderin.  ",
             "You can go to the next month / turn by pressing the Next turn button in the bottom right of your screen. " };
         txtTurorialStep1.text = step6[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
 
         while (!tutorialStep10)
             yield return null;
@@ -619,6 +624,7 @@ public class UpdateUI : MonoBehaviour
                 , "It's a new month and there is lots to do. There is an active event running at the moment. Each turn there will be new events. There can only be one event in a region at the same time. " +
                 "There can be multiple active events in the whole country. For each event you have a few turns to decide what you are going to do. "  };
         txtTurorialStep1.text = step7[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
 
         while (!tutorialstep11)
             yield return null;
@@ -628,6 +634,7 @@ public class UpdateUI : MonoBehaviour
                 "Klik nu op het icoontje van de event. "
                 , "By clicking on the icon of the event you get a popup. In this popup you can chose which action you want to take with this event.  Click on the icon of the event to open the popup."};
         txtTurorialStep1.text = step8[taal];
+        txtTutorialStep1BtnText.text = btnText[taal];
 
         while (!tutorialstep12)
             yield return null;
@@ -710,7 +717,9 @@ public class UpdateUI : MonoBehaviour
 
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. Open het Missies menu door op de Missies knop te drukken. ",
             "You can see that an extra button just appeared next to the Organization menu button. This is the button for you Quests. Open the Quests menu by pressing the Quests button " };
+            string[] btnText = { "Verder", "Next" };
             txtTurorialStep1.text = step1[taal];
+            txtTutorialStep1BtnText.text = btnText[taal];
 
             while (!tutorialStep15)
                 yield return null;
