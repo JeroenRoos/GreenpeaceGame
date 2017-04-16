@@ -539,14 +539,13 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         //tutorialStep3 = false;
-        string[] step3 = { "Dit zijn jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het " +
-                "volk besluit om mee te werken met jouw beslissingen. Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Veruiling geeft de vervuiling in het land weer. De welvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's." +
-                "Tot slot wordt er getoont hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer. "+
-                "Als je meer informatie over de statistieken wil hebben kun je met je muis eroverheen gaan. Er verschijnt dan een tooltip met de extra informatie."
-                , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not" +
-                "A better Eco awareness means less pollution. The pollutions shows the pollution in the country. These icons show the averages from the different regions. " +
-                "For more informations about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip."};
-        txtTurorialStep1.text = step3[taal];
+        string[] step3 = { "Linksboven staan jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het volk besluit om mee te werken met jouw beslissingen. "
+                + "Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Vervuiling geeft de vervuiling in het land weer. De welvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's. "
+                + "Tot slot wordt er getoond hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer. Als je meer informatie over de statistieken wil hebben kun je met je muis eroverheen gaan. "
+                + "Er verschijnt dan een tooltip met de extra informatie."
+                , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not. A better Eco awareness means less pollution. "
+                + "The pollutions shows the pollution in the country. These icons show the averages from the different regions. For more information about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip." };
+   txtTurorialStep1.text = step3[taal];
         txtTurorialStep1.fontSize = 8;
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
@@ -558,10 +557,10 @@ public class UpdateUI : MonoBehaviour
         Vector3 imgNewPos = imgOldPos;
         imgNewPos.x = imgNewPos.x + Screen.width / 3;
         imgTutorialOverworld.gameObject.transform.position = imgNewPos;
-        string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. " +
-                "Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en werlvaart. Deze statistieken verschillen weer per regio.\nGa naar West-Nederland door op de regio te klikken. "
-                , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West" +
-                "Each region has a income, happiness, pollution, eco-awareness and prosperity. These statistics differ foreach region.\n Go to The Netherlands West by clicking on the region. "};
+        string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en welvaart. " 
+                + "Deze statistieken verschillen weer per regio. Ga naar West-Nederland door op de regio te klikken. "
+                , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West. Each region has an income, happiness, pollution, eco-awareness and prosperity. " 
+                + "These statistics differ for each region. Go to The Netherlands West by clicking on the region. "};
         txtTurorialStep1.text = step4[taal];
         txtTurorialStep1.fontSize = 9;
 
@@ -599,7 +598,7 @@ public class UpdateUI : MonoBehaviour
 
         canvasTutorial.gameObject.SetActive(true);
         string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende beurt knop rechtsonderin.  ",
-            "You can go to the next month / turn by pressing the Next turn button in the bottomright of your screen. " };
+            "You can go to the next month / turn by pressing the Next turn button in the bottom right of your screen. " };
         txtTurorialStep1.text = step6[taal];
 
         while (!tutorialStep10)
@@ -625,7 +624,7 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         tutorialeventsClickable = true;
-        string[] step8 = { "Door op het icoon van de event te klikken krijg je een popup. In deze popup kun je kiezen welke actie je bij dit event wil nemen. " +
+        string[] step8 = { "Door op het icoon van de event te klikken krijg je een pop-up. In deze pop-up kun je kiezen welke actie je bij dit event wil nemen. " +
                 "Klik nu op het icoontje van de event. "
                 , "By clicking on the icon of the event you get a popup. In this popup you can chose which action you want to take with this event.  Click on the icon of the event to open the popup."};
         txtTurorialStep1.text = step8[taal];
@@ -644,8 +643,8 @@ public class UpdateUI : MonoBehaviour
 
         canvasTutorial.gameObject.SetActive(true);
         string[] step9 = { "Verder kun je linksonder in je beeld buttons zien. Deze knoppen geven een overzicht van de veranderingen tussen de huidige en de vorige maand. Je krijgt dit rapport elke maand.  " +
-                "Als er een event of een actie klaar is krijg je een tweede button. Deze button toont een popup met informatie over deze actions en events. \n\nJe kunt nu verder spelen."
-                , "In the bottom left of your screen you can see a button. This buttons shows the changes between the current en the previous month. You will get this report every month. " +
+                "Als er een event of een actie klaar is krijg je een tweede button. Deze button toont een pop-up met informatie over deze actions en events. \n\nJe kunt nu verder spelen."
+                , "In the bottom left of your screen you can see a button. This buttons shows the changes between the current and the previous month. You will get this report every month. " +
                 "If an event or action is finished you will get an second button which leads to a popup with this information.\n\nYou can continue playing."};
         txtTurorialStep1.text = step9[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
@@ -1229,7 +1228,7 @@ public class UpdateUI : MonoBehaviour
         tutorialOrganizationActive = true;
         string[] step1 = { "In het organisatie menu kun je het jaarlijks inkomen zien van elke regio. Handig dus om te bepalen hoeveel je kan uitgeven het komende jaar. " +
                 "Verder kun je hier advies zien van je economische adviseur en je vervuilingsadviseur op basis van de status van die statistieken. Je kunt dit menu sluiten door op de ESC toets te drukken."
-                , "In the organization menu you can view the yearly income of each regio. This can come in handy when deciding your expanses the comming year. " +
+                , "In the organization menu you can view the yearly income of each region. This can come in handy when deciding your expanses the coming year. " +
                 "You can also view the advice from your economic adviser and your pollution adviser based on the value of these statistics. You can close this menu by pressing the ESC key."};
         string[] btnText = { "Verder", "Next" };
 
@@ -1329,9 +1328,8 @@ public class UpdateUI : MonoBehaviour
     {
         tutorialRegionActive = true;
 
-        string[] step1 = { "Elke regio bestaat uit 3 sectoren. Deze sectoren zijn Huishoudens, Landbouw en Bedrijven. De sectoren hebben statistieken voor " +
-                "tevredenheid, vervuiling, milieubewustheid en welvaart. Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. Je kunt deze secor statistieken zien door " +
-                "met je muis over de sector te hoveren."
+        string[] step1 = { "Elke regio bestaat uit 3 sectoren. Deze sectoren zijn Huishoudens, Landbouw en Bedrijven. De sectoren hebben statistieken voor tevredenheid, vervuiling, milieubewustheid en welvaart. "
+                + "Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. Je kunt deze sector statistieken zien door met je muis over de sector te hoveren."
                 , "Each region has 3 sectors. These sectors are Households, Agriculture and Companies. These sectors have statistics for happiness, pollution, eco awareness and prosperity. " +
                 "These sector statistics create the averages which are the region statistics. It is important to keep each sector happy. You can view these sector statistics by using your mouse to hover over the sector. "};
         string[] btnText = { "Verder", "Next" };
@@ -1342,11 +1340,11 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep6)
             yield return null;
 
-        string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. Je kunt maar 1 actie tegelijk doen in een regio. " + 
-                "Sommige acties kunnen ook maar 1 keer of eens in de zoveel tijd gedaan worden. Als je een actie kiest krijg je een aantal gegevens over de actie te zien. Daarnaast kun je kiezen " +
-                "op welke sectoren je de actie invloed uitoefend. Sommige acties kunnen in elke sector gedaan worden, andere in 1 of 2 van de sectoren. Kies nu een actie, keer vervolgens terug naar de landkaart door op de ESC toets te drukken."
+        string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. Je kunt maar 1 actie tegelijk doen in een regio. Sommige acties kunnen ook maar 1 keer of eens in de zoveel tijd gedaan worden. "
+                + "Als je een actie kiest krijg je een aantal gegevens over de actie te zien. Daarnaast kun je kiezen op welke sectoren je de actie invloed uitoefent. Sommige acties kunnen in elke sector gedaan worden, andere in 1 of 2 van de sectoren. "
+                + "Kies nu een actie, keer vervolgens terug naar de landkaart door op de ESC toets te drukken. "
                 , "You can do actions in regions. These actions cost money and most of the time also time. You can do 1 action at the time in a region. " +
-                "Soms actions you can only do once, others you can do again after some time. When you chose an action you can see a few statistics about the action. You also have to chosoe in which sectors you want the action to do things. " +
+                "Some actions you can only do once, others you can do again after some time. When you chose an action you can see a few statistics about the action. You also have to choose in which sectors you want the action to do things. " +
                 "Some actions can be done in each sectors, others only in 1 or 2 of the sectors. Choose an action, after that, return to the map by pressing the ESC key."};
 
         txtTutorialRegion.text = step2[taal];
@@ -2151,7 +2149,7 @@ public class UpdateUI : MonoBehaviour
     {
         imgTutorialQuests.gameObject.SetActive(true);
 
-        string[] step2 = { "In deze popup kun je zien welke actieve missies je hebt. Je krijgt om de 2 jaar een nieuwe missie. Als je aan de juiste condities voldoet haal je de missie en krijg je een beloning.",
+        string[] step2 = { "In deze pop-up kun je zien welke actieve missies je hebt. Je krijgt om de 2 jaar een nieuwe missie. Als je aan de juiste condities voldoet haal je de missie en krijg je een beloning.",
             "In this popup you can see your active quests. You get a new quest each time 2 years pass. If you reach the quest conditions you get a reward." };
         string[] txtBtn = { "Volgende", "Next" };
 
@@ -2285,10 +2283,10 @@ public class UpdateUI : MonoBehaviour
     IEnumerator eventTutorial()
     {
         tutorialEventsActive = true;
-        string[] txtTutorial = { "Bij elk event heb je altijd 3 keuzes. Van elke keuze kun je de kosten en de duur zien. Elke keuze brengt weer andere consequencies met zich mee voor de verschillende statistieken. " +
-                "Het is dus cruciaal dat je goed nadenkt over je beslissingen.\n\nLos nu dit event op door een oplossing te kiezen."
-                , "You always have 3 choices foreach event. You can see the cost and duration from each choice. Each choice brings other consequences for the different statistics. " + 
-                "This means it's crucial to think about what you want to achieve before making a choice.\n\nSolve this event by chosing an option." };
+        string[] txtTutorial = { "Bij elk event heb je altijd 3 keuzes. Van elke keuze kun je de kosten en de duur zien. Elke keuze brengt weer andere consequenties met zich mee voor de verschillende statistieken. "
+                + "Het is dus cruciaal dat je goed nadenkt over je beslissingen. Los nu dit event op door een oplossing te kiezen."
+                , "You always have 3 choices for each event. You can see the cost and duration from each choice. Each choice brings other consequences for the different statistics. " +
+                "This means it's crucial to think about what you want to achieve before making a choice.\n\nSolve this event by choosing  an option." };
         string[] txtBtn = { "Volgende", "Next" };
         txtTutorialEvent.text = txtTutorial[taal];
         txtTutorialEventBtn.text = txtBtn[taal];
