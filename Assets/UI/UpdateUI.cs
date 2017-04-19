@@ -2292,6 +2292,10 @@ public class UpdateUI : MonoBehaviour
     #region Code for Event Popup
     public void initEventPopup(GameEvent e, Region r)
     {
+        //radioEventOption1.interactable = true;
+        //radioEventOption2.interactable = true;
+        //radioEventOption3.interactable = true;
+
         gameEvent = e;
         regionEvent = r;
         canvasEventPopup.gameObject.SetActive(true);
