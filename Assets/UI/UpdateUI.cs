@@ -1698,18 +1698,6 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    private string getActionCost(SectorStatistics s)
-    {
-        //string[] tip;
-        if (s.income != 0)
-        {
-            string[] tip = { "Kosten: " + s.income, "Cost: " + s.income };
-            return tip[taal];
-        }
-
-        return "0";
-    }
-
     public void btnDoActionRegionMenuClick()
     {
         regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
@@ -2423,7 +2411,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption1Check = true;
             radioEventOption2.isOn = false;
             radioEventOption3.isOn = false;
-            btnDoEvent.interactable = true;
+            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[0])
+                btnDoEvent.interactable = true;
+            else
+                btnDoEvent.interactable = false;
         }
         else
             radioEventOption1Check = false;
@@ -2438,7 +2429,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption2Check = true;
             radioEventOption1.isOn = false;
             radioEventOption3.isOn = false;
-            btnDoEvent.interactable = true;
+            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[1])
+                btnDoEvent.interactable = true;
+            else
+                btnDoEvent.interactable = false;
         }
         else
             radioEventOption2Check = false;
@@ -2453,7 +2447,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption3Check = true;
             radioEventOption1.isOn = false;
             radioEventOption2.isOn = false;
-            btnDoEvent.interactable = true;
+            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[2])
+                btnDoEvent.interactable = true;
+            else
+                btnDoEvent.interactable = false;
         }
         else
             radioEventOption3Check = false;
