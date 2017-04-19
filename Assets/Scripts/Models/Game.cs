@@ -191,7 +191,7 @@ public class Game
         int activeCount = 0;
         foreach (GameEvent gameEvent in events)
         {
-            if (gameEvent.isActive || gameEvent.isIdle)
+            if (gameEvent.isIdle)
                 activeCount++;
         }
         return activeCount;
@@ -202,7 +202,7 @@ public class Game
         int possibleEventCount = 0;
         foreach (GameEvent gameEvent in events)
         {
-            if (!gameEvent.isActive || !gameEvent.isIdle)
+            if (!gameEvent.isActive || !gameEvent.isIdle || gameEvent.isFinished)
                 possibleEventCount++;
         }
 
@@ -214,7 +214,7 @@ public class Game
         List<GameEvent> possibleEvents = new List<GameEvent>();
         foreach (GameEvent gameEvent in events)
         {
-            if (!gameEvent.isActive || !gameEvent.isIdle)
+            if (!gameEvent.isActive || !gameEvent.isIdle || gameEvent.isActive)
             {
                 foreach (string possibleRegion in gameEvent.possibleRegions)
                 {
@@ -239,7 +239,7 @@ public class Game
             bool isPossible = true;
             foreach (GameEvent gameEvent in region.inProgressGameEvents)
             {
-                if (gameEvent.isActive || gameEvent.isIdle)
+                if (gameEvent.isActive || gameEvent.isIdle || !gameEvent.isFinished)
                 {
                     isPossible = false;
                     break;
@@ -259,7 +259,7 @@ public class Game
             bool isPossible = true;
             foreach (GameEvent gameEvent in region.inProgressGameEvents)
             {
-                if (gameEvent.isActive || gameEvent.isIdle)
+                if (gameEvent.isActive || gameEvent.isIdle || !gameEvent.isFinished)
                 {
                     isPossible = false;
                     break;

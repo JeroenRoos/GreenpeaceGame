@@ -91,7 +91,7 @@ public class GameEvent
         isActive = false;
         eventStartChance += eventChoiceEventStartChanceModifier[pickedChoiceNumber];
         game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
-        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
+        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown + temporaryConsequencesDuration[pickedChoiceNumber];
     }
 
     public void SetPickedChoice(int i, Game game, Region region)

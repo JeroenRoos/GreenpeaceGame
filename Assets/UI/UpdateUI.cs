@@ -1594,7 +1594,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (action.isActive)
             {
-                activeActionsRegio += action.name[taal];
+                activeActionsRegio += action.name[taal] + "\n";
             }
 
             txtActiveActions.text = activeActionsRegio;
@@ -1697,18 +1697,6 @@ public class UpdateUI : MonoBehaviour
                 checkboxRegionCompanies.gameObject.SetActive(true);
             }
         }
-    }
-
-    private string getActionCost(SectorStatistics s)
-    {
-        //string[] tip;
-        if (s.income != 0)
-        {
-            string[] tip = { "Kosten: " + s.income, "Cost: " + s.income };
-            return tip[taal];
-        }
-
-        return "0";
     }
 
     public void btnDoActionRegionMenuClick()
@@ -2343,10 +2331,6 @@ public class UpdateUI : MonoBehaviour
     #region Code for Event Popup
     public void initEventPopup(GameEvent e, Region r)
     {
-        //radioEventOption1.interactable = true;
-        //radioEventOption2.interactable = true;
-        //radioEventOption3.interactable = true;
-
         gameEvent = e;
         regionEvent = r;
         canvasEventPopup.gameObject.SetActive(true);
@@ -2360,16 +2344,6 @@ public class UpdateUI : MonoBehaviour
         {
             imgTutorialEvents.gameObject.SetActive(true);
             StartCoroutine(eventTutorial());
-        }
-
-        if (e.isActive)
-        {
-            radioEventOption1.interactable = false;
-            radioEventOption2.interactable = false;
-            radioEventOption3.interactable = false;
-
-            string[] txt = { "Je hebt al een optie gekozen bij dit event.", "You already chose an option." } ;
-            txtEventAlreadyActive.text = "";
         }
     }
 
@@ -2435,7 +2409,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption1Check = true;
             radioEventOption2.isOn = false;
             radioEventOption3.isOn = false;
-            btnDoEvent.interactable = true;
+            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[0])
+                btnDoEvent.interactable = true;
+            else
+                btnDoEvent.interactable = false;
         }
         else
             radioEventOption1Check = false;
@@ -2450,7 +2427,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption2Check = true;
             radioEventOption1.isOn = false;
             radioEventOption3.isOn = false;
-            btnDoEvent.interactable = true;
+            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[1])
+                btnDoEvent.interactable = true;
+            else
+                btnDoEvent.interactable = false;
         }
         else
             radioEventOption2Check = false;
@@ -2465,7 +2445,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption3Check = true;
             radioEventOption1.isOn = false;
             radioEventOption2.isOn = false;
-            btnDoEvent.interactable = true;
+            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[2])
+                btnDoEvent.interactable = true;
+            else
+                btnDoEvent.interactable = false;
         }
         else
             radioEventOption3Check = false;
