@@ -25,10 +25,15 @@ public class Game
     public List<RegionAction> actions { get; private set; }
     public List<Quest> quests { get; private set; }
     public Investments investments { get; private set; }
+    public List<Card> cards { get; private set; }
+
+    //inventory
+    public Inventory inventory { get; private set; }
 
     //new turn reports
     public ProgressReport monthlyReport { get; private set; }
     public ProgressReport yearlyReport { get; private set; }
+    public Timeline timeline { get; private set; }
     
     //advisors
     public EconomyAdvisor economyAdvisor { get; private set; }
@@ -50,7 +55,15 @@ public class Game
         economyAdvisor = new EconomyAdvisor();
         pollutionAdvisor = new PollutionAdvisor();
         investments = new Investments();
+        cards = new List<Card>();
+        inventory = new Inventory();
+        timeline = new Timeline();
 
+        cards.Add(new Card());
+        cards.Add(new Card());
+        cards.Add(new Card());
+        cards.Add(new Card());
+        cards.Add(new Card());
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
 
@@ -71,6 +84,11 @@ public class Game
     public void LoadQuests(List<Quest> quests)
     {
         this.quests = quests;
+    }
+
+    public void LoadCards(List<Card> cards)
+    {
+        this.cards = cards;
     }
 
     public void ChangeLanguage(string language)

@@ -47,11 +47,14 @@ public class GameController : MonoBehaviour
             LoadGameEvents();
             LoadQuests();
             LoadBuildings();
+            LoadCards();
             game.gameStatistics.UpdateRegionalAvgs(game);
 
             //set reports
             game.monthlyReport.UpdateStatistics(game.regions);
             game.yearlyReport.UpdateStatistics(game.regions);
+
+            UpdateTimeline();
 
             /*foreach (Region region in game.regions)
             {
@@ -66,7 +69,8 @@ public class GameController : MonoBehaviour
             SaveRegionActions();
             SaveBuildings();
             SaveGameEvents();
-            SaveQuests();*/
+            SaveQuests();
+            SaveCards();*/
         }
         else
             LoadGame();
@@ -190,6 +194,18 @@ public class GameController : MonoBehaviour
         game.LoadQuests(questContainer.quests);
     }
 
+    public void SaveCards()
+    {
+        CardContainer cardContainer = new CardContainer(game.cards);
+        cardContainer.Save();
+    }
+
+    public void LoadCards()
+    {
+        CardContainer cardContainer = CardContainer.Load();
+        game.LoadCards(cardContainer.cards);
+    }
+
     // Update is called once per frame
     void Update () {
         if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9 && updateUI.tutorialNexTurnPossibe))
@@ -227,13 +243,32 @@ public class GameController : MonoBehaviour
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateQuests();
 
+            if (isNewYear)
+                UpdateCards();
+
             GenerateMonthlyUpdates(isNewYear);
+            UpdateTimeline();
 
             game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
 
             if (autoSave)
                 SaveGame();
+        }
+    }
+
+    private void UpdateTimeline()
+    {
+        game.timeline.StoreTurnInTimeLine(game.gameStatistics, game.currentYear, game.currentMonth);
+    }
+
+    //yearly reward increase
+    private void UpdateCards()
+    {
+        foreach (Card card in game.inventory.ownedCards)
+        {
+            if (card.currentIncrementsDone < card.maximumIncrementsDone)
+                card.increaseCurrentRewards();
         }
     }
 
