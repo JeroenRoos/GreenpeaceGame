@@ -1481,8 +1481,10 @@ public class UpdateUI : MonoBehaviour
         updateActiveActions();
         updateActiveEvents();
 
+        dropdownRegio.gameObject.SetActive(true);
+        initDropDownRegion();
         // Er kan maar 1 action per regio zijn
-        foreach (RegionAction a in regio.actions)
+        /*foreach (RegionAction a in regio.actions)
         {
             if (a.isActive)
             {
@@ -1494,7 +1496,7 @@ public class UpdateUI : MonoBehaviour
                 dropdownRegio.gameObject.SetActive(true);
                 initDropDownRegion();
             }
-        }
+        }*/
     }
 
     private void updateRegionSectors()
