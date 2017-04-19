@@ -1911,7 +1911,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (isMonthly)
         {
-            txtAfterActionNoordIncome.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionNoordIncome.text = incomeDifference.ToString("0.00");
             txtAfterActionNoordHappiness.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionNoordEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionNoordPollution.text = pollutionDifference.ToString("0.00") + "%";
@@ -1920,7 +1920,7 @@ public class UpdateUI : MonoBehaviour
 
         else
         {
-            txtAfterActionNoordIncomeYearly.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionNoordIncomeYearly.text = incomeDifference.ToString("0.00");
             txtAfterActionNoordHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionNoordEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionNoordPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
@@ -1933,7 +1933,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (isMonthly)
         {
-            txtAfterActionOostIncome.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionOostIncome.text = incomeDifference.ToString("0.00");
             txtAfterActionOostHappiness.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionOostEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionOostPollution.text = pollutionDifference.ToString("0.00") + "%";
@@ -1941,7 +1941,7 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
-            txtAfterActionOostIncomeYearly.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionOostIncomeYearly.text = incomeDifference.ToString("0.00");
             txtAfterActionOostHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionOostEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionOostPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
@@ -1954,7 +1954,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (isMonthly)
         {
-            txtAfterActionZuidIncome.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionZuidIncome.text = incomeDifference.ToString("0.00");
             txtAfterActionZuidHappiness.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionZuidEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionZuidPollution.text = pollutionDifference.ToString("0.00") + "%";
@@ -1962,7 +1962,7 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
-            txtAfterActionZuidIncomeYearly.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionZuidIncomeYearly.text = incomeDifference.ToString("0.00");
             txtAfterActionZuidHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionZuidEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionZuidPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
@@ -1974,7 +1974,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (isMonthly)
         {
-            txtAfterActionWestIncome.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionWestIncome.text = incomeDifference.ToString("0.00");
             txtAfterActionWestHappiness.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionWestEcoAwareness.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionWestPollution.text = pollutionDifference.ToString("0.00") + "%";
@@ -1982,7 +1982,7 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
-            txtAfterActionWestIncomeYearly.text = incomeDifference.ToString("0.00") + "%";
+            txtAfterActionWestIncomeYearly.text = incomeDifference.ToString("0.00");
             txtAfterActionWestHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
             txtAfterActionWestEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionWestPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
