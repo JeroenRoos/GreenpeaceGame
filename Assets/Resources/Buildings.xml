@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<BuildingContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Buildings>
+    <Building>
+      <buildingID>EconomyBuiding</buildingID>
+      <buildingName>
+        <string>Aandelenbeurs</string>
+        <string>StockExchange</string>
+      </buildingName>
+      <incomeModifier>20</incomeModifier>
+      <pollutionModifier>0</pollutionModifier>
+      <happinessModifier>0</happinessModifier>
+      <buildingMoneyCost>20000</buildingMoneyCost>
+    </Building>
+    <Building>
+      <buildingID>PollutionBuilding</buildingID>
+      <buildingName>
+        <string>Windmolenpark</string>
+        <string>Windmill park</string>
+      </buildingName>
+      <incomeModifier>0</incomeModifier>
+      <pollutionModifier>-20</pollutionModifier>
+      <happinessModifier>0</happinessModifier>
+      <buildingMoneyCost>20000</buildingMoneyCost>
+    </Building>
+    <Building>
+      <buildingID>HappinessBuilding</buildingID>
+      <buildingName>
+        <string>Non-profit dierentuin</string>
+        <string>Non-profit zoo</string>
+      </buildingName>
+      <incomeModifier>0</incomeModifier>
+      <pollutionModifier>0</pollutionModifier>
+      <happinessModifier>20</happinessModifier>
+      <buildingMoneyCost>20000</buildingMoneyCost>
+    </Building>
+  </Buildings>
+</BuildingContainer>

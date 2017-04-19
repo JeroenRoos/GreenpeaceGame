@@ -43,9 +43,10 @@ public class GameController : MonoBehaviour
 
             LoadRegions();
             LoadRegionActions();
+            LoadBuildings();
             LoadGameEvents();
             LoadQuests();
-            //LoadBuildings();
+            LoadBuildings();
             game.gameStatistics.UpdateRegionalAvgs(game);
 
             //set reports
@@ -63,7 +64,7 @@ public class GameController : MonoBehaviour
 
             SaveRegions();
             SaveRegionActions();
-            //SaveBuildings();
+            SaveBuildings();
             SaveGameEvents();
             SaveQuests();*/
         }
@@ -163,7 +164,7 @@ public class GameController : MonoBehaviour
 
     public void SaveBuildings()
     {
-        BuildingContainer buildingContainer = new BuildingContainer(game.regions[0].buildings);
+        BuildingContainer buildingContainer = new BuildingContainer(game.regions[0].possibleBuildings);
         buildingContainer.Save();
 
     }

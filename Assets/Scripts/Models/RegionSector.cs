@@ -17,6 +17,30 @@ public class RegionSector
         this.statistics = statistics;
     }
 
+    public void ImplementBuildingStatistics(Building activeBuilding, bool isAdded)
+    {
+        double statisticIncome = statistics.income * (activeBuilding.incomeModifier / 100);
+
+        if (isAdded)
+        {
+            statistics.ModifyIncome(statisticIncome);
+            statistics.ModifyHappiness(activeBuilding.happinessModifier);
+            statistics.pollution.ChangeAirPollutionMutation(activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeNaturePollutionMutation(activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeWaterPollutionMutation(activeBuilding.pollutionModifier);
+        }
+
+        else
+        {
+            statistics.ModifyIncome(0 - statisticIncome);
+            statistics.ModifyHappiness(0 - activeBuilding.happinessModifier);
+            statistics.pollution.ChangeAirPollutionMutation(0 - activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeNaturePollutionMutation(0 - activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeWaterPollutionMutation(0 - activeBuilding.pollutionModifier);
+
+        }
+    }
+
     public void ImplementStatisticValues(SectorStatistics statistics, bool isAdded) //if a statistic is removed for example, isAdded is false
     {
         if (isAdded)
@@ -29,8 +53,7 @@ public class RegionSector
             this.statistics.pollution.ChangeAirPollution(statistics.pollution.airPollution);
             this.statistics.pollution.ChangeNaturePollution(statistics.pollution.naturePollution);
             this.statistics.pollution.ChangeWaterPollution(statistics.pollution.waterPollution);
-
-            //temporary methods (incomplete)
+            
             this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
             this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
             this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
@@ -43,7 +66,10 @@ public class RegionSector
             this.statistics.ModifyEcoAwareness(0 - statistics.ecoAwareness);
             this.statistics.ModifyProsperity(0 - statistics.prosperity);
 
-            //temporary methods (incomplete)
+            this.statistics.pollution.ChangeAirPollution(0 - statistics.pollution.airPollution);
+            this.statistics.pollution.ChangeNaturePollution(0 - statistics.pollution.naturePollution);
+            this.statistics.pollution.ChangeWaterPollution(0 - statistics.pollution.waterPollution);
+
             this.statistics.pollution.ChangeAirPollutionMutation(0 - statistics.pollution.airPollutionIncrease);
             this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
             this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
