@@ -11,6 +11,7 @@
         <string>Campaign to increase the eco awareness within the region.</string>
       </description>
       <actionMoneyCost>2000</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>2000</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -56,6 +57,21 @@
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>2</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -102,6 +118,7 @@
         <string>Improve the production in the region to generate a higher income.</string>
       </description>
       <actionMoneyCost>3000</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>3</actionDuration>
       <possibleSectors>
@@ -147,6 +164,21 @@
           <waterPollutionIncrease>0.25</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>25</income>
+        <happiness>0.5</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>1</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0.25</airPollutionIncrease>
+          <naturePollutionIncrease>0.25</naturePollutionIncrease>
+          <waterPollutionIncrease>0.25</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -193,6 +225,7 @@
         <string>Close an area in a region for a nature reserve.</string>
       </description>
       <actionMoneyCost>3000</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>3</actionDuration>
       <possibleSectors>
@@ -238,6 +271,21 @@
           <waterPollutionIncrease>-1</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>-5</income>
+        <happiness>0</happiness>
+        <ecoAwareness>2</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>-1</airPollutionIncrease>
+          <naturePollutionIncrease>-1</naturePollutionIncrease>
+          <waterPollutionIncrease>-1</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -284,6 +332,7 @@
         <string>Raise money for your own organization.</string>
       </description>
       <actionMoneyCost>0</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
       <actionMoneyReward>1000</actionMoneyReward>
       <actionDuration>1</actionDuration>
       <possibleSectors>
@@ -329,6 +378,21 @@
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -375,6 +439,7 @@
         <string>Increase the prosperity by investing more in the economy</string>
       </description>
       <actionMoneyCost>3000</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -420,6 +485,21 @@
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>2</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -466,6 +546,7 @@
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
       <actionMoneyCost>1500</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>1500</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -511,6 +592,21 @@
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>-20</income>
+        <happiness>2</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -557,6 +653,7 @@
         <string>Take actions against the airpollution.</string>
       </description>
       <actionMoneyCost>2500</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>2500</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -602,6 +699,21 @@
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>-10</income>
+        <happiness>0</happiness>
+        <ecoAwareness>1</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>-2</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -648,6 +760,7 @@
         <string>Take actions against the nature pollution.</string>
       </description>
       <actionMoneyCost>2500</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>2500</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -693,6 +806,21 @@
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>-5</income>
+        <happiness>0</happiness>
+        <ecoAwareness>1</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>-2</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -739,6 +867,7 @@
         <string>Take actions against the water pollution.</string>
       </description>
       <actionMoneyCost>2500</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>2500</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -784,6 +913,21 @@
           <waterPollutionIncrease>-2</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>-5</income>
+        <happiness>0</happiness>
+        <ecoAwareness>0</ecoAwareness>
+        <prosperity>1</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>0</airPollution>
+          <naturePollution>0</naturePollution>
+          <waterPollution>0</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>-2</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>
@@ -830,6 +974,7 @@
         <string>Reduce the current pollution in the chosen sectors with 5%.</string>
       </description>
       <actionMoneyCost>8000</actionMoneyCost>
+      <afterInvestmentActionMoneyCost>8000</afterInvestmentActionMoneyCost>
       <actionMoneyReward>0</actionMoneyReward>
       <actionDuration>2</actionDuration>
       <possibleSectors>
@@ -875,6 +1020,21 @@
           <waterPollutionIncrease>0</waterPollutionIncrease>
         </pollution>
       </consequences>
+      <afterInvestmentConsequences>
+        <income>0</income>
+        <happiness>0</happiness>
+        <ecoAwareness>2</ecoAwareness>
+        <prosperity>0</prosperity>
+        <pollution>
+          <avgPollution>0</avgPollution>
+          <airPollution>-5</airPollution>
+          <naturePollution>-5</naturePollution>
+          <waterPollution>-5</waterPollution>
+          <airPollutionIncrease>0</airPollutionIncrease>
+          <naturePollutionIncrease>0</naturePollutionIncrease>
+          <waterPollutionIncrease>0</waterPollutionIncrease>
+        </pollution>
+      </afterInvestmentConsequences>
       <temporaryConsequences>
         <income>0</income>
         <happiness>0</happiness>

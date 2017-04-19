@@ -20,7 +20,7 @@ public class Region
     public List<Building> possibleBuildings { get; private set; }
     public Building activeBuilding { get; private set; }
 
-    private Region() { }
+    public Region() { }
 
     public void LoadBuildings(List<Building> possibleBuildings)
     {
