@@ -11,7 +11,6 @@ public class Region
 {
     public string[] name { get; private set; }
     public RegionStatistics statistics { get; private set; }
-    public List<Building> buildings { get; private set; }
     public List<RegionAction> actions { get; private set; }
     public RegionSector[] sectors { get; private set; }
     public float[] eventPositions;
@@ -23,9 +22,9 @@ public class Region
 
     private Region() { }
 
-    public void LoadBuildings(List<Building> buildings)
+    public void LoadBuildings(List<Building> possibleBuildings)
     {
-        this.possibleBuildings = buildings;
+        this.possibleBuildings = possibleBuildings;
     }
 
     public void LoadActions(List<RegionAction> actions)
@@ -105,11 +104,24 @@ public class Region
     
     public void SetBuilding(string buildingID)
     {
-        foreach (Building b in buildings)
+        if (activeBuilding != null)
+        {
+            foreach (RegionSector rs in sectors)
+            {
+                rs.ImplementBuildingStatistics(activeBuilding, false);
+            }
+        }
+
+        foreach (Building b in possibleBuildings)
         {
             if (b.buildingID == buildingID)
             {
                 activeBuilding = b;
+                foreach (RegionSector rs in sectors)
+                {
+                    rs.ImplementBuildingStatistics(activeBuilding, true);
+                }
+                break;
             }
         }
     }

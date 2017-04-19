@@ -24,7 +24,6 @@
         <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>6.666666666666667</avgWaterPollutionIncrease>
       </statistics>
-      <buildings />
       <actions>
         <RegionAction>
           <name>
@@ -1003,6 +1002,41 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
+      <possibleBuildings>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+      </possibleBuildings>
     </Region>
     <Region>
       <eventPositions>
@@ -1027,7 +1061,6 @@
         <avgNaturePollutionIncrease>8.3333333333333339</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>8.3333333333333339</avgWaterPollutionIncrease>
       </statistics>
-      <buildings />
       <actions>
         <RegionAction>
           <name>
@@ -2006,6 +2039,41 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
+      <possibleBuildings>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+      </possibleBuildings>
     </Region>
     <Region>
       <eventPositions>
@@ -2030,7 +2098,6 @@
         <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>5</avgWaterPollutionIncrease>
       </statistics>
-      <buildings />
       <actions>
         <RegionAction>
           <name>
@@ -3009,6 +3076,41 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
+      <possibleBuildings>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+      </possibleBuildings>
     </Region>
     <Region>
       <eventPositions>
@@ -3033,7 +3135,6 @@
         <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
         <avgWaterPollutionIncrease>10</avgWaterPollutionIncrease>
       </statistics>
-      <buildings />
       <actions>
         <RegionAction>
           <name>
@@ -4012,6 +4113,41 @@
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
+      <possibleBuildings>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+        <Building>
+          <buildingID>placeholderName</buildingID>
+          <buildingName>
+            <string>dutch name</string>
+            <string>english name</string>
+          </buildingName>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
+          <buildingMoneyCost>0</buildingMoneyCost>
+        </Building>
+      </possibleBuildings>
     </Region>
   </Regions>
 </RegionContainer>
