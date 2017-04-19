@@ -24,6 +24,7 @@ public class Game
     public List<GameEvent> events { get; private set; }
     public List<RegionAction> actions { get; private set; }
     public List<Quest> quests { get; private set; }
+    public Investments investments { get; private set; }
 
     //new turn reports
     public ProgressReport monthlyReport { get; private set; }
@@ -48,6 +49,7 @@ public class Game
         yearlyReport = new ProgressReport();
         economyAdvisor = new EconomyAdvisor();
         pollutionAdvisor = new PollutionAdvisor();
+        investments = new Investments();
 
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
