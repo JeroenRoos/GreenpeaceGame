@@ -11765,14 +11765,14 @@
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
-        <double>7500</double>
-        <double>3000</double>
         <double>0</double>
+        <double>3000</double>
+        <double>7500</double>
       </eventChoiceMoneyCost>
       <afterInvestmentEventChoiceMoneyCost>
-        <double>7500</double>
-        <double>3000</double>
         <double>0</double>
+        <double>3000</double>
+        <double>7500</double>
       </afterInvestmentEventChoiceMoneyCost>
       <eventChoiceMoneyReward>
         <double>0</double>

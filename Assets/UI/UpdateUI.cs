@@ -1593,7 +1593,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (action.isActive)
             {
-                activeActionsRegio += action.name[taal];
+                activeActionsRegio += action.name[taal] + "\n";
             }
 
             txtActiveActions.text = activeActionsRegio;
@@ -2345,10 +2345,6 @@ public class UpdateUI : MonoBehaviour
     #region Code for Event Popup
     public void initEventPopup(GameEvent e, Region r)
     {
-        //radioEventOption1.interactable = true;
-        //radioEventOption2.interactable = true;
-        //radioEventOption3.interactable = true;
-
         gameEvent = e;
         regionEvent = r;
         canvasEventPopup.gameObject.SetActive(true);
@@ -2362,16 +2358,6 @@ public class UpdateUI : MonoBehaviour
         {
             imgTutorialEvents.gameObject.SetActive(true);
             StartCoroutine(eventTutorial());
-        }
-
-        if (e.isActive)
-        {
-            radioEventOption1.interactable = false;
-            radioEventOption2.interactable = false;
-            radioEventOption3.interactable = false;
-
-            string[] txt = { "Je hebt al een optie gekozen bij dit event.", "You already chose an option." } ;
-            txtEventAlreadyActive.text = "";
         }
     }
 
