@@ -198,6 +198,48 @@ public class UpdateUI : MonoBehaviour
     public Text txtQuestsDescription;
     public Text txtQuestsActive;
 
+    // Text Investments Popup
+    public Text txtInvestmentsTitle;
+    public Text txtInvestmentsColumn;
+    public Text txtInvestmentsDescription;
+    public Text txtInvestmentsActionCost;
+    public Text txtInvestmentsActionConsequences;
+    public Text txtInvestmentsEventCost;
+    public Text txtInvestmentsEventConsequences;
+    public Image[] imgInvestmentActionCost;
+    //public Image[] imgInvestmentEventCost;
+    //public Image[] imgInvestmentActionConsequences;
+    //public Image[] imgInvestmentEventConsequences;
+
+        
+    public Button btnInvestmentActionCostInvest;
+    public Image imgInvestmentActionCost01;
+    public Image imgInvestmentActionCost02;
+    public Image imgInvestmentActionCost03;
+    public Image imgInvestmentActionCost04;
+    public Image imgInvestmentActionCost05;
+
+    public Button btnInvestmentActionConsequenceInvest;
+    public Image imgInvestmentActionConsequences01;
+    public Image imgInvestmentActionConsequences02;
+    public Image imgInvestmentActionConsequences03;
+    public Image imgInvestmentActionConsequences04;
+    public Image imgInvestmentActionConsequences05;
+
+    public Button btnInvestmentEventCostInvest;
+    public Image imgInvestmentEventCost01;
+    public Image imgInvestmentEventCost02;
+    public Image imgInvestmentEventCost03;
+    public Image imgInvestmentEventCost04;
+    public Image imgInvestmentEventCost05;
+
+    public Button btnInvestmentEventConsequenceInvest;
+    public Image imgInvestmentEventConsequences01;
+    public Image imgInvestmentEventConsequences02;
+    public Image imgInvestmentEventConsequences03;
+    public Image imgInvestmentEventConsequences04;
+    public Image imgInvestmentEventConsequences05;
+
     // Text Organization Menu
     public Text txtColumnLeft;
     public Text txtColumnRight;
@@ -272,6 +314,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnMenu;
     public Button btnTimeline;
     public Button btnOrganization;
+    public Button btnInvestments;
     public Button btnQuests;
     public Button btnMoney;
     public Button btnHappiness;
@@ -302,6 +345,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasAfterActionCompletedPopup;
     public Canvas canvasQuestsPopup;
     public Canvas canvasEventPopup;
+    public Canvas canvasInvestmentsPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -413,6 +457,7 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
+
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
@@ -421,12 +466,16 @@ public class UpdateUI : MonoBehaviour
         //test.text = Application.dataPath;
         initButtons();
         initCanvas();
+        initOrganizationText();
+        initRegionText();
+        initInvestementsText();
+
         tooltipStyle.normal.background = tooltipTexture;
         taal = 0;
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            tutorialActive = true;
+            tutorialActive = false;
 
         if (tutorialActive)
             initTutorialActive();
@@ -541,6 +590,7 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step1[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         btnOrganization.interactable = false;
+        btnInvestments.interactable = false;
         btnNextTurn.interactable = false;
 
         while (!tutorialStep2)
@@ -711,6 +761,7 @@ public class UpdateUI : MonoBehaviour
         btnMenu.GetComponent<Button>();
         btnTimeline.GetComponent<Button>();
         btnOrganization.GetComponent<Button>();
+        btnInvestments.GetComponent<Button>();
         btnMoney.GetComponent<Button>();
         btnHappiness.GetComponent<Button>();
         btnAwareness.GetComponent<Button>();
@@ -810,6 +861,9 @@ public class UpdateUI : MonoBehaviour
         canvasOrganizationPopup.GetComponent<Canvas>();
         canvasOrganizationPopup.gameObject.SetActive(false);
 
+        canvasInvestmentsPopup.GetComponent<Canvas>();
+        canvasInvestmentsPopup.gameObject.SetActive(false);
+
         canvasTimelinePopup.GetComponent<Canvas>();
         canvasTimelinePopup.gameObject.SetActive(false);
 
@@ -841,6 +895,9 @@ public class UpdateUI : MonoBehaviour
     public void LinkGame(Game game)
     {
         this.game = game;
+
+        // Dit kan pas als game gelinked is
+        initInvestmentsImages();
     }
     #endregion
 
@@ -875,6 +932,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasOrganizationPopup.gameObject.activeSelf)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasInvestmentsPopup.gameObject.activeSelf)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -1266,7 +1329,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialOrganization.enabled = false;
         btnTutorialOrganization.gameObject.SetActive(false);
 
-        initOtherText();
+        //initOrganizationText();
         initAdvisersText();
 
         if (/*tutorialStep8 && */tutorialActive && tutorialOrganizationActive)
@@ -1297,7 +1360,13 @@ public class UpdateUI : MonoBehaviour
         tutorialOrganizationActive = false;
     }
 
-    private void initOtherText()
+    private void initAdvisersText()
+    {
+        txtAdviserEconomic.text = game.economyAdvisor.name[taal] + "\n" + game.economyAdvisor.displayMessage[taal];
+        txtAdviserPollution.text = game.pollutionAdvisor.name[taal] + "\n" + game.pollutionAdvisor.displayMessage[taal];
+    }
+
+    private void initOrganizationText()
     {
         string[] left = { "Budget", "Budget" };
         string[] right = { "Adviseurs", "Advisers" };
@@ -1336,12 +1405,6 @@ public class UpdateUI : MonoBehaviour
         // txtDemonstration.text = demonstration[taal];
         // txtResearch.text = research[taal];
         // txtEcoGuarding.text = guarding[taal];
-    }
-
-    private void initAdvisersText()
-    {
-        txtAdviserEconomic.text = game.economyAdvisor.name[taal] + "\n" + game.economyAdvisor.displayMessage[taal];
-        txtAdviserPollution.text = game.pollutionAdvisor.name[taal] + "\n" + game.pollutionAdvisor.displayMessage[taal];
     }
     #endregion
 
@@ -1429,7 +1492,7 @@ public class UpdateUI : MonoBehaviour
     private void updateRegionScreenUI()
     {
         // Set the text in the popup based on language
-        initMainText();
+        //initRegionText();
 
         updateRegionTextValues();
 
@@ -1442,7 +1505,7 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionCompanies.gameObject.SetActive(false);
     }
 
-    private void initMainText()
+    private void initRegionText()
     {
         string[] txtHappiness = { "Tevredenheid", "Happiness" };
         string[] txtEcoAwareness = { "Milieubewustheid", "Eco awareness" };
@@ -2488,6 +2551,173 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for Investments Popup
+    private void initInvestementsText()
+    {
+        string[] title = { "Investeren", "Investments" };
+        string[] column = { "Investeer in de organisatie", "Invest in the organization" };
+        string[] description = { "Hier kun je geld investeren in je organisatie. Hoe meer geld je in een onderdeel investeert, hoe meer positief resultaat je zult zien.\nJe kunt 5 keer investeren in elk onderdeel. " +
+                "Investeren kost 5000 per keer. Investeringen kun je niet terug draaien.",
+            "You can invest money in your own organization. If you invest more in one of the segments you will see a larger positive result. You can invest 5 times in each segment. " + 
+            "Investing will cost you 5000 each time. You can't rollback your investments."};
+        string[] actievermindering = { "Kosten verlagen acties\nVerlaag de kosten voor elke actie.", "Cost reduction actions\nLowers the cost for all actions."};
+        string[] actieconsequences = { "Betere consequencies acties\nVerbeter de consequenties bij elke actie.", "Better consequences actions\nImprove the consequencies for all actions." };
+        string[] eventvermindering = { "Kosten verlagen events\nVerlaag de kosten voor elke event optie.", "Cost reduction events\nLowers the cost for all events options." };
+        string[] eventconsequencies = { "Betere consequencies events\nVerbeter de consequenties bij elke event optie.", "Better consequences events\nImprove the consequencies for all event options." };
+
+        txtInvestmentsTitle.text = title[taal];
+        txtInvestmentsColumn.text = column[taal];
+        txtInvestmentsDescription.text = description[taal];
+        txtInvestmentsActionCost.text = actievermindering[taal];
+        txtInvestmentsActionConsequences.text = actieconsequences[taal];
+        txtInvestmentsEventCost.text = eventvermindering[taal];
+        txtInvestmentsEventConsequences.text = eventconsequencies[taal];
+    }
+
+    private void initInvestmentsImages()
+    {
+        setActionCostReductionInvestments();
+        setActionConsequencesInvestments();
+        setEventCostReductionInvestments();
+        setEventConsequencesInvestments();
+    }
+
+    private void setActionCostReductionInvestments()
+    {
+        if (game.investments.actionCostReduction[0])
+            imgInvestmentActionCost01.gameObject.SetActive(true);
+        if (game.investments.actionCostReduction[1])
+            imgInvestmentActionCost02.gameObject.SetActive(true);
+        if (game.investments.actionCostReduction[2])
+            imgInvestmentActionCost03.gameObject.SetActive(true);
+        if (game.investments.actionCostReduction[3])
+            imgInvestmentActionCost04.gameObject.SetActive(true);
+        if (game.investments.actionCostReduction[4])
+            imgInvestmentActionCost05.gameObject.SetActive(true);
+    }
+
+    private void setActionConsequencesInvestments()
+    {
+        if (game.investments.betterActionConsequences[0])
+            imgInvestmentActionConsequences01.gameObject.SetActive(true);
+        if (game.investments.betterActionConsequences[1])
+            imgInvestmentActionConsequences02.gameObject.SetActive(true);
+        if (game.investments.betterActionConsequences[2])
+            imgInvestmentActionConsequences03.gameObject.SetActive(true);
+        if (game.investments.betterActionConsequences[3])
+            imgInvestmentActionConsequences04.gameObject.SetActive(true);
+        if (game.investments.betterActionConsequences[4])
+            imgInvestmentActionConsequences05.gameObject.SetActive(true);
+    }
+
+    private void setEventCostReductionInvestments()
+    {
+        if (game.investments.gameEventCostReduction[0])
+            imgInvestmentEventCost01.gameObject.SetActive(true);
+        if (game.investments.gameEventCostReduction[1])
+            imgInvestmentEventCost02.gameObject.SetActive(true);
+        if (game.investments.gameEventCostReduction[2])
+            imgInvestmentEventCost03.gameObject.SetActive(true);
+        if (game.investments.gameEventCostReduction[3])
+            imgInvestmentEventCost04.gameObject.SetActive(true);
+        if (game.investments.gameEventCostReduction[4])
+            imgInvestmentEventCost05.gameObject.SetActive(true);
+    }
+
+    private void setEventConsequencesInvestments()
+    {
+        if (game.investments.betterGameEventConsequences[0])
+            imgInvestmentEventConsequences01.gameObject.SetActive(true);
+        if (game.investments.betterGameEventConsequences[1])
+            imgInvestmentEventConsequences02.gameObject.SetActive(true);
+        if (game.investments.betterGameEventConsequences[2])
+            imgInvestmentEventConsequences03.gameObject.SetActive(true);
+        if (game.investments.betterGameEventConsequences[3])
+            imgInvestmentEventConsequences04.gameObject.SetActive(true);
+        if (game.investments.betterGameEventConsequences[4])
+            imgInvestmentEventConsequences05.gameObject.SetActive(true);
+    }
+
+    public void btnInvestActionCost()
+    {
+        if (game.gameStatistics.money >= game.investments.investmentCost)
+        {
+            game.investments.InvestInActionCostReduction(game.regions);
+            setActionCostReductionInvestments();
+
+            if (game.investments.actionCostReduction[4])
+                btnInvestmentActionCostInvest.gameObject.SetActive(false);
+
+            game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
+        }
+        updateInvestButtonsInteractable();
+    }
+
+    public void btnInvestActionConsequences()
+    {
+        if (game.gameStatistics.money >= game.investments.investmentCost)
+        {
+            game.investments.InvestInBetterActionConsequences(game.regions);
+            setActionConsequencesInvestments();
+
+            if (game.investments.betterActionConsequences[4])
+                btnInvestmentActionConsequenceInvest.gameObject.SetActive(false);
+
+            game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
+        }
+        updateInvestButtonsInteractable();
+    }
+
+    public void btnInvestEventCost()
+    {
+        if (game.gameStatistics.money >= game.investments.investmentCost)
+        {
+            game.investments.InvestInGameEventCostReduction(game.events);
+            setEventCostReductionInvestments();
+
+            if (game.investments.gameEventCostReduction[4])
+                btnInvestmentEventCostInvest.gameObject.SetActive(false);
+
+            game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
+        }
+        updateInvestButtonsInteractable();
+    }
+
+    public void btnInvestEventConsequences()
+    {
+        if (game.gameStatistics.money >= game.investments.investmentCost)
+        {
+            game.investments.InvestInBetterGameEventConsequences(game.events);
+            setEventConsequencesInvestments();
+
+            if (game.investments.betterGameEventConsequences[4])
+                btnInvestmentEventConsequenceInvest.gameObject.SetActive(false);
+
+            game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
+        }
+
+        updateInvestButtonsInteractable(); 
+    }
+
+    private void updateInvestButtonsInteractable()
+    {
+        if (game.gameStatistics.money < game.investments.investmentCost)
+        {
+            btnInvestmentActionCostInvest.interactable = false;
+            btnInvestmentActionConsequenceInvest.interactable = false;
+            btnInvestmentEventCostInvest.interactable = false;
+            btnInvestmentEventConsequenceInvest.interactable = false;
+        }
+        else
+        {
+            btnInvestmentActionCostInvest.interactable = true;
+            btnInvestmentActionConsequenceInvest.interactable = true;
+            btnInvestmentEventCostInvest.interactable = true;
+            btnInvestmentEventConsequenceInvest.interactable = true;
+        }
+    }
+    #endregion
+
     #region Code for Button Presses for Popups
     public void btnTimelineClick()
     {
@@ -2570,6 +2800,18 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    public void btnInvestmentsClick()
+    {
+        if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(true);
+            popupActive = true;
+            EventManager.CallPopupIsActive();
+            updateInvestButtonsInteractable();
+            //initInvestementsPopup();
+        }
+    }
+
     private void initButtonText()
     {
         string[] resume = { "Verder spelen", "Resume" };
@@ -2594,6 +2836,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasMenuPopup.gameObject.activeSelf)
         {
             canvasMenuPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasInvestmentsPopup.gameObject.activeSelf)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -2653,6 +2901,9 @@ public class UpdateUI : MonoBehaviour
             txtBtnTimeline.text = "Tijdlijn";
             txtBtnMenu.text = "Menu";
             initButtonText();
+            initOrganizationText();
+            initRegionText();
+            initInvestementsText();
         }
     }
 
@@ -2666,6 +2917,9 @@ public class UpdateUI : MonoBehaviour
             txtBtnTimeline.text = "Timeline";
             txtBtnMenu.text = "Menu";
             initButtonText();
+            initOrganizationText();
+            initRegionText();
+            initInvestementsText();
         }
     }
     #endregion

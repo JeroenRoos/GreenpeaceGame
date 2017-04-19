@@ -72,6 +72,8 @@ public class GameController : MonoBehaviour
             LoadGame();
 
         updateUI = GetComponent<UpdateUI>();
+        //updateUI = new UpdateUI();
+
         eventObjectController = GetComponent<EventObjectController>();
         foreach (Region r in game.regions)
         {
