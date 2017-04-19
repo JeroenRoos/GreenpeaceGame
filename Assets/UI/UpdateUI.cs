@@ -390,6 +390,8 @@ public class UpdateUI : MonoBehaviour
     private bool tutorialStep17;
     private bool tutorialStep18;
     private bool tutorialstep19;
+    private bool tutorialStep20;
+    private bool tutorialStep21;
     private bool tutorialOrganizationDone;
     public bool tutorialNextTurnDone;
     public bool tutorialEventsDone;
@@ -398,7 +400,7 @@ public class UpdateUI : MonoBehaviour
     public bool tutorialQuestsActive;
     public bool tutorialOrganizationActive;
     public bool tutorialeventsClickable;
-    private bool tutorialRegionsClickable;
+    private bool tutorialOnlyWestNL;
     public bool tutorialRegionActive;
     public bool tutorialEventsActive;
     public bool tutorialMonthlyReportActive;
@@ -448,7 +450,7 @@ public class UpdateUI : MonoBehaviour
         tutorialQuestsActive = false;
         tutorialOrganizationActive = false;
         tutorialeventsClickable = false;
-        tutorialRegionsClickable = false;
+        tutorialOnlyWestNL = false;
         tutorialRegionActive = false;
         tutorialEventsActive = false;
         tutorialMonthlyReportActive = false;
@@ -484,12 +486,14 @@ public class UpdateUI : MonoBehaviour
         tutorialStep17 = true;
         tutorialStep18 = true;
         tutorialstep19 = true;
+        tutorialStep20 = true;
+        tutorialStep21 = true;
         regionWestActivated = true;
         tutorialCheckActionDone = true;
         tutorialQuestsActive = false;
         
         tutorialeventsClickable = true;
-        tutorialRegionsClickable = true;
+        tutorialOnlyWestNL = true;
         tutorialRegionActive = false;
         tutorialEventsActive = false;
         tutorialMonthlyReportActive = false;
@@ -528,6 +532,7 @@ public class UpdateUI : MonoBehaviour
     IEnumerator initTutorialText()
     {
         doTuto = true;
+        tutorialOnlyWestNL = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " +
                 "De inwoners moeten begrijpen dat een groen land belangrijk is.", "Welcome! The government has given your organisation the task to make " +
                 "The Netherlands an country aware of the environment. The inhabitants need to understand the importance of a green country. "};
@@ -581,8 +586,6 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.fontSize = 9;
         btnTutorialNext.gameObject.SetActive(false);
 
-        tutorialRegionsClickable = true;
-
         while (!canvasRegioPopup.gameObject.activeSelf)
             yield return null;
 
@@ -594,8 +597,7 @@ public class UpdateUI : MonoBehaviour
         while (canvasRegioPopup.gameObject.activeSelf)
             yield return null;
 
-        //tutorialRegionsClickable = false;
-        //imgTutorialOverworld.gameObject.transform.position = imgOldPos;
+        tutorialOnlyWestNL = false;
         canvasTutorial.gameObject.SetActive(true);
         string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. Druk nu op de knop.",
             "At the bottom of your screen you can go to the Organization menu by pressing the button. " };
@@ -604,9 +606,6 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStepOrgMenuHightlight.enabled = true;
         btnOrganization.interactable = true;
         tutorialOrganizationActive = true;
-
-        //while (!tutorialStep8)
-        //    yield return null;
 
         while (!canvasOrganizationPopup.gameObject.activeSelf)
             yield return null;
@@ -619,8 +618,7 @@ public class UpdateUI : MonoBehaviour
 
         while (canvasOrganizationPopup.gameObject.activeSelf)
             yield return null;
-
-        //btnOrganization.interactable = false;
+        
         btnNextTurn.interactable = true;
         canvasTutorial.gameObject.SetActive(true);
         string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende beurt knop rechtsonderin. Druk nu op de Volgende Beurt knop. ",
@@ -644,12 +642,8 @@ public class UpdateUI : MonoBehaviour
                 , "In the bottom left of your screen you can see a button. This buttons shows the changes between the current and the previous month. You will get this report every month. " +
                 "If an event or action is finished you will get an second button which leads to a popup with this information. Click on the button to view your monthly report."};
         txtTurorialStep1.text = step9[taal];
-        //txtTutorialStep1BtnText.text = btnText[taal];
         btnMonthlyReportStats.interactable = true;
         tutorialMonthlyReportActive = true;
-
-        //while (!tutorialStep14)
-        //    yield return null;
 
         while (!canvasMonthlyReport.gameObject.activeSelf)
             yield return null;
@@ -660,8 +654,7 @@ public class UpdateUI : MonoBehaviour
         while (canvasMonthlyReport.gameObject.activeSelf)
             yield return null;
 
-        imgTutorialOverworld.gameObject.transform.position = imgNewPos;
-        //btnMonthlyReportStats.interactable = false;
+        //imgTutorialOverworld.gameObject.transform.position = imgNewPos;
         string[] step7 = { "er is een event bezig. Er kunnen elke nieuwe turn enkele events ontstaan. Er kan maar 1 event " +
                 "tegelijk in een regio zijn. Er kunnen wel meerdere events tegelijk zijn in meerdere regio's. Voor elk event heb je een aantal beurten om te beslissen wat je met de event gaat doen. "
                 , "There is an active event running at this moment. Each turn there will be new events. There can only be one event in a region at the same time. " +
@@ -669,10 +662,12 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step7[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         btnTutorialNext.gameObject.SetActive(true);
+        Debug.Log("EVENT STEP 1!");
 
-        while (!tutorialstep11)
+        while (!tutorialstep19)
             yield return null;
 
+        Debug.Log("EVENT STEP 2!");
         btnTutorialNext.gameObject.SetActive(false);
         tutorialeventsClickable = true;
         string[] step8 = { "Door op het icoon van de event te klikken krijg je een pop-up. In deze pop-up kun je kiezen welke actie je bij dit event wil nemen. " +
@@ -681,9 +676,6 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step8[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         tutorialEventsActive = true;
-
-        //while (!tutorialstep12)
-        //    yield return null;
 
         while (!canvasEventPopup.gameObject.activeSelf)
             yield return null;
@@ -703,17 +695,15 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step10[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
 
-        while (!tutorialstep19)
+        while (!tutorialStep21)
             yield return null;
 
         tutorialNexTurnPossibe = true;
         tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
         tutorialeventsClickable = true;
-        //tutorialRegionsClickable = true;
         btnNextTurn.interactable = true;
         btnAfterActionReportCompleted.interactable = true;
-        //btnOrganization.interactable = true;
     }
 
     void initButtons()
@@ -1358,17 +1348,28 @@ public class UpdateUI : MonoBehaviour
     #region Code for the Region Popup
     public void regionClick(Region region)
     {
-        if (tutorialActive /*&& tutorialStep5*/ && tutorialRegionsClickable)
+        // Ga naar WEST tijdens de tutorial
+        if (tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
         {
-            if (region.name[0] == "West Nederland")
+            if (tutorialOnlyWestNL)
+            {
+                if (region.name[0] == "West Nederland")
+                {
+                    startRegionPopup(region);
+                    regionWestActivated = true;
+
+                    btnTutorialRegion.gameObject.SetActive(true);
+                    StartCoroutine(tutorialRegionPopup());
+                }
+            }
+            else
             {
                 startRegionPopup(region);
-                regionWestActivated = true;
-
-                btnTutorialRegion.gameObject.SetActive(true);
-                StartCoroutine(tutorialRegionPopup());
+                imgTutorialRegion.gameObject.SetActive(false);
             }
         }
+        // Andere reagions clickable tijdens tutorial
+        // Na de tutorial
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
         && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck && !btnMonthlyReportCheck && !btnYearlyReportCheck)
         {
@@ -2272,11 +2273,8 @@ public class UpdateUI : MonoBehaviour
 
         canvasTutorial.gameObject.SetActive(false);
         tutorialeventsClickable = true;
-       // tutorialRegionsClickable = true;
         tutorialNexTurnPossibe = true;
         btnNextTurn.interactable = true;
-        //btnOrganization.interactable = true;
-        //tutorialActive = false;
     }
     
     private string getCompleteConditions(RegionStatistics r)
@@ -2386,7 +2384,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialEvent.text = txtTutorial[taal];
         txtTutorialEventBtn.text = txtBtn[taal];
 
-        while (!tutorialStep13)
+        while (!tutorialStep20)
             yield return null;
 
         imgTutorialEvents.gameObject.SetActive(false);
@@ -3127,6 +3125,16 @@ public class UpdateUI : MonoBehaviour
         else if (tutorialIndex == 18)
         {
             tutorialstep19 = true;
+            tutorialIndex++;
+        }
+        else if (tutorialIndex == 19)
+        {
+            tutorialStep20 = true;
+            tutorialIndex++;
+        }
+        else if (tutorialIndex == 20)
+        {
+            tutorialStep21 = true;
             tutorialIndex++;
         }
     }
