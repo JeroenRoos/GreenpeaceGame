@@ -1184,7 +1184,7 @@ public class UpdateUI : MonoBehaviour
         cb.highlightedColor = lerpColor;
         cb.pressedColor = lerpColor;
         btn.colors = cb;
-        txt.text = value.ToString("0") + "%";
+        txt.text = " " + value.ToString("0") + "%";
         txt.color = lerpColor;
     }
     #endregion
