@@ -12,14 +12,14 @@
         <string>A research from the organisation concludes that people are worried about the air pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voeren over luchtvervuiling</string>
-        <string>campagne voeren voor organisatie</string>
+        <string>Niets doen</string>
+        <string>Campagne voeren over luchtvervuiling</string>
+        <string>Campagne voeren voor organisatie</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign over air pollution</string>
-        <string>campaign for organisation</string>
+        <string>Do nothing</string>
+        <string>Campaign over air pollution</string>
+        <string>Campaign for organisation</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -323,14 +323,14 @@
         <string>There has been an earthquake that caused damage.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>inwoners vergoeden</string>
-        <string>toekomstige aardbevingen tegengaan (kansverlaging)</string>
+        <string>Niets doen</string>
+        <string>Inwoners vergoeden</string>
+        <string>Toekomstige aardbevingen tegengaan (kansverlaging)</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>refund citizens</string>
-        <string>prevent future earthquakes (chance reduction)</string>
+        <string>Do nothing</string>
+        <string>Refund citizens</string>
+        <string>Prevent future earthquakes (chance reduction)</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -631,14 +631,14 @@
         <string>There has been a flood that caused damage.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>inwoners vergoeden</string>
-        <string>toekomstige overstromingen tegengaan (kansverlaging)</string>
+        <string>Niets doen</string>
+        <string>Inwoners vergoeden</string>
+        <string>Toekomstige overstromingen tegengaan (kansverlaging)</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>refund citizens</string>
-        <string>prevent future floods (chance reduction)</string>
+        <string>Do nothing</string>
+        <string>Refund citizens</string>
+        <string>Prevent future floods (chance reduction)</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -941,14 +941,14 @@
         <string>There has been a forest fire that caused damage.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>bomen herplanten</string>
-        <string>toekomstige bosbranden tegengaan (kansverlaging)</string>
+        <string>Niets doen</string>
+        <string>Bomen herplanten</string>
+        <string>Toekomstige bosbranden tegengaan (kansverlaging)</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>replant trees</string>
-        <string>prevent future forest fires (chance reduction)</string>
+        <string>Do nothing</string>
+        <string>Replant trees</string>
+        <string>Prevent future forest fires (chance reduction)</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -1250,14 +1250,14 @@
         <string>A research from the organisation concludes that people are worried about the nature pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voeren over natuurvervuiling</string>
-        <string>campagne voeren voor organisatie</string>
+        <string>Niets doen</string>
+        <string>Campagne voeren over natuurvervuiling</string>
+        <string>Campagne voeren voor organisatie</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign over nature pollution</string>
-        <string>campaign for organisation</string>
+        <string>Do nothing</string>
+        <string>Campaign over nature pollution</string>
+        <string>Campaign for organisation</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -1561,14 +1561,14 @@
         <string>A research from the organisation concludes that people are worried about the water pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voeren over watervervuiling</string>
-        <string>campagne voeren voor organisatie</string>
+        <string>Niets doen</string>
+        <string>Campagne voeren over watervervuiling</string>
+        <string>Campagne voeren voor organisatie</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign over water pollution</string>
-        <string>campaign for organisation</string>
+        <string>Do nothing</string>
+        <string>Campaign over water pollution</string>
+        <string>Campaign for organisation</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -1872,14 +1872,14 @@
         <string>The organisation wants to start a project to make the air cleaner.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>investeren</string>
-        <string>project uitbreiden</string>
+        <string>Niets doen</string>
+        <string>Investeren</string>
+        <string>Project uitbreiden</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>invest</string>
-        <string>expand project</string>
+        <string>Do nothing</string>
+        <string>Invest</string>
+        <string>Expand project</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -2183,14 +2183,14 @@
         <string>The organisation wants to start a project to make the air cleaner.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>investeren</string>
-        <string>project uitbreiden</string>
+        <string>Niets doen</string>
+        <string>Investeren</string>
+        <string>Project uitbreiden</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>invest</string>
-        <string>expand project</string>
+        <string>Invest</string>
+        <string>Expand project</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -2494,14 +2494,14 @@
         <string>The organisation wants to start a project to make the water cleaner.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>investeren</string>
-        <string>project uitbreiden</string>
+        <string>Niets doen</string>
+        <string>Investeren</string>
+        <string>Project uitbreiden</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>invest</string>
-        <string>expand project</string>
+        <string>Invest</string>
+        <string>Expand project</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -2805,14 +2805,14 @@
         <string>The agriculture has a high pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>sector opschonen</string>
-        <string>investeren in lagere vervuiling</string>
+        <string>Niets doen</string>
+        <string>Sector opschonen</string>
+        <string>Investeren in lagere vervuiling</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>clean sector</string>
-        <string>invest in lower pollution</string>
+        <string>Clean sector</string>
+        <string>Invest in lower pollution</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -3112,14 +3112,14 @@
         <string>The households have a high pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>sector opschonen</string>
-        <string>investeren in lage vervuiling</string>
+        <string>Niets doen</string>
+        <string>Sector opschonen</string>
+        <string>Investeren in lage vervuiling</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>clean sector</string>
-        <string>invest in low pollution</string>
+        <string>Do nothing</string>
+        <string>Clean sector</string>
+        <string>Invest in low pollution</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -3419,14 +3419,14 @@
         <string>The companies have a high pollution</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>sector opschonen</string>
-        <string>investeren in lagere vervuiling</string>
+        <string>Niets doen</string>
+        <string>Sector opschonen</string>
+        <string>Investeren in lagere vervuiling</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>clean sector</string>
-        <string>invest in lower pollution</string>
+        <string>Do nothing</string>
+        <string>Clean sector</string>
+        <string>Invest in lower pollution</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -3726,14 +3726,14 @@
         <string>The sector Households questions the dangers of pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>maak korte film over vervuiling</string>
-        <string>investeer in huishoudens milieubewuster maken</string>
+        <string>Niets doen</string>
+        <string>Maak korte film over vervuiling</string>
+        <string>Investeer in huishoudens milieubewuster maken</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>make short film about pollution</string>
-        <string>invest in raising eco awareness in households</string>
+        <string>Do nothing</string>
+        <string>Make short film about pollution</string>
+        <string>Invest in raising eco awareness in households</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -4033,14 +4033,14 @@
         <string>The agriculture wants to work faster at the cost of the environment.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>dwing de landbouw om niet meer te vervuilen</string>
-        <string>investeer in milieuvriendelijk alternatief</string>
+        <string>Niets doen</string>
+        <string>Dwing de landbouw om niet meer te vervuilen</string>
+        <string>Investeer in milieuvriendelijk alternatief</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>force agriculture to not cause more pollution</string>
-        <string>invest in eco-friendly alternative</string>
+        <string>Do nothing</string>
+        <string>Force agriculture to not cause more pollution</string>
+        <string>Invest in eco-friendly alternative</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -4340,14 +4340,14 @@
         <string>The companies want more personal profit at the cost of the environment.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>dwing de bedrijven om niet meer te vervuilen</string>
-        <string>investeer in een milieuvriendelijk alternatief om meer winst te maken</string>
+        <string>Niets doen</string>
+        <string>Dwing de bedrijven om niet meer te vervuilen</string>
+        <string>Investeer in een milieuvriendelijk alternatief om meer winst te maken</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>force the companies to not increase the pollution</string>
-        <string>invest in a eco-friendly alternative to make more profit</string>
+        <string>Do nothing</string>
+        <string>Force the companies to not increase the pollution</string>
+        <string>Invest in a eco-friendly alternative to make more profit</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -4647,14 +4647,14 @@
         <string>the government rewards your company because of the good results against pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>investeer het geld in minder milieuvervuiling</string>
-        <string>investeer het geld om de welvaart te verhogen</string>
+        <string>Niets doen</string>
+        <string>Investeer het geld in minder milieuvervuiling</string>
+        <string>Investeer het geld om de welvaart te verhogen</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>invest the money in less pollution</string>
-        <string>invest the money in prosperity</string>
+        <string>Do nothing</string>
+        <string>Invest the money in less pollution</string>
+        <string>Invest the money in prosperity</string>
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>true</isGlobal>
@@ -4958,14 +4958,14 @@
         <string>Because of the pollution in Germany the pollution in the region is also increasing.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>vraag Duitsland om milieuvervuiling te verlagen</string>
-        <string>compenseer de extra milieuvervuiling door meer te investeren</string>
+        <string>Niets doen</string>
+        <string>Vraag Duitsland om milieuvervuiling te verlagen</string>
+        <string>Compenseer de extra milieuvervuiling door meer te investeren</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>ask Germany to lower the pollution</string>
-        <string>compensate the extra pollution by investing more</string>
+        <string>Do nothing</string>
+        <string>Ask Germany to lower the pollution</string>
+        <string>Compensate the extra pollution by investing more</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -5268,14 +5268,14 @@
         <string>Because of the pollution in Belgium the pollution in the region is also increasing.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>vraag Belgie om milieuvervuiling te verlagen</string>
-        <string>compenseer de extra milieuvervuiling door meer te investeren</string>
+        <string>Niets doen</string>
+        <string>Vraag Belgie om milieuvervuiling te verlagen</string>
+        <string>Compenseer de extra milieuvervuiling door meer te investeren</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>ask Belgium to lower the pollution</string>
-        <string>compensate the extra pollution by investing more</string>
+        <string>Do nothing</string>
+        <string>Ask Belgium to lower the pollution</string>
+        <string>Compensate the extra pollution by investing more</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -5576,13 +5576,14 @@
         <string>The organisation wants to start a project to install solar panels for households.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>project goedkeuren</string>
-        <string>breidt project uit met regenpanelen</string>
+        <string>Niets doen</string>
+        <string>Project goedkeuren</string>
+        <string>Breidt project uit met regenpanelen</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>approve project</string>
-        <string>expand project with rain panels</string>
+        <string>Do nothing</string>
+        <string>Approve project</string>
+        <string>Expand project with rain panels</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -5882,14 +5883,14 @@
         <string>The organisation wants to start a project to give the agriculture new eco-friendly equipment.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>project goedkeuren</string>
-        <string>betrek landbouwexperts bij het project</string>
+        <string>Niets doen</string>
+        <string>Project goedkeuren</string>
+        <string>Betrek landbouwexperts bij het project</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>approve project</string>
-        <string>involve agriculture experts with the project</string>
+        <string>Do nothing</string>
+        <string>Approve project</string>
+        <string>Involve agriculture experts with the project</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -6189,14 +6190,14 @@
         <string>The organisation wants to start a project to give the agriculture new eco-friendly equipment.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>project goedkeuren</string>
-        <string>breidt project uit met investeren in milieuvriendelijke bedrijven</string>
+        <string>Niets doen</string>
+        <string>Project goedkeuren</string>
+        <string>Breidt project uit met investeren in milieuvriendelijke bedrijven</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>approve project</string>
-        <string>expand project with investing in eco-friendly companies</string>
+        <string>Do nothing</string>
+        <string>Approve project</string>
+        <string>Expand project with investing in eco-friendly companies</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -6496,14 +6497,14 @@
         <string>There is a new technology available on the market which reduces the current airpollution once.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>koop de technologie</string>
-        <string>investeer in de technologie voor permanent gebruik</string>
+        <string>Niets doen</string>
+        <string>Koop de technologie</string>
+        <string>Investeer in de technologie voor permanent gebruik</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>buy the technology</string>
-        <string>invest in the technology for permanent use</string>
+        <string>Do nothing</string>
+        <string>Buy the technology</string>
+        <string>Invest in the technology for permanent use</string>
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>true</isGlobal>
@@ -6807,14 +6808,14 @@
         <string>There is a new technology available on the market which reduces the current naturepollution once.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>koop de technologie</string>
-        <string>investeer in de technologie voor permanent gebruik</string>
+        <string>Niets doen</string>
+        <string>Koop de technologie</string>
+        <string>Investeer in de technologie voor permanent gebruik</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>buy the technology</string>
-        <string>invest in the technology for permanent use</string>
+        <string>Do nothing</string>
+        <string>Buy the technology</string>
+        <string>Invest in the technology for permanent use</string>
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>true</isGlobal>
@@ -7118,14 +7119,14 @@
         <string>There is a new technology available on the market which reduces the current waterpollution once.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>koop de technologie</string>
-        <string>investeer in de technologie voor permanent gebruik</string>
+        <string>Niets doen</string>
+        <string>Koop de technologie</string>
+        <string>Investeer in de technologie voor permanent gebruik</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>buy the technology</string>
-        <string>invest in the technology for permanent use</string>
+        <string>Do nothing</string>
+        <string>Buy the technology</string>
+        <string>Invest in the technology for permanent use</string>
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>true</isGlobal>
@@ -7429,14 +7430,14 @@
         <string>The companies in the region are unhappy about the current economy.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>investeer in welvaart</string>
-        <string>verhoog productie</string>
+        <string>Niets doen</string>
+        <string>Investeer in welvaart</string>
+        <string>Verhoog productie</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>invest in prosperity</string>
-        <string>increase production</string>
+        <string>Do nothing</string>
+        <string>Invest in prosperity</string>
+        <string>Increase production</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -7736,14 +7737,14 @@
         <string>It was a bad harvest in the agriculture which has made it difficult for the sector.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>compenseer de sector</string>
-        <string>laat de sector meer produceren in andere werkzaamheden</string>
+        <string>Niets doen</string>
+        <string>Compenseer de sector</string>
+        <string>Laat de sector meer produceren in andere werkzaamheden</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>compensate the sector</string>
-        <string>let the sector produce more in different activities</string>
+        <string>Do nothing</string>
+        <string>Compensate the sector</string>
+        <string>Let the sector produce more in different activities</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -8043,14 +8044,14 @@
         <string>The region wants to open a new nuclear plant</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>protesteren</string>
-        <string>campagne voor schone energie</string>
+        <string>Niets doen</string>
+        <string>Protesteren</string>
+        <string>Campagne voor schone energie</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>protest</string>
-        <string>campaign for clean energy</string>
+        <string>Do nothing</string>
+        <string>Protest</string>
+        <string>Campaign for clean energy</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -8354,14 +8355,14 @@
         <string>A huge amount of astbestos has been released</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne tegen astbest</string>
-        <string>asbest opruimen</string>
+        <string>Niets doen</string>
+        <string>Campagne tegen astbest</string>
+        <string>Asbest opruimen</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against astbestos</string>
-        <string>clean the astbestos</string>
+        <string>Do nothing</string>
+        <string>Campaign against astbestos</string>
+        <string>Clean the astbestos</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -8663,14 +8664,14 @@
         <string>Because of gasmining there has been an earthquake</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campange tegen fossiele energie</string>
-        <string>vergoeden van de schade</string>
+        <string>Niets doen</string>
+        <string>Campange tegen fossiele energie</string>
+        <string>Vergoeden van de schade</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against fossil energy</string>
-        <string>pay for the damage</string>
+        <string>Do nothing</string>
+        <string>Campaign against fossil energy</string>
+        <string>Pay for the damage</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -8969,14 +8970,14 @@
         <string>Companies are doing less recycling</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campange voor recyclen</string>
-        <string>prosteren tegen de bedrijven</string>
+        <string>Niets doen</string>
+        <string>Campange voor recyclen</string>
+        <string>Posteren tegen de bedrijven</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign for recycling</string>
-        <string>protest against the companies</string>
+        <string>Do nothing</string>
+        <string>Campaign for recycling</string>
+        <string>Protest against the companies</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -9276,14 +9277,14 @@
         <string>The gas supply in the provice Groningen is empty</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voor kernenergie</string>
-        <string>campagne voor groene energie</string>
+        <string>Niets doen</string>
+        <string>Campagne voor kernenergie</string>
+        <string>Campagne voor groene energie</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign for nuclear energie</string>
-        <string>campaign for green energy</string>
+        <string>Do nothing</string>
+        <string>Campaign for nuclear energie</string>
+        <string>Campaign for green energy</string>
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>false</isGlobal>
@@ -9584,14 +9585,14 @@
         <string>An accident occurred during the transport off dangerous fabrics</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>opruimen</string>
-        <string>transport verbieden</string>
+        <string>Niets doen</string>
+        <string>Opruimen</string>
+        <string>Transport verbieden</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>clean the dangerous fabrics</string>
-        <string>prohibit transport</string>
+        <string>Do nothing</string>
+        <string>Clean the dangerous fabrics</string>
+        <string>Prohibit transport</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -9891,14 +9892,14 @@
         <string>Multiple countries decided not to keep the climate deals from Paris 2015</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voor de afspraken</string>
-        <string>zorgen dat Nederland de afspraken naleeft</string>
+        <string>Niets doen</string>
+        <string>Campagne voor de afspraken</string>
+        <string>Zorgen dat Nederland de afspraken naleeft</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign for the climate deal</string>
-        <string>make sure The Netherlands keeps the deal</string>
+        <string>Do nothing</string>
+        <string>Campaign for the climate deal</string>
+        <string>Make sure The Netherlands keeps the deal</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -10202,14 +10203,14 @@
         <string>The huge amount of fireworks created extra air pollution</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne tegen vuurwerk</string>
-        <string>verbod op vuurwerk</string>
+        <string>Niets doen</string>
+        <string>Campagne tegen vuurwerk</string>
+        <string>Verbod op vuurwerk</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against firework</string>
-        <string>prohibit firework</string>
+        <string>Do nothing</string>
+        <string>Campaign against firework</string>
+        <string>Prohibit firework</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -10509,14 +10510,14 @@
         <string>Companies produce to much micro dust</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne tegen uitstoot fijnstoffen</string>
-        <string>stel maximale fijnstof uitstoot grens in</string>
+        <string>Niets doen</string>
+        <string>Campagne tegen uitstoot fijnstoffen</string>
+        <string>Stel maximale fijnstof uitstoot grens in</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against micro dust</string>
-        <string>set a maximum micro dust emmission</string>
+        <string>Do nothing</string>
+        <string>Campaign against micro dust</string>
+        <string>Set a maximum micro dust emmission</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -10814,14 +10815,14 @@
         <string>Companies dumped toxic waste in the Rijn river</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>opruimen</string>
-        <string>verbod op dumpen</string>
+        <string>Niets doen</string>
+        <string>Opruimen</string>
+        <string>Verbod op dumpen</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>clean the waste</string>
-        <string>prohibit dumping</string>
+        <string>Do nothing</string>
+        <string>Clean the waste</string>
+        <string>Prohibit dumping</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -11120,14 +11121,14 @@
         <string>The region wants to open a new coal plant</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>protesteren</string>
-        <string>campagne voor schone energie</string>
+        <string>Niets doen</string>
+        <string>Protesteren</string>
+        <string>Campagne voor schone energie</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>protesteren</string>
-        <string>campaign for clean energy</string>
+        <string>Do nothing</string>
+        <string>Protesteren</string>
+        <string>Campaign for clean energy</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -11431,14 +11432,14 @@
         <string>The amount of traffic jams is rising, there is extra air pollution</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voor OV</string>
-        <string>campagne voor groene auto's</string>
+        <string>Niets doen</string>
+        <string>Campagne voor OV</string>
+        <string>Campagne voor groene auto's</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign for public transport</string>
-        <string>campaign for green cars</string>
+        <string>Do nothing</string>
+        <string>Campaign for public transport</string>
+        <string>Campaign for green cars</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -11739,14 +11740,14 @@
         <string>Farmer want to use more polluting manure</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>dwing boeren milieuvriendelijk alternatief te gebruiken</string>
-        <string>campange voor De Goede Boer</string>
+        <string>Niets doen</string>
+        <string>Dwing boeren milieuvriendelijk alternatief te gebruiken</string>
+        <string>Campange voor De Goede Boer</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>push farmers to use eco friendly alternative</string>
-        <string>campaign for The Green Farmer</string>
+        <string>Do nothing</string>
+        <string>Push farmers to use eco friendly alternative</string>
+        <string>Campaign for The Green Farmer</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -12044,14 +12045,14 @@
         <string>Schiphol Airport wants to expand causing extra air pollution</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voeren over luchtvervuiling</string>
-        <string>schiphol verbieden uit te breiden</string>
+        <string>Niets doen</string>
+        <string>Campagne voeren over luchtvervuiling</string>
+        <string>Schiphol verbieden uit te breiden</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against air pollution</string>
-        <string>prohobit the expansion</string>
+        <string>Do nothing</string>
+        <string>Campaign against air pollution</string>
+        <string>Prohobit the expansion</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -12352,14 +12353,14 @@
         <string>The harbor off Rotterdam wants to expand causing more water pollution.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voeren over watervervuiling</string>
+        <string>Niets doen</string>
+        <string>Campagne voeren over watervervuiling</string>
         <string>Rotterdam verbieden uit te breiden</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against water pollution</string>
-        <string>prohobit the expansion</string>
+        <string>Do nothing</string>
+        <string>Campaign against water pollution</string>
+        <string>Prohobit the expansion</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -12658,14 +12659,14 @@
         <string>There is a lot of trash in the Ijsselmeer.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne voeren voor schone omgeving</string>
-        <string>opruimen</string>
+        <string>Niets doen</string>
+        <string>Campagne voeren voor schone omgeving</string>
+        <string>Opruimen</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign for clean environment</string>
-        <string>clean the trash</string>
+        <string>Do nothing</string>
+        <string>Campaign for clean environment</string>
+        <string>Clean the trash</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -12968,14 +12969,14 @@
         <string>The goverment wants to extract more gas in Groningen.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne tegen gaswinning</string>
-        <string>gaswinning verbieden</string>
+        <string>Niets doen</string>
+        <string>Campagne tegen gaswinning</string>
+        <string>Gaswinning verbieden</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against gas extraction</string>
-        <string>prohobit gas extraction</string>
+        <string>Do nothing</string>
+        <string>Campaign against gas extraction</string>
+        <string>Prohobit gas extraction</string>
       </choicesEnglish>
       <isUnique>true</isUnique>
       <isGlobal>false</isGlobal>
@@ -13276,13 +13277,13 @@
         <string>There will be more production in the Ruhr area.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne tegen luchtvervuiling</string>
-        <string>overheid aanzetten tot overleg met Duitsland</string>
+        <string>Niets doen</string>
+        <string>Campagne tegen luchtvervuiling</string>
+        <string>Overheid aanzetten tot overleg met Duitsland</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against air pollution</string>
+        <string>Do nothing</string>
+        <string>Campaign against air pollution</string>
         <string>Order the government to discuss with Germany</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
@@ -13585,14 +13586,14 @@
         <string>There has been an accident with a nuclear reactor.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne tegen kern reactor</string>
-        <string>alle kern reactoren sluiten</string>
+        <string>Niets doen</string>
+        <string>Campagne tegen kern reactor</string>
+        <string>Alle kern reactoren sluiten</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against nuclear reactor</string>
-        <string>close all nuclear reactors</string>
+        <string>Do nothing</string>
+        <string>Campaign against nuclear reactor</string>
+        <string>Close all nuclear reactors</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -13893,14 +13894,14 @@
         <string>The harbor in Antwerpen is expanding en causing more water traffic in Zeeland.</string>
       </description>
       <choicesDutch>
-        <string>niets doen</string>
-        <string>campagne tegen watervervuiling</string>
-        <string>niet meewerken met de uitbreiding</string>
+        <string>Niets doen</string>
+        <string>Campagne tegen watervervuiling</string>
+        <string>Niet meewerken met de uitbreiding</string>
       </choicesDutch>
       <choicesEnglish>
-        <string>do nothing</string>
-        <string>campaign against water pollution</string>
-        <string>work against the expansion</string>
+        <string>Do nothing</string>
+        <string>Campaign against water pollution</string>
+        <string>Work against the expansion</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
