@@ -475,7 +475,6 @@ public class UpdateUI : MonoBehaviour
         initRegionText();
         initInvestementsText();
 
-
         tooltipStyle.normal.background = tooltipTexture;
         taal = ApplicationModel.language;
 
@@ -588,7 +587,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    #region Init UI Elements
+    #region Tutorial Main Steps
     IEnumerator initTutorialText()
     {
         Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
@@ -597,7 +596,9 @@ public class UpdateUI : MonoBehaviour
         imgPosRight.x = imgPosRight.x + Screen.width / 3;                           // Rechtsmidden in het scherm
         imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                             // Linksmidden in het scherm
 
-
+        btnOrganization.gameObject.SetActive(false);
+        btnNextTurn.gameObject.SetActive(false);
+        btnInvestments.gameObject.SetActive(false);
 
         doTuto = true;
         tutorialOnlyWestNL = true;
@@ -644,9 +645,9 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         imgTutorialOverworld.gameObject.transform.position = imgPosRight;
-        string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en welvaart. " 
+        string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en welvaart. "
                 + "Deze statistieken verschillen weer per regio. Ga naar West-Nederland door op de regio te klikken. "
-                , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West. Each region has an income, happiness, pollution, eco-awareness and prosperity. " 
+                , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West. Each region has an income, happiness, pollution, eco-awareness and prosperity. "
                 + "These statistics differ for each region. Go to The Netherlands West by clicking on the region. "};
         txtTurorialStep1.text = step4[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
@@ -656,7 +657,7 @@ public class UpdateUI : MonoBehaviour
         while (!canvasRegioPopup.gameObject.activeSelf)
             yield return null;
 
-            canvasTutorial.gameObject.SetActive(false);
+        canvasTutorial.gameObject.SetActive(false);
 
         while (!tutorialCheckActionDone)
             yield return null;
@@ -674,6 +675,7 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.interactable = true;
         tutorialOrganizationActive = true;
         imgTutorialOverworld.transform.position = imgPosMiddle;
+        btnOrganization.gameObject.SetActive(true);
 
         while (!canvasOrganizationPopup.gameObject.activeSelf)
             yield return null;
@@ -686,9 +688,10 @@ public class UpdateUI : MonoBehaviour
 
         while (canvasOrganizationPopup.gameObject.activeSelf)
             yield return null;
-        
+
         btnNextTurn.interactable = true;
         canvasTutorial.gameObject.SetActive(true);
+        btnNextTurn.gameObject.SetActive(true);
         string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende maand knop rechtsonderin. Druk nu op de Volgende maand knop. ",
             "You can go to the next month by pressing the Next month button in the bottom right of your screen. " };
         txtTurorialStep1.text = step6[taal];
@@ -773,7 +776,9 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = true;
         btnAfterActionReportCompleted.interactable = true;
     }
+    #endregion
 
+    #region Init UI Elements
     void initButtons()
     {
         btnMenu.GetComponent<Button>();
@@ -799,48 +804,10 @@ public class UpdateUI : MonoBehaviour
         btnQuests.GetComponent<Button>();
         btnQuests.gameObject.SetActive(false);
 
+        btnInvestments.GetComponent<Button>();
+        btnInvestments.gameObject.SetActive(false);
+
         setBooleans();
-    }
-
-    public IEnumerator showBtnQuests()
-    {
-        while (game.currentMonth < 6 && game.currentYear < 2)
-            yield return null;
-
-        btnQuests.gameObject.SetActive(true);
-
-        //tutorialActive = true;
-
-        if (doTuto)
-        {
-            btnNextTurn.interactable = false;
-            //btnOrganization.interactable = false;
-            canvasTutorial.gameObject.SetActive(true);
-            imgTutorialStep2Highlight1.enabled = false;
-            imgTutorialStep2Highlight2.enabled = false;
-            imgTutorialStepOrgMenuHightlight.enabled = false;
-            imgTutorialOverworld.gameObject.SetActive(true);
-
-            tutorialQuestsActive = true;
-            tutorialeventsClickable = false;
-            tutorialNexTurnPossibe = false;
-            //tutorialRegionsClickable = false;
-
-            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. Open het Missies menu door op de Missies knop te drukken. ",
-            "You can see that an extra button just appeared next to the Organization menu button. This is the button for you Quests. Open the Quests menu by pressing the Quests button " };
-            string[] btnText = { "Verder", "Next" };
-            txtTurorialStep1.text = step1[taal];
-            btnTutorialNext.gameObject.SetActive(false);
-           // txtTutorialStep1BtnText.text = btnText[taal];
-
-            //while (!tutorialStep15)
-            //    yield return null;
-
-            while (!canvasQuestsPopup.gameObject.activeSelf)
-                yield return null;
-
-            canvasTutorial.gameObject.SetActive(false);
-        }
     }
 
     void setBooleans()
@@ -918,6 +885,57 @@ public class UpdateUI : MonoBehaviour
         initInvestmentsImages();
     }
     #endregion
+
+    #region Coroutines Buttons Quests/Investments
+    public IEnumerator showBtnQuests()
+    {
+        while (game.currentMonth < 6 && game.currentYear < 2)
+            yield return null;
+
+        btnQuests.gameObject.SetActive(true);
+
+        //tutorialActive = true;
+
+        if (doTuto)
+        {
+            btnNextTurn.interactable = false;
+            //btnOrganization.interactable = false;
+            canvasTutorial.gameObject.SetActive(true);
+            imgTutorialStep2Highlight1.enabled = false;
+            imgTutorialStep2Highlight2.enabled = false;
+            imgTutorialStepOrgMenuHightlight.enabled = false;
+            imgTutorialOverworld.gameObject.SetActive(true);
+
+            tutorialQuestsActive = true;
+            tutorialeventsClickable = false;
+            tutorialNexTurnPossibe = false;
+            //tutorialRegionsClickable = false;
+
+            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. Open het Missies menu door op de Missies knop te drukken. ",
+            "You can see that an extra button just appeared next to the Organization menu button. This is the button for you Quests. Open the Quests menu by pressing the Quests button " };
+            string[] btnText = { "Verder", "Next" };
+            txtTurorialStep1.text = step1[taal];
+            btnTutorialNext.gameObject.SetActive(false);
+            // txtTutorialStep1BtnText.text = btnText[taal];
+
+            //while (!tutorialStep15)
+            //    yield return null;
+
+            while (!canvasQuestsPopup.gameObject.activeSelf)
+                yield return null;
+
+            canvasTutorial.gameObject.SetActive(false);
+        }
+    }
+
+    public IEnumerator showBtnInvestments()
+    {
+        while (game.currentYear < 3)
+            yield return null;
+
+        btnInvestments.gameObject.SetActive(true);
+    }
+#endregion
 
     #region Code for controlling popups
     void popupController()
