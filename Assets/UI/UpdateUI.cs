@@ -2794,7 +2794,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnQuestsClick()
     {
-        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive && tutorialQuestsActive)//tutorialStep15)
+        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)//tutorialStep15)
         {
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
