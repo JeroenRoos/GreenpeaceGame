@@ -148,8 +148,8 @@ public class TestBot : MonoBehaviour
 
                 for (int i = 1; i < gameEvent.choicesDutch.Length; i++)
                 {
-                    if (gameEvent.eventChoiceMoneyCost[i] < gameController.game.gameStatistics.money &&
-                        gameEvent.eventChoiceMoneyCost[i] > gameEvent.eventChoiceMoneyCost[pickedOption])
+                    if (gameEvent.afterInvestmentEventChoiceMoneyCost[i] < gameController.game.gameStatistics.money &&
+                        gameEvent.afterInvestmentEventChoiceMoneyCost[i] > gameEvent.afterInvestmentEventChoiceMoneyCost[pickedOption])
                         pickedOption = i;
                 }
 
@@ -438,7 +438,7 @@ public class TestBot : MonoBehaviour
         int index = 0;
         int hightestIndex = 0;
         
-        foreach (SectorStatistics stats in gameEvent.consequences)
+        foreach (SectorStatistics stats in gameEvent.afterInvestmentConsequences)
         {
             double pollutionSum = 0;
 
