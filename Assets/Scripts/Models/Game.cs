@@ -267,7 +267,7 @@ public class Game
             bool isPossible = true;
             foreach (GameEvent gameEvent in region.inProgressGameEvents)
             {
-                if (gameEvent.isActive || gameEvent.isIdle || !gameEvent.isFinished)
+                if (gameEvent.isActive || gameEvent.isIdle)
                 {
                     isPossible = false;
                     break;
@@ -287,7 +287,7 @@ public class Game
             bool isPossible = true;
             foreach (GameEvent gameEvent in region.inProgressGameEvents)
             {
-                if (gameEvent.isActive || gameEvent.isIdle || !gameEvent.isFinished)
+                if (gameEvent.isActive || gameEvent.isIdle)
                 {
                     isPossible = false;
                     break;
