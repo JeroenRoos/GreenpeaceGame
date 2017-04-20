@@ -3213,6 +3213,26 @@ public class UpdateUI : MonoBehaviour
 
         }
     }
+
+    public void setNextTurnButtonNotInteractable()
+    {
+        btnNextTurn.interactable = false;
+        StartCoroutine(checkCooldown());
+    }
+
+    IEnumerator checkCooldown()
+    {
+        float myCounter = 0.0f;
+        float setTime = 3f;
+
+        while (myCounter < setTime)
+        {
+            myCounter += Time.deltaTime;
+            yield return null;
+        }
+
+        btnNextTurn.interactable = true;
+    }
     #endregion
 
     #region Checkboxes RegionActions Code

@@ -256,6 +256,8 @@ public class GameController : MonoBehaviour
 
             if (autoSave)
                 SaveGame();
+
+            updateUI.setNextTurnButtonNotInteractable();
         }
     }
 
