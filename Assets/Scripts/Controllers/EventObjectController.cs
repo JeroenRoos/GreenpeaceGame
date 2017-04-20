@@ -13,64 +13,13 @@ public class EventObjectController : MonoBehaviour
     public Texture[] allTextures;
     private UpdateUI updateUI;
 
-
-    //   public bool areOptionsShown;
-
-
-    //    private GameObject canvas;
-
-    //public UpdateUI update;
-
-
-
-    // private GameController gameController;
-
-    /*private string txtTooltip;
-    private string txtButton;
-    public Texture2D tooltipTexture;
-    public Texture2D buttonTexture;
-    private GUIStyle tooltipStyle = new GUIStyle();
-    private GUIStyle buttonStyle = new GUIStyle();
-    public bool eventHoverCheck;
-    public bool active;
-    private int taal;
-    private Vector2 clickPosition = new Vector2(0, 0);
-    bool checkActivePopup;*/
-
     void Start()
     {
         updateUI = gameController.GetComponent<UpdateUI>();
-
-        //eventHoverCheck = false;
-        //popupActive = false;
-        //tooltipStyle.normal.background = tooltipTexture;
-        //buttonStyle.normal.background = buttonTexture;
-        //taal = gameController.game.language;
-        //areOptionsShown = false;
-        //active = false;
-        //clickPosition.x = 0;
-        //clickPosition.y = 0;
-        //checkActivePopup = false;
     }
 
     void Update()
     {
-        // Make the options dissapear if camera chances
-        //if (Camera.main.transform.hasChanged)
-        //{
-        //    areOptionsShown = false;
-        //    Camera.main.transform.hasChanged = false;
-        //}
-
-        //checkActivePopup = gameController.getActivePopup();
-
-        // if (checkActivePopup)
-        // {
-        //   areOptionsShown = false;
-        // eventHoverCheck = false;
-        //}
-
-        // Event moet verwijderd worden als gekozen optie klaar is
         if (!eventModel.isIdle)
         {
             Destroy(gameObject);
@@ -79,7 +28,7 @@ public class EventObjectController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (/*updateUI.tutorialstep12 && */updateUI.tutorialeventsClickable)// && updateUI.tutorialEventsActive)
+        if (updateUI.tutorialeventsClickable)
         {
             updateUI.popupActive = false;
             updateUI.initEventPopup(eventModel, regionModel);
@@ -96,180 +45,6 @@ public class EventObjectController : MonoBehaviour
 
         transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
     }
-
-    /* public void OnMouseEnter()
-     {
-         eventHoverCheck = true;
-     }
-
-     public void OnMouseExit()
-     {
-         eventHoverCheck = false;
-     }*/
-
-    // hover over event
-    /* public void OnMouseOver()
-     {
-         // Click on event
-         if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-         {
-             if (!areOptionsShown)
-             {
-                 ShowOptions();
-             }
-             else
-             {
-                 HideOptions();
-             }
-         }
-     }*/
-
-    /*private void OnGUI()
-    {
-        Rect btnRect;
-        Rect lblReqt;
-        
-        lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
-
-        if (eventHoverCheck)
-        {
-            txtTooltip = eventModel.publicEventName[taal] + "\n" + eventModel.description[taal];
-            Vector3 pos = Event.current.mousePosition;
-            lblReqt.x = pos.x + 10;
-            lblReqt.y = pos.y + 20;
-
-            if (clickPosition.x == 0 && clickPosition.y == 0)
-                clickPosition = pos;
-
-            GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
-        }
-
-        if (areOptionsShown)
-        {
-            for (int i = 0; i < eventModel.choicesDutch.GetLength(0); i++)
-            {
-                if (taal == 0)
-                    txtButton = "  " + eventModel.choicesDutch[i] + "  ";//tip[taal];
-                else
-                    txtButton = "  " + eventModel.choicesEnglish[i] + "  ";//tip[taal];
-
-                btnRect = GUILayoutUtility.GetRect(new GUIContent(txtButton), buttonStyle);
-
-                btnRect.x = clickPosition.x;
-
-                var textWidth = GUI.skin.label.CalcSize(new GUIContent(txtButton));
-                btnRect.width = textWidth.x;
-
-                // Als er niet genoeg ruimte is om alle opties boven event te laten zien, zet ze er dan onder
-                if (clickPosition.y - 150 < 0)
-                {
-                    if (i == 0)
-                        btnRect.y = clickPosition.y + 20;//v3.y + 80
-
-                    if (i == 1)
-                        btnRect.y = clickPosition.y + 60;//v3.y + 170;
-
-                    if (i == 2)
-                        btnRect.y = clickPosition.y + 100;//v3.y + 260;
-                }
-                else
-                {
-                    if (i == 0)
-                        btnRect.y = clickPosition.y - 40;//v3.y + 80
-
-                    if (i == 1)
-                        btnRect.y = clickPosition.y - 80;//v3.y + 170;
-
-                    if (i == 2)
-                        btnRect.y = clickPosition.y - 120;//v3.y + 260;
-                }
-
-                //string[] tip = { eventModel.choices[taal, i] + "\nKosten: " + eventModel.eventChoiceMoneyCost[i] +
-          //          "\nDuur: " + eventModel.eventDuration[i]
-          //  , eventModel.choices[taal, i] + "\nCost: " + eventModel.eventChoiceMoneyCost[i] +
-          //          "\nDuration: " + eventModel.eventDuration[i]  };
-
-
-                //txtButton += getConsequences(eventModel.consequences[i]);
-
-                if (GUI.Button(btnRect, "<color=#ccac6f>" + txtButton + "</color>", buttonStyle))
-                    ChooseOption(i);
-            }
-        }
-    }*/
-
-    /*string getConsequences(SectorStatistics s)
-    {
-        string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
-
-        if (s.ecoAwareness != 0)
-        {
-            string[] b = { " - Milieubewustheid: " + s.ecoAwareness, " - Eco awareness: " + s.ecoAwareness };
-            consequences[taal] += b[taal];// " Milieubewustheid: " + s.ecoAwareness;
-        }
-        if (s.happiness != 0)
-        {
-            string[] c = { " - Tevredenheid: " + s.happiness, " - Happiness: " + s.happiness };
-            consequences[taal] += c[taal];// " Tevredenheid: " + s.happiness;
-        }
-        if (s.income != 0)
-        {
-            string[] d = { " - Inkomen: " + s.income, " - Income: " + s.income };
-            consequences[taal] += d[taal];// " Inkomen: " + s.income;
-        }
-        if (s.prosperity != 0)
-        {
-            string[] e = { " - Welvaart: " + s.prosperity, " - Prosperity: " + s.prosperity };
-            consequences[taal] += e[taal];//" Welvaart: " + s.prosperity;
-        }
-        if (s.pollution.airPollutionIncrease != 0)
-        {
-            string[] f = { " - Luchtvervuiling: " + s.pollution.airPollutionIncrease, " - Air pollution: " + s.pollution.airPollutionIncrease };
-            consequences[taal] += f[taal];// " Luchtvervuiling: " + s.pollution.airPollutionIncrease;
-        }
-        if (s.pollution.naturePollutionIncrease != 0)
-        {
-            string[] g = { " - Natuurvervuiling: " + s.pollution.naturePollutionIncrease, " - Nature pollution: " + s.pollution.naturePollutionIncrease };
-            consequences[taal] += g[taal];// " Natuurvervuiling: " + s.pollution.naturePollutionIncrease;
-        }
-        if (s.pollution.waterPollutionIncrease != 0)
-        {
-            string[] h = { " - Watervervuiling: " + s.pollution.waterPollutionIncrease, " - Water pollution: " + s.pollution.waterPollutionIncrease };
-            consequences[taal] += h[taal];// " Watervervuiling: " + s.pollution.waterPollutionIncrease;
-        }
-
-        return consequences[taal];
-    }*/
-
-    /*private void ShowOptions()
-    {
-        if (clickPosition.x == 0 && clickPosition.y == 0)
-        {
-            Debug.Log("CLICKPOS");
-            //clickPosition = Event.current.mousePosition;
-        }
-        Debug.Log("Showing Options");
-        areOptionsShown = true;
-    }*/
-
-    /* private void HideOptions()
-     {
-         clickPosition.x = 0;
-         clickPosition.y = 0;
-         Debug.Log("Hiding options!");
-         areOptionsShown = false;
-     }*/
-
-    /*private void ChooseOption(int option)
-    {
-        Debug.Log("Chosen option: " + option);
-        eventModel.SetPickedChoice(option, gameController.game, regionModel);
-        areOptionsShown = false;
-        eventHoverCheck = false;
-
-        if (eventModel.eventDuration[option] == 0)
-            Destroy(gameObject);
-    } */
 
     private Texture SelectTexture(string description)
     {
@@ -392,10 +167,4 @@ public class EventObjectController : MonoBehaviour
             default: return allTextures[37];
         }
     }
-
-    //public void disableTooltipAndOptions()
-    // {
-    //    areOptionsShown = false;
-    //   eventHoverCheck = false;
-    // }
 }
