@@ -11,6 +11,9 @@ public class UpdateUI : MonoBehaviour
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
     private GUIStyle tooltipStyle = new GUIStyle();
+    public Texture2D buttonTexture;
+    private GUIStyle buttonStyle = new GUIStyle();
+
     Region regio;
     RegionAction regioAction;
     double regioActionCost;
@@ -243,6 +246,7 @@ public class UpdateUI : MonoBehaviour
     // Text Cards Popup
     public Text txtCardsTitle;
     public Text txtCardsColumn;
+    public RawImage imgCardsPopup;
 
     // Text Organization Menu
     public Text txtColumnLeft;
@@ -483,12 +487,21 @@ public class UpdateUI : MonoBehaviour
         initInvestementsText();
         initCardsText();
 
+        // GUI Styles
         tooltipStyle.normal.background = tooltipTexture;
+
+        // GUIStyle for buttons INIT
+        buttonStyle.normal.background = buttonTexture;          // Set the Texture
+        buttonStyle.alignment = TextAnchor.MiddleCenter;        // Set the text in the middle of the button
+        Color c = new Color();                              
+        ColorUtility.TryParseHtmlString("#ccac6f", out c);      // Get the color out of the hexadecimal string
+        buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
+
         taal = ApplicationModel.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            tutorialActive = true;
+            tutorialActive = false;
 
         if (tutorialActive)
             initTutorialActive();
@@ -607,7 +620,7 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.gameObject.SetActive(false);
         btnNextTurn.gameObject.SetActive(false);
         btnInvestments.gameObject.SetActive(false);
-        imgBarBottom.gameObject.SetActive(false);
+        //imgBarBottom.gameObject.SetActive(false);
 
         doTuto = true;
         tutorialOnlyWestNL = true;
@@ -1117,6 +1130,25 @@ public class UpdateUI : MonoBehaviour
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 270;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipCompany + "</color>", tooltipStyle);
             updateRegionSectors();
+        }
+        else if (canvasCardsPopup.gameObject.activeSelf)
+        {
+            float yOffset = 0f;
+
+            // Get the X position of the button
+            Vector3 posTxtColumn = txtCardsColumn.transform.position;
+            RectTransform rectTxtColumn = txtCardsColumn.rectTransform;
+            float x = posTxtColumn.x - rectTxtColumn.rect.width;
+
+            foreach (Card card in game.cards)
+            {
+                if (GUI.Button(new Rect(x, 25 + yOffset, 150, 30), card.name[taal], buttonStyle))
+                {
+
+                }
+
+                yOffset += 35;
+            }
         }
     }
 
@@ -2804,10 +2836,7 @@ public class UpdateUI : MonoBehaviour
 
     private void updateCardsUI()
     {
-        foreach (Card card in game.cards)
-        {
-            //card.
-        }
+
     }
     #endregion
 
