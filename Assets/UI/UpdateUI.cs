@@ -483,7 +483,7 @@ public class UpdateUI : MonoBehaviour
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            tutorialActive = false;
+            tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
@@ -590,6 +590,14 @@ public class UpdateUI : MonoBehaviour
     #region Init UI Elements
     IEnumerator initTutorialText()
     {
+        Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
+        Vector3 imgPosRight = imgPosMiddle;
+        Vector3 imgPosLeft = imgPosMiddle;
+        imgPosRight.x = imgPosRight.x + Screen.width / 3;                           // Rechtsmidden in het scherm
+        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                             // Linksmidden in het scherm
+
+
+
         doTuto = true;
         tutorialOnlyWestNL = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " +
@@ -602,6 +610,7 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.interactable = false;
         btnInvestments.interactable = false;
         btnNextTurn.interactable = false;
+        imgTutorialOverworld.transform.position = imgPosRight;
 
         while (!tutorialStep2)
             yield return null;
@@ -620,10 +629,9 @@ public class UpdateUI : MonoBehaviour
         //tutorialStep3 = false;
         string[] step3 = { "Linksboven staan jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het volk besluit om mee te werken met jouw beslissingen. "
                 + "Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Vervuiling geeft de vervuiling in het land weer. De welvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's. "
-                + "Tot slot wordt er getoond hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer. Als je meer informatie over de statistieken wil hebben kun je met je muis eroverheen gaan. "
-                + "Er verschijnt dan een tooltip met de extra informatie."
+                + "Tot slot wordt er getoond hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer."
                 , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not. A better Eco awareness means less pollution. "
-                + "The pollutions shows the pollution in the country. These icons show the averages from the different regions. For more information about these statistics you can hover of the icon with your mouse. You can see the extra information in the tooltip." };
+                + "The pollutions shows the pollution in the country. These icons show the averages from the different regions." };
         txtTurorialStep1.text = step3[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 8;
@@ -633,10 +641,7 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep4)
             yield return null;
 
-        Vector3 imgOldPos = imgTutorialOverworld.gameObject.transform.position;
-        Vector3 imgNewPos = imgOldPos;
-        imgNewPos.x = imgNewPos.x + Screen.width / 3;
-        imgTutorialOverworld.gameObject.transform.position = imgNewPos;
+        imgTutorialOverworld.gameObject.transform.position = imgPosRight;
         string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. Elke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en welvaart. " 
                 + "Deze statistieken verschillen weer per regio. Ga naar West-Nederland door op de regio te klikken. "
                 , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West. Each region has an income, happiness, pollution, eco-awareness and prosperity. " 
@@ -666,6 +671,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStepOrgMenuHightlight.enabled = true;
         btnOrganization.interactable = true;
         tutorialOrganizationActive = true;
+        imgTutorialOverworld.transform.position = imgPosMiddle;
 
         while (!canvasOrganizationPopup.gameObject.activeSelf)
             yield return null;
@@ -704,6 +710,7 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step9[taal];
         btnMonthlyReportStats.interactable = true;
         tutorialMonthlyReportActive = true;
+        imgTutorialOverworld.transform.position = imgPosLeft;
 
         while (!canvasMonthlyReport.gameObject.activeSelf)
             yield return null;
@@ -750,6 +757,7 @@ public class UpdateUI : MonoBehaviour
 
         canvasTutorial.gameObject.SetActive(true);
         btnTutorialNext.gameObject.SetActive(true);
+        imgTutorialOverworld.transform.position = imgPosMiddle;
         string[] step10 = { "Je kunt nu verder spelen. "
                 , "You can continue playing."};
         txtTurorialStep1.text = step10[taal];
@@ -1190,7 +1198,7 @@ public class UpdateUI : MonoBehaviour
         cb.highlightedColor = lerpColor;
         cb.pressedColor = lerpColor;
         btn.colors = cb;
-        txt.text = value.ToString("0") + "%";
+        txt.text = " " + value.ToString("0") + "%";
         txt.color = lerpColor;
     }
     #endregion
