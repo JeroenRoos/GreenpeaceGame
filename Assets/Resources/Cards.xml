@@ -2,16 +2,16 @@
 <CardContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Cards>
     <Card>
-      <cardID>placeHolderID</cardID>
+      <cardID>incomeCard</cardID>
       <name>
-        <string>Dutch</string>
-        <string>English</string>
+        <string>Inkomstenkaart</string>
+        <string>Income Card</string>
       </name>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
       <currentIncrementsDone>0</currentIncrementsDone>
       <sectorConsequencesPerTurn>
-        <income>0</income>
+        <income>50</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
@@ -44,17 +44,17 @@
       <currentMoneyReward>0</currentMoneyReward>
     </Card>
     <Card>
-      <cardID>placeHolderID</cardID>
+      <cardID>happinesCard</cardID>
       <name>
-        <string>Dutch</string>
-        <string>English</string>
+        <string>Tevredenheidskaart</string>
+        <string>Happiness card</string>
       </name>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
       <currentIncrementsDone>0</currentIncrementsDone>
       <sectorConsequencesPerTurn>
         <income>0</income>
-        <happiness>0</happiness>
+        <happiness>3</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <pollution>
@@ -86,10 +86,10 @@
       <currentMoneyReward>0</currentMoneyReward>
     </Card>
     <Card>
-      <cardID>placeHolderID</cardID>
+      <cardID>ecoAwarenessCard</cardID>
       <name>
-        <string>Dutch</string>
-        <string>English</string>
+        <string>Milieubewustheidskaart</string>
+        <string>Eco awareness card</string>
       </name>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
@@ -97,7 +97,7 @@
       <sectorConsequencesPerTurn>
         <income>0</income>
         <happiness>0</happiness>
-        <ecoAwareness>0</ecoAwareness>
+        <ecoAwareness>3</ecoAwareness>
         <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
@@ -128,10 +128,10 @@
       <currentMoneyReward>0</currentMoneyReward>
     </Card>
     <Card>
-      <cardID>placeHolderID</cardID>
+      <cardID>prosperityCard</cardID>
       <name>
-        <string>Dutch</string>
-        <string>English</string>
+        <string>Welvaartskaart</string>
+        <string>Prosperity card</string>
       </name>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
@@ -140,7 +140,7 @@
         <income>0</income>
         <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
-        <prosperity>0</prosperity>
+        <prosperity>3</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
@@ -170,10 +170,10 @@
       <currentMoneyReward>0</currentMoneyReward>
     </Card>
     <Card>
-      <cardID>placeHolderID</cardID>
+      <cardID>pollutionCard</cardID>
       <name>
-        <string>Dutch</string>
-        <string>English</string>
+        <string>Vervuilingskaart</string>
+        <string>Pollution card</string>
       </name>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
@@ -185,9 +185,9 @@
         <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
-          <airPollution>0</airPollution>
-          <naturePollution>0</naturePollution>
-          <waterPollution>0</waterPollution>
+          <airPollution>-1</airPollution>
+          <naturePollution>-1</naturePollution>
+          <waterPollution>-1</waterPollution>
           <airPollutionIncrease>0</airPollutionIncrease>
           <naturePollutionIncrease>0</naturePollutionIncrease>
           <waterPollutionIncrease>0</waterPollutionIncrease>
