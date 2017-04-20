@@ -318,10 +318,14 @@ public class UpdateUI : MonoBehaviour
     public Button btnQuests;
     public Button btnMoney;
     public Button btnHappiness;
+    public Text txtHappiness;
     public Button btnAwareness;
+    public Text txtAwarness;
     public Button btnEnergy;
     public Button btnProsperity;
+    public Text txtProsperity;
     public Button btnPollution;
+    public Text txtPollution;
     public Button btnPopulation;
     public Button btnDoActionRegionMenu;
     public Button emptybtnHoverHouseholds;
@@ -1119,44 +1123,45 @@ public class UpdateUI : MonoBehaviour
         txtMoney.text = money.ToString();
     }
 
-    // Update Population based on value
-    public void updatePopulation(double population)
-    {
-        int popu = Convert.ToInt32(population);
-        txtPopulation.text = popu.ToString();
-    }
-
     // Update Awareness based on value
     public void updateAwarness(double awareness)
     {
-        iconController(btnAwareness, awareness);
+        iconController(btnAwareness, txtAwarness, awareness);
     }
 
     // Update Pollution based on value
     public void updatePollution(double pollution)
     {
-        iconController(btnPollution, pollution);
-    }
-
-    // Update Energy based on value
-    public void updateEnergy(double energy)
-    {
-        iconController(btnEnergy, energy);
+        iconController(btnPollution, txtPollution, pollution);
     }
 
     public void updateProsperity(double prosperity)
     {
-        iconController(btnProsperity, prosperity);
+        iconController(btnProsperity, txtProsperity, prosperity);
     }
 
     // Update Happiness based on value
     public void updateHappiness(double happiness)
     {
-        iconController(btnHappiness, happiness);
+        iconController(btnHappiness, txtHappiness, happiness);
     }
 
+    /* Update Energy based on value
+    public void updateEnergy(double energy)
+    {
+        iconController(btnEnergy, energy);
+    } */
+
+
+    /* Update Population based on value
+    public void updatePopulation(double population)
+    {
+        int popu = Convert.ToInt32(population);
+        txtPopulation.text = popu.ToString();
+    }*/
+
     // Change color of the button based on value
-    void iconController(Button btn, double value)
+    void iconController(Button btn, Text txt, double value)
     {
         ColorBlock cb;
         Color lerpColor;
@@ -1179,6 +1184,8 @@ public class UpdateUI : MonoBehaviour
         cb.highlightedColor = lerpColor;
         cb.pressedColor = lerpColor;
         btn.colors = cb;
+        txt.text = value.ToString("0") + "%";
+        txt.color = lerpColor;
     }
     #endregion
 

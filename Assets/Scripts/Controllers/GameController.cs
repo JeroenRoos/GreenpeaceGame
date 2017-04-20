@@ -222,9 +222,9 @@ public class GameController : MonoBehaviour
         if (updateUI.getPopupActive())
             updateUIPopups();
 
-        // Update values in Tooltips for Icons in Main UI
+        /* Update values in Tooltips for Icons in Main UI
         if (updateUI.getTooltipActive())
-            updateUITooltips();
+            updateUITooltips(); */
 
         UpdateRegionColor();
     }
@@ -472,15 +472,17 @@ public class GameController : MonoBehaviour
         // Update Text and Color values in main UI
         updateUI.updateDate(game.currentMonth, game.currentYear);
         updateUI.updateMoney(game.gameStatistics.money);
-        updateUI.updatePopulation(game.gameStatistics.population);
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
         updateUI.updatePollution(game.gameStatistics.pollution);
-        updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         updateUI.updateProsperity(game.gameStatistics.prosperity);
-        updateUI.updateHappiness(game.gameStatistics.happiness);       
+        updateUI.updateHappiness(game.gameStatistics.happiness);
+
+        //updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
+        //updateUI.updatePopulation(game.gameStatistics.population);
     }
 
 
+    /* Tooltips worden niet meer getoont atm, bewaren voor als we van mening veranderen
     private void updateUITooltips()
     {
         if (updateUI.getBtnMoneyHover())
@@ -533,7 +535,8 @@ public class GameController : MonoBehaviour
         {
             updateUI.updateProsperityTooltip(game.regions[j].statistics.prosperity, j);
         }
-    }
+    } 
+    */
 
     private void updateUIPopups()
     {
