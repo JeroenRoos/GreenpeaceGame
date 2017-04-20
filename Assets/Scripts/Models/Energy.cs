@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Energy {
 
-    public Status status;
+    //public Status status;
 
     public float fossilSource;
     public float cleanSource;
@@ -18,6 +18,6 @@ public class Energy {
         cleanSource   = 5.0f;
         nuclearSource = 1.0f;
 
-        status = Status.Bad;
+        //status = Status.Bad;
     }
 }
