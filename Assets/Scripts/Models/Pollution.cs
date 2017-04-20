@@ -19,7 +19,18 @@ public class Pollution
     public double waterPollutionIncrease { get; private set; }
 
     public Pollution() { }
-    
+
+    public Pollution(Pollution pollution)
+    {
+        avgPollution = 0;
+        airPollution = pollution.airPollution;
+        naturePollution = pollution.naturePollution;
+        waterPollution = pollution.waterPollution;
+        airPollutionIncrease = pollution.airPollutionIncrease;
+        naturePollutionIncrease = pollution.naturePollutionIncrease;
+        waterPollutionIncrease = pollution.waterPollutionIncrease;
+    }
+
     public void ChangeAirPollution(double changeValue)
     {
         airPollution += changeValue;

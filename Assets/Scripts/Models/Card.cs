@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+[Serializable]
 public class Card
 {
     public string cardID { get; private set; }
@@ -25,6 +25,20 @@ public class Card
 
     public Card() { }
 
+    public Card(Card card)
+    {
+        cardID = card.cardID;
+        name = new string[2] { card.name[0], card.name[1] };
+        description = new string[2] { card.description[0], card.description[1] };
+        isGlobal = card.isGlobal;
+        maximumIncrementsDone = card.maximumIncrementsDone;
+        currentIncrementsDone = card.currentIncrementsDone;
+        sectorConsequencesPerTurn = new SectorStatistics(card.sectorConsequencesPerTurn);
+        moneyRewardPerTurn = card.moneyRewardPerTurn;
+        currentSectorConsequences = new SectorStatistics(card.currentSectorConsequences);
+        currentMoneyReward = card.currentMoneyReward;        
+    }
+
     public void increaseCurrentRewards()
     {
         currentMoneyReward += moneyRewardPerTurn;
@@ -41,5 +55,25 @@ public class Card
         currentSectorConsequences.pollution.ChangeWaterPollutionMutation(sectorConsequencesPerTurn.pollution.waterPollutionIncrease);
 
         currentIncrementsDone++;
+    }
+
+
+    public void UseCardOnRegion(Region r, GameStatistics gs)
+    {
+        foreach (RegionSector rs in r.sectors)
+            rs.ImplementStatisticValues(currentSectorConsequences, true);
+
+        gs.ModifyMoney(currentMoneyReward, true);
+    }
+
+    public void UseCardOnCountry(List<Region> regions, GameStatistics gs)
+    {
+        foreach (Region r in regions)
+        {
+            foreach (RegionSector rs in r.sectors)
+                rs.ImplementStatisticValues(currentSectorConsequences, true);
+        }
+
+        gs.ModifyMoney(currentMoneyReward, true);
     }
 }

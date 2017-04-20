@@ -15,6 +15,15 @@ public class SectorStatistics
 
     public SectorStatistics() { }
 
+    public SectorStatistics(SectorStatistics sectorStatistics)
+    {
+        income = sectorStatistics.income;
+        happiness = sectorStatistics.happiness;
+        ecoAwareness = sectorStatistics.ecoAwareness;
+        prosperity = sectorStatistics.prosperity;
+        pollution = new Pollution(sectorStatistics.pollution);
+    }
+
     public void ModifyIncome(double changeValue)
     {
         income += changeValue;
