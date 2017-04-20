@@ -240,6 +240,10 @@ public class UpdateUI : MonoBehaviour
     public Image imgInvestmentEventConsequences04;
     public Image imgInvestmentEventConsequences05;
 
+    // Text Cards Popup
+    public Text txtCardsTitle;
+    public Text txtCardsColumn;
+
     // Text Organization Menu
     public Text txtColumnLeft;
     public Text txtColumnRight;
@@ -337,6 +341,8 @@ public class UpdateUI : MonoBehaviour
     public Button btnMonthlyReportStats;
     public Button btnYearlyReportStats;
     public Button btnAfterActionReportCompleted;
+    public Image imgBarBottom;
+    public Button btnCards;
 
     // Canvas 
     public Canvas canvasMenuPopup;
@@ -350,6 +356,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasQuestsPopup;
     public Canvas canvasEventPopup;
     public Canvas canvasInvestmentsPopup;
+    public Canvas canvasCardsPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -395,6 +402,8 @@ public class UpdateUI : MonoBehaviour
     public Button btnTutorialOrganization;
 
     private Vector3 v3Tooltip;
+    //string arrays (translations
+    string[] nextTurnText = { "Volgende maand", "Next month" };
 
     #endregion
 
@@ -415,6 +424,8 @@ public class UpdateUI : MonoBehaviour
     private bool btnMonthlyReportCheck;
     private bool btnYearlyReportCheck;
     private bool btnAfterActionCompletedCheck;
+    private bool btnInvestementsHoverCheck;
+    private bool btnCardsHoverCheck;
 
     public bool tutorialActive;
     private bool tutorialNoTooltip;
@@ -461,10 +472,6 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
-    //string arrays (translations
-    string[] nextTurnText = { "Volgende maand", "Next month" };
-
-
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
@@ -474,6 +481,7 @@ public class UpdateUI : MonoBehaviour
         initOrganizationText();
         initRegionText();
         initInvestementsText();
+        initCardsText();
 
         tooltipStyle.normal.background = tooltipTexture;
         taal = ApplicationModel.language;
@@ -489,6 +497,36 @@ public class UpdateUI : MonoBehaviour
 
         btnNextTurnText.text = nextTurnText[taal];
     }
+
+    void Update()
+    {
+        if (tutorialStep6)
+            popupController();
+
+        if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
+        {
+            
+            if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
+            {
+                btnDoActionRegionMenu.gameObject.SetActive(true);
+                txtRegionActionNoMoney.text = "";
+            }
+            else
+            {
+                string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
+                txtRegionActionNoMoney.text = error[taal];
+                btnDoActionRegionMenu.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+
+    }
+    #endregion
+
+    #region Tutorial Main Steps
 
     private void initTutorialActive()
     {
@@ -550,7 +588,7 @@ public class UpdateUI : MonoBehaviour
         regionWestActivated = true;
         tutorialCheckActionDone = true;
         tutorialQuestsActive = false;
-        
+
         tutorialeventsClickable = true;
         tutorialOnlyWestNL = true;
         tutorialRegionActive = false;
@@ -558,36 +596,6 @@ public class UpdateUI : MonoBehaviour
         tutorialMonthlyReportActive = false;
         tutorialOrganizationActive = false;
     }
-
-    void Update()
-    {
-        if (tutorialStep6)
-            popupController();
-
-        if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
-        {
-            
-            if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
-            {
-                btnDoActionRegionMenu.gameObject.SetActive(true);
-                txtRegionActionNoMoney.text = "";
-            }
-            else
-            {
-                string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
-                txtRegionActionNoMoney.text = error[taal];
-                btnDoActionRegionMenu.gameObject.SetActive(false);
-            }
-        }
-    }
-
-    void FixedUpdate()
-    {
-
-    }
-    #endregion
-
-    #region Tutorial Main Steps
     IEnumerator initTutorialText()
     {
         Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
@@ -599,6 +607,7 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.gameObject.SetActive(false);
         btnNextTurn.gameObject.SetActive(false);
         btnInvestments.gameObject.SetActive(false);
+        imgBarBottom.gameObject.SetActive(false);
 
         doTuto = true;
         tutorialOnlyWestNL = true;
@@ -676,6 +685,7 @@ public class UpdateUI : MonoBehaviour
         tutorialOrganizationActive = true;
         imgTutorialOverworld.transform.position = imgPosMiddle;
         btnOrganization.gameObject.SetActive(true);
+        imgBarBottom.gameObject.SetActive(true);
 
         while (!canvasOrganizationPopup.gameObject.activeSelf)
             yield return null;
@@ -824,6 +834,8 @@ public class UpdateUI : MonoBehaviour
         btnMonthlyReportCheck = false;
         btnYearlyReportCheck = false;
         btnAfterActionCompletedCheck = false;
+        btnCardsHoverCheck = false;
+        btnInvestementsHoverCheck = false;
         btnMenuCheck = false;
         popupActive = false;
         regionHouseholdsCheck = false;
@@ -869,6 +881,9 @@ public class UpdateUI : MonoBehaviour
 
         canvasQuestsPopup.GetComponent<Canvas>();
         canvasQuestsPopup.gameObject.SetActive(false);
+
+        canvasCardsPopup.GetComponent<Canvas>();
+        canvasCardsPopup.gameObject.SetActive(false);
 
         if (tutorialActive)
         {
@@ -968,6 +983,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasOrganizationPopup.gameObject.activeSelf)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasCardsPopup.gameObject.activeSelf)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -1473,7 +1494,8 @@ public class UpdateUI : MonoBehaviour
         // Andere reagions clickable tijdens tutorial
         // Na de tutorial
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck && !btnMonthlyReportCheck && !btnYearlyReportCheck)
+        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck && !btnMonthlyReportCheck && !btnYearlyReportCheck
+        && !btnInvestementsHoverCheck && !btnCardsHoverCheck)
         {
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
@@ -2770,6 +2792,25 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for Cards Popup
+    private void initCardsText()
+    {
+        string[] title = { "Kaarten", "Cards" };
+        string[] column = { "Niet geactiveerde kaarten", "Not activated cards" };
+
+        txtCardsTitle.text = title[taal];
+        txtCardsColumn.text = column[taal];
+    }
+
+    private void updateCardsUI()
+    {
+        foreach (Card card in game.cards)
+        {
+            //card.
+        }
+    }
+    #endregion
+
     #region Code for Button Presses for Popups
     public void btnTimelineClick()
     {
@@ -2800,6 +2841,17 @@ public class UpdateUI : MonoBehaviour
             popupActive = true;
             EventManager.CallPopupIsActive();
             initQuestsPopup();
+        }
+    }
+
+    public void btnCardsClick()
+    {
+        if (!canvasCardsPopup.gameObject.activeSelf && !popupActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(true);
+            popupActive = true;
+            EventManager.CallPopupIsActive();
+            updateCardsUI();
         }
     }
 
@@ -2885,6 +2937,12 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
+        else if (canvasCardsPopup.gameObject.activeSelf)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
         else if (canvasMenuPopup.gameObject.activeSelf)
         {
             canvasMenuPopup.gameObject.SetActive(false);
@@ -2956,6 +3014,7 @@ public class UpdateUI : MonoBehaviour
             initOrganizationText();
             initRegionText();
             initInvestementsText();
+            initCardsText();
         }
     }
 
@@ -2972,6 +3031,7 @@ public class UpdateUI : MonoBehaviour
             initOrganizationText();
             initRegionText();
             initInvestementsText();
+            initCardsText();
         }
     }
     #endregion
@@ -3159,6 +3219,26 @@ public class UpdateUI : MonoBehaviour
     public void regionCompanyExit()
     {
         regionCompanyCheck = false;
+    }
+
+    public void btnInvestmentsEnter()
+    {
+        btnInvestementsHoverCheck = true;
+    }
+
+    public void btnInvestmentsExit()
+    {
+        btnInvestementsHoverCheck = false;
+    }
+
+    public void btnCardsEnter()
+    {
+        btnCardsHoverCheck = true;
+    }
+
+    public void btnCardsExit()
+    {
+        btnCardsHoverCheck = false;
     }
     #endregion
 
