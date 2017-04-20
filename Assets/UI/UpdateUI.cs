@@ -461,6 +461,9 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
+    //string arrays (translations
+    string[] nextTurnText = { "Volgende maand", "Next month" };
+
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
@@ -474,8 +477,9 @@ public class UpdateUI : MonoBehaviour
         initRegionText();
         initInvestementsText();
 
+
         tooltipStyle.normal.background = tooltipTexture;
-        taal = 0;
+        taal = ApplicationModel.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
@@ -485,6 +489,8 @@ public class UpdateUI : MonoBehaviour
             initTutorialActive();
         else
             initTutorialNotActive();
+
+        btnNextTurnText.text = nextTurnText[taal];
     }
 
     private void initTutorialActive()
@@ -681,8 +687,8 @@ public class UpdateUI : MonoBehaviour
         
         btnNextTurn.interactable = true;
         canvasTutorial.gameObject.SetActive(true);
-        string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende beurt knop rechtsonderin. Druk nu op de Volgende Beurt knop. ",
-            "You can go to the next month / turn by pressing the Next turn button in the bottom right of your screen. " };
+        string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende maand knop rechtsonderin. Druk nu op de Volgende maand knop. ",
+            "You can go to the next month by pressing the Next month button in the bottom right of your screen. " };
         txtTurorialStep1.text = step6[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
 
@@ -1683,6 +1689,9 @@ public class UpdateUI : MonoBehaviour
     {
         dropdownRegio.ClearOptions();
         int currentMonth = game.currentYear * 12 + game.currentMonth;
+        string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
+
+        dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
 
         foreach (RegionAction action in regio.actions)
         {
@@ -2458,9 +2467,12 @@ public class UpdateUI : MonoBehaviour
 
     private void initEventText(GameEvent e)
     {
-        string[] txtBtn = { "Bevestig", "Confirm" };
+        string[] txtBtn = { "Doe keuze", "Do choice" };
         string[] txtKosten = { "\nKosten: ", "\nCost: " };
+        string[] txtMoney = { " geld", "money" };
         string[] txtDuur = { "\nDuur: ", "\nDuration: " };
+        string[] txtMonths = { " maanden", " months" };
+        string[] txtMonth = { " maand", " month" };
 
         txtEventName.text = e.publicEventName[taal];
         txtEventDescription.text = e.description[taal];
@@ -2468,16 +2480,28 @@ public class UpdateUI : MonoBehaviour
 
         if (ApplicationModel.language == 0)
         {
-            radioEventOption1Text.text = e.choicesDutch[0] + txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtDuur[taal] + e.eventDuration[0];
-            radioEventOption2Text.text = e.choicesDutch[1] + txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtDuur[taal] + e.eventDuration[1];
-            radioEventOption3Text.text = e.choicesDutch[2] + txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtDuur[taal] + e.eventDuration[2];
+            radioEventOption1Text.text = e.choicesDutch[0];
+            radioEventOption2Text.text = e.choicesDutch[1];
+            radioEventOption3Text.text = e.choicesDutch[2];
         }
         else
         {
-            radioEventOption1Text.text = e.choicesEnglish[0] + txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtDuur[taal] + e.eventDuration[0];
-            radioEventOption2Text.text = e.choicesEnglish[1] + txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtDuur[taal] + e.eventDuration[1];
-            radioEventOption3Text.text = e.choicesEnglish[2] + txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtDuur[taal] + e.eventDuration[2];
+            radioEventOption1Text.text = e.choicesEnglish[0];
+            radioEventOption2Text.text = e.choicesEnglish[1];
+            radioEventOption3Text.text = e.choicesEnglish[2];
         }
+        if (e.eventDuration[0] != 1)
+            radioEventOption1Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonths[taal];
+        else
+            radioEventOption1Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonth[taal];
+        if (e.eventDuration[1] != 1)
+            radioEventOption2Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonths[taal];
+        else
+            radioEventOption2Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonth[taal];
+        if (e.eventDuration[2] != 1)
+            radioEventOption3Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonths[taal];
+        else
+            radioEventOption3Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonth[taal];
     }
 
     public void valueChangedOption1()
@@ -2912,7 +2936,7 @@ public class UpdateUI : MonoBehaviour
         {
             game.ChangeLanguage("dutch");
             taal = ApplicationModel.language;
-            btnNextTurnText.text = "Volgende beurt";
+            btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Tijdlijn";
             txtBtnMenu.text = "Menu";
             initButtonText();
@@ -2928,7 +2952,7 @@ public class UpdateUI : MonoBehaviour
         {
             game.ChangeLanguage("english");
             taal = ApplicationModel.language;
-            btnNextTurnText.text = "Next turn";
+            btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Timeline";
             txtBtnMenu.text = "Menu";
             initButtonText();
