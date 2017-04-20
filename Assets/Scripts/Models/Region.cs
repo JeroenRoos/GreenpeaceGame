@@ -87,7 +87,7 @@ public class Region
 
     public void CompleteEvent(GameEvent gameEvent, Game game)
     {
-        ImplementEventConsequences(gameEvent, gameEvent.consequences[gameEvent.pickedChoiceNumber], true);
+        ImplementEventConsequences(gameEvent, gameEvent.afterInvestmentConsequences[gameEvent.pickedChoiceNumber], true);
         ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false);
         ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true);
         gameEvent.CompleteEvent(game);

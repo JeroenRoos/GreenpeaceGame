@@ -488,7 +488,7 @@ public class UpdateUI : MonoBehaviour
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            tutorialActive = false;
+            tutorialActive = true;
 
         if (tutorialActive)
             initTutorialActive();
@@ -2188,7 +2188,7 @@ public class UpdateUI : MonoBehaviour
             foreach (GameEvent e in monthlyCompletedEvents[i])
             {
                 txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal];
-                txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.consequences[e.pickedChoiceNumber]);
+                txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
                 //txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
 
                 string[] sectorsPicked = { "Sectoren: ", "Sectors: " };
@@ -2528,17 +2528,17 @@ public class UpdateUI : MonoBehaviour
             radioEventOption3Text.text = e.choicesEnglish[2];
         }
         if (e.eventDuration[0] != 1)
-            radioEventOption1Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonths[taal];
+            radioEventOption1Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonths[taal];
         else
-            radioEventOption1Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonth[taal];
+            radioEventOption1Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonth[taal];
         if (e.eventDuration[1] != 1)
-            radioEventOption2Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonths[taal];
+            radioEventOption2Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonths[taal];
         else
-            radioEventOption2Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonth[taal];
+            radioEventOption2Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonth[taal];
         if (e.eventDuration[2] != 1)
-            radioEventOption3Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonths[taal];
+            radioEventOption3Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonths[taal];
         else
-            radioEventOption3Text.text += txtKosten[taal] + e.eventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonth[taal];
+            radioEventOption3Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonth[taal];
     }
 
     public void valueChangedOption1()
@@ -2548,7 +2548,7 @@ public class UpdateUI : MonoBehaviour
             radioEventOption1Check = true;
             radioEventOption2.isOn = false;
             radioEventOption3.isOn = false;
-            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[0])
+            if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[0])
                 btnDoEvent.interactable = true;
             else
                 btnDoEvent.interactable = false;
@@ -2566,7 +2566,7 @@ public class UpdateUI : MonoBehaviour
             radioEventOption2Check = true;
             radioEventOption1.isOn = false;
             radioEventOption3.isOn = false;
-            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[1])
+            if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[1])
                 btnDoEvent.interactable = true;
             else
                 btnDoEvent.interactable = false;
@@ -2584,7 +2584,7 @@ public class UpdateUI : MonoBehaviour
             radioEventOption3Check = true;
             radioEventOption1.isOn = false;
             radioEventOption2.isOn = false;
-            if (game.gameStatistics.money >= gameEvent.eventChoiceMoneyCost[2])
+            if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[2])
                 btnDoEvent.interactable = true;
             else
                 btnDoEvent.interactable = false;
@@ -2835,7 +2835,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnQuestsClick()
     {
-        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive && tutorialQuestsActive)//tutorialStep15)
+        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)//tutorialStep15)
         {
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
