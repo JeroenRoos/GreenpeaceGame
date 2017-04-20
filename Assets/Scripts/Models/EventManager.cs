@@ -16,7 +16,10 @@ class EventManager
     public static event ActivePopup PopupIsActive;
 
     public delegate void DisabledPopup();
-    public static event ActivePopup PopupIsDisabled;
+    public static event DisabledPopup PopupIsDisabled;
+
+    public delegate void FirstCardGained();
+    public static event FirstCardGained FirstCardIsGained;
 
     /*public delegate void EventOccured();
     public static event EventOccured ShowEvent;*/

@@ -116,6 +116,16 @@ public class Game
         CompletefinishedActions();
         UpdateRegionEvents();
         MutateMonthlyStatistics();
+        GenerateNewCard();
+    }
+
+    public void GenerateNewCard()
+    {
+        if (currentYear == 3 && currentMonth == 1)
+            inventory.AddCardToInventory(new Card(cards[rnd.Next(0, cards.Count)]));
+
+        else if (rnd.Next(1, 101) <= 2 && currentYear >= 3)
+            inventory.AddCardToInventory(new Card(cards[rnd.Next(0, cards.Count)]));
     }
 
     public void MutateMonthlyStatistics()
