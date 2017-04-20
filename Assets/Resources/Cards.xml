@@ -7,6 +7,10 @@
         <string>Inkomstenkaart</string>
         <string>Income Card</string>
       </name>
+      <description>
+        <string>dutch</string>
+        <string>english</string>
+      </description>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
       <currentIncrementsDone>0</currentIncrementsDone>
@@ -49,6 +53,10 @@
         <string>Tevredenheidskaart</string>
         <string>Happiness card</string>
       </name>
+      <description>
+        <string>dutch</string>
+        <string>english</string>
+      </description>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
       <currentIncrementsDone>0</currentIncrementsDone>
@@ -91,6 +99,10 @@
         <string>Milieubewustheidskaart</string>
         <string>Eco awareness card</string>
       </name>
+      <description>
+        <string>dutch</string>
+        <string>english</string>
+      </description>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
       <currentIncrementsDone>0</currentIncrementsDone>
@@ -133,6 +145,10 @@
         <string>Welvaartskaart</string>
         <string>Prosperity card</string>
       </name>
+      <description>
+        <string>dutch</string>
+        <string>english</string>
+      </description>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
       <currentIncrementsDone>0</currentIncrementsDone>
@@ -175,6 +191,10 @@
         <string>Vervuilingskaart</string>
         <string>Pollution card</string>
       </name>
+      <description>
+        <string>dutch</string>
+        <string>english</string>
+      </description>
       <isGlobal>false</isGlobal>
       <maximumIncrementsDone>5</maximumIncrementsDone>
       <currentIncrementsDone>0</currentIncrementsDone>

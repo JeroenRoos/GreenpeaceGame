@@ -483,7 +483,7 @@ public class UpdateUI : MonoBehaviour
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            tutorialActive = true;
+            tutorialActive = false;
 
         if (tutorialActive)
             initTutorialActive();
@@ -1732,8 +1732,8 @@ public class UpdateUI : MonoBehaviour
             {
                 regioAction = action;
 
-                string[] actionCostText = { "Kosten per sector: " + action.actionMoneyCost + " geld",
-                    "Costs per sector: " + action.actionMoneyCost + " geld" };
+                string[] actionCostText = { "Kosten per sector: " + action.afterInvestmentActionMoneyCost + " geld",
+                    "Costs per sector: " + action.afterInvestmentActionMoneyCost + " geld" };
                 string[] actionDurationText = { "Duur: " + regioAction.actionDuration.ToString() + " maanden",
                     "Duration: " + regioAction.actionDuration.ToString() + " months" };
 
@@ -2184,7 +2184,7 @@ public class UpdateUI : MonoBehaviour
             {
                 txtAfterActionCompletedColumnRightDescription.text += a.name[taal] + " - " + a.description[taal];
                 txtAfterActionCompletedColumnRightDescription.text += getChosenSectors(a.pickedSectors);
-                txtAfterActionCompletedColumnRightDescription.text += getAfterActionConsequences(a.consequences);
+                txtAfterActionCompletedColumnRightDescription.text += getAfterActionConsequences(a.afterInvestmentConsequences);
 
                 string[] line = { "Geld beloning: ", "Money reward: " };
                 txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
@@ -3226,12 +3226,12 @@ public class UpdateUI : MonoBehaviour
         if (!checkboxHouseholds)
         {
             checkboxHouseholds = true;
-            regioActionCost += regioAction.actionMoneyCost;
+            regioActionCost += regioAction.afterInvestmentActionMoneyCost;
         }
         else
         {
             checkboxHouseholds = false;
-            regioActionCost -= regioAction.actionMoneyCost;
+            regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
         if (game.gameStatistics.money > regioActionCost)
@@ -3247,12 +3247,12 @@ public class UpdateUI : MonoBehaviour
         if (!checkboxAgriculture)
         {
             checkboxAgriculture = true;
-            regioActionCost += regioAction.actionMoneyCost;
+            regioActionCost += regioAction.afterInvestmentActionMoneyCost;
         }
         else
         {
             checkboxAgriculture = false;
-            regioActionCost -= regioAction.actionMoneyCost;
+            regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
         if (game.gameStatistics.money > regioActionCost)
@@ -3268,12 +3268,12 @@ public class UpdateUI : MonoBehaviour
         if (!checkboxCompanies)
         {
             checkboxCompanies = true;
-            regioActionCost += regioAction.actionMoneyCost;
+            regioActionCost += regioAction.afterInvestmentActionMoneyCost;
         }
         else
         {
             checkboxCompanies = false;
-            regioActionCost -= regioAction.actionMoneyCost;
+            regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
         if (game.gameStatistics.money > regioActionCost)
