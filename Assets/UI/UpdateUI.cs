@@ -469,8 +469,6 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //Debug.Log("UpdateUI Start!");
-        //test.text = Application.dataPath;
         initButtons();
         initCanvas();
         initOrganizationText();
@@ -518,6 +516,9 @@ public class UpdateUI : MonoBehaviour
 
     private void initTutorialNotActive()
     {
+        imgTutorialStep2Highlight1.enabled = false;
+        imgTutorialStep2Highlight2.enabled = false;
+        imgTutorialStepOrgMenuHightlight.enabled = false;
         doTuto = false;
         imgTutorialOverworld.gameObject.SetActive(false);
         btnTutorialOverworld.gameObject.SetActive(false);
@@ -627,7 +628,8 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         //tutorialStep3 = false;
-        string[] step3 = { "Linksboven staan jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het volk besluit om mee te werken met jouw beslissingen. "
+        imgTutorialOverworld.transform.position = imgPosMiddle;
+        string[] step3 = { "Hierboven staan jouw resources om het doel te behalen. Geld wordt gebruikt om jouw beslissingen te financieren. Tevredenheid bepaald of het volk besluit om mee te werken met jouw beslissingen. "
                 + "Milieubewustheid zorgt ervoor dat er minder wordt vervuilt. Vervuiling geeft de vervuiling in het land weer. De welvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's. "
                 + "Tot slot wordt er getoond hoeveel mensen er in Nederland wonen. Al deze iconen geven het gemiddelde van de verschillende regio's weer."
                 , "Here are the resources that help you achieve your goal. Money is used for financing the decisions you make. Happiness determines whether people cooperate or not. A better Eco awareness means less pollution. "
@@ -729,12 +731,10 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step7[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         btnTutorialNext.gameObject.SetActive(true);
-        Debug.Log("EVENT STEP 1!");
 
         while (!tutorialstep19)
             yield return null;
 
-        Debug.Log("EVENT STEP 2!");
         btnTutorialNext.gameObject.SetActive(false);
         tutorialeventsClickable = true;
         string[] step8 = { "Door op het icoon van de event te klikken krijg je een pop-up. In deze pop-up kun je kiezen welke actie je bij dit event wil nemen. " +
@@ -1817,7 +1817,6 @@ public class UpdateUI : MonoBehaviour
     #region Code for Monthly/Yearly Report Popup
     public void InitMonthlyReport()
     {
-        Debug.Log("Init Montly Report!");
         monthlyNewEvents = (List<GameEvent>[])game.monthlyReport.newEvents.Clone();
         updateTextAfterActionStats(true);
         calculateDifference(game.monthlyReport.oldIncome, game.monthlyReport.oldHappiness, game.monthlyReport.oldEcoAwareness, game.monthlyReport.oldPollution, game.monthlyReport.oldProsperity, true);
@@ -1825,7 +1824,6 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialMonthlyReport()
     {
-        Debug.Log("In the coroutine!");
         string[] step1 = { "In dit maandelijkse rapport kun je de veranderingen van de statistieken zien ten opzichte van vorige maand. Daarnaast kun je ook zien of er nieuwe events in een regio zijn. " +
                 "Je krijgt dit rapport elke maand opnieuw. Je kunt dit menu sluiten door op de ESC toets te drukken."
                 , "In this monthly report you can see the changes in the statistics with the previous month. You can also see if there is a new event in a region. " +
@@ -1837,8 +1835,7 @@ public class UpdateUI : MonoBehaviour
 
         while (!tutorialStep18)
             yield return null;
-
-        Debug.Log("Montly Report Done!");
+        
         imgTutorialAfterTurn.gameObject.SetActive(false);
         tutorialMonthlyReportDone = true;
         tutorialMonthlyReportActive = false;
@@ -2474,7 +2471,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtMonths = { " maanden", " months" };
         string[] txtMonth = { " maand", " month" };
 
-        txtEventName.text = e.publicEventName[taal];
+        txtEventName.text = "EVENT:" + e.publicEventName[taal];
         txtEventDescription.text = e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
 
@@ -2574,8 +2571,6 @@ public class UpdateUI : MonoBehaviour
             option = 1;
         else 
             option = 2;
-
-        //Debug.Log(option + " BtnCompleteEventCLICK!");
 
         gameEvent.SetPickedChoice(option, game, regionEvent);
         canvasEventPopup.gameObject.SetActive(false);
