@@ -186,7 +186,7 @@ public class TestBot : MonoBehaviour
         bool actionFound = false;
         foreach (RegionAction ra in region.actions)
         {
-            if ((ra.actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
+            if ((ra.afterInvestmentActionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (ra.lastCompleted + ra.actionCooldown <= currentMonth || ra.lastCompleted == 0) &&
                 !(ra.isUnique && ra.lastCompleted > 0))
             {
@@ -268,7 +268,7 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].afterInvestmentActionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
                 (region.actions[i].actionMoneyReward > highestMoneyIndex))
@@ -292,10 +292,10 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].afterInvestmentActionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
-                (region.actions[i].consequences.income > highestIncomeIndex))
+                (region.actions[i].afterInvestmentConsequences.income > highestIncomeIndex))
             {
                 highestIncomeIndex = i;
                 actionFound = true;
@@ -316,10 +316,10 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].afterInvestmentActionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
-                (region.actions[i].consequences.prosperity > highestProsperityIndex))
+                (region.actions[i].afterInvestmentConsequences.prosperity > highestProsperityIndex))
             {
                 highestProsperityIndex = i;
                 actionFound = true;
@@ -340,10 +340,10 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].afterInvestmentActionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
-                (region.actions[i].consequences.ecoAwareness > highestEcoAwarenessIndex))
+                (region.actions[i].afterInvestmentConsequences.ecoAwareness > highestEcoAwarenessIndex))
             {
                 highestEcoAwarenessIndex = i;
                 actionFound = true;
@@ -364,10 +364,10 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if ((region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
+            if ((region.actions[i].afterInvestmentActionMoneyCost * 3 < gameController.game.gameStatistics.money) &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0) &&
-                (region.actions[i].consequences.happiness > highestHappinessIndex))
+                (region.actions[i].afterInvestmentConsequences.happiness > highestHappinessIndex))
             {
                 highestHappinessIndex = i;
                 actionFound = true;
@@ -390,19 +390,19 @@ public class TestBot : MonoBehaviour
 
         for (int i = 0; i < region.actions.Count; i++)
         {
-            if (region.actions[i].actionMoneyCost * 3 < gameController.game.gameStatistics.money &&
+            if (region.actions[i].afterInvestmentActionMoneyCost * 3 < gameController.game.gameStatistics.money &&
                 (region.actions[i].lastCompleted + region.actions[i].actionCooldown <= currentMonth || region.actions[i].lastCompleted == 0) &&
                 !(region.actions[i].isUnique && region.actions[i].lastCompleted > 0))
             {
                 double pollutionSum = 0;
 
-                pollutionSum += region.actions[i].consequences.pollution.airPollution;
-                pollutionSum += region.actions[i].consequences.pollution.waterPollution;
-                pollutionSum += region.actions[i].consequences.pollution.naturePollution;
+                pollutionSum += region.actions[i].afterInvestmentConsequences.pollution.airPollution;
+                pollutionSum += region.actions[i].afterInvestmentConsequences.pollution.waterPollution;
+                pollutionSum += region.actions[i].afterInvestmentConsequences.pollution.naturePollution;
 
-                pollutionSum += region.actions[i].consequences.pollution.airPollutionIncrease;
-                pollutionSum += region.actions[i].consequences.pollution.naturePollutionIncrease;
-                pollutionSum += region.actions[i].consequences.pollution.waterPollutionIncrease;
+                pollutionSum += region.actions[i].afterInvestmentConsequences.pollution.airPollutionIncrease;
+                pollutionSum += region.actions[i].afterInvestmentConsequences.pollution.naturePollutionIncrease;
+                pollutionSum += region.actions[i].afterInvestmentConsequences.pollution.waterPollutionIncrease;
 
                 if (pollutionSum < tempPollutionSum)
                 {
