@@ -246,6 +246,8 @@ public class UpdateUI : MonoBehaviour
     // Text Cards Popup
     public Text txtCardsTitle;
     public Text txtCardsColumn;
+    public Text txtCardsColumnRight;
+    public Text txtCardsOptionInformation;
     public RawImage imgCardsPopup;
 
     // Text Organization Menu
@@ -347,6 +349,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnAfterActionReportCompleted;
     public Image imgBarBottom;
     public Button btnCards;
+    public Button btnCardsPosition;
 
     // Canvas 
     public Canvas canvasMenuPopup;
@@ -1136,16 +1139,18 @@ public class UpdateUI : MonoBehaviour
             float yOffset = 0f;
 
             // Get the X position of the button
-            Vector3 posTxtColumn = txtCardsColumn.transform.position;
-            RectTransform rectTxtColumn = txtCardsColumn.rectTransform;
-            float x = posTxtColumn.x - rectTxtColumn.rect.width;
+            //Vector3 posTxtColumn = txtCardsColumn.transform.position;
+            //RectTransform rectTxtColumn = txtCardsColumn.rectTransform;
+
+            RectTransform rectBtnCardsPosition = btnCardsPosition.GetComponent<RectTransform>();
+            Vector3 btnPos = btnCardsPosition.transform.position;//Camera.current.WorldToScreenPoint(btnCardsPosition.transform.position);//btnCardsPosition.transform.position;
+            float x = btnPos.x;//posTxtColumn.x - rectTxtColumn.rect.width;
+            float y = btnPos.y;//posTxtColumn.z - rectTxtColumn.rect.height; // + 200;// (Screen.height / 2);// - rectTxtColumn.rect.height;
 
             foreach (Card card in game.cards)
             {
-                if (GUI.Button(new Rect(x, 25 + yOffset, 150, 30), card.name[taal], buttonStyle))
-                {
-
-                }
+                if (GUI.Button(new Rect(x, y + yOffset, rectBtnCardsPosition.rect.width + 50, rectBtnCardsPosition.rect.height), card.name[taal], buttonStyle))
+                    setTextCardInformation(card);
 
                 yOffset += 35;
             }
@@ -2220,10 +2225,11 @@ public class UpdateUI : MonoBehaviour
             foreach (GameEvent e in monthlyCompletedEvents[i])
             {
                 txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal];
-                txtAfterActionCompletedColumnLeftDescription.text += getAfterActionConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
+                string[] c = { "\nConsequenties: ", "\nConsequences: " };
+                txtAfterActionCompletedColumnLeftDescription.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
                 //txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
 
-                string[] sectorsPicked = { "Sectoren: ", "Sectors: " };
+                string[] sectorsPicked = { "\nSectoren: ", "\nSectors: " };
                 txtAfterActionCompletedColumnLeftDescription.text += sectorsPicked[taal];
                 foreach (string s in e.possibleSectors)
                 {
@@ -2253,9 +2259,10 @@ public class UpdateUI : MonoBehaviour
             {
                 txtAfterActionCompletedColumnRightDescription.text += a.name[taal] + " - " + a.description[taal];
                 txtAfterActionCompletedColumnRightDescription.text += getChosenSectors(a.pickedSectors);
-                txtAfterActionCompletedColumnRightDescription.text += getAfterActionConsequences(a.afterInvestmentConsequences);
+                string[] c = { "\nConsequenties: ", "\nConsequences: " };
+                txtAfterActionCompletedColumnRightDescription.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
 
-                string[] line = { "Geld beloning: ", "Money reward: " };
+                string[] line = { "\nGeld beloning: ", "\nMoney reward: " };
                 txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
                 index++;
             }
@@ -2265,7 +2272,6 @@ public class UpdateUI : MonoBehaviour
     private string getChosenSectors(bool[] sectors)
     {
         string[] sectorsPicked = {"\nSectoren: ", "\nSectors: "};
-
 
         if (sectors[0])
         {
@@ -2287,7 +2293,7 @@ public class UpdateUI : MonoBehaviour
 
     }
 
-    private string getAfterActionConsequences(SectorStatistics s)
+    /*private string getAfterActionConsequences(SectorStatistics s)
     {
         bool noConsequences = false;
 
@@ -2342,7 +2348,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         return consequences[taal];
-    }
+    }*/
     #endregion
 
     #region Code for Quests Popup
@@ -2832,11 +2838,50 @@ public class UpdateUI : MonoBehaviour
 
         txtCardsTitle.text = title[taal];
         txtCardsColumn.text = column[taal];
+        txtCardsColumnRight.text = "";
+        txtCardsOptionInformation.text = "";
     }
 
     private void updateCardsUI()
     {
+        txtCardsColumnRight.text = "";
+        txtCardsOptionInformation.text = "";
+    }
 
+    private void setTextCardInformation(Card card)
+    {
+        string[] columnRight = { card.name[taal] + " - Informatie", card.name[taal] + " - Information" };
+        string[] national = { "Kaart wordt gebruikt op nationaal niveau", "Card will be used on national level" };
+        string[] regional = { "Kaart wordt gebruikt op regionaal niveau", "Card will be used on regional level" };
+        txtCardsColumnRight.text = columnRight[taal];
+        txtCardsOptionInformation.text = card.description[taal] + "\n";
+
+        if (card.isGlobal)
+            txtCardsOptionInformation.text += national[taal];
+        else
+            txtCardsOptionInformation.text = regional[taal];
+
+        string[] increment = { "\n\nAantal toenames: " + card.currentIncrementsDone + " - Maximaal aantal toenames: " + card.maximumIncrementsDone,
+            "\n\nCurrent increment: " + card.currentIncrementsDone + " - Maximum number of increments: " + card.maximumIncrementsDone };
+        txtCardsOptionInformation.text += increment[taal];
+        string[] txtIncrement = { "\nToename consequencies per jaar:", "\nIncrement consequences per year:" };
+        txtCardsOptionInformation.text += txtIncrement[taal];
+        txtCardsOptionInformation.text += getSectorStatisticsConsequences(card.sectorConsequencesPerTurn);
+
+        if (card.moneyRewardPerTurn != 0)
+        {
+            string[] moneyReward = { "\nGeld beloning: " + card.moneyRewardPerTurn, "\nMoney reward: " + card.moneyRewardPerTurn };
+            txtCardsOptionInformation.text += moneyReward[taal];
+        }
+
+        string[] txtCurrentConsequences = { "\n\nHuidige consequencies:", "\n\nCurrent consequences:" };
+        txtCardsOptionInformation.text += txtCurrentConsequences[taal] + getSectorStatisticsConsequences(card.currentSectorConsequences);
+
+        if (card.currentMoneyReward != 0)
+        {
+            string[] moneyReward = { "\nHuidige geld beloning: " + card.currentMoneyReward, "\nCurrent money reward: " + card.currentMoneyReward };
+            txtCardsOptionInformation.text += moneyReward[taal];
+        }
     }
     #endregion
 
@@ -3603,5 +3648,64 @@ public class UpdateUI : MonoBehaviour
         //}
     }
     #endregion
+
+    #region Get SectorStatiticsConsequences Method
+    private string getSectorStatisticsConsequences(SectorStatistics s)
+    {
+        bool noConsequences = false;
+
+        string[] consequences = {"", "" };//{ "\nConsequenties: ", "\nConsequences: " };
+        if (s.income != 0)
+        {
+            string[] a = { "\nInkomen: " + s.income , "\nIncome: " + s.income  };
+            consequences[taal] += a[taal];
+            noConsequences = true;
+        }
+        if (s.happiness != 0)
+        {
+            string[] c = { "\nTevredenheid: " + s.happiness , "\nHappiness: " + s.happiness  };
+            consequences[taal] += c[taal];
+            noConsequences = true;
+        }
+        if (s.ecoAwareness != 0)
+        {
+            string[] d = { "\nMilieubewustheid: " + s.ecoAwareness, "\nEco awareness: " + s.ecoAwareness };
+            consequences[taal] += d[taal];
+            noConsequences = true;
+        }
+        if (s.prosperity != 0)
+        {
+            string[] e = { "\nWelvaart: " + s.prosperity , "\nProsperity: " + s.prosperity };
+            consequences[taal] += e[taal];
+            noConsequences = true;
+        }
+        if (s.pollution.airPollutionIncrease != 0)
+        {
+            string[] f = { "\nLuchtvervuiling: " + s.pollution.airPollutionIncrease, "\nAir pollution: " + s.pollution.airPollutionIncrease};
+            consequences[taal] += f[taal];
+            noConsequences = true;
+        }
+        if (s.pollution.waterPollutionIncrease != 0)
+        {
+            string[] g = { "\nWatervervuiling: " + s.pollution.waterPollutionIncrease, "\nWater pollution: " + s.pollution.waterPollutionIncrease};
+            consequences[taal] += g[taal];
+            noConsequences = true;
+        }
+        if (s.pollution.naturePollutionIncrease != 0)
+        {
+            string[] h = { "\nNatuurvervuiling: " + s.pollution.naturePollutionIncrease, "\nNature pollution: " + s.pollution.naturePollutionIncrease  };
+            consequences[taal] += h[taal];
+            noConsequences = true;
+        }
+
+        if (!noConsequences)
+        {
+            string[] st = { "\nGeen consequences", "\nThere are no consequences" };
+            return st[taal];
+        }
+
+        return consequences[taal];
+    }
+    #endregion
 }
- 
+
