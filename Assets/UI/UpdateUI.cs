@@ -1953,8 +1953,8 @@ public class UpdateUI : MonoBehaviour
         string[] txtEcoAwarenessDescription = { "Milieubewustheid", "Eco Awareness" };
         string[] txtPollutionDescription = { "Vervuiling", "Pollution" };
         string[] txtProsperityDescription = { "Welvaart", "Prosperity" };
-        string[] txtDescription = { "Veranderde waardes", "Changed values" };
-        string[] txtNewEventDescription = { "Nieuwe events", "New events" };
+        string[] txtDescription = { "<b>Veranderde waardes</b>", "<b>Changed values</b>" };
+        string[] txtNewEventDescription = { "<b>Nieuwe events</b>", "<b>New events</b>" };
 
         if (isMonthly)
         {
@@ -2352,11 +2352,11 @@ public class UpdateUI : MonoBehaviour
             foreach (GameEvent e in monthlyCompletedEvents[i])
             {
                 txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal];
-                string[] c = { "\nConsequenties: ", "\nConsequences: " };
+                string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
                 txtAfterActionCompletedColumnLeftDescription.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
                 //txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
 
-                string[] sectorsPicked = { "\nSectoren: ", "\nSectors: " };
+                string[] sectorsPicked = { "\n<b>Sectoren: </b>", "\n<b>Sectors: </b>" };
                 txtAfterActionCompletedColumnLeftDescription.text += sectorsPicked[taal];
                 foreach (string s in e.possibleSectors)
                 {
@@ -2385,12 +2385,12 @@ public class UpdateUI : MonoBehaviour
             {
                 txtAfterActionCompletedColumnRightDescription.text += a.name[taal] + " - " + a.description[taal];
                 txtAfterActionCompletedColumnRightDescription.text += getChosenSectors(a.pickedSectors);
-                string[] c = { "\nConsequenties: ", "\nConsequences: " };
+                string[] c = { "\n</b>Consequenties: </b>", "\n<b>Consequences: </b>" };
                 txtAfterActionCompletedColumnRightDescription.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
 
                 if (a.actionMoneyReward != 0)
                 {
-                    string[] line = { "\nGeld beloning: ", "\nMoney reward: " };
+                    string[] line = { "\n<b>Geld beloning: </b>", "\n<b>Money reward: </b>" };
                     txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
                 }
             }
@@ -2399,7 +2399,7 @@ public class UpdateUI : MonoBehaviour
 
     private string getChosenSectors(bool[] sectors)
     {
-        string[] sectorsPicked = {"\nSectoren: ", "\nSectors: "};
+        string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
 
         if (sectors[0])
         {
@@ -3800,7 +3800,7 @@ public class UpdateUI : MonoBehaviour
     {
         bool noConsequences = false;
 
-        string[] consequences = {"", "" };//{ "\nConsequenties: ", "\nConsequences: " };
+        string[] consequences = {"", "" };
         if (s.income != 0)
         {
             string[] a = { "\nInkomen per sector: " + s.income , "\nIncome per sector: " + s.income  };
