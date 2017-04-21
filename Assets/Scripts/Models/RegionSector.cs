@@ -125,80 +125,80 @@ public class RegionSector
     public double ModifyIncomeFromHappiness(double oldIncome, double happiness)
     {
         if (oldIncome > 0)
-            return oldIncome + oldIncome * ((happiness - 50) * 100);
+            return oldIncome + oldIncome * ((happiness - 50) / 100);
         else
-            return oldIncome - oldIncome * ((happiness - 50) * 100);
+            return oldIncome - oldIncome * ((happiness - 50) / 100);
     }
 
     public double ModifyHappinessFromHappiness(double oldHappiness, double happiness)
     {
         if (oldHappiness > 0)
-            return oldHappiness + oldHappiness * ((happiness - 50) * 100);
+            return oldHappiness + oldHappiness * ((happiness - 50) / 100);
         else
-            return oldHappiness - oldHappiness * ((happiness - 50) * 100);
+            return oldHappiness - oldHappiness * ((happiness - 50) / 100);
     }
 
     public double ModifyEcoAwarenessFromHappiness(double oldEcoAwareness, double happiness)
     {
         if (oldEcoAwareness > 0)
-            return oldEcoAwareness + oldEcoAwareness * ((happiness - 50) * 100);
+            return oldEcoAwareness + oldEcoAwareness * ((happiness - 50) / 100);
         else
-            return oldEcoAwareness - oldEcoAwareness * ((happiness - 50) * 100);
+            return oldEcoAwareness - oldEcoAwareness * ((happiness - 50) / 100);
     }
 
     public double ModifyProsperityFromHappiness(double oldProsperity, double happiness)
     {
         if (oldProsperity > 0)
-            return oldProsperity + oldProsperity * ((happiness - 50) * 100);
+            return oldProsperity + oldProsperity * ((happiness - 50) / 100);
         else
-            return oldProsperity - oldProsperity * ((happiness - 50) * 100);
+            return oldProsperity - oldProsperity * ((happiness - 50) / 100);
     }
 
     public double ModifyAirPollutionFromHappiness(double oldAirPollution, double happiness)
     {
         if (oldAirPollution > 0)
-            return oldAirPollution - oldAirPollution * ((happiness - 50) * 100);
+            return oldAirPollution - oldAirPollution * ((happiness - 50) / 100);
         else
-            return oldAirPollution + oldAirPollution * ((happiness - 50) * 100);
+            return oldAirPollution + oldAirPollution * ((happiness - 50) / 100);
     }
 
     public double ModifyNaturePollutionFromHappiness(double oldNaturePollution, double happiness)
     {
         if (oldNaturePollution > 0)
-            return oldNaturePollution - oldNaturePollution * ((happiness - 50) * 100);
+            return oldNaturePollution - oldNaturePollution * ((happiness - 50) / 100);
         else
-            return oldNaturePollution + oldNaturePollution * ((happiness - 50) * 100);
+            return oldNaturePollution + oldNaturePollution * ((happiness - 50) / 100);
     }
 
     public double ModifyWaterPollutionFromHappiness(double oldWaterPollution, double happiness)
     {
         if (oldWaterPollution > 0)
-            return oldWaterPollution - oldWaterPollution * ((happiness - 50) * 100);
+            return oldWaterPollution - oldWaterPollution * ((happiness - 50) / 100);
         else
-            return oldWaterPollution + oldWaterPollution * ((happiness - 50) * 100);
+            return oldWaterPollution + oldWaterPollution * ((happiness - 50) / 100);
     }
 
     public double ModifyAirPollutionIncreaseFromHappiness(double oldAirPollutionIncrease, double happiness)
     {
         if (oldAirPollutionIncrease > 0)
-            return oldAirPollutionIncrease - oldAirPollutionIncrease * ((happiness - 50) * 100);
+            return oldAirPollutionIncrease - oldAirPollutionIncrease * ((happiness - 50) / 100);
         else
-            return oldAirPollutionIncrease + oldAirPollutionIncrease * ((happiness - 50) * 100);
+            return oldAirPollutionIncrease + oldAirPollutionIncrease * ((happiness - 50) / 100);
     }
 
     public double ModifyNaturePollutionIncreaseFromHappiness(double oldNaturePollutionIncrease, double happiness)
     {
         if (oldNaturePollutionIncrease > 0)
-            return oldNaturePollutionIncrease - oldNaturePollutionIncrease * ((happiness - 50) * 100);
+            return oldNaturePollutionIncrease - oldNaturePollutionIncrease * ((happiness - 50) / 100);
         else
-            return oldNaturePollutionIncrease + oldNaturePollutionIncrease * ((happiness - 50) * 100);
+            return oldNaturePollutionIncrease + oldNaturePollutionIncrease * ((happiness - 50) / 100);
     }
 
     public double ModifyWaterPollutionIncreaseFromHappiness(double oldWaterPollutionIncrease, double happiness)
     {
         if (oldWaterPollutionIncrease > 0)
-            return oldWaterPollutionIncrease - oldWaterPollutionIncrease * ((happiness - 50) * 100);
+            return oldWaterPollutionIncrease - oldWaterPollutionIncrease * ((happiness - 50) / 100);
         else
-            return oldWaterPollutionIncrease + oldWaterPollutionIncrease * ((happiness - 50) * 100);
+            return oldWaterPollutionIncrease + oldWaterPollutionIncrease * ((happiness - 50) / 100);
     }
 }
