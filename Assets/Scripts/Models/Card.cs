@@ -65,7 +65,7 @@ public class Card
     public void UseCardOnRegion(Region r, GameStatistics gs)
     {
         foreach (RegionSector rs in r.sectors)
-            rs.ImplementStatisticValues(currentSectorConsequences, true);
+            rs.ImplementStatisticValues(currentSectorConsequences, true, gs.happiness);
 
         gs.ModifyMoney(currentMoneyReward, true);
     }
@@ -75,7 +75,7 @@ public class Card
         foreach (Region r in regions)
         {
             foreach (RegionSector rs in r.sectors)
-                rs.ImplementStatisticValues(currentSectorConsequences, true);
+                rs.ImplementStatisticValues(currentSectorConsequences, true, gs.happiness);
         }
 
         gs.ModifyMoney(currentMoneyReward, true);

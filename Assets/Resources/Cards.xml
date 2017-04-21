@@ -48,7 +48,7 @@
       <currentMoneyReward>0</currentMoneyReward>
     </Card>
     <Card>
-      <cardID>happinesCard</cardID>
+      <cardID>happinessCard</cardID>
       <name>
         <string>Tevredenheidskaart</string>
         <string>Happiness card</string>

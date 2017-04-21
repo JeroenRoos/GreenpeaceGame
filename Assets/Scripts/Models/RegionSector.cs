@@ -67,47 +67,50 @@ public class RegionSector
         }
     }
 
-    public void ImplementStatisticValues(SectorStatistics statistics, bool isAdded) //if a statistic is removed for example, isAdded is false
+    public void ImplementStatisticValues(SectorStatistics statistics, bool isAdded, double globalHappiness) //if a statistic is removed for example, isAdded is false
     {
         double modifiedIncome = ModifyIncomeFromBuilding(statistics.income);
-        /*double modifiedHappiness = ModifyHappinessFromBuilding(statistics.happiness);
-        double modifiedAirPollution = ModifyAirPollutionFromBuilding(statistics.pollution.airPollution);
-        double modifiedNaturePollution = ModifyAirPollutionFromBuilding(statistics.pollution.naturePollution);
-        double modifiedWaterPollution = ModifyAirPollutionFromBuilding(statistics.pollution.waterPollution);
-        double modifiedAirPollutionIncrease = ModifyAirPollutionFromBuilding(statistics.pollution.airPollutionIncrease);
-        double modifiedNaturePollutionIncrease = ModifyAirPollutionFromBuilding(statistics.pollution.naturePollutionIncrease);
-        double modifiedWaterPollutionIncrease = ModifyAirPollutionFromBuilding(statistics.pollution.waterPollutionIncrease);*/
+        modifiedIncome = ModifyIncomeFromHappiness(modifiedIncome, globalHappiness);
+        double modifiedHappiness = ModifyHappinessFromHappiness(statistics.happiness, globalHappiness);
+        double modifiedEcoAwareness = ModifyEcoAwarenessFromHappiness(statistics.ecoAwareness, globalHappiness);
+        double modifiedProsperity = ModifyProsperityFromHappiness(statistics.prosperity, globalHappiness);
+        double modifiedAirPollution = ModifyAirPollutionFromHappiness(statistics.pollution.airPollution, globalHappiness);
+        double modifiedNaturePollution = ModifyAirPollutionFromHappiness(statistics.pollution.naturePollution, globalHappiness);
+        double modifiedWaterPollution = ModifyAirPollutionFromHappiness(statistics.pollution.waterPollution, globalHappiness);
+        double modifiedAirPollutionIncrease = ModifyAirPollutionFromHappiness(statistics.pollution.airPollutionIncrease, globalHappiness);
+        double modifiedNaturePollutionIncrease = ModifyAirPollutionFromHappiness(statistics.pollution.naturePollutionIncrease, globalHappiness);
+        double modifiedWaterPollutionIncrease = ModifyAirPollutionFromHappiness(statistics.pollution.waterPollutionIncrease, globalHappiness);
 
         if (isAdded)
         {
             this.statistics.ModifyIncome(modifiedIncome);
-            this.statistics.ModifyHappiness(statistics.happiness);
-            this.statistics.ModifyEcoAwareness(statistics.ecoAwareness);
-            this.statistics.ModifyProsperity(statistics.prosperity);
+            this.statistics.ModifyHappiness(modifiedHappiness);
+            this.statistics.ModifyEcoAwareness(modifiedEcoAwareness);
+            this.statistics.ModifyProsperity(modifiedProsperity);
             
-            this.statistics.pollution.ChangeAirPollution(statistics.pollution.airPollution);
-            this.statistics.pollution.ChangeNaturePollution(statistics.pollution.naturePollution);
-            this.statistics.pollution.ChangeWaterPollution(statistics.pollution.waterPollution);
+            this.statistics.pollution.ChangeAirPollution(modifiedAirPollution);
+            this.statistics.pollution.ChangeNaturePollution(modifiedNaturePollution);
+            this.statistics.pollution.ChangeWaterPollution(modifiedWaterPollution);
             
-            this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
-            this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
-            this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
+            this.statistics.pollution.ChangeAirPollutionMutation(modifiedAirPollutionIncrease);
+            this.statistics.pollution.ChangeNaturePollutionMutation(modifiedNaturePollutionIncrease);
+            this.statistics.pollution.ChangeWaterPollutionMutation(modifiedWaterPollutionIncrease);
         }
 
         else
         {
             this.statistics.ModifyIncome(0 - modifiedIncome);
-            this.statistics.ModifyHappiness(0 - statistics.happiness);
-            this.statistics.ModifyEcoAwareness(0 - statistics.ecoAwareness);
-            this.statistics.ModifyProsperity(0 - statistics.prosperity);
+            this.statistics.ModifyHappiness(0 - modifiedHappiness);
+            this.statistics.ModifyEcoAwareness(0 - modifiedEcoAwareness);
+            this.statistics.ModifyProsperity(0 - modifiedProsperity);
 
-            this.statistics.pollution.ChangeAirPollution(0 - statistics.pollution.airPollution);
-            this.statistics.pollution.ChangeNaturePollution(0 - statistics.pollution.naturePollution);
-            this.statistics.pollution.ChangeWaterPollution(0 - statistics.pollution.waterPollution);
+            this.statistics.pollution.ChangeAirPollution(0 - modifiedAirPollution);
+            this.statistics.pollution.ChangeNaturePollution(0 - modifiedNaturePollution);
+            this.statistics.pollution.ChangeWaterPollution(0 - modifiedWaterPollution);
 
-            this.statistics.pollution.ChangeAirPollutionMutation(0 - statistics.pollution.airPollutionIncrease);
-            this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
-            this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
+            this.statistics.pollution.ChangeAirPollutionMutation(0 - modifiedAirPollutionIncrease);
+            this.statistics.pollution.ChangeNaturePollutionMutation(0 - modifiedNaturePollutionIncrease);
+            this.statistics.pollution.ChangeWaterPollutionMutation(0 - modifiedWaterPollutionIncrease);
         }
     }
 
@@ -119,59 +122,83 @@ public class RegionSector
             return oldIncome - oldIncome * incomeModifier;
     }
 
-    /*public double ModifyHappinessFromBuilding(double oldHappiness)
+    public double ModifyIncomeFromHappiness(double oldIncome, double happiness)
+    {
+        if (oldIncome > 0)
+            return oldIncome + oldIncome * ((happiness - 50) * 100);
+        else
+            return oldIncome - oldIncome * ((happiness - 50) * 100);
+    }
+
+    public double ModifyHappinessFromHappiness(double oldHappiness, double happiness)
     {
         if (oldHappiness > 0)
-            return oldHappiness + oldHappiness * happinessModifier;
+            return oldHappiness + oldHappiness * ((happiness - 50) * 100);
         else
-            return oldHappiness - oldHappiness * happinessModifier;
+            return oldHappiness - oldHappiness * ((happiness - 50) * 100);
     }
 
-    public double ModifyAirPollutionFromBuilding(double oldAirPollution)
+    public double ModifyEcoAwarenessFromHappiness(double oldEcoAwareness, double happiness)
+    {
+        if (oldEcoAwareness > 0)
+            return oldEcoAwareness + oldEcoAwareness * ((happiness - 50) * 100);
+        else
+            return oldEcoAwareness - oldEcoAwareness * ((happiness - 50) * 100);
+    }
+
+    public double ModifyProsperityFromHappiness(double oldProsperity, double happiness)
+    {
+        if (oldProsperity > 0)
+            return oldProsperity + oldProsperity * ((happiness - 50) * 100);
+        else
+            return oldProsperity - oldProsperity * ((happiness - 50) * 100);
+    }
+
+    public double ModifyAirPollutionFromHappiness(double oldAirPollution, double happiness)
     {
         if (oldAirPollution > 0)
-            return oldAirPollution - oldAirPollution * pollutionModifier;
+            return oldAirPollution - oldAirPollution * ((happiness - 50) * 100);
         else
-            return oldAirPollution + oldAirPollution * pollutionModifier;
+            return oldAirPollution + oldAirPollution * ((happiness - 50) * 100);
     }
 
-    public double ModifyNaturePollutionFromBuilding(double oldNaturePollution)
+    public double ModifyNaturePollutionFromHappiness(double oldNaturePollution, double happiness)
     {
         if (oldNaturePollution > 0)
-            return oldNaturePollution - oldNaturePollution * pollutionModifier;
+            return oldNaturePollution - oldNaturePollution * ((happiness - 50) * 100);
         else
-            return oldNaturePollution + oldNaturePollution * pollutionModifier;
+            return oldNaturePollution + oldNaturePollution * ((happiness - 50) * 100);
     }
 
-    public double ModifyWaterPollutionFromBuilding(double oldWaterPollution)
+    public double ModifyWaterPollutionFromHappiness(double oldWaterPollution, double happiness)
     {
         if (oldWaterPollution > 0)
-            return oldWaterPollution - oldWaterPollution * pollutionModifier;
+            return oldWaterPollution - oldWaterPollution * ((happiness - 50) * 100);
         else
-            return oldWaterPollution + oldWaterPollution * pollutionModifier;
+            return oldWaterPollution + oldWaterPollution * ((happiness - 50) * 100);
     }
 
-    public double ModifyAirPollutionIncreaseFromBuilding(double oldAirPollutionIncrease)
+    public double ModifyAirPollutionIncreaseFromHappiness(double oldAirPollutionIncrease, double happiness)
     {
         if (oldAirPollutionIncrease > 0)
-            return oldAirPollutionIncrease - oldAirPollutionIncrease * pollutionModifier;
+            return oldAirPollutionIncrease - oldAirPollutionIncrease * ((happiness - 50) * 100);
         else
-            return oldAirPollutionIncrease + oldAirPollutionIncrease * pollutionModifier;
+            return oldAirPollutionIncrease + oldAirPollutionIncrease * ((happiness - 50) * 100);
     }
 
-    public double ModifyNaturePollutionIncreaseFromBuilding(double oldNaturePollutionIncrease)
+    public double ModifyNaturePollutionIncreaseFromHappiness(double oldNaturePollutionIncrease, double happiness)
     {
         if (oldNaturePollutionIncrease > 0)
-            return oldNaturePollutionIncrease - oldNaturePollutionIncrease * pollutionModifier;
+            return oldNaturePollutionIncrease - oldNaturePollutionIncrease * ((happiness - 50) * 100);
         else
-            return oldNaturePollutionIncrease + oldNaturePollutionIncrease * pollutionModifier;
+            return oldNaturePollutionIncrease + oldNaturePollutionIncrease * ((happiness - 50) * 100);
     }
 
-    public double ModifyWaterPollutionIncreaseFromBuilding(double oldWaterPollutionIncrease)
+    public double ModifyWaterPollutionIncreaseFromHappiness(double oldWaterPollutionIncrease, double happiness)
     {
         if (oldWaterPollutionIncrease > 0)
-            return oldWaterPollutionIncrease - oldWaterPollutionIncrease * pollutionModifier;
+            return oldWaterPollutionIncrease - oldWaterPollutionIncrease * ((happiness - 50) * 100);
         else
-            return oldWaterPollutionIncrease + oldWaterPollutionIncrease * pollutionModifier;
-    }*/
+            return oldWaterPollutionIncrease + oldWaterPollutionIncrease * ((happiness - 50) * 100);
+    }
 }

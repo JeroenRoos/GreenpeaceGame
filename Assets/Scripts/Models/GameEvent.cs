@@ -104,7 +104,7 @@ public class GameEvent
         isActive = true;
 
         game.gameStatistics.ModifyMoney(afterInvestmentEventChoiceMoneyCost[pickedChoiceNumber], false);
-        region.ImplementEventConsequences(this, duringEventProgressConsequences[pickedChoiceNumber], true);
+        region.ImplementEventConsequences(this, duringEventProgressConsequences[pickedChoiceNumber], true, game.gameStatistics.happiness);
 
         if (eventDuration[pickedChoiceNumber] == 0)
         {
