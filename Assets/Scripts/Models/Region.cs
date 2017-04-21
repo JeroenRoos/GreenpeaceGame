@@ -40,16 +40,16 @@ public class Region
             game.gameStatistics.ModifyMoney(action.afterInvestmentActionMoneyCost, false);
         }
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
-        ImplementActionConsequences(action, action.actionCosts, false);
-        ImplementActionConsequences(action, action.duringActionConsequences, true);
+        ImplementActionConsequences(action, action.actionCosts, false, game.gameStatistics.happiness);
+        ImplementActionConsequences(action, action.duringActionConsequences, true, game.gameStatistics.happiness);
     }
 
-    public void AddGameEvent(GameEvent gameEvent)
+    public void AddGameEvent(GameEvent gameEvent, double happiness)
     {
         inProgressGameEvents.Add(gameEvent);
 
-        ImplementEventConsequences(gameEvent, gameEvent.onEventStartConsequence, true);
-        ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, true);
+        ImplementEventConsequences(gameEvent, gameEvent.onEventStartConsequence, true, happiness);
+        ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, true, happiness);
     }
 
     public void UpdateEvents(Game game)
@@ -73,12 +73,12 @@ public class Region
 
             if (gameEvent.onEventStartYear == game.currentYear && gameEvent.onEventStartMonth == game.currentMonth)
             {
-                ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, false);
+                ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, false, game.gameStatistics.happiness);
             }
 
             if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
             {
-                ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false);
+                ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false, game.gameStatistics.happiness);
                 gameEvent.FinishEvent();
             }
         }
@@ -87,9 +87,9 @@ public class Region
 
     public void CompleteEvent(GameEvent gameEvent, Game game)
     {
-        ImplementEventConsequences(gameEvent, gameEvent.afterInvestmentConsequences[gameEvent.pickedChoiceNumber], true);
-        ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false);
-        ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true);
+        ImplementEventConsequences(gameEvent, gameEvent.afterInvestmentConsequences[gameEvent.pickedChoiceNumber], true, game.gameStatistics.happiness);
+        ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false, game.gameStatistics.happiness);
+        ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true, game.gameStatistics.happiness);
         gameEvent.CompleteEvent(game);
     }
 
@@ -163,7 +163,7 @@ public class Region
         }
     }*/
 
-    public void ImplementEventConsequences(GameEvent gameEvent, SectorStatistics statistics, bool isAdded)
+    public void ImplementEventConsequences(GameEvent gameEvent, SectorStatistics statistics, bool isAdded, double happiness)
     {
         for (int i = 0; i < gameEvent.possibleSectors.Length; i++)
         {
@@ -172,13 +172,13 @@ public class Region
                 foreach (RegionSector sector in sectors)
                 {
                     if (sector.sectorName[0] == gameEvent.possibleSectors[i])
-                        sector.ImplementStatisticValues(statistics, isAdded);
+                        sector.ImplementStatisticValues(statistics, isAdded, happiness);
                 }
             }
         }
     }
 
-    public void ImplementActionConsequences(RegionAction regionAction, SectorStatistics statistics, bool isAdded)
+    public void ImplementActionConsequences(RegionAction regionAction, SectorStatistics statistics, bool isAdded, double happiness)
     {
         for (int i = 0; i < regionAction.possibleSectors.Count(); i++)
         {
@@ -187,7 +187,7 @@ public class Region
                 foreach (RegionSector sector in sectors)
                 {
                     if (sector.sectorName[0] == regionAction.possibleSectors[i])
-                        sector.ImplementStatisticValues(statistics, isAdded);
+                        sector.ImplementStatisticValues(statistics, isAdded, happiness);
                 }
             }
         }

@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
 
             UpdateTimeline();
 
-            foreach (Region region in game.regions)
+            /*foreach (Region region in game.regions)
             {
                 foreach (RegionSector sector in region.sectors)
                 {
@@ -71,7 +71,7 @@ public class GameController : MonoBehaviour
             SaveBuildings();
             SaveGameEvents();
             SaveQuests();
-            SaveCards();
+            SaveCards();*/
         }
         else
             LoadGame();
@@ -435,7 +435,7 @@ public class GameController : MonoBehaviour
                 GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
                 pickedEvent.pickEventSector(game.rnd);
                 pickedEvent.StartEvent(game.currentYear, game.currentMonth);
-                pickedRegion.AddGameEvent(pickedEvent);
+                pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
                 game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
 
                 GameObject eventInstance = GameController.Instantiate(eventObject);

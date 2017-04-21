@@ -174,16 +174,16 @@ public class Game
             {
                 if (action.isActive && ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
-                    region.ImplementActionConsequences(action, action.duringActionConsequences, false);
-                    region.ImplementActionConsequences(action, action.afterInvestmentConsequences, true);
-                    region.ImplementActionConsequences(action, action.temporaryConsequences, true);
+                    region.ImplementActionConsequences(action, action.duringActionConsequences, false, gameStatistics.happiness);
+                    region.ImplementActionConsequences(action, action.afterInvestmentConsequences, true, gameStatistics.happiness);
+                    region.ImplementActionConsequences(action, action.temporaryConsequences, true, gameStatistics.happiness);
                     gameStatistics.ModifyMoney(action.actionMoneyReward, true);
                     AddCompletedActionToReports(region, action);
                     action.CompleteAction();
                 }
 
                 if (action.endTemporaryConsequencesMonth == currentYear * 12 + currentMonth)
-                    region.ImplementActionConsequences(action, action.temporaryConsequences, false);
+                    region.ImplementActionConsequences(action, action.temporaryConsequences, false, gameStatistics.happiness);
             }
         }
     }
