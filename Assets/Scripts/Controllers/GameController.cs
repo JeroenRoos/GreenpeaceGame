@@ -376,7 +376,6 @@ public class GameController : MonoBehaviour
                     if (quest.NationalCompleteConditionsMet(game.gameStatistics))
                     {
                         game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
-                        //Debug.Log("Quest completed:" + quest.description[0]);
                         quest.CompleteQuest();
                     }
                 }
@@ -391,7 +390,6 @@ public class GameController : MonoBehaviour
                             if (quest.RegionalCompleteConditionsMet(r.statistics))
                             {
                                 game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
-                                //Debug.Log("Quest completed:" + quest.description[0]);
                                 quest.CompleteQuest();
                             }
                             break;
@@ -414,16 +412,19 @@ public class GameController : MonoBehaviour
     private void UpdateEvents()
     {
         int activeCount = game.getActiveEventCount();
-        int eventChance = 100;
+        int eventChance = 80;
+        if (game.currentYear == 1 && game.currentMonth == 2)
+            eventChance = 100;
+
         int eventChanceReduction = 100;
 
         //temp ugly code
         if (game.currentYear >= 2)
-            eventChanceReduction -= 30;
+            eventChanceReduction -= 40;
         if (game.currentYear >= 5)
             eventChanceReduction -= 20;
         if (game.currentYear >= 10)
-            eventChanceReduction -= 15;
+            eventChanceReduction -= 10;
         if (game.currentYear >= 20)
             eventChanceReduction -= 10;
 

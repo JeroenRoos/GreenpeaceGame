@@ -350,7 +350,7 @@
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <actionCosts>
         <income>0</income>
-        <happiness>-2</happiness>
+        <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <pollution>
@@ -365,7 +365,7 @@
       </actionCosts>
       <consequences>
         <income>0</income>
-        <happiness>0</happiness>
+        <happiness>-1</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <pollution>
@@ -380,7 +380,7 @@
       </consequences>
       <afterInvestmentConsequences>
         <income>0</income>
-        <happiness>0</happiness>
+        <happiness>-1</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <pollution>

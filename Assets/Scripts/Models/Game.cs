@@ -177,7 +177,11 @@ public class Game
                     region.ImplementActionConsequences(action, action.duringActionConsequences, false, gameStatistics.happiness);
                     region.ImplementActionConsequences(action, action.afterInvestmentConsequences, true, gameStatistics.happiness);
                     region.ImplementActionConsequences(action, action.temporaryConsequences, true, gameStatistics.happiness);
-                    gameStatistics.ModifyMoney(action.actionMoneyReward, true);
+                    foreach (bool ps in action.pickedSectors)
+                    {
+                        if (ps)
+                            gameStatistics.ModifyMoney(action.actionMoneyReward, true);
+                    }
                     AddCompletedActionToReports(region, action);
                     action.CompleteAction();
                 }
@@ -230,7 +234,7 @@ public class Game
         int possibleEventCount = 0;
         foreach (GameEvent gameEvent in events)
         {
-            if (!gameEvent.isActive || !gameEvent.isIdle || gameEvent.isFinished)
+            if (!gameEvent.isActive && !gameEvent.isIdle)
                 possibleEventCount++;
         }
 
@@ -242,7 +246,7 @@ public class Game
         List<GameEvent> possibleEvents = new List<GameEvent>();
         foreach (GameEvent gameEvent in events)
         {
-            if (!gameEvent.isActive || !gameEvent.isIdle || gameEvent.isActive)
+            if (!gameEvent.isActive && !gameEvent.isIdle)
             {
                 foreach (string possibleRegion in gameEvent.possibleRegions)
                 {

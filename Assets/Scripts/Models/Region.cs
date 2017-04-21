@@ -37,7 +37,7 @@ public class Region
         foreach (bool isTrue in pickedSectors)
         {
             if (isTrue)
-            game.gameStatistics.ModifyMoney(action.afterInvestmentActionMoneyCost, false);
+                game.gameStatistics.ModifyMoney(action.afterInvestmentActionMoneyCost, false);
         }
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
         ImplementActionConsequences(action, action.actionCosts, false, game.gameStatistics.happiness);
