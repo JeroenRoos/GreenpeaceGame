@@ -16,6 +16,7 @@ public class UpdateUI : MonoBehaviour
 
     Region regio;
     RegionAction regioAction;
+    Card card;
     double regioActionCost;
     Game game;
     public int tutorialIndex;
@@ -249,6 +250,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtCardsColumnRight;
     public Text txtCardsOptionInformation;
     public RawImage imgCardsPopup;
+    public Button btnUseCard;
+    public Text txtBtnUseCard;
 
     // Text Organization Menu
     public Text txtColumnLeft;
@@ -1147,10 +1150,10 @@ public class UpdateUI : MonoBehaviour
             float x = btnPos.x;//posTxtColumn.x - rectTxtColumn.rect.width;
             float y = btnPos.y;//posTxtColumn.z - rectTxtColumn.rect.height; // + 200;// (Screen.height / 2);// - rectTxtColumn.rect.height;
 
-            foreach (Card card in game.cards)
+            foreach (Card c in game.cards)
             {
-                if (GUI.Button(new Rect(x, y + yOffset, rectBtnCardsPosition.rect.width + 50, rectBtnCardsPosition.rect.height), card.name[taal], buttonStyle))
-                    setTextCardInformation(card);
+                if (GUI.Button(new Rect(x, y + yOffset, rectBtnCardsPosition.rect.width + 50, rectBtnCardsPosition.rect.height), c.name[taal], buttonStyle))
+                    setTextCardInformation(c);
 
                 yOffset += 35;
             }
@@ -2846,10 +2849,16 @@ public class UpdateUI : MonoBehaviour
     {
         txtCardsColumnRight.text = "";
         txtCardsOptionInformation.text = "";
+        btnUseCard.gameObject.SetActive(false);
     }
 
-    private void setTextCardInformation(Card card)
+    private void setTextCardInformation(Card c)
     {
+        card = c;
+        btnUseCard.gameObject.SetActive(true);
+        string[] txtBtn = { "Gebuik kaart", "Use card" };
+        txtBtnUseCard.text = txtBtn[taal];
+
         string[] columnRight = { card.name[taal] + " - Informatie", card.name[taal] + " - Information" };
         string[] national = { "Kaart wordt gebruikt op nationaal niveau", "Card will be used on national level" };
         string[] regional = { "Kaart wordt gebruikt op regionaal niveau", "Card will be used on regional level" };
@@ -2882,6 +2891,18 @@ public class UpdateUI : MonoBehaviour
             string[] moneyReward = { "\nHuidige geld beloning: " + card.currentMoneyReward, "\nCurrent money reward: " + card.currentMoneyReward };
             txtCardsOptionInformation.text += moneyReward[taal];
         }
+    }
+
+    public void btnUseCardClick()
+    {
+        if (card.isGlobal)
+            card.UseCardOnCountry(game.regions, game.gameStatistics);
+        else
+        {
+
+        }
+
+        updateCardsUI();
     }
     #endregion
 
