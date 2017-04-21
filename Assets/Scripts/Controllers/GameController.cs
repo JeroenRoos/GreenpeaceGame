@@ -376,7 +376,6 @@ public class GameController : MonoBehaviour
                     if (quest.NationalCompleteConditionsMet(game.gameStatistics))
                     {
                         game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
-                        //Debug.Log("Quest completed:" + quest.description[0]);
                         quest.CompleteQuest();
                     }
                 }
@@ -391,7 +390,6 @@ public class GameController : MonoBehaviour
                             if (quest.RegionalCompleteConditionsMet(r.statistics))
                             {
                                 game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
-                                //Debug.Log("Quest completed:" + quest.description[0]);
                                 quest.CompleteQuest();
                             }
                             break;

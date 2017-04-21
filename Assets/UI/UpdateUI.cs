@@ -2251,7 +2251,6 @@ public class UpdateUI : MonoBehaviour
     {
         txtAfterActionCompletedColumnRightDescription.text = "";
         //scrollbarAfterActionReport.gameObject.SetActive(false);
-        int index = 0;
 
         for (int i = 0; i < monthlyCompletedActions.Length; i++)
         {
@@ -2262,9 +2261,11 @@ public class UpdateUI : MonoBehaviour
                 string[] c = { "\nConsequenties: ", "\nConsequences: " };
                 txtAfterActionCompletedColumnRightDescription.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
 
-                string[] line = { "\nGeld beloning: ", "\nMoney reward: " };
-                txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
-                index++;
+                if (a.actionMoneyReward != 0)
+                {
+                    string[] line = { "\nGeld beloning: ", "\nMoney reward: " };
+                    txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
+                }
             }
         }
     }
@@ -3657,50 +3658,50 @@ public class UpdateUI : MonoBehaviour
         string[] consequences = {"", "" };//{ "\nConsequenties: ", "\nConsequences: " };
         if (s.income != 0)
         {
-            string[] a = { "\nInkomen: " + s.income , "\nIncome: " + s.income  };
+            string[] a = { "\nInkomen per sector: " + s.income , "\nIncome per sector: " + s.income  };
             consequences[taal] += a[taal];
             noConsequences = true;
         }
         if (s.happiness != 0)
         {
-            string[] c = { "\nTevredenheid: " + s.happiness , "\nHappiness: " + s.happiness  };
+            string[] c = { "\nTevredenheid per sector: " + s.happiness + "%" , "\nHappiness per sector: " + s.happiness + "%" };
             consequences[taal] += c[taal];
             noConsequences = true;
         }
         if (s.ecoAwareness != 0)
         {
-            string[] d = { "\nMilieubewustheid: " + s.ecoAwareness, "\nEco awareness: " + s.ecoAwareness };
+            string[] d = { "\nMilieubewustheid per sector: " + s.ecoAwareness + "%", "\nEco awareness per sector: " + s.ecoAwareness + "%" };
             consequences[taal] += d[taal];
             noConsequences = true;
         }
         if (s.prosperity != 0)
         {
-            string[] e = { "\nWelvaart: " + s.prosperity , "\nProsperity: " + s.prosperity };
+            string[] e = { "\nWelvaart per sector: " + s.prosperity + "%", "\nProsperity per sector: " + s.prosperity + "%" };
             consequences[taal] += e[taal];
             noConsequences = true;
         }
         if (s.pollution.airPollutionIncrease != 0)
         {
-            string[] f = { "\nLuchtvervuiling: " + s.pollution.airPollutionIncrease, "\nAir pollution: " + s.pollution.airPollutionIncrease};
+            string[] f = { "\nLuchtvervuiling per sector: " + s.pollution.airPollutionIncrease + "%", "\nAir pollution per sector: " + s.pollution.airPollutionIncrease + "%" };
             consequences[taal] += f[taal];
             noConsequences = true;
         }
         if (s.pollution.waterPollutionIncrease != 0)
         {
-            string[] g = { "\nWatervervuiling: " + s.pollution.waterPollutionIncrease, "\nWater pollution: " + s.pollution.waterPollutionIncrease};
+            string[] g = { "\nWatervervuiling per sector: " + s.pollution.waterPollutionIncrease + "%", "\nWater pollution per sector: " + s.pollution.waterPollutionIncrease + "%" };
             consequences[taal] += g[taal];
             noConsequences = true;
         }
         if (s.pollution.naturePollutionIncrease != 0)
         {
-            string[] h = { "\nNatuurvervuiling: " + s.pollution.naturePollutionIncrease, "\nNature pollution: " + s.pollution.naturePollutionIncrease  };
+            string[] h = { "\nNatuurvervuiling per sector: " + s.pollution.naturePollutionIncrease + "%", "\nNature pollution per sector: " + s.pollution.naturePollutionIncrease + "%" };
             consequences[taal] += h[taal];
             noConsequences = true;
         }
 
         if (!noConsequences)
         {
-            string[] st = { "\nGeen consequences", "\nThere are no consequences" };
+            string[] st = { "\nEr zijn geen consequenties", "\nThere are no consequences" };
             return st[taal];
         }
 

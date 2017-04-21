@@ -177,7 +177,11 @@ public class Game
                     region.ImplementActionConsequences(action, action.duringActionConsequences, false, gameStatistics.happiness);
                     region.ImplementActionConsequences(action, action.afterInvestmentConsequences, true, gameStatistics.happiness);
                     region.ImplementActionConsequences(action, action.temporaryConsequences, true, gameStatistics.happiness);
-                    gameStatistics.ModifyMoney(action.actionMoneyReward, true);
+                    foreach (bool ps in action.pickedSectors)
+                    {
+                        if (ps)
+                            gameStatistics.ModifyMoney(action.actionMoneyReward, true);
+                    }
                     AddCompletedActionToReports(region, action);
                     action.CompleteAction();
                 }
