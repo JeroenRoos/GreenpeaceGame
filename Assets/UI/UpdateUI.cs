@@ -1227,7 +1227,7 @@ public class UpdateUI : MonoBehaviour
     // Update Money based on value
     public void updateMoney(double money)
     {
-        txtMoney.text = money.ToString();
+        txtMoney.text = money.ToString("0");
     }
 
     // Update Awareness based on value
@@ -1437,7 +1437,7 @@ public class UpdateUI : MonoBehaviour
                 txtOrgWestMoney.text = (region.statistics.income * 12).ToString();
         }
 
-        txtOrgBank.text = game.gameStatistics.money.ToString();
+        txtOrgBank.text = game.gameStatistics.money.ToString("0");
 
         imgTutorialOrganization.enabled = false;
         txtTutorialOrganization.enabled = false;
@@ -1754,13 +1754,11 @@ public class UpdateUI : MonoBehaviour
     {
         string activeEventsRegio = "";
 
-        // Eat facking shit dipshit
         foreach (GameEvent ge in regio.inProgressGameEvents)
         {
             if (ge.isActive || ge.isIdle)
                 activeEventsRegio += ge.publicEventName[taal] + "\n";
         }
-        // Klootzak
 
         txtActiveEvents.text = activeEventsRegio;
     }

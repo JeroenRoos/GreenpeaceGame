@@ -167,13 +167,10 @@ public class Region
     {
         for (int i = 0; i < gameEvent.possibleSectors.Length; i++)
         {
-            if (gameEvent.pickedSectors[i])
+            foreach (RegionSector sector in sectors)
             {
-                foreach (RegionSector sector in sectors)
-                {
-                    if (sector.sectorName[0] == gameEvent.possibleSectors[i])
-                        sector.ImplementStatisticValues(statistics, isAdded, happiness);
-                }
+                if (sector.sectorName[0] == gameEvent.possibleSectors[i])
+                    sector.ImplementStatisticValues(statistics, isAdded, happiness);
             }
         }
     }
