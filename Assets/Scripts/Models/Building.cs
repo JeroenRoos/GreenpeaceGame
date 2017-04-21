@@ -15,14 +15,6 @@ public class Building
     public double happinessModifier { get; private set; }
     public double buildingMoneyCost { get; private set; }
 
-    public Building()
-    {
-        buildingID = "placeholderName";
-        buildingName = new string[2] { "dutch name", "english name" };
-        incomeModifier = 0;
-        pollutionModifier = 0;
-        happinessModifier = 0;
-        buildingMoneyCost = 0;
-    }
+    public Building() { }
 }
 

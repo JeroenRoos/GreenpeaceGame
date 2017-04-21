@@ -1117,6 +1117,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -1138,6 +1141,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -1159,6 +1165,9 @@
               <waterPollutionIncrease>10</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
@@ -1181,7 +1190,7 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-20</pollutionModifier>
+          <pollutionModifier>-10</pollutionModifier>
           <happinessModifier>0</happinessModifier>
           <buildingMoneyCost>20000</buildingMoneyCost>
         </Building>
@@ -2314,6 +2323,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -2335,6 +2347,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -2356,6 +2371,9 @@
               <waterPollutionIncrease>15</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
@@ -2378,7 +2396,7 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-20</pollutionModifier>
+          <pollutionModifier>-10</pollutionModifier>
           <happinessModifier>0</happinessModifier>
           <buildingMoneyCost>20000</buildingMoneyCost>
         </Building>
@@ -3511,6 +3529,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -3532,6 +3553,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -3553,6 +3577,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
@@ -3575,7 +3602,7 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-20</pollutionModifier>
+          <pollutionModifier>-10</pollutionModifier>
           <happinessModifier>0</happinessModifier>
           <buildingMoneyCost>20000</buildingMoneyCost>
         </Building>
@@ -4708,6 +4735,9 @@
               <waterPollutionIncrease>10</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -4729,6 +4759,9 @@
               <waterPollutionIncrease>5</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
         <RegionSector>
           <sectorName>
@@ -4750,6 +4783,9 @@
               <waterPollutionIncrease>15</waterPollutionIncrease>
             </pollution>
           </statistics>
+          <incomeModifier>0</incomeModifier>
+          <pollutionModifier>0</pollutionModifier>
+          <happinessModifier>0</happinessModifier>
         </RegionSector>
       </sectors>
       <inProgressGameEvents />
@@ -4772,7 +4808,7 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-20</pollutionModifier>
+          <pollutionModifier>-10</pollutionModifier>
           <happinessModifier>0</happinessModifier>
           <buildingMoneyCost>20000</buildingMoneyCost>
         </Building>

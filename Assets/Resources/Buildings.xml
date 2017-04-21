@@ -19,7 +19,7 @@
         <string>Windmill park</string>
       </buildingName>
       <incomeModifier>0</incomeModifier>
-      <pollutionModifier>-20</pollutionModifier>
+      <pollutionModifier>-10</pollutionModifier>
       <happinessModifier>0</happinessModifier>
       <buildingMoneyCost>20000</buildingMoneyCost>
     </Building>
