@@ -103,7 +103,7 @@ public class GameEvent
         idleTurnsLeft = 0;
         isActive = true;
 
-        game.gameStatistics.ModifyMoney(eventChoiceMoneyCost[pickedChoiceNumber], false);
+        game.gameStatistics.ModifyMoney(afterInvestmentEventChoiceMoneyCost[pickedChoiceNumber], false);
         region.ImplementEventConsequences(this, duringEventProgressConsequences[pickedChoiceNumber], true);
 
         if (eventDuration[pickedChoiceNumber] == 0)

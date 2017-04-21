@@ -56,10 +56,11 @@ public class GameController : MonoBehaviour
 
             UpdateTimeline();
 
-            /*foreach (Region region in game.regions)
+            foreach (Region region in game.regions)
             {
                 foreach (RegionSector sector in region.sectors)
                 {
+                    sector.TempMethod();
                     sector.statistics.pollution.CalculateAvgPollution();
                 }
                 region.statistics.UpdateSectorAvgs(region);
@@ -70,7 +71,7 @@ public class GameController : MonoBehaviour
             SaveBuildings();
             SaveGameEvents();
             SaveQuests();
-            SaveCards();*/
+            SaveCards();
         }
         else
             LoadGame();
