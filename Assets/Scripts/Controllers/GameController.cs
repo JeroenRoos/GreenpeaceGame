@@ -239,7 +239,6 @@ public class GameController : MonoBehaviour
                 updateUI.tutorialNextTurnDone = true;
 
             bool isNewYear = game.UpdateCurrentMonthAndYear();
-
             game.ExecuteNewMonthMethods();
 
             UpdateRegionsPollutionInfluence();
@@ -290,6 +289,11 @@ public class GameController : MonoBehaviour
             index++;
             game.yearlyReport.UpdateStatistics(game.regions);
         }
+        else
+        {
+            updateUI.btnYearlyReportStats.gameObject.SetActive(false);
+        }
+
         GenerateCompletedEventsAndActions(index);
         index++;
 
