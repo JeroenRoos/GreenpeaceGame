@@ -53,9 +53,13 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionNoord;
     public Text txtAfterActionZuid;
     public Text txtAfterActionWest;
+    public Text txtAfterActionNoordEventD;
     public Text txtAfterActionNoordEvent;
+    public Text txtAfterActionWestEventD;
     public Text txtAfterActionWestEvent;
+    public Text txtAfterActionZuidEventD;
     public Text txtAfterActionZuidEvent;
+    public Text txtAfterActionOostEventD;
     public Text txtAfterActionOostEvent;
 
 
@@ -1965,6 +1969,10 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionStatsColumnLeftMiddleDescription.text = txtDescription[taal];
             txtAfterActionStatsColumnRightMiddleDescription.text = txtDescription[taal];
             txtAfterActionStatsColumnRightDescription.text = txtDescription[taal];
+            txtAfterActionNoordEventD.text = txtNewEventDescription[taal];
+            txtAfterActionOostEventD.text = txtNewEventDescription[taal];
+            txtAfterActionZuidEventD.text = txtNewEventDescription[taal];
+            txtAfterActionWestEventD.text = txtNewEventDescription[taal];
 
             /*txtAfterActionNoordIncomeD.text = txtIncomeDescription[taal];
             txtAfterActionNoordHappinessD.text = txtHappinessDescription[taal];
@@ -2141,22 +2149,22 @@ public class UpdateUI : MonoBehaviour
             }
             if (happinessDifference != 0d)
             {
-                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00"), "\nHappiness: " + happinessDifference.ToString("0.00") };
+                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00") + "%", "\nHappiness: " + happinessDifference.ToString("0.00") + "%" };
                 txtAfterActionNoord.text += difference[taal];
             }
             if (ecoAwarenessDifference != 0d)
             {
-                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00"), "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") };
+                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00") + "%", "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") + "%" };
                 txtAfterActionNoord.text += difference[taal];
             }
             if (pollutionDifference != 0d)
             {
-                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00"), "\nPollution: " + pollutionDifference.ToString("0.00") };
+                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00") + "%", "\nPollution: " + pollutionDifference.ToString("0.00") + "%" };
                 txtAfterActionNoord.text += difference[taal];
             }
             if (prosperityDifference != 0d)
             {
-                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00"), "\nProsperity: " + prosperityDifference.ToString("0.00") };
+                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00") + "%", "\nProsperity: " + prosperityDifference.ToString("0.00") + "%" };
                 txtAfterActionNoord.text += difference[taal];
             }
         }
@@ -2168,7 +2176,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionNoordEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
             txtAfterActionNoordPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
             txtAfterActionNoordProsperityYearly.text = prosperityDifference.ToString("0.00") + "%";
-
         }
     }
 
@@ -2185,22 +2192,22 @@ public class UpdateUI : MonoBehaviour
             }
             if (happinessDifference != 0d)
             {
-                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00"), "\nHappiness: " + happinessDifference.ToString("0.00") };
+                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00") + "%", "\nHappiness: " + happinessDifference.ToString("0.00") + "%" };
                 txtAfterActionOost.text += difference[taal];
             }
             if (ecoAwarenessDifference != 0d)
             {
-                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00"), "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") };
+                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00") + "%", "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") + "%" };
                 txtAfterActionOost.text += difference[taal];
             }
             if (pollutionDifference != 0d)
             {
-                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00"), "\nPollution: " + pollutionDifference.ToString("0.00") };
+                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00") + "%", "\nPollution: " + pollutionDifference.ToString("0.00") + "%" };
                 txtAfterActionOost.text += difference[taal];
             }
             if (prosperityDifference != 0d)
             {
-                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00"), "\nProsperity: " + prosperityDifference.ToString("0.00") };
+                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00") + "%", "\nProsperity: " + prosperityDifference.ToString("0.00") + "%" };
                 txtAfterActionOost.text += difference[taal];
             }
         }
@@ -2237,22 +2244,22 @@ public class UpdateUI : MonoBehaviour
             }
             if (happinessDifference != 0d)
             {
-                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00"), "\nHappiness: " + happinessDifference.ToString("0.00") };
+                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00") + "%", "\nHappiness: " + happinessDifference.ToString("0.00") + "%" };
                 txtAfterActionZuid.text += difference[taal];
             }
             if (ecoAwarenessDifference != 0d)
             {
-                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00"), "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") };
+                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00") + "%", "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") + "%" };
                 txtAfterActionZuid.text += difference[taal];
             }
             if (pollutionDifference != 0d)
             {
-                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00"), "\nPollution: " + pollutionDifference.ToString("0.00") };
+                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00") + "%", "\nPollution: " + pollutionDifference.ToString("0.00") + "%" };
                 txtAfterActionZuid.text += difference[taal];
             }
             if (prosperityDifference != 0d)
             {
-                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00"), "\nProsperity: " + prosperityDifference.ToString("0.00") };
+                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00") + "%", "\nProsperity: " + prosperityDifference.ToString("0.00") + "%" };
                 txtAfterActionZuid.text += difference[taal];
             }
         }
@@ -2284,22 +2291,22 @@ public class UpdateUI : MonoBehaviour
             }
             if (happinessDifference != 0d)
             {
-                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00"), "\nHappiness: " + happinessDifference.ToString("0.00") };
+                string[] difference = { "\nTevredenheid: " + happinessDifference.ToString("0.00") + "%", "\nHappiness: " + happinessDifference.ToString("0.00") + "%" };
                 txtAfterActionWest.text += difference[taal];
             }
             if (ecoAwarenessDifference != 0d)
             {
-                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00"), "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") };
+                string[] difference = { "\nMilieubewustheid: " + ecoAwarenessDifference.ToString("0.00") + "%", "\nEco awareness: " + ecoAwarenessDifference.ToString("0.00") + "%" };
                 txtAfterActionWest.text += difference[taal];
             }
             if (pollutionDifference != 0d)
             {
-                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00"), "\nPollution: " + pollutionDifference.ToString("0.00") };
+                string[] difference = { "\nVervuiling: " + pollutionDifference.ToString("0.00") + "%", "\nPollution: " + pollutionDifference.ToString("0.00") + "%" };
                 txtAfterActionWest.text += difference[taal];
             }
             if (prosperityDifference != 0d)
             {
-                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00"), "\nProsperity: " + prosperityDifference.ToString("0.00") };
+                string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00") + "%", "\nProsperity: " + prosperityDifference.ToString("0.00") + "%" };
                 txtAfterActionWest.text += difference[taal];
             }
         }
