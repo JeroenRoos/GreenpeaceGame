@@ -30,6 +30,7 @@ public class EventObjectController : MonoBehaviour
     {
         if (updateUI.tutorialeventsClickable)
         {
+            updateUI.soundEffect.PlayOneShot(updateUI.ButtonClickSFX);
             updateUI.popupActive = false;
             updateUI.initEventPopup(eventModel, regionModel);
         }
