@@ -496,12 +496,19 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
+    #region audiosources
     public AudioSource backgroundMusic;
     public AudioSource nextTurnButtonHoverAudio;
     public AudioSource organizationButtonHoverAudio;
     public AudioSource questsButtonHoverAudio;
     public AudioSource investmentsButtonHoverAudio;
     public AudioSource itemsButtonHoverAudio;
+    public AudioSource monthlyReportButtonHoverAudio;
+    public AudioSource yearlyReportButtonHoverAudio;
+    public AudioSource afterActionButtonHoverAudio;
+
+    #endregion
+
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
@@ -3395,6 +3402,7 @@ public class UpdateUI : MonoBehaviour
     public void btnMonthlyReportEnter()
     {
         btnMonthlyReportCheck = true;
+        monthlyReportButtonHoverAudio.Play();
     }
 
     public void btnMonthlyReportExit()
@@ -3405,6 +3413,7 @@ public class UpdateUI : MonoBehaviour
     public void btnYearlyReportEnter()
     {
         btnYearlyReportCheck = true;
+        yearlyReportButtonHoverAudio.Play();
     }
 
     public void btnYearlyReportExit()
@@ -3415,6 +3424,7 @@ public class UpdateUI : MonoBehaviour
     public void btnAfterActionCompletedEnter()
     {
         btnAfterActionCompletedCheck = true;
+        afterActionButtonHoverAudio.Play();
     }
 
     public void btnAfterActionCompletedExit()
