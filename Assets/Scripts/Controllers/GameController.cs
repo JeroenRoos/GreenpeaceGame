@@ -294,7 +294,7 @@ public class GameController : MonoBehaviour
             updateUI.btnYearlyReportStats.gameObject.SetActive(false);
         }
 
-        GenerateCompletedEventsAndActions(index);
+        //GenerateCompletedEventsAndActions(index);
         index++;
 
         game.monthlyReport.UpdateStatistics(game.regions);
@@ -344,7 +344,7 @@ public class GameController : MonoBehaviour
         updateUI.btnYearlyReportStats.gameObject.transform.position = afterActionPosition[index];
     }
 
-    private void GenerateCompletedEventsAndActions(int index)
+    /*private void GenerateCompletedEventsAndActions(int index)
     {
         if (FindCompletedActionsAndEvents())
         {
@@ -358,7 +358,7 @@ public class GameController : MonoBehaviour
             updateUI.btnAfterActionReportCompleted.gameObject.SetActive(false);
         }
 
-    }
+    }*/
 
     private void UpdateQuests()
     {
