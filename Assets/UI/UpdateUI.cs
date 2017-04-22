@@ -502,16 +502,14 @@ public class UpdateUI : MonoBehaviour
 
     public AudioClip buttonHoverSFX;
     public AudioClip ButtonClickSFX;
-
+    public AudioClip newmonthSFX;
     #endregion
-
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
     {
         initAudio();
-
         initButtons();
         initCanvas();
         initOrganizationText();
@@ -837,11 +835,12 @@ public class UpdateUI : MonoBehaviour
     {
         soundEffect = GetComponent<AudioSource>();
         backgroundMusic = GetComponent<AudioSource>();
+        backgroundMusic.loop = true;
         backgroundMusic.Play();
 
         buttonHoverSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
         ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
-
+        newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
     }
 
     #region Init UI Elements
@@ -3184,6 +3183,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
