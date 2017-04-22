@@ -496,10 +496,21 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
+    public AudioSource backgroundMusic;
+    public AudioSource nextTurnButtonHoverAudio;
+    public AudioSource organizationButtonHoverAudio;
+    public AudioSource questsButtonHoverAudio;
+    public AudioSource investmentsButtonHoverAudio;
+    public AudioSource itemsButtonHoverAudio;
+
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
     {
+        //nextTurnbuttonAudio = GetComponent<AudioSource>();
+        backgroundMusic = GetComponent<AudioSource>();
+        backgroundMusic.Play();
+
         initButtons();
         initCanvas();
         initOrganizationText();
@@ -3265,6 +3276,7 @@ public class UpdateUI : MonoBehaviour
     public void btnQuestsEnter()
     {
         btnQuestsCheck = true;
+        questsButtonHoverAudio.Play();
     }
 
     public void btnQuestsExit()
@@ -3352,6 +3364,7 @@ public class UpdateUI : MonoBehaviour
     public void btnOrganizationEnter()
     {
         btnOrganizationCheck = true;
+        organizationButtonHoverAudio.Play();
     }
 
     public void btnOrganzationExit()
@@ -3442,6 +3455,7 @@ public class UpdateUI : MonoBehaviour
     public void btnInvestmentsEnter()
     {
         btnInvestementsHoverCheck = true;
+        investmentsButtonHoverAudio.Play();
     }
 
     public void btnInvestmentsExit()
@@ -3452,6 +3466,7 @@ public class UpdateUI : MonoBehaviour
     public void btnCardsEnter()
     {
         btnCardsHoverCheck = true;
+        itemsButtonHoverAudio.Play();
     }
 
     public void btnCardsExit()
@@ -3528,6 +3543,11 @@ public class UpdateUI : MonoBehaviour
                 tutorialNextTurnDone = true;
 
         }
+    }
+
+    public void nextTurnOnEnter()
+    {
+        nextTurnButtonHoverAudio.Play();
     }
 
     public void setNextTurnButtonNotInteractable()
