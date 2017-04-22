@@ -49,7 +49,6 @@ public class GameEvent
     public int onEventStartMonth { get; private set; }
     public int onEventStartYear { get; private set; }
     public bool isFinished { get; private set; }
-    public bool[] pickedSectors { get; private set; }
 
     private GameEvent() { }
     
@@ -61,11 +60,6 @@ public class GameEvent
         isIdle = true;
         idleTurnsLeft = eventIdleDuration;
         isFinished = false;
-    }
-
-    public void pickEventSector(System.Random rnd)
-    {
-        pickedSectors[rnd.Next(0, possibleSectors.Count())] = true;
     }
 
     public void SubtractIdleTurnsLeft()
@@ -80,8 +74,6 @@ public class GameEvent
         onEventStartYear = 0;
         onEventStartMonth = 0;
         pickedChoiceNumber = 0;
-        for (int i = 0; i < possibleSectors.Count(); i++)
-            pickedSectors[i] = false;
 
         isFinished = true;
     }

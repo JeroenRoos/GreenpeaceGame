@@ -438,7 +438,6 @@ public class GameController : MonoBehaviour
             {
                 Region pickedRegion = game.PickEventRegion();
                 GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
-                pickedEvent.pickEventSector(game.rnd);
                 pickedEvent.StartEvent(game.currentYear, game.currentMonth);
                 pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
                 game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);

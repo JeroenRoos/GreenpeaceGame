@@ -496,10 +496,28 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
+    #region audiosources
+    public AudioSource backgroundMusic;
+    public AudioSource nextTurnButtonHoverAudio;
+    public AudioSource organizationButtonHoverAudio;
+    public AudioSource questsButtonHoverAudio;
+    public AudioSource investmentsButtonHoverAudio;
+    public AudioSource itemsButtonHoverAudio;
+    public AudioSource monthlyReportButtonHoverAudio;
+    public AudioSource yearlyReportButtonHoverAudio;
+    public AudioSource afterActionButtonHoverAudio;
+
+    #endregion
+
+
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
     {
+        //nextTurnbuttonAudio = GetComponent<AudioSource>();
+        backgroundMusic = GetComponent<AudioSource>();
+        backgroundMusic.Play();
+
         initButtons();
         initCanvas();
         initOrganizationText();
@@ -1227,7 +1245,7 @@ public class UpdateUI : MonoBehaviour
     // Update Money based on value
     public void updateMoney(double money)
     {
-        txtMoney.text = money.ToString();
+        txtMoney.text = money.ToString("0");
     }
 
     // Update Awareness based on value
@@ -1437,7 +1455,7 @@ public class UpdateUI : MonoBehaviour
                 txtOrgWestMoney.text = (region.statistics.income * 12).ToString();
         }
 
-        txtOrgBank.text = game.gameStatistics.money.ToString();
+        txtOrgBank.text = game.gameStatistics.money.ToString("0");
 
         imgTutorialOrganization.enabled = false;
         txtTutorialOrganization.enabled = false;
@@ -1754,13 +1772,11 @@ public class UpdateUI : MonoBehaviour
     {
         string activeEventsRegio = "";
 
-        // Eat facking shit dipshit
         foreach (GameEvent ge in regio.inProgressGameEvents)
         {
             if (ge.isActive || ge.isIdle)
                 activeEventsRegio += ge.publicEventName[taal] + "\n";
         }
-        // Klootzak
 
         txtActiveEvents.text = activeEventsRegio;
     }
@@ -3348,6 +3364,7 @@ public class UpdateUI : MonoBehaviour
     public void btnQuestsEnter()
     {
         btnQuestsCheck = true;
+        questsButtonHoverAudio.Play();
     }
 
     public void btnQuestsExit()
@@ -3435,6 +3452,7 @@ public class UpdateUI : MonoBehaviour
     public void btnOrganizationEnter()
     {
         btnOrganizationCheck = true;
+        organizationButtonHoverAudio.Play();
     }
 
     public void btnOrganzationExit()
@@ -3465,6 +3483,7 @@ public class UpdateUI : MonoBehaviour
     public void btnMonthlyReportEnter()
     {
         btnMonthlyReportCheck = true;
+        monthlyReportButtonHoverAudio.Play();
     }
 
     public void btnMonthlyReportExit()
@@ -3475,6 +3494,7 @@ public class UpdateUI : MonoBehaviour
     public void btnYearlyReportEnter()
     {
         btnYearlyReportCheck = true;
+        yearlyReportButtonHoverAudio.Play();
     }
 
     public void btnYearlyReportExit()
@@ -3485,6 +3505,7 @@ public class UpdateUI : MonoBehaviour
     public void btnAfterActionCompletedEnter()
     {
         btnAfterActionCompletedCheck = true;
+        afterActionButtonHoverAudio.Play();
     }
 
     public void btnAfterActionCompletedExit()
@@ -3525,6 +3546,7 @@ public class UpdateUI : MonoBehaviour
     public void btnInvestmentsEnter()
     {
         btnInvestementsHoverCheck = true;
+        investmentsButtonHoverAudio.Play();
     }
 
     public void btnInvestmentsExit()
@@ -3535,6 +3557,7 @@ public class UpdateUI : MonoBehaviour
     public void btnCardsEnter()
     {
         btnCardsHoverCheck = true;
+        itemsButtonHoverAudio.Play();
     }
 
     public void btnCardsExit()
@@ -3611,6 +3634,11 @@ public class UpdateUI : MonoBehaviour
                 tutorialNextTurnDone = true;
 
         }
+    }
+
+    public void nextTurnOnEnter()
+    {
+        nextTurnButtonHoverAudio.Play();
     }
 
     public void setNextTurnButtonNotInteractable()
