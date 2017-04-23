@@ -43,15 +43,22 @@ public class AudioPlayer : MonoBehaviour
             ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
             newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
             instance = this;
+
+            EventManager.PlayBackgroundMusic += PlayBackgroundMusic;
+            EventManager.PlayButtonClickSFX += PlayButtonClickSFX;
+            EventManager.PlayButtonHoverSFX += PlayButtonHoverSFX;
+            EventManager.ChangeMonth += PlayNewMonthSFX;
+
+            backgroundMusic.loop = true;
+            backgroundMusic.clip = backgroundSong1;
         }
-        //DontDestroyOnLoad(instance);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void PlayBackgroundMusic()
     {
-        backgroundMusic.loop = true;
-        backgroundMusic.clip = backgroundSong1;
-        backgroundMusic.Play();
+        if (!backgroundMusic.isPlaying)
+            backgroundMusic.Play();
     }
 
     public void PlayButtonClickSFX()

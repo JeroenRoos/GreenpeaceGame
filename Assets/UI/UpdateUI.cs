@@ -396,23 +396,14 @@ public class UpdateUI : MonoBehaviour
     private bool regionCompanyCheck;
     private bool dropdownChoiceMade;
     #endregion
-
-    #region Audio Variables
-    public AudioSource backgroundMusic;
-    public AudioSource soundEffect;
-
-    public AudioClip buttonHoverSFX;
-    public AudioClip ButtonClickSFX;
-    public AudioClip newmonthSFX;
-    public AudioPlayer audioPlayer;
-    #endregion
+    
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
     {
-        audioPlayer = GetComponent<AudioPlayer>();
-        audioPlayer.PlayBackgroundMusic();
+        EventManager.CallPlayBackgroundMusic();
+
         initButtons();
         initCanvas();
         initOrganizationText();
@@ -922,7 +913,7 @@ public class UpdateUI : MonoBehaviour
     // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
     void closeWithEscape()
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         if (!popupActive)// && !tutorialActive)
         {
             canvasMenuPopup.gameObject.SetActive(true);
@@ -2813,7 +2804,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive/* && tutorialStep8 */&& !tutorialQuestsActive)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2825,7 +2816,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)//tutorialStep15)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2837,7 +2828,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasCardsPopup.gameObject.activeSelf && !popupActive)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             canvasCardsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2849,7 +2840,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2860,7 +2851,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             canvasMonthlyReport.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2878,7 +2869,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             canvasYearlyReport.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2890,7 +2881,6 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasAfterActionCompletedPopup.gameObject.activeSelf && !popupActive)
         {
-            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasAfterActionCompletedPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2902,7 +2892,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             canvasInvestmentsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -2926,7 +2916,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnPopupCloseClick()
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         if (canvasOrganizationPopup.gameObject.activeSelf && !tutorialOrganizationActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
@@ -2999,7 +2989,7 @@ public class UpdateUI : MonoBehaviour
     #region Language Change Code
     public void btnNLClick()
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         if (taal != 0)
         {
             game.ChangeLanguage("dutch");
@@ -3017,7 +3007,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnENGClick()
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         if (taal != 1)
         {
             game.ChangeLanguage("english");
@@ -3045,7 +3035,6 @@ public class UpdateUI : MonoBehaviour
     public void btnQuestsEnter()
     {
         btnQuestsCheck = true;
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void btnQuestsExit()
@@ -3133,7 +3122,6 @@ public class UpdateUI : MonoBehaviour
     public void btnOrganizationEnter()
     {
         btnOrganizationCheck = true;
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void btnOrganzationExit()
@@ -3164,7 +3152,6 @@ public class UpdateUI : MonoBehaviour
     public void btnMonthlyReportEnter()
     {
         btnMonthlyReportCheck = true;
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void btnMonthlyReportExit()
@@ -3175,7 +3162,6 @@ public class UpdateUI : MonoBehaviour
     public void btnYearlyReportEnter()
     {
         btnYearlyReportCheck = true;
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void btnYearlyReportExit()
@@ -3186,7 +3172,6 @@ public class UpdateUI : MonoBehaviour
     public void btnAfterActionCompletedEnter()
     {
         btnAfterActionCompletedCheck = true;
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void btnAfterActionCompletedExit()
@@ -3227,7 +3212,6 @@ public class UpdateUI : MonoBehaviour
     public void btnInvestmentsEnter()
     {
         btnInvestementsHoverCheck = true;
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void btnInvestmentsExit()
@@ -3238,7 +3222,6 @@ public class UpdateUI : MonoBehaviour
     public void btnCardsEnter()
     {
         btnCardsHoverCheck = true;
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void btnCardsExit()
@@ -3309,7 +3292,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (tutorialNexTurnPossibe && game.currentYear < 31)
         {
-            audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             EventManager.CallChangeMonth();
 
             if (!tutorialNextTurnDone)
@@ -3320,7 +3303,6 @@ public class UpdateUI : MonoBehaviour
 
     public void nextTurnOnEnter()
     {
-        //soundEffect.PlayOneShot(buttonHoverSFX);
     }
 
     public void setNextTurnButtonNotInteractable()
@@ -3412,7 +3394,7 @@ public class UpdateUI : MonoBehaviour
     #region Menu Popup Buttons Code
     public void btnResumeMenu()
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         canvasMenuPopup.gameObject.SetActive(false);
         popupActive = false;
         EventManager.CallPopupIsDisabled();
@@ -3420,19 +3402,19 @@ public class UpdateUI : MonoBehaviour
 
     public void buttonExitGameOnClick()
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         Application.Quit();
     }
 
     public void buttonSaveGame()
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         EventManager.CallSaveGame();
     }
 
     public void loadOtherScene(int index)
     {
-        audioPlayer.PlayButtonClickSFX();
+        EventManager.CallPlayButtonClickSFX();
         SceneManager.LoadSceneAsync(index);
     }
     #endregion

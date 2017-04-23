@@ -30,7 +30,7 @@ public class EventObjectController : MonoBehaviour
     {
         if (updateUI.tutorialeventsClickable)
         {
-            updateUI.audioPlayer.PlayButtonClickSFX();
+            EventManager.CallPlayButtonClickSFX();
             updateUI.popupActive = false;
             updateUI.initEventPopup(eventModel, regionModel);
         }

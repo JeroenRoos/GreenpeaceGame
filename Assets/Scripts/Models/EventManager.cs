@@ -24,6 +24,15 @@ class EventManager
     public delegate void GameIsSaved();
     public static event GameIsSaved SaveGame;
 
+    public delegate void ActivatedBackgroundMusic();
+    public static event ActivatedBackgroundMusic PlayBackgroundMusic;
+
+    public delegate void ButtonIsClicked();
+    public static event ButtonIsClicked PlayButtonClickSFX;
+
+    public delegate void ButtonIsHovered();
+    public static event ButtonIsHovered PlayButtonHoverSFX;
+
 
     public static void CallNewGame()
     {
@@ -48,6 +57,21 @@ class EventManager
     public static void CallSaveGame()
     {
         SaveGame();
+    }
+
+    public static void CallPlayBackgroundMusic()
+    {
+        PlayBackgroundMusic();
+    }
+
+    public static void CallPlayButtonClickSFX()
+    {
+        PlayButtonClickSFX();
+    }
+
+    public static void CallPlayButtonHoverSFX()
+    {
+        PlayButtonHoverSFX();
     }
 
 }

@@ -260,7 +260,6 @@ public class GameController : MonoBehaviour
                 EventManager.CallSaveGame();
 
             updateUI.setNextTurnButtonNotInteractable();
-            updateUI.audioPlayer.PlayButtonClickSFX();
         }
     }
 

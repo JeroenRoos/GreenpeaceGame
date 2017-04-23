@@ -12,13 +12,12 @@ public class OpenScene : MonoBehaviour
     public Text txtLoadGame;
     public Text Quit;
     public Button btnLoad;
-    private GameController gameController;
 
 
     void Start()
     {
-        //Debug.Log("OpenScene START!");
-        gameController = new GameController();
+        EventManager.CallPlayBackgroundMusic();
+
         var path = Application.persistentDataPath + "/Savestate.gd";
         if (File.Exists(path))
         {
@@ -28,8 +27,7 @@ public class OpenScene : MonoBehaviour
 
     public void loadSceneByIndex(int index)
     {
-        //Debug.Log("NewGame Button Click!");
-        //GameController.loadGame = false;
+        EventManager.CallPlayButtonClickSFX();
         ApplicationModel.loadGame = false;
         Debug.Log(index);
         SceneManager.LoadSceneAsync(index);
@@ -37,13 +35,14 @@ public class OpenScene : MonoBehaviour
 
     public void buttonExitOnClick()
     {
-            Application.Quit();
+        EventManager.CallPlayButtonClickSFX();
+        Application.Quit();
     }
 
     public void buttonLoadGameClick()
     {
+        EventManager.CallPlayButtonClickSFX();
         ApplicationModel.loadGame = true;
         SceneManager.LoadSceneAsync(1);
-        gameController.LoadGame();
     }
 }
