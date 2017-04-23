@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
+    private static AudioPlayer instance = null;
+    public static AudioPlayer Instance
+    {
+        get { return instance; }
+    }
+
     #region audio
     public AudioSource backgroundMusic;
     public AudioSource soundEffect;
@@ -17,16 +23,28 @@ public class AudioPlayer : MonoBehaviour
     public AudioClip newmonthSFX;
     #endregion
 
-    private void Start()
+    private void Awake()
     {
-        AudioSource[] audioSources = GetComponents<AudioSource>();
-        backgroundMusic = audioSources[0];
-        soundEffect = audioSources[1];
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
-        backgroundSong1 = Resources.Load("Sounds/music/LugiaTheme", typeof(AudioClip)) as AudioClip;
-        buttonHoverSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
-        ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
-        newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
+        else
+        {
+
+            AudioSource[] audioSources = GetComponents<AudioSource>();
+            backgroundMusic = audioSources[0];
+            soundEffect = audioSources[1];
+
+            backgroundSong1 = Resources.Load("Sounds/music/LugiaTheme", typeof(AudioClip)) as AudioClip;
+            buttonHoverSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
+            ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
+            newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
+            instance = this;
+        }
+        //DontDestroyOnLoad(instance);
     }
 
     public void PlayBackgroundMusic()
