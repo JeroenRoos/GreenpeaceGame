@@ -393,7 +393,6 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
-<<<<<<< HEAD
     #region Audio Variables
     public AudioSource backgroundMusic;
     public AudioSource soundEffect;
@@ -401,12 +400,8 @@ public class UpdateUI : MonoBehaviour
     public AudioClip buttonHoverSFX;
     public AudioClip ButtonClickSFX;
     public AudioClip newmonthSFX;
-=======
-    #region audio
     public AudioPlayer audioPlayer;
->>>>>>> c086f896d7e381af7eada851fa4ad3928c972698
     #endregion
-
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
