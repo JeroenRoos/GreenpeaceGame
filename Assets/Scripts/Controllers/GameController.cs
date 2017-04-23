@@ -260,7 +260,7 @@ public class GameController : MonoBehaviour
                 EventManager.CallSaveGame();
 
             updateUI.setNextTurnButtonNotInteractable();
-            updateUI.soundEffect.PlayOneShot(updateUI.newmonthSFX);
+            updateUI.audioPlayer.PlayButtonClickSFX();
         }
     }
 
