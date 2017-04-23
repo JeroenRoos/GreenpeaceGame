@@ -155,6 +155,14 @@ public class UpdateUI : MonoBehaviour
     public RawImage imgCardsPopup;
     public Button btnUseCard;
     public Text txtBtnUseCard;
+    public Toggle toggleNoordNL;
+    public Toggle toggleOostNL;
+    public Toggle toggleZuidNL;
+    public Toggle toggleWestNL;
+    private bool toggleNoordNLCheck;
+    private bool toggleOostNLCheck;
+    private bool toggleZuidNLCheck;
+    private bool toggleWestNLCheck;
 
     // Text Organization Menu
     public Text txtColumnLeft;
@@ -385,10 +393,15 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
 
-    #region audio
+    #region Audio Variables
+    public AudioSource backgroundMusic;
+    public AudioSource soundEffect;
+
+    public AudioClip buttonHoverSFX;
+    public AudioClip ButtonClickSFX;
+    public AudioClip newmonthSFX;
     public AudioPlayer audioPlayer;
     #endregion
-
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
@@ -2647,6 +2660,96 @@ public class UpdateUI : MonoBehaviour
             string[] moneyReward = { "\nHuidige geld beloning: " + card.currentMoneyReward, "\nCurrent money reward: " + card.currentMoneyReward };
             txtCardsOptionInformation.text += moneyReward[taal];
         }
+
+        if (!card.isGlobal)
+        {
+            initCardRadioButtons();
+        }
+    }
+
+    private void initCardRadioButtons()
+    {
+        if (toggleNoordNLCheck)
+            toggleNoordNL.isOn = false;
+
+        if (toggleOostNLCheck)
+            toggleOostNL.isOn = false;
+
+        if (toggleZuidNLCheck)
+            toggleZuidNL.isOn = false;
+
+        if (toggleWestNLCheck)
+            toggleWestNL.isOn = false;
+
+        btnUseCard.interactable = false;
+    }
+
+    public void valueChangedNoordNL()
+    {
+        if (!toggleNoordNLCheck)
+        {
+            toggleNoordNLCheck = true;
+            toggleOostNL.isOn = false;
+            toggleZuidNL.isOn = false;
+            toggleWestNL.isOn = false;
+            btnUseCard.interactable = true;
+        }
+        else
+            toggleNoordNLCheck = false;
+
+        // Method in Code for Event Region
+        checkIfAllFalse();
+    }
+
+    public void valueChangedOostNL()
+    {
+        if (!toggleOostNLCheck)
+        {
+            toggleOostNLCheck = true;
+            toggleNoordNL.isOn = false;
+            toggleZuidNL.isOn = false;
+            toggleWestNL.isOn = false;
+            btnUseCard.interactable = true;
+        }
+        else
+            toggleOostNLCheck = false;
+
+        // Method in Code for Event Region
+        checkIfAllFalse();
+    }
+
+    public void valueChangedZuidNL()
+    {
+        if (!toggleZuidNLCheck)
+        {
+            toggleZuidNLCheck = true;
+            toggleNoordNL.isOn = false;
+            toggleOostNL.isOn = false;
+            toggleWestNL.isOn = false;
+            btnUseCard.interactable = true;
+        }
+        else
+            toggleZuidNLCheck = false;
+
+        // Method in Code for Event Region
+        checkIfAllFalse();
+    }
+
+    public void valueChangedWestNL()
+    {
+        if (!toggleWestNLCheck)
+        {
+            toggleWestNLCheck = true;
+            toggleNoordNL.isOn = false;
+            toggleOostNL.isOn = false;
+            toggleZuidNL.isOn = false;
+            btnUseCard.interactable = true;
+        }
+        else
+            toggleWestNLCheck = false;
+
+        // Method in Code for Event Region
+        checkIfAllFalse();
     }
 
     public void btnUseCardClick()
@@ -2655,7 +2758,7 @@ public class UpdateUI : MonoBehaviour
             card.UseCardOnCountry(game.regions, game.gameStatistics);
         else
         {
-
+            card.UseCardOnRegion(regio, game.gameStatistics);
         }
 
         updateCardsUI();
