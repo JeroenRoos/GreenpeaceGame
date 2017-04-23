@@ -127,6 +127,12 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionStatsColumnRightDescriptionYearly;
     public Text txtAfterActionStatsColumnRightMiddleDescriptionYearly;
 
+    public Text txtAfterActionOostYearly;
+    public Text txtAfterActionNoordYearly;
+    public Text txtAfterActionZuidYearly;
+    public Text txtAfterActionWestYearly;
+
+    /*
     public Text txtAfterActionNoordIncomeYearly;
     public Text txtAfterActionNoordHappinessYearly;
     public Text txtAfterActionNoordEcoAwarenessYearly;
@@ -170,6 +176,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionWestEcoAwarenessDYearly;
     public Text txtAfterActionWestPollutionDYearly;
     public Text txtAfterActionWestProsperityDYearly;
+    */
 
     // Text AfterActionCompleted
     //public Text txtAfterActionCompletedTitle;
@@ -1929,13 +1936,6 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Monthly/Yearly Report Popup
-    public void InitMonthlyReport()
-    {
-        monthlyNewEvents = (List<GameEvent>[])game.monthlyReport.newEvents.Clone();
-        updateTextAfterActionStats(true);
-        calculateDifference(game.monthlyReport.oldIncome, game.monthlyReport.oldHappiness, game.monthlyReport.oldEcoAwareness, game.monthlyReport.oldPollution, game.monthlyReport.oldProsperity, true);
-    }
-
     IEnumerator tutorialMonthlyReport()
     {
         string[] step1 = { "In dit maandelijkse rapport kun je de veranderingen van de statistieken zien ten opzichte van vorige maand. Daarnaast kun je ook zien of er nieuwe events in een regio zijn. " +
@@ -1953,6 +1953,13 @@ public class UpdateUI : MonoBehaviour
         imgTutorialAfterTurn.gameObject.SetActive(false);
         tutorialMonthlyReportDone = true;
         tutorialMonthlyReportActive = false;
+    }
+
+    public void InitMonthlyReport()
+    {
+        monthlyNewEvents = (List<GameEvent>[])game.monthlyReport.newEvents.Clone();
+        updateTextAfterActionStats(true);
+        calculateDifference(game.monthlyReport.oldIncome, game.monthlyReport.oldHappiness, game.monthlyReport.oldEcoAwareness, game.monthlyReport.oldPollution, game.monthlyReport.oldProsperity, true);
     }
 
     public void InitYearlyReport()
@@ -1993,35 +2000,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionOostEventD.text = txtNewEventDescription[taal];
             txtAfterActionZuidEventD.text = txtNewEventDescription[taal];
             txtAfterActionWestEventD.text = txtNewEventDescription[taal];
-
-            /*txtAfterActionNoordIncomeD.text = txtIncomeDescription[taal];
-            txtAfterActionNoordHappinessD.text = txtHappinessDescription[taal];
-            txtAfterActionNoordEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionNoordPollutionD.text = txtPollutionDescription[taal];
-            txtAfterActionNoordProsperityD.text = txtProsperityDescription[taal];
-            txtAfterActionNoordEventD.text = txtNewEventDescription[taal];
-
-            txtAfterActionOostIncomeD.text = txtIncomeDescription[taal];
-            txtAfterActionOostHappinessD.text = txtHappinessDescription[taal];
-            txtAfterActionOostEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionOostPollutionD.text = txtPollutionDescription[taal];
-            txtAfterActionOostProsperityD.text = txtProsperityDescription[taal];
-            txtAfterActionOostEventD.text = txtNewEventDescription[taal];
-
-            txtAfterActionZuidIncomeD.text = txtIncomeDescription[taal];
-            txtAfterActionZuidHappinessD.text = txtHappinessDescription[taal];
-            txtAfterActionZuidEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionZuidPollutionD.text = txtPollutionDescription[taal];
-            txtAfterActionZuidProsperityD.text = txtProsperityDescription[taal];
-            txtAfterActionZuidEventD.text = txtNewEventDescription[taal];
-
-            txtAfterActionWestIncomeD.text = txtIncomeDescription[taal];
-            txtAfterActionWestHappinessD.text = txtHappinessDescription[taal];
-            txtAfterActionWestEcoAwarenessD.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionWestPollutionD.text = txtPollutionDescription[taal];
-            txtAfterActionWestProsperityD.text = txtProsperityDescription[taal];
-            txtAfterActionWestEventD.text = txtNewEventDescription[taal];*/
-            //initAfterActionStatsNewEvents();
         }
         else
         {
@@ -2036,30 +2014,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionStatsColumnLeftMiddleDescriptionYearly.text = txtDescription[taal];
             txtAfterActionStatsColumnRightMiddleDescriptionYearly.text = txtDescription[taal];
             txtAfterActionStatsColumnRightDescriptionYearly.text = txtDescription[taal];
-
-            txtAfterActionNoordIncomeDYearly.text = txtIncomeDescription[taal];
-            txtAfterActionNoordHappinessDYearly.text = txtHappinessDescription[taal];
-            txtAfterActionNoordEcoAwarenessDYearly.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionNoordPollutionDYearly.text = txtPollutionDescription[taal];
-            txtAfterActionNoordProsperityDYearly.text = txtProsperityDescription[taal];
-
-            txtAfterActionOostIncomeDYearly.text = txtIncomeDescription[taal];
-            txtAfterActionOostHappinessDYearly.text = txtHappinessDescription[taal];
-            txtAfterActionOostEcoAwarenessDYearly.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionOostPollutionDYearly.text = txtPollutionDescription[taal];
-            txtAfterActionOostProsperityDYearly.text = txtProsperityDescription[taal];
-
-            txtAfterActionZuidIncomeDYearly.text = txtIncomeDescription[taal];
-            txtAfterActionZuidHappinessDYearly.text = txtHappinessDescription[taal];
-            txtAfterActionZuidEcoAwarenessDYearly.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionZuidPollutionDYearly.text = txtPollutionDescription[taal];
-            txtAfterActionZuidProsperityDYearly.text = txtProsperityDescription[taal];
-
-            txtAfterActionWestIncomeDYearly.text = txtIncomeDescription[taal];
-            txtAfterActionWestHappinessDYearly.text = txtHappinessDescription[taal];
-            txtAfterActionWestEcoAwarenessDYearly.text = txtEcoAwarenessDescription[taal];
-            txtAfterActionWestPollutionDYearly.text = txtPollutionDescription[taal];
-            txtAfterActionWestProsperityDYearly.text = txtProsperityDescription[taal];
         }
     }
 
@@ -2080,107 +2034,58 @@ public class UpdateUI : MonoBehaviour
             pollutionDifference = game.regions[i].statistics.avgPollution - oldPollution[i];
             prosperityDifference = game.regions[i].statistics.prosperity - oldProsperity[i];
 
-            if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
+            if (isMonthly)
             {
-                setDifferenceTextValuesNoord(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference, isMonthly);
+                if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
+                {
+                    setValuesChanged(txtAfterActionNoord, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
+                else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
+                {
+                    setValuesChanged(txtAfterActionOost, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
+                else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
+                {
+                    setValuesChanged(txtAfterActionZuid, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
+                else if (game.monthlyReport.reportRegions[i] == "West Nederland")
+                {
+                    setValuesChanged(txtAfterActionWest, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
             }
-            else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
+            else
             {
-                setDifferenceTextValuesOost(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference, isMonthly);
-            }
-            else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
-            {
-                setDifferenceTextValuesZuid(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference, isMonthly);
-            }
-            else if (game.monthlyReport.reportRegions[i] == "West Nederland")
-            {
-                setDifferenceTextValuesWest(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference, isMonthly);
+                if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
+                {
+                    setValuesChanged(txtAfterActionNoordYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
+                else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
+                {
+                    setValuesChanged(txtAfterActionOostYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
+                else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
+                {
+                    setValuesChanged(txtAfterActionZuidYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
+                else if (game.monthlyReport.reportRegions[i] == "West Nederland")
+                {
+                    setValuesChanged(txtAfterActionWestYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
+                }
             }
         }
 
         initAfterActionStatsCompletedEvents();
         initAfterActionStatsCompletedActions();
     }
-
-    private void setDifferenceTextValuesNoord(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
-    {
-        if (isMonthly)
-        {
-            txtAfterActionNoord.text = "";
-            setValuesChanged(txtAfterActionNoord, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-        }
-
-        else
-        {
-            txtAfterActionNoordIncomeYearly.text = incomeDifference.ToString("0.00");
-            txtAfterActionNoordHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
-            txtAfterActionNoordEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
-            txtAfterActionNoordPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
-            txtAfterActionNoordProsperityYearly.text = prosperityDifference.ToString("0.00") + "%";
-        }
-    }
-
-    private void setDifferenceTextValuesOost(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
-    {
-        if (isMonthly)
-        {
-            txtAfterActionOost.text = "";
-            setValuesChanged(txtAfterActionOost, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-        }
-        else
-        {
-            if (incomeDifference != 0)
-                txtAfterActionOostIncomeYearly.text = incomeDifference.ToString("0.00");
-            if (happinessDifference != 0)
-                txtAfterActionOostHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
-            if (ecoAwarenessDifference != 0)
-                txtAfterActionOostEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
-            if (pollutionDifference != 0)
-                txtAfterActionOostPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
-            if (prosperityDifference != 0)
-                txtAfterActionOostProsperityYearly.text = prosperityDifference.ToString("0.00") + "%";
-        }
-    }
-
-    private void setDifferenceTextValuesZuid(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
-    {
-        if (isMonthly)
-        {
-            txtAfterActionZuid.text = "";
-            setValuesChanged(txtAfterActionZuid, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-        }
-        else
-        {
-            txtAfterActionZuidIncomeYearly.text = incomeDifference.ToString("0.00");
-            txtAfterActionZuidHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
-            txtAfterActionZuidEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
-            txtAfterActionZuidPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
-            txtAfterActionZuidProsperityYearly.text = prosperityDifference.ToString("0.00") + "%";
-        }
-    }
-
-    private void setDifferenceTextValuesWest(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
-    {
-        if (isMonthly)
-        {
-            txtAfterActionWest.text = "";
-            setValuesChanged(txtAfterActionWest, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
-        }
-        else
-        {
-            txtAfterActionWestIncomeYearly.text = incomeDifference.ToString("0.00");
-            txtAfterActionWestHappinessYearly.text = happinessDifference.ToString("0.00") + "%";
-            txtAfterActionWestEcoAwarenessYearly.text = ecoAwarenessDifference.ToString("0.00") + "%";
-            txtAfterActionWestPollutionYearly.text = pollutionDifference.ToString("0.00") + "%";
-            txtAfterActionWestProsperityYearly.text = prosperityDifference.ToString("0.00") + "%";
-        }
-    }
+    
 
     private void setValuesChanged(Text txt, double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
     {
+        txt.text = "";
+
         if (incomeDifference != 0d)
         {
-            string[] difference = { "\nInkomen: " , "\nIncome: " };
+            string[] difference = { "\nInkomen: ", "\nIncome: " };
 
             if (incomeDifference > 0d)
                 difference[taal] += "+" + incomeDifference.ToString("0.00");
@@ -2191,7 +2096,7 @@ public class UpdateUI : MonoBehaviour
         }
         if (happinessDifference != 0d)
         {
-            string[] difference = { "\nTevredenheid: ", "\nHappiness: "};
+            string[] difference = { "\nTevredenheid: ", "\nHappiness: " };
 
             if (happinessDifference > 0d)
                 difference[taal] += "+" + happinessDifference.ToString("0.00") + "%";
@@ -2213,7 +2118,7 @@ public class UpdateUI : MonoBehaviour
         }
         if (pollutionDifference != 0d)
         {
-            string[] difference = { "\nVervuiling: ", "\nPollution: "};
+            string[] difference = { "\nVervuiling: ", "\nPollution: " };
 
             if (pollutionDifference > 0d)
                 difference[taal] += "+" + pollutionDifference.ToString("0.00") + "%";
@@ -2243,124 +2148,40 @@ public class UpdateUI : MonoBehaviour
         monthlyCompletedEvents = (List<GameEvent>[])game.monthlyReport.completedEvents.Clone();
 
         if (monthlyCompletedEvents[0].Count != 0)
-            setCompletedEventsNoord(monthlyCompletedEvents[0]);
+            setCompletedEvents(txtAfterActionNoord, monthlyCompletedEvents[0]);
         if (monthlyCompletedEvents[1].Count != 0)
-            setCompletedEventsOost(monthlyCompletedEvents[1]);
+            setCompletedEvents(txtAfterActionOost, monthlyCompletedEvents[1]);
         if (monthlyCompletedEvents[2].Count != 0)
-            setCompletedEventsWest(monthlyCompletedEvents[2]);
+            setCompletedEvents(txtAfterActionWest, monthlyCompletedEvents[2]);
         if (monthlyCompletedEvents[3].Count != 0)
-            setCompletedEventsZuid(monthlyCompletedEvents[3]);
+            setCompletedEvents(txtAfterActionZuid, monthlyCompletedEvents[3]);
     }
 
-    private void setCompletedEventsNoord(List<GameEvent> eventsList)
+    private void setCompletedEvents(Text txt, List<GameEvent> eventsList)
     {
         string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
-        txtAfterActionNoord.text += events[taal];
+        txt.text += events[taal];
 
         foreach (GameEvent e in eventsList)
         {
-            txtAfterActionNoord.text += e.publicEventName[taal];// + " - " + e.description[taal];
+            txt.text += e.publicEventName[taal];// + " - " + e.description[taal];
             string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-            txtAfterActionNoord.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
+            txt.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
 
             string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
-            txtAfterActionNoord.text += sectorsPicked[taal];
+            txt.text += sectorsPicked[taal];
             foreach (string s in e.possibleSectors)
             {
                 foreach (RegionSector sector in game.regions[0].sectors)
                 {
                     if (sector.sectorName[0] == s)
                     {
-                        txtAfterActionNoord.text += sector.sectorName[taal] + " ";
+                        txt.text += sector.sectorName[taal] + " ";
                         break;
                     }
                 }
             }
-            txtAfterActionNoord.text += "\n\n";
-        }
-    }
-
-    private void setCompletedEventsOost(List<GameEvent> eventsList)
-    {
-        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
-        txtAfterActionOost.text += events[taal];
-
-        foreach (GameEvent e in eventsList)
-        {
-            txtAfterActionOost.text += e.publicEventName[taal];// + " - " + e.description[taal];
-            string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-            txtAfterActionOost.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
-
-            string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
-            txtAfterActionOost.text += sectorsPicked[taal];
-            foreach (string s in e.possibleSectors)
-            {
-                foreach (RegionSector sector in game.regions[0].sectors)
-                {
-                    if (sector.sectorName[0] == s)
-                    {
-                        txtAfterActionOost.text += sector.sectorName[taal] + " ";
-                        break;
-                    }
-                }
-            }
-            txtAfterActionOost.text += "\n\n";
-        }
-    }
-
-    private void setCompletedEventsZuid(List<GameEvent> eventsList)
-    {
-        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
-        txtAfterActionZuid.text += events[taal];
-
-        foreach (GameEvent e in eventsList)
-        {
-            txtAfterActionZuid.text += e.publicEventName[taal];// + " - " + e.description[taal];
-            string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-            txtAfterActionZuid.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
-
-            string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
-            txtAfterActionZuid.text += sectorsPicked[taal];
-            foreach (string s in e.possibleSectors)
-            {
-                foreach (RegionSector sector in game.regions[0].sectors)
-                {
-                    if (sector.sectorName[0] == s)
-                    {
-                        txtAfterActionZuid.text += sector.sectorName[taal] + " ";
-                        break;
-                    }
-                }
-            }
-            txtAfterActionZuid.text += "\n\n";
-        }
-    }
-
-    private void setCompletedEventsWest(List<GameEvent> eventsList)
-    {
-        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
-        txtAfterActionWest.text += events[taal];
-
-        foreach (GameEvent e in eventsList)
-        {
-            txtAfterActionWest.text += e.publicEventName[taal];// + " - " + e.description[taal];
-            string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-            txtAfterActionWest.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
-
-            string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
-            txtAfterActionWest.text += sectorsPicked[taal];
-            foreach (string s in e.possibleSectors)
-            {
-                foreach (RegionSector sector in game.regions[0].sectors)
-                {
-                    if (sector.sectorName[0] == s)
-                    {
-                        txtAfterActionWest.text += sector.sectorName[taal] + " ";
-                        break;
-                    }
-                }
-            }
-            txtAfterActionWest.text += "\n\n";
+            txt.text += "\n\n";
         }
     }
 
@@ -2369,150 +2190,33 @@ public class UpdateUI : MonoBehaviour
         monthlyCompletedActions = (List<RegionAction>[])game.monthlyReport.completedActions.Clone();
 
         if (monthlyCompletedActions[0].Count != 0)
-            setCompletedActionsNoord(monthlyCompletedActions[0]);
+            setCompletedActions(txtAfterActionNoord, monthlyCompletedActions[0]);
         if (monthlyCompletedActions[1].Count != 0)
-            setCompletedActionsOost(monthlyCompletedActions[1]);
+            setCompletedActions(txtAfterActionOost, monthlyCompletedActions[1]);
         if (monthlyCompletedActions[2].Count != 0)
-            setCompletedActionsWest(monthlyCompletedActions[2]);
+            setCompletedActions(txtAfterActionWest, monthlyCompletedActions[2]);
         if (monthlyCompletedActions[3].Count != 0)
-            setCompletedActionsZuid(monthlyCompletedActions[3]);
+            setCompletedActions(txtAfterActionZuid, monthlyCompletedActions[3]);
     }
 
-    private void setCompletedActionsNoord(List<RegionAction> actionsList)
+    private void setCompletedActions(Text txt, List<RegionAction> actionsList)
     {
-        string[] events = { "\n\n<b>Afgeronde acties:</b>\n", "\n\n<b>Completed actions:</b>\n" };
-        txtAfterActionNoord.text += events[taal];
+        string[] acties = { "<b>Afgeronde acties:</b>\n", "\n\n<b>Completed actions:</b>\n" };
+        txt.text += acties[taal];
 
         for (int i = 0; i < monthlyCompletedActions.Length; i++)
         {
             foreach (RegionAction a in monthlyCompletedActions[i])
             {
-                txtAfterActionNoord.text += a.name[taal] + " - " + a.description[taal];
-                txtAfterActionNoord.text += getChosenSectors(a.pickedSectors);
-                string[] c = { "\n</b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-                txtAfterActionNoord.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
-
-                if (a.actionMoneyReward != 0)
-                {
-                    string[] line = { "\n<b>Geld beloning: </b>", "\n<b>Money reward: </b>" };
-                    txtAfterActionNoord.text += line[taal] + a.actionMoneyReward + "\n\n";
-                }
-            }
-        }
-    }
-
-    private void setCompletedActionsOost(List<RegionAction> actionsList)
-    {
-
-    }
-
-    private void setCompletedActionsWest(List<RegionAction> actionsList)
-    {
-
-    }
-
-    private void setCompletedActionsZuid(List<RegionAction> actionsList)
-    {
-
-    }
-
-    private string getChosenSectors(bool[] sectors)
-    {
-        string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
-
-        if (sectors[0])
-        {
-            string[] a = { "Huishoudens ", "Households " };
-            sectorsPicked[taal] += a[taal];
-        }
-        if (sectors[1])
-        {
-            string[] a = { "Landbouw ", "Agriculture " };
-            sectorsPicked[taal] += a[taal];
-        }
-        if (sectors[2])
-        {
-            string[] a = { "Bedrijven ", "Companies " };
-            sectorsPicked[taal] += a[taal];
-        }
-
-        return sectorsPicked[taal];
-
-    }
-    #endregion
-
-    #region Code for AfterActionCompleted Popup
-    /*
-    public void initAFterActionCompleted()
-    {
-        monthlyCompletedEvents = (List<GameEvent>[])game.monthlyReport.completedEvents.Clone();
-        monthlyCompletedActions = (List<RegionAction>[])game.monthlyReport.completedActions.Clone();
-        updateTextAfterActionCompleted();
-    }
-
-    private void updateTextAfterActionCompleted()
-    {
-        string[] txtTitle = { "Einde beurt rapport", "End of turn view" };
-        string[] txtRight = { "Afgeronde acties", "Completed Actions" };
-        string[] txtLeft = { "Afgeronde events", "Completed events" };
-
-        txtAfterActionCompletedTitle.text = txtTitle[taal];
-        txtAfterActionCompletedColumnLeft.text = txtLeft[taal];
-        txtAfterActionCompletedColumnRight.text = txtRight[taal];
-
-        showCompletedEvents();
-        showCompletedActions();
-    }
-
-    private void showCompletedEvents()
-    {
-        //txtAfterActionCompletedColumnLeftDescription.text = "";
-
-        for (int i = 0; i < monthlyCompletedEvents.Length; i++)
-        {
-            foreach (GameEvent e in monthlyCompletedEvents[i])
-            {
-                txtAfterActionCompletedColumnLeftDescription.text += e.publicEventName[taal] + " - " + e.description[taal];
+                txt.text += a.name[taal] + " - " + a.description[taal];
+                txt.text += getChosenSectors(a.pickedSectors);
                 string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-                txtAfterActionCompletedColumnLeftDescription.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
-                //txtAfterActionCompletedColumnLeftDescription.text += getChosenSectors(e.pickedSectors) + "\n\n";
-
-                string[] sectorsPicked = { "\n<b>Sectoren: </b>", "\n<b>Sectors: </b>" };
-                txtAfterActionCompletedColumnLeftDescription.text += sectorsPicked[taal];
-                foreach (string s in e.possibleSectors)
-                {
-                    foreach (RegionSector sector in game.regions[0].sectors)
-                    {
-                        if (sector.sectorName[0] == s)
-                        {
-                            txtAfterActionCompletedColumnLeftDescription.text += sector.sectorName[taal] + " ";
-                            break;
-                        }
-                    }
-                }
-                txtAfterActionCompletedColumnLeftDescription.text += "\n\n";
-            }
-        }
-    }
-
-    private void showCompletedActions()
-    {
-        txtAfterActionCompletedColumnRightDescription.text = "";
-        //scrollbarAfterActionReport.gameObject.SetActive(false);
-
-        for (int i = 0; i < monthlyCompletedActions.Length; i++)
-        {
-            foreach (RegionAction a in monthlyCompletedActions[i])
-            {
-                txtAfterActionCompletedColumnRightDescription.text += a.name[taal] + " - " + a.description[taal];
-                txtAfterActionCompletedColumnRightDescription.text += getChosenSectors(a.pickedSectors);
-                string[] c = { "\n</b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-                txtAfterActionCompletedColumnRightDescription.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
+                txt.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
 
                 if (a.actionMoneyReward != 0)
                 {
                     string[] line = { "\n<b>Geld beloning: </b>", "\n<b>Money reward: </b>" };
-                    txtAfterActionCompletedColumnRightDescription.text += line[taal] + a.actionMoneyReward + "\n\n";
+                    txt.text += line[taal] + a.actionMoneyReward + "\n\n";
                 }
             }
         }
@@ -2541,64 +2245,6 @@ public class UpdateUI : MonoBehaviour
         return sectorsPicked[taal];
 
     }
-    */
-    /*private string getAfterActionConsequences(SectorStatistics s)
-    {
-        bool noConsequences = false;
-
-        string[] consequences = { "\nConsequenties: ", "\nConsequences: " };
-        if (s.income != 0)
-        {
-            string[] a = { "\nInkomen: " + s.income + "\n", "\nIncome: " + s.income + "\n" };
-            consequences[taal] += a[taal];
-            noConsequences = true;
-        }
-        if (s.happiness != 0)
-        {
-            string[] c = { "Tevredenheid: " + s.happiness + "\n", "Happiness: " + s.happiness + "\n" };
-            consequences[taal] += c[taal];
-            noConsequences = true;
-        }
-        if (s.ecoAwareness != 0)
-        {
-            string[] d = { "Milieubewustheid: " + s.ecoAwareness + "\n", "Eco awareness: " + s.ecoAwareness + "\n" };
-            consequences[taal] += d[taal];
-            noConsequences = true;
-        }
-        if (s.prosperity != 0)
-        {
-            string[] e = { "Welvaart: " + s.prosperity + "\n", "Prosperity: " + s.prosperity + "\n" };
-            consequences[taal] += e[taal];
-            noConsequences = true;
-        }
-        if (s.pollution.airPollutionIncrease != 0)
-        {
-            string[] f = { "Luchtvervuiling: " + s.pollution.airPollutionIncrease + "\n", "Air pollution: " + s.pollution.airPollutionIncrease + "\n" };
-            consequences[taal] += f[taal];
-            noConsequences = true;
-        }
-        if (s.pollution.waterPollutionIncrease != 0)
-        {
-            string[] g = { "Watervervuiling: " + s.pollution.waterPollutionIncrease + "\n", "Water pollution: " + s.pollution.waterPollutionIncrease + "\n" };
-            consequences[taal] += g[taal];
-            noConsequences = true;
-        }
-        if (s.pollution.naturePollutionIncrease != 0)
-        {
-            string[] h = { "Natuurvervuiling: " + s.pollution.naturePollutionIncrease + "\n", "Nature pollution: " + s.pollution.naturePollutionIncrease + "\n" };
-            consequences[taal] += h[taal];
-            noConsequences = true;
-        }
-
-        if (!noConsequences)
-        {
-            string[] st = { "\nGeen consequences\n", "\nThere are no consequences\n" };
-            return st[taal];
-        }
-
-        return consequences[taal];
-    }*/
-
     #endregion
 
     #region Code for Quests Popup
