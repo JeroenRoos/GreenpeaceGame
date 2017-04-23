@@ -53,68 +53,6 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionNoord;
     public Text txtAfterActionZuid;
     public Text txtAfterActionWest;
-    public Text txtAfterActionNoordEventD;
-    public Text txtAfterActionNoordEvent;
-    public Text txtAfterActionWestEventD;
-    public Text txtAfterActionWestEvent;
-    public Text txtAfterActionZuidEventD;
-    public Text txtAfterActionZuidEvent;
-    public Text txtAfterActionOostEventD;
-    public Text txtAfterActionOostEvent;
-
-
-    /*public Text txtAfterActionNoordIncome;
-    public Text txtAfterActionNoordHappiness;
-    public Text txtAfterActionNoordEcoAwareness;
-    public Text txtAfterActionNoordPollution;
-    public Text txtAfterActionNoordProsperity;
-    public Text txtAfterActionNoordIncomeD;
-    public Text txtAfterActionNoordHappinessD;
-    public Text txtAfterActionNoordEcoAwarenessD;
-    public Text txtAfterActionNoordPollutionD;
-    public Text txtAfterActionNoordProsperityD;
-    public Text txtAfterActionNoordEventD;
-    public Text txtAfterActionNoordEvent;
-
-    public Text txtAfterActionOostIncome;
-    public Text txtAfterActionOostHappiness;
-    public Text txtAfterActionOostEcoAwareness;
-    public Text txtAfterActionOostPollution;
-    public Text txtAfterActionOostProsperity;
-    public Text txtAfterActionOostIncomeD;
-    public Text txtAfterActionOostHappinessD;
-    public Text txtAfterActionOostEcoAwarenessD;
-    public Text txtAfterActionOostPollutionD;
-    public Text txtAfterActionOostProsperityD;
-    public Text txtAfterActionOostEventD;
-    public Text txtAfterActionOostEvent;
-
-    public Text txtAfterActionZuidIncome;
-    public Text txtAfterActionZuidHappiness;
-    public Text txtAfterActionZuidEcoAwareness;
-    public Text txtAfterActionZuidPollution;
-    public Text txtAfterActionZuidProsperity;
-    public Text txtAfterActionZuidIncomeD;
-    public Text txtAfterActionZuidHappinessD;
-    public Text txtAfterActionZuidEcoAwarenessD;
-    public Text txtAfterActionZuidPollutionD;
-    public Text txtAfterActionZuidProsperityD;
-    public Text txtAfterActionZuidEventD;
-    public Text txtAfterActionZuidEvent;
-
-    public Text txtAfterActionWestIncome;
-    public Text txtAfterActionWestHappiness;
-    public Text txtAfterActionWestEcoAwareness;
-    public Text txtAfterActionWestPollution;
-    public Text txtAfterActionWestProsperity;
-    public Text txtAfterActionWestIncomeD;
-    public Text txtAfterActionWestHappinessD;
-    public Text txtAfterActionWestEcoAwarenessD;
-    public Text txtAfterActionWestPollutionD;
-    public Text txtAfterActionWestProsperityD;
-    public Text txtAfterActionWestEventD;
-    public Text txtAfterActionWestEvent;
-    */
 
     // Text YearlyAfterActionReportStats
     public Text txtAfterActionStatsNameYearly;
@@ -131,59 +69,6 @@ public class UpdateUI : MonoBehaviour
     public Text txtAfterActionNoordYearly;
     public Text txtAfterActionZuidYearly;
     public Text txtAfterActionWestYearly;
-
-    /*
-    public Text txtAfterActionNoordIncomeYearly;
-    public Text txtAfterActionNoordHappinessYearly;
-    public Text txtAfterActionNoordEcoAwarenessYearly;
-    public Text txtAfterActionNoordPollutionYearly;
-    public Text txtAfterActionNoordProsperityYearly;
-    public Text txtAfterActionNoordIncomeDYearly;
-    public Text txtAfterActionNoordHappinessDYearly;
-    public Text txtAfterActionNoordEcoAwarenessDYearly;
-    public Text txtAfterActionNoordPollutionDYearly;
-    public Text txtAfterActionNoordProsperityDYearly;
-
-    public Text txtAfterActionOostIncomeYearly;
-    public Text txtAfterActionOostHappinessYearly;
-    public Text txtAfterActionOostEcoAwarenessYearly;
-    public Text txtAfterActionOostPollutionYearly;
-    public Text txtAfterActionOostProsperityYearly;
-    public Text txtAfterActionOostIncomeDYearly;
-    public Text txtAfterActionOostHappinessDYearly;
-    public Text txtAfterActionOostEcoAwarenessDYearly;
-    public Text txtAfterActionOostPollutionDYearly;
-    public Text txtAfterActionOostProsperityDYearly;
-
-    public Text txtAfterActionZuidIncomeYearly;
-    public Text txtAfterActionZuidHappinessYearly;
-    public Text txtAfterActionZuidEcoAwarenessYearly;
-    public Text txtAfterActionZuidPollutionYearly;
-    public Text txtAfterActionZuidProsperityYearly;
-    public Text txtAfterActionZuidIncomeDYearly;
-    public Text txtAfterActionZuidHappinessDYearly;
-    public Text txtAfterActionZuidEcoAwarenessDYearly;
-    public Text txtAfterActionZuidPollutionDYearly;
-    public Text txtAfterActionZuidProsperityDYearly;
-
-    public Text txtAfterActionWestIncomeYearly;
-    public Text txtAfterActionWestHappinessYearly;
-    public Text txtAfterActionWestEcoAwarenessYearly;
-    public Text txtAfterActionWestPollutionYearly;
-    public Text txtAfterActionWestProsperityYearly;
-    public Text txtAfterActionWestIncomeDYearly;
-    public Text txtAfterActionWestHappinessDYearly;
-    public Text txtAfterActionWestEcoAwarenessDYearly;
-    public Text txtAfterActionWestPollutionDYearly;
-    public Text txtAfterActionWestProsperityDYearly;
-    */
-
-    // Text AfterActionCompleted
-    //public Text txtAfterActionCompletedTitle;
-    //public Text txtAfterActionCompletedColumnLeft;
-    //public Text txtAfterActionCompletedColumnRight;
-    //public Text txtAfterActionCompletedColumnLeftDescription;
-    //public Text txtAfterActionCompletedColumnRightDescription;
 
     // Text Menu Popup
     public Text txtResume;
@@ -232,9 +117,6 @@ public class UpdateUI : MonoBehaviour
     public Text txtInvestmentsEventCost;
     public Text txtInvestmentsEventConsequences;
     public Image[] imgInvestmentActionCost;
-    //public Image[] imgInvestmentEventCost;
-    //public Image[] imgInvestmentActionConsequences;
-    //public Image[] imgInvestmentEventConsequences;
 
         
     public Button btnInvestmentActionCostInvest;
@@ -577,7 +459,6 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Tutorial Main Steps
-
     private void initTutorialActive()
     {
         canvasTutorial.gameObject.SetActive(true);
@@ -838,6 +719,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for Audio
     void initAudio()
     {
         soundEffect = GetComponent<AudioSource>();
@@ -849,6 +731,7 @@ public class UpdateUI : MonoBehaviour
         ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
         newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
     }
+    #endregion
 
     #region Init UI Elements
     void initButtons()
@@ -1012,7 +895,7 @@ public class UpdateUI : MonoBehaviour
 
         btnInvestments.gameObject.SetActive(true);
     }
-#endregion
+    #endregion
 
     #region Code for controlling popups
     void popupController()
@@ -1996,10 +1879,6 @@ public class UpdateUI : MonoBehaviour
             txtAfterActionStatsColumnLeftMiddleDescription.text = txtDescription[taal];
             txtAfterActionStatsColumnRightMiddleDescription.text = txtDescription[taal];
             txtAfterActionStatsColumnRightDescription.text = txtDescription[taal];
-            txtAfterActionNoordEventD.text = txtNewEventDescription[taal];
-            txtAfterActionOostEventD.text = txtNewEventDescription[taal];
-            txtAfterActionZuidEventD.text = txtNewEventDescription[taal];
-            txtAfterActionWestEventD.text = txtNewEventDescription[taal];
         }
         else
         {
