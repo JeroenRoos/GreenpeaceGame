@@ -163,6 +163,10 @@ public class UpdateUI : MonoBehaviour
     private bool toggleOostNLCheck;
     private bool toggleZuidNLCheck;
     private bool toggleWestNLCheck;
+    public Text txtToggleNoord;
+    public Text txtToggleOost;
+    public Text txtToggleZuid;
+    public Text txtToggleWest;
 
     // Text Organization Menu
     public Text txtColumnLeft;
@@ -789,6 +793,10 @@ public class UpdateUI : MonoBehaviour
         radioEventOption1Check = true;
         radioEventOption2Check = true;
         radioEventOption3Check = true;
+        toggleNoordNLCheck = true;
+        toggleOostNLCheck = true;
+        toggleZuidNLCheck = true;
+        toggleWestNLCheck = true;
     }
 
     void initCanvas()
@@ -2619,6 +2627,10 @@ public class UpdateUI : MonoBehaviour
         txtCardsColumnRight.text = "";
         txtCardsOptionInformation.text = "";
         btnUseCard.gameObject.SetActive(false);
+        toggleNoordNL.gameObject.SetActive(false);
+        toggleOostNL.gameObject.SetActive(false);
+        toggleZuidNL.gameObject.SetActive(false);
+        toggleWestNL.gameObject.SetActive(false);
     }
 
     private void setTextCardInformation(Card c)
@@ -2681,6 +2693,21 @@ public class UpdateUI : MonoBehaviour
         if (toggleWestNLCheck)
             toggleWestNL.isOn = false;
 
+        string[] noord = { "Noord-Nederland", "The Netherland North" };
+        string[] oost = { "Oost-Nederland", "The Netherland East" };
+        string[] zuid = { "Zuid-Nederland", "The Netherland South" };
+        string[] west = { "West-Nederland", "The Netherland West" };
+
+        txtToggleNoord.text = noord[taal];
+        txtToggleOost.text = oost[taal];
+        txtToggleZuid.text = zuid[taal];
+        txtToggleWest.text = west[taal];
+
+        toggleNoordNL.gameObject.SetActive(true);
+        toggleOostNL.gameObject.SetActive(true);
+        toggleZuidNL.gameObject.SetActive(true);
+        toggleWestNL.gameObject.SetActive(true);
+
         btnUseCard.interactable = false;
     }
 
@@ -2698,7 +2725,7 @@ public class UpdateUI : MonoBehaviour
             toggleNoordNLCheck = false;
 
         // Method in Code for Event Region
-        checkIfAllFalse();
+        checkIfAllFalseCards();
     }
 
     public void valueChangedOostNL()
@@ -2715,7 +2742,7 @@ public class UpdateUI : MonoBehaviour
             toggleOostNLCheck = false;
 
         // Method in Code for Event Region
-        checkIfAllFalse();
+        checkIfAllFalseCards();
     }
 
     public void valueChangedZuidNL()
@@ -2732,7 +2759,7 @@ public class UpdateUI : MonoBehaviour
             toggleZuidNLCheck = false;
 
         // Method in Code for Event Region
-        checkIfAllFalse();
+        checkIfAllFalseCards();
     }
 
     public void valueChangedWestNL()
@@ -2749,7 +2776,13 @@ public class UpdateUI : MonoBehaviour
             toggleWestNLCheck = false;
 
         // Method in Code for Event Region
-        checkIfAllFalse();
+        checkIfAllFalseCards();
+    }
+
+    private void checkIfAllFalseCards()
+    {
+        if (!toggleNoordNLCheck && !toggleOostNLCheck && !toggleWestNLCheck && !toggleZuidNLCheck)
+            btnUseCard.interactable = false;
     }
 
     public void btnUseCardClick()
