@@ -21,8 +21,8 @@ class EventManager
     public delegate void FirstCardGained();
     public static event FirstCardGained FirstCardIsGained;
 
-    /*public delegate void EventOccured();
-    public static event EventOccured ShowEvent;*/
+    public delegate void GameIsSaved();
+    public static event GameIsSaved SaveGame;
 
 
     public static void CallNewGame()
@@ -45,9 +45,9 @@ class EventManager
         PopupIsDisabled();
     }
 
-    /*public static void CallShowEvent()
+    public static void CallSaveGame()
     {
-        ShowEvent();
-    }*/
+        SaveGame();
+    }
 
 }

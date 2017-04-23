@@ -1030,6 +1030,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!popupActive)// && !tutorialActive)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
@@ -1037,66 +1038,77 @@ public class UpdateUI : MonoBehaviour
         }
         else if (canvasOrganizationPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         else if (canvasCardsPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasCardsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         else if (canvasInvestmentsPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasInvestmentsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         else if (canvasMenuPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasMenuPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         else if (canvasTimelinePopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasTimelinePopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         else if (canvasRegioPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         if (canvasMonthlyReport.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasMonthlyReport.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         if (canvasYearlyReport.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasYearlyReport.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         /*if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasAfterActionCompletedPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }*/
         else if (canvasQuestsPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasQuestsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
         else if (canvasEventPopup.gameObject.activeSelf)
         {
+            soundEffect.PlayOneShot(ButtonClickSFX);
             canvasEventPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
@@ -3333,6 +3345,7 @@ public class UpdateUI : MonoBehaviour
     #region Language Change Code
     public void btnNLClick()
     {
+        soundEffect.PlayOneShot(ButtonClickSFX);
         if (taal != 0)
         {
             game.ChangeLanguage("dutch");
@@ -3350,6 +3363,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnENGClick()
     {
+        soundEffect.PlayOneShot(ButtonClickSFX);
         if (taal != 1)
         {
             game.ChangeLanguage("english");
@@ -3744,6 +3758,7 @@ public class UpdateUI : MonoBehaviour
     #region Menu Popup Buttons Code
     public void btnResumeMenu()
     {
+        soundEffect.PlayOneShot(ButtonClickSFX);
         canvasMenuPopup.gameObject.SetActive(false);
         popupActive = false;
         EventManager.CallPopupIsDisabled();
@@ -3751,16 +3766,19 @@ public class UpdateUI : MonoBehaviour
 
     public void buttonExitGameOnClick()
     {
+        soundEffect.PlayOneShot(ButtonClickSFX);
         Application.Quit();
     }
 
     public void buttonSaveGame()
     {
-        
+        soundEffect.PlayOneShot(ButtonClickSFX);
+        EventManager.CallSaveGame();
     }
 
     public void loadOtherScene(int index)
     {
+        soundEffect.PlayOneShot(ButtonClickSFX);
         SceneManager.LoadSceneAsync(index);
     }
     #endregion

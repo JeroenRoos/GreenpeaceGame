@@ -116,6 +116,7 @@ public class GameController : MonoBehaviour
         zuidNederland.GetComponent<RegionController>().Init(this);
 
         EventManager.ChangeMonth += NextTurn;
+        EventManager.SaveGame += SaveGame;
         EventManager.CallNewGame();
     }
 
@@ -256,7 +257,7 @@ public class GameController : MonoBehaviour
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
 
             if (autoSave)
-                SaveGame();
+                EventManager.CallSaveGame();
 
             updateUI.setNextTurnButtonNotInteractable();
             updateUI.soundEffect.PlayOneShot(updateUI.newmonthSFX);
