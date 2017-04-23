@@ -2097,6 +2097,8 @@ public class UpdateUI : MonoBehaviour
                 setDifferenceTextValuesWest(incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference, isMonthly);
             }
         }
+
+        initAfterActionStatsCompletedEvents();
     }
 
     private void setDifferenceTextValuesNoord(double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference, bool isMonthly)
@@ -2139,7 +2141,7 @@ public class UpdateUI : MonoBehaviour
             //showCompletedEvents();
             //showCompletedActions();
 
-            initAfterActionStatsCompletedEvents();
+            //initAfterActionStatsCompletedEvents();
         }
 
         else
@@ -2183,7 +2185,7 @@ public class UpdateUI : MonoBehaviour
                 string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00") + "%", "\nProsperity: " + prosperityDifference.ToString("0.00") + "%" };
                 txtAfterActionOost.text += difference[taal];
             }
-            initAfterActionStatsCompletedEvents();
+            //initAfterActionStatsCompletedEvents();
         }
         else
         {
@@ -2236,7 +2238,7 @@ public class UpdateUI : MonoBehaviour
                 string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00") + "%", "\nProsperity: " + prosperityDifference.ToString("0.00") + "%" };
                 txtAfterActionZuid.text += difference[taal];
             }
-            initAfterActionStatsCompletedEvents();
+            //initAfterActionStatsCompletedEvents();
         }
         else
         {
@@ -2284,7 +2286,7 @@ public class UpdateUI : MonoBehaviour
                 string[] difference = { "\nWelvaart: " + prosperityDifference.ToString("0.00") + "%", "\nProsperity: " + prosperityDifference.ToString("0.00") + "%" };
                 txtAfterActionWest.text += difference[taal];
             }
-            initAfterActionStatsCompletedEvents();
+            //initAfterActionStatsCompletedEvents();
         }
         else
         {
@@ -2309,7 +2311,7 @@ public class UpdateUI : MonoBehaviour
 
     private void setCompletedEventsNoord(List<GameEvent> eventsList)
     {
-        string[] events = { "\n\nA<b>fgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
+        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
         txtAfterActionNoord.text += events[taal];
 
         foreach (GameEvent e in eventsList)
@@ -2337,8 +2339,8 @@ public class UpdateUI : MonoBehaviour
 
     private void setCompletedEventsOost(List<GameEvent> eventsList)
     {
-        string[] events = { "\n\nA<b>fgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
-        txtAfterActionNoord.text += events[taal];
+        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
+        txtAfterActionOost.text += events[taal];
 
         foreach (GameEvent e in eventsList)
         {
@@ -2365,8 +2367,8 @@ public class UpdateUI : MonoBehaviour
 
     private void setCompletedEventsZuid(List<GameEvent> eventsList)
     {
-        string[] events = { "\n\nA<b>fgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
-        txtAfterActionNoord.text += events[taal];
+        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
+        txtAfterActionZuid.text += events[taal];
 
         foreach (GameEvent e in eventsList)
         {
@@ -2393,8 +2395,8 @@ public class UpdateUI : MonoBehaviour
 
     private void setCompletedEventsWest(List<GameEvent> eventsList)
     {
-        string[] events = { "\n\nA<b>fgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
-        txtAfterActionNoord.text += events[taal];
+        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
+        txtAfterActionWest.text += events[taal];
 
         foreach (GameEvent e in eventsList)
         {
