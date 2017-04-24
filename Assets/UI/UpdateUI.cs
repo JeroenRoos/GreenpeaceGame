@@ -3411,6 +3411,7 @@ public class UpdateUI : MonoBehaviour
     public void buttonExitGameOnClick()
     {
         EventManager.CallPlayButtonClickSFX();
+        EventManager.CallLeaveGame();
         Application.Quit();
     }
 
@@ -3423,6 +3424,7 @@ public class UpdateUI : MonoBehaviour
     public void loadOtherScene(int index)
     {
         EventManager.CallPlayButtonClickSFX();
+        EventManager.CallLeaveGame();
         SceneManager.LoadSceneAsync(index);
     }
     #endregion

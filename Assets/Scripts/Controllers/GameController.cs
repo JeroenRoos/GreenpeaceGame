@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Timers;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 /*regions order:
 0 = noord
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
     // private float time;
     public bool autoSave = true;
     public bool autoEndTurn = false;
+    public bool OnQuitTrackDataSet = false;
 
     // Use this for initialization
     void Start()
@@ -117,7 +119,36 @@ public class GameController : MonoBehaviour
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
+        EventManager.LeaveGame += SetTrackingData;
         EventManager.CallNewGame();
+    }
+
+    public void SetTrackData()
+    {
+    }
+
+    private void OnApplicationQuit()
+    {
+        SetTrackingData();
+    }
+
+    public void SetTrackingData()
+    {
+        Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        Analytics.SetUserGender(Gender.Unknown);
+        Analytics.SetUserBirthYear(1996);
+
+        Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
+        {
+            { "Year", game.currentYear.ToString() },
+            { "Month", game.currentMonth.ToString() },
+            { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
+            { "Money", game.gameStatistics.money.ToString("0") },
+            { "Income", game.gameStatistics.income.ToString("0") },
+            { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
+            { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
+            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") }
+        });
     }
 
     public void SaveGame()
@@ -382,6 +413,7 @@ public class GameController : MonoBehaviour
                     {
                         game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
                         quest.CompleteQuest();
+                        game.completedQuestsCount++;
                     }
                 }
                 else
@@ -396,6 +428,7 @@ public class GameController : MonoBehaviour
                             {
                                 game.gameStatistics.ModifyMoney(quest.questMoneyReward, true);
                                 quest.CompleteQuest();
+                                game.completedQuestsCount++;
                             }
                             break;
                         }
