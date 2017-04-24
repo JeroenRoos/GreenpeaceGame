@@ -29,7 +29,6 @@ public class OpenScene : MonoBehaviour
     {
         EventManager.CallPlayButtonClickSFX();
         ApplicationModel.loadGame = false;
-        Debug.Log(index);
         SceneManager.LoadSceneAsync(index);
     }
 
