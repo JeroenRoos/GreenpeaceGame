@@ -38,7 +38,6 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        SetTrackData();
         autoSave = true;
         if (!ApplicationModel.loadGame)
         {
@@ -120,45 +119,37 @@ public class GameController : MonoBehaviour
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
-        EventManager.LeaveGame += SetOnLeaveData;
+        EventManager.LeaveGame += SetTrackingData;
         EventManager.CallNewGame();
     }
 
     public void SetTrackData()
     {
-        Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
-        //Analytics.SetUserGender(Gender.Unknown);
-        //Analytics.SetUserBirthYear(1996);
     }
 
     private void OnApplicationQuit()
     {
-        SetOnLeaveData();
+        SetTrackingData();
     }
 
-    public void SetOnLeaveData()
+    public void SetTrackingData()
     {
-        if (!OnQuitTrackDataSet)
-        {
-            Debug.Log("Setting on leave track data");
-            Analytics.CustomEvent("OnQuitData", new Dictionary<string, object>
-            {
-                { "Year", game.currentYear.ToString() },
-                { "Month", game.currentMonth.ToString() },
-                { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
-                { "Money", game.gameStatistics.money.ToString("0") },
-                { "Income", game.gameStatistics.income.ToString("0") },
-                { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
-                { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
-                { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
-                { "CompletedEventsCount", game.completedEventsCount.ToString() },
-                { "CompletedActionsCount", game.completedActionsCount.ToString() },
-                { "CompletedQuestsCount", game.completedQuestsCount.ToString() },
-                { "ReceivedCardsCount", game.receivedCardsCount.ToString() },
-            });
+        Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        Analytics.SetUserGender(Gender.Unknown);
+        int birthYear = 1996;
+        Analytics.SetUserBirthYear(birthYear);
 
-            OnQuitTrackDataSet = true;
-        }
+        Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
+        {
+            { "Year", game.currentYear.ToString() },
+            { "Month", game.currentMonth.ToString() },
+            { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
+            { "Money", game.gameStatistics.money.ToString("0") },
+            { "Income", game.gameStatistics.income.ToString("0") },
+            { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
+            { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
+            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") }
+        });
     }
 
     public void SaveGame()
