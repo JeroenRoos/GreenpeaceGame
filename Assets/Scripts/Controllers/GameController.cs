@@ -136,8 +136,7 @@ public class GameController : MonoBehaviour
     {
         Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
         Analytics.SetUserGender(Gender.Unknown);
-        int birthYear = 1996;
-        Analytics.SetUserBirthYear(birthYear);
+        Analytics.SetUserBirthYear(1996);
 
         Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
         {
