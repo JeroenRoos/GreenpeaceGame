@@ -91,7 +91,10 @@ public class Region
         ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false, game.gameStatistics.happiness);
         ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true, game.gameStatistics.happiness);
         gameEvent.CompleteEvent(game);
-        game.completedEventsCount++;
+        if (gameEvent.pickedChoiceNumber == 0)
+            game.abandonedEventsCount++;
+        else
+            game.completedEventsCount++;
     }
 
     public void RemoveFinishedEvents()

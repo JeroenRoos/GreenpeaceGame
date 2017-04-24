@@ -44,6 +44,7 @@ public class Game
 
     //trackdata
     public int completedEventsCount;
+    public int abandonedEventsCount;
     public int completedActionsCount;
     public int completedQuestsCount;
     public int receivedCardsCount;
@@ -66,6 +67,7 @@ public class Game
         timeline = new Timeline();
 
         completedEventsCount = 0;
+        abandonedEventsCount = 0;
         completedActionsCount = 0;
         completedQuestsCount = 0;
         receivedCardsCount = 0;

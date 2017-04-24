@@ -147,7 +147,6 @@ public class GameController : MonoBehaviour
 
     public void SetGameplayTrackingData()
     {
-
         Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
         {
             { "Year", game.currentYear.ToString() },
@@ -157,8 +156,46 @@ public class GameController : MonoBehaviour
             { "Income", game.gameStatistics.income.ToString("0") },
             { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
             { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
-            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") }
+            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
+            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0.00") }
         });
+    }
+
+    public void SetYearlyTrackingData()
+    {
+        SetYearlyStatistics();
+        SetYearlyCompletedFeatures();
+    }
+
+    public void SetYearlyStatistics()
+    {
+        Analytics.CustomEvent("YearlyGameStatisticsData", new Dictionary<string, object>
+        {
+            { "Year", game.currentYear.ToString() },
+            { "Month", game.currentMonth.ToString() },
+            { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
+            { "Money", game.gameStatistics.money.ToString("0") },
+            { "Income", game.gameStatistics.income.ToString("0") },
+            { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
+            { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
+            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
+            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0.00") }
+        });
+    }
+
+    public void SetYearlyCompletedFeatures()
+    {
+        Analytics.CustomEvent("YearlyCompletedFeaturesData", new Dictionary<string, object>
+        {
+            { "Year", game.currentYear.ToString() },
+            { "Month", game.currentMonth.ToString() },
+            { "CompletedEventsCount", game.completedEventsCount.ToString() },
+            { "AbandonedEventsCount", game.abandonedEventsCount.ToString() },
+            { "CompletedActionsCount", game.completedActionsCount.ToString() },
+            { "CompletedQuestsCount", game.completedQuestsCount.ToString() },
+            { "ReceivedCardsCount", game.receivedCardsCount.ToString() },
+        });
+
     }
 
     public void SaveGame()
@@ -289,7 +326,10 @@ public class GameController : MonoBehaviour
             UpdateQuests();
 
             if (isNewYear)
+            {
                 UpdateCards();
+                SetYearlyTrackingData();
+            }
 
             GenerateMonthlyUpdates(isNewYear);
             UpdateTimeline();
