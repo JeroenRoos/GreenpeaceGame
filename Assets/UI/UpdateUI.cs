@@ -351,6 +351,7 @@ public class UpdateUI : MonoBehaviour
     private bool btnAfterActionCompletedCheck;
     private bool btnInvestementsHoverCheck;
     private bool btnCardsHoverCheck;
+    private bool refreshCards;
 
     public bool tutorialActive;
     private bool tutorialNoTooltip;
@@ -397,7 +398,6 @@ public class UpdateUI : MonoBehaviour
     private bool dropdownChoiceMade;
     #endregion
     
-
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
@@ -788,6 +788,7 @@ public class UpdateUI : MonoBehaviour
         toggleOostNLCheck = true;
         toggleZuidNLCheck = true;
         toggleWestNLCheck = true;
+        refreshCards = false;
     }
 
     void initCanvas()
@@ -2782,7 +2783,18 @@ public class UpdateUI : MonoBehaviour
             card.UseCardOnCountry(game.regions, game.gameStatistics);
         else
         {
-            card.UseCardOnRegion(regio, game.gameStatistics);
+            Region cardRegion;
+
+            if (toggleNoordNLCheck)
+                cardRegion = game.regions[0];
+            else if (toggleOostNLCheck)
+                cardRegion = game.regions[1];
+            else if (toggleWestNLCheck)
+                cardRegion = game.regions[2];
+            else
+                cardRegion = game.regions[3];
+
+            card.UseCardOnRegion(cardRegion, game.gameStatistics);
         }
 
         updateCardsUI();
