@@ -42,6 +42,12 @@ public class Game
     //public int language { get; private set; } //0 = Dutch, 1 = English
     public System.Random rnd { get; private set; }
 
+    //trackdata
+    public int completedEventsCount;
+    public int completedActionsCount;
+    public int completedQuestsCount;
+    public int receivedCardsCount;
+
     public Game()
     {
         //language = 0;
@@ -59,11 +65,10 @@ public class Game
         inventory = new Inventory();
         timeline = new Timeline();
 
-        cards.Add(new Card());
-        cards.Add(new Card());
-        cards.Add(new Card());
-        cards.Add(new Card());
-        cards.Add(new Card());
+        completedEventsCount = 0;
+        completedActionsCount = 0;
+        completedQuestsCount = 0;
+        receivedCardsCount = 0;
 
         gameStatistics = new GameStatistics(20000, 17000000, new Energy());
 
@@ -122,10 +127,16 @@ public class Game
     public void GenerateNewCard()
     {
         if (currentYear == 3 && currentMonth == 1)
+        {
             inventory.AddCardToInventory(new Card(cards[rnd.Next(0, cards.Count)]));
+            receivedCardsCount++;
+        }
 
         else if (rnd.Next(1, 101) <= 2 && currentYear >= 3)
+        {
             inventory.AddCardToInventory(new Card(cards[rnd.Next(0, cards.Count)]));
+            receivedCardsCount++;
+        }
     }
 
     public void MutateMonthlyStatistics()
@@ -184,6 +195,7 @@ public class Game
                     }
                     AddCompletedActionToReports(region, action);
                     action.CompleteAction();
+                    completedActionsCount++;
                 }
 
                 if (action.endTemporaryConsequencesMonth == currentYear * 12 + currentMonth)
