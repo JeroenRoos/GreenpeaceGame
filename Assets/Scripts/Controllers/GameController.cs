@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SetPlayerTrackingData();
         autoSave = true;
         if (!ApplicationModel.loadGame)
         {
@@ -119,24 +120,33 @@ public class GameController : MonoBehaviour
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
-        EventManager.LeaveGame += SetTrackingData;
+        EventManager.LeaveGame += SetGameplayTrackingData;
         EventManager.CallNewGame();
     }
 
-    public void SetTrackData()
+    public void SetPlayerTrackingData()
     {
+        //Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        //Analytics.SetUserGender(Gender.Unknown);
+        //Analytics.SetUserBirthYear(1996);
+
+        Analytics.CustomEvent("PlayerData", new Dictionary<string, object>
+        {
+            { "UserID", SystemInfo.deviceUniqueIdentifier },
+            { "OperatingSystem", SystemInfo.operatingSystem },
+            { "DeviceModel", SystemInfo.deviceModel },
+            { "DeviceName", SystemInfo.deviceName },
+            { "DeviceType", SystemInfo.deviceType },
+        });
     }
 
     private void OnApplicationQuit()
     {
-        SetTrackingData();
+        SetGameplayTrackingData();
     }
 
-    public void SetTrackingData()
+    public void SetGameplayTrackingData()
     {
-        Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
-        Analytics.SetUserGender(Gender.Unknown);
-        Analytics.SetUserBirthYear(1996);
 
         Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
         {
