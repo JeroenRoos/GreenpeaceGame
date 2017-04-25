@@ -425,7 +425,7 @@ public class UpdateUI : MonoBehaviour
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            tutorialActive = true;
+            tutorialActive = false;
 
         if (tutorialActive)
             initTutorialActive();
@@ -548,7 +548,8 @@ public class UpdateUI : MonoBehaviour
         doTuto = true;
         tutorialOnlyWestNL = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " +
-                "\n\nDe inwoners moeten begrijpen dat een groen land belangrijk is.", "Welcome! The government has given your organisation the task to make " +
+                "\n\nDe inwoners moeten begrijpen dat een groen land belangrijk is." 
+                , "Welcome! The government has given your organisation the task to make " +
                 "The Netherlands an country aware of the environment. \n\nThe inhabitants need to understand the importance of a green country. "};
         string[] btnText = { "Verder", "Next" };
 
@@ -562,8 +563,8 @@ public class UpdateUI : MonoBehaviour
         while (!tutorialStep2)
             yield return null;
 
-        string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. \nZoals je kunt zien zitten we nu in 2020. " +
-                "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. \nAs you can see the current year is 2020. " +
+        string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. \n\nZoals je kunt zien zitten we nu in 2020. " +
+                "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. \n\nAs you can see the current year is 2020. " +
                 "This means you have 30 years to reach this goal. "};
         txtTurorialStep1.text = step2[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
@@ -575,11 +576,11 @@ public class UpdateUI : MonoBehaviour
 
         //tutorialStep3 = false;
         imgTutorialOverworld.transform.position = imgPosMiddle;
-        string[] step3 = { "Hierboven staan jouw resources om het doel te behalen. \nGeld wordt gebruikt om jouw beslissingen te financieren. \nTevredenheid bepaald of het volk besluit om mee te werken met jouw beslissingen. "
-                + "\nMilieubewustheid zorgt ervoor dat er minder wordt vervuilt. \nVervuiling geeft de vervuiling in het land weer. \nWelvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's. "
+        string[] step3 = { "Hierboven staan jouw resources. \n\nGeld wordt gebruikt om jouw beslissingen te financieren. \n\nTevredenheid bepaald of het volk besluit om mee te werken met jouw beslissingen. "
+                + "\n\nMilieubewustheid zorgt ervoor dat er minder wordt vervuilt. \n\nVervuiling geeft de vervuiling in het land weer. \n\nWelvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's. \n\n"
                 + "Al deze iconen geven het gemiddelde van de verschillende regio's weer."
-                , "Here are the resources that help you achieve your goal. \nMoney is used for financing the decisions you make. \nHappiness determines whether people cooperate or not. \nA better Eco awareness means less pollution. "
-                + "\nPollutions shows the pollution in the country. These icons show the averages from the different regions." };
+                , "Here are the resources that help you achieve your goal. \n\nMoney is used for financing the decisions you make. \n\nHappiness determines whether people cooperate or not. \n\nEco awareness means less pollution. "
+                + "\n\nPollutions shows the pollution in the country. \n\nThese icons show the averages from the different regions." };
         txtTurorialStep1.text = step3[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 8;
