@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SetPlayerTrackingData();
         autoSave = true;
         if (!ApplicationModel.loadGame)
         {
@@ -119,25 +120,33 @@ public class GameController : MonoBehaviour
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
-        EventManager.LeaveGame += SetTrackingData;
+        EventManager.LeaveGame += SetGameplayTrackingData;
         EventManager.CallNewGame();
     }
 
-    public void SetTrackData()
+    public void SetPlayerTrackingData()
     {
+        //Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        //Analytics.SetUserGender(Gender.Unknown);
+        //Analytics.SetUserBirthYear(1996);
+
+        Analytics.CustomEvent("PlayerData", new Dictionary<string, object>
+        {
+            { "UserID", SystemInfo.deviceUniqueIdentifier },
+            { "OperatingSystem", SystemInfo.operatingSystem },
+            { "DeviceModel", SystemInfo.deviceModel },
+            { "DeviceName", SystemInfo.deviceName },
+            { "DeviceType", SystemInfo.deviceType },
+        });
     }
 
     private void OnApplicationQuit()
     {
-        SetTrackingData();
+        SetGameplayTrackingData();
     }
 
-    public void SetTrackingData()
+    public void SetGameplayTrackingData()
     {
-        Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
-        Analytics.SetUserGender(Gender.Unknown);
-        Analytics.SetUserBirthYear(1996);
-
         Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
         {
             { "Year", game.currentYear.ToString() },
@@ -147,8 +156,46 @@ public class GameController : MonoBehaviour
             { "Income", game.gameStatistics.income.ToString("0") },
             { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
             { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
-            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") }
+            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
+            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0.00") }
         });
+    }
+
+    public void SetYearlyTrackingData()
+    {
+        SetYearlyStatistics();
+        SetYearlyCompletedFeatures();
+    }
+
+    public void SetYearlyStatistics()
+    {
+        Analytics.CustomEvent("YearlyGameStatisticsData", new Dictionary<string, object>
+        {
+            { "Year", game.currentYear.ToString() },
+            { "Month", game.currentMonth.ToString() },
+            { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
+            { "Money", game.gameStatistics.money.ToString("0") },
+            { "Income", game.gameStatistics.income.ToString("0") },
+            { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
+            { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
+            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
+            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0.00") }
+        });
+    }
+
+    public void SetYearlyCompletedFeatures()
+    {
+        Analytics.CustomEvent("YearlyCompletedFeaturesData", new Dictionary<string, object>
+        {
+            { "Year", game.currentYear.ToString() },
+            { "Month", game.currentMonth.ToString() },
+            { "CompletedEventsCount", game.completedEventsCount.ToString() },
+            { "AbandonedEventsCount", game.abandonedEventsCount.ToString() },
+            { "CompletedActionsCount", game.completedActionsCount.ToString() },
+            { "CompletedQuestsCount", game.completedQuestsCount.ToString() },
+            { "ReceivedCardsCount", game.receivedCardsCount.ToString() },
+        });
+
     }
 
     public void SaveGame()
@@ -279,7 +326,10 @@ public class GameController : MonoBehaviour
             UpdateQuests();
 
             if (isNewYear)
+            {
                 UpdateCards();
+                SetYearlyTrackingData();
+            }
 
             GenerateMonthlyUpdates(isNewYear);
             UpdateTimeline();
