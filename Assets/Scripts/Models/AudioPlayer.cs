@@ -47,7 +47,7 @@ public class AudioPlayer : MonoBehaviour
             EventManager.PlayBackgroundMusic += PlayBackgroundMusic;
             EventManager.PlayButtonClickSFX += PlayButtonClickSFX;
             EventManager.PlayButtonHoverSFX += PlayButtonHoverSFX;
-            EventManager.ChangeMonth += PlayNewMonthSFX;
+            EventManager.PlayNewTurnStartSFX += PlayNewMonthSFX;
 
             backgroundMusic.loop = true;
             backgroundMusic.clip = backgroundSong1;

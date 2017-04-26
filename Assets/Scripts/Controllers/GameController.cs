@@ -35,6 +35,9 @@ public class GameController : MonoBehaviour
     public bool autoEndTurn = false;
     public bool OnQuitTrackDataSet = false;
 
+
+    float height = Screen.height / (1080 / 55);
+
     // Use this for initialization
     void Start()
     {
@@ -102,7 +105,6 @@ public class GameController : MonoBehaviour
 
         //float width = Screen.width / (1920 / 45);
         //float height = Screen.height / (1080 / MonthlyReportButon.GetComponent<RectTransform>().sizeDelta.y);
-        float height = Screen.height / (1080 / 55);
         //MonthlyReportButon.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
         //YearlyReportButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
         //CompletedButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
@@ -341,6 +343,8 @@ public class GameController : MonoBehaviour
                 EventManager.CallSaveGame();
 
             updateUI.setNextTurnButtonNotInteractable();
+
+            EventManager.CallPlayNewTurnStartSFX();
         }
     }
 
@@ -385,10 +389,56 @@ public class GameController : MonoBehaviour
     private void GenerateMonthlyReport(int index)
     {
         updateUI.btnMonthlyReportStats.gameObject.SetActive(true);
+        updateUI.btnMonthlyReportStats.interactable = false;
         updateUI.InitMonthlyReport();
 
-        updateUI.btnMonthlyReportStats.gameObject.transform.position = afterActionPosition[index];
+        
+        Vector3 monthlyReportStartPosition = new Vector3(5, 5 + height * 2 * (2 + index), 0);
+        StartCoroutine(SetMonthlyReportButtonLocation(monthlyReportStartPosition, afterActionPosition[index]));
+
+        //updateUI.btnMonthlyReportStats.gameObject.transform.position = afterActionPosition[index];
         index++;
+    }
+
+    private void GenerateYearlyReport(int index)
+    {
+        updateUI.btnYearlyReportStats.gameObject.SetActive(true);
+        updateUI.btnYearlyReportStats.interactable = false;
+        updateUI.InitYearlyReport();
+
+        Vector3 yearlyReportPosition = new Vector3(5, 5 + height * 2 * (2 + index), 0);
+        StartCoroutine(SetYearlyReportButtonLocation(yearlyReportPosition, afterActionPosition[index]));
+        //updateUI.btnYearlyReportStats.gameObject.transform.position = afterActionPosition[index];
+    }
+
+    public IEnumerator SetMonthlyReportButtonLocation(Vector3 currentPosition, Vector3 endPosition)
+    {
+        float positionDiff = currentPosition.y - endPosition.y;
+        while (currentPosition.y > endPosition.y)
+        {
+            currentPosition.y -= positionDiff / 60;
+            if (currentPosition.y < endPosition.y)
+                currentPosition = endPosition;
+            updateUI.btnMonthlyReportStats.gameObject.transform.position = currentPosition;
+            yield return new WaitForFixedUpdate();
+        }
+
+        updateUI.btnMonthlyReportStats.interactable = true;
+    }
+
+    public IEnumerator SetYearlyReportButtonLocation(Vector3 currentPosition, Vector3 endPosition)
+    {
+        float positionDiff = currentPosition.y - endPosition.y;
+        while (currentPosition.y > endPosition.y)
+        {
+            currentPosition.y -= positionDiff / 60;
+            if (currentPosition.y < endPosition.y)
+                currentPosition = endPosition;
+            updateUI.btnYearlyReportStats.gameObject.transform.position = currentPosition;
+            yield return new WaitForFixedUpdate();
+        }
+
+        updateUI.btnYearlyReportStats.interactable = true;
     }
 
     private bool checkNewEvents()
@@ -417,13 +467,6 @@ public class GameController : MonoBehaviour
         }
 
         return false;
-    }
-
-    private void GenerateYearlyReport(int index)
-    {
-        updateUI.btnYearlyReportStats.gameObject.SetActive(true);
-        updateUI.InitYearlyReport();
-        updateUI.btnYearlyReportStats.gameObject.transform.position = afterActionPosition[index];
     }
 
     /*private void GenerateCompletedEventsAndActions(int index)

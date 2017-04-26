@@ -33,6 +33,9 @@ class EventManager
     public delegate void ButtonIsHovered();
     public static event ButtonIsHovered PlayButtonHoverSFX;
     
+    public delegate void IsNewturn();
+    public static event IsNewturn PlayNewTurnStartSFX;
+
     public delegate void GameIsLeft();
     public static event GameIsLeft LeaveGame;
 
@@ -74,6 +77,10 @@ class EventManager
     public static void CallPlayButtonHoverSFX()
     {
         PlayButtonHoverSFX();
+    }
+    public static void CallPlayNewTurnStartSFX()
+    {
+        PlayNewTurnStartSFX();
     }
 
     public static void CallLeaveGame()

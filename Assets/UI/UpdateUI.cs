@@ -3433,6 +3433,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for controlling Tutorial buttons presses
     public void turorialButtonPress()
     {
+        EventManager.CallPlayButtonClickSFX();
         if (tutorialIndex == 1)
         {
             tutorialStep2 = true;
