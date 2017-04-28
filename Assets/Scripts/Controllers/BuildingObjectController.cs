@@ -32,11 +32,13 @@ public class BuildingObjectController : MonoBehaviour
 
             if (building != null)
             {
-                updateUI.initBuildingPopup(building, region);
+                gameController.activeBuildingUI(building, region);
+                //updateUI.initBuildingPopup(building, region);
             }
             else
             {
-                updateUI.initEmptyBuildingPopup(region);
+                //updateUI.initEmptyBuildingPopup(region);
+                gameController.activeEmptyBuildingUI(region);
             }
         }
     }

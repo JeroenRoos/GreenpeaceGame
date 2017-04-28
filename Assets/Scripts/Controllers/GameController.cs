@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
 
     private EventObjectController eventObjectController;
     private BuildingObjectController buildingsObjectController;
+    GameObject buildingInstance;
     public Button MonthlyReportButon;
     public Button YearlyReportButton;
     public Button CompletedButton;
@@ -90,7 +91,7 @@ public class GameController : MonoBehaviour
         foreach (Region r in game.regions)
         {
 
-            GameObject buildingInstance = GameController.Instantiate(buildingObject);
+            /*GameObject */buildingInstance = GameController.Instantiate(buildingObject);
 
             if (r.activeBuilding != null)
             {
@@ -783,4 +784,24 @@ public class GameController : MonoBehaviour
     {
         return updateUI.getPopupActive();
     }
+
+    public void activeBuildingUI(Building building, Region region)
+    {
+        updateUI.initBuildingPopup(building, region);
+    }
+
+    public void activeEmptyBuildingUI(Region region)
+    {
+        updateUI.initEmptyBuildingPopup(region);
+    }
+
+    public void btnUseBuildingPress()
+    {
+        updateUI.regionToBeBuild.SetBuilding(updateUI.buildingToBeBuild.buildingID);
+        updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
+        updateUI.popupActive = false;
+        EventManager.CallPopupIsDisabled();
+        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, updateUI.regionToBeBuild, updateUI.buildingToBeBuild);
+    }
 }
+

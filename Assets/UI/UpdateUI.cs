@@ -13,6 +13,7 @@ public class UpdateUI : MonoBehaviour
     private GUIStyle tooltipStyle = new GUIStyle();
     public Texture2D buttonTexture;
     private GUIStyle buttonStyle = new GUIStyle();
+    BuildingObjectController buildingObjectController;
 
     Region regio;
     RegionAction regioAction;
@@ -100,6 +101,8 @@ public class UpdateUI : MonoBehaviour
     public Text btnUseBuildingTxt;
     public Text txtEmptyBuildingInfo;
     public Text txtEmptyBuildingStats;
+    public Building buildingToBeBuild;
+    public Region regionToBeBuild;
 
     // Text Event Popup
     GameEvent gameEvent;
@@ -451,6 +454,7 @@ public class UpdateUI : MonoBehaviour
             initTutorialNotActive();
 
         btnNextTurnText.text = nextTurnText[taal];
+        buildingObjectController = GetComponent<BuildingObjectController>();
     }
 
     void Update()
@@ -1125,7 +1129,7 @@ public class UpdateUI : MonoBehaviour
             float x = btnPos.x;
             float y = btnPos.y;
 
-            foreach (Building b in buildingRegion.possibleBuildings)
+            foreach (Building b in regionToBeBuild.possibleBuildings)
             {
                 if (GUI.Button(new Rect(x, y + yOffset, rectBtnBuildingsPosition.rect.width + 50, rectBtnBuildingsPosition.rect.height), b.buildingName[taal], buttonStyle))
                     setTextBuildingInformation(b);
@@ -2482,7 +2486,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for Empty Building Popup
     public void initEmptyBuildingPopup(Region r)
     {
-        buildingRegion = r;
+        regionToBeBuild = r;
         popupActive = true;
         EventManager.CallPopupIsActive();
         canvasEmptyBuildingsPopup.gameObject.SetActive(true);
@@ -2499,19 +2503,87 @@ public class UpdateUI : MonoBehaviour
         txtEmptyBuildingsTitle.text = title[taal]; ;
         txtEmptyBuildingsColumnLeft.text = column[taal];
         txtEmptyBuildingColumRight.text = "";
+        txtEmptyBuildingStats.text = "";
         txtEmptyBuildingInfo.text = info[taal];
         btnUseBuilding.gameObject.SetActive(false);
     }
 
     private void setTextBuildingInformation(Building b)
     {
+        buildingToBeBuild = b;
+
+        txtEmptyBuildingColumRight.text = "";
+        txtEmptyBuildingStats.text = "";
         string[] column = { "Informatie - " + b.buildingName[0], "Information - " + b.buildingName[1] };
         txtEmptyBuildingColumRight.text = column[taal];
 
         btnUseBuilding.gameObject.SetActive(true);
         string[] btnTxt = { "Maak gebouw", "Build building" };
         btnUseBuildingTxt.text = btnTxt[taal];
+
+        string[] cost = { "Kosten:" + b.buildingMoneyCost + "\n", "Cost:" + b.buildingMoneyCost + "\n" };
+        txtEmptyBuildingStats.text += cost[taal];
+
+        txtEmptyBuildingStats.text += getModifiers(b);
+
+        if (game.gameStatistics.money >= buildingToBeBuild.buildingMoneyCost)
+            btnUseBuilding.interactable = true;
+        else
+            btnUseBuilding.interactable = false;  
     }
+
+    private string getModifiers(Building b)
+    {
+        bool noConsequences = true;
+        string[] modifiers = { "", "" };
+
+        if (b.happinessModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nTevredenheid in regio: ", "\nHappiness in region: " };
+
+            if (b.happinessModifier > 0d)
+                a[taal] += "+" + b.happinessModifier + "%";
+            else
+                a[taal] += b.happinessModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+        if (b.incomeModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nInkomen in regio: ", "\nIncome in region: " };
+
+            if (b.incomeModifier > 0d)
+                a[taal] += "+" + b.incomeModifier + "%";
+            else
+                a[taal] += b.incomeModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+        if (b.pollutionModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nVervuilig in regio: ", "\nPollution in region: " };
+
+            if (b.pollutionModifier > 0d)
+                a[taal] += "+" + b.pollutionModifier + "%";
+            else
+                a[taal] += b.pollutionModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+
+        if (noConsequences)
+        {
+            string[] nc = { "Er zijn geen aanpassingen met dit gebouw.", "This building doesn't change any values" };
+            modifiers[taal] += nc[taal];
+        }
+
+        return modifiers[taal];
+    }
+
+    // Afhandelen van BtnUseBuilding Click wordt in GameController gedaan
 
     #endregion
 
