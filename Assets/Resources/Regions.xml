@@ -8,7 +8,7 @@
         <float>20</float>
       </eventPositions>
       <buildingPositions>
-        <float>17</float>
+        <float>16.5</float>
         <float>1</float>
         <float>20</float>
       </buildingPositions>
@@ -1219,7 +1219,7 @@
         <float>15</float>
       </eventPositions>
       <buildingPositions>
-        <float>18</float>
+        <float>17.5</float>
         <float>1</float>
         <float>15</float>
       </buildingPositions>
@@ -2430,7 +2430,7 @@
         <float>12</float>
       </eventPositions>
       <buildingPositions>
-        <float>11</float>
+        <float>10.5</float>
         <float>1</float>
         <float>12</float>
       </buildingPositions>
@@ -3641,7 +3641,7 @@
         <float>8</float>
       </eventPositions>
       <buildingPositions>
-        <float>15</float>
+        <float>14.5</float>
         <float>1</float>
         <float>8</float>
       </buildingPositions>

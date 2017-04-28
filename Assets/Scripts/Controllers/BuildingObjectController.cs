@@ -62,7 +62,7 @@ public class BuildingObjectController : MonoBehaviour
                 return buildingTextures[2];
 
             case "empty":
-                return buildingTextures[2];
+                return buildingTextures[3];
 
             default:
                 return buildingTextures[0];
