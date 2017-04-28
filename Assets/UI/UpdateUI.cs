@@ -85,6 +85,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnTimeline;
     public Button btnNextTurn;
 
+    // Buildings Popup
+    Building activeBuilding;
+    Region buildingRegion;
+
     // Text Event Popup
     GameEvent gameEvent;
     Region regionEvent;
@@ -2429,6 +2433,30 @@ public class UpdateUI : MonoBehaviour
 
         if (tutorialEventsActive)
             tutorialEventsActive = false;
+    }
+    #endregion
+
+    #region Code for Building Popup
+    public void initBuildingPopup(Building b, Region r)
+    {
+        activeBuilding = b;
+        buildingRegion = r;
+        //canvasEventPopup.gameObject.SetActive(true);
+        popupActive = true;
+        EventManager.CallPopupIsActive();
+   
+        initBuildingText();
+        initBuildingUI();
+    }
+
+    private void initBuildingText()
+    {
+
+    }
+
+    private void initBuildingUI()
+    {
+
     }
     #endregion
 

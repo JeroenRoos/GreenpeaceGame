@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public Game game;
 
     private EventObjectController eventObjectController;
+    private BuildingObjectController buildingsObjectController;
     public Button MonthlyReportButon;
     public Button YearlyReportButton;
     public Button CompletedButton;
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour
     public Vector3[] afterActionPosition;
 
     public GameObject eventObject;
+    public GameObject buildingObject;
 
     // private float time;
     public bool autoSave = true;
@@ -83,7 +85,13 @@ public class GameController : MonoBehaviour
             LoadGame();
 
         updateUI = GetComponent<UpdateUI>();
-        //updateUI = new UpdateUI();
+
+        buildingsObjectController = GetComponent<BuildingObjectController>();
+        foreach (Region r in game.regions)
+        {
+            GameObject buildingInstance = GameController.Instantiate(buildingObject);
+            buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, r.activeBuilding);
+        }
 
         eventObjectController = GetComponent<EventObjectController>();
         foreach (Region r in game.regions)
@@ -659,8 +667,6 @@ public class GameController : MonoBehaviour
 
     private void updateUIPopups()
     {
-        //eventObjectController.disableTooltipAndOptions();
-
         if (updateUI.canvasOrganizationPopup.gameObject.activeSelf)
             updateUIOrganizationScreen();
 
