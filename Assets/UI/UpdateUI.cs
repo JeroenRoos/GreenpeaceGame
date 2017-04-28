@@ -91,6 +91,16 @@ public class UpdateUI : MonoBehaviour
     public Text txtBuildingsTitle;
     public Text txtBuildingsColumn;
 
+    // Empty Building Popup
+    public Text txtEmptyBuildingsTitle;
+    public Text txtEmptyBuildingsColumnLeft;
+    public Text txtEmptyBuildingColumRight;
+    public Button btnUseBuilding;
+    public Button btnEmptyBuildingPosition;
+    public Text btnUseBuildingTxt;
+    public Text txtEmptyBuildingInfo;
+    public Text txtEmptyBuildingStats;
+
     // Text Event Popup
     GameEvent gameEvent;
     Region regionEvent;
@@ -289,6 +299,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasInvestmentsPopup;
     public Canvas canvasCardsPopup;
     public Canvas canvasBuildingsPopup;
+    public Canvas canvasEmptyBuildingsPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -835,6 +846,9 @@ public class UpdateUI : MonoBehaviour
         canvasBuildingsPopup.GetComponent<Canvas>();
         canvasBuildingsPopup.gameObject.SetActive(false);
 
+        canvasEmptyBuildingsPopup.GetComponent<Canvas>();
+        canvasEmptyBuildingsPopup.gameObject.SetActive(false);
+
         canvasQuestsPopup.GetComponent<Canvas>();
         canvasQuestsPopup.gameObject.SetActive(false);
 
@@ -1003,6 +1017,12 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasEmptyBuildingsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
     }
 
     // Open and close the Organization popup with the O key
@@ -1092,6 +1112,23 @@ public class UpdateUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(x, y + yOffset, rectBtnCardsPosition.rect.width + 50, rectBtnCardsPosition.rect.height), c.name[taal], buttonStyle))
                     setTextCardInformation(c);
+
+                yOffset += 35;
+            }
+        }
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+        {
+            float yOffset = 0f;
+
+            RectTransform rectBtnBuildingsPosition = btnCardsPosition.GetComponent<RectTransform>();
+            Vector3 btnPos = btnEmptyBuildingPosition.transform.position;
+            float x = btnPos.x;
+            float y = btnPos.y;
+
+            foreach (Building b in buildingRegion.possibleBuildings)
+            {
+                if (GUI.Button(new Rect(x, y + yOffset, rectBtnBuildingsPosition.rect.width + 50, rectBtnBuildingsPosition.rect.height), b.buildingName[taal], buttonStyle))
+                    setTextBuildingInformation(b);
 
                 yOffset += 35;
             }
@@ -2448,24 +2485,32 @@ public class UpdateUI : MonoBehaviour
         buildingRegion = r;
         popupActive = true;
         EventManager.CallPopupIsActive();
-        canvasBuildingsPopup.gameObject.SetActive(true);
+        canvasEmptyBuildingsPopup.gameObject.SetActive(true);
 
         initEmptyBuildingText();
-        initEmptyBuildingUI();
     }
 
     private void initEmptyBuildingText()
     {
         string[] title = { "Gebouwen", "Buildings" };
         string[] column = { "Plaats een gebouw", "Place a building" };
+        string[] info = { "Kies hieronder het gebouw dat je wilt maken", "Chose the building you want to make" };
 
-        txtBuildingsTitle.text = title[taal]; ;
-        txtBuildingsColumn.text = column[taal];
+        txtEmptyBuildingsTitle.text = title[taal]; ;
+        txtEmptyBuildingsColumnLeft.text = column[taal];
+        txtEmptyBuildingColumRight.text = "";
+        txtEmptyBuildingInfo.text = info[taal];
+        btnUseBuilding.gameObject.SetActive(false);
     }
 
-    private void initEmptyBuildingUI()
+    private void setTextBuildingInformation(Building b)
     {
+        string[] column = { "Informatie - " + b.buildingName[0], "Information - " + b.buildingName[1] };
+        txtEmptyBuildingColumRight.text = column[taal];
 
+        btnUseBuilding.gameObject.SetActive(true);
+        string[] btnTxt = { "Maak gebouw", "Build building" };
+        btnUseBuildingTxt.text = btnTxt[taal];
     }
 
     #endregion
@@ -3062,6 +3107,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasBuildingsPopup.gameObject.activeSelf)
         {
             canvasBuildingsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasEmptyBuildingsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
