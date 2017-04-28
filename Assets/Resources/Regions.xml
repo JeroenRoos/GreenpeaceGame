@@ -7,6 +7,11 @@
         <float>1</float>
         <float>20</float>
       </eventPositions>
+      <buildingPositions>
+        <float>12</float>
+        <float>1</float>
+        <float>19</float>
+      </buildingPositions>
       <name>
         <string>Noord Nederland</string>
         <string>The Netherlands North</string>
@@ -1213,6 +1218,11 @@
         <float>1</float>
         <float>13</float>
       </eventPositions>
+      <buildingPositions>
+        <float>18</float>
+        <float>1</float>
+        <float>15</float>
+      </buildingPositions>
       <name>
         <string>Oost Nederland</string>
         <string>The Netherlands East</string>
@@ -2419,6 +2429,11 @@
         <float>1</float>
         <float>12</float>
       </eventPositions>
+      <buildingPositions>
+        <float>9.5</float>
+        <float>1</float>
+        <float>15</float>
+      </buildingPositions>
       <name>
         <string>West Nederland</string>
         <string>The Netherlands West</string>
@@ -3625,6 +3640,11 @@
         <float>1</float>
         <float>8</float>
       </eventPositions>
+      <buildingPositions>
+        <float>16</float>
+        <float>1</float>
+        <float>9</float>
+      </buildingPositions>
       <name>
         <string>Zuid Nederland</string>
         <string>The Netherlands South</string>
