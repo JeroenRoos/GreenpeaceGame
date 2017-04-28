@@ -89,8 +89,17 @@ public class GameController : MonoBehaviour
         buildingsObjectController = GetComponent<BuildingObjectController>();
         foreach (Region r in game.regions)
         {
+
             GameObject buildingInstance = GameController.Instantiate(buildingObject);
-            buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, r.activeBuilding);
+
+            if (r.activeBuilding != null)
+            {
+                Debug.Log(r.activeBuilding.buildingName[0]);
+                buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, r.activeBuilding);
+            }
+            else
+
+                buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);
         }
 
         eventObjectController = GetComponent<EventObjectController>();

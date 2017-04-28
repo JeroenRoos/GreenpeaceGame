@@ -33,10 +33,19 @@ public class BuildingObjectController : MonoBehaviour
     {
         this.gameController = gameController;
         this.region = region;
-        this.building = building;
 
-        gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
-        //transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[2], region.buildingPositions[3]);
+        if (building != null)
+        {
+            this.building = building;
+
+            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
+            transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
+        }
+        else
+        {
+            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
+            transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
+        }
     }
 
     private Texture SelectTexture(string description)
@@ -50,6 +59,9 @@ public class BuildingObjectController : MonoBehaviour
                 return buildingTextures[1];
 
             case "HappinessBuilding":
+                return buildingTextures[2];
+
+            case "empty":
                 return buildingTextures[2];
 
             default:
