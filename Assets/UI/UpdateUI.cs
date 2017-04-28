@@ -88,6 +88,8 @@ public class UpdateUI : MonoBehaviour
     // Buildings Popup
     Building activeBuilding;
     Region buildingRegion;
+    public Text txtBuildingsTitle;
+    public Text txtBuildingsColumn;
 
     // Text Event Popup
     GameEvent gameEvent;
@@ -286,6 +288,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasEventPopup;
     public Canvas canvasInvestmentsPopup;
     public Canvas canvasCardsPopup;
+    public Canvas canvasBuildingsPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -829,6 +832,9 @@ public class UpdateUI : MonoBehaviour
         canvasEventPopup.GetComponent<Canvas>();
         canvasEventPopup.gameObject.SetActive(false);
 
+        canvasBuildingsPopup.GetComponent<Canvas>();
+        canvasBuildingsPopup.gameObject.SetActive(false);
+
         canvasQuestsPopup.GetComponent<Canvas>();
         canvasQuestsPopup.gameObject.SetActive(false);
 
@@ -979,12 +985,6 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        /*if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
-        {
-            canvasAfterActionCompletedPopup.gameObject.SetActive(false);
-            popupActive = false;
-            EventManager.CallPopupIsDisabled();
-        }*/
         else if (canvasQuestsPopup.gameObject.activeSelf)
         {
             canvasQuestsPopup.gameObject.SetActive(false);
@@ -994,6 +994,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasEventPopup.gameObject.activeSelf)
         {
             canvasEventPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasBuildingsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -2436,21 +2442,54 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    #region Code for Building Popup
+    #region Code for Empty Building Popup
+    public void initEmptyBuildingPopup(Region r)
+    {
+        buildingRegion = r;
+        popupActive = true;
+        EventManager.CallPopupIsActive();
+        canvasBuildingsPopup.gameObject.SetActive(true);
+
+        initEmptyBuildingText();
+        initEmptyBuildingUI();
+    }
+
+    private void initEmptyBuildingText()
+    {
+        string[] title = { "Gebouwen", "Buildings" };
+        string[] column = { "Plaats een gebouw", "Place a building" };
+
+        txtBuildingsTitle.text = title[taal]; ;
+        txtBuildingsColumn.text = column[taal];
+    }
+
+    private void initEmptyBuildingUI()
+    {
+
+    }
+
+    #endregion
+
+    #region Code for Active Building Popup
     public void initBuildingPopup(Building b, Region r)
     {
         activeBuilding = b;
         buildingRegion = r;
-        //canvasEventPopup.gameObject.SetActive(true);
         popupActive = true;
         EventManager.CallPopupIsActive();
-   
+        canvasBuildingsPopup.gameObject.SetActive(true);
+
         initBuildingText();
         initBuildingUI();
     }
 
     private void initBuildingText()
     {
+        string[] title = { "Gebouwen", "Buildings" };
+        string[] column = { "Actief gebouw: " + activeBuilding.buildingName[0], "Active building: " + activeBuilding.buildingName[0] };
+
+        txtBuildingsTitle.text = title[taal]; ;
+        txtBuildingsColumn.text = column[taal];
 
     }
 
@@ -3017,6 +3056,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasEventPopup.gameObject.activeSelf && !tutorialEventsActive)
         {
             canvasEventPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasBuildingsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }

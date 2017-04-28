@@ -16,6 +16,7 @@ public class BuildingObjectController : MonoBehaviour
     void Start()
     {
         updateUI = gameController.GetComponent<UpdateUI>();
+        building = null;
     }
 
     private void Update()
@@ -25,8 +26,19 @@ public class BuildingObjectController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        EventManager.CallPlayButtonClickSFX();
-        updateUI.initBuildingPopup(building, region);
+        if (!updateUI.popupActive)
+        {
+            EventManager.CallPlayButtonClickSFX();
+
+            if (building != null)
+            {
+                updateUI.initBuildingPopup(building, region);
+            }
+            else
+            {
+                updateUI.initEmptyBuildingPopup(region);
+            }
+        }
     }
 
     public void placeBuildingIcon(GameController gameController, Region region, Building building)

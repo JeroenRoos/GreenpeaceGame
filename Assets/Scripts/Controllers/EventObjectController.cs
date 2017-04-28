@@ -29,11 +29,14 @@ public class EventObjectController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (updateUI.tutorialeventsClickable)
+        if (!updateUI.popupActive)
         {
-            EventManager.CallPlayButtonClickSFX();
-            updateUI.popupActive = false;
-            updateUI.initEventPopup(eventModel, regionModel);
+            if (updateUI.tutorialeventsClickable)
+            {
+                EventManager.CallPlayButtonClickSFX();
+                updateUI.popupActive = false;
+                updateUI.initEventPopup(eventModel, regionModel);
+            }
         }
     }
 
