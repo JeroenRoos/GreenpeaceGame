@@ -469,22 +469,6 @@ public class GameController : MonoBehaviour
         return false;
     }
 
-    /*private void GenerateCompletedEventsAndActions(int index)
-    {
-        if (FindCompletedActionsAndEvents())
-        {
-            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(true);
-            updateUI.initAFterActionCompleted();
-            updateUI.btnAfterActionReportCompleted.gameObject.transform.position = afterActionPosition[index];
-            index++;
-        }
-        else
-        {
-            updateUI.btnAfterActionReportCompleted.gameObject.SetActive(false);
-        }
-
-    }*/
-
     private void UpdateQuests()
     {
         StartNewQuests();

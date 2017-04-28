@@ -23,6 +23,7 @@ public class EventObjectController : MonoBehaviour
         if (!eventModel.isIdle)
         {
             Destroy(gameObject);
+            //gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("EventEmpty");
         }
     }
 
@@ -38,6 +39,13 @@ public class EventObjectController : MonoBehaviour
 
     public void PlaceEventIcons(GameController gameController, Region regionModel, GameEvent eventModel)
     {
+        /* Event Positions in XML file
+         * Noord Nederland: 15 - 1 - 20
+         * Oost Nederland:  16 - 1 - 13
+         * Zuid Nederland:  13 - 1 -  8
+         * West Nederland:   9 - 1 - 12
+        */
+
         this.gameController = gameController;
         this.regionModel = regionModel;
         this.eventModel = eventModel;
@@ -164,6 +172,8 @@ public class EventObjectController : MonoBehaviour
 
             case "WaterPollutionNewTech":
                 return allTextures[36];
+            case "EventEmpty":
+                    return allTextures[38];
 
             default: return allTextures[37];
         }
