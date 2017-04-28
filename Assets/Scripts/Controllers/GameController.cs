@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
 
     private EventObjectController eventObjectController;
     private BuildingObjectController buildingsObjectController;
-    GameObject buildingInstance;
+    //GameObject buildingInstance;
     public Button MonthlyReportButon;
     public Button YearlyReportButton;
     public Button CompletedButton;
@@ -86,22 +86,22 @@ public class GameController : MonoBehaviour
             LoadGame();
 
         updateUI = GetComponent<UpdateUI>();
+        //setBuildingTextures();
 
-        buildingsObjectController = GetComponent<BuildingObjectController>();
         foreach (Region r in game.regions)
         {
-
-            /*GameObject */buildingInstance = GameController.Instantiate(buildingObject);
+            GameObject buildingInstance = GameController.Instantiate(buildingObject);
 
             if (r.activeBuilding != null)
             {
-                Debug.Log(r.activeBuilding.buildingName[0]);
                 buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, r.activeBuilding);
             }
             else
-
                 buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);
         }
+
+        buildingsObjectController = GetComponent<BuildingObjectController>();
+
 
         eventObjectController = GetComponent<EventObjectController>();
         foreach (Region r in game.regions)
@@ -797,11 +797,19 @@ public class GameController : MonoBehaviour
 
     public void btnUseBuildingPress()
     {
-        updateUI.regionToBeBuild.SetBuilding(updateUI.buildingToBeBuild.buildingID);
+        Region r = updateUI.regionToBeBuild;
+        Building b = updateUI.buildingToBeBuild;
+
+        r.SetBuilding(b.buildingID);
         updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
         updateUI.popupActive = false;
         EventManager.CallPopupIsDisabled();
-        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, updateUI.regionToBeBuild, updateUI.buildingToBeBuild);
+
+        Debug.Log("btnUseBuildingPress: " + r.name[0]);
+        Debug.Log("btnUseBuildingPress: " + b.buildingName[0]);
+
+        GameObject buildingInstance = GameController.Instantiate(buildingObject);
+        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
     }
 }
 

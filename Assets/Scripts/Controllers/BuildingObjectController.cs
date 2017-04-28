@@ -15,8 +15,9 @@ public class BuildingObjectController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Start BuildingObjectController");
         updateUI = gameController.GetComponent<UpdateUI>();
-        building = null;
+        //building = null;
     }
 
     private void Update()
@@ -32,12 +33,13 @@ public class BuildingObjectController : MonoBehaviour
 
             if (building != null)
             {
+                Debug.Log("OnMouseDown: " + region.name[0]);
+                Debug.Log("OnMouseDown: " + building.buildingName[0]);
                 gameController.activeBuildingUI(building, region);
-                //updateUI.initBuildingPopup(building, region);
             }
             else
             {
-                //updateUI.initEmptyBuildingPopup(region);
+                Debug.Log("OnMouseDown: Building is NULL");
                 gameController.activeEmptyBuildingUI(region);
             }
         }
@@ -47,16 +49,22 @@ public class BuildingObjectController : MonoBehaviour
     {
         this.gameController = gameController;
         this.region = region;
+        this.building = building;
 
         if (building != null)
         {
-            this.building = building;
+            Debug.Log("placeBuildingIcon: " + region.name[0]);
+            Debug.Log("placeBuildingIcon: " + building.buildingName[0]);
 
+            // Hij komt in deze Method maar print nog steeds de empty
+            // Ook opent hij nog de empty als je klikt op icon terwijl dat niet moet
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
         }
         else
         {
+            Debug.Log("placeBuildingIcon: Building is NULL");
+
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
         }
@@ -79,7 +87,7 @@ public class BuildingObjectController : MonoBehaviour
                 return buildingTextures[3];
 
             default:
-                return buildingTextures[0];
+                return buildingTextures[3];
         }
     }
 }
