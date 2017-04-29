@@ -47,6 +47,14 @@ public class BuildingObjectController : MonoBehaviour
 
     public void placeBuildingIcon(GameController gameController, Region region, Building building)
     {
+
+        /* Event Positions in XML file
+         * Noord Nederland: 16.5 - 1 - 20
+         * Oost Nederland:  17.5 - 1 - 13
+         * Zuid Nederland:  14.5 - 1 -  8
+         * West Nederland:  10.5 - 1 - 12
+        */
+
         this.gameController = gameController;
         this.region = region;
         this.building = building;
