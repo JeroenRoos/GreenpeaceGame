@@ -32,7 +32,88 @@ public class RegionAction //: MonoBehaviour
     public bool isActive { get; private set; }
     public int endTemporaryConsequencesMonth { get; private set; }
 
+    //action availability conditions
+    public bool isAvailable { get; private set; }
+    public bool conditionsAreRegional { get; private set; } //false = global, true = regional
+    public int startAvailableYear { get; private set; }
+    public int startAvailableMonth { get; private set; }
+    public int endAvailableYear { get; private set; }
+    public int endAvailableMonth { get; private set; }
+    public SectorStatistics availableConditionsMinimum { get; private set; }
+    public SectorStatistics availableConditionsMaximum { get; private set; }
+
+    public void TempMethod()
+    {
+        isAvailable = false;
+        conditionsAreRegional = true;
+        startAvailableYear = 1;
+        startAvailableMonth = 1;
+        endAvailableYear = 30;
+        endAvailableMonth = 1;
+    }
+
     private RegionAction() { }
+
+    public void GetAvailableActions(Game game, RegionStatistics rs)
+    {
+        if (conditionsAreRegional)
+            GetRegionalAvailability(game.currentYear, game.currentMonth, rs);
+        else
+            GetGlobalAvailability(game.currentYear, game.currentMonth, game.gameStatistics);
+    }
+
+    public void GetRegionalAvailability(int currentYear, int currentMonth, RegionStatistics rs)
+    {
+        int monthTotal = currentYear * 12 + currentMonth;
+        int startTimeCondition = startAvailableYear * 12 + startAvailableMonth;
+        int endTimeCondition = endAvailableYear * 12 + endAvailableMonth;
+
+        if ((monthTotal >= startTimeCondition && monthTotal < endTimeCondition) &&
+            (availableConditionsMinimum.income > rs.income || availableConditionsMinimum.income == 0) &&
+            (availableConditionsMinimum.happiness > rs.happiness || availableConditionsMinimum.happiness == 0) &&
+            (availableConditionsMinimum.ecoAwareness > rs.ecoAwareness || availableConditionsMinimum.ecoAwareness == 0) &&
+            (availableConditionsMinimum.prosperity > rs.prosperity || availableConditionsMinimum.prosperity == 0) &&
+            (availableConditionsMinimum.pollution.airPollution > rs.avgAirPollution || availableConditionsMinimum.pollution.airPollution == 0) &&
+            (availableConditionsMinimum.pollution.naturePollution > rs.avgNaturePollution || availableConditionsMinimum.pollution.naturePollution == 0) &&
+            (availableConditionsMinimum.pollution.waterPollution > rs.avgWaterPollution || availableConditionsMinimum.pollution.waterPollution == 0) &&
+            (availableConditionsMaximum.income < rs.income || availableConditionsMaximum.income == 0) &&
+            (availableConditionsMaximum.happiness < rs.happiness || availableConditionsMaximum.happiness == 0) &&
+            (availableConditionsMaximum.ecoAwareness < rs.ecoAwareness || availableConditionsMaximum.ecoAwareness == 0) &&
+            (availableConditionsMaximum.prosperity < rs.prosperity || availableConditionsMaximum.prosperity == 0) &&
+            (availableConditionsMaximum.pollution.airPollution < rs.avgAirPollution || availableConditionsMaximum.pollution.airPollution == 0) &&
+            (availableConditionsMaximum.pollution.naturePollution < rs.avgNaturePollution || availableConditionsMaximum.pollution.naturePollution == 0) &&
+            (availableConditionsMaximum.pollution.waterPollution < rs.avgWaterPollution || availableConditionsMaximum.pollution.waterPollution == 0))
+            isAvailable = true;
+        else
+            isAvailable = false;
+    }
+
+    public void GetGlobalAvailability(int currentYear, int currentMonth, GameStatistics gs)
+    {
+        int monthTotal = currentYear * 12 + currentMonth;
+        int startTimeCondition = startAvailableYear * 12 + startAvailableMonth;
+        int endTimeCondition = endAvailableYear * 12 + endAvailableMonth;
+        double pollutionAvgMin = (availableConditionsMinimum.pollution.airPollution +
+            availableConditionsMinimum.pollution.naturePollution + availableConditionsMinimum.pollution.waterPollution) / 3;
+        double pollutionAvgMax = (availableConditionsMaximum.pollution.airPollution +
+            availableConditionsMaximum.pollution.naturePollution + availableConditionsMaximum.pollution.waterPollution) / 3;
+
+        if ((monthTotal >= startTimeCondition && monthTotal < endTimeCondition) &&
+            (availableConditionsMinimum.income > gs.income || availableConditionsMinimum.income == 0) &&
+            (availableConditionsMinimum.happiness > gs.happiness || availableConditionsMinimum.happiness == 0) &&
+            (availableConditionsMinimum.ecoAwareness > gs.ecoAwareness || availableConditionsMinimum.ecoAwareness == 0) &&
+            (availableConditionsMinimum.prosperity > gs.prosperity || availableConditionsMinimum.prosperity == 0) &&
+            (availableConditionsMinimum.pollution.airPollution > gs.pollution || availableConditionsMinimum.pollution.airPollution == 0) &&
+            (availableConditionsMaximum.income < gs.income || availableConditionsMaximum.income == 0) &&
+            (availableConditionsMaximum.happiness < gs.happiness || availableConditionsMaximum.happiness == 0) &&
+            (availableConditionsMaximum.ecoAwareness < gs.ecoAwareness || availableConditionsMaximum.ecoAwareness == 0) &&
+            (availableConditionsMaximum.prosperity < gs.prosperity || availableConditionsMaximum.prosperity == 0) &&
+            (availableConditionsMaximum.pollution.airPollution < gs.pollution || availableConditionsMaximum.pollution.airPollution == 0))
+            isAvailable = true;
+        else
+            isAvailable = false;
+
+    }
 
     public void ActivateAction(int startYear, int startMonth, bool[] pickedSectors)
     {

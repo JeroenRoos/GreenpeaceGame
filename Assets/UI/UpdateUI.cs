@@ -1691,7 +1691,7 @@ public class UpdateUI : MonoBehaviour
 
         foreach (RegionAction action in regio.actions)
         {
-            if (!action.isActive &&
+            if (action.isAvailable && !action.isActive &&
                 (action.lastCompleted + action.actionCooldown <= currentMonth || action.lastCompleted == 0) &&
                 !(action.isUnique && action.lastCompleted > 0))
             {

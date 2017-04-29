@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour
             LoadBuildings();
             LoadCards();
             game.gameStatistics.UpdateRegionalAvgs(game);
+            UpdateRegionActionAvailability();
 
             //set reports
             game.monthlyReport.UpdateStatistics(game.regions);
@@ -68,7 +69,6 @@ public class GameController : MonoBehaviour
             {
                 foreach (RegionSector sector in region.sectors)
                 {
-                    sector.TempMethod();
                     sector.statistics.pollution.CalculateAvgPollution();
                 }
                 region.statistics.UpdateSectorAvgs(region);
@@ -329,11 +329,12 @@ public class GameController : MonoBehaviour
 
             bool isNewYear = game.UpdateCurrentMonthAndYear();
             game.ExecuteNewMonthMethods();
-
             UpdateRegionsPollutionInfluence();
             UpdateEvents();
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateQuests();
+            UpdateRegionActionAvailability();
+
 
             if (isNewYear)
             {
@@ -529,6 +530,15 @@ public class GameController : MonoBehaviour
         {
             if (quest.startYear == game.currentYear && quest.startMonth == game.currentMonth)
                 quest.StartQuest();
+        }
+    }
+
+    private void UpdateRegionActionAvailability()
+    {
+        foreach (Region r in game.regions)
+        {
+            foreach (RegionAction ra in r.actions)
+                ra.GetAvailableActions(game, r.statistics);
         }
     }
 
