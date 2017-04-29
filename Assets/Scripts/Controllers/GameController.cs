@@ -192,10 +192,8 @@ public class GameController : MonoBehaviour
 
     public void SetYearlyStatistics()
     {
-        Analytics.CustomEvent("YearlyGameStatisticsData", new Dictionary<string, object>
+        Analytics.CustomEvent("Year" + game.currentYear + "StartGameStatisticsData", new Dictionary<string, object>
         {
-            { "Year", game.currentYear.ToString() },
-            { "Month", game.currentMonth.ToString() },
             { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
             { "Money", game.gameStatistics.money.ToString("0") },
             { "Income", game.gameStatistics.income.ToString("0") },
@@ -208,10 +206,8 @@ public class GameController : MonoBehaviour
 
     public void SetYearlyCompletedFeatures()
     {
-        Analytics.CustomEvent("YearlyCompletedFeaturesData", new Dictionary<string, object>
+        Analytics.CustomEvent("Year" + game.currentYear + "StartCompletedFeaturesData", new Dictionary<string, object>
         {
-            { "Year", game.currentYear.ToString() },
-            { "Month", game.currentMonth.ToString() },
             { "CompletedEventsCount", game.completedEventsCount.ToString() },
             { "AbandonedEventsCount", game.abandonedEventsCount.ToString() },
             { "CompletedActionsCount", game.completedActionsCount.ToString() },
