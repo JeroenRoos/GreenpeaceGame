@@ -8,9 +8,9 @@
         <float>20</float>
       </eventPositions>
       <buildingPositions>
-        <float>16.5</float>
+        <float>12</float>
         <float>1</float>
-        <float>20</float>
+        <float>19</float>
       </buildingPositions>
       <name>
         <string>Noord Nederland</string>
@@ -1458,83 +1458,8 @@
               <naturePollutionIncrease>0</naturePollutionIncrease>
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
-<<<<<<< HEAD
           </availableConditionsMaximum>
         </RegionAction>
-=======
-          </statistics>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-        </RegionSector>
-      </sectors>
-      <inProgressGameEvents />
-      <possibleBuildings>
-        <Building>
-          <buildingID>EconomyBuiding</buildingID>
-          <buildingName>
-            <string>Aandelenbeurs</string>
-            <string>StockExchange</string>
-          </buildingName>
-          <incomeModifier>20</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-        <Building>
-          <buildingID>PollutionBuilding</buildingID>
-          <buildingName>
-            <string>Windmolenpark</string>
-            <string>Windmill park</string>
-          </buildingName>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-10</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-        <Building>
-          <buildingID>HappinessBuilding</buildingID>
-          <buildingName>
-            <string>Non-profit dierentuin</string>
-            <string>Non-profit zoo</string>
-          </buildingName>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>20</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-      </possibleBuildings>
-    </Region>
-    <Region>
-      <eventPositions>
-        <float>16</float>
-        <float>1</float>
-        <float>15</float>
-      </eventPositions>
-      <buildingPositions>
-        <float>17.5</float>
-        <float>1</float>
-        <float>15</float>
-      </buildingPositions>
-      <name>
-        <string>Oost Nederland</string>
-        <string>The Netherlands East</string>
-      </name>
-      <statistics>
-        <income>900</income>
-        <happiness>43.333333333333336</happiness>
-        <ecoAwareness>20</ecoAwareness>
-        <prosperity>55</prosperity>
-        <avgPollution>53.333333333333336</avgPollution>
-        <avgAirPollution>46.666666666666664</avgAirPollution>
-        <avgNaturePollution>60</avgNaturePollution>
-        <avgWaterPollution>53.333333333333336</avgWaterPollution>
-        <avgAirPollutionIncrease>10</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>8.3333333333333339</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>8.3333333333333339</avgWaterPollutionIncrease>
-      </statistics>
-      <actions>
->>>>>>> 984a548297e0d877f4cf971261ee891ff63d8e3e
         <RegionAction>
           <name>
             <string>Campagne voor recycling</string>
@@ -12354,7 +12279,6 @@
               <naturePollutionIncrease>0</naturePollutionIncrease>
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
-<<<<<<< HEAD
           </duringActionConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
@@ -12541,80 +12465,6 @@
             </pollution>
           </availableConditionsMaximum>
         </RegionAction>
-=======
-          </statistics>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-        </RegionSector>
-      </sectors>
-      <inProgressGameEvents />
-      <possibleBuildings>
-        <Building>
-          <buildingID>EconomyBuiding</buildingID>
-          <buildingName>
-            <string>Aandelenbeurs</string>
-            <string>StockExchange</string>
-          </buildingName>
-          <incomeModifier>20</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-        <Building>
-          <buildingID>PollutionBuilding</buildingID>
-          <buildingName>
-            <string>Windmolenpark</string>
-            <string>Windmill park</string>
-          </buildingName>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-10</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-        <Building>
-          <buildingID>HappinessBuilding</buildingID>
-          <buildingName>
-            <string>Non-profit dierentuin</string>
-            <string>Non-profit zoo</string>
-          </buildingName>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>20</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-      </possibleBuildings>
-    </Region>
-    <Region>
-      <eventPositions>
-        <float>9</float>
-        <float>1</float>
-        <float>12</float>
-      </eventPositions>
-      <buildingPositions>
-        <float>10.5</float>
-        <float>1</float>
-        <float>12</float>
-      </buildingPositions>
-      <name>
-        <string>West Nederland</string>
-        <string>The Netherlands West</string>
-      </name>
-      <statistics>
-        <income>1300</income>
-        <happiness>43.333333333333336</happiness>
-        <ecoAwareness>20</ecoAwareness>
-        <prosperity>60</prosperity>
-        <avgPollution>54.44444444444445</avgPollution>
-        <avgAirPollution>63.333333333333336</avgAirPollution>
-        <avgNaturePollution>46.666666666666664</avgNaturePollution>
-        <avgWaterPollution>53.333333333333336</avgWaterPollution>
-        <avgAirPollutionIncrease>15</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>5</avgWaterPollutionIncrease>
-      </statistics>
-      <actions>
->>>>>>> 984a548297e0d877f4cf971261ee891ff63d8e3e
         <RegionAction>
           <name>
             <string>Verlaag luchtvervuiling</string>
@@ -14043,83 +13893,8 @@
               <naturePollutionIncrease>0</naturePollutionIncrease>
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
-<<<<<<< HEAD
           </availableConditionsMaximum>
         </RegionAction>
-=======
-          </statistics>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-        </RegionSector>
-      </sectors>
-      <inProgressGameEvents />
-      <possibleBuildings>
-        <Building>
-          <buildingID>EconomyBuiding</buildingID>
-          <buildingName>
-            <string>Aandelenbeurs</string>
-            <string>StockExchange</string>
-          </buildingName>
-          <incomeModifier>20</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-        <Building>
-          <buildingID>PollutionBuilding</buildingID>
-          <buildingName>
-            <string>Windmolenpark</string>
-            <string>Windmill park</string>
-          </buildingName>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-10</pollutionModifier>
-          <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-        <Building>
-          <buildingID>HappinessBuilding</buildingID>
-          <buildingName>
-            <string>Non-profit dierentuin</string>
-            <string>Non-profit zoo</string>
-          </buildingName>
-          <incomeModifier>0</incomeModifier>
-          <pollutionModifier>0</pollutionModifier>
-          <happinessModifier>20</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
-        </Building>
-      </possibleBuildings>
-    </Region>
-    <Region>
-      <eventPositions>
-        <float>13</float>
-        <float>1</float>
-        <float>8</float>
-      </eventPositions>
-      <buildingPositions>
-        <float>14.5</float>
-        <float>1</float>
-        <float>8</float>
-      </buildingPositions>
-      <name>
-        <string>Zuid Nederland</string>
-        <string>The Netherlands South</string>
-      </name>
-      <statistics>
-        <income>450</income>
-        <happiness>46.666666666666664</happiness>
-        <ecoAwareness>11.666666666666666</ecoAwareness>
-        <prosperity>61.666666666666664</prosperity>
-        <avgPollution>42.222222222222221</avgPollution>
-        <avgAirPollution>40</avgAirPollution>
-        <avgNaturePollution>46.666666666666664</avgNaturePollution>
-        <avgWaterPollution>40</avgWaterPollution>
-        <avgAirPollutionIncrease>10</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>10</avgWaterPollutionIncrease>
-      </statistics>
-      <actions>
->>>>>>> 984a548297e0d877f4cf971261ee891ff63d8e3e
         <RegionAction>
           <name>
             <string>Campagne fossiele energie</string>
