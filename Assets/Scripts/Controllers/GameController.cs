@@ -167,10 +167,12 @@ public class GameController : MonoBehaviour
 
     public void SetGameplayTrackingData()
     {
+        int totalMonths = game.currentMonth + game.currentYear * 12;
         Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
         {
-            { "Year", game.currentYear.ToString() },
-            { "Month", game.currentMonth.ToString() },
+            //{ "Year", game.currentYear.ToString() },
+            //{ "Month", game.currentMonth.ToString() },
+            { "TotalMonths", totalMonths.ToString() },
             { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
             { "Money", game.gameStatistics.money.ToString("0") },
             { "Income", game.gameStatistics.income.ToString("0") },
