@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
 
     private EventObjectController eventObjectController;
     private BuildingObjectController buildingsObjectController;
+    //GameObject buildingInstance;
     public Button MonthlyReportButon;
     public Button YearlyReportButton;
     public Button CompletedButton;
@@ -85,13 +86,22 @@ public class GameController : MonoBehaviour
             LoadGame();
 
         updateUI = GetComponent<UpdateUI>();
+        //setBuildingTextures();
 
-        buildingsObjectController = GetComponent<BuildingObjectController>();
         foreach (Region r in game.regions)
         {
             GameObject buildingInstance = GameController.Instantiate(buildingObject);
-            buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, r.activeBuilding);
+
+            if (r.activeBuilding != null)
+            {
+                buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, r.activeBuilding);
+            }
+            else
+                buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);
         }
+
+        buildingsObjectController = GetComponent<BuildingObjectController>();
+
 
         eventObjectController = GetComponent<EventObjectController>();
         foreach (Region r in game.regions)
@@ -784,4 +794,32 @@ public class GameController : MonoBehaviour
     {
         return updateUI.getPopupActive();
     }
+
+    public void activeBuildingUI(Building building, Region region)
+    {
+        updateUI.initBuildingPopup(building, region);
+    }
+
+    public void activeEmptyBuildingUI(Region region)
+    {
+        updateUI.initEmptyBuildingPopup(region);
+    }
+
+    public void btnUseBuildingPress()
+    {
+        Region r = updateUI.regionToBeBuild;
+        Building b = updateUI.buildingToBeBuild;
+
+        r.SetBuilding(b.buildingID);
+        updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
+        updateUI.popupActive = false;
+        EventManager.CallPopupIsDisabled();
+
+        Debug.Log("btnUseBuildingPress: " + r.name[0]);
+        Debug.Log("btnUseBuildingPress: " + b.buildingName[0]);
+
+        GameObject buildingInstance = GameController.Instantiate(buildingObject);
+        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
+    }
 }
+

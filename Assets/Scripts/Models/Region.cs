@@ -9,6 +9,7 @@ using UnityEngine;
 [Serializable]
 public class Region
 {
+
     public string[] name { get; private set; }
     public RegionStatistics statistics { get; private set; }
     public List<RegionAction> actions { get; private set; }
@@ -129,6 +130,8 @@ public class Region
                 break;
             }
         }
+
+
     }
 
     /*public void DeleteBuilding(Building building)

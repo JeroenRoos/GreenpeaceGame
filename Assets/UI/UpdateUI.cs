@@ -13,6 +13,7 @@ public class UpdateUI : MonoBehaviour
     private GUIStyle tooltipStyle = new GUIStyle();
     public Texture2D buttonTexture;
     private GUIStyle buttonStyle = new GUIStyle();
+    BuildingObjectController buildingObjectController;
 
     Region regio;
     RegionAction regioAction;
@@ -88,6 +89,20 @@ public class UpdateUI : MonoBehaviour
     // Buildings Popup
     Building activeBuilding;
     Region buildingRegion;
+    public Text txtBuildingsTitle;
+    public Text txtBuildingsColumn;
+
+    // Empty Building Popup
+    public Text txtEmptyBuildingsTitle;
+    public Text txtEmptyBuildingsColumnLeft;
+    public Text txtEmptyBuildingColumRight;
+    public Button btnUseBuilding;
+    public Button btnEmptyBuildingPosition;
+    public Text btnUseBuildingTxt;
+    public Text txtEmptyBuildingInfo;
+    public Text txtEmptyBuildingStats;
+    public Building buildingToBeBuild;
+    public Region regionToBeBuild;
 
     // Text Event Popup
     GameEvent gameEvent;
@@ -286,6 +301,8 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasEventPopup;
     public Canvas canvasInvestmentsPopup;
     public Canvas canvasCardsPopup;
+    public Canvas canvasBuildingsPopup;
+    public Canvas canvasEmptyBuildingsPopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -437,6 +454,7 @@ public class UpdateUI : MonoBehaviour
             initTutorialNotActive();
 
         btnNextTurnText.text = nextTurnText[taal];
+        buildingObjectController = GetComponent<BuildingObjectController>();
     }
 
     void Update()
@@ -829,6 +847,12 @@ public class UpdateUI : MonoBehaviour
         canvasEventPopup.GetComponent<Canvas>();
         canvasEventPopup.gameObject.SetActive(false);
 
+        canvasBuildingsPopup.GetComponent<Canvas>();
+        canvasBuildingsPopup.gameObject.SetActive(false);
+
+        canvasEmptyBuildingsPopup.GetComponent<Canvas>();
+        canvasEmptyBuildingsPopup.gameObject.SetActive(false);
+
         canvasQuestsPopup.GetComponent<Canvas>();
         canvasQuestsPopup.gameObject.SetActive(false);
 
@@ -979,12 +1003,6 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        /*if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
-        {
-            canvasAfterActionCompletedPopup.gameObject.SetActive(false);
-            popupActive = false;
-            EventManager.CallPopupIsDisabled();
-        }*/
         else if (canvasQuestsPopup.gameObject.activeSelf)
         {
             canvasQuestsPopup.gameObject.SetActive(false);
@@ -994,6 +1012,18 @@ public class UpdateUI : MonoBehaviour
         else if (canvasEventPopup.gameObject.activeSelf)
         {
             canvasEventPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasBuildingsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasEmptyBuildingsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -1086,6 +1116,23 @@ public class UpdateUI : MonoBehaviour
             {
                 if (GUI.Button(new Rect(x, y + yOffset, rectBtnCardsPosition.rect.width + 50, rectBtnCardsPosition.rect.height), c.name[taal], buttonStyle))
                     setTextCardInformation(c);
+
+                yOffset += 35;
+            }
+        }
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+        {
+            float yOffset = 0f;
+
+            RectTransform rectBtnBuildingsPosition = btnCardsPosition.GetComponent<RectTransform>();
+            Vector3 btnPos = btnEmptyBuildingPosition.transform.position;
+            float x = btnPos.x;
+            float y = btnPos.y;
+
+            foreach (Building b in regionToBeBuild.possibleBuildings)
+            {
+                if (GUI.Button(new Rect(x, y + yOffset, rectBtnBuildingsPosition.rect.width + 50, rectBtnBuildingsPosition.rect.height), b.buildingName[taal], buttonStyle))
+                    setTextBuildingInformation(b);
 
                 yOffset += 35;
             }
@@ -2436,21 +2483,133 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    #region Code for Building Popup
+    #region Code for Empty Building Popup
+    public void initEmptyBuildingPopup(Region r)
+    {
+        regionToBeBuild = r;
+        popupActive = true;
+        EventManager.CallPopupIsActive();
+        canvasEmptyBuildingsPopup.gameObject.SetActive(true);
+
+        initEmptyBuildingText();
+    }
+
+    private void initEmptyBuildingText()
+    {
+        string[] title = { "Gebouwen", "Buildings" };
+        string[] column = { "Plaats een gebouw", "Place a building" };
+        string[] info = { "Kies hieronder het gebouw dat je wilt maken", "Chose the building you want to make" };
+
+        txtEmptyBuildingsTitle.text = title[taal]; ;
+        txtEmptyBuildingsColumnLeft.text = column[taal];
+        txtEmptyBuildingColumRight.text = "";
+        txtEmptyBuildingStats.text = "";
+        txtEmptyBuildingInfo.text = info[taal];
+        btnUseBuilding.gameObject.SetActive(false);
+    }
+
+    private void setTextBuildingInformation(Building b)
+    {
+        buildingToBeBuild = b;
+
+        txtEmptyBuildingColumRight.text = "";
+        txtEmptyBuildingStats.text = "";
+        string[] column = { "Informatie - " + b.buildingName[0], "Information - " + b.buildingName[1] };
+        txtEmptyBuildingColumRight.text = column[taal];
+
+        btnUseBuilding.gameObject.SetActive(true);
+        string[] btnTxt = { "Maak gebouw", "Build building" };
+        btnUseBuildingTxt.text = btnTxt[taal];
+
+        string[] cost = { "Kosten:" + b.buildingMoneyCost + "\n", "Cost:" + b.buildingMoneyCost + "\n" };
+        txtEmptyBuildingStats.text += cost[taal];
+
+        txtEmptyBuildingStats.text += getModifiers(b);
+
+        if (game.gameStatistics.money >= buildingToBeBuild.buildingMoneyCost)
+            btnUseBuilding.interactable = true;
+        else
+            btnUseBuilding.interactable = false;  
+    }
+
+    private string getModifiers(Building b)
+    {
+        bool noConsequences = true;
+        string[] modifiers = { "", "" };
+
+        if (b.happinessModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nTevredenheid in regio: ", "\nHappiness in region: " };
+
+            if (b.happinessModifier > 0d)
+                a[taal] += "+" + b.happinessModifier + "%";
+            else
+                a[taal] += b.happinessModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+        if (b.incomeModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nInkomen in regio: ", "\nIncome in region: " };
+
+            if (b.incomeModifier > 0d)
+                a[taal] += "+" + b.incomeModifier + "%";
+            else
+                a[taal] += b.incomeModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+        if (b.pollutionModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nVervuilig in regio: ", "\nPollution in region: " };
+
+            if (b.pollutionModifier > 0d)
+                a[taal] += "+" + b.pollutionModifier + "%";
+            else
+                a[taal] += b.pollutionModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+
+        if (noConsequences)
+        {
+            string[] nc = { "Er zijn geen aanpassingen met dit gebouw.", "This building doesn't change any values" };
+            modifiers[taal] += nc[taal];
+        }
+
+        return modifiers[taal];
+    }
+
+    // Afhandelen van BtnUseBuilding Click wordt in GameController gedaan
+
+    #endregion
+
+    #region Code for Active Building Popup
     public void initBuildingPopup(Building b, Region r)
     {
         activeBuilding = b;
         buildingRegion = r;
-        //canvasEventPopup.gameObject.SetActive(true);
         popupActive = true;
         EventManager.CallPopupIsActive();
-   
+        canvasBuildingsPopup.gameObject.SetActive(true);
+
+        Debug.Log("initBuildingPopup: " + buildingRegion.name[0]);
+        Debug.Log("initBuildingPopup: " + activeBuilding.buildingName[0]);
+
         initBuildingText();
         initBuildingUI();
     }
 
     private void initBuildingText()
     {
+        string[] title = { "Gebouwen", "Buildings" };
+        string[] column = { "Actief gebouw: " + activeBuilding.buildingName[0], "Active building: " + activeBuilding.buildingName[0] };
+
+        txtBuildingsTitle.text = title[taal]; ;
+        txtBuildingsColumn.text = column[taal];
 
     }
 
@@ -3017,6 +3176,18 @@ public class UpdateUI : MonoBehaviour
         else if (canvasEventPopup.gameObject.activeSelf && !tutorialEventsActive)
         {
             canvasEventPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasBuildingsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasEmptyBuildingsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }

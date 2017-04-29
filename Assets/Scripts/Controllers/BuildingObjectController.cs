@@ -15,7 +15,9 @@ public class BuildingObjectController : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Start BuildingObjectController");
         updateUI = gameController.GetComponent<UpdateUI>();
+        //building = null;
     }
 
     private void Update()
@@ -25,8 +27,22 @@ public class BuildingObjectController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        EventManager.CallPlayButtonClickSFX();
-        updateUI.initBuildingPopup(building, region);
+        if (!updateUI.popupActive)
+        {
+            EventManager.CallPlayButtonClickSFX();
+
+            if (building != null)
+            {
+                Debug.Log("OnMouseDown: " + region.name[0]);
+                Debug.Log("OnMouseDown: " + building.buildingName[0]);
+                gameController.activeBuildingUI(building, region);
+            }
+            else
+            {
+                Debug.Log("OnMouseDown: Building is NULL");
+                gameController.activeEmptyBuildingUI(region);
+            }
+        }
     }
 
     public void placeBuildingIcon(GameController gameController, Region region, Building building)
@@ -35,8 +51,23 @@ public class BuildingObjectController : MonoBehaviour
         this.region = region;
         this.building = building;
 
-        gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
-        //transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[2], region.buildingPositions[3]);
+        if (building != null)
+        {
+            Debug.Log("placeBuildingIcon: " + region.name[0]);
+            Debug.Log("placeBuildingIcon: " + building.buildingName[0]);
+
+            // Hij komt in deze Method maar print nog steeds de empty
+            // Ook opent hij nog de empty als je klikt op icon terwijl dat niet moet
+            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
+            transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
+        }
+        else
+        {
+            Debug.Log("placeBuildingIcon: Building is NULL");
+
+            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
+            transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
+        }
     }
 
     private Texture SelectTexture(string description)
@@ -52,8 +83,11 @@ public class BuildingObjectController : MonoBehaviour
             case "HappinessBuilding":
                 return buildingTextures[2];
 
+            case "empty":
+                return buildingTextures[3];
+
             default:
-                return buildingTextures[0];
+                return buildingTextures[3];
         }
     }
 }
