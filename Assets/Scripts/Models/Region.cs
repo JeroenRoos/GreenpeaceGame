@@ -16,6 +16,7 @@ public class Region
     public RegionSector[] sectors { get; private set; }
     public float[] eventPositions;
     public float[] buildingPositions;
+    public float[] actionPositions;
 
     public List<GameEvent> inProgressGameEvents { get; private set; }
 

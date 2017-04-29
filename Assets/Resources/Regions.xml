@@ -3,15 +3,20 @@
   <Regions>
     <Region>
       <eventPositions>
-        <float>15</float>
+        <float>15.5</float>
         <float>1</float>
-        <float>20</float>
+        <float>19</float>
       </eventPositions>
       <buildingPositions>
-        <float>16.5</float>
+        <float>12</float>
         <float>1</float>
-        <float>20</float>
+        <float>19.5</float>
       </buildingPositions>
+      <actionPositions>
+        <float>17</float>
+        <float>1</float>
+        <float>21</float>
+      </actionPositions>
       <name>
         <string>Noord Nederland</string>
         <string>The Netherlands North</string>
@@ -3862,15 +3867,20 @@
     </Region>
     <Region>
       <eventPositions>
-        <float>16</float>
+        <float>15</float>
         <float>1</float>
-        <float>13</float>
+        <float>12</float>
       </eventPositions>
       <buildingPositions>
-        <float>17.5</float>
+        <float>18</float>
         <float>1</float>
-        <float>13</float>
+        <float>15</float>
       </buildingPositions>
+      <actionPositions>
+        <float>15</float>
+        <float>1</float>
+        <float>15.5</float>
+      </actionPositions>
       <name>
         <string>Oost Nederland</string>
         <string>The Netherlands East</string>
@@ -7721,15 +7731,20 @@
     </Region>
     <Region>
       <eventPositions>
-        <float>9</float>
+        <float>11</float>
         <float>1</float>
         <float>12</float>
       </eventPositions>
       <buildingPositions>
-        <float>10.5</float>
+        <float>9</float>
         <float>1</float>
-        <float>12</float>
+        <float>15</float>
       </buildingPositions>
+      <actionPositions>
+        <float>8.5</float>
+        <float>1</float>
+        <float>9</float>
+      </actionPositions>
       <name>
         <string>West Nederland</string>
         <string>The Netherlands West</string>
@@ -11580,15 +11595,20 @@
     </Region>
     <Region>
       <eventPositions>
-        <float>13</float>
+        <float>14</float>
         <float>1</float>
-        <float>8</float>
+        <float>7</float>
       </eventPositions>
       <buildingPositions>
-        <float>14.5</float>
+        <float>11.5</float>
         <float>1</float>
         <float>8</float>
       </buildingPositions>
+      <actionPositions>
+        <float>16.5</float>
+        <float>1</float>
+        <float>8</float>
+      </actionPositions>
       <name>
         <string>Zuid Nederland</string>
         <string>The Netherlands South</string>
