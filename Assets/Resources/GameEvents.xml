@@ -306,11 +306,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Earthquake</name>
@@ -614,11 +609,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Flood</name>
@@ -924,11 +914,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>ForestFire</name>
@@ -1233,11 +1218,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NaturePollutionConcern</name>
@@ -1544,11 +1524,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>WaterPollutionConcern</name>
@@ -1855,11 +1830,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>CleanAirProject</name>
@@ -2166,11 +2136,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>CleanNatureProject</name>
@@ -2477,11 +2442,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>CleanWaterProject</name>
@@ -2788,11 +2748,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>AgricultureHighPollution</name>
@@ -3097,9 +3052,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>HouseholdsHighPollution</name>
@@ -3404,9 +3356,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>CompaniesHighPollution</name>
@@ -3711,9 +3660,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>HouseholdsPollutionDoubts</name>
@@ -4018,9 +3964,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>AgricultureFasterWork</name>
@@ -4325,9 +4268,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>CompaniesPersonalProfit</name>
@@ -4632,9 +4572,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>GovernmentMoneyReward</name>
@@ -4941,11 +4878,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>GermanyPollution</name>
@@ -5251,11 +5183,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>BelgiumPollution</name>
@@ -5559,11 +5486,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>SolarPanelProject</name>
@@ -5868,9 +5790,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>AgricultureEquipmentProject</name>
@@ -6175,9 +6094,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>GreenCompaniesRewardProject</name>
@@ -6482,9 +6398,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>AirPollutionNewTech</name>
@@ -6791,11 +6704,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NaturePollutionNewTech</name>
@@ -7102,11 +7010,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>WaterPollutionNewTech</name>
@@ -7413,11 +7316,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>CompaniesEconomyUnhappy</name>
@@ -7722,9 +7620,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>BadHarvest</name>
@@ -8029,9 +7924,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NuclearPlant</name>
@@ -8338,11 +8230,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Asbestos</name>
@@ -8648,10 +8535,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>GasMining</name>
@@ -8954,10 +8837,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Recycling</name>
@@ -9262,9 +9141,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NoMoreGas</name>
@@ -9568,11 +9444,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>AccidentTransport</name>
@@ -9877,9 +9748,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>ClimateDeal</name>
@@ -10186,11 +10054,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Firework</name>
@@ -10495,9 +10358,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>MicroDust</name>
@@ -10800,9 +10660,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>ToxicDump</name>
@@ -11106,9 +10963,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>CoalPlant</name>
@@ -11415,11 +11269,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>TrafficJams</name>
@@ -11724,10 +11573,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>PollutingManure</name>
@@ -12030,9 +11875,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>SchipholExpanding</name>
@@ -12336,11 +12178,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>RotterdamExpansion</name>
@@ -12643,10 +12480,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>IjsselmeerThrash</name>
@@ -12952,11 +12785,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>MoreGasExtraction</name>
@@ -13260,11 +13088,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>ProductionRuhrArea</name>
@@ -13569,11 +13392,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NuclearReactorAccident</name>
@@ -13877,11 +13695,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>AntwerpenExpansion</name>
@@ -14185,11 +13998,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>LessCycling</name>
@@ -14496,11 +14304,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewRecyclingTech</name>
@@ -14807,11 +14610,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewCleanCarTech</name>
@@ -15118,11 +14916,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewCleanPlaneTech</name>
@@ -15429,11 +15222,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewCleanBoatTech</name>
@@ -15740,11 +15528,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewCleanEnergyTech</name>
@@ -16051,11 +15834,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewEnergySavingTech</name>
@@ -16362,11 +16140,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewFoodEfficiencyTech</name>
@@ -16673,11 +16446,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewFoodCarefullTech</name>
@@ -16804,7 +16572,7 @@
         </SectorStatistics>
       </consequences>
       <afterInvestmentConsequences>
-                <SectorStatistics>
+        <SectorStatistics>
           <income>0</income>
           <happiness>0</happiness>
           <ecoAwareness>0</ecoAwareness>
@@ -16984,11 +16752,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NewSolarPanelTech</name>
@@ -17295,11 +17058,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>NoMoreFossil</name>
@@ -17606,11 +17364,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>EfficencyAgriculture</name>
@@ -17917,11 +17670,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>Acidification</name>
@@ -18228,11 +17976,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>WaterAlgae</name>
@@ -18539,11 +18282,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>WaterDuckWeed</name>
@@ -18670,7 +18408,7 @@
         </SectorStatistics>
       </consequences>
       <afterInvestmentConsequences>
-              <SectorStatistics>
+        <SectorStatistics>
           <income>0</income>
           <happiness>-2</happiness>
           <ecoAwareness>0</ecoAwareness>
@@ -18850,11 +18588,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>FoodWaste</name>
@@ -19161,11 +18894,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>GrowthHouseholds</name>
@@ -19472,11 +19200,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>GrowthAgriculture</name>
@@ -19783,11 +19506,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
     <GameEvent>
       <name>GrowthCompanies</name>
@@ -20094,11 +19812,6 @@
       <onEventStartMonth>0</onEventStartMonth>
       <onEventStartYear>0</onEventStartYear>
       <isFinished>true</isFinished>
-      <pickedSectors>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-        <boolean>false</boolean>
-      </pickedSectors>
     </GameEvent>
   </GameEvents>
 </GameEventContainer>
