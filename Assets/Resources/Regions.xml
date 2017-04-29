@@ -8,9 +8,9 @@
         <float>20</float>
       </eventPositions>
       <buildingPositions>
-        <float>12</float>
+        <float>16.5</float>
         <float>1</float>
-        <float>19</float>
+        <float>20</float>
       </buildingPositions>
       <name>
         <string>Noord Nederland</string>
@@ -3867,9 +3867,9 @@
         <float>13</float>
       </eventPositions>
       <buildingPositions>
-        <float>18</float>
+        <float>17.5</float>
         <float>1</float>
-        <float>15</float>
+        <float>13</float>
       </buildingPositions>
       <name>
         <string>Oost Nederland</string>
@@ -7726,9 +7726,9 @@
         <float>12</float>
       </eventPositions>
       <buildingPositions>
-        <float>9.5</float>
+        <float>10.5</float>
         <float>1</float>
-        <float>15</float>
+        <float>12</float>
       </buildingPositions>
       <name>
         <string>West Nederland</string>
@@ -11585,9 +11585,9 @@
         <float>8</float>
       </eventPositions>
       <buildingPositions>
-        <float>16</float>
+        <float>14.5</float>
         <float>1</float>
-        <float>9</float>
+        <float>8</float>
       </buildingPositions>
       <name>
         <string>Zuid Nederland</string>
