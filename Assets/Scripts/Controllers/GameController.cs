@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
 
     public GameObject eventObject;
     public GameObject buildingObject;
+    
 
     // private float time;
     public bool autoSave = true;
@@ -797,15 +798,6 @@ public class GameController : MonoBehaviour
         return updateUI.getPopupActive();
     }
 
-    public void activeBuildingUI(Building building, Region region)
-    {
-        updateUI.initBuildingPopup(building, region);
-    }
-
-    public void activeEmptyBuildingUI(Region region)
-    {
-        updateUI.initEmptyBuildingPopup(region);
-    }
 
     public void btnUseBuildingPress()
     {
@@ -822,6 +814,25 @@ public class GameController : MonoBehaviour
 
         GameObject buildingInstance = GameController.Instantiate(buildingObject);
         buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
+
+        game.gameStatistics.ModifyMoney(b.buildingMoneyCost, false);
+        updateUI.initBuildingPopup(b, r);
+    }
+
+    public void btnDeleteBuildingPress()
+    {
+        Region r = updateUI.buildingRegion;
+        Building b = updateUI.activeBuilding;
+
+        //r.DeleteBuilding(b);
+        updateUI.canvasBuildingsPopup.gameObject.SetActive(false);
+        updateUI.popupActive = false;
+        EventManager.CallPopupIsDisabled();
+
+        GameObject buildingInstance = GameController.Instantiate(buildingObject);
+        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);
+
+        updateUI.initEmptyBuildingPopup(r);
     }
 }
 

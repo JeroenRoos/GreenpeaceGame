@@ -87,10 +87,13 @@ public class UpdateUI : MonoBehaviour
     public Button btnNextTurn;
 
     // Buildings Popup
-    Building activeBuilding;
-    Region buildingRegion;
+    public Building activeBuilding;
+    public Region buildingRegion;
     public Text txtBuildingsTitle;
     public Text txtBuildingsColumn;
+    public Text txtBuildingsStats;
+    public Button btnDeleteBuilding;
+    public Text txtBtnDeleteBuilding;
 
     // Empty Building Popup
     public Text txtEmptyBuildingsTitle;
@@ -1104,13 +1107,12 @@ public class UpdateUI : MonoBehaviour
             float yOffset = 0f;
 
             // Get the X position of the button
-            //Vector3 posTxtColumn = txtCardsColumn.transform.position;
-            //RectTransform rectTxtColumn = txtCardsColumn.rectTransform;
-
             RectTransform rectBtnCardsPosition = btnCardsPosition.GetComponent<RectTransform>();
-            Vector3 btnPos = btnCardsPosition.transform.position;//Camera.current.WorldToScreenPoint(btnCardsPosition.transform.position);//btnCardsPosition.transform.position;
-            float x = btnPos.x;//posTxtColumn.x - rectTxtColumn.rect.width;
-            float y = btnPos.y;//posTxtColumn.z - rectTxtColumn.rect.height; // + 200;// (Screen.height / 2);// - rectTxtColumn.rect.height;
+            Vector3 btnPos = btnCardsPosition.transform.position;
+
+            float screenHeight = Screen.height;
+            float x = btnPos.x;
+            float y = btnPos.z + (screenHeight / 3);
 
             foreach (Card c in game.cards)
             {
@@ -1126,8 +1128,10 @@ public class UpdateUI : MonoBehaviour
 
             RectTransform rectBtnBuildingsPosition = btnCardsPosition.GetComponent<RectTransform>();
             Vector3 btnPos = btnEmptyBuildingPosition.transform.position;
+            float screenHeight = Screen.height;
+
             float x = btnPos.x;
-            float y = btnPos.y;
+            float y = btnPos.z + (screenHeight / 3);
 
             foreach (Building b in regionToBeBuild.possibleBuildings)
             {
@@ -2524,63 +2528,12 @@ public class UpdateUI : MonoBehaviour
         string[] cost = { "Kosten:" + b.buildingMoneyCost + "\n", "Cost:" + b.buildingMoneyCost + "\n" };
         txtEmptyBuildingStats.text += cost[taal];
 
-        txtEmptyBuildingStats.text += getModifiers(b);
+        txtEmptyBuildingStats.text += getBuildingModifiers(b);
 
         if (game.gameStatistics.money >= buildingToBeBuild.buildingMoneyCost)
             btnUseBuilding.interactable = true;
         else
             btnUseBuilding.interactable = false;  
-    }
-
-    private string getModifiers(Building b)
-    {
-        bool noConsequences = true;
-        string[] modifiers = { "", "" };
-
-        if (b.happinessModifier != 0d)
-        {
-            noConsequences = false;
-            string[] a = { "\nTevredenheid in regio: ", "\nHappiness in region: " };
-
-            if (b.happinessModifier > 0d)
-                a[taal] += "+" + b.happinessModifier + "%";
-            else
-                a[taal] += b.happinessModifier + "%";
-
-            modifiers[taal] += a[taal];
-        }
-        if (b.incomeModifier != 0d)
-        {
-            noConsequences = false;
-            string[] a = { "\nInkomen in regio: ", "\nIncome in region: " };
-
-            if (b.incomeModifier > 0d)
-                a[taal] += "+" + b.incomeModifier + "%";
-            else
-                a[taal] += b.incomeModifier + "%";
-
-            modifiers[taal] += a[taal];
-        }
-        if (b.pollutionModifier != 0d)
-        {
-            noConsequences = false;
-            string[] a = { "\nVervuilig in regio: ", "\nPollution in region: " };
-
-            if (b.pollutionModifier > 0d)
-                a[taal] += "+" + b.pollutionModifier + "%";
-            else
-                a[taal] += b.pollutionModifier + "%";
-
-            modifiers[taal] += a[taal];
-        }
-
-        if (noConsequences)
-        {
-            string[] nc = { "Er zijn geen aanpassingen met dit gebouw.", "This building doesn't change any values" };
-            modifiers[taal] += nc[taal];
-        }
-
-        return modifiers[taal];
     }
 
     // Afhandelen van BtnUseBuilding Click wordt in GameController gedaan
@@ -2600,21 +2553,25 @@ public class UpdateUI : MonoBehaviour
         Debug.Log("initBuildingPopup: " + activeBuilding.buildingName[0]);
 
         initBuildingText();
-        initBuildingUI();
     }
 
     private void initBuildingText()
     {
         string[] title = { "Gebouwen", "Buildings" };
         string[] column = { "Actief gebouw: " + activeBuilding.buildingName[0], "Active building: " + activeBuilding.buildingName[0] };
+        string[] btn = { "Sloop gebouw", "Destroy building" };
 
-        txtBuildingsTitle.text = title[taal]; ;
+        txtBuildingsStats.text = "";
+        txtBuildingsTitle.text = title[taal]; 
         txtBuildingsColumn.text = column[taal];
+        txtBtnDeleteBuilding.text = btn[taal];
 
-    }
+        // string[] cost = { "Kosten:" + activeBuilding.buildingMoneyCost + "\n", "Cost:" + activeBuilding.buildingMoneyCost + "\n" };
+        // txtBuildingsStats.text += cost[taal];
 
-    private void initBuildingUI()
-    {
+        string[] info = { "Effecten van " + activeBuilding.buildingName[0], "Effects caused by " + activeBuilding.buildingName[1] };
+        txtBuildingsStats.text = info[taal];
+        txtBuildingsStats.text += getBuildingModifiers(activeBuilding);
 
     }
     #endregion
@@ -3881,6 +3838,59 @@ public class UpdateUI : MonoBehaviour
         }
 
         return consequences[taal];
+    }
+    #endregion
+
+    #region Code for Building Modifiers
+    private string getBuildingModifiers(Building b)
+    {
+        bool noConsequences = true;
+        string[] modifiers = { "", "" };
+
+        if (b.happinessModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nTevredenheid in regio: ", "\nHappiness in region: " };
+
+            if (b.happinessModifier > 0d)
+                a[taal] += "+" + b.happinessModifier + "%";
+            else
+                a[taal] += b.happinessModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+        if (b.incomeModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nInkomen in regio: ", "\nIncome in region: " };
+
+            if (b.incomeModifier > 0d)
+                a[taal] += "+" + b.incomeModifier + "%";
+            else
+                a[taal] += b.incomeModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+        if (b.pollutionModifier != 0d)
+        {
+            noConsequences = false;
+            string[] a = { "\nVervuilig in regio: ", "\nPollution in region: " };
+
+            if (b.pollutionModifier > 0d)
+                a[taal] += "+" + b.pollutionModifier + "%";
+            else
+                a[taal] += b.pollutionModifier + "%";
+
+            modifiers[taal] += a[taal];
+        }
+
+        if (noConsequences)
+        {
+            string[] nc = { "Er zijn geen aanpassingen met dit gebouw.", "This building doesn't change any values" };
+            modifiers[taal] += nc[taal];
+        }
+
+        return modifiers[taal];
     }
     #endregion
 }
