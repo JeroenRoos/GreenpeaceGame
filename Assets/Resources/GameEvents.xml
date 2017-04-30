@@ -8548,7 +8548,7 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campange tegen fossiele energie</string>
+        <string>Campagne tegen fossiele energie</string>
         <string>Vergoeden van de schade</string>
       </choicesDutch>
       <choicesEnglish>
@@ -8850,8 +8850,8 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campange voor recyclen</string>
-        <string>Posteren tegen de bedrijven</string>
+        <string>Campagne voor recyclen</string>
+        <string>Protesteren tegen de bedrijven</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
@@ -11587,7 +11587,7 @@
       <choicesDutch>
         <string>Niets doen</string>
         <string>Dwing boeren milieuvriendelijk alternatief te gebruiken</string>
-        <string>Campange voor De Goede Boer</string>
+        <string>Campagne voor De Goede Boer</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
