@@ -48,6 +48,8 @@ public class Game
     public int completedActionsCount;
     public int completedQuestsCount;
     public int receivedCardsCount;
+    public float totalTimePlayed;
+
 
     public Game()
     {
@@ -76,6 +78,8 @@ public class Game
 
         currentYear = 1;
         currentMonth = 1;
+
+        totalTimePlayed = 0;
     }
 
     public void LoadRegions(List<Region> regions)

@@ -168,11 +168,11 @@ public class GameController : MonoBehaviour
 
     public void SetGameplayTrackingData()
     {
+        game.totalTimePlayed += Time.timeSinceLevelLoad;
+
         int totalMonths = game.currentMonth + game.currentYear * 12;
         Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
         {
-            //{ "Year", game.currentYear.ToString() },
-            //{ "Month", game.currentMonth.ToString() },
             { "TotalMonths", totalMonths.ToString() },
             { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
             { "Money", game.gameStatistics.money.ToString("0") },
@@ -180,8 +180,10 @@ public class GameController : MonoBehaviour
             { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
             { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
             { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
-            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0.00") }
+            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0") },
+            { "TotalTimePlayed", game.totalTimePlayed.ToString("0") }
         });
+
     }
 
     public void SetYearlyTrackingData()
@@ -200,7 +202,7 @@ public class GameController : MonoBehaviour
             { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
             { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
             { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
-            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0.00") }
+            { "TimePlayed", game.totalTimePlayed.ToString("0") }
         });
     }
 
