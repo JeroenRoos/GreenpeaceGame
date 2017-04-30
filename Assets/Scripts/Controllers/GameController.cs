@@ -58,14 +58,6 @@ public class GameController : MonoBehaviour
             LoadQuests();
             LoadBuildings();
             LoadCards();
-            game.gameStatistics.UpdateRegionalAvgs(game);
-            UpdateRegionActionAvailability();
-
-            //set reports
-            game.monthlyReport.UpdateStatistics(game.regions);
-            game.yearlyReport.UpdateStatistics(game.regions);
-
-            UpdateTimeline();
 
             /*foreach (Region region in game.regions)
             {
@@ -82,6 +74,14 @@ public class GameController : MonoBehaviour
             SaveGameEvents();
             SaveQuests();
             SaveCards();*/
+
+            game.gameStatistics.UpdateRegionalAvgs(game);
+            UpdateTimeline();
+            UpdateRegionActionAvailability();
+
+            //set reports
+            game.monthlyReport.UpdateStatistics(game.regions);
+            game.yearlyReport.UpdateStatistics(game.regions);
         }
         else
             LoadGame();
