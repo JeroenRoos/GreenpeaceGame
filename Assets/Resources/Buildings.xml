@@ -10,7 +10,7 @@
       <incomeModifier>20</incomeModifier>
       <pollutionModifier>0</pollutionModifier>
       <happinessModifier>0</happinessModifier>
-      <buildingMoneyCost>20000</buildingMoneyCost>
+      <buildingMoneyCost>40000</buildingMoneyCost>
     </Building>
     <Building>
       <buildingID>PollutionBuilding</buildingID>
@@ -19,9 +19,9 @@
         <string>Windmill park</string>
       </buildingName>
       <incomeModifier>0</incomeModifier>
-      <pollutionModifier>-10</pollutionModifier>
+      <pollutionModifier>-5</pollutionModifier>
       <happinessModifier>0</happinessModifier>
-      <buildingMoneyCost>20000</buildingMoneyCost>
+      <buildingMoneyCost>40000</buildingMoneyCost>
     </Building>
     <Building>
       <buildingID>HappinessBuilding</buildingID>
@@ -32,7 +32,7 @@
       <incomeModifier>0</incomeModifier>
       <pollutionModifier>0</pollutionModifier>
       <happinessModifier>20</happinessModifier>
-      <buildingMoneyCost>20000</buildingMoneyCost>
+      <buildingMoneyCost>40000</buildingMoneyCost>
     </Building>
   </Buildings>
 </BuildingContainer>

@@ -1408,7 +1408,7 @@ public class UpdateUI : MonoBehaviour
         string[] step1 = { "In het organisatie menu kun je het jaarlijks inkomen zien van elke regio. Handig dus om te bepalen hoeveel je kan uitgeven het komende jaar. " +
                 "\n\nVerder kun je hier advies zien van je economische adviseur en je vervuilingsadviseur op basis van de status van die statistieken. \n\nJe kunt dit menu sluiten door op de ESC toets te drukken."
                 , "In the organization menu you can view the yearly income of each region. This can come in handy when deciding your expanses the coming year. " +
-                "\n\nYou can also view the advice from your economic adviser and your pollution adviser based on the value of these statistics. \n\nYou can close this menu by pressing the ESC key."};
+                "\n\nYou can also view the advice from your economic advisor and your pollution advisor based on the value of these statistics. \n\nYou can close this menu by pressing the ESC key."};
         string[] btnText = { "Verder", "Next" };
 
         txtTutorialOrganization.text = step1[taal];
@@ -1431,7 +1431,7 @@ public class UpdateUI : MonoBehaviour
     private void initOrganizationText()
     {
         string[] left = { "Budget", "Budget" };
-        string[] right = { "Adviseurs", "Advisers" };
+        string[] right = { "Adviseurs", "advisor" };
         string[] title = { "Organisatie", "Organization" };
         string[] bank = { "Bank", "Storage" };
         string[] noord = { "Noord-Nederland", "The Netherlands North" };
@@ -1440,7 +1440,7 @@ public class UpdateUI : MonoBehaviour
         string[] west = { "West-Nederland", "The Netherlands West" };
         string[] yearly = { "Jaarlijks budget per regio", "Yearly budget per region" };
         string[] big = {"Zie hier het advies van je economische adviseur en je vervuilingsadviseur.",
-                        "Here you can see the advice of your economic adviser and your pollution adviser. " };
+                        "Here you can see the advice of your economic advisor and your pollution advisor. " };
 
         txtBigDescription.text = big[taal];
         txtColumnLeft.text = left[taal];

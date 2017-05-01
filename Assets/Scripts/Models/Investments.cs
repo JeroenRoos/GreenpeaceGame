@@ -22,7 +22,7 @@ public class Investments
         betterGameEventConsequences = new bool[5] { false, false, false, false, false };
 
         investmentModifier = 0.1;
-        investmentCost = 5000;
+        investmentCost = 10000;
     }
 
     public void InvestInActionCostReduction(List<Region> regions)
