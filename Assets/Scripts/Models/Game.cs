@@ -50,6 +50,7 @@ public class Game
     public int receivedCardsCount;
     public float totalTimePlayed;
 
+    public Tutorial tutorial;
 
     public Game()
     {
@@ -67,6 +68,8 @@ public class Game
         cards = new List<Card>();
         inventory = new Inventory();
         timeline = new Timeline();
+        tutorial = new Tutorial();
+
 
         completedEventsCount = 0;
         abandonedEventsCount = 0;

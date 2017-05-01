@@ -312,7 +312,8 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && updateUI.tutorialStep9 && updateUI.tutorialNexTurnPossibe))
+        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 &&
+            game.tutorial.tutorialStep9 && game.tutorial.tutorialNexTurnPossibe))
         {
             EventManager.CallChangeMonth();
         }
@@ -335,8 +336,8 @@ public class GameController : MonoBehaviour
     {
         if (!updateUI.popupActive)
         {
-            if (!updateUI.tutorialNextTurnDone)
-                updateUI.tutorialNextTurnDone = true;
+            if (!game.tutorial.tutorialNextTurnDone)
+                game.tutorial.tutorialNextTurnDone = true;
 
             bool isNewYear = game.UpdateCurrentMonthAndYear();
             game.ExecuteNewMonthMethods();
