@@ -28,7 +28,6 @@ public class UpdateUI : MonoBehaviour
     private List<RegionAction>[] monthlyCompletedActions;
 
     public Text test;
-    public RawImage imgBottomBar;
 
     public Dropdown dropdownRegio;
 
@@ -531,8 +530,7 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.gameObject.SetActive(false);
         btnNextTurn.gameObject.SetActive(false);
         btnInvestments.gameObject.SetActive(false);
-        btnCards.gameObject.SetActive(false);
-        imgBottomBar.gameObject.SetActive(false);
+        //imgBarBottom.gameObject.SetActive(false);
 
         game.tutorial.doTuto = true;
         game.tutorial.tutorialOnlyWestNL = true;
@@ -611,7 +609,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialOrganizationActive = true;
         imgTutorialOverworld.transform.position = imgPosMiddle;
         btnOrganization.gameObject.SetActive(true);
-        imgBottomBar.gameObject.SetActive(true);
+        //imgBarBottom.gameObject.SetActive(true);
 
         while (!canvasOrganizationPopup.gameObject.activeSelf)
             yield return null;
@@ -746,9 +744,6 @@ public class UpdateUI : MonoBehaviour
 
         btnInvestments.GetComponent<Button>();
         btnInvestments.gameObject.SetActive(false);
-
-        btnCards.GetComponent<Button>();
-        btnCards.gameObject.SetActive(false);
 
         setBooleans();
     }
@@ -889,18 +884,10 @@ public class UpdateUI : MonoBehaviour
 
     public IEnumerator showBtnInvestments()
     {
-        while (game.currentYear < 6)
+        while (game.currentYear < 3)
             yield return null;
 
         btnInvestments.gameObject.SetActive(true);
-    }
-
-    public IEnumerator showBtnCards()
-    {
-        while (game.currentYear < 4)
-            yield return null;
-
-        btnCards.gameObject.SetActive(true);
     }
     #endregion
 
@@ -2525,6 +2512,7 @@ public class UpdateUI : MonoBehaviour
         popupActive = true;
         EventManager.CallPopupIsActive();
         canvasBuildingsPopup.gameObject.SetActive(true);
+
         initBuildingText();
     }
 
