@@ -530,6 +530,8 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.gameObject.SetActive(false);
         btnNextTurn.gameObject.SetActive(false);
         btnInvestments.gameObject.SetActive(false);
+        btnCards.gameObject.SetActive(false);
+        imgBarBottom.gameObject.SetActive(false);
         //imgBarBottom.gameObject.SetActive(false);
 
         game.tutorial.doTuto = true;
@@ -600,6 +602,7 @@ public class UpdateUI : MonoBehaviour
 
         game.tutorial.tutorialOnlyWestNL = false;
         canvasTutorial.gameObject.SetActive(true);
+        imgBarBottom.gameObject.SetActive(true);
         string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. \n\nDruk nu op de Organisatie knop.",
             "At the bottom of your screen you can go to the Organization menu by pressing the button.\n\nPress the Organization Button " };
         txtTurorialStep1.text = step5[taal];
@@ -745,6 +748,9 @@ public class UpdateUI : MonoBehaviour
         btnInvestments.GetComponent<Button>();
         btnInvestments.gameObject.SetActive(false);
 
+        btnCards.GetComponent<Button>();
+        btnCards.gameObject.SetActive(false);
+
         setBooleans();
     }
 
@@ -884,10 +890,18 @@ public class UpdateUI : MonoBehaviour
 
     public IEnumerator showBtnInvestments()
     {
-        while (game.currentYear < 3)
+        while (game.currentYear < 6)
             yield return null;
 
         btnInvestments.gameObject.SetActive(true);
+    }
+
+    public IEnumerator showBtnCards()
+    {
+        while (game.currentYear < 4)
+            yield return null;
+
+        btnCards.gameObject.SetActive(true);
     }
     #endregion
 
