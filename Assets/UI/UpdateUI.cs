@@ -377,44 +377,6 @@ public class UpdateUI : MonoBehaviour
     private bool btnCardsHoverCheck;
     private bool refreshCards;
 
-    public bool tutorialActive;
-    private bool tutorialNoTooltip;
-    private bool tutorialStep2;
-    private bool tutorialStep3;
-    private bool tutorialStep4;
-    private bool tutorialStep5;
-    private bool regionWestActivated;
-    private bool tutorialStep6;
-    private bool tutorialStep7;
-    private bool tutorialCheckActionDone;
-    private bool tutorialStep8;
-    public bool tutorialStep9;
-    private bool tutorialStep10;
-    private bool tutorialstep11;
-    public bool tutorialstep12;
-    private bool tutorialStep13;
-    private bool tutorialStep14;
-    private bool tutorialStep15;
-    private bool tutorialStep16;
-    private bool tutorialStep17;
-    private bool tutorialStep18;
-    private bool tutorialstep19;
-    private bool tutorialStep20;
-    private bool tutorialStep21;
-    private bool tutorialOrganizationDone;
-    public bool tutorialNextTurnDone;
-    public bool tutorialEventsDone;
-    public bool tutorialMonthlyReportDone;
-    public bool tutorialNexTurnPossibe;
-    public bool tutorialQuestsActive;
-    public bool tutorialOrganizationActive;
-    public bool tutorialeventsClickable;
-    private bool tutorialOnlyWestNL;
-    public bool tutorialRegionActive;
-    public bool tutorialEventsActive;
-    public bool tutorialMonthlyReportActive;
-    private bool doTuto;
-
     private bool tooltipActive;
     private bool regionHouseholdsCheck;
     private bool regionAgricultureCheck;
@@ -449,9 +411,9 @@ public class UpdateUI : MonoBehaviour
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            tutorialActive = false;
+            game.tutorial.tutorialActive = true;
 
-        if (tutorialActive)
+        if (game.tutorial.tutorialActive)
             initTutorialActive();
         else
             initTutorialNotActive();
@@ -462,7 +424,7 @@ public class UpdateUI : MonoBehaviour
 
     void Update()
     {
-        if (tutorialStep6)
+        if (game.tutorial.tutorialStep6)
             popupController();
 
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
@@ -492,23 +454,23 @@ public class UpdateUI : MonoBehaviour
     private void initTutorialActive()
     {
         canvasTutorial.gameObject.SetActive(true);
-        tutorialNoTooltip = true;
-        regionWestActivated = false;
-        tutorialCheckActionDone = false;
+        game.tutorial.tutorialNoTooltip = true;
+        game.tutorial.regionWestActivated = false;
+        game.tutorial.tutorialCheckActionDone = false;
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
         tutorialIndex = 1;
         canvasTutorial.gameObject.SetActive(true);
-        tutorialNexTurnPossibe = false;
-        tutorialNextTurnDone = false;
-        tutorialQuestsActive = false;
-        tutorialOrganizationActive = false;
-        tutorialeventsClickable = false;
-        tutorialOnlyWestNL = false;
-        tutorialRegionActive = false;
-        tutorialEventsActive = false;
-        tutorialMonthlyReportActive = false;
+        game.tutorial.tutorialNexTurnPossibe = false;
+        game.tutorial.tutorialNextTurnDone = false;
+        game.tutorial.tutorialQuestsActive = false;
+        game.tutorial.tutorialOrganizationActive = false;
+        game.tutorial.tutorialeventsClickable = false;
+        game.tutorial.tutorialOnlyWestNL = false;
+        game.tutorial.tutorialRegionActive = false;
+        game.tutorial.tutorialEventsActive = false;
+        game.tutorial.tutorialMonthlyReportActive = false;
         StartCoroutine(initTutorialText());
     }
 
@@ -517,45 +479,45 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
-        doTuto = false;
+        game.tutorial.doTuto = false;
         imgTutorialOverworld.gameObject.SetActive(false);
         btnTutorialOverworld.gameObject.SetActive(false);
         btnTutorialRegion.gameObject.SetActive(false);
         txtTutorialOverworld.enabled = false;
         canvasTutorial.gameObject.SetActive(false);
-        tutorialStep2 = true;
-        tutorialStep3 = true;
-        tutorialStep4 = true;
-        tutorialStep5 = true;
-        tutorialStep6 = true;
-        tutorialStep7 = true;
-        tutorialStep8 = true;
-        tutorialStep9 = true;
-        tutorialStep10 = true;
-        tutorialNexTurnPossibe = true;
-        tutorialEventsDone = true;
-        tutorialMonthlyReportDone = true;
-        tutorialstep11 = true;
-        tutorialstep12 = true;
-        tutorialStep13 = true;
-        tutorialStep14 = true;
-        tutorialStep15 = true;
-        tutorialStep16 = true;
-        tutorialStep17 = true;
-        tutorialStep18 = true;
-        tutorialstep19 = true;
-        tutorialStep20 = true;
-        tutorialStep21 = true;
-        regionWestActivated = true;
-        tutorialCheckActionDone = true;
-        tutorialQuestsActive = false;
+        game.tutorial.tutorialStep2 = true;
+        game.tutorial.tutorialStep3 = true;
+        game.tutorial.tutorialStep4 = true;
+        game.tutorial.tutorialStep5 = true;
+        game.tutorial.tutorialStep6 = true;
+        game.tutorial.tutorialStep7 = true;
+        game.tutorial.tutorialStep8 = true;
+        game.tutorial.tutorialStep9 = true;
+        game.tutorial.tutorialStep10 = true;
+        game.tutorial.tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialEventsDone = true;
+        game.tutorial.tutorialMonthlyReportDone = true;
+        game.tutorial.tutorialstep11 = true;
+        game.tutorial.tutorialstep12 = true;
+        game.tutorial.tutorialStep13 = true;
+        game.tutorial.tutorialStep14 = true;
+        game.tutorial.tutorialStep15 = true;
+        game.tutorial.tutorialStep16 = true;
+        game.tutorial.tutorialStep17 = true;
+        game.tutorial.tutorialStep18 = true;
+        game.tutorial.tutorialstep19 = true;
+        game.tutorial.tutorialStep20 = true;
+        game.tutorial.tutorialStep21 = true;
+        game.tutorial.regionWestActivated = true;
+        game.tutorial.tutorialCheckActionDone = true;
+        game.tutorial.tutorialQuestsActive = false;
 
-        tutorialeventsClickable = true;
-        tutorialOnlyWestNL = true;
-        tutorialRegionActive = false;
-        tutorialEventsActive = false;
-        tutorialMonthlyReportActive = false;
-        tutorialOrganizationActive = false;
+        game.tutorial.tutorialeventsClickable = true;
+        game.tutorial.tutorialOnlyWestNL = true;
+        game.tutorial.tutorialRegionActive = false;
+        game.tutorial.tutorialEventsActive = false;
+        game.tutorial.tutorialMonthlyReportActive = false;
+        game.tutorial.tutorialOrganizationActive = false;
     }
     IEnumerator initTutorialText()
     {
@@ -570,8 +532,8 @@ public class UpdateUI : MonoBehaviour
         btnInvestments.gameObject.SetActive(false);
         //imgBarBottom.gameObject.SetActive(false);
 
-        doTuto = true;
-        tutorialOnlyWestNL = true;
+        game.tutorial.doTuto = true;
+        game.tutorial.tutorialOnlyWestNL = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " +
                 "\n\nDe inwoners moeten begrijpen dat een groen land belangrijk is." 
                 , "Welcome! The government has given your organisation the task to make " +
@@ -585,7 +547,7 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = false;
         imgTutorialOverworld.transform.position = imgPosRight;
 
-        while (!tutorialStep2)
+        while (!game.tutorial.tutorialStep2)
             yield return null;
 
         string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. \n\nZoals je kunt zien zitten we nu in 2020. " +
@@ -596,7 +558,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = true;
         imgTutorialStep2Highlight2.enabled = true;
 
-        while (!tutorialStep3)
+        while (!game.tutorial.tutorialStep3)
             yield return null;
 
         //tutorialStep3 = false;
@@ -612,7 +574,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
 
-        while (!tutorialStep4)
+        while (!game.tutorial.tutorialStep4)
             yield return null;
 
         imgTutorialOverworld.gameObject.transform.position = imgPosRight;
@@ -630,13 +592,13 @@ public class UpdateUI : MonoBehaviour
 
         canvasTutorial.gameObject.SetActive(false);
 
-        while (!tutorialCheckActionDone)
+        while (!game.tutorial.tutorialCheckActionDone)
             yield return null;
 
         while (canvasRegioPopup.gameObject.activeSelf)
             yield return null;
 
-        tutorialOnlyWestNL = false;
+        game.tutorial.tutorialOnlyWestNL = false;
         canvasTutorial.gameObject.SetActive(true);
         string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. \n\nDruk nu op de Organisatie knop.",
             "At the bottom of your screen you can go to the Organization menu by pressing the button.\n\nPress the Organization Button " };
@@ -644,7 +606,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialStep1BtnText.text = btnText[taal];
         imgTutorialStepOrgMenuHightlight.enabled = true;
         btnOrganization.interactable = true;
-        tutorialOrganizationActive = true;
+        game.tutorial.tutorialOrganizationActive = true;
         imgTutorialOverworld.transform.position = imgPosMiddle;
         btnOrganization.gameObject.SetActive(true);
         //imgBarBottom.gameObject.SetActive(true);
@@ -655,7 +617,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStepOrgMenuHightlight.enabled = false;
         canvasTutorial.gameObject.SetActive(false);
 
-        while (!tutorialOrganizationDone)
+        while (!game.tutorial.tutorialOrganizationDone)
             yield return null;
 
         while (canvasOrganizationPopup.gameObject.activeSelf)
@@ -670,16 +632,16 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step6[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
 
-        tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialNexTurnPossibe = true;
 
-        while (!tutorialNextTurnDone)
+        while (!game.tutorial.tutorialNextTurnDone)
             yield return null;
 
-        tutorialNexTurnPossibe = false;
+        game.tutorial.tutorialNexTurnPossibe = false;
         btnNextTurn.interactable = false;
 
 
-        tutorialeventsClickable = false;
+        game.tutorial.tutorialeventsClickable = false;
         canvasTutorial.gameObject.SetActive(true);
         string[] step9 = { "Je kunt linksonder in je scherm ook een knop zien. Deze knop geeft een overzicht van de veranderingen tussen de huidige en de vorige maand. Je krijgt dit rapport elke maand.  " +
                 "\n\n Druk op de knop om het maandelijkse overzicht te tonen."
@@ -687,7 +649,7 @@ public class UpdateUI : MonoBehaviour
                 "\n\nClick on the button to view your monthly report."};
         txtTurorialStep1.text = step9[taal];
         btnMonthlyReportStats.interactable = true;
-        tutorialMonthlyReportActive = true;
+        game.tutorial.tutorialMonthlyReportActive = true;
         imgTutorialOverworld.transform.position = imgPosLeft;
 
         while (!canvasMonthlyReport.gameObject.activeSelf)
@@ -695,7 +657,7 @@ public class UpdateUI : MonoBehaviour
 
         canvasTutorial.gameObject.SetActive(false);
 
-        while (!tutorialMonthlyReportDone)
+        while (!game.tutorial.tutorialMonthlyReportDone)
             yield return null;
 
         while (canvasMonthlyReport.gameObject.activeSelf)
@@ -711,24 +673,24 @@ public class UpdateUI : MonoBehaviour
         txtTutorialStep1BtnText.text = btnText[taal];
         btnTutorialNext.gameObject.SetActive(true);
 
-        while (!tutorialstep19)
+        while (!game.tutorial.tutorialstep19)
             yield return null;
 
         btnTutorialNext.gameObject.SetActive(false);
-        tutorialeventsClickable = true;
+        game.tutorial.tutorialeventsClickable = true;
         string[] step8 = { "Door op het icoon van de event te klikken krijg je een pop-up. In deze pop-up kun je kiezen welke actie je bij dit event wil nemen. " +
                 "\n\nKlik nu op het icoontje van de event. "
                 , "By clicking on the icon of the event you get a popup. In this popup you can chose which action you want to take with this event.\n\nClick on the icon of the event to open the popup."};
         txtTurorialStep1.text = step8[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
-        tutorialEventsActive = true;
+        game.tutorial.tutorialEventsActive = true;
 
         while (!canvasEventPopup.gameObject.activeSelf)
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
 
-        while (!tutorialEventsDone)
+        while (!game.tutorial.tutorialEventsDone)
             yield return null;
 
         while (canvasEventPopup.gameObject.activeSelf)
@@ -742,13 +704,13 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step10[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
 
-        while (!tutorialStep21)
+        while (!game.tutorial.tutorialStep21)
             yield return null;
 
-        tutorialNexTurnPossibe = true;
-        tutorialActive = false;
+        game.tutorial.tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
-        tutorialeventsClickable = true;
+        game.tutorial.tutorialeventsClickable = true;
         btnNextTurn.interactable = true;
         btnAfterActionReportCompleted.interactable = true;
     }
@@ -862,7 +824,7 @@ public class UpdateUI : MonoBehaviour
         canvasCardsPopup.GetComponent<Canvas>();
         canvasCardsPopup.gameObject.SetActive(false);
 
-        if (tutorialActive)
+        if (game.tutorial.tutorialActive)
         {
             canvasTutorial.GetComponent<Canvas>();
             canvasTutorial.gameObject.SetActive(true);
@@ -888,7 +850,7 @@ public class UpdateUI : MonoBehaviour
 
         //tutorialActive = true;
 
-        if (doTuto)
+        if (game.tutorial.doTuto)
         {
             btnNextTurn.interactable = false;
             //btnOrganization.interactable = false;
@@ -898,9 +860,9 @@ public class UpdateUI : MonoBehaviour
             imgTutorialStepOrgMenuHightlight.enabled = false;
             imgTutorialOverworld.gameObject.SetActive(true);
 
-            tutorialQuestsActive = true;
-            tutorialeventsClickable = false;
-            tutorialNexTurnPossibe = false;
+            game.tutorial.tutorialQuestsActive = true;
+            game.tutorial.tutorialeventsClickable = false;
+            game.tutorial.tutorialNexTurnPossibe = false;
             //tutorialRegionsClickable = false;
 
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. \n\nOpen het Missies menu door op de Missies knop te drukken. ",
@@ -933,17 +895,19 @@ public class UpdateUI : MonoBehaviour
     void popupController()
     {
         // Close active popup with Escape / Open Menu popup with Escape if no popup is active
-        if (Input.GetKeyUp(KeyCode.Escape) && !tutorialRegionActive && !tutorialEventsActive && !tutorialQuestsActive && !tutorialOrganizationActive && !tutorialMonthlyReportActive)
+        if (Input.GetKeyUp(KeyCode.Escape) && !game.tutorial.tutorialRegionActive && !game.tutorial.tutorialEventsActive &&
+            !game.tutorial.tutorialQuestsActive && !game.tutorial.tutorialOrganizationActive &&
+            !game.tutorial.tutorialMonthlyReportActive)
             closeWithEscape();
 
         // Open and close Organization popup with O
         else if (Input.GetKeyUp(KeyCode.O))
-            if (tutorialStep8)
+            if (game.tutorial.tutorialStep8)
                 controllerOrganizationHotkey();
 
             // Open and close Timeline popup with T
             else if (Input.GetKeyUp(KeyCode.T))
-                if (!tutorialActive)
+                if (!game.tutorial.tutorialActive)
                     controllerTimelinePopup();
     }
 
@@ -1074,13 +1038,13 @@ public class UpdateUI : MonoBehaviour
 
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
-        if (checkTooltip() && !popupActive && tutorialStep3)
+        if (checkTooltip() && !popupActive && game.tutorial.tutorialStep3)
         {
             lblReqt.x = v3Tooltip.x + 10; lblReqt.y = v3Tooltip.z + 40;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
         }
 
-        if (regionHouseholdsCheck && popupActive && tutorialStep3)
+        if (regionHouseholdsCheck && popupActive && game.tutorial.tutorialStep3)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 70;
@@ -1088,14 +1052,14 @@ public class UpdateUI : MonoBehaviour
             updateRegionSectors();
             
         }
-        else if (regionAgricultureCheck && popupActive && tutorialStep3)
+        else if (regionAgricultureCheck && popupActive && game.tutorial.tutorialStep3)
         {
             v3Tooltip = emptybtnHoverAgriculture.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 150;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipAgriculture + "</color>", tooltipStyle);
             updateRegionSectors();
         }
-        else if (regionCompanyCheck && popupActive && tutorialStep3)
+        else if (regionCompanyCheck && popupActive && game.tutorial.tutorialStep3)
         {
             v3Tooltip = emptybtnHoverCompanies.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 270;
@@ -1415,7 +1379,7 @@ public class UpdateUI : MonoBehaviour
         //initOrganizationText();
         initAdvisersText();
 
-        if (/*tutorialStep8 && */tutorialActive && tutorialOrganizationActive)
+        if (/*tutorialStep8 && */game.tutorial.tutorialActive && game.tutorial.tutorialOrganizationActive)
         {
             imgTutorialOrganization.enabled = true;
             txtTutorialOrganization.enabled = true;
@@ -1435,12 +1399,12 @@ public class UpdateUI : MonoBehaviour
         txtTutorialOrganization.text = step1[taal];
         txtTutorialOrganizationBtnText.text = btnText[taal];
 
-        while (!tutorialStep9)
+        while (!game.tutorial.tutorialStep9)
             yield return null;
 
         imgTutorialOrganization.gameObject.SetActive(false);
-        tutorialOrganizationDone = true;
-        tutorialOrganizationActive = false;
+        game.tutorial.tutorialOrganizationDone = true;
+        game.tutorial.tutorialOrganizationActive = false;
     }
 
     private void initAdvisersText()
@@ -1495,14 +1459,14 @@ public class UpdateUI : MonoBehaviour
     public void regionClick(Region region)
     {
         // Ga naar WEST tijdens de tutorial
-        if (tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
+        if (game.tutorial.tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
         {
-            if (tutorialOnlyWestNL)
+            if (game.tutorial.tutorialOnlyWestNL)
             {
                 if (region.name[0] == "West Nederland")
                 {
                     startRegionPopup(region);
-                    regionWestActivated = true;
+                    game.tutorial.regionWestActivated = true;
 
                     btnTutorialRegion.gameObject.SetActive(true);
                     StartCoroutine(tutorialRegionPopup());
@@ -1517,7 +1481,7 @@ public class UpdateUI : MonoBehaviour
         // Andere reagions clickable tijdens tutorial
         // Na de tutorial
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
-        && !btnMenuCheck && !btnTimelineCheck && !tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck && !btnMonthlyReportCheck && !btnYearlyReportCheck
+        && !btnMenuCheck && !btnTimelineCheck && !game.tutorial.tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck && !btnMonthlyReportCheck && !btnYearlyReportCheck
         && !btnInvestementsHoverCheck && !btnCardsHoverCheck)
         {
             startRegionPopup(region);
@@ -1538,7 +1502,7 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialRegionPopup()
     {
-        tutorialRegionActive = true;
+        game.tutorial.tutorialRegionActive = true;
 
         string[] step1 = { "Elke regio bestaat uit 3 sectoren. Deze sectoren zijn Huishoudens, Landbouw en Bedrijven. \n\nDe sectoren hebben statistieken voor tevredenheid, vervuiling, milieubewustheid en welvaart. "
                 + "Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. \n\nJe kunt deze sector statistieken zien door met je muis over de sector te hoveren."
@@ -1549,7 +1513,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialRegion.text = step1[taal];
         txtTurorialReginoBtnText.text = btnText[taal];
 
-        while (!tutorialStep6)
+        while (!game.tutorial.tutorialStep6)
             yield return null;
 
         string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. \n\nSommige acties kunnen ook maar 1 keer of eens in de zoveel tijd gedaan worden. "
@@ -1566,11 +1530,11 @@ public class UpdateUI : MonoBehaviour
         imgNewPos.x = imgNewPos.x - Screen.width / 4;
         imgTutorialRegion.gameObject.transform.position = imgNewPos;
 
-        while (!tutorialCheckActionDone)
+        while (!game.tutorial.tutorialCheckActionDone)
             yield return null;
 
         imgTutorialRegion.gameObject.SetActive(false);
-        tutorialRegionActive = false;
+        game.tutorial.tutorialRegionActive = false;
     }
 
     private void updateRegionScreenUI()
@@ -1852,8 +1816,8 @@ public class UpdateUI : MonoBehaviour
         if (!checkboxCompanies)
             checkboxRegionCompanies.isOn = true;
 
-        if (!tutorialCheckActionDone)
-            tutorialCheckActionDone = true;
+        if (!game.tutorial.tutorialCheckActionDone)
+            game.tutorial.tutorialCheckActionDone = true;
 
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
@@ -1873,12 +1837,12 @@ public class UpdateUI : MonoBehaviour
         txtTutorialAfterTurn.text = step1[taal];
         txtTutorialAfterTurnBtn.text = btnText[taal];
 
-        while (!tutorialStep18)
+        while (!game.tutorial.tutorialStep18)
             yield return null;
         
         imgTutorialAfterTurn.gameObject.SetActive(false);
-        tutorialMonthlyReportDone = true;
-        tutorialMonthlyReportActive = false;
+        game.tutorial.tutorialMonthlyReportDone = true;
+        game.tutorial.tutorialMonthlyReportActive = false;
     }
 
     public void InitMonthlyReport()
@@ -2190,7 +2154,7 @@ public class UpdateUI : MonoBehaviour
         txtQuestsTitle.text = title[taal];
         txtQuestsDescription.text = description[taal];
 
-        if (tutorialQuestsActive && doTuto)
+        if (game.tutorial.tutorialQuestsActive && game.tutorial.doTuto)
             StartCoroutine(tutorialQuests());
 
         foreach (Quest q in game.quests)
@@ -2219,12 +2183,12 @@ public class UpdateUI : MonoBehaviour
         txtTutorialQuests.text = step2[taal];
         txtTutorialQuestsBtn.text = txtBtn[taal];
 
-        while (!tutorialStep16)
+        while (!game.tutorial.tutorialStep16)
             yield return null;
 
 
         imgTutorialQuests.gameObject.SetActive(false);
-        tutorialQuestsActive = false;
+        game.tutorial.tutorialQuestsActive = false;
 
         while (canvasQuestsPopup.gameObject.activeSelf)
             yield return null;
@@ -2242,12 +2206,12 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step3[taal];
         txtTutorialStep1BtnText.text = txtButton[taal];
 
-        while (!tutorialStep17)
+        while (!game.tutorial.tutorialStep17)
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
-        tutorialeventsClickable = true;
-        tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialeventsClickable = true;
+        game.tutorial.tutorialNexTurnPossibe = true;
         btnNextTurn.interactable = true;
     }
     
@@ -2326,7 +2290,7 @@ public class UpdateUI : MonoBehaviour
         initEventUI();
         initEventText(e);
 
-        if (tutorialActive && tutorialEventsActive)//tutorialstep12)
+        if (game.tutorial.tutorialActive && game.tutorial.tutorialEventsActive)//tutorialstep12)
         {
             imgTutorialEvents.gameObject.SetActive(true);
             StartCoroutine(eventTutorial());
@@ -2344,7 +2308,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialEvent.text = txtTutorial[taal];
         txtTutorialEventBtn.text = txtBtn[taal];
 
-        while (!tutorialStep20)
+        while (!game.tutorial.tutorialStep20)
             yield return null;
 
         imgTutorialEvents.gameObject.SetActive(false);
@@ -2479,11 +2443,11 @@ public class UpdateUI : MonoBehaviour
         popupActive = false;
         EventManager.CallPopupIsDisabled();
 
-        if (!tutorialEventsDone)
-            tutorialEventsDone = true;
+        if (!game.tutorial.tutorialEventsDone)
+            game.tutorial.tutorialEventsDone = true;
 
-        if (tutorialEventsActive)
-            tutorialEventsActive = false;
+        if (game.tutorial.tutorialEventsActive)
+            game.tutorial.tutorialEventsActive = false;
     }
     #endregion
 
@@ -2945,7 +2909,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for Button Presses for Popups
     public void btnTimelineClick()
     {
-        if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive && !tutorialActive && !tutorialQuestsActive)
+        if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive && !game.tutorial.tutorialActive && !game.tutorial.tutorialQuestsActive)
         {
             canvasTimelinePopup.gameObject.SetActive(true);
             popupActive = true;
@@ -2955,7 +2919,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnOrganizationClick()
     {
-        if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive/* && tutorialStep8 */&& !tutorialQuestsActive)
+        if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive/* && tutorialStep8 */&& !game.tutorial.tutorialQuestsActive)
         {
             EventManager.CallPlayButtonClickSFX();
             canvasOrganizationPopup.gameObject.SetActive(true);
@@ -3010,7 +2974,7 @@ public class UpdateUI : MonoBehaviour
             EventManager.CallPopupIsActive();
             updateTextAfterActionStats(true);
 
-            if (tutorialActive && tutorialMonthlyReportActive)
+            if (game.tutorial.tutorialActive && game.tutorial.tutorialMonthlyReportActive)
             {
                 imgTutorialAfterTurn.gameObject.SetActive(true);
                 StartCoroutine(tutorialMonthlyReport());
@@ -3070,7 +3034,7 @@ public class UpdateUI : MonoBehaviour
     public void btnPopupCloseClick()
     {
         EventManager.CallPlayButtonClickSFX();
-        if (canvasOrganizationPopup.gameObject.activeSelf && !tutorialOrganizationActive)
+        if (canvasOrganizationPopup.gameObject.activeSelf && !game.tutorial.tutorialOrganizationActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
@@ -3100,13 +3064,13 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasRegioPopup.gameObject.activeSelf && !tutorialRegionActive)
+        else if (canvasRegioPopup.gameObject.activeSelf && !game.tutorial.tutorialRegionActive)
         {
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasMonthlyReport.gameObject.activeSelf && !tutorialMonthlyReportActive)
+        else if (canvasMonthlyReport.gameObject.activeSelf && !game.tutorial.tutorialMonthlyReportActive)
         {
             canvasMonthlyReport.gameObject.SetActive(false);
             popupActive = false;
@@ -3124,13 +3088,13 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }*/
-        else if (canvasQuestsPopup.gameObject.activeSelf && !tutorialQuestsActive)
+        else if (canvasQuestsPopup.gameObject.activeSelf && !game.tutorial.tutorialQuestsActive)
         {
             canvasQuestsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasEventPopup.gameObject.activeSelf && !tutorialEventsActive)
+        else if (canvasEventPopup.gameObject.activeSelf && !game.tutorial.tutorialEventsActive)
         {
             canvasEventPopup.gameObject.SetActive(false);
             popupActive = false;
@@ -3455,13 +3419,13 @@ public class UpdateUI : MonoBehaviour
     #region Next Turn Button Code
     public void nextTurnOnClick()
     {
-        if (tutorialNexTurnPossibe && game.currentYear < 31)
+        if (game.tutorial.tutorialNexTurnPossibe && game.currentYear < 31)
         {
             EventManager.CallPlayButtonClickSFX();
             EventManager.CallChangeMonth();
 
-            if (!tutorialNextTurnDone)
-                tutorialNextTurnDone = true;
+            if (!game.tutorial.tutorialNextTurnDone)
+                game.tutorial.tutorialNextTurnDone = true;
 
         }
     }
@@ -3592,17 +3556,17 @@ public class UpdateUI : MonoBehaviour
         EventManager.CallPlayButtonClickSFX();
         if (tutorialIndex == 1)
         {
-            tutorialStep2 = true;
+            game.tutorial.tutorialStep2 = true;
             tutorialIndex++;
         }
         else if (tutorialIndex == 2)
         {
-            tutorialStep3 = true;
+            game.tutorial.tutorialStep3 = true;
             tutorialIndex++;
         }
         else if (tutorialIndex == 3)
         {
-            tutorialStep4 = true;
+            game.tutorial.tutorialStep4 = true;
             tutorialIndex++;
         }
         //else if (tutorialIndex == 4)
@@ -3622,20 +3586,20 @@ public class UpdateUI : MonoBehaviour
         //}
         else if (tutorialIndex == 4)
         {
-            tutorialStep6 = true;
+            game.tutorial.tutorialStep6 = true;
             tutorialIndex++;
             tutorialIndex++;
             tutorialIndex++;
         }
         else if (tutorialIndex == 7)
         {
-            tutorialStep9 = true;
+            game.tutorial.tutorialStep9 = true;
             tutorialIndex++;
             tutorialIndex++;
         }
         else if (tutorialIndex == 9)
         {
-            tutorialstep11 = true;
+            game.tutorial.tutorialstep11 = true;
             tutorialIndex++;
             tutorialIndex++;
         }
@@ -3646,13 +3610,13 @@ public class UpdateUI : MonoBehaviour
         //}
         else if (tutorialIndex == 11)
         {
-            tutorialStep13 = true;
+            game.tutorial.tutorialStep13 = true;
             tutorialIndex++;
             tutorialIndex++;
         }
         else if (tutorialIndex == 13)
         {
-            tutorialStep14 = true;
+            game.tutorial.tutorialStep14 = true;
             tutorialIndex++;
         }
         //else if (tutorialIndex == 14)
@@ -3662,33 +3626,33 @@ public class UpdateUI : MonoBehaviour
         //}
         else if (tutorialIndex == 14)
         {
-            tutorialStep16 = true;
+            game.tutorial.tutorialStep16 = true;
             tutorialIndex++;
             tutorialIndex++;
         }
         else if (tutorialIndex == 16)
         {
-            tutorialStep17 = true;
+            game.tutorial.tutorialStep17 = true;
             tutorialIndex++;
         }
         else if (tutorialIndex == 17)
         {
-            tutorialStep18 = true;
+            game.tutorial.tutorialStep18 = true;
             tutorialIndex++;
         }
         else if (tutorialIndex == 18)
         {
-            tutorialstep19 = true;
+            game.tutorial.tutorialstep19 = true;
             tutorialIndex++;
         }
         else if (tutorialIndex == 19)
         {
-            tutorialStep20 = true;
+            game.tutorial.tutorialStep20 = true;
             tutorialIndex++;
         }
         else if (tutorialIndex == 20)
         {
-            tutorialStep21 = true;
+            game.tutorial.tutorialStep21 = true;
             tutorialIndex++;
         }
     }

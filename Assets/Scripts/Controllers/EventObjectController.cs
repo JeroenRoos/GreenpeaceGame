@@ -31,7 +31,7 @@ public class EventObjectController : MonoBehaviour
     {
         if (!updateUI.popupActive)
         {
-            if (updateUI.tutorialeventsClickable)
+            if (gameController.game.tutorial.tutorialeventsClickable)
             {
                 EventManager.CallPlayButtonClickSFX();
                 updateUI.popupActive = false;
