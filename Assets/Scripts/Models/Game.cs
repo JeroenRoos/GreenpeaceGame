@@ -77,7 +77,7 @@ public class Game
         completedQuestsCount = 0;
         receivedCardsCount = 0;
 
-        gameStatistics = new GameStatistics(20000, 17000000, new Energy());
+        gameStatistics = new GameStatistics(10000, 17000000, new Energy());
 
         currentYear = 1;
         currentMonth = 1;
