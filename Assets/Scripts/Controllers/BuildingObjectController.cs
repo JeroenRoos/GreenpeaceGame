@@ -15,13 +15,7 @@ public class BuildingObjectController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Start BuildingObjectController");
         updateUI = gameController.GetComponent<UpdateUI>();
-
-        if (building == null)
-        {
-            Debug.Log("START NULL");
-        }
     }
 
     private void Update()
@@ -65,8 +59,6 @@ public class BuildingObjectController : MonoBehaviour
 
         if (building != null)
         {
-            //gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("null");
-
             // Hij komt in deze Method maar print nog steeds de empty
             // Ook opent hij nog de empty als je klikt op icon terwijl dat niet moet
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
@@ -74,10 +66,7 @@ public class BuildingObjectController : MonoBehaviour
         }
         else
         {
-            Debug.Log("placeBuildingIcon: Building is NULL");
-
-            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
-            
+            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");            
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
         }
     }

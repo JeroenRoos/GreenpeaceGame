@@ -104,6 +104,7 @@ public class GameController : MonoBehaviour
         updateUI.LinkGame(game);
         StartCoroutine(updateUI.showBtnQuests());
         StartCoroutine(updateUI.showBtnInvestments());
+        StartCoroutine(updateUI.showBtnCards());
 
         //afterActionPosition = new Vector3[3];
         //afterActionPosition[0] = new Vector3( 5, 5, 0);
