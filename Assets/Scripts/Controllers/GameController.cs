@@ -15,10 +15,8 @@ using UnityEngine.Analytics;
 public class GameController : MonoBehaviour
 {
     public Game game;
-
-    private EventObjectController eventObjectController;
-    private BuildingObjectController buildingsObjectController;
-    //GameObject buildingInstance;
+    
+    GameObject[] buildingInstances; //noord,oost,west,zuid
     public Button MonthlyReportButon;
     public Button YearlyReportButton;
     public Button CompletedButton;
@@ -89,22 +87,12 @@ public class GameController : MonoBehaviour
         updateUI = GetComponent<UpdateUI>();
         //setBuildingTextures();
 
-        foreach (Region r in game.regions)
-        {
-            GameObject buildingInstance = GameController.Instantiate(buildingObject);
+        buildingInstances = new GameObject[4] { Instantiate(buildingObject), Instantiate(buildingObject),
+                                                Instantiate(buildingObject), Instantiate(buildingObject) };
 
-            if (r.activeBuilding != null)
-            {
-                buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, r.activeBuilding);
-            }
-            else
-                buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);
-        }
+        for (int i = 0; i < game.regions.Count; i++)
+            buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, game.regions[i], game.regions[i].activeBuilding);
 
-        buildingsObjectController = GetComponent<BuildingObjectController>();
-
-
-        eventObjectController = GetComponent<EventObjectController>();
         foreach (Region r in game.regions)
         {
             foreach (GameEvent e in r.inProgressGameEvents)
@@ -808,11 +796,16 @@ public class GameController : MonoBehaviour
         updateUI.popupActive = false;
         EventManager.CallPopupIsDisabled();
 
-        Debug.Log("btnUseBuildingPress: " + r.name[0]);
-        Debug.Log("btnUseBuildingPress: " + b.buildingName[0]);
+        for (int i = 0; i < game.regions.Count; i++)
+        {
+            if (r == game.regions[i])
+            {
+                Destroy(buildingInstances[i]);
 
-        GameObject buildingInstance = GameController.Instantiate(buildingObject);
-        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
+                buildingInstances[i] = GameController.Instantiate(buildingObject);
+                buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
+            }
+        }
 
         game.gameStatistics.ModifyMoney(b.buildingMoneyCost, false);
         updateUI.initBuildingPopup(b, r);
