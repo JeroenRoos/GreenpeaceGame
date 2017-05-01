@@ -287,7 +287,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnMonthlyReportStats;
     public Button btnYearlyReportStats;
     public Button btnAfterActionReportCompleted;
-    public Image imgBarBottom;
+    public RawImage imgBarBottom;
     public Button btnCards;
     public Button btnCardsPosition;
 
