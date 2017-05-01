@@ -25,7 +25,7 @@ public class BuildingObjectController : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (!updateUI.popupActive)
+        if (!updateUI.popupActive)// && gameController.game.tutorial.tutorialBuildingsActive)
         {
             EventManager.CallPlayButtonClickSFX();
 

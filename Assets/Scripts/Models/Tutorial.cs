@@ -46,6 +46,10 @@ public class Tutorial
     public bool tutorialEventsActive;
     public bool tutorialMonthlyReportActive;
     public bool doTuto;
+    public bool tutorialCardsActive;
+    public bool tutorialCardsDone;
+    public bool tutorialInvestementsActive;
+
     public bool[] tutorialChecks;
 
     public Tutorial() { }
