@@ -287,7 +287,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnMonthlyReportStats;
     public Button btnYearlyReportStats;
     public Button btnAfterActionReportCompleted;
-    public Image imgBarBottom;
+    public RawImage imgBarBottom;
     public Button btnCards;
     public Button btnCardsPosition;
 
@@ -411,7 +411,7 @@ public class UpdateUI : MonoBehaviour
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            game.tutorial.tutorialActive = false;
+            game.tutorial.tutorialActive = true;
 
         if (game.tutorial.tutorialActive)
             initTutorialActive();
