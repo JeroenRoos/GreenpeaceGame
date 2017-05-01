@@ -6,16 +6,13 @@ using System.Text;
 [Serializable]
 public class Tutorial
 {
-    public bool tutorialActive;
-    public bool tutorialNoTooltip;
+    /*
     public bool tutorialStep2;
     public bool tutorialStep3;
     public bool tutorialStep4;
     public bool tutorialStep5;
-    public bool regionWestActivated;
     public bool tutorialStep6;
     public bool tutorialStep7;
-    public bool tutorialCheckActionDone;
     public bool tutorialStep8;
     public bool tutorialStep9;
     public bool tutorialStep10;
@@ -30,6 +27,12 @@ public class Tutorial
     public bool tutorialstep19;
     public bool tutorialStep20;
     public bool tutorialStep21;
+    */
+
+    public bool tutorialActive;
+    public bool tutorialNoTooltip;
+    public bool tutorialCheckActionDone;
+    public bool regionWestActivated;
     public bool tutorialOrganizationDone;
     public bool tutorialNextTurnDone;
     public bool tutorialEventsDone;
@@ -43,6 +46,7 @@ public class Tutorial
     public bool tutorialEventsActive;
     public bool tutorialMonthlyReportActive;
     public bool doTuto;
+    public bool[] tutorialChecks;
 
     public Tutorial() { }
 }

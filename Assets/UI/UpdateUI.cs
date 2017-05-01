@@ -409,7 +409,7 @@ public class UpdateUI : MonoBehaviour
         ColorUtility.TryParseHtmlString("#ccac6f", out c);      // Get the color out of the hexadecimal string
         buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
 
-
+        game.tutorial.tutorialChecks = new bool[21];
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
             game.tutorial.tutorialActive = true;
@@ -425,7 +425,7 @@ public class UpdateUI : MonoBehaviour
 
     void Update()
     {
-        if (game.tutorial.tutorialStep6)
+        if (game.tutorial.tutorialChecks[2])//tutorialStep6)
             popupController();
 
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
@@ -461,7 +461,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
-        tutorialIndex = 1;
+        tutorialIndex = 0;
         canvasTutorial.gameObject.SetActive(true);
         game.tutorial.tutorialNexTurnPossibe = false;
         game.tutorial.tutorialNextTurnDone = false;
@@ -486,7 +486,7 @@ public class UpdateUI : MonoBehaviour
         btnTutorialRegion.gameObject.SetActive(false);
         txtTutorialOverworld.enabled = false;
         canvasTutorial.gameObject.SetActive(false);
-        game.tutorial.tutorialStep2 = true;
+       /* game.tutorial.tutorialStep2 = true;
         game.tutorial.tutorialStep3 = true;
         game.tutorial.tutorialStep4 = true;
         game.tutorial.tutorialStep5 = true;
@@ -494,11 +494,11 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialStep7 = true;
         game.tutorial.tutorialStep8 = true;
         game.tutorial.tutorialStep9 = true;
-        game.tutorial.tutorialStep10 = true;
+        game.tutorial.tutorialStep10 = true;*/
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialEventsDone = true;
         game.tutorial.tutorialMonthlyReportDone = true;
-        game.tutorial.tutorialstep11 = true;
+        /*game.tutorial.tutorialstep11 = true;
         game.tutorial.tutorialstep12 = true;
         game.tutorial.tutorialStep13 = true;
         game.tutorial.tutorialStep14 = true;
@@ -508,7 +508,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialStep18 = true;
         game.tutorial.tutorialstep19 = true;
         game.tutorial.tutorialStep20 = true;
-        game.tutorial.tutorialStep21 = true;
+        game.tutorial.tutorialStep21 = true;*/
         game.tutorial.regionWestActivated = true;
         game.tutorial.tutorialCheckActionDone = true;
         game.tutorial.tutorialQuestsActive = false;
@@ -519,6 +519,9 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialEventsActive = false;
         game.tutorial.tutorialMonthlyReportActive = false;
         game.tutorial.tutorialOrganizationActive = false;
+
+        for (int i = 0; i < game.tutorial.tutorialChecks.Length; i++)
+            game.tutorial.tutorialChecks[i] = true;
     }
     IEnumerator initTutorialText()
     {
@@ -550,7 +553,7 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = false;
         imgTutorialOverworld.transform.position = imgPosRight;
 
-        while (!game.tutorial.tutorialStep2)
+        while (!game.tutorial.tutorialChecks[0])//tutorialStep2)
             yield return null;
 
         string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. \n\nZoals je kunt zien zitten we nu in 2020. " +
@@ -561,7 +564,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = true;
         imgTutorialStep2Highlight2.enabled = true;
 
-        while (!game.tutorial.tutorialStep3)
+        while (!game.tutorial.tutorialChecks[1])//tutorialStep3)
             yield return null;
 
         //tutorialStep3 = false;
@@ -577,7 +580,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
 
-        while (!game.tutorial.tutorialStep4)
+        while (!game.tutorial.tutorialChecks[2])//tutorialStep4)
             yield return null;
 
         imgTutorialOverworld.gameObject.transform.position = imgPosRight;
@@ -677,7 +680,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialStep1BtnText.text = btnText[taal];
         btnTutorialNext.gameObject.SetActive(true);
 
-        while (!game.tutorial.tutorialstep19)
+        while (!game.tutorial.tutorialChecks[6]) //tutorialstep19)
             yield return null;
 
         btnTutorialNext.gameObject.SetActive(false);
@@ -708,7 +711,7 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step10[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
 
-        while (!game.tutorial.tutorialStep21)
+        while (!game.tutorial.tutorialChecks[8]) //tutorialStep21)
             yield return null;
 
         game.tutorial.tutorialNexTurnPossibe = true;
@@ -917,13 +920,13 @@ public class UpdateUI : MonoBehaviour
 
         // Open and close Organization popup with O
         else if (Input.GetKeyUp(KeyCode.O))
-            if (game.tutorial.tutorialStep8)
-                controllerOrganizationHotkey();
+            //if (game.tutorial.tutorialStep8)
+            controllerOrganizationHotkey();
 
-            // Open and close Timeline popup with T
-            else if (Input.GetKeyUp(KeyCode.T))
-                if (!game.tutorial.tutorialActive)
-                    controllerTimelinePopup();
+        // Open and close Timeline popup with T
+        else if (Input.GetKeyUp(KeyCode.T))
+            if (!game.tutorial.tutorialActive)
+                controllerTimelinePopup();
     }
 
     // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
@@ -1052,13 +1055,13 @@ public class UpdateUI : MonoBehaviour
         Rect lblReqt;
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
-        if (checkTooltip() && !popupActive && game.tutorial.tutorialStep3)
+        if (checkTooltip() && !popupActive)// && game.tutorial.tutorialStep3)
         {
             lblReqt.x = v3Tooltip.x + 10; lblReqt.y = v3Tooltip.z + 40;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
         }
 
-        if (regionHouseholdsCheck && popupActive && game.tutorial.tutorialStep3)
+        if (regionHouseholdsCheck && popupActive)// && game.tutorial.tutorialStep3)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 70;
@@ -1066,14 +1069,14 @@ public class UpdateUI : MonoBehaviour
             updateRegionSectors();
             
         }
-        else if (regionAgricultureCheck && popupActive && game.tutorial.tutorialStep3)
+        else if (regionAgricultureCheck && popupActive)// && game.tutorial.tutorialStep3)
         {
             v3Tooltip = emptybtnHoverAgriculture.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 150;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipAgriculture + "</color>", tooltipStyle);
             updateRegionSectors();
         }
-        else if (regionCompanyCheck && popupActive && game.tutorial.tutorialStep3)
+        else if (regionCompanyCheck && popupActive)// && game.tutorial.tutorialStep3)
         {
             v3Tooltip = emptybtnHoverCompanies.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 270;
@@ -1414,7 +1417,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialOrganization.text = step1[taal];
         txtTutorialOrganizationBtnText.text = btnText[taal];
 
-        while (!game.tutorial.tutorialStep9)
+        while (!game.tutorial.tutorialChecks[4])//tutorialStep9)
             yield return null;
 
         imgTutorialOrganization.gameObject.SetActive(false);
@@ -1528,7 +1531,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialRegion.text = step1[taal];
         txtTurorialReginoBtnText.text = btnText[taal];
 
-        while (!game.tutorial.tutorialStep6)
+        while (!game.tutorial.tutorialChecks[3])//tutorialStep6)
             yield return null;
 
         string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. \n\nSommige acties kunnen ook maar 1 keer of eens in de zoveel tijd gedaan worden. "
@@ -1852,7 +1855,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialAfterTurn.text = step1[taal];
         txtTutorialAfterTurnBtn.text = btnText[taal];
 
-        while (!game.tutorial.tutorialStep18)
+        while (!game.tutorial.tutorialChecks[5])//tutorialStep18)
             yield return null;
         
         imgTutorialAfterTurn.gameObject.SetActive(false);
@@ -2198,7 +2201,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialQuests.text = step2[taal];
         txtTutorialQuestsBtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialStep16)
+        while (!game.tutorial.tutorialChecks[9])//tutorialStep16)
             yield return null;
 
 
@@ -2221,7 +2224,7 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.text = step3[taal];
         txtTutorialStep1BtnText.text = txtButton[taal];
 
-        while (!game.tutorial.tutorialStep17)
+        while (!game.tutorial.tutorialChecks[10])//tutorialStep17)
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
@@ -2323,7 +2326,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialEvent.text = txtTutorial[taal];
         txtTutorialEventBtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialStep20)
+        while (!game.tutorial.tutorialChecks[7])// tutorialStep20)
             yield return null;
 
         imgTutorialEvents.gameObject.SetActive(false);
@@ -3566,8 +3569,29 @@ public class UpdateUI : MonoBehaviour
     #region Code for controlling Tutorial buttons presses
     public void turorialButtonPress()
     {
-        Debug.Log(tutorialIndex);
         EventManager.CallPlayButtonClickSFX();
+        for (int i = tutorialIndex; i < game.tutorial.tutorialChecks.Length; i++)
+        {
+            if (i == 0)
+            {
+                game.tutorial.tutorialChecks[i] = true;
+                tutorialIndex++;
+                break;
+            }
+            else if (game.tutorial.tutorialChecks[i - 1])
+            {
+                if (i != game.tutorial.tutorialChecks.Length - 1)
+                {
+                    Debug.Log(i);
+                    game.tutorial.tutorialChecks[i] = true;
+                    tutorialIndex++;
+                    break;
+                }
+            }
+        }
+
+
+        /*
         if (tutorialIndex == 1)
         {
             game.tutorial.tutorialStep2 = true;
@@ -3669,54 +3693,9 @@ public class UpdateUI : MonoBehaviour
         {
             game.tutorial.tutorialStep21 = true;
             tutorialIndex++;
-        }
+        }*/
     }
-
-    public void tutorialRegionButtonPress()
-    {
-        //if (tutorialIndex == 4)
-        //{
-        //    tutorialStep6 = true;
-        //    tutorialIndex++;
-        //    tutorialIndex++;
-        //    tutorialIndex++;
-        //}
-        //else if (tutorialIndex == 6)
-        //{
-        //    tutorialStep7 = true;
-        //    tutorialIndex++;
-        //}
-    }
-
-    public void tutorialOrganizationButtonPress()
-    {
-        //if (tutorialIndex == 7)
-        //{
-        //   tutorialStep9 = true;
-        //    tutorialIndex++;
-        //    tutorialIndex++;
-        //}
-    }
-
-    public void tutorialEventButtonPress()
-    {
-        //if (tutorialIndex == 11)
-        //{
-        //    tutorialStep13 = true;
-        //    tutorialIndex++;
-        //    tutorialIndex++;
-        //}
-    }
-
-    public void tutorialQuestsButtonPress()
-    {
-        //if (tutorialIndex == 14)
-        //{
-        //    tutorialStep16 = true;
-        //    tutorialIndex++;
-        //    tutorialIndex++;
-        //}
-    }
+    
     #endregion
 
     #region Get SectorStatiticsConsequences Method
