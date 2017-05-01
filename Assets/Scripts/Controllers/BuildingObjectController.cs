@@ -17,7 +17,11 @@ public class BuildingObjectController : MonoBehaviour
     {
         Debug.Log("Start BuildingObjectController");
         updateUI = gameController.GetComponent<UpdateUI>();
-        //building = null;
+
+        if (building == null)
+        {
+            Debug.Log("START NULL");
+        }
     }
 
     private void Update()
