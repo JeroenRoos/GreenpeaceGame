@@ -1071,8 +1071,6 @@ public class UpdateUI : MonoBehaviour
     void OnGUI()
     {
         Rect lblReqt;
-        Debug.Log("ONGui!");
-
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
         if (checkTooltip() && !popupActive && tutorialStep3)
