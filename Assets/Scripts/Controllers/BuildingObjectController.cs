@@ -27,17 +27,20 @@ public class BuildingObjectController : MonoBehaviour
     {
         if (!updateUI.popupActive)// && gameController.game.tutorial.tutorialBuildingsActive)
         {
-            EventManager.CallPlayButtonClickSFX();
+            if (gameController.game.tutorial.tutorialBuildingsClickable)
+            {
+                EventManager.CallPlayButtonClickSFX();
 
-            if (building != null)
-            {
-                //gameController.activeBuildingUI(building, region);
-                updateUI.initBuildingPopup(building, region);
-            }
-            else
-            {
-                //gameController.activeEmptyBuildingUI(region);
-                updateUI.initEmptyBuildingPopup(region);
+                if (building != null)
+                {
+                    //gameController.activeBuildingUI(building, region);
+                    updateUI.initBuildingPopup(building, region);
+                }
+                else
+                {
+                    //gameController.activeEmptyBuildingUI(region);
+                    updateUI.initEmptyBuildingPopup(region);
+                }
             }
         }
     }

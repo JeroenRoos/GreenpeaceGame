@@ -427,7 +427,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialChecks = new bool[21];
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            game.tutorial.tutorialActive = true;
+            game.tutorial.tutorialActive = false;
 
         if (game.tutorial.tutorialActive)
             initTutorialActive();
@@ -487,12 +487,14 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialQuestsActive = false;
         game.tutorial.tutorialOrganizationActive = false;
         game.tutorial.tutorialeventsClickable = false;
+        game.tutorial.tutorialBuildingsClickable = false;
         game.tutorial.tutorialOnlyWestNL = false;
         game.tutorial.tutorialRegionActive = false;
         game.tutorial.tutorialEventsActive = false;
         game.tutorial.tutorialMonthlyReportActive = false;
         game.tutorial.tutorialCardsActive = false;
         game.tutorial.tutorialInvestementsActive = false;
+        game.tutorial.tutorialBuildingsActive = false;
         StartCoroutine(initTutorialText());
     }
 
@@ -544,6 +546,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialQuestsActive = false;
 
         game.tutorial.tutorialeventsClickable = true;
+        game.tutorial.tutorialBuildingsClickable = true;
         game.tutorial.tutorialOnlyWestNL = true;
         game.tutorial.tutorialRegionActive = false;
         game.tutorial.tutorialEventsActive = false;
@@ -551,6 +554,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialOrganizationActive = false;
         game.tutorial.tutorialCardsActive = false;
         game.tutorial.tutorialInvestementsActive = false;
+        game.tutorial.tutorialBuildingsActive = false;
 
         for (int i = 0; i < game.tutorial.tutorialChecks.Length; i++)
             game.tutorial.tutorialChecks[i] = true;

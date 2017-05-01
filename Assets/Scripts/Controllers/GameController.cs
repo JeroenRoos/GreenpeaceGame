@@ -87,11 +87,7 @@ public class GameController : MonoBehaviour
         updateUI = GetComponent<UpdateUI>();
         //setBuildingTextures();
 
-        buildingInstances = new GameObject[4] { Instantiate(buildingObject), Instantiate(buildingObject),
-                                                Instantiate(buildingObject), Instantiate(buildingObject) };
-
-        for (int i = 0; i < game.regions.Count; i++)
-            buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, game.regions[i], game.regions[i].activeBuilding);
+        StartCoroutine(showBuildingIcons());
 
         foreach (Region r in game.regions)
         {
@@ -132,6 +128,18 @@ public class GameController : MonoBehaviour
         EventManager.SaveGame += SaveGame;
         EventManager.LeaveGame += SetGameplayTrackingData;
         EventManager.CallNewGame();
+    }
+
+    private IEnumerator showBuildingIcons()
+    {
+        while (game.currentYear < 11)
+            yield return null;
+
+        buildingInstances = new GameObject[4] { Instantiate(buildingObject), Instantiate(buildingObject),
+                                                Instantiate(buildingObject), Instantiate(buildingObject) };
+
+        for (int i = 0; i < game.regions.Count; i++)
+            buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, game.regions[i], game.regions[i].activeBuilding);
     }
 
     public void SetPlayerTrackingData()

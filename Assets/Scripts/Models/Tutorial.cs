@@ -41,6 +41,7 @@ public class Tutorial
     public bool tutorialQuestsActive;
     public bool tutorialOrganizationActive;
     public bool tutorialeventsClickable;
+    public bool tutorialBuildingsClickable;
     public bool tutorialOnlyWestNL;
     public bool tutorialRegionActive;
     public bool tutorialEventsActive;
@@ -49,6 +50,7 @@ public class Tutorial
     public bool tutorialCardsActive;
     public bool tutorialCardsDone;
     public bool tutorialInvestementsActive;
+    public bool tutorialBuildingsActive;
 
     public bool[] tutorialChecks;
 
