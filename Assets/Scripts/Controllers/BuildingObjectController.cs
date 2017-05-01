@@ -37,14 +37,11 @@ public class BuildingObjectController : MonoBehaviour
 
             if (building != null)
             {
-                Debug.Log("OnMouseDown: " + region.name[0]);
-                Debug.Log("OnMouseDown: " + building.buildingName[0]);
                 //gameController.activeBuildingUI(building, region);
                 updateUI.initBuildingPopup(building, region);
             }
             else
             {
-                Debug.Log("OnMouseDown: Building is NULL");
                 //gameController.activeEmptyBuildingUI(region);
                 updateUI.initEmptyBuildingPopup(region);
             }
@@ -68,9 +65,7 @@ public class BuildingObjectController : MonoBehaviour
 
         if (building != null)
         {
-            Debug.Log("placeBuildingIcon: " + region.name[0]);
-            Debug.Log("placeBuildingIcon: " + building.buildingName[0]);
-            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("null");
+            //gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("null");
 
             // Hij komt in deze Method maar print nog steeds de empty
             // Ook opent hij nog de empty als je klikt op icon terwijl dat niet moet
@@ -82,6 +77,7 @@ public class BuildingObjectController : MonoBehaviour
             Debug.Log("placeBuildingIcon: Building is NULL");
 
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
+            
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
         }
     }
