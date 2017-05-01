@@ -1071,6 +1071,7 @@ public class UpdateUI : MonoBehaviour
     void OnGUI()
     {
         Rect lblReqt;
+        Debug.Log("ONGui!");
 
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
@@ -1114,7 +1115,8 @@ public class UpdateUI : MonoBehaviour
             float x = btnPos.x;
             float y = btnPos.z + (screenHeight / 3);
 
-            foreach (Card c in game.cards)
+            //foreach (Card c in game.cards)
+            foreach (Card c in game.inventory.ownedCards)
             {
                 if (GUI.Button(new Rect(x, y + yOffset, rectBtnCardsPosition.rect.width + 50, rectBtnCardsPosition.rect.height), c.name[taal], buttonStyle))
                     setTextCardInformation(c);
@@ -2768,6 +2770,7 @@ public class UpdateUI : MonoBehaviour
 
     private void setTextCardInformation(Card c)
     {
+        txtCardsOptionInformation.text = "";
         card = c;
         btnUseCard.gameObject.SetActive(true);
         string[] txtBtn = { "Gebuik kaart", "Use card" };
