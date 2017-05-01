@@ -388,9 +388,11 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        taal = ApplicationModel.language;
         EventManager.CallPlayBackgroundMusic();
 
         initButtons();
+        initButtonText();
         initCanvas();
         initOrganizationText();
         initRegionText();
@@ -407,7 +409,6 @@ public class UpdateUI : MonoBehaviour
         ColorUtility.TryParseHtmlString("#ccac6f", out c);      // Get the color out of the hexadecimal string
         buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
 
-        taal = ApplicationModel.language;
 
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
