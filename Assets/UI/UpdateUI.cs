@@ -358,6 +358,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtTutorialInvestements;
     public Text txtTutorialInvestementsbtn;
 
+    public Image imgTutorialBuildings;
+    public Text txtTutorialBuildings;
+    public Text txtTutorialBuildingsbtn;
+
     public Image imgHighlightCards;
     public Image imgHighlightQuests;
     public Image imgHighlightMonthlyReport;
@@ -427,7 +431,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialChecks = new bool[21];
         // Use this boolean to start the game with or without the tutorial while testing
         if (!ApplicationModel.loadGame)
-            game.tutorial.tutorialActive = false;
+            game.tutorial.tutorialActive = true;
 
         if (game.tutorial.tutorialActive)
             initTutorialActive();
@@ -495,6 +499,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialCardsActive = false;
         game.tutorial.tutorialInvestementsActive = false;
         game.tutorial.tutorialBuildingsActive = false;
+        game.tutorial.tutorialRegionsClickable = false;
         StartCoroutine(initTutorialText());
     }
 
@@ -515,7 +520,8 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialEventsDone = true;
-        game.tutorial.tutorialMonthlyReportDone = true; game.tutorial.tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialMonthlyReportDone = true;
+        game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialEventsDone = true;
         game.tutorial.tutorialMonthlyReportDone = true;
         game.tutorial.tutorialCardsDone = true;
@@ -554,6 +560,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialOrganizationActive = false;
         game.tutorial.tutorialCardsActive = false;
         game.tutorial.tutorialInvestementsActive = false;
+        game.tutorial.tutorialRegionsClickable = true;
         game.tutorial.tutorialBuildingsActive = false;
 
         for (int i = 0; i < game.tutorial.tutorialChecks.Length; i++)
@@ -575,7 +582,6 @@ public class UpdateUI : MonoBehaviour
         //imgBarBottom.gameObject.SetActive(false);
 
         game.tutorial.doTuto = true;
-        game.tutorial.tutorialOnlyWestNL = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " +
                 "\n\nDe inwoners moeten begrijpen dat een groen land belangrijk is." 
                 , "Welcome! The government has given your organisation the task to make " +
@@ -620,6 +626,8 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         imgTutorialOverworld.gameObject.transform.position = imgPosRight;
+        game.tutorial.tutorialOnlyWestNL = true;
+        game.tutorial.tutorialRegionsClickable = true;
         string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. \n\nElke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en welvaart. "
                 + "Deze statistieken verschillen weer per regio. \n\nGa naar West-Nederland door op de regio te klikken. "
                 , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West. \n\nEach region has an income, happiness, pollution, eco-awareness and prosperity. "
@@ -986,6 +994,38 @@ public class UpdateUI : MonoBehaviour
             imgHighlightCards.gameObject.SetActive(false);
         }
     }
+
+    public void startTutorialBuildings()
+    {
+        StartCoroutine(tutorialBuildings());
+    }
+
+    private IEnumerator tutorialBuildings()
+    {
+        Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
+        Vector3 imgPosLeft = imgPosMiddle;
+        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                             // Linksmidden in het scherm
+
+        btnNextTurn.interactable = false;
+        canvasTutorial.gameObject.SetActive(true);
+        imgTutorialOverworld.gameObject.SetActive(true);
+        imgTutorialOverworld.transform.position = imgPosLeft;
+
+        game.tutorial.tutorialBuildingsActive = true;
+        game.tutorial.tutorialNexTurnPossibe = false;
+
+        string[] step1 = { "INSERT BUILDINGS TUTORIAL TEXT. ",
+            "INSERT BUILDINGS TUTORIAL TEXT. " };
+        txtTurorialStep1.text = step1[taal];
+        btnTutorialNext.gameObject.SetActive(false);
+        game.tutorial.tutorialBuildingsClickable = true;
+
+        while (!canvasEmptyBuildingsPopup.gameObject.activeSelf)
+            yield return null;
+
+        canvasTutorial.gameObject.SetActive(false);
+        imgTutorialOverworld.transform.position = imgPosMiddle;
+    }
     #endregion
 
     #region Code for controlling popups
@@ -994,7 +1034,8 @@ public class UpdateUI : MonoBehaviour
         // Close active popup with Escape / Open Menu popup with Escape if no popup is active
         if (Input.GetKeyUp(KeyCode.Escape) && !game.tutorial.tutorialRegionActive && !game.tutorial.tutorialEventsActive &&
             !game.tutorial.tutorialQuestsActive && !game.tutorial.tutorialOrganizationActive &&
-            !game.tutorial.tutorialMonthlyReportActive && !game.tutorial.tutorialCardsActive && !game.tutorial.tutorialInvestementsActive)
+            !game.tutorial.tutorialMonthlyReportActive && !game.tutorial.tutorialCardsActive && !game.tutorial.tutorialInvestementsActive
+            && !game.tutorial.tutorialBuildingsActive)
             closeWithEscape();
 
         // Open and close Organization popup with O
@@ -1558,7 +1599,7 @@ public class UpdateUI : MonoBehaviour
         // Ga naar WEST tijdens de tutorial
         if (game.tutorial.tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
         {
-            if (game.tutorial.tutorialOnlyWestNL)
+            if (game.tutorial.tutorialOnlyWestNL && game.tutorial.tutorialRegionsClickable)
             {
                 if (region.name[0] == "West Nederland")
                 {
@@ -1569,7 +1610,7 @@ public class UpdateUI : MonoBehaviour
                     StartCoroutine(tutorialRegionPopup());
                 }
             }
-            else
+            else if (game.tutorial.tutorialRegionsClickable)
             {
                 startRegionPopup(region);
                 imgTutorialRegion.gameObject.SetActive(false);
@@ -2549,7 +2590,49 @@ public class UpdateUI : MonoBehaviour
         EventManager.CallPopupIsActive();
         canvasEmptyBuildingsPopup.gameObject.SetActive(true);
 
+        if (game.tutorial.tutorialBuildingsActive && game.tutorial.doTuto)
+            StartCoroutine(tutorialBuildingsPopup());
+
         initEmptyBuildingText();
+    }
+
+    private IEnumerator tutorialBuildingsPopup()
+    {
+        imgTutorialBuildings.gameObject.SetActive(true);
+
+        string[] step = { "INSERT BUILDINGS TUTORIAL TEXT. ",
+            "INSERT BUILDINGS TUTORIAL TEXT. "};
+        string[] txtBtn = { "Volgende", "Next" };
+
+        txtTutorialBuildings.text = step[taal];
+        txtTutorialBuildingsbtn.text = txtBtn[taal];
+
+        while (!game.tutorial.tutorialChecks[14])//tutorialStep16)
+            yield return null;
+
+        imgTutorialBuildings.gameObject.SetActive(false);
+        game.tutorial.tutorialBuildingsActive = false;
+
+        while (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+            yield return null;
+ 
+        btnTutorialNext.gameObject.SetActive(true);
+        canvasTutorial.gameObject.SetActive(true);
+
+        string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling onder de 5% moet zijn voor 2050.",
+            "You're now ready to play the game. \n\nThink about the fact that the pollution needs to be below 5% before 2050." };
+        string[] txtButton = { "Eindig handleiding", "Finish tutorial" };
+
+        txtTurorialStep1.text = step3[taal];
+        txtTutorialStep1BtnText.text = txtButton[taal];
+
+        while (!game.tutorial.tutorialChecks[15])//tutorialStep17)
+            yield return null;
+
+        canvasTutorial.gameObject.SetActive(false);
+        game.tutorial.tutorialeventsClickable = true;
+        game.tutorial.tutorialNexTurnPossibe = true;
+        btnNextTurn.interactable = true;
     }
 
     private void initEmptyBuildingText()
@@ -2650,7 +2733,7 @@ public class UpdateUI : MonoBehaviour
         txtInvestmentsEventConsequences.text = eventconsequencies[taal];
 
         if (game.tutorial.tutorialInvestementsActive && game.tutorial.doTuto)
-            StartCoroutine(tutorialQuests());
+            StartCoroutine(tutorialInvestements());
     }
 
     private IEnumerator tutorialInvestements()
@@ -2674,21 +2757,6 @@ public class UpdateUI : MonoBehaviour
 
         while (canvasInvestmentsPopup.gameObject.activeSelf)
             yield return null;
-
-        /*
-        btnTutorialNext.gameObject.SetActive(true);
-        canvasTutorial.gameObject.SetActive(true);
-
-        string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling onder de 5% moet zijn voor 2050.",
-            "You're now ready to play the game. \n\nThink about the fact that the pollution needs to be below 5% before 2050." };
-        string[] txtButton = { "Eindig handleiding", "Finish tutorial" };
-
-        txtTurorialStep1.text = step3[taal];
-        txtTutorialStep1BtnText.text = txtButton[taal];
-
-        while (!game.tutorial.tutorialChecks[14])//tutorialStep17)
-            yield return null;
-        */
 
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
@@ -3286,7 +3354,7 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf && !game.tutorial.tutorialBuildingsActive)
         {
             canvasEmptyBuildingsPopup.gameObject.SetActive(false);
             popupActive = false;

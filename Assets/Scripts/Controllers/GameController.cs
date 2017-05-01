@@ -140,6 +140,9 @@ public class GameController : MonoBehaviour
 
         for (int i = 0; i < game.regions.Count; i++)
             buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, game.regions[i], game.regions[i].activeBuilding);
+
+        if (game.tutorial.doTuto)
+        updateUI.startTutorialBuildings();
     }
 
     public void SetPlayerTrackingData()

@@ -51,6 +51,7 @@ public class Tutorial
     public bool tutorialCardsDone;
     public bool tutorialInvestementsActive;
     public bool tutorialBuildingsActive;
+    public bool tutorialRegionsClickable;
 
     public bool[] tutorialChecks;
 
