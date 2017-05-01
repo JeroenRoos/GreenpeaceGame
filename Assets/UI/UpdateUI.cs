@@ -2512,10 +2512,6 @@ public class UpdateUI : MonoBehaviour
         popupActive = true;
         EventManager.CallPopupIsActive();
         canvasBuildingsPopup.gameObject.SetActive(true);
-
-        Debug.Log("initBuildingPopup: " + buildingRegion.name[0]);
-        Debug.Log("initBuildingPopup: " + activeBuilding.buildingName[0]);
-
         initBuildingText();
     }
 
