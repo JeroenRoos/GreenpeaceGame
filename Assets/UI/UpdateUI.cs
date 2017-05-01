@@ -3566,6 +3566,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for controlling Tutorial buttons presses
     public void turorialButtonPress()
     {
+        Debug.Log(tutorialIndex);
         EventManager.CallPlayButtonClickSFX();
         if (tutorialIndex == 1)
         {
@@ -3613,8 +3614,9 @@ public class UpdateUI : MonoBehaviour
         else if (tutorialIndex == 9)
         {
             game.tutorial.tutorialstep11 = true;
-            tutorialIndex++;
-            tutorialIndex++;
+            game.tutorial.tutorialStep18 = true;
+
+            tutorialIndex = 18;
         }
         //else if (tutorialIndex == 11)
         //{
