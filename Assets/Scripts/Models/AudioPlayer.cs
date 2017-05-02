@@ -18,7 +18,7 @@ public class AudioPlayer : MonoBehaviour
 
     public AudioClip backgroundSong1;
 
-    public AudioClip buttonHoverSFX;
+    public AudioClip optionSelectSFX;
     public AudioClip ButtonClickSFX;
     public AudioClip newmonthSFX;
     #endregion
@@ -39,14 +39,14 @@ public class AudioPlayer : MonoBehaviour
             soundEffect = audioSources[1];
 
             backgroundSong1 = Resources.Load("Sounds/music/LugiaTheme", typeof(AudioClip)) as AudioClip;
-            buttonHoverSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
+            optionSelectSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
             ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
             newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
             instance = this;
 
             EventManager.PlayBackgroundMusic += PlayBackgroundMusic;
             EventManager.PlayButtonClickSFX += PlayButtonClickSFX;
-            EventManager.PlayButtonHoverSFX += PlayButtonHoverSFX;
+            EventManager.PlayOptionSelectSFX += PlayOptionSelectSFX;
             EventManager.PlayNewTurnStartSFX += PlayNewMonthSFX;
 
             backgroundMusic.loop = true;
@@ -66,9 +66,9 @@ public class AudioPlayer : MonoBehaviour
         soundEffect.PlayOneShot(ButtonClickSFX);
     }
 
-    public void PlayButtonHoverSFX()
+    public void PlayOptionSelectSFX()
     {
-        soundEffect.PlayOneShot(buttonHoverSFX);
+        soundEffect.PlayOneShot(optionSelectSFX);
     }
 
     public void PlayNewMonthSFX()

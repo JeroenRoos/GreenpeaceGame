@@ -28,6 +28,8 @@ public class UpdateUI : MonoBehaviour
 
     public Text test;
 
+    public bool playSelectSound;
+
     public Dropdown dropdownRegio;
 
     public Toggle checkboxRegionHouseholds;
@@ -1867,6 +1869,7 @@ public class UpdateUI : MonoBehaviour
     // Goes to this method from DropDownTrigger in Inspector
     public void getDropDownValue()
     {
+        EventManager.CallPlayButtonClickSFX();
         for (int i = 0; i <= dropdownRegio.options.Count; i++)
         {
             if (dropdownRegio.value == i)
@@ -1917,12 +1920,14 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
 
+        playSelectSound = false;
         if (checkboxHouseholds)
             checkboxRegionHouseholds.isOn = false;
         if (checkboxAgriculture)
             checkboxRegionAgriculture.isOn = false;
         if (checkboxCompanies)
             checkboxRegionCompanies.isOn = false;
+        playSelectSound = true;
 
         for (int i = 0; i < action.possibleSectors.Length; i++)
         {
@@ -2455,6 +2460,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEventUI()
     {
+        playSelectSound = false;
         if (radioEventOption1Check)
             radioEventOption1.isOn = false;
 
@@ -2463,6 +2469,8 @@ public class UpdateUI : MonoBehaviour
 
         if (radioEventOption3Check)
             radioEventOption3.isOn = false;
+
+        playSelectSound = true;
 
         btnDoEvent.interactable = false;
     }
@@ -2508,6 +2516,9 @@ public class UpdateUI : MonoBehaviour
 
     public void valueChangedOption1()
     {
+        if (playSelectSound)
+            EventManager.CallPlayOptionSelectSFX();
+
         if (!radioEventOption1Check)
         {
             radioEventOption1Check = true;
@@ -2526,6 +2537,9 @@ public class UpdateUI : MonoBehaviour
 
     public void valueChangedOption2()
     {
+        if (playSelectSound)
+            EventManager.CallPlayOptionSelectSFX();
+
         if (!radioEventOption2Check)
         {
             radioEventOption2Check = true;
@@ -2544,6 +2558,9 @@ public class UpdateUI : MonoBehaviour
 
     public void valueChangedOption3()
     {
+        if (playSelectSound)
+            EventManager.CallPlayOptionSelectSFX();
+
         if (!radioEventOption3Check)
         {
             radioEventOption3Check = true;
@@ -3701,10 +3718,13 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = true;
     }
     #endregion
-
+    
     #region Checkboxes RegionActions Code
     public void valueChangedHouseholds()
     {
+        if (playSelectSound)
+            EventManager.CallPlayOptionSelectSFX();
+
         if (!checkboxHouseholds)
         {
             checkboxHouseholds = true;
@@ -3726,6 +3746,9 @@ public class UpdateUI : MonoBehaviour
 
     public void valueChangedAgriculture()
     {
+        if (playSelectSound)
+            EventManager.CallPlayOptionSelectSFX();
+
         if (!checkboxAgriculture)
         {
             checkboxAgriculture = true;
@@ -3747,6 +3770,9 @@ public class UpdateUI : MonoBehaviour
 
     public void valueChangedCompanies()
     {
+        if (playSelectSound)
+            EventManager.CallPlayOptionSelectSFX();
+
         if (!checkboxCompanies)
         {
             checkboxCompanies = true;
