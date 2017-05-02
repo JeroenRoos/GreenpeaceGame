@@ -589,17 +589,17 @@ public class UpdateUI : MonoBehaviour
         string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " + 
                 "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." + 
                 "\n\nGeld: beslissingen maken kost geld. Geld wordt per maand verhoogd door het inkomen." +
-                "\n\nWelvaart: verhoogt het inkomen." +
+                "\n\nVervuiling: de vervuiling in het land, neemt per maand toe of af." +
                 "\n\nMilieubewustheid: verlaagt de maandelijkse vervuiling." +
-                "\n\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50 % is positief, onder 50 % is negatief." +
-                "\n\nVervuiling: de vervuiling in het land, neemt per maand toe of af.",
+                "\n\nWelvaart: verhoogt het inkomen." +
+                "\n\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50 % is positief, onder 50 % is negatief.",
                 "At the top of the screen are your recourses to reduce pollution. Prosperity, eco awareness, " + 
                 "happiness and pollution are nationwide averages." +
                 "\n\nMoney: decisions cost money.Money increases monthly from income." +
-                "\n\nProsperity: increases income." +
+                "\n\nPollution: the pollution in the country, increases or decreases monthly." +
                 "\n\nEco Awareness: reduces monthly pollution." +
-                "\n\nHappiness: influences consequences of decisions. Above 50 % is positive, below 50 % is negative." +
-                "\n\nPollution: the pollution in the country, increases or decreases monthly." };
+                "\n\nProsperity: increases income." +
+                "\n\nHappiness: influences consequences of decisions. Above 50 % is positive, below 50 % is negative." };
         txtTurorialStep1.text = step3[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 8;
