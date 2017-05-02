@@ -26,13 +26,13 @@
         <happiness>36.666666666666664</happiness>
         <ecoAwareness>26.666666666666668</ecoAwareness>
         <prosperity>50</prosperity>
-        <avgPollution>40</avgPollution>
-        <avgAirPollution>36.666666666666664</avgAirPollution>
-        <avgNaturePollution>43.333333333333336</avgNaturePollution>
-        <avgWaterPollution>40</avgWaterPollution>
-        <avgAirPollutionIncrease>6.666666666666667</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>6.666666666666667</avgWaterPollutionIncrease>
+        <avgPollution>30</avgPollution>
+        <avgAirPollution>28.333333333333332</avgAirPollution>
+        <avgNaturePollution>31.666666666666668</avgNaturePollution>
+        <avgWaterPollution>30</avgWaterPollution>
+        <avgAirPollutionIncrease>8.3333333333333339</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>11.666666666666666</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>8.3333333333333339</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -6054,13 +6054,13 @@
             <ecoAwareness>40</ecoAwareness>
             <prosperity>30</prosperity>
             <pollution>
-              <avgPollution>30</avgPollution>
-              <airPollution>30</airPollution>
-              <naturePollution>30</naturePollution>
-              <waterPollution>30</waterPollution>
-              <airPollutionIncrease>5</airPollutionIncrease>
-              <naturePollutionIncrease>5</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <avgPollution>20</avgPollution>
+              <airPollution>20</airPollution>
+              <naturePollution>20</naturePollution>
+              <waterPollution>20</waterPollution>
+              <airPollutionIncrease>7.5</airPollutionIncrease>
+              <naturePollutionIncrease>7.5</naturePollutionIncrease>
+              <waterPollutionIncrease>7.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -6078,13 +6078,13 @@
             <ecoAwareness>10</ecoAwareness>
             <prosperity>50</prosperity>
             <pollution>
-              <avgPollution>20</avgPollution>
-              <airPollution>20</airPollution>
-              <naturePollution>20</naturePollution>
-              <waterPollution>20</waterPollution>
-              <airPollutionIncrease>5</airPollutionIncrease>
-              <naturePollutionIncrease>5</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <avgPollution>15</avgPollution>
+              <airPollution>15</airPollution>
+              <naturePollution>15</naturePollution>
+              <waterPollution>15</waterPollution>
+              <airPollutionIncrease>7.5</airPollutionIncrease>
+              <naturePollutionIncrease>7.5</naturePollutionIncrease>
+              <waterPollutionIncrease>7.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -6102,10 +6102,10 @@
             <ecoAwareness>30</ecoAwareness>
             <prosperity>70</prosperity>
             <pollution>
-              <avgPollution>70</avgPollution>
-              <airPollution>60</airPollution>
-              <naturePollution>80</naturePollution>
-              <waterPollution>70</waterPollution>
+              <avgPollution>55</avgPollution>
+              <airPollution>50</airPollution>
+              <naturePollution>60</naturePollution>
+              <waterPollution>55</waterPollution>
               <airPollutionIncrease>10</airPollutionIncrease>
               <naturePollutionIncrease>20</naturePollutionIncrease>
               <waterPollutionIncrease>10</waterPollutionIncrease>
@@ -6127,7 +6127,7 @@
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>PollutionBuilding</buildingID>
@@ -6136,9 +6136,9 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-10</pollutionModifier>
+          <pollutionModifier>-5</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>HappinessBuilding</buildingID>
@@ -6149,7 +6149,7 @@
           <incomeModifier>0</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>20</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
       </possibleBuildings>
     </Region>
@@ -6178,13 +6178,13 @@
         <happiness>43.333333333333336</happiness>
         <ecoAwareness>20</ecoAwareness>
         <prosperity>55</prosperity>
-        <avgPollution>53.333333333333336</avgPollution>
-        <avgAirPollution>46.666666666666664</avgAirPollution>
-        <avgNaturePollution>60</avgNaturePollution>
-        <avgWaterPollution>53.333333333333336</avgWaterPollution>
-        <avgAirPollutionIncrease>10</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>8.3333333333333339</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>8.3333333333333339</avgWaterPollutionIncrease>
+        <avgPollution>43.333333333333336</avgPollution>
+        <avgAirPollution>36.666666666666664</avgAirPollution>
+        <avgNaturePollution>50</avgNaturePollution>
+        <avgWaterPollution>43.333333333333336</avgWaterPollution>
+        <avgAirPollutionIncrease>11.666666666666666</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>10</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -12206,13 +12206,13 @@
             <ecoAwareness>20</ecoAwareness>
             <prosperity>40</prosperity>
             <pollution>
-              <avgPollution>50</avgPollution>
-              <airPollution>40</airPollution>
-              <naturePollution>60</naturePollution>
-              <waterPollution>50</waterPollution>
-              <airPollutionIncrease>10</airPollutionIncrease>
-              <naturePollutionIncrease>5</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <avgPollution>40</avgPollution>
+              <airPollution>30</airPollution>
+              <naturePollution>50</naturePollution>
+              <waterPollution>40</waterPollution>
+              <airPollutionIncrease>15</airPollutionIncrease>
+              <naturePollutionIncrease>7.5</naturePollutionIncrease>
+              <waterPollutionIncrease>7.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -12230,13 +12230,13 @@
             <ecoAwareness>20</ecoAwareness>
             <prosperity>50</prosperity>
             <pollution>
-              <avgPollution>50</avgPollution>
-              <airPollution>40</airPollution>
-              <naturePollution>60</naturePollution>
-              <waterPollution>50</waterPollution>
+              <avgPollution>40</avgPollution>
+              <airPollution>30</airPollution>
+              <naturePollution>50</naturePollution>
+              <waterPollution>40</waterPollution>
               <airPollutionIncrease>10</airPollutionIncrease>
-              <naturePollutionIncrease>5</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <naturePollutionIncrease>7.5</naturePollutionIncrease>
+              <waterPollutionIncrease>7.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -12254,10 +12254,10 @@
             <ecoAwareness>20</ecoAwareness>
             <prosperity>75</prosperity>
             <pollution>
-              <avgPollution>60</avgPollution>
-              <airPollution>60</airPollution>
-              <naturePollution>60</naturePollution>
-              <waterPollution>60</waterPollution>
+              <avgPollution>50</avgPollution>
+              <airPollution>50</airPollution>
+              <naturePollution>50</naturePollution>
+              <waterPollution>50</waterPollution>
               <airPollutionIncrease>10</airPollutionIncrease>
               <naturePollutionIncrease>15</naturePollutionIncrease>
               <waterPollutionIncrease>15</waterPollutionIncrease>
@@ -12279,7 +12279,7 @@
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>PollutionBuilding</buildingID>
@@ -12288,9 +12288,9 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-10</pollutionModifier>
+          <pollutionModifier>-5</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>HappinessBuilding</buildingID>
@@ -12301,7 +12301,7 @@
           <incomeModifier>0</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>20</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
       </possibleBuildings>
     </Region>
@@ -12330,13 +12330,13 @@
         <happiness>43.333333333333336</happiness>
         <ecoAwareness>20</ecoAwareness>
         <prosperity>60</prosperity>
-        <avgPollution>54.44444444444445</avgPollution>
-        <avgAirPollution>63.333333333333336</avgAirPollution>
-        <avgNaturePollution>46.666666666666664</avgNaturePollution>
-        <avgWaterPollution>53.333333333333336</avgWaterPollution>
+        <avgPollution>44.44444444444445</avgPollution>
+        <avgAirPollution>50</avgAirPollution>
+        <avgNaturePollution>40</avgNaturePollution>
+        <avgWaterPollution>43.333333333333336</avgWaterPollution>
         <avgAirPollutionIncrease>15</avgAirPollutionIncrease>
         <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>5</avgWaterPollutionIncrease>
+        <avgWaterPollutionIncrease>4.5</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -18358,13 +18358,13 @@
             <ecoAwareness>25</ecoAwareness>
             <prosperity>80</prosperity>
             <pollution>
-              <avgPollution>80</avgPollution>
-              <airPollution>90</airPollution>
-              <naturePollution>80</naturePollution>
-              <waterPollution>70</waterPollution>
+              <avgPollution>60</avgPollution>
+              <airPollution>70</airPollution>
+              <naturePollution>60</naturePollution>
+              <waterPollution>50</waterPollution>
               <airPollutionIncrease>20</airPollutionIncrease>
               <naturePollutionIncrease>10</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -18382,13 +18382,13 @@
             <ecoAwareness>5</ecoAwareness>
             <prosperity>90</prosperity>
             <pollution>
-              <avgPollution>53.333333333333336</avgPollution>
-              <airPollution>70</airPollution>
+              <avgPollution>43.333333333333336</avgPollution>
+              <airPollution>50</airPollution>
               <naturePollution>40</naturePollution>
-              <waterPollution>50</waterPollution>
+              <waterPollution>40</waterPollution>
               <airPollutionIncrease>20</airPollutionIncrease>
               <naturePollutionIncrease>15</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <waterPollutionIncrease>7.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -18431,7 +18431,7 @@
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>PollutionBuilding</buildingID>
@@ -18440,9 +18440,9 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-10</pollutionModifier>
+          <pollutionModifier>-5</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>HappinessBuilding</buildingID>
@@ -18453,7 +18453,7 @@
           <incomeModifier>0</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>20</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
       </possibleBuildings>
     </Region>
@@ -18482,13 +18482,13 @@
         <happiness>46.666666666666664</happiness>
         <ecoAwareness>11.666666666666666</ecoAwareness>
         <prosperity>61.666666666666664</prosperity>
-        <avgPollution>42.222222222222221</avgPollution>
-        <avgAirPollution>40</avgAirPollution>
-        <avgNaturePollution>46.666666666666664</avgNaturePollution>
-        <avgWaterPollution>40</avgWaterPollution>
-        <avgAirPollutionIncrease>10</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>10</avgWaterPollutionIncrease>
+        <avgPollution>37.222222222222221</avgPollution>
+        <avgAirPollution>35</avgAirPollution>
+        <avgNaturePollution>41.666666666666664</avgNaturePollution>
+        <avgWaterPollution>35</avgWaterPollution>
+        <avgAirPollutionIncrease>11.666666666666666</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>11.666666666666666</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>11.666666666666666</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -24510,12 +24510,12 @@
             <ecoAwareness>10</ecoAwareness>
             <prosperity>40</prosperity>
             <pollution>
-              <avgPollution>50</avgPollution>
-              <airPollution>40</airPollution>
-              <naturePollution>60</naturePollution>
-              <waterPollution>50</waterPollution>
-              <airPollutionIncrease>5</airPollutionIncrease>
-              <naturePollutionIncrease>5</naturePollutionIncrease>
+              <avgPollution>45</avgPollution>
+              <airPollution>35</airPollution>
+              <naturePollution>55</naturePollution>
+              <waterPollution>45</waterPollution>
+              <airPollutionIncrease>10</airPollutionIncrease>
+              <naturePollutionIncrease>10</naturePollutionIncrease>
               <waterPollutionIncrease>10</waterPollutionIncrease>
             </pollution>
           </statistics>
@@ -24534,13 +24534,13 @@
             <ecoAwareness>5</ecoAwareness>
             <prosperity>70</prosperity>
             <pollution>
-              <avgPollution>50</avgPollution>
-              <airPollution>60</airPollution>
-              <naturePollution>40</naturePollution>
-              <waterPollution>50</waterPollution>
+              <avgPollution>40</avgPollution>
+              <airPollution>50</airPollution>
+              <naturePollution>30</naturePollution>
+              <waterPollution>40</waterPollution>
               <airPollutionIncrease>15</airPollutionIncrease>
               <naturePollutionIncrease>10</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <waterPollutionIncrease>10</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -24583,7 +24583,7 @@
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>PollutionBuilding</buildingID>
@@ -24592,9 +24592,9 @@
             <string>Windmill park</string>
           </buildingName>
           <incomeModifier>0</incomeModifier>
-          <pollutionModifier>-10</pollutionModifier>
+          <pollutionModifier>-5</pollutionModifier>
           <happinessModifier>0</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
         <Building>
           <buildingID>HappinessBuilding</buildingID>
@@ -24605,7 +24605,7 @@
           <incomeModifier>0</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
           <happinessModifier>20</happinessModifier>
-          <buildingMoneyCost>20000</buildingMoneyCost>
+          <buildingMoneyCost>40000</buildingMoneyCost>
         </Building>
       </possibleBuildings>
     </Region>
