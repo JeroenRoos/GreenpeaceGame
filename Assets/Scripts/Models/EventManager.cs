@@ -30,8 +30,8 @@ class EventManager
     public delegate void ButtonIsClicked();
     public static event ButtonIsClicked PlayButtonClickSFX;
 
-    public delegate void ButtonIsHovered();
-    public static event ButtonIsHovered PlayButtonHoverSFX;
+    public delegate void OptionIsSelected();
+    public static event OptionIsSelected PlayOptionSelectSFX;
     
     public delegate void IsNewturn();
     public static event IsNewturn PlayNewTurnStartSFX;
@@ -74,9 +74,9 @@ class EventManager
         PlayButtonClickSFX();
     }
 
-    public static void CallPlayButtonHoverSFX()
+    public static void CallPlayOptionSelectSFX()
     {
-        PlayButtonHoverSFX();
+        PlayOptionSelectSFX();
     }
     public static void CallPlayNewTurnStartSFX()
     {

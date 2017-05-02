@@ -48,8 +48,8 @@ public class CameraController : MonoBehaviour {
     {
         if (canMove)
         {
-            CheckInput();
-            MoveCamera(CalculateNewCameraPosition());
+            //CheckInput();
+            //MoveCamera(CalculateNewCameraPosition());
         }
     }
 
