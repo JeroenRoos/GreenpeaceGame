@@ -769,13 +769,16 @@ public class UpdateUI : MonoBehaviour
         btnAfterActionReportCompleted.gameObject.SetActive(false);
 
         btnQuests.GetComponent<Button>();
-        btnQuests.gameObject.SetActive(false);
+        if (game.currentMonth < 6 && game.currentYear < 2)
+            btnQuests.gameObject.SetActive(false);
 
         btnInvestments.GetComponent<Button>();
-        btnInvestments.gameObject.SetActive(false);
+        if (game.currentYear < 6)
+            btnInvestments.gameObject.SetActive(false);
 
         btnCards.GetComponent<Button>();
-        btnCards.gameObject.SetActive(false);
+        if (game.currentYear < 4)
+            btnCards.gameObject.SetActive(false);
 
         setBooleans();
     }

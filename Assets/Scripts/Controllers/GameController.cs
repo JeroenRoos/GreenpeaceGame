@@ -98,7 +98,9 @@ public class GameController : MonoBehaviour
             }
         }
         updateUI.LinkGame(game);
+        
         StartCoroutine(updateUI.showBtnQuests());
+
         StartCoroutine(updateUI.showBtnInvestments());
         StartCoroutine(updateUI.showBtnCards());
 
