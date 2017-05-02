@@ -875,7 +875,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    #region Coroutines Buttons Quests/Investments
+    #region Coroutines Buttons and Start Tutorial Quests/Investments/Cards
     public IEnumerator showBtnQuests()
     {
         while (game.currentMonth < 6 && game.currentYear < 2)
@@ -981,9 +981,9 @@ public class UpdateUI : MonoBehaviour
 
     private IEnumerator tutorialBuildings()
     {
-        Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
+        Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;      // Midden in het scherm
         Vector3 imgPosLeft = imgPosMiddle;
-        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                             // Linksmidden in het scherm
+        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                                 // Linksmidden in het scherm
 
         btnNextTurn.interactable = false;
         canvasTutorial.gameObject.SetActive(true);
@@ -3220,17 +3220,6 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    /*public void btnAfterActionCompletedClick()
-    {
-        if (!canvasAfterActionCompletedPopup.gameObject.activeSelf && !popupActive)
-        {
-            canvasAfterActionCompletedPopup.gameObject.SetActive(true);
-            popupActive = true;
-            EventManager.CallPopupIsActive();
-            updateTextAfterActionCompleted();
-        }
-    }*/
-
     public void btnInvestmentsClick()
     {
         if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
@@ -3241,7 +3230,6 @@ public class UpdateUI : MonoBehaviour
             EventManager.CallPopupIsActive();
             initInvestementsText();
             updateInvestButtonsInteractable();
-            //initInvestementsPopup();
         }
     }
 
@@ -3309,12 +3297,6 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        /*else if (canvasAfterActionCompletedPopup.gameObject.activeSelf)
-        {
-            canvasAfterActionCompletedPopup.gameObject.SetActive(false);
-            popupActive = false;
-            EventManager.CallPopupIsDisabled();
-        }*/
         else if (canvasQuestsPopup.gameObject.activeSelf && !game.tutorial.tutorialQuestsActive)
         {
             canvasQuestsPopup.gameObject.SetActive(false);
@@ -3378,7 +3360,7 @@ public class UpdateUI : MonoBehaviour
             initCardsText();
         }
     }
-    #endregion
+    #endregion  // GameController
 
     #region Mouse Enter & Exit Code for Icons
     // OnEnter BtnMoney
@@ -3584,7 +3566,7 @@ public class UpdateUI : MonoBehaviour
     {
         btnCardsHoverCheck = false;
     }
-    #endregion
+    #endregion  // 
 
     #region Return Boolean Values
     public bool getBtnMoneyHover()
