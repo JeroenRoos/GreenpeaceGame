@@ -51,6 +51,7 @@ public class AudioPlayer : MonoBehaviour
 
             backgroundMusic.loop = true;
             backgroundMusic.clip = backgroundSong1;
+            
         }
         DontDestroyOnLoad(this.gameObject);
     }
@@ -74,5 +75,15 @@ public class AudioPlayer : MonoBehaviour
     public void PlayNewMonthSFX()
     {
         soundEffect.PlayOneShot(newmonthSFX);
+    }
+
+    public void changeVolumeMusic(float value)
+    {
+        backgroundMusic.volume = value;
+    }
+
+    public void changeVolumeEffects(float value)
+    {
+        soundEffect.volume = value;
     }
 }
