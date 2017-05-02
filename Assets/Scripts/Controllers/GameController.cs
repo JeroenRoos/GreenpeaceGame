@@ -104,17 +104,6 @@ public class GameController : MonoBehaviour
         StartCoroutine(updateUI.showBtnInvestments());
         StartCoroutine(updateUI.showBtnCards());
 
-        //afterActionPosition = new Vector3[3];
-        //afterActionPosition[0] = new Vector3( 5, 5, 0);
-        //afterActionPosition[1] = new Vector3( 5, 115, 0);
-        //afterActionPosition[2] = new Vector3( 5, 225, 0);
-
-        //float width = Screen.width / (1920 / 45);
-        //float height = Screen.height / (1080 / MonthlyReportButon.GetComponent<RectTransform>().sizeDelta.y);
-        //MonthlyReportButon.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-        //YearlyReportButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-        //CompletedButton.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
-
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5 + height * 2 * 0, 0);
         afterActionPosition[1] = new Vector3( 5, 5 + height * 2 * 1, 0);

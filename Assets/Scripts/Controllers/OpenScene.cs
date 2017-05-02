@@ -8,10 +8,20 @@ using System.IO;
 
 public class OpenScene : MonoBehaviour
 {
-    public Text txtNewGameBtn;
-    public Text txtLoadGame;
-    public Text Quit;
+    public Text txtButtonNewGame;
+    private string[] txtNewGame;
+
+    public Text txtButtonLoadGame;
+    private string[] txtLoadGame;
+
+    public Text txtButtonQuit;
+    private string[] txtQuit;
+
+    public Text txtButtonOptions;
+    private string[] txtOptions;
+        
     public Button btnLoad;
+    private int taal;
 
 
     void Start()
@@ -22,6 +32,23 @@ public class OpenScene : MonoBehaviour
         if (File.Exists(path))
         {
             btnLoad.interactable = true;
+        }
+
+        taal = ApplicationModel.language;
+        
+        if (taal == 0)
+        {
+            txtButtonLoadGame.text = "Spel laden";
+            txtButtonNewGame.text = "Nieuw spel";
+            txtButtonQuit.text = "Spel verlaten";
+            txtButtonOptions.text = "Opties";
+        }
+        else
+        {
+            txtButtonLoadGame.text = "Load game";
+            txtButtonNewGame.text = "New Game";
+            txtButtonQuit.text = "Quit";
+            txtButtonOptions.text = "Options";
         }
     }
 
