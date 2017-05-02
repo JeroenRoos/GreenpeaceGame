@@ -20,7 +20,6 @@ public class UpdateUI : MonoBehaviour
     Card card;
     double regioActionCost;
     Game game;
-    public int tutorialIndex;
     public Scrollbar scrollbarAfterActionReport;
 
     private List<GameEvent>[] monthlyNewEvents;
@@ -428,11 +427,6 @@ public class UpdateUI : MonoBehaviour
         ColorUtility.TryParseHtmlString("#ccac6f", out c);      // Get the color out of the hexadecimal string
         buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
 
-        game.tutorial.tutorialChecks = new bool[21];
-        // Use this boolean to start the game with or without the tutorial while testing
-        if (!ApplicationModel.loadGame)
-            game.tutorial.tutorialActive = true;
-
         if (game.tutorial.tutorialActive)
             initTutorialActive();
         else
@@ -474,9 +468,6 @@ public class UpdateUI : MonoBehaviour
     private void initTutorialActive()
     {
         canvasTutorial.gameObject.SetActive(true);
-        game.tutorial.tutorialNoTooltip = true;
-        game.tutorial.regionWestActivated = false;
-        game.tutorial.tutorialCheckActionDone = false;
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
@@ -484,22 +475,7 @@ public class UpdateUI : MonoBehaviour
         imgHighlightQuests.enabled = false;
         imgHighlightMonthlyReport.enabled = false;
         imgHighlightInvestements.enabled = false;
-        tutorialIndex = 0;
         canvasTutorial.gameObject.SetActive(true);
-        game.tutorial.tutorialNexTurnPossibe = false;
-        game.tutorial.tutorialNextTurnDone = false;
-        game.tutorial.tutorialQuestsActive = false;
-        game.tutorial.tutorialOrganizationActive = false;
-        game.tutorial.tutorialeventsClickable = false;
-        game.tutorial.tutorialBuildingsClickable = false;
-        game.tutorial.tutorialOnlyWestNL = false;
-        game.tutorial.tutorialRegionActive = false;
-        game.tutorial.tutorialEventsActive = false;
-        game.tutorial.tutorialMonthlyReportActive = false;
-        game.tutorial.tutorialCardsActive = false;
-        game.tutorial.tutorialInvestementsActive = false;
-        game.tutorial.tutorialBuildingsActive = false;
-        game.tutorial.tutorialRegionsClickable = false;
         StartCoroutine(initTutorialText());
     }
 
@@ -3802,130 +3778,24 @@ public class UpdateUI : MonoBehaviour
     public void turorialButtonPress()
     {
         EventManager.CallPlayButtonClickSFX();
-        for (int i = tutorialIndex; i < game.tutorial.tutorialChecks.Length; i++)
+        for (int i = game.tutorial.tutorialIndex; i < game.tutorial.tutorialChecks.Length; i++)
         {
             if (i == 0)
             {
                 game.tutorial.tutorialChecks[i] = true;
-                tutorialIndex++;
+                game.tutorial.tutorialIndex++;
                 break;
             }
             else if (game.tutorial.tutorialChecks[i - 1])
             {
                 if (i != game.tutorial.tutorialChecks.Length - 1)
                 {
-                    Debug.Log(i);
                     game.tutorial.tutorialChecks[i] = true;
-                    tutorialIndex++;
+                    game.tutorial.tutorialIndex++;
                     break;
                 }
             }
         }
-
-
-        /*
-        if (tutorialIndex == 1)
-        {
-            game.tutorial.tutorialStep2 = true;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 2)
-        {
-            game.tutorial.tutorialStep3 = true;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 3)
-        {
-            game.tutorial.tutorialStep4 = true;
-            tutorialIndex++;
-        }
-        //else if (tutorialIndex == 4)
-        //{
-        //tutorialStep5 = true;
-        //tutorialIndex++;
-        //}
-        //else if (tutorialIndex == 7)
-        //{
-        //    tutorialStep8 = true;
-        //    tutorialIndex++;
-        //}
-        //else if (tutorialIndex == 9)
-        //{
-        //    tutorialStep10 = true;
-        //    tutorialIndex++;
-        //}
-        else if (tutorialIndex == 4)
-        {
-            game.tutorial.tutorialStep6 = true;
-            tutorialIndex++;
-            tutorialIndex++;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 7)
-        {
-            game.tutorial.tutorialStep9 = true;
-            tutorialIndex++;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 9)
-        {
-            game.tutorial.tutorialstep11 = true;
-            game.tutorial.tutorialStep18 = true;
-
-            tutorialIndex = 18;
-        }
-        //else if (tutorialIndex == 11)
-        //{
-        //    tutorialstep12 = true;
-        //    tutorialIndex++;
-        //}
-        else if (tutorialIndex == 11)
-        {
-            game.tutorial.tutorialStep13 = true;
-            tutorialIndex++;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 13)
-        {
-            game.tutorial.tutorialStep14 = true;
-            tutorialIndex++;
-        }
-        //else if (tutorialIndex == 14)
-        //{
-        //    tutorialStep15 = true;
-        //    tutorialIndex++;
-        //}
-        else if (tutorialIndex == 14)
-        {
-            game.tutorial.tutorialStep16 = true;
-            tutorialIndex++;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 16)
-        {
-            game.tutorial.tutorialStep17 = true;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 17)
-        {
-            game.tutorial.tutorialStep18 = true;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 18)
-        {
-            game.tutorial.tutorialstep19 = true;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 19)
-        {
-            game.tutorial.tutorialStep20 = true;
-            tutorialIndex++;
-        }
-        else if (tutorialIndex == 20)
-        {
-            game.tutorial.tutorialStep21 = true;
-            tutorialIndex++;
-        }*/
     }
     
     #endregion
