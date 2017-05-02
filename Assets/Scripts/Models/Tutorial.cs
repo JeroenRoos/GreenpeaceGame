@@ -6,53 +6,40 @@ using System.Text;
 [Serializable]
 public class Tutorial
 {
-    /*
-    public bool tutorialStep2;
-    public bool tutorialStep3;
-    public bool tutorialStep4;
-    public bool tutorialStep5;
-    public bool tutorialStep6;
-    public bool tutorialStep7;
-    public bool tutorialStep8;
-    public bool tutorialStep9;
-    public bool tutorialStep10;
-    public bool tutorialstep11;
-    public bool tutorialstep12;
-    public bool tutorialStep13;
-    public bool tutorialStep14;
-    public bool tutorialStep15;
-    public bool tutorialStep16;
-    public bool tutorialStep17;
-    public bool tutorialStep18;
-    public bool tutorialstep19;
-    public bool tutorialStep20;
-    public bool tutorialStep21;
-    */
-
     public int tutorialIndex;
-    public bool tutorialActive;
     public bool tutorialNoTooltip;
-    public bool tutorialCheckActionDone;
     public bool regionWestActivated;
+
     public bool tutorialOrganizationDone;
+    public bool tutorialRegionDone;
     public bool tutorialNextTurnDone;
     public bool tutorialEventsDone;
     public bool tutorialMonthlyReportDone;
+    public bool tutorialCheckActionDone;
+    public bool tutorialCardsDone;
+    public bool tutorialQuestsDone;
+    public bool tutorialInvestementsDone;
+    public bool tutorialBuildingsDone;
+
     public bool tutorialNexTurnPossibe;
     public bool tutorialQuestsActive;
-    public bool tutorialOrganizationActive;
     public bool tutorialeventsClickable;
+
+    public bool tutorialRegionsClickable;
     public bool tutorialBuildingsClickable;
+
     public bool tutorialOnlyWestNL;
+    public bool doTuto;
+
+    public bool tutorialActive;
+    public bool tutorialOrganizationActive;
+    public bool tutorialCardsActive;
+    public bool tutorialInvestementsActive;
+    public bool tutorialBuildingsActive;
     public bool tutorialRegionActive;
     public bool tutorialEventsActive;
     public bool tutorialMonthlyReportActive;
-    public bool doTuto;
-    public bool tutorialCardsActive;
-    public bool tutorialCardsDone;
-    public bool tutorialInvestementsActive;
-    public bool tutorialBuildingsActive;
-    public bool tutorialRegionsClickable;
+
 
     public bool[] tutorialChecks;
 
@@ -60,7 +47,6 @@ public class Tutorial
     {
         tutorialIndex = 0;
         tutorialNexTurnPossibe = false;
-        tutorialNextTurnDone = false;
         tutorialQuestsActive = false;
         tutorialOrganizationActive = false;
         tutorialeventsClickable = false;
@@ -75,8 +61,22 @@ public class Tutorial
         tutorialRegionsClickable = false;
         tutorialNoTooltip = true;
         regionWestActivated = false;
-        tutorialCheckActionDone = false;
         tutorialChecks = new bool[21];
-        tutorialActive = true;
+
+        for (int i = 0; i < tutorialChecks.Length; i++)
+            tutorialChecks[i] = false;
+
+        tutorialActive = false;
+
+        tutorialOrganizationDone = false;
+        tutorialRegionDone = false;
+        tutorialNextTurnDone = false;
+        tutorialEventsDone = false;
+        tutorialMonthlyReportDone = false;
+        tutorialCheckActionDone = false;
+        tutorialCardsDone = false;
+        tutorialQuestsDone = false;
+        tutorialInvestementsDone = false;
+        tutorialBuildingsDone = false;
     }
 }

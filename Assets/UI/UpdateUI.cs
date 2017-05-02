@@ -457,11 +457,6 @@ public class UpdateUI : MonoBehaviour
             }
         }
     }
-
-    void FixedUpdate()
-    {
-
-    }
     #endregion
 
     #region Tutorial Main Steps
@@ -495,38 +490,9 @@ public class UpdateUI : MonoBehaviour
         txtTutorialOverworld.enabled = false;
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialNexTurnPossibe = true;
-        game.tutorial.tutorialEventsDone = true;
-        game.tutorial.tutorialMonthlyReportDone = true;
         game.tutorial.tutorialNexTurnPossibe = true;
-        game.tutorial.tutorialEventsDone = true;
-        game.tutorial.tutorialMonthlyReportDone = true;
-        game.tutorial.tutorialCardsDone = true;
-        /* 
-         game.tutorial.tutorialStep2 = true;
-         game.tutorial.tutorialStep3 = true;
-         game.tutorial.tutorialStep4 = true;
-         game.tutorial.tutorialStep5 = true;
-         game.tutorial.tutorialStep6 = true;
-         game.tutorial.tutorialStep7 = true;
-         game.tutorial.tutorialStep8 = true;
-         game.tutorial.tutorialStep9 = true;
-         game.tutorial.tutorialStep10 = true;
-         game.tutorial.tutorialstep11 = true;
-         game.tutorial.tutorialstep12 = true;
-         game.tutorial.tutorialStep13 = true;
-         game.tutorial.tutorialStep14 = true;
-         game.tutorial.tutorialStep15 = true;
-         game.tutorial.tutorialStep16 = true;
-         game.tutorial.tutorialStep17 = true;
-         game.tutorial.tutorialStep18 = true;
-         game.tutorial.tutorialstep19 = true;
-         game.tutorial.tutorialStep20 = true;
-         game.tutorial.tutorialStep21 = true;
-        */
         game.tutorial.regionWestActivated = true;
-        game.tutorial.tutorialCheckActionDone = true;
         game.tutorial.tutorialQuestsActive = false;
-
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialBuildingsClickable = true;
         game.tutorial.tutorialOnlyWestNL = true;
@@ -539,9 +505,21 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialRegionsClickable = true;
         game.tutorial.tutorialBuildingsActive = false;
 
+        game.tutorial.tutorialOrganizationDone = true;
+        game.tutorial.tutorialRegionDone = true;
+        game.tutorial.tutorialNextTurnDone = true;
+        game.tutorial.tutorialEventsDone = true;
+        game.tutorial.tutorialMonthlyReportDone = true;
+        game.tutorial.tutorialCheckActionDone = true;
+        game.tutorial.tutorialCardsDone = true;
+        game.tutorial.tutorialQuestsDone = true;
+        game.tutorial.tutorialInvestementsDone = true;
+        game.tutorial.tutorialBuildingsDone = true;
+
         for (int i = 0; i < game.tutorial.tutorialChecks.Length; i++)
             game.tutorial.tutorialChecks[i] = true;
     }
+
     IEnumerator initTutorialText()
     {
         Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
@@ -613,16 +591,21 @@ public class UpdateUI : MonoBehaviour
         txtTurorialStep1.fontSize = 9;
         btnTutorialNext.gameObject.SetActive(false);
 
-        while (!canvasRegioPopup.gameObject.activeSelf)
-            yield return null;
+        if (!game.tutorial.tutorialRegionDone)
+        {
+            while (!canvasRegioPopup.gameObject.activeSelf)
+                yield return null;
 
-        canvasTutorial.gameObject.SetActive(false);
+            canvasTutorial.gameObject.SetActive(false);
 
-        while (!game.tutorial.tutorialCheckActionDone)
-            yield return null;
+            while (!game.tutorial.tutorialCheckActionDone)
+                yield return null;
 
-        while (canvasRegioPopup.gameObject.activeSelf)
-            yield return null;
+            while (canvasRegioPopup.gameObject.activeSelf)
+                yield return null;
+        }
+        else
+            canvasTutorial.gameObject.SetActive(false);
 
         game.tutorial.tutorialOnlyWestNL = false;
         canvasTutorial.gameObject.SetActive(true);
@@ -638,17 +621,25 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.gameObject.SetActive(true);
         //imgBarBottom.gameObject.SetActive(true);
 
-        while (!canvasOrganizationPopup.gameObject.activeSelf)
-            yield return null;
+        if (!game.tutorial.tutorialOrganizationDone)
+        {
+            while (!canvasOrganizationPopup.gameObject.activeSelf)
+                yield return null;
 
-        imgTutorialStepOrgMenuHightlight.gameObject.SetActive(false);
-        canvasTutorial.gameObject.SetActive(false);
+            imgTutorialStepOrgMenuHightlight.gameObject.SetActive(false);
+            canvasTutorial.gameObject.SetActive(false);
 
-        while (!game.tutorial.tutorialOrganizationDone)
-            yield return null;
+            while (!game.tutorial.tutorialOrganizationDone)
+                yield return null;
 
-        while (canvasOrganizationPopup.gameObject.activeSelf)
-            yield return null;
+            while (canvasOrganizationPopup.gameObject.activeSelf)
+                yield return null;
+        }
+        else
+        {
+            imgTutorialStepOrgMenuHightlight.gameObject.SetActive(false);
+            canvasTutorial.gameObject.SetActive(false);
+        }
 
         btnNextTurn.interactable = true;
         canvasTutorial.gameObject.SetActive(true);
@@ -661,8 +652,11 @@ public class UpdateUI : MonoBehaviour
 
         game.tutorial.tutorialNexTurnPossibe = true;
 
-        while (!game.tutorial.tutorialNextTurnDone)
-            yield return null;
+        if (!game.tutorial.tutorialNextTurnDone)
+        {
+            while (!game.tutorial.tutorialNextTurnDone)
+                yield return null;
+        }
 
         game.tutorial.tutorialNexTurnPossibe = false;
         btnNextTurn.interactable = false;
@@ -680,17 +674,25 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialMonthlyReportActive = true;
         imgTutorialOverworld.transform.position = imgPosLeft;
 
-        while (!canvasMonthlyReport.gameObject.activeSelf)
-            yield return null;
+        if (!game.tutorial.tutorialMonthlyReportDone)
+        {
+            while (!canvasMonthlyReport.gameObject.activeSelf)
+                yield return null;
 
-        canvasTutorial.gameObject.SetActive(false);
-        imgHighlightMonthlyReport.gameObject.SetActive(false);
+            canvasTutorial.gameObject.SetActive(false);
+            imgHighlightMonthlyReport.gameObject.SetActive(false);
 
-        while (!game.tutorial.tutorialMonthlyReportDone)
-            yield return null;
+            while (!game.tutorial.tutorialMonthlyReportDone)
+                yield return null;
 
-        while (canvasMonthlyReport.gameObject.activeSelf)
-            yield return null;
+            while (canvasMonthlyReport.gameObject.activeSelf)
+                yield return null;
+        }
+        else
+        {
+            canvasTutorial.gameObject.SetActive(false);
+            imgHighlightMonthlyReport.gameObject.SetActive(false);
+        }
 
         //imgTutorialOverworld.gameObject.transform.position = imgNewPos;
         canvasTutorial.gameObject.SetActive(true);
@@ -714,16 +716,22 @@ public class UpdateUI : MonoBehaviour
         txtTutorialStep1BtnText.text = btnText[taal];
         game.tutorial.tutorialEventsActive = true;
 
-        while (!canvasEventPopup.gameObject.activeSelf)
-            yield return null;
+        if (!game.tutorial.tutorialEventsDone)
+        {
+            while (!canvasEventPopup.gameObject.activeSelf)
+                yield return null;
 
-        canvasTutorial.gameObject.SetActive(false);
+            canvasTutorial.gameObject.SetActive(false);
 
-        while (!game.tutorial.tutorialEventsDone)
-            yield return null;
+            while (!game.tutorial.tutorialEventsDone)
+                yield return null;
 
-        while (canvasEventPopup.gameObject.activeSelf)
-            yield return null;
+            while (canvasEventPopup.gameObject.activeSelf)
+                yield return null;
+        }
+        else
+            canvasTutorial.gameObject.SetActive(false);
+
 
         canvasTutorial.gameObject.SetActive(true);
         btnTutorialNext.gameObject.SetActive(true);
@@ -880,12 +888,9 @@ public class UpdateUI : MonoBehaviour
 
         btnQuests.gameObject.SetActive(true);
 
-        //tutorialActive = true;
-
         if (game.tutorial.doTuto)
         {
             btnNextTurn.interactable = false;
-            //btnOrganization.interactable = false;
             canvasTutorial.gameObject.SetActive(true);
             imgHighlightQuests.enabled = true;
             imgTutorialOverworld.gameObject.SetActive(true);
@@ -893,7 +898,6 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialQuestsActive = true;
             game.tutorial.tutorialeventsClickable = false;
             game.tutorial.tutorialNexTurnPossibe = false;
-            //tutorialRegionsClickable = false;
 
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. \n\nOpen het Missies menu door op de Missies knop te drukken. ",
             "You can see that an extra button just appeared next to the Organization menu button. This is the button for you Quests. \n\nOpen the Quests menu by pressing the Quests button " };
@@ -901,8 +905,11 @@ public class UpdateUI : MonoBehaviour
             txtTurorialStep1.text = step1[taal];
             btnTutorialNext.gameObject.SetActive(false);
 
-            while (!canvasQuestsPopup.gameObject.activeSelf)
-                yield return null;
+            if (!game.tutorial.tutorialQuestsDone)
+            {
+                while (!canvasQuestsPopup.gameObject.activeSelf)
+                    yield return null;
+            }
 
             canvasTutorial.gameObject.SetActive(false);
             imgHighlightQuests.gameObject.SetActive(false);
@@ -932,8 +939,11 @@ public class UpdateUI : MonoBehaviour
             txtTurorialStep1.text = step1[taal];
             btnTutorialNext.gameObject.SetActive(false);
 
-            while (!canvasInvestmentsPopup.gameObject.activeSelf)
-                yield return null;
+            if (!game.tutorial.tutorialInvestementsDone)
+            {
+                while (!canvasInvestmentsPopup.gameObject.activeSelf)
+                    yield return null;
+            }
 
             canvasTutorial.gameObject.SetActive(false);
             imgHighlightInvestements.gameObject.SetActive(false);
@@ -963,8 +973,11 @@ public class UpdateUI : MonoBehaviour
             txtTurorialStep1.text = step1[taal];
             btnTutorialNext.gameObject.SetActive(false);
 
-            while (!canvasCardsPopup.gameObject.activeSelf)
-                yield return null;
+            if (!game.tutorial.tutorialCardsDone)
+            {
+                while (!canvasCardsPopup.gameObject.activeSelf)
+                    yield return null;
+            }
 
             canvasTutorial.gameObject.SetActive(false);
             imgHighlightCards.gameObject.SetActive(false);
@@ -996,8 +1009,11 @@ public class UpdateUI : MonoBehaviour
         btnTutorialNext.gameObject.SetActive(false);
         game.tutorial.tutorialBuildingsClickable = true;
 
-        while (!canvasEmptyBuildingsPopup.gameObject.activeSelf)
-            yield return null;
+        if (!game.tutorial.tutorialBuildingsDone)
+        {
+            while (!canvasEmptyBuildingsPopup.gameObject.activeSelf)
+                yield return null;
+        }
 
         canvasTutorial.gameObject.SetActive(false);
         imgTutorialOverworld.transform.position = imgPosMiddle;
@@ -1649,6 +1665,7 @@ public class UpdateUI : MonoBehaviour
 
         imgTutorialRegion.gameObject.SetActive(false);
         game.tutorial.tutorialRegionActive = false;
+        game.tutorial.tutorialRegionDone = true;
     }
 
     private void updateRegionScreenUI()
@@ -2269,7 +2286,7 @@ public class UpdateUI : MonoBehaviour
         txtQuestsDescription.text = description[taal];
 
         if (game.tutorial.tutorialQuestsActive && game.tutorial.doTuto)
-            StartCoroutine(tutorialQuests());
+            StartCoroutine(tutorialQuestsPopup());
 
         foreach (Quest q in game.quests)
         {
@@ -2286,8 +2303,9 @@ public class UpdateUI : MonoBehaviour
             txtQuestsActive.text = noActiveQuests[taal];       
     }
 
-    IEnumerator tutorialQuests()
+    IEnumerator tutorialQuestsPopup()
     {
+        Debug.Log("Coroutine Tutorial Quests!");
         imgTutorialQuests.gameObject.SetActive(true);
 
         string[] step2 = { "In deze pop-up kun je zien welke actieve missies je hebt. Je krijgt om de 2 jaar een nieuwe missie. \n\nAls je aan de juiste condities voldoet haal je de missie en krijg je een beloning.",
@@ -2319,6 +2337,7 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialQuestsDone = true;
         btnNextTurn.interactable = true;
     }
     
@@ -2608,6 +2627,7 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialBuildingsDone = true;
         btnNextTurn.interactable = true;
     }
 
@@ -2709,10 +2729,10 @@ public class UpdateUI : MonoBehaviour
         txtInvestmentsEventConsequences.text = eventconsequencies[taal];
 
         if (game.tutorial.tutorialInvestementsActive && game.tutorial.doTuto)
-            StartCoroutine(tutorialInvestements());
+            StartCoroutine(tutorialInvestementsPopup());
     }
 
-    private IEnumerator tutorialInvestements()
+    private IEnumerator tutorialInvestementsPopup()
     {
         imgTutorialInvestements.gameObject.SetActive(true);
 
@@ -2737,6 +2757,7 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialInvestementsDone = true;
         btnNextTurn.interactable = true;
     }
 
@@ -2907,10 +2928,10 @@ public class UpdateUI : MonoBehaviour
         toggleWestNL.gameObject.SetActive(false);
 
         if (game.tutorial.tutorialCardsActive && game.tutorial.doTuto)
-            StartCoroutine(tutorialCards());
+            StartCoroutine(tutorialCardsPopup());
     }
 
-    private IEnumerator tutorialCards()
+    private IEnumerator tutorialCardsPopup()
     {
         imgTutorialCards.gameObject.SetActive(true);
 
@@ -2928,8 +2949,11 @@ public class UpdateUI : MonoBehaviour
         imgTutorialCards.gameObject.SetActive(false);
         game.tutorial.tutorialCardsActive = false;
 
-        while (canvasCardsPopup.gameObject.activeSelf)
-            yield return null;
+        if (!game.tutorial.tutorialCardsDone)
+        {
+            while (canvasCardsPopup.gameObject.activeSelf)
+                yield return null;
+        }
 
         /*
         btnTutorialNext.gameObject.SetActive(true);
@@ -3129,6 +3153,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    // Game Controller
     #region Code for Button Presses for Popups
     public void btnTimelineClick()
     {
@@ -3321,6 +3346,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    // Game Controller
     #region Language Change Code
     public void btnNLClick()
     {
@@ -3359,6 +3385,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion  // GameController
 
+    // Game Controller
     #region Mouse Enter & Exit Code for Icons
     // OnEnter BtnMoney
     public void BtnMoneyEnter()
@@ -3622,6 +3649,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    // Game Controller
     #region Next Turn Button Code
     public void nextTurnOnClick()
     {
@@ -3726,6 +3754,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    // Game Controller
     #region Menu Popup Buttons Code
     public void btnResumeMenu()
     {
@@ -3756,6 +3785,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    // Game Controller
     #region Code for controlling Tutorial buttons presses
     public void turorialButtonPress()
     {
