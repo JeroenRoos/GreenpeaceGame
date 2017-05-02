@@ -78,7 +78,5 @@ public class Tutorial
         tutorialCheckActionDone = false;
         tutorialChecks = new bool[21];
         tutorialActive = true;
-
-
     }
 }
