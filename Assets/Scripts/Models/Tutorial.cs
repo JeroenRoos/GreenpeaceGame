@@ -64,12 +64,10 @@ public class Tutorial
         tutorialChecks = new bool[21];
         for (int i = 0; i < tutorialChecks.Length; i++)
             tutorialChecks[i] = false;
-<<<<<<< HEAD
+
 
         tutorialActive = true;
 
-=======
->>>>>>> 523a54bb28f26f5a9839948290ff2d184c7ab5a6
         tutorialOrganizationDone = false;
         tutorialRegionDone = false;
         tutorialNextTurnDone = false;
