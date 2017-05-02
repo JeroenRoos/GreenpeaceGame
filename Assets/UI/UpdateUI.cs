@@ -536,10 +536,10 @@ public class UpdateUI : MonoBehaviour
         //imgBarBottom.gameObject.SetActive(false);
 
         game.tutorial.doTuto = true;
-        string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen dat Nederland een milieubewust land wordt. " +
-                "\n\nDe inwoners moeten begrijpen dat een groen land belangrijk is." 
-                , "Welcome! The government has given your organisation the task to make " +
-                "The Netherlands an country aware of the environment. \n\nThe inhabitants need to understand the importance of a green country. "};
+        string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen " + 
+                "dat Nederland een milieubewust land wordt. De inwoners moeten begrijpen dat een groen land belangrijk is."
+                , "Welcome! The government has given your organisation the task to make The Netherlands " + 
+                "a country which is aware of the environment. The inhabitants need to understand the importance of a green country."};
         string[] btnText = { "Verder", "Next" };
 
         txtTurorialStep1.text = step1[taal];
@@ -552,9 +552,8 @@ public class UpdateUI : MonoBehaviour
         while (!game.tutorial.tutorialChecks[0])//tutorialStep2)
             yield return null;
 
-        string[] step2 = { "Het doel is om de vervuiling in het land onder 5% te hebben in 2050. \n\nZoals je kunt zien zitten we nu in 2020. " +
-                "Je hebt dus 30 jaar om dit doel te halen.", "The goal is to get pollution under 5% before 2050. \n\nAs you can see the current year is 2020. " +
-                "This means you have 30 years to reach this goal. "};
+        string[] step2 = { "Jouw taak is om de vervuiling naar 0% te brengen voor 2050. Het is nu 2020 dus je hebt nog 30 jaar.",
+            "Your task is to reduce the pollution to 0% before 2050. It is now 2020 so you still have 30 years."};
         txtTurorialStep1.text = step2[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         imgTutorialStep2Highlight1.enabled = true;
@@ -565,11 +564,20 @@ public class UpdateUI : MonoBehaviour
 
         //tutorialStep3 = false;
         imgTutorialOverworld.transform.position = imgPosMiddle;
-        string[] step3 = { "Hierboven staan jouw resources. \n\nGeld wordt gebruikt om jouw beslissingen te financieren. \n\nTevredenheid bepaald of het volk besluit om mee te werken met jouw beslissingen. "
-                + "\n\nMilieubewustheid zorgt ervoor dat er minder wordt vervuilt. \n\nVervuiling geeft de vervuiling in het land weer. \n\nWelvaart toont hoe het zit met de hoeveelheid geld in de verschillende regio's. \n\n"
-                + "Al deze iconen geven het gemiddelde van de verschillende regio's weer."
-                , "Here are the resources that help you achieve your goal. \n\nMoney is used for financing the decisions you make. \n\nHappiness determines whether people cooperate or not. \n\nEco awareness means less pollution. "
-                + "\n\nPollutions shows the pollution in the country. \n\nThese icons show the averages from the different regions." };
+        string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " + 
+                "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." + 
+                "\n\nGeld: beslissingen maken kost geld. Geld wordt per maand verhoogd door het inkomen." +
+                "\n\nWelvaart: verhoogt het inkomen." +
+                "\n\nMilieubewustheid: verlaagt de maandelijkse vervuiling." +
+                "\n\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50 % is positief, onder 50 % is negatief." +
+                "\n\nVervuiling: de vervuiling in het land, neemt per maand toe of af.",
+                "At the top of the screen are your recourses to reduce pollution. Prosperity, eco awareness, " + 
+                "happiness and pollution are nationwide averages." +
+                "\n\nMoney: decisions cost money.Money increases monthly from income." +
+                "\n\nProsperity: increases income." +
+                "\n\nEco Awareness: reduces monthly pollution." +
+                "\n\nHappiness: influences consequences of decisions. Above 50 % is positive, below 50 % is negative." +
+                "\n\nPollution: the pollution in the country, increases or decreases monthly." };
         txtTurorialStep1.text = step3[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 8;
@@ -582,10 +590,12 @@ public class UpdateUI : MonoBehaviour
         imgTutorialOverworld.gameObject.transform.position = imgPosRight;
         game.tutorial.tutorialOnlyWestNL = true;
         game.tutorial.tutorialRegionsClickable = true;
-        string[] step4 = { "Het land bestaat uit 4 regio's. Noord-Nederland, Oost-Nederland, Zuid-Nederland en West-Nederland. \n\nElke regio heeft een inkomen, tevredenheid, vervuiling, milieubewustheid en welvaart. "
-                + "Deze statistieken verschillen weer per regio. \n\nGa naar West-Nederland door op de regio te klikken. "
-                , "There are 4 regions, The Netherlands North, The Netherlands East, The Netherlands South and The Netherland West. \n\nEach region has an income, happiness, pollution, eco-awareness and prosperity. "
-                + "These statistics differ for each region. \n\nGo to The Netherlands West by clicking on the region. "};
+        string[] step4 = { "Er zijn 4 regio’s: Noord, Oost, West, en Zuid. Elke regio heeft een inkomen, " +
+                "welvaart, vervuiling, milieubewustheid en tevredenheid." +
+                "\n\nGa nu naar West Nederland door op de regio te klikken",
+                "There are 4 regions: North, East, West and South. Each region has an income, prosperity, " +
+                "pollution, eco-awareness and happiness." +
+                "\n\nNow go to The Netherlands West by clicking on the region." };
         txtTurorialStep1.text = step4[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 9;
@@ -777,13 +787,16 @@ public class UpdateUI : MonoBehaviour
         btnAfterActionReportCompleted.gameObject.SetActive(false);
 
         btnQuests.GetComponent<Button>();
-        btnQuests.gameObject.SetActive(false);
+        if (game.currentMonth < 6 && game.currentYear < 2)
+            btnQuests.gameObject.SetActive(false);
 
         btnInvestments.GetComponent<Button>();
-        btnInvestments.gameObject.SetActive(false);
+        if (game.currentYear < 6)
+            btnInvestments.gameObject.SetActive(false);
 
         btnCards.GetComponent<Button>();
-        btnCards.gameObject.SetActive(false);
+        if (game.currentYear < 4)
+            btnCards.gameObject.SetActive(false);
 
         setBooleans();
     }
