@@ -570,14 +570,14 @@ public class UpdateUI : MonoBehaviour
                 "\n\nVervuiling: de vervuiling in het land, neemt per maand toe of af." +
                 "\n\nMilieubewustheid: verlaagt de maandelijkse vervuiling." +
                 "\n\nWelvaart: verhoogt het inkomen." +
-                "\n\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50 % is positief, onder 50 % is negatief.",
+                "\n\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50% is positief, onder 50% is negatief.",
                 "At the top of the screen are your recourses to reduce pollution. Prosperity, eco awareness, " + 
                 "happiness and pollution are nationwide averages." +
                 "\n\nMoney: decisions cost money.Money increases monthly from income." +
                 "\n\nPollution: the pollution in the country, increases or decreases monthly." +
                 "\n\nEco Awareness: reduces monthly pollution." +
                 "\n\nProsperity: increases income." +
-                "\n\nHappiness: influences consequences of decisions. Above 50 % is positive, below 50 % is negative." };
+                "\n\nHappiness: influences consequences of decisions. Above 50% is positive, below 50% is negative." };
         txtTurorialStep1.text = step3[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
         txtTurorialStep1.fontSize = 8;

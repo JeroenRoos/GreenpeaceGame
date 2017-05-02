@@ -62,12 +62,8 @@ public class Tutorial
         tutorialNoTooltip = true;
         regionWestActivated = false;
         tutorialChecks = new bool[21];
-
         for (int i = 0; i < tutorialChecks.Length; i++)
             tutorialChecks[i] = false;
-
-        tutorialActive = false;
-
         tutorialOrganizationDone = false;
         tutorialRegionDone = false;
         tutorialNextTurnDone = false;
@@ -78,5 +74,7 @@ public class Tutorial
         tutorialQuestsDone = false;
         tutorialInvestementsDone = false;
         tutorialBuildingsDone = false;
+
+        tutorialActive = true;
     }
 }
