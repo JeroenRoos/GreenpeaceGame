@@ -29,6 +29,7 @@ public class Tutorial
     public bool tutorialStep21;
     */
 
+    public int tutorialIndex;
     public bool tutorialActive;
     public bool tutorialNoTooltip;
     public bool tutorialCheckActionDone;
@@ -55,5 +56,27 @@ public class Tutorial
 
     public bool[] tutorialChecks;
 
-    public Tutorial() { }
+    public Tutorial()
+    {
+        tutorialIndex = 0;
+        tutorialNexTurnPossibe = false;
+        tutorialNextTurnDone = false;
+        tutorialQuestsActive = false;
+        tutorialOrganizationActive = false;
+        tutorialeventsClickable = false;
+        tutorialBuildingsClickable = false;
+        tutorialOnlyWestNL = false;
+        tutorialRegionActive = false;
+        tutorialEventsActive = false;
+        tutorialMonthlyReportActive = false;
+        tutorialCardsActive = false;
+        tutorialInvestementsActive = false;
+        tutorialBuildingsActive = false;
+        tutorialRegionsClickable = false;
+        tutorialNoTooltip = true;
+        regionWestActivated = false;
+        tutorialCheckActionDone = false;
+        tutorialChecks = new bool[21];
+        tutorialActive = true;
+    }
 }
