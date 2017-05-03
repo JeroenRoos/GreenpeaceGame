@@ -133,6 +133,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtTimelineColumnRight;
     public Dropdown dropdownTimeline;
     public Text txtColumnLeftInfo;
+    public Text txtColumnRightInfo;
+    private string dropdownTimelinePick;
 
     // Text Event Popup
     GameEvent gameEvent;
@@ -3364,11 +3366,14 @@ public class UpdateUI : MonoBehaviour
         string[] title = { "Tijdlijn", "Timeline" };
         string[] columnLeft = { "Kies jaar", "Choose year" };
         string[] columnRight = { "", "" };
-        //string[] columnRight = { "", "" };
+        string[] infoRight = { "", "" };
+        string[] infoLeft = { "Kies de maand waar je de statistieken van wilt zien", "Choose a month to view the statistics from that month" };
 
         txtTimelineTitle.text = title[taal];
         txtTimelineColumnLeft.text = columnLeft[taal];
         txtTimelineColumnRight.text = columnRight[taal];
+        txtColumnLeftInfo.text = infoLeft[taal];
+        txtColumnRightInfo.text = infoRight[taal];
 
         initDropdownTimeline();
     }
@@ -3379,20 +3384,37 @@ public class UpdateUI : MonoBehaviour
         dropdownTimeline.RefreshShownValue();
 
         int currentMonth = game.currentYear * 12 + game.currentMonth;
-        string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
 
+        string[] dropdownPlaceholderText = { "Kies", "Choose a month" };
         dropdownTimeline.captionText.text = dropdownPlaceholderText[taal];
 
         foreach (int month in game.timeline.timeInMonths)
-        {
             dropdownTimeline.options.Add(new Dropdown.OptionData() { text = month.ToString() });
-            
-        }
 
         //code to bypass Unity bug -> can't set .value outside the dropdown range
         dropdownTimeline.options.Add(new Dropdown.OptionData() { text = " " });
         dropdownTimeline.value = dropdownTimeline.options.Count - 1;
         dropdownTimeline.options.RemoveAt(dropdownTimeline.options.Count - 1);
+    }
+
+    public void getDropdownTimelineValue()
+    {
+        EventManager.CallPlayButtonClickSFX();
+        for (int i = 0; i <= dropdownRegio.options.Count; i++)
+        {
+            if (dropdownRegio.value == i)
+            {
+                dropdownTimelinePick = dropdownTimeline.options[i].text;
+            }
+        }
+
+        // Shows the right information with the chosen option in dropdown
+        showInfoDropdownTimeline();
+    }
+
+    private void showInfoDropdownTimeline()
+    {
+
     }
     #endregion
 
