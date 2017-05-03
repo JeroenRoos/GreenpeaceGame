@@ -15,6 +15,8 @@ public class OpenScene : MonoBehaviour
 
     public Button btnLoad;
     private int taal;
+    private float valueMusic;
+    private float valueSFX;
 
     public Canvas canvasHomeScreen;
 
@@ -67,20 +69,22 @@ public class OpenScene : MonoBehaviour
         // PlayerPrefs Music Volume
         if (PlayerPrefs.HasKey("savedMusicVolume"))
         {
-            taal = PlayerPrefs.GetInt("savedLanguage");
-            ApplicationModel.language = taal;
+            valueMusic = PlayerPrefs.GetFloat("savedMusicVolume");
+            ApplicationModel.valueMusic = valueMusic;
+            Debug.Log("PlayerPrefs Music: " + valueMusic);
         }
         else
-            taal = ApplicationModel.language;
+            valueMusic = ApplicationModel.valueMusic;
 
         // PlayerPrefs SFX Volume
         if (PlayerPrefs.HasKey("savedSFXVolume"))
         {
-            taal = PlayerPrefs.GetInt("savedLanguage");
-            ApplicationModel.language = taal;
+            valueSFX = PlayerPrefs.GetFloat("savedSFXVolume");
+            ApplicationModel.valueSFX = valueSFX;
+            Debug.Log("PlayerPrefs SFX: " + valueSFX);
         }
         else
-            taal = ApplicationModel.language;
+            valueSFX = ApplicationModel.valueSFX;
     }
 
     private void initUI()
@@ -152,11 +156,13 @@ public class OpenScene : MonoBehaviour
         txtToggleDutch.text = dutch[taal];
         txtToggleEnglish.text = english[taal];
 
-        ApplicationModel.valueSFX = AudioPlayer.Instance.soundEffect.volume * 100;
-        txtEffectsVolumeSliderValue.text = ApplicationModel.valueSFX.ToString("0");
+        //ApplicationModel.valueSFX = AudioPlayer.Instance.soundEffect.volume * 100;
+        sliderEffectsVolume.value = valueSFX;
+        txtEffectsVolumeSliderValue.text = (valueSFX * 100).ToString("0");
 
-        ApplicationModel.valueMusic = AudioPlayer.Instance.backgroundMusic.volume * 100;
-        txtMusicVolumeSliderValue.text = ApplicationModel.valueMusic.ToString("0");
+        //ApplicationModel.valueMusic = AudioPlayer.Instance.backgroundMusic.volume * 100;
+        sliderMusicVolume.value = valueMusic;
+        txtMusicVolumeSliderValue.text = (valueMusic * 100).ToString("0");
     }
 
     private void initSettingsUI()
@@ -195,6 +201,7 @@ public class OpenScene : MonoBehaviour
             ApplicationModel.language = 0;
             taal = ApplicationModel.language;
             PlayerPrefs.SetInt("savedLanguage", taal);
+            PlayerPrefs.Save();
             initSettingsText();
         }
         else
@@ -210,6 +217,7 @@ public class OpenScene : MonoBehaviour
             ApplicationModel.language = 1;
             taal = ApplicationModel.language;
             PlayerPrefs.SetInt("savedLanguage", taal);
+            PlayerPrefs.Save();
             initSettingsText();
         }
         else
@@ -220,16 +228,21 @@ public class OpenScene : MonoBehaviour
 
     public void sliderEffectsValueChanged()
     {
-        float value = sliderEffectsVolume.value;
-        txtEffectsVolumeSliderValue.text = (value * 100).ToString("0");
-        AudioPlayer.Instance.changeVolumeEffects(value);
-
+        valueSFX = sliderEffectsVolume.value;
+        txtEffectsVolumeSliderValue.text = (valueSFX * 100).ToString("0");
+        AudioPlayer.Instance.changeVolumeEffects(valueSFX);
+        ApplicationModel.valueSFX = valueSFX;
+        PlayerPrefs.SetFloat("savedSFXVolume", valueSFX);
+        PlayerPrefs.Save();
     }
 
     public void sliderMusicValueChanged()
     {
-        float value = sliderMusicVolume.value;
-        txtMusicVolumeSliderValue.text = (value * 100).ToString("0");
-        AudioPlayer.Instance.changeVolumeMusic(value);
+        valueMusic = sliderMusicVolume.value;
+        txtMusicVolumeSliderValue.text = (valueMusic * 100).ToString("0");
+        AudioPlayer.Instance.changeVolumeMusic(valueMusic);
+        ApplicationModel.valueMusic = valueMusic;
+        PlayerPrefs.SetFloat("savedMusicVolume", valueMusic);
+        PlayerPrefs.Save();
     }
 }
