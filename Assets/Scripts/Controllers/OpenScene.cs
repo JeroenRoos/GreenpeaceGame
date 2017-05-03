@@ -43,6 +43,8 @@ public class OpenScene : MonoBehaviour
 
     void Start()
     {
+        Application.runInBackground = true;
+
         EventManager.CallPlayBackgroundMusic();
         getPlayerPrefs();
         initUI();
