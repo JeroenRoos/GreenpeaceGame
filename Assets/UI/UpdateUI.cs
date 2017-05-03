@@ -74,6 +74,7 @@ public class UpdateUI : MonoBehaviour
 
     // Text Menu Popup
     public Text txtResume;
+    public Text txtSettings;
     public Text txtSave;
     public Text txtExitMenu;
     public Text txtExitGame;
@@ -294,6 +295,7 @@ public class UpdateUI : MonoBehaviour
 
     // Canvas 
     public Canvas canvasMenuPopup;
+    public Canvas canvasSettingsPopup;
     public Canvas canvasOrganizationPopup;
     public Canvas canvasTimelinePopup;
     public Canvas canvasRegioPopup;
@@ -879,6 +881,9 @@ public class UpdateUI : MonoBehaviour
         canvasCardsPopup.GetComponent<Canvas>();
         canvasCardsPopup.gameObject.SetActive(false);
 
+        canvasSettingsPopup.GetComponent<Canvas>();
+        canvasSettingsPopup.gameObject.SetActive(false);
+
         if (game.tutorial.tutorialActive)
         {
             canvasTutorial.GetComponent<Canvas>();
@@ -1138,6 +1143,11 @@ public class UpdateUI : MonoBehaviour
             canvasEmptyBuildingsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasSettingsPopup.gameObject.activeSelf)
+        {
+            canvasSettingsPopup.gameObject.SetActive(false);
+            canvasMenuPopup.gameObject.SetActive(true);
         }
     }
 
@@ -3291,11 +3301,13 @@ public class UpdateUI : MonoBehaviour
         string[] save = { "Opslaan", "Save" };
         string[] exitgame = { "Verlaat spel", "Exit Game" };
         string[] exitmenu = { "Naar hoofdmenu", "Exit to menu" };
+        string[] settings = { "Opties", "Settings" };
 
         txtResume.text = resume[taal];
         txtSave.text = save[taal];
         txtExitGame.text = exitgame[taal];
         txtExitMenu.text = exitmenu[taal];
+        txtSettings.text = settings[taal];
     }
 
     public void btnPopupCloseClick()
@@ -3821,6 +3833,18 @@ public class UpdateUI : MonoBehaviour
         EventManager.CallPlayButtonClickSFX();
         EventManager.CallLeaveGame();
         SceneManager.LoadSceneAsync(index);
+    }
+
+    public void btnSettingsClick()
+    {
+        canvasMenuPopup.gameObject.SetActive(false);
+        canvasSettingsPopup.gameObject.SetActive(true);
+    }
+
+    public void btnSettingsBackClick()
+    {
+        canvasSettingsPopup.gameObject.SetActive(false);
+        canvasMenuPopup.gameObject.SetActive(true);
     }
     #endregion
 
