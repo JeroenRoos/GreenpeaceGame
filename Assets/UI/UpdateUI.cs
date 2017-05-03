@@ -79,6 +79,24 @@ public class UpdateUI : MonoBehaviour
     public Text txtExitMenu;
     public Text txtExitGame;
 
+    // Menu Settings
+    // Settings 
+    public Button btnSettingsBack;
+    public Text txtButtonSettingsBack;
+    public Slider sliderMusicVolume;
+    public Text txtMusicVolume;
+    public Slider sliderEffectsVolume;
+    public Text txtEffectsVolume;
+    public Text txtLanguage;
+    public Toggle toggleEnglish;
+    public Toggle toggleDutch;
+    public Text txtToggleEnglish;
+    public Text txtToggleDutch;
+    private bool toggleDutchCheck;
+    private bool toggleEnglishCheck;
+    public Text txtMusicVolumeSliderValue;
+    public Text txtEffectsVolumeSliderValue;
+
     // Text Main UI
     public Text txtMoney;
     public Text txtPopulation;
@@ -3837,14 +3855,119 @@ public class UpdateUI : MonoBehaviour
 
     public void btnSettingsClick()
     {
+        EventManager.CallPlayButtonClickSFX();
         canvasMenuPopup.gameObject.SetActive(false);
         canvasSettingsPopup.gameObject.SetActive(true);
+
+        initSettingsText();
+        initSettingsUI();
     }
 
     public void btnSettingsBackClick()
     {
+        EventManager.CallPlayButtonClickSFX();
         canvasSettingsPopup.gameObject.SetActive(false);
         canvasMenuPopup.gameObject.SetActive(true);
+
+        initButtonText();
+    }
+
+    private void initSettingsText()
+    {
+        string[] back = { "Terug", "Back" };
+        string[] music = { "Muziek volume", "Music volume" };
+        string[] effects = { "Geluidseffecten volume", "Sounds effects volume" };
+        string[] language = { "Verander taal", "Change language" };
+        string[] dutch = { "Nederlands", "Dutch" };
+        string[] english = { "Engels", "English" };
+
+
+        txtButtonSettingsBack.text = back[taal];
+        txtMusicVolume.text = music[taal];
+        txtEffectsVolume.text = effects[taal];
+        txtLanguage.text = language[taal];
+        txtToggleDutch.text = dutch[taal];
+        txtToggleEnglish.text = english[taal];
+
+        //ApplicationModel.valueSFX = AudioPlayer.Instance.soundEffect.volume * 100;
+        sliderEffectsVolume.value = AudioPlayer.Instance.soundEffect.volume;
+        txtEffectsVolumeSliderValue.text = (AudioPlayer.Instance.soundEffect.volume * 100).ToString("0");
+
+        //ApplicationModel.valueMusic = AudioPlayer.Instance.backgroundMusic.volume * 100;
+        sliderMusicVolume.value = AudioPlayer.Instance.backgroundMusic.volume;
+        txtMusicVolumeSliderValue.text = (AudioPlayer.Instance.backgroundMusic.volume * 100).ToString("0");
+    }
+
+    private void initSettingsUI()
+    {
+        if (taal == 0)
+        {
+            toggleDutch.isOn = true;
+            toggleDutchCheck = true;
+            toggleEnglishCheck = false;
+            toggleEnglish.isOn = false;
+        }
+        else
+        {
+            toggleEnglish.isOn = true;
+            toggleEnglishCheck = true;
+            toggleDutchCheck = false;
+            toggleDutch.isOn = false;
+        }
+    }
+
+    public void toggleDutchValueChanged()
+    {
+        if (!toggleDutchCheck)
+        {
+            toggleDutchCheck = true;
+            toggleEnglish.isOn = false;
+            ApplicationModel.language = 0;
+            taal = ApplicationModel.language;
+            PlayerPrefs.SetInt("savedLanguage", taal);
+            PlayerPrefs.Save();
+            initSettingsText();
+        }
+        else
+            toggleDutchCheck = false;
+    }
+
+    public void toggleEnglishValueChanged()
+    {
+        if (!toggleEnglishCheck)
+        {
+            toggleEnglishCheck = true;
+            toggleDutch.isOn = false;
+            ApplicationModel.language = 1;
+            taal = ApplicationModel.language;
+            PlayerPrefs.SetInt("savedLanguage", taal);
+            PlayerPrefs.Save();
+            initSettingsText();
+        }
+        else
+        {
+            toggleEnglishCheck = false;
+        }
+    }
+
+    public void sliderEffectsValueChanged()
+    {
+        float valueSFX = sliderEffectsVolume.value;
+        txtEffectsVolumeSliderValue.text = (valueSFX * 100).ToString("0");
+        AudioPlayer.Instance.changeVolumeEffects(valueSFX);
+        ApplicationModel.valueSFX = valueSFX;
+        PlayerPrefs.SetFloat("savedSFXVolume", valueSFX);
+        PlayerPrefs.Save();
+    }
+
+    public void sliderMusicValueChanged()
+    {
+        float valueMusic = sliderMusicVolume.value;
+        txtMusicVolumeSliderValue.text = (valueMusic * 100).ToString("0");
+        AudioPlayer.Instance.changeVolumeMusic(valueMusic);
+        ApplicationModel.valueMusic = valueMusic;
+        PlayerPrefs.SetFloat("savedMusicVolume", valueMusic);
+        PlayerPrefs.Save();
     }
     #endregion
 
