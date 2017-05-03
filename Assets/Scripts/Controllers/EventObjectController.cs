@@ -56,6 +56,29 @@ public class EventObjectController : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
 
         transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
+        Vector3 scale = gameObject.transform.localScale;
+    }
+
+    IEnumerator ChangeScale(Vector3 endScale)
+    {
+        Vector3 currentScale = new Vector3(0, 0, 0);
+        while (currentScale.x < endScale.x && currentScale.y < endScale.y && currentScale.z < endScale.z)
+        {
+            currentScale.x += endScale.x / 120;
+            currentScale.y += endScale.y / 120;
+            currentScale.z += endScale.z / 120;
+
+            if (currentScale.x > endScale.x)
+                currentScale.x = endScale.x;
+            if (currentScale.y > endScale.y)
+                currentScale.y = endScale.y;
+            if (currentScale.z > endScale.z)
+                currentScale.z = endScale.z;
+
+            transform.localScale = currentScale;
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     private Texture SelectTexture(string description)
