@@ -405,7 +405,17 @@ public class UpdateUI : MonoBehaviour
     private bool regionCompanyCheck;
     private bool dropdownChoiceMade;
     #endregion
-    
+
+    public bool btnOrganizationIsClicked;
+    public bool btnQuestsIsClicked;
+    public bool btnInvestmentsIsClicked;
+    public bool btnCardsIsClicked;
+
+    public bool organizationShakes = false;
+    public bool questsShakes = false;
+    public bool investmentsShakes = false;
+    public bool cardsShakes = false;
+
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
     void Start()
@@ -522,6 +532,9 @@ public class UpdateUI : MonoBehaviour
 
         for (int i = 0; i < game.tutorial.tutorialChecks.Length; i++)
             game.tutorial.tutorialChecks[i] = true;
+
+        StartCoroutine(ChangeScale(btnOrganization));
+        StartCoroutine(ShakeOrganization());
     }
 
     IEnumerator initTutorialText()
@@ -633,6 +646,8 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialOrganizationActive = true;
         imgTutorialOverworld.transform.position = imgPosMiddle;
         btnOrganization.gameObject.SetActive(true);
+        StartCoroutine(ChangeScale(btnOrganization));
+        StartCoroutine(ShakeOrganization());
         //imgBarBottom.gameObject.SetActive(true);
 
         if (!game.tutorial.tutorialOrganizationDone)
@@ -907,6 +922,8 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         btnQuests.gameObject.SetActive(true);
+        StartCoroutine(ChangeScale(btnQuests));
+        StartCoroutine(ShakeQuests());
 
         if (game.tutorial.doTuto)
         {
@@ -942,6 +959,8 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         btnInvestments.gameObject.SetActive(true);
+        StartCoroutine(ChangeScale(btnInvestments));
+        StartCoroutine(ShakeInvestments());
 
         if (game.tutorial.doTuto)
         {
@@ -976,6 +995,8 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         btnCards.gameObject.SetActive(true);
+        StartCoroutine(ChangeScale(btnCards));
+        StartCoroutine(ShakeCards());
 
         if (game.tutorial.doTuto)
         {
@@ -1037,6 +1058,125 @@ public class UpdateUI : MonoBehaviour
 
         canvasTutorial.gameObject.SetActive(false);
         imgTutorialOverworld.transform.position = imgPosMiddle;
+    }
+
+    public IEnumerator ChangeScale(Button b)
+    {
+        Vector3 currentScale = new Vector3(0, 0, 0);
+        Vector3 endScale = b.transform.localScale;
+        while (currentScale.x < endScale.x && currentScale.y < endScale.y && currentScale.z < endScale.z)
+        {
+            currentScale.x += endScale.x / 120;
+            currentScale.y += endScale.y / 120;
+            currentScale.z += endScale.z / 120;
+
+            if (currentScale.x > endScale.x)
+                currentScale.x = endScale.x;
+            if (currentScale.y > endScale.y)
+                currentScale.y = endScale.y;
+            if (currentScale.z > endScale.z)
+                currentScale.z = endScale.z;
+            
+            b.transform.localScale = currentScale;
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public IEnumerator ShakeOrganization()
+    {
+        organizationShakes = true;
+        btnOrganizationIsClicked = false;
+        Quaternion standardRotation = btnOrganization.transform.rotation;
+        while (!btnOrganizationIsClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                btnOrganization.transform.Rotate(0, 0, -5);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                btnOrganization.transform.Rotate(0, 0, 5);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        btnOrganization.transform.rotation = standardRotation;
+        organizationShakes = false;
+    }
+
+    public IEnumerator ShakeQuests()
+    {
+        questsShakes = true;
+        btnQuestsIsClicked = false;
+        Quaternion standardRotation = btnQuests.transform.rotation;
+        while (!btnQuestsIsClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                btnQuests.transform.Rotate(0, 0, -5);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                btnQuests.transform.Rotate(0, 0, 5);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        btnQuests.transform.rotation = standardRotation;
+        questsShakes = false;
+    }
+
+    public IEnumerator ShakeCards()
+    {
+        cardsShakes = true;
+        btnCardsIsClicked = false;
+        Quaternion standardRotation = btnCards.transform.rotation;
+        while (!btnCardsIsClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                btnCards.transform.Rotate(0, 0, -5);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                btnCards.transform.Rotate(0, 0, 5);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        btnCards.transform.rotation = standardRotation;
+        cardsShakes = false;
+    }
+
+    public IEnumerator ShakeInvestments()
+    {
+        investmentsShakes = true;
+        btnInvestmentsIsClicked = false;
+        Quaternion standardRotation = btnInvestments.transform.rotation;
+        while (!btnInvestmentsIsClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                btnInvestments.transform.Rotate(0, 0, -5);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                btnInvestments.transform.Rotate(0, 0, 5);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        btnInvestments.transform.rotation = standardRotation;
+        investmentsShakes = false;
     }
     #endregion
 
@@ -3209,6 +3349,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive/* && tutorialStep8 */&& !game.tutorial.tutorialQuestsActive)
         {
+            btnOrganizationIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -3221,6 +3362,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)//tutorialStep15)
         {
+            btnQuestsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -3233,6 +3375,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasCardsPopup.gameObject.activeSelf && !popupActive)
         {
+            btnCardsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasCardsPopup.gameObject.SetActive(true);
             popupActive = true;
@@ -3286,6 +3429,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
         {
+            btnInvestmentsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasInvestmentsPopup.gameObject.SetActive(true);
             popupActive = true;

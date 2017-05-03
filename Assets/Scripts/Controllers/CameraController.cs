@@ -93,9 +93,9 @@ public class CameraController : MonoBehaviour {
     {
         float camSize = Camera.main.orthographicSize;
         //  Check if camera is moving out of bounds. If so: adjust it to the edge
-        if (newPosition.z < camSize)
+        if (newPosition.z < camSize - 1)
         {
-            newPosition.z = camSize;
+            newPosition.z = camSize - 1;
         }
         if (newPosition.z > 15.0f - (camSize - 5f))
         {

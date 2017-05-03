@@ -56,7 +56,7 @@ public class EventObjectController : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
 
         transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
-        Vector3 scale = gameObject.transform.localScale;
+        StartCoroutine(ChangeScale(gameObject.transform.localScale));
     }
 
     IEnumerator ChangeScale(Vector3 endScale)
