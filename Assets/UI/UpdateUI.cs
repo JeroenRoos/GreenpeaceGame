@@ -3421,10 +3421,10 @@ public class UpdateUI : MonoBehaviour
     private void initTimelinePopup()
     {
         string[] title = { "Tijdlijn", "Timeline" };
-        string[] columnLeft = { "Kies jaar", "Choose year" };
+        string[] columnLeft = { "Kies beurt", "Choose turn" };
         string[] columnRight = { "", "" };
         string[] infoRight = { "", "" };
-        string[] infoLeft = { "Kies de maand waar je de statistieken van wilt zien", "Choose a month to view the statistics from that month" };
+        string[] infoLeft = { "Kies de beurt waar je de statistieken van wilt zien", "Choose a turn to view the statistics from that month" };
 
         txtTimelineTitle.text = title[taal];
         txtTimelineColumnLeft.text = columnLeft[taal];
@@ -3442,7 +3442,7 @@ public class UpdateUI : MonoBehaviour
 
         int currentMonth = game.currentYear * 12 + game.currentMonth;
 
-        string[] dropdownPlaceholderText = { "Kies", "Choose a month" };
+        string[] dropdownPlaceholderText = { "Kies een beurt", "Choose a turn" };
         dropdownTimeline.captionText.text = dropdownPlaceholderText[taal];
 
         foreach (int month in game.timeline.timeInMonths)
@@ -3457,11 +3457,12 @@ public class UpdateUI : MonoBehaviour
     public void getDropdownTimelineValue()
     {
         EventManager.CallPlayButtonClickSFX();
-        for (int i = 0; i <= dropdownRegio.options.Count; i++)
+        for (int i = 0; i <= dropdownTimeline.options.Count; i++)
         {
-            if (dropdownRegio.value == i)
+            if (dropdownTimeline.value == i)
             {
                 dropdownTimelinePick = dropdownTimeline.options[i].text;
+                //break;
             }
         }
 
@@ -3471,7 +3472,17 @@ public class UpdateUI : MonoBehaviour
 
     private void showInfoDropdownTimeline()
     {
+        string[] column = { "Statistieken uit beurt " + dropdownTimelinePick, "Statistics from turn " + dropdownTimelinePick };
+        txtTimelineColumnRight.text = column[taal];
+        int pick = 0;
 
+        if (dropdownTimelinePick != null && dropdownTimelinePick.Trim() != "")
+            pick = int.Parse(dropdownTimelinePick);
+
+        foreach (double d in game.timeline.ecoAwarenessPerTurn)
+        {
+            txtColumnRightInfo.text += d.ToString() + "\n";
+        }
     }
     #endregion
 
