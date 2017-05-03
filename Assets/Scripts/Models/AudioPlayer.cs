@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,14 @@ public class AudioPlayer : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioSource soundEffect;
 
-    public AudioClip backgroundSong1;
+    public List<AudioClip> music;
 
     public AudioClip optionSelectSFX;
     public AudioClip ButtonClickSFX;
     public AudioClip newmonthSFX;
     #endregion
+
+    System.Random rnd;
 
     private void Awake()
     {
@@ -33,33 +36,47 @@ public class AudioPlayer : MonoBehaviour
 
         else
         {
-
+            rnd = new System.Random();
+            music = new List<AudioClip>();
             AudioSource[] audioSources = GetComponents<AudioSource>();
             backgroundMusic = audioSources[0];
             soundEffect = audioSources[1];
 
-            backgroundSong1 = Resources.Load("Sounds/music/LugiaTheme", typeof(AudioClip)) as AudioClip;
+            music.Add(Resources.Load("Sounds/music/LugiaTheme", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/AvatarTheme", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/MindHeist", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/SearchForTheGirlTheme", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/TheLastOfUsTheme", typeof(AudioClip)) as AudioClip);
             optionSelectSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
             ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
             newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
             instance = this;
 
-            EventManager.PlayBackgroundMusic += PlayBackgroundMusic;
+            EventManager.PlayBackgroundMusic += StartBackgroundMusic;
             EventManager.PlayButtonClickSFX += PlayButtonClickSFX;
             EventManager.PlayOptionSelectSFX += PlayOptionSelectSFX;
             EventManager.PlayNewTurnStartSFX += PlayNewMonthSFX;
-
-            backgroundMusic.loop = true;
-            backgroundMusic.clip = backgroundSong1;
+            
             DontDestroyOnLoad(this.gameObject);
         }
 
     }
 
-    public void PlayBackgroundMusic()
+    public void StartBackgroundMusic()
+    {
+    }
+
+    void Update()
     {
         if (!backgroundMusic.isPlaying)
-            backgroundMusic.Play();
+        {
+            AudioClip newSong = music[rnd.Next(0, music.Count)];
+            if (newSong != backgroundMusic.clip)
+            {
+                backgroundMusic.clip = newSong;
+                backgroundMusic.Play();
+            }
+        }
     }
 
     public void PlayButtonClickSFX()

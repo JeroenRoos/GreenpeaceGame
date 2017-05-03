@@ -448,7 +448,6 @@ public class UpdateUI : MonoBehaviour
     void Start()
     {
         taal = ApplicationModel.language;
-        EventManager.CallPlayBackgroundMusic();
 
         initButtons();
         initButtonText();
