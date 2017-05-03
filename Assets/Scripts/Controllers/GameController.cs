@@ -332,6 +332,7 @@ public class GameController : MonoBehaviour
 
             bool isNewYear = game.UpdateCurrentMonthAndYear();
             game.ExecuteNewMonthMethods();
+            GenerateNewCard();
             UpdateRegionsPollutionInfluence();
             UpdateEvents();
             game.gameStatistics.UpdateRegionalAvgs(game);
@@ -363,6 +364,25 @@ public class GameController : MonoBehaviour
     private void UpdateTimeline()
     {
         game.timeline.StoreTurnInTimeLine(game.gameStatistics, game.currentYear, game.currentMonth);
+    }
+
+    public void GenerateNewCard()
+    {
+        if (game.currentYear == 3 && game.currentMonth == 1)
+        {
+            game.inventory.AddCardToInventory(new Card(game.cards[game.rnd.Next(0, game.cards.Count)]));
+            game.receivedCardsCount++;
+            if (!updateUI.cardsShakes)
+                StartCoroutine(updateUI.ShakeCards());
+        }
+
+        else if (game.rnd.Next(1, 101) <= 2 && game.currentYear >= 3)
+        {
+            game.inventory.AddCardToInventory(new Card(game.cards[game.rnd.Next(0, game.cards.Count)]));
+            game.receivedCardsCount++;
+            if (!updateUI.cardsShakes)
+                StartCoroutine(updateUI.ShakeCards());
+        }
     }
 
     //yearly reward increase
@@ -532,7 +552,11 @@ public class GameController : MonoBehaviour
         foreach (Quest quest in game.quests)
         {
             if (quest.startYear == game.currentYear && quest.startMonth == game.currentMonth)
+            {
                 quest.StartQuest();
+                if (!updateUI.questsShakes)
+                    StartCoroutine(updateUI.ShakeQuests());
+            }
         }
     }
 
