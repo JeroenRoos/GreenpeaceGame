@@ -14,6 +14,8 @@ public class BuildingObjectController : MonoBehaviour
     public Texture[] buildingTextures;
     private UpdateUI updateUI;
 
+    public bool isClicked = false;
+
     void Start()
     {
         updateUI = gameController.GetComponent<UpdateUI>();
@@ -30,6 +32,7 @@ public class BuildingObjectController : MonoBehaviour
         {
             if (gameController.game.tutorial.tutorialBuildingsClickable)
             {
+                isClicked = true;
                 EventManager.CallPlayButtonClickSFX();
 
                 if (building != null)
@@ -74,6 +77,27 @@ public class BuildingObjectController : MonoBehaviour
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
             StartCoroutine(ChangeScale(gameObject.transform.localScale));
         }
+    }
+
+    public IEnumerator Shake()
+    {
+        Quaternion standardRotation = transform.rotation;
+        while (!isClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                transform.Rotate(0, 10, 0);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                transform.Rotate(0, -10, 0);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        transform.rotation = standardRotation;
     }
 
     IEnumerator ChangeScale(Vector3 endScale)

@@ -13,6 +13,8 @@ public class EventObjectController : MonoBehaviour
     public Texture[] allTextures;
     private UpdateUI updateUI;
 
+    public bool isClicked = false;
+
     void Start()
     {
         updateUI = gameController.GetComponent<UpdateUI>();
@@ -33,6 +35,7 @@ public class EventObjectController : MonoBehaviour
         {
             if (gameController.game.tutorial.tutorialeventsClickable)
             {
+                isClicked = true;
                 EventManager.CallPlayButtonClickSFX();
                 updateUI.popupActive = false;
                 updateUI.initEventPopup(eventModel, regionModel);
@@ -57,6 +60,28 @@ public class EventObjectController : MonoBehaviour
 
         transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
         StartCoroutine(ChangeScale(gameObject.transform.localScale));
+        StartCoroutine(Shake());
+    }
+
+    public IEnumerator Shake()
+    {
+        Quaternion standardRotation = transform.rotation;
+        while (!isClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                transform.Rotate(0, 10, 0);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                transform.Rotate(0, -10, 0);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        transform.rotation = standardRotation;
     }
 
     IEnumerator ChangeScale(Vector3 endScale)
