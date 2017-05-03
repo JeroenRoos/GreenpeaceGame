@@ -72,7 +72,6 @@ public class OpenScene : MonoBehaviour
             valueMusic = PlayerPrefs.GetFloat("savedMusicVolume");
             ApplicationModel.valueMusic = valueMusic;
             AudioPlayer.Instance.backgroundMusic.volume = valueMusic;
-            Debug.Log("PlayerPrefs Music: " + valueMusic);
         }
         else
             valueMusic = ApplicationModel.valueMusic;
@@ -83,7 +82,6 @@ public class OpenScene : MonoBehaviour
             valueSFX = PlayerPrefs.GetFloat("savedSFXVolume");
             ApplicationModel.valueSFX = valueSFX;
             AudioPlayer.Instance.soundEffect.volume = valueSFX;
-            Debug.Log("PlayerPrefs SFX: " + valueSFX);
         }
         else
             valueSFX = ApplicationModel.valueSFX;
