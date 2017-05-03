@@ -1117,12 +1117,12 @@ public class UpdateUI : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                btnOrganization.transform.Rotate(0, 0, -5);
+                btnOrganization.transform.Rotate(0, 0, -10);
                 yield return new WaitForFixedUpdate();
             }
             for (int i = 0; i < 4; i++)
             {
-                btnOrganization.transform.Rotate(0, 0, 5);
+                btnOrganization.transform.Rotate(0, 0, 10);
                 yield return new WaitForFixedUpdate();
             }
             yield return new WaitForSeconds(2);
