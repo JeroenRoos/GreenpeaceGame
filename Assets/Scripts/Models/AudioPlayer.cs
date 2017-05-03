@@ -64,6 +64,7 @@ public class AudioPlayer : MonoBehaviour
 
     public void StartBackgroundMusic()
     {
+        //can't be removed >>> playerprefs error
     }
 
     void Update()
