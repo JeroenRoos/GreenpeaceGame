@@ -51,9 +51,9 @@ public class AudioPlayer : MonoBehaviour
 
             backgroundMusic.loop = true;
             backgroundMusic.clip = backgroundSong1;
-            
+            DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+
     }
 
     public void PlayBackgroundMusic()
