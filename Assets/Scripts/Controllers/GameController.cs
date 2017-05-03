@@ -456,6 +456,7 @@ public class GameController : MonoBehaviour
         }
 
         updateUI.btnMonthlyReportStats.interactable = true;
+        StartCoroutine(updateUI.ShakeMonthlyReport());
     }
 
     public IEnumerator SetYearlyReportButtonLocation(Vector3 currentPosition, Vector3 endPosition)
@@ -471,6 +472,7 @@ public class GameController : MonoBehaviour
         }
 
         updateUI.btnYearlyReportStats.interactable = true;
+        StartCoroutine(updateUI.ShakeYearlyReport());
     }
 
     private bool checkNewEvents()

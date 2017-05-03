@@ -437,11 +437,15 @@ public class UpdateUI : MonoBehaviour
     public bool btnQuestsIsClicked;
     public bool btnInvestmentsIsClicked;
     public bool btnCardsIsClicked;
+    public bool btnMonthlyReportIsClicked;
+    public bool btnYearlyReportIsClicked;
 
     public bool organizationShakes = false;
     public bool questsShakes = false;
     public bool investmentsShakes = false;
     public bool cardsShakes = false;
+    public bool monthlyReportShakes = false;
+    public bool yearlyReportShakes = false;
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
@@ -561,7 +565,8 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialChecks[i] = true;
 
         StartCoroutine(ChangeScale(btnOrganization));
-        StartCoroutine(ShakeOrganization());
+        if (!organizationShakes)
+            StartCoroutine(ShakeOrganization());
     }
 
     IEnumerator initTutorialText()
@@ -673,7 +678,8 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialOrganizationActive = true;
         imgTutorialOverworld.transform.position = imgPosMiddle;
         btnOrganization.gameObject.SetActive(true);
-        StartCoroutine(ChangeScale(btnOrganization));
+        if (!organizationShakes)
+            StartCoroutine(ShakeOrganization());
         StartCoroutine(ShakeOrganization());
         //imgBarBottom.gameObject.SetActive(true);
 
@@ -950,7 +956,8 @@ public class UpdateUI : MonoBehaviour
 
         btnQuests.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnQuests));
-        StartCoroutine(ShakeQuests());
+        if (!questsShakes)
+            StartCoroutine(ShakeQuests());
 
         if (game.tutorial.doTuto)
         {
@@ -987,7 +994,8 @@ public class UpdateUI : MonoBehaviour
 
         btnInvestments.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnInvestments));
-        StartCoroutine(ShakeInvestments());
+        if (!investmentsShakes)
+            StartCoroutine(ShakeInvestments());
 
         if (game.tutorial.doTuto)
         {
@@ -1023,7 +1031,8 @@ public class UpdateUI : MonoBehaviour
 
         btnCards.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnCards));
-        StartCoroutine(ShakeCards());
+        if (!cardsShakes)
+            StartCoroutine(ShakeCards());
 
         if (game.tutorial.doTuto)
         {
@@ -1119,12 +1128,12 @@ public class UpdateUI : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                btnOrganization.transform.Rotate(0, 0, -5);
+                btnOrganization.transform.Rotate(0, 0, -10);
                 yield return new WaitForFixedUpdate();
             }
             for (int i = 0; i < 4; i++)
             {
-                btnOrganization.transform.Rotate(0, 0, 5);
+                btnOrganization.transform.Rotate(0, 0, 10);
                 yield return new WaitForFixedUpdate();
             }
             yield return new WaitForSeconds(2);
@@ -1204,6 +1213,54 @@ public class UpdateUI : MonoBehaviour
         }
         btnInvestments.transform.rotation = standardRotation;
         investmentsShakes = false;
+    }
+
+    public IEnumerator ShakeMonthlyReport()
+    {
+        monthlyReportShakes = true;
+        btnMonthlyReportIsClicked = false;
+        Quaternion standardRotation = btnMonthlyReportStats.transform.rotation;
+        while (!btnMonthlyReportIsClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                btnMonthlyReportStats.transform.Rotate(0, 0, -5);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                btnMonthlyReportStats.transform.Rotate(0, 0, 5);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        btnMonthlyReportStats.transform.rotation = standardRotation;
+        monthlyReportShakes = false;
+    }
+
+    public IEnumerator ShakeYearlyReport()
+    {
+        yearlyReportShakes = true;
+        btnYearlyReportIsClicked = false;
+        Quaternion standardRotation = btnYearlyReportStats.transform.rotation;
+        while (!btnMonthlyReportIsClicked)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                btnYearlyReportStats.transform.Rotate(0, 0, -5);
+                yield return new WaitForFixedUpdate();
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                btnYearlyReportStats.transform.Rotate(0, 0, 5);
+                yield return new WaitForFixedUpdate();
+            }
+            yield return new WaitForSeconds(2);
+
+        }
+        btnYearlyReportStats.transform.rotation = standardRotation;
+        yearlyReportShakes = false;
     }
     #endregion
 
@@ -3485,6 +3542,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)
         {
+            btnMonthlyReportIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasMonthlyReport.gameObject.SetActive(true);
             popupActive = true;
@@ -3503,6 +3561,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)
         {
+            btnYearlyReportIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasYearlyReport.gameObject.SetActive(true);
             popupActive = true;
