@@ -42,6 +42,8 @@ public class CameraController : MonoBehaviour {
 
         Vector3 correctedPos = CorrectNewPosition(transform.position + offset);
         transform.Translate(correctedPos - transform.position, Space.World);
+
+
     }
 
     void FixedUpdate ()
@@ -49,7 +51,7 @@ public class CameraController : MonoBehaviour {
         if (canMove)
         {
             //CheckInput();
-            //MoveCamera(CalculateNewCameraPosition());
+            MoveCamera(CalculateNewCameraPosition());
         }
     }
 
