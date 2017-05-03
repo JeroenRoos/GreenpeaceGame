@@ -3364,6 +3364,7 @@ public class UpdateUI : MonoBehaviour
         string[] title = { "Tijdlijn", "Timeline" };
         string[] columnLeft = { "Kies jaar", "Choose year" };
         string[] columnRight = { "", "" };
+        //string[] columnRight = { "", "" };
 
         txtTimelineTitle.text = title[taal];
         txtTimelineColumnLeft.text = columnLeft[taal];
