@@ -123,11 +123,11 @@ public class OpenScene : MonoBehaviour
         txtToggleDutch.text = dutch[taal];
         txtToggleEnglish.text = english[taal];
 
-        float effectsValue = AudioPlayer.Instance.soundEffect.volume * 100;
-        txtEffectsVolumeSliderValue.text = effectsValue.ToString("0");
+        ApplicationModel.valueSFX = AudioPlayer.Instance.soundEffect.volume * 100;
+        txtEffectsVolumeSliderValue.text = ApplicationModel.valueSFX.ToString("0");
 
-        float musicValue = AudioPlayer.Instance.backgroundMusic.volume * 100;
-        txtMusicVolumeSliderValue.text = musicValue.ToString("0");
+        ApplicationModel.valueMusic = AudioPlayer.Instance.backgroundMusic.volume * 100;
+        txtMusicVolumeSliderValue.text = ApplicationModel.valueMusic.ToString("0");
     }
 
     private void initSettingsUI()
