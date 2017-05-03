@@ -45,6 +45,12 @@ public class Tutorial
 
     public Tutorial()
     {
+        tutorialActive = false;
+
+
+
+
+
         tutorialIndex = 0;
         tutorialNexTurnPossibe = false;
         tutorialQuestsActive = false;
@@ -62,11 +68,9 @@ public class Tutorial
         tutorialNoTooltip = true;
         regionWestActivated = false;
         tutorialChecks = new bool[21];
+
         for (int i = 0; i < tutorialChecks.Length; i++)
             tutorialChecks[i] = false;
-
-
-        tutorialActive = true;
 
         tutorialOrganizationDone = false;
         tutorialRegionDone = false;
@@ -78,7 +82,5 @@ public class Tutorial
         tutorialQuestsDone = false;
         tutorialInvestementsDone = false;
         tutorialBuildingsDone = false;
-
-        tutorialActive = true;
     }
 }
