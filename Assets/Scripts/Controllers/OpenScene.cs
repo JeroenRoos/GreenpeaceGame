@@ -42,8 +42,7 @@ public class OpenScene : MonoBehaviour
     void Start()
     {
         EventManager.CallPlayBackgroundMusic();
-
-        taal = ApplicationModel.language;
+        getPlayerPrefs();
         initUI();
         initText();
 
@@ -52,6 +51,36 @@ public class OpenScene : MonoBehaviour
         {
             btnLoad.interactable = true;
         }
+    }
+
+    private void getPlayerPrefs()
+    {
+        // PlayerPrefs Language
+        if (PlayerPrefs.HasKey("savedLanguage"))
+        {
+            taal = PlayerPrefs.GetInt("savedLanguage");
+            ApplicationModel.language = taal;
+        }
+        else
+            taal = ApplicationModel.language;
+
+        // PlayerPrefs Music Volume
+        if (PlayerPrefs.HasKey("savedMusicVolume"))
+        {
+            taal = PlayerPrefs.GetInt("savedLanguage");
+            ApplicationModel.language = taal;
+        }
+        else
+            taal = ApplicationModel.language;
+
+        // PlayerPrefs SFX Volume
+        if (PlayerPrefs.HasKey("savedSFXVolume"))
+        {
+            taal = PlayerPrefs.GetInt("savedLanguage");
+            ApplicationModel.language = taal;
+        }
+        else
+            taal = ApplicationModel.language;
     }
 
     private void initUI()
@@ -165,6 +194,7 @@ public class OpenScene : MonoBehaviour
             toggleEnglish.isOn = false;
             ApplicationModel.language = 0;
             taal = ApplicationModel.language;
+            PlayerPrefs.SetInt("savedLanguage", taal);
             initSettingsText();
         }
         else
@@ -179,6 +209,7 @@ public class OpenScene : MonoBehaviour
             toggleDutch.isOn = false;
             ApplicationModel.language = 1;
             taal = ApplicationModel.language;
+            PlayerPrefs.SetInt("savedLanguage", taal);
             initSettingsText();
         }
         else
@@ -192,6 +223,7 @@ public class OpenScene : MonoBehaviour
         float value = sliderEffectsVolume.value;
         txtEffectsVolumeSliderValue.text = (value * 100).ToString("0");
         AudioPlayer.Instance.changeVolumeEffects(value);
+
     }
 
     public void sliderMusicValueChanged()
