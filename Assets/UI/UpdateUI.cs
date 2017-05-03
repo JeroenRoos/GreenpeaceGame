@@ -127,6 +127,13 @@ public class UpdateUI : MonoBehaviour
     public Building buildingToBeBuild;
     public Region regionToBeBuild;
 
+    // Timeline Popup
+    public Text txtTimelineTitle;
+    public Text txtTimelineColumnLeft;
+    public Text txtTimelineColumnRight;
+    public Dropdown dropdownTimeline;
+    public Text txtColumnLeftInfo;
+
     // Text Event Popup
     GameEvent gameEvent;
     Region regionEvent;
@@ -3211,6 +3218,43 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for Timeline Popup
+    private void initTimelinePopup()
+    {
+        string[] title = { "Tijdlijn", "Timeline" };
+        string[] columnLeft = { "Kies jaar", "Choose year" };
+        string[] columnRight = { "", "" };
+
+        txtTimelineTitle.text = title[taal];
+        txtTimelineColumnLeft.text = columnLeft[taal];
+        txtTimelineColumnRight.text = columnRight[taal];
+
+        initDropdownTimeline();
+    }
+
+    private void initDropdownTimeline()
+    {
+        dropdownTimeline.ClearOptions();
+        dropdownTimeline.RefreshShownValue();
+
+        int currentMonth = game.currentYear * 12 + game.currentMonth;
+        string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
+
+        dropdownTimeline.captionText.text = dropdownPlaceholderText[taal];
+
+        foreach (int month in game.timeline.timeInMonths)
+        {
+            dropdownTimeline.options.Add(new Dropdown.OptionData() { text = month.ToString() });
+            
+        }
+
+        //code to bypass Unity bug -> can't set .value outside the dropdown range
+        dropdownTimeline.options.Add(new Dropdown.OptionData() { text = " " });
+        dropdownTimeline.value = dropdownTimeline.options.Count - 1;
+        dropdownTimeline.options.RemoveAt(dropdownTimeline.options.Count - 1);
+    }
+    #endregion
+
     // Game Controller
     #region Code for Button Presses for Popups
     public void btnTimelineClick()
@@ -3220,6 +3264,7 @@ public class UpdateUI : MonoBehaviour
             canvasTimelinePopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+            initTimelinePopup();
         }
     }
 
