@@ -42,6 +42,8 @@ public class OpenScene : MonoBehaviour
     void Start()
     {
         EventManager.CallPlayBackgroundMusic();
+
+        taal = ApplicationModel.language;
         initUI();
         initText();
 
@@ -50,8 +52,6 @@ public class OpenScene : MonoBehaviour
         {
             btnLoad.interactable = true;
         }
-
-        taal = ApplicationModel.language;
     }
 
     private void initUI()
@@ -163,7 +163,7 @@ public class OpenScene : MonoBehaviour
         {
             toggleDutchCheck = true;
             toggleEnglish.isOn = false;
-            //game.ChangeLanguage("dutch");
+            ApplicationModel.language = 0;
             taal = ApplicationModel.language;
             initSettingsText();
         }
@@ -177,7 +177,7 @@ public class OpenScene : MonoBehaviour
         {
             toggleEnglishCheck = true;
             toggleDutch.isOn = false;
-            //game.ChangeLanguage("english");
+            ApplicationModel.language = 1;
             taal = ApplicationModel.language;
             initSettingsText();
         }
