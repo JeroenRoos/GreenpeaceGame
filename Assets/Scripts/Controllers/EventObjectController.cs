@@ -22,10 +22,10 @@ public class EventObjectController : MonoBehaviour
 
     void Update()
     {
-        if (!eventModel.isIdle)
+        if (!eventModel.isIdle)//!eventModel.isFinished)// && )//!eventModel.isIdle)
         {
+            //eventModel.isFinished
             Destroy(gameObject);
-            //gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("EventEmpty");
         }
     }
 

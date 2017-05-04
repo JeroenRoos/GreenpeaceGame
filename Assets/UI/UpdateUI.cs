@@ -250,6 +250,9 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Image imgSectorPopup;
+    public Text txtRegionSectorTitle;
+    public Text txtRegionSectorInfo;
     public Text txtRegionName;
     public Text txtRegionMoney;
     public Text txtRegionHappiness;
@@ -1380,7 +1383,7 @@ public class UpdateUI : MonoBehaviour
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltip + "</color>", tooltipStyle);
         }
 
-        if (regionHouseholdsCheck && popupActive)// && game.tutorial.tutorialStep3)
+        /*if (regionHouseholdsCheck && popupActive)// && game.tutorial.tutorialStep3)
         {
             v3Tooltip = emptybtnHoverHouseholds.gameObject.transform.position;
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 70;
@@ -1401,7 +1404,7 @@ public class UpdateUI : MonoBehaviour
             lblReqt.x = v3Tooltip.x + 50; lblReqt.y = v3Tooltip.y + 270;
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipCompany + "</color>", tooltipStyle);
             updateRegionSectors();
-        }
+        }*/
         else if (canvasCardsPopup.gameObject.activeSelf)
         {
             float yOffset = 0f;
@@ -1795,6 +1798,8 @@ public class UpdateUI : MonoBehaviour
     #region Code for the Region Popup
     public void regionClick(Region region)
     {
+        imgSectorPopup.gameObject.SetActive(false);
+
         // Ga naar WEST tijdens de tutorial
         if (game.tutorial.tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
         {
@@ -1968,6 +1973,7 @@ public class UpdateUI : MonoBehaviour
         initDropDownRegion();
     }
 
+    /*
     private void updateRegionSectors()
     {
         foreach (RegionSector sector in regio.sectors)
@@ -1981,8 +1987,8 @@ public class UpdateUI : MonoBehaviour
                     "Air pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
                     + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
                     + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00")  + "%"};
-                txtTooltipHouseholds = tip[taal];       
-    }
+                txtTooltipHouseholds = tip[taal];
+            }
             else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
             {
                 string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
@@ -2007,7 +2013,7 @@ public class UpdateUI : MonoBehaviour
                 txtTooltipAgriculture = tip[taal];
             }
         }
-    }
+    }*/
 
     private void updateActiveEvents()
     {
@@ -2165,6 +2171,36 @@ public class UpdateUI : MonoBehaviour
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
         updateRegionTextValues();
+    }
+
+    public void sectorCompaniesClick()
+    {
+        initRegionSectorPopup(regio.sectors[1]);
+    }
+
+    public void sectorHouseholdsClick()
+    {
+        initRegionSectorPopup(regio.sectors[0]);
+    }
+
+    public void sectorAgricultureClick()
+    {
+        initRegionSectorPopup(regio.sectors[2]);
+    }
+
+    private void initRegionSectorPopup(RegionSector sector)
+    {
+        imgSectorPopup.gameObject.SetActive(true);
+        txtRegionSectorTitle.text = sector.sectorName[taal];
+
+        string[] tip = { "\n<b>Sector statistieken: </b>\nLuchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
+
+                    "<b>\nSector statistics: </b>\nAir pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
+                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
+                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00")  + "%"};
+        txtRegionSectorInfo.text = tip[taal];
     }
     #endregion
 
@@ -3627,11 +3663,16 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
-        else if (canvasRegioPopup.gameObject.activeSelf && !game.tutorial.tutorialRegionActive)
+        else if (canvasRegioPopup.gameObject.activeSelf && !game.tutorial.tutorialRegionActive && !imgSectorPopup.gameObject.activeSelf)
         {
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasRegioPopup.gameObject.activeSelf && imgSectorPopup.gameObject.activeSelf)
+        {
+            Debug.Log("Sector IMG");
+            imgSectorPopup.gameObject.SetActive(false);
         }
         else if (canvasMonthlyReport.gameObject.activeSelf && !game.tutorial.tutorialMonthlyReportActive)
         {
