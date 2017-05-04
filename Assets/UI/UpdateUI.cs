@@ -159,6 +159,11 @@ public class UpdateUI : MonoBehaviour
     public Text txtQuestsDescription;
     public Text txtQuestsActive;
 
+    // Text End of Game Report
+    public Text txtEndOfGameTitle;
+    public Text txtEndOfYearInfo;
+    public Text txtEndOfYearBtn;
+
     // Text Investments Popup
     public Text txtInvestmentsTitle;
     public Text txtInvestmentsColumn;
@@ -336,6 +341,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasCardsPopup;
     public Canvas canvasBuildingsPopup;
     public Canvas canvasEmptyBuildingsPopup;
+    public Canvas canvasEndOfGame;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -926,6 +932,9 @@ public class UpdateUI : MonoBehaviour
 
         canvasSettingsPopup.GetComponent<Canvas>();
         canvasSettingsPopup.gameObject.SetActive(false);
+
+        canvasEndOfGame.GetComponent<Canvas>();
+        canvasEndOfGame.gameObject.SetActive(false);
 
         if (game.tutorial.tutorialActive)
         {
@@ -3416,6 +3425,31 @@ public class UpdateUI : MonoBehaviour
         {
             txtColumnRightInfo.text += d.ToString() + "\n";
         }
+    }
+    #endregion
+
+    #region Code for End of Game Popup
+    public void initEndOfGameReport(double score)
+    {
+        popupActive = true;
+        EventManager.CallPopupIsActive();
+        canvasEndOfGame.gameObject.SetActive(true);
+
+        string[] title = { "Einde van het spel", "End of the Game" };
+        string[] info = { "", "" };
+        string[] btn = { "Naar hoofdmenu", "Return to main menu" };
+
+        txtEndOfGameTitle.text = title[taal];
+        txtEndOfYearInfo.text = info[taal];
+        txtEndOfYearBtn.text = btn[taal];
+    }
+
+    public void btnEndOfYearReturnClick(int index)
+    {
+        canvasEndOfGame.gameObject.SetActive(false);
+        EventManager.CallPlayButtonClickSFX();
+        EventManager.CallLeaveGame();
+        SceneManager.LoadSceneAsync(index);
     }
     #endregion
 
