@@ -2736,7 +2736,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtMonths = { " maanden", " months" };
         string[] txtMonth = { " maand", " month" };
 
-        txtEventName.text = "EVENT: " + e.publicEventName[taal];
+        txtEventName.text = "EVENT: " + e.publicEventName[taal] + " (" + regionEvent.name[taal] + ")";
         txtEventDescription.text = e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
 
@@ -2871,9 +2871,22 @@ public class UpdateUI : MonoBehaviour
 
     private void initEventChoiceMadeText(GameEvent e, Region r)
     {
-        string[] title = { "Overzicht opgelost event: " + e.publicEventName[0], "Summary solved event: " + e.publicEventName[1] };
+        string[] title = { "Overzicht opgelost event: " + e.publicEventName[0] + " (" + regionEvent.name[0] + ")", "Summary solved event: " + e.publicEventName[1] + " (" + regionEvent.name[1] + ")" };
         txtEventChoiceMadeTitle.text = title[taal];
-        txtEventChoiceMadeInfo.text = "LOL";
+        txtEventChoiceMadeInfo.text = "";
+
+        txtEventChoiceMadeInfo.text = e.description[taal] + "\n\n";
+
+        if (taal == 0)
+            txtEventChoiceMadeInfo.text += "\n<b>Gekozen oplossing: </b>" + e.choicesDutch[e.pickedChoiceNumber];
+        else
+            txtEventChoiceMadeInfo.text += "\n<b>Chosen solution: </b>" + e.choicesEnglish[e.pickedChoiceNumber];
+
+        string[] duration = { "\n<b>Duur gekozen optie:</b> " + e.eventDuration[e.pickedChoiceNumber] + " maanden", "\n<b>Duration chosen option:</b> " + e.eventDuration[e.pickedChoiceNumber] + " months" };
+        txtEventChoiceMadeInfo.text += duration[taal];
+
+        string[] c = { "\n\n<b>Consequenties: </b>", "\n\n<b>Consequences: </b>" };
+        txtEventChoiceMadeInfo.text += c[taal] + getSectorStatisticsConsequences(e.afterInvestmentConsequences[e.pickedChoiceNumber]);
     }
     #endregion
 
