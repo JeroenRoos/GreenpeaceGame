@@ -820,7 +820,7 @@ public class UpdateUI : MonoBehaviour
         while (!game.tutorial.tutorialChecks[8]) //tutorialStep21)
             yield return null;
             */
-        imgTutorialSmall.transform.position = imgPosMiddle;
+        imgTutorialSmall.transform.position = imgPosMiddle; 
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
@@ -2660,7 +2660,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    #region Code for Event Popup
+    #region Code for Event Popup (No Choice Made)
     public void initEventPopup(GameEvent e, Region r)
     {
         gameEvent = e;
@@ -2843,6 +2843,10 @@ public class UpdateUI : MonoBehaviour
         if (game.tutorial.tutorialEventsActive)
             game.tutorial.tutorialEventsActive = false;
     }
+    #endregion
+
+    #region Code for Event Popup (Choice Made)
+
     #endregion
 
     #region Code for Empty Building Popup

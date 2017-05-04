@@ -7956,9 +7956,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -8262,9 +8262,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -8567,9 +8567,9 @@
         <int>0</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>0</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -8869,9 +8869,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -9173,9 +9173,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -9476,9 +9476,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
+        <int>0</int>
         <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -9780,9 +9780,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -10086,9 +10086,9 @@
         <int>1</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>1</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -10390,9 +10390,9 @@
         <int>2</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>2</int>
+        <int>2</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -10692,9 +10692,9 @@
         <int>1</int>
       </eventDuration>
       <temporaryConsequencesDuration>
+        <int>0</int>
         <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>1</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -10995,9 +10995,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -11301,9 +11301,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -11605,9 +11605,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>1</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -11908,8 +11908,8 @@
       </eventDuration>
       <temporaryConsequencesDuration>
         <int>0</int>
-        <int>5</int>
-        <int>5</int>
+        <int>3</int>
+        <int>1</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -12211,8 +12211,8 @@
       </eventDuration>
       <temporaryConsequencesDuration>
         <int>0</int>
-        <int>5</int>
-        <int>5</int>
+        <int>3</int>
+        <int>1</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -12512,8 +12512,8 @@
         <int>5</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
         <int>5</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
@@ -12817,9 +12817,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>5</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -13120,9 +13120,9 @@
         <int>8</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>8</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -13424,9 +13424,9 @@
         <int>8</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>8</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -13727,9 +13727,9 @@
         <int>8</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>8</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -14030,9 +14030,9 @@
         <int>8</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>8</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -14336,9 +14336,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -14642,9 +14642,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -14948,9 +14948,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -15254,9 +15254,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -15560,9 +15560,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -15866,9 +15866,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -16172,9 +16172,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -16478,9 +16478,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -16784,9 +16784,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -17090,9 +17090,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -17396,9 +17396,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -17702,9 +17702,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -18008,9 +18008,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -18314,9 +18314,9 @@
         <int>3</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -18620,9 +18620,9 @@
         <int>5</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
+        <int>3</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
       <eventChoiceMoneyCost>
@@ -18926,8 +18926,8 @@
         <int>5</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
         <int>5</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
@@ -19232,8 +19232,8 @@
         <int>5</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
         <int>5</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>
@@ -19538,8 +19538,8 @@
         <int>5</int>
       </eventDuration>
       <temporaryConsequencesDuration>
-        <int>5</int>
-        <int>5</int>
+        <int>0</int>
+        <int>3</int>
         <int>5</int>
       </temporaryConsequencesDuration>
       <onEventStartTemporaryConsequenceDuration>0</onEventStartTemporaryConsequenceDuration>

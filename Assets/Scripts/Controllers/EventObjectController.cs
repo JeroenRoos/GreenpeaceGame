@@ -22,7 +22,7 @@ public class EventObjectController : MonoBehaviour
 
     void Update()
     {
-        if (!eventModel.isIdle)//!eventModel.isFinished)// && )//!eventModel.isIdle)
+        if (!eventModel.isIdle && !eventModel.isActive)//!eventModel.isFinished)// && )//!eventModel.isIdle)
         {
             //eventModel.isFinished
             Destroy(gameObject);
@@ -33,7 +33,16 @@ public class EventObjectController : MonoBehaviour
     {
         if (!updateUI.popupActive)
         {
-            if (gameController.game.tutorial.tutorialeventsClickable)
+            // Nog geen optie gekozen
+            if (gameController.game.tutorial.tutorialeventsClickable && eventModel.isIdle)
+            {
+                isClicked = true;
+                EventManager.CallPlayButtonClickSFX();
+                updateUI.popupActive = false;
+                updateUI.initEventPopup(eventModel, regionModel);
+            }
+            // Optie gekozen
+            else
             {
                 isClicked = true;
                 EventManager.CallPlayButtonClickSFX();
