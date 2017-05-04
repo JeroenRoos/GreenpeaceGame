@@ -25,10 +25,6 @@ public class Card
 
     public Card() { }
 
-    public void TempMethod()
-    {
-        description = new string[2] { "dutch", "english" };
-    }
     public Card(Card card)
     {
         cardID = card.cardID;

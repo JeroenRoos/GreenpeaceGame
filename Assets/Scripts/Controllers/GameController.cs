@@ -332,7 +332,6 @@ public class GameController : MonoBehaviour
 
             bool isNewYear = game.UpdateCurrentMonthAndYear();
             game.ExecuteNewMonthMethods();
-            GenerateNewCard();
             UpdateRegionsPollutionInfluence();
             UpdateEvents();
             game.gameStatistics.UpdateRegionalAvgs(game);
@@ -345,6 +344,7 @@ public class GameController : MonoBehaviour
                 UpdateCards();
                 SetYearlyTrackingData();
             }
+            GenerateNewCard();
 
             GenerateMonthlyUpdates(isNewYear);
             UpdateTimeline();
