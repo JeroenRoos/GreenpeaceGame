@@ -70,14 +70,15 @@ public class BuildingObjectController : MonoBehaviour
             // Hij komt in deze Method maar print nog steeds de empty
             // Ook opent hij nog de empty als je klikt op icon terwijl dat niet moet
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
+            StartCoroutine(ChangeScale(gameObject.transform.localScale), false);
         }
         else
         {
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
+            StartCoroutine(ChangeScale(gameObject.transform.localScale), true);
         }
 
-        StartCoroutine(ChangeScale(gameObject.transform.localScale));
     }
 
     public IEnumerator Shake()
@@ -101,7 +102,7 @@ public class BuildingObjectController : MonoBehaviour
         transform.rotation = standardRotation;
     }
 
-    IEnumerator ChangeScale(Vector3 endScale)
+    IEnumerator ChangeScale(Vector3 endScale, bool shouldShake)
     {
         Vector3 currentScale = new Vector3(0, 0, 0);
         while (currentScale.x < endScale.x && currentScale.y < endScale.y && currentScale.z < endScale.z)
@@ -121,7 +122,8 @@ public class BuildingObjectController : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
-        StartCoroutine(Shake());
+        if (shouldShake)
+            StartCoroutine(Shake());
     }
 
     private Texture SelectTexture(string description)

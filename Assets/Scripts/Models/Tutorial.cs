@@ -45,7 +45,7 @@ public class Tutorial
 
     public Tutorial()
     {
-        tutorialActive = false;
+        tutorialActive = true;
 
 
 
