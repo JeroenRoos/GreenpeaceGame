@@ -303,7 +303,7 @@ public class GameController : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 &&
+        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
             /*game.tutorial.tutorialStep9 && */game.tutorial.tutorialNexTurnPossibe))
         {
             EventManager.CallChangeMonth();
@@ -358,7 +358,31 @@ public class GameController : MonoBehaviour
             updateUI.setNextTurnButtonNotInteractable();
 
             EventManager.CallPlayNewTurnStartSFX();
+
+            if (game.currentYear == 31 || game.gameStatistics.pollution == 0)
+                ShowGameScore();
         }
+    }
+
+    public void ShowGameScore()
+    {
+        double score = CalculateScore();
+
+        //display in updateUI
+    }
+
+    public double CalculateScore()
+    {
+        double score = 0;
+
+        score += game.gameStatistics.prosperity * 100;
+        score += game.gameStatistics.ecoAwareness * 100;
+        score += game.gameStatistics.happiness * 100;
+        score += game.gameStatistics.income;
+        score += 10000 - game.gameStatistics.pollution * 100;
+        score += 36000 - ((game.currentYear - 1) * 12 + (game.currentMonth - 1)) * 100;
+
+        return score;
     }
 
     private void UpdateTimeline()
