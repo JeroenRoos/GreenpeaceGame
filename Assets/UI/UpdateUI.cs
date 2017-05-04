@@ -154,6 +154,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnDoEvent;
     public Text txtEventAlreadyActive;
 
+    // Text Event Choice made
+    public Text txtEventChoiceMadeTitle;
+    public Text txtEventChoiceMadeInfo;
+
     // Text Quests Popup
     public Text txtQuestsTitle;
     public Text txtQuestsDescription;
@@ -345,6 +349,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasBuildingsPopup;
     public Canvas canvasEmptyBuildingsPopup;
     public Canvas canvasEndOfGame;
+    public Canvas canvasEventChoiceMadePopup;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -932,6 +937,9 @@ public class UpdateUI : MonoBehaviour
         canvasEventPopup.GetComponent<Canvas>();
         canvasEventPopup.gameObject.SetActive(false);
 
+        canvasEventChoiceMadePopup.GetComponent<Canvas>();
+        canvasEventChoiceMadePopup.gameObject.SetActive(false);
+
         canvasBuildingsPopup.GetComponent<Canvas>();
         canvasBuildingsPopup.gameObject.SetActive(false);
 
@@ -1322,6 +1330,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasEventPopup.gameObject.activeSelf)
         {
             canvasEventPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEventChoiceMadePopup.gameObject.activeSelf)
+        {
+            canvasEventChoiceMadePopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -2717,12 +2731,12 @@ public class UpdateUI : MonoBehaviour
     {
         string[] txtBtn = { "Doe keuze", "Do choice" };
         string[] txtKosten = { "\nKosten: ", "\nCost: " };
-        string[] txtMoney = { " geld", "money" };
+        string[] txtMoney = { " geld", " money" };
         string[] txtDuur = { "\nDuur: ", "\nDuration: " };
         string[] txtMonths = { " maanden", " months" };
         string[] txtMonth = { " maand", " month" };
 
-        txtEventName.text = "EVENT:" + e.publicEventName[taal];
+        txtEventName.text = "EVENT: " + e.publicEventName[taal];
         txtEventDescription.text = e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
 
@@ -2846,7 +2860,21 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Event Popup (Choice Made)
+    public void initEventPopupChoiceMade(GameEvent e, Region r)
+    {
+        canvasEventChoiceMadePopup.gameObject.SetActive(true);
+        popupActive = true;
+        EventManager.CallPopupIsActive();
 
+        initEventChoiceMadeText(e, r);
+    }
+
+    private void initEventChoiceMadeText(GameEvent e, Region r)
+    {
+        string[] title = { "Overzicht opgelost event: " + e.publicEventName[0], "Summary solved event: " + e.publicEventName[1] };
+        txtEventChoiceMadeTitle.text = title[taal];
+        txtEventChoiceMadeInfo.text = "LOL";
+    }
     #endregion
 
     #region Code for Empty Building Popup
@@ -3707,6 +3735,12 @@ public class UpdateUI : MonoBehaviour
         else if (canvasEventPopup.gameObject.activeSelf && !game.tutorial.tutorialEventsActive)
         {
             canvasEventPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEventChoiceMadePopup.gameObject.activeSelf)
+        {
+            canvasEventChoiceMadePopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
