@@ -431,7 +431,6 @@ public class UpdateUI : MonoBehaviour
     private bool regionAgricultureCheck;
     private bool regionCompanyCheck;
     private bool dropdownChoiceMade;
-    #endregion
 
     public bool btnOrganizationIsClicked;
     public bool btnQuestsIsClicked;
@@ -442,6 +441,7 @@ public class UpdateUI : MonoBehaviour
     public bool questsShakes = false;
     public bool investmentsShakes = false;
     public bool cardsShakes = false;
+    #endregion
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
