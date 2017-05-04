@@ -354,12 +354,17 @@ public class UpdateUI : MonoBehaviour
     private string dropdownChoice;
 
     // Tutorial
-    public Text txtTurorialStep1;
-    public Text txtTutorialStep1BtnText;
+    public Image imgTutorialBig;
+    public Text txtTutorialBig;
+    public Text txtTutorialBigBtn;
+    public Image imgTutorialSmall;
+    public Text txtTutorialSmall;
+    public Text txtTutorialSmallBtn;
     public Image imgTutorialStep2Highlight1;
     public Image imgTutorialStep2Highlight2;
     public Image imgTutorialStepOrgMenuHightlight;
-    public Button btnTutorialNext;
+    public Button btnTutorialBigNext;
+    public Button btnTutorialSmallNext;
 
     public Image imgTutorialEvents;
     public Button btnTutorialEvent;
@@ -382,7 +387,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtTutorialAfterTurnBtn;
 
     public Image imgTutorialOverworld;
-    public Button btnTutorialOverworld;
+   // public Button btnTutorialOverworld;
     public Text txtTutorialOverworld;
     public Image imgTutorialOrganization;
     public Text txtTutorialOrganization;
@@ -534,7 +539,7 @@ public class UpdateUI : MonoBehaviour
         imgHighlightInvestements.enabled = false;
         game.tutorial.doTuto = false;
         imgTutorialOverworld.gameObject.SetActive(false);
-        btnTutorialOverworld.gameObject.SetActive(false);
+        //btnTutorialOverworld.gameObject.SetActive(false);
         btnTutorialRegion.gameObject.SetActive(false);
         txtTutorialOverworld.enabled = false;
         canvasTutorial.gameObject.SetActive(false);
@@ -595,20 +600,21 @@ public class UpdateUI : MonoBehaviour
                 "a country which is aware of the environment. The inhabitants need to understand the importance of a green country."};
         string[] btnText = { "Verder", "Next" };
 
-        txtTurorialStep1.text = step1[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
+        imgTutorialBig.gameObject.SetActive(false);
+        txtTutorialSmall.text = step1[taal];
+        txtTutorialSmallBtn.text = btnText[taal];
         //btnOrganization.interactable = false;
         //btnInvestments.interactable = false;
         btnNextTurn.interactable = false;
-        imgTutorialOverworld.transform.position = imgPosRight;
+        imgTutorialSmall.transform.position = imgPosRight;
 
         while (!game.tutorial.tutorialChecks[0])//tutorialStep2)
             yield return null;
 
         string[] step2 = { "Jouw taak is om de vervuiling naar 0% te brengen voor 2050. Het is nu 2020 dus je hebt nog 30 jaar.",
             "Your task is to reduce the pollution to 0% before 2050. It is now 2020 so you still have 30 years."};
-        txtTurorialStep1.text = step2[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
+        txtTutorialSmall.text = step2[taal];
+        txtTutorialSmallBtn.text = btnText[taal];
         imgTutorialStep2Highlight1.enabled = true;
         imgTutorialStep2Highlight2.enabled = true;
 
@@ -616,7 +622,7 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         //tutorialStep3 = false;
-        imgTutorialOverworld.transform.position = imgPosMiddle;
+        imgTutorialBig.transform.position = imgPosMiddle;
         string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " + 
                 "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." + 
                 "\n\nGeld: beslissingen maken kost geld. Geld wordt per maand verhoogd door het inkomen." +
@@ -626,21 +632,22 @@ public class UpdateUI : MonoBehaviour
                 "\n\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50% is positief, onder 50% is negatief.",
                 "At the top of the screen are your recourses to reduce pollution. Prosperity, eco awareness, " + 
                 "happiness and pollution are nationwide averages." +
-                "\n\nMoney: decisions cost money.Money increases monthly from income." +
-                "\n\nPollution: the pollution in the country, increases or decreases monthly." +
-                "\n\nEco Awareness: reduces monthly pollution." +
-                "\n\nProsperity: increases income." +
-                "\n\nHappiness: influences consequences of decisions. Above 50% is positive, below 50% is negative." };
-        txtTurorialStep1.text = step3[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
-        txtTurorialStep1.fontSize = 8;
+                "\nMoney: decisions cost money.Money increases monthly from income." +
+                "\nPollution: the pollution in the country, increases or decreases monthly." +
+                "\nEco Awareness: reduces monthly pollution." +
+                "\nProsperity: increases income." +
+                "\nHappiness: influences consequences of decisions. Above 50% is positive, below 50% is negative." };
+        imgTutorialSmall.gameObject.SetActive(false);
+        imgTutorialBig.gameObject.SetActive(true);
+        txtTutorialBig.text = step3[taal];
+        txtTutorialBigBtn.text = btnText[taal];
         imgTutorialStep2Highlight1.gameObject.SetActive(false);
         imgTutorialStep2Highlight2.gameObject.SetActive(false);
 
         while (!game.tutorial.tutorialChecks[2])//tutorialStep4)
             yield return null;
 
-        imgTutorialOverworld.gameObject.transform.position = imgPosRight;
+        imgTutorialSmall.gameObject.transform.position = imgPosRight;
         game.tutorial.tutorialOnlyWestNL = true;
         game.tutorial.tutorialRegionsClickable = true;
         string[] step4 = { "Er zijn 4 regio’s: Noord, Oost, West, en Zuid. Elke regio heeft een inkomen, " +
@@ -649,10 +656,11 @@ public class UpdateUI : MonoBehaviour
                 "There are 4 regions: North, East, West and South. Each region has an income, prosperity, " +
                 "pollution, eco-awareness and happiness." +
                 "\n\nNow go to The Netherlands West by clicking on the region." };
-        txtTurorialStep1.text = step4[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
-        txtTurorialStep1.fontSize = 9;
-        btnTutorialNext.gameObject.SetActive(false);
+        imgTutorialBig.gameObject.SetActive(false);
+        imgTutorialSmall.gameObject.SetActive(true);
+        txtTutorialSmall.text = step4[taal];
+        txtTutorialSmallBtn.text = btnText[taal];
+        btnTutorialSmallNext.gameObject.SetActive(false);
 
         if (!game.tutorial.tutorialRegionDone)
         {
@@ -675,12 +683,12 @@ public class UpdateUI : MonoBehaviour
         imgBarBottom.gameObject.SetActive(true);
         string[] step5 = { "Onderin het scherm kun je naar het Organisatie menu gaan door op de knop te drukken. \n\nDruk nu op de Organisatie knop.",
             "At the bottom of your screen you can go to the Organization menu by pressing the button.\n\nPress the Organization Button " };
-        txtTurorialStep1.text = step5[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
+        txtTutorialSmall.text = step5[taal];
+        txtTutorialSmallBtn.text = btnText[taal];
         imgTutorialStepOrgMenuHightlight.enabled = true;
         btnOrganization.interactable = true;
         game.tutorial.tutorialOrganizationActive = true;
-        imgTutorialOverworld.transform.position = imgPosMiddle;
+        imgTutorialSmall.transform.position = imgPosMiddle;
         btnOrganization.gameObject.SetActive(true);
         if (!organizationShakes)
             StartCoroutine(ShakeOrganization());
@@ -710,13 +718,13 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = true;
         canvasTutorial.gameObject.SetActive(true);
         btnNextTurn.gameObject.SetActive(true);
-        imgTutorialOverworld.transform.position = imgPosRight;
+        imgTutorialSmall.transform.position = imgPosRight;
         string[] step6 = { "Je kan nu ook de andere regio’s bezoeken om acties uit te voeren. Als je klaar bent " + 
                 "dan kan je naar de volgende maand gaan door op “volgende maand” rechtsonderin het scherm te drukken.",
             "You can now visit the other regions to execute actions. When you’re finished you can go to the next month " + 
             "by pressing on the “next month” button at the bottom right of the screen." };
-        txtTurorialStep1.text = step6[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
+        txtTutorialSmall.text = step6[taal];
+        txtTutorialSmallBtn.text = btnText[taal];
 
         game.tutorial.tutorialNexTurnPossibe = true;
 
@@ -736,11 +744,11 @@ public class UpdateUI : MonoBehaviour
                 "\n\n Druk op de knop om het maandelijkse overzicht te tonen."
                 , "In the bottom left of your screen you can see a button. This button shows the changes between the current and the previous month. You will get this report every month. " +
                 "\n\nClick on the button to view your monthly report."};
-        txtTurorialStep1.text = step9[taal];
+        txtTutorialSmall.text = step9[taal];
         imgHighlightMonthlyReport.enabled = true;
         btnMonthlyReportStats.interactable = true;
         game.tutorial.tutorialMonthlyReportActive = true;
-        imgTutorialOverworld.transform.position = imgPosLeft;
+        imgTutorialSmall.transform.position = imgPosLeft;
 
         if (!game.tutorial.tutorialMonthlyReportDone)
         {
@@ -768,20 +776,20 @@ public class UpdateUI : MonoBehaviour
                 "tegelijk in een regio zijn. \nEr kunnen wel meerdere events tegelijk zijn in meerdere regio's. \nVoor elk event heb je een aantal beurten om te beslissen wat je met de event gaat doen. "
                 , "There is an active event running at this moment. Each turn there will be new events. There can only be one event in a region at the same time. " +
                 "\nThere can be multiple active events in the whole country. \nFor each event you have a few turns to decide what you are going to do. "  };
-        txtTurorialStep1.text = step7[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
-        btnTutorialNext.gameObject.SetActive(true);
+        txtTutorialSmall.text = step7[taal];
+        txtTutorialSmallBtn.text = btnText[taal];
+        btnTutorialSmallNext.gameObject.SetActive(true);
 
         while (!game.tutorial.tutorialChecks[6]) //tutorialstep19)
             yield return null;
 
-        btnTutorialNext.gameObject.SetActive(false);
+        btnTutorialSmallNext.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         string[] step8 = { "Door op het icoon van de event te klikken krijg je een pop-up. In deze pop-up kun je kiezen welke actie je bij dit event wil nemen. " +
                 "\n\nKlik nu op het icoontje van de event. "
                 , "By clicking on the icon of the event you get a popup. In this popup you can chose which action you want to take with this event.\n\nClick on the icon of the event to open the popup."};
-        txtTurorialStep1.text = step8[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
+        txtTutorialSmall.text = step8[taal];
+        txtTutorialSmallBtn.text = btnText[taal];
         game.tutorial.tutorialEventsActive = true;
 
         if (!game.tutorial.tutorialEventsDone)
@@ -801,17 +809,17 @@ public class UpdateUI : MonoBehaviour
             canvasTutorial.gameObject.SetActive(false);
 
 
-        canvasTutorial.gameObject.SetActive(true);
+        /*canvasTutorial.gameObject.SetActive(true);
         btnTutorialNext.gameObject.SetActive(true);
         imgTutorialOverworld.transform.position = imgPosMiddle;
         string[] step10 = { "Je kunt nu verder spelen. "
                 , "You can continue playing."};
-        txtTurorialStep1.text = step10[taal];
-        txtTutorialStep1BtnText.text = btnText[taal];
+        txtTutorialSmall.text = step10[taal];
+        txtTutorialBigBtn.text = btnText[taal];
 
         while (!game.tutorial.tutorialChecks[8]) //tutorialStep21)
             yield return null;
-
+            */
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
@@ -973,7 +981,7 @@ public class UpdateUI : MonoBehaviour
             btnNextTurn.interactable = false;
             canvasTutorial.gameObject.SetActive(true);
             imgHighlightQuests.enabled = true;
-            imgTutorialOverworld.gameObject.SetActive(true);
+            imgTutorialSmall.gameObject.SetActive(true);
 
             game.tutorial.tutorialQuestsActive = true;
             game.tutorial.tutorialeventsClickable = false;
@@ -982,8 +990,8 @@ public class UpdateUI : MonoBehaviour
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. \n\nOpen het Missies menu door op de Missies knop te drukken. ",
             "You can see that an extra button just appeared next to the Organization menu button. This is the button for you Quests. \n\nOpen the Quests menu by pressing the Quests button " };
             string[] btnText = { "Verder", "Next" };
-            txtTurorialStep1.text = step1[taal];
-            btnTutorialNext.gameObject.SetActive(false);
+            txtTutorialSmall.text = step1[taal];
+            btnTutorialSmallNext.gameObject.SetActive(false);
 
             if (!game.tutorial.tutorialQuestsDone)
             {
@@ -1010,7 +1018,7 @@ public class UpdateUI : MonoBehaviour
         {
             btnNextTurn.interactable = false;
             canvasTutorial.gameObject.SetActive(true);
-            imgTutorialOverworld.gameObject.SetActive(true);
+            imgTutorialSmall.gameObject.SetActive(true);
             imgHighlightInvestements.enabled = true;
 
             game.tutorial.tutorialInvestementsActive = true;
@@ -1019,8 +1027,8 @@ public class UpdateUI : MonoBehaviour
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Kaarten menu knop gekomen. Dit is de knop voor Investeren. \n\nOpen het Investeer menu door op de Investeer knop te drukken. ",
             "You can see that an extra button just appeared next to the Cards menu button. This is the button for you Investements. \n\nOpen the Investements menu by pressing the Investements button " };
             string[] btnText = { "Verder", "Next" };
-            txtTurorialStep1.text = step1[taal];
-            btnTutorialNext.gameObject.SetActive(false);
+            txtTutorialSmall.text = step1[taal];
+            btnTutorialSmallNext.gameObject.SetActive(false);
 
             if (!game.tutorial.tutorialInvestementsDone)
             {
@@ -1047,7 +1055,7 @@ public class UpdateUI : MonoBehaviour
         {
             btnNextTurn.interactable = false;
             canvasTutorial.gameObject.SetActive(true);
-            imgTutorialOverworld.gameObject.SetActive(true);
+            imgTutorialSmall.gameObject.SetActive(true);
             imgHighlightCards.enabled = true;
 
             game.tutorial.tutorialCardsActive = true;
@@ -1056,8 +1064,8 @@ public class UpdateUI : MonoBehaviour
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Missies menu knop gekomen. Dit is de knop voor je Kaarten. \n\nOpen het Kaarten menu door op de Kaarten knop te drukken. ",
             "You can see that an extra button just appeared next to the Quests menu button. This is the button for you Cards. \n\nOpen the Cards menu by pressing the Quests button " };
             string[] btnText = { "Verder", "Next" };
-            txtTurorialStep1.text = step1[taal];
-            btnTutorialNext.gameObject.SetActive(false);
+            txtTutorialSmall.text = step1[taal];
+            btnTutorialSmallNext.gameObject.SetActive(false);
 
             if (!game.tutorial.tutorialCardsDone)
             {
@@ -1083,16 +1091,15 @@ public class UpdateUI : MonoBehaviour
 
         btnNextTurn.interactable = false;
         canvasTutorial.gameObject.SetActive(true);
-        imgTutorialOverworld.gameObject.SetActive(true);
-        imgTutorialOverworld.transform.position = imgPosLeft;
+        imgTutorialSmall.transform.position = imgPosLeft;
 
         game.tutorial.tutorialBuildingsActive = true;
         game.tutorial.tutorialNexTurnPossibe = false;
 
         string[] step1 = { "INSERT BUILDINGS TUTORIAL TEXT. ",
             "INSERT BUILDINGS TUTORIAL TEXT. " };
-        txtTurorialStep1.text = step1[taal];
-        btnTutorialNext.gameObject.SetActive(false);
+        txtTutorialSmall.text = step1[taal];
+        btnTutorialSmallNext.gameObject.SetActive(false);
         game.tutorial.tutorialBuildingsClickable = true;
 
         if (!game.tutorial.tutorialBuildingsDone)
@@ -1102,7 +1109,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         canvasTutorial.gameObject.SetActive(false);
-        imgTutorialOverworld.transform.position = imgPosMiddle;
+        imgTutorialSmall.transform.position = imgPosMiddle;
     }
 
     public IEnumerator ChangeScale(Button b)
@@ -2573,16 +2580,16 @@ public class UpdateUI : MonoBehaviour
         while (canvasQuestsPopup.gameObject.activeSelf)
             yield return null;
 
-        btnTutorialNext.gameObject.SetActive(true);
-        canvasTutorial.gameObject.SetActive(true);
+        //btnTutorialBigNext.gameObject.SetActive(true);
+        //canvasTutorial.gameObject.SetActive(true);
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
 
-        while (!game.tutorial.tutorialChecks[10])//tutorialStep17)
-            yield return null;
+        //while (!game.tutorial.tutorialChecks[10])//tutorialStep17)
+       //     yield return null;
 
-        canvasTutorial.gameObject.SetActive(false);
+        //canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialQuestsDone = true;
@@ -2870,16 +2877,16 @@ public class UpdateUI : MonoBehaviour
 
         while (canvasEmptyBuildingsPopup.gameObject.activeSelf)
             yield return null;
- 
-        btnTutorialNext.gameObject.SetActive(true);
+
+        btnTutorialSmallNext.gameObject.SetActive(true);
         canvasTutorial.gameObject.SetActive(true);
 
         string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling onder de 5% moet zijn voor 2050.",
             "You're now ready to play the game. \n\nThink about the fact that the pollution needs to be below 5% before 2050." };
         string[] txtButton = { "Eindig handleiding", "Finish tutorial" };
 
-        txtTurorialStep1.text = step3[taal];
-        txtTutorialStep1BtnText.text = txtButton[taal];
+        txtTutorialSmall.text = step3[taal];
+        txtTutorialSmallBtn.text = txtButton[taal];
 
         while (!game.tutorial.tutorialChecks[15])//tutorialStep17)
             yield return null;
