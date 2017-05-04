@@ -2585,7 +2585,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialQuests.text = step2[taal];
         txtTutorialQuestsBtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[9])//tutorialStep16)
+        while (!game.tutorial.tutorialChecks[8])//tutorialStep16)
             yield return null;
 
 
@@ -2915,7 +2915,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialBuildings.text = step[taal];
         txtTutorialBuildingsbtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[13])//tutorialStep16)
+        while (!game.tutorial.tutorialChecks[12])//tutorialStep16)
             yield return null;
 
         imgTutorialBuildings.gameObject.SetActive(false);
@@ -2934,7 +2934,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmall.text = step3[taal];
         txtTutorialSmallBtn.text = txtButton[taal];
 
-        while (!game.tutorial.tutorialChecks[14])//tutorialStep17)
+        while (!game.tutorial.tutorialChecks[13])//tutorialStep17)
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
@@ -3058,7 +3058,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialInvestements.text = step[taal];
         txtTutorialInvestementsbtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[12])//tutorialStep16)
+        while (!game.tutorial.tutorialChecks[11])//tutorialStep16)
             yield return null;
 
         imgTutorialInvestements.gameObject.SetActive(false);
@@ -3256,7 +3256,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialCards.text = step[taal];
         txtTutorialCardsBtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[10])//tutorialStep16)
+        while (!game.tutorial.tutorialChecks[9])//tutorialStep16)
             yield return null;
 
         imgTutorialCards.gameObject.SetActive(false);
