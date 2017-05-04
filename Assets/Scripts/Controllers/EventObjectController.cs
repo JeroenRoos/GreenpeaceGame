@@ -60,13 +60,12 @@ public class EventObjectController : MonoBehaviour
 
         transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
         StartCoroutine(ChangeScale(gameObject.transform.localScale));
-        StartCoroutine(Shake());
     }
 
     public IEnumerator Shake()
     {
         Quaternion standardRotation = transform.rotation;
-        while (!isClicked)
+        while (eventModel.isIdle)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -104,6 +103,8 @@ public class EventObjectController : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
+
+        StartCoroutine(Shake());
     }
 
     private Texture SelectTexture(string description)

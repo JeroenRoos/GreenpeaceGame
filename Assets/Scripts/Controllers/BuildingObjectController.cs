@@ -75,7 +75,6 @@ public class BuildingObjectController : MonoBehaviour
         {
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
-            StartCoroutine(Shake());
         }
 
         StartCoroutine(ChangeScale(gameObject.transform.localScale));
@@ -122,6 +121,7 @@ public class BuildingObjectController : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
+        StartCoroutine(Shake());
     }
 
     private Texture SelectTexture(string description)
