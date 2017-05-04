@@ -134,7 +134,9 @@ public class GameController : MonoBehaviour
                                                 Instantiate(buildingObject), Instantiate(buildingObject) };
 
         for (int i = 0; i < game.regions.Count; i++)
+        {
             buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, game.regions[i], game.regions[i].activeBuilding);
+        }
 
         if (game.tutorial.doTuto)
         updateUI.startTutorialBuildings();
@@ -867,7 +869,7 @@ public class GameController : MonoBehaviour
 
     public void btnDeleteBuildingPress()
     {
-        Region r = updateUI.buildingRegion;
+        /*Region r = updateUI.buildingRegion;
         Building b = updateUI.activeBuilding;
 
         //r.DeleteBuilding(b);
@@ -876,7 +878,27 @@ public class GameController : MonoBehaviour
         EventManager.CallPopupIsDisabled();
 
         GameObject buildingInstance = GameController.Instantiate(buildingObject);
-        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);
+        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);*/
+
+
+        Region r = updateUI.buildingRegion;
+        Building b = updateUI.activeBuilding;
+
+        r.SetBuilding(null);
+        updateUI.canvasBuildingsPopup.gameObject.SetActive(false);
+        updateUI.popupActive = false;
+        EventManager.CallPopupIsDisabled();
+
+        for (int i = 0; i < game.regions.Count; i++)
+        {
+            if (r == game.regions[i])
+            {
+                Destroy(buildingInstances[i]);
+
+                buildingInstances[i] = GameController.Instantiate(buildingObject);
+                buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);
+            }
+        }
 
         updateUI.initEmptyBuildingPopup(r);
     }

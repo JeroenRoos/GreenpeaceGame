@@ -119,20 +119,24 @@ public class Region
             }
         }
 
-        foreach (Building b in possibleBuildings)
+        if (buildingID != null)
         {
-            if (b.buildingID == buildingID)
+            foreach (Building b in possibleBuildings)
             {
-                activeBuilding = b;
-                foreach (RegionSector rs in sectors)
+                if (b.buildingID == buildingID)
                 {
-                    rs.ImplementBuildingStatistics(activeBuilding, true);
+                    activeBuilding = b;
+                    foreach (RegionSector rs in sectors)
+                    {
+                        rs.ImplementBuildingStatistics(activeBuilding, true);
+                    }
+                    break;
                 }
-                break;
             }
         }
 
-
+        else
+            activeBuilding = null;
     }
 
     /*public void DeleteBuilding(Building building)
