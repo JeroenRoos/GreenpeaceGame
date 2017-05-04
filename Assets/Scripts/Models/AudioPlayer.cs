@@ -47,6 +47,7 @@ public class AudioPlayer : MonoBehaviour
             music.Add(Resources.Load("Sounds/music/MindHeist", typeof(AudioClip)) as AudioClip);
             music.Add(Resources.Load("Sounds/music/SearchForTheGirlTheme", typeof(AudioClip)) as AudioClip);
             music.Add(Resources.Load("Sounds/music/TheLastOfUsTheme", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/FlyTheme", typeof(AudioClip)) as AudioClip);
             optionSelectSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
             ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
             newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
