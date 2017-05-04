@@ -8,29 +8,26 @@ public class EconomyAdvisor : Advisor
 {
     public override string[] name { get; protected set; }
     public override string[] displayMessage { get; protected set; } //dutch/english display message
-    public override string[] dutchStatusMessages { get; protected set; }
-    public override string[] englishStatusMessages { get; protected set; }
+    public override string dutchStatusMessages { get; protected set; }
+    public override string englishStatusMessages { get; protected set; }
 
 
     public EconomyAdvisor()
     {
         name = new string[2] { "Economie adviseur", "Economy advisor" };
-        dutchStatusMessages = new string[2] { "Het inkomen is hoog genoeg op het moment.", "Het inkomen is te laag op het moment." };
-        englishStatusMessages = new string[2] { "The income is high enough at the moment", "The income is too low at the moment." };
-        displayMessage = new string[2] { dutchStatusMessages[1], englishStatusMessages[1] };
+        dutchStatusMessages = "";
+        englishStatusMessages = "";
+        displayMessage = new string[2] { dutchStatusMessages, englishStatusMessages };
     }
 
-    public override void DetermineDisplayMessage(int currentYear, int currentMonth, double avgIncome)
+    public override void DetermineDisplayMessage(int currentYear, int currentMonth, double income)
     {
-        if (avgIncome < (1000 + currentYear * 48 + currentMonth * 4) * 4)
-        {
-            displayMessage[0] = dutchStatusMessages[(int)statisticStatus.bad];
-            displayMessage[1] = englishStatusMessages[(int)statisticStatus.bad];
-        }
-        else
-        {
-            displayMessage[0] = dutchStatusMessages[(int)statisticStatus.good];
-            displayMessage[1] = englishStatusMessages[(int)statisticStatus.good];
-        }
+        double calcValue = (1000 + currentYear * 48 + currentMonth * 4) * 4;
+        dutchStatusMessages = "Het inkomen is nu " + income.ToString("0") + " per maand." +
+            "De richtlijn is " + calcValue.ToString("0") + " per maand.";
+        englishStatusMessages = "The income is now " + income.ToString("0") + " per month." +
+            "The guideline is " + calcValue.ToString("0") + " per month.";
+
+        displayMessage = new string[2] { dutchStatusMessages, englishStatusMessages };
     }
 }

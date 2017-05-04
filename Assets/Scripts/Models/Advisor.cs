@@ -10,8 +10,8 @@ public abstract class Advisor
 
     abstract public string[] name { get; protected set; }
     abstract public string[] displayMessage { get; protected set; } //dutch/english display message
-    abstract public string[] dutchStatusMessages { get; protected set; }
-    abstract public string[] englishStatusMessages { get; protected set; }
+    abstract public string dutchStatusMessages { get; protected set; }
+    abstract public string englishStatusMessages { get; protected set; }
 
     public abstract void DetermineDisplayMessage(int currentYear, int currentMonth, double calculateValue);
 }

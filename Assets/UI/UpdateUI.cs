@@ -1698,13 +1698,13 @@ public class UpdateUI : MonoBehaviour
         foreach (Region region in game.regions)
         {
             if (region.name[0] == "Noord Nederland")
-                txtOrgNoordMoney.text = (region.statistics.income * 12).ToString();
+                txtOrgNoordMoney.text = (region.statistics.income * 12).ToString("0");
             else if (region.name[0] == "Oost Nederland")
-                txtOrgOostMoney.text = (region.statistics.income * 12).ToString();
+                txtOrgOostMoney.text = (region.statistics.income * 12).ToString("0");
             else if (region.name[0] == "Zuid Nederland")
-                txtOrgZuidMoney.text = (region.statistics.income * 12).ToString();
+                txtOrgZuidMoney.text = (region.statistics.income * 12).ToString("0");
             else if (region.name[0] == "West Nederland")
-                txtOrgWestMoney.text = (region.statistics.income * 12).ToString();
+                txtOrgWestMoney.text = (region.statistics.income * 12).ToString("0");
         }
 
         txtOrgBank.text = game.gameStatistics.money.ToString("0");

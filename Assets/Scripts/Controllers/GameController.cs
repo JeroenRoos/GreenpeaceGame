@@ -80,6 +80,10 @@ public class GameController : MonoBehaviour
             //set reports
             game.monthlyReport.UpdateStatistics(game.regions);
             game.yearlyReport.UpdateStatistics(game.regions);
+
+            //set advisors
+            game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
+            game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
         }
         else
             LoadGame();

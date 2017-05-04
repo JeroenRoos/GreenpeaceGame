@@ -8,29 +8,28 @@ public class PollutionAdvisor : Advisor
 {
     public override string[] name { get; protected set; }
     public override string[] displayMessage { get; protected set; } //dutch/english display message
-    public override string[] dutchStatusMessages { get; protected set; }
-    public override string[] englishStatusMessages { get; protected set; }
+    public override string dutchStatusMessages { get; protected set; }
+    public override string englishStatusMessages { get; protected set; }
 
 
     public PollutionAdvisor()
     {
         name = new string[2] { "Vervuiling adviseur", "Pollution advisor" };
-        dutchStatusMessages = new string[2] { "De vervuiling is laag genoeg op het moment.", "De vervuiling is te hoog op het moment." };
-        englishStatusMessages = new string[2] { "The pollution is low enough at the moment", "The pollution is too high at the moment." };
-        displayMessage = new string[2] { dutchStatusMessages[1], englishStatusMessages[1] };
+        dutchStatusMessages = "";
+        englishStatusMessages = "";
+        displayMessage = new string[2] { dutchStatusMessages, englishStatusMessages };
     }
 
     public override void DetermineDisplayMessage(int currentYear, int currentMonth, double avgPollution)
     {
-        if (avgPollution > 50 - currentYear * 1.5 - currentMonth * (1.5 / 12))
-        {
-            displayMessage[0] = dutchStatusMessages[(int)statisticStatus.bad];
-            displayMessage[1] = englishStatusMessages[(int)statisticStatus.bad];
-        }
-        else
-        {
-            displayMessage[0] = dutchStatusMessages[(int)statisticStatus.good];
-            displayMessage[1] = englishStatusMessages[(int)statisticStatus.good];
-        }
+        double calcValue = 45 - currentYear * 1.5 - currentMonth * (1.5 / 12);
+        if (calcValue < 0)
+            calcValue = 0;
+        dutchStatusMessages = "De gemiddelde vervuiling is nu " + avgPollution.ToString("0") + "% per maand." +
+            "De richtlijn is " + calcValue.ToString("0") + "% per maand.";
+        englishStatusMessages = "The average pollution is now " + avgPollution.ToString("0") + "% per month." +
+            "The guideline is " + calcValue.ToString("0") + "% per month.";
+
+        displayMessage = new string[2] { dutchStatusMessages, englishStatusMessages };
     }
 }
