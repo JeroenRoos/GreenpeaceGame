@@ -1129,17 +1129,17 @@ public class UpdateUI : MonoBehaviour
     {
         organizationShakes = true;
         btnOrganizationIsClicked = false;
-        Quaternion standardRotation = btnOrganization.transform.rotation;
+        Quaternion standardRotation = new Quaternion(0,0,0,0);
         while (!btnOrganizationIsClicked)
         {
             for (int i = 0; i < 4; i++)
             {
-                btnOrganization.transform.Rotate(0, 0, -10);
+                btnOrganization.transform.Rotate(0, 0, -5);
                 yield return new WaitForFixedUpdate();
             }
             for (int i = 0; i < 4; i++)
             {
-                btnOrganization.transform.Rotate(0, 0, 10);
+                btnOrganization.transform.Rotate(0, 0, 5);
                 yield return new WaitForFixedUpdate();
             }
             yield return new WaitForSeconds(2);
@@ -1153,7 +1153,7 @@ public class UpdateUI : MonoBehaviour
     {
         questsShakes = true;
         btnQuestsIsClicked = false;
-        Quaternion standardRotation = btnQuests.transform.rotation;
+        Quaternion standardRotation = new Quaternion(0, 0, 0, 0);
         while (!btnQuestsIsClicked)
         {
             for (int i = 0; i < 4; i++)
@@ -1177,7 +1177,7 @@ public class UpdateUI : MonoBehaviour
     {
         cardsShakes = true;
         btnCardsIsClicked = false;
-        Quaternion standardRotation = btnCards.transform.rotation;
+        Quaternion standardRotation = new Quaternion(0, 0, 0, 0);
         while (!btnCardsIsClicked)
         {
             for (int i = 0; i < 4; i++)
@@ -1201,7 +1201,7 @@ public class UpdateUI : MonoBehaviour
     {
         investmentsShakes = true;
         btnInvestmentsIsClicked = false;
-        Quaternion standardRotation = btnInvestments.transform.rotation;
+        Quaternion standardRotation = new Quaternion(0, 0, 0, 0);
         while (!btnInvestmentsIsClicked)
         {
             for (int i = 0; i < 4; i++)
