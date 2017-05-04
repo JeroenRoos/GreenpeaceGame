@@ -3575,7 +3575,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -3718,7 +3718,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -3863,7 +3863,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -4004,9 +4004,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -4149,7 +4149,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -4292,7 +4292,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -4435,7 +4435,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -4576,9 +4576,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>11</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>21</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -4719,9 +4719,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -4862,9 +4862,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -5005,7 +5005,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>16</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -5148,9 +5148,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>14</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -5291,7 +5291,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -5434,9 +5434,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -5579,7 +5579,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>8</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -5720,9 +5720,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>12</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>19</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -5863,9 +5863,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>12</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -6006,9 +6006,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>19</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>26</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -9727,7 +9727,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -9870,7 +9870,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -10015,7 +10015,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -10156,9 +10156,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -10301,7 +10301,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -10444,7 +10444,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -10587,7 +10587,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -10728,9 +10728,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>11</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>21</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -10871,9 +10871,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -11014,9 +11014,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -11157,7 +11157,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>16</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -11300,9 +11300,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>14</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -11443,7 +11443,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -11586,9 +11586,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -11731,7 +11731,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>8</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -11872,9 +11872,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>12</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>19</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -12015,9 +12015,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>12</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -12158,9 +12158,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>19</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>26</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -15879,7 +15879,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -16022,7 +16022,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -16167,7 +16167,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -16308,9 +16308,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -16453,7 +16453,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -16596,7 +16596,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -16739,7 +16739,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -16880,9 +16880,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>11</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>21</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -17023,9 +17023,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -17166,9 +17166,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -17309,7 +17309,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>16</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -17452,9 +17452,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>14</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -17595,7 +17595,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -17738,9 +17738,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -17883,7 +17883,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>8</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -18024,9 +18024,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>12</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>19</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -18167,9 +18167,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>12</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -18310,9 +18310,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>19</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>26</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -22031,7 +22031,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -22174,7 +22174,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -22319,7 +22319,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -22460,9 +22460,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -22605,7 +22605,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -22748,7 +22748,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -22891,7 +22891,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>11</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -23032,9 +23032,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>11</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>21</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -23175,9 +23175,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>16</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -23318,9 +23318,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -23461,7 +23461,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>16</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -23604,9 +23604,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>2</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>14</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -23747,7 +23747,7 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>21</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
           <endAvailableYear>31</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
@@ -23890,9 +23890,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>6</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>18</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -24035,7 +24035,7 @@
           <conditionsAreRegional>true</conditionsAreRegional>
           <startAvailableYear>1</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>8</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -24176,9 +24176,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>12</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>19</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -24319,9 +24319,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>5</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>12</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
@@ -24462,9 +24462,9 @@
           <endTemporaryConsequencesMonth>0</endTemporaryConsequencesMonth>
           <isAvailable>false</isAvailable>
           <conditionsAreRegional>true</conditionsAreRegional>
-          <startAvailableYear>1</startAvailableYear>
+          <startAvailableYear>19</startAvailableYear>
           <startAvailableMonth>1</startAvailableMonth>
-          <endAvailableYear>31</endAvailableYear>
+          <endAvailableYear>26</endAvailableYear>
           <endAvailableMonth>1</endAvailableMonth>
           <availableConditionsMinimum>
             <income>0</income>
