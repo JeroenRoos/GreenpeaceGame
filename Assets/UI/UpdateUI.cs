@@ -3166,21 +3166,6 @@ public class UpdateUI : MonoBehaviour
                 yield return null;
         }
 
-        /*
-        btnTutorialNext.gameObject.SetActive(true);
-        canvasTutorial.gameObject.SetActive(true);
-
-        string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling onder de 5% moet zijn voor 2050.",
-            "You're now ready to play the game. \n\nThink about the fact that the pollution needs to be below 5% before 2050." };
-        string[] txtButton = { "Eindig handleiding", "Finish tutorial" };
-
-        txtTurorialStep1.text = step3[taal];
-        txtTutorialStep1BtnText.text = txtButton[taal];
-
-        while (!game.tutorial.tutorialChecks[12])//tutorialStep17)
-            yield return null;
-        */
-
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
@@ -3360,6 +3345,7 @@ public class UpdateUI : MonoBehaviour
             card.UseCardOnRegion(cardRegion, game.gameStatistics);
         }
 
+        game.inventory.RemoveCardFromInventory(card);
         updateCardsUI();
     }
     #endregion
