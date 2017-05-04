@@ -47,7 +47,7 @@ public class EventObjectController : MonoBehaviour
                 isClicked = true;
                 EventManager.CallPlayButtonClickSFX();
                 updateUI.popupActive = false;
-                updateUI.initEventPopup(eventModel, regionModel);
+                updateUI.initEventPopupChoiceMade(eventModel, regionModel);
             }
         }
     }
