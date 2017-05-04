@@ -3440,11 +3440,26 @@ public class UpdateUI : MonoBehaviour
         canvasEndOfGame.gameObject.SetActive(true);
 
         string[] title = { "Einde van het spel", "End of the Game" };
-        string[] info = { "", "" };
-        string[] btn = { "Naar hoofdmenu", "Return to main menu" };
 
+        if (game.gameStatistics.pollution == 0)
+        {
+            string[] info = { "Gefeliciteerd, je hebt het doel van 0% vervuiling gehaald!\n\nDe score die je daarbij gehaald hebt is: " + score.ToString("0") +
+                    ".\n\nHet is een belangrijke dag voor Nederland, en daarom voor de wereld!",
+                "Congratulations, you have reached the goal off 0% pollution!\n\nYour score this game is: " + score.ToString("0") +
+                ".\n\nIt's a great day for The Netherlands, and therefore the world!"};
+            txtEndOfYearInfo.text = info[taal];
+        }
+        else
+        {
+            string[] info = { "Helaas, je hebt het doel van 0% vervuiling niet gehaald. Milieuvervuiling blijft een probleem voor Nederland en de rest van de wereld.\n\nDe score " + 
+                    "die je gehaald hebt is: " + score.ToString("0") + ".\n\nHet is een treurige dag voor Nederland en daarom voor de wereld.",
+                "Unfortunately you didn't reach the goal of 0% pollution. Environmental pollution still is a problem for The Netherlands and the rest of the world.\n\nYou reached a score off " +
+                score.ToString("0") + ".\n\nIt's a sad day for The Netherland and therefore the world."};
+            txtEndOfYearInfo.text = info[taal];
+        }
+
+        string[] btn = { "Naar hoofdmenu", "Return to main menu" };
         txtEndOfGameTitle.text = title[taal];
-        txtEndOfYearInfo.text = info[taal];
         txtEndOfYearBtn.text = btn[taal];
     }
 
