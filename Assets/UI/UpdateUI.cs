@@ -1891,10 +1891,10 @@ public class UpdateUI : MonoBehaviour
 
         txtTutorialRegion.text = step2[taal];
         btnTutorialRegion.gameObject.SetActive(false);
-        Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
-        Vector3 imgNewPos = imgOldPos;
-        imgNewPos.x = imgNewPos.x - Screen.width / 4;
-        imgTutorialRegion.gameObject.transform.position = imgNewPos;
+        //Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
+        //Vector3 imgNewPos = imgOldPos;
+        //imgNewPos.x = imgNewPos.x - Screen.width / 4;
+        //imgTutorialRegion.gameObject.transform.position = imgNewPos;
 
         while (!game.tutorial.tutorialCheckActionDone)
             yield return null;
@@ -2601,9 +2601,6 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
 
-        //while (!game.tutorial.tutorialChecks[10])//tutorialStep17)
-       //     yield return null;
-
         //canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
@@ -2915,7 +2912,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialBuildings.text = step[taal];
         txtTutorialBuildingsbtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[12])//tutorialStep16)
+        while (!game.tutorial.tutorialChecks[11])//tutorialStep16)
             yield return null;
 
         imgTutorialBuildings.gameObject.SetActive(false);
@@ -2934,7 +2931,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmall.text = step3[taal];
         txtTutorialSmallBtn.text = txtButton[taal];
 
-        while (!game.tutorial.tutorialChecks[13])//tutorialStep17)
+        while (!game.tutorial.tutorialChecks[12])//tutorialStep17)
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
@@ -3058,7 +3055,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialInvestements.text = step[taal];
         txtTutorialInvestementsbtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[11])//tutorialStep16)
+        while (!game.tutorial.tutorialChecks[10])//tutorialStep16)
             yield return null;
 
         imgTutorialInvestements.gameObject.SetActive(false);
