@@ -702,8 +702,10 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(true);
         btnNextTurn.gameObject.SetActive(true);
         imgTutorialOverworld.transform.position = imgPosRight;
-        string[] step6 = { "Om naar de volgende maand en beurt te gaan druk je op de Volgende maand knop rechtsonderin. \n\nDruk nu op de Volgende maand knop. ",
-            "You can go to the next month by pressing the Next month button in the bottom right of your screen.\n\nPress the next turn button. " };
+        string[] step6 = { "Je kan nu ook de andere regio’s bezoeken om acties uit te voeren. Als je klaar bent " + 
+                "dan kan je naar de volgende maand gaan door op “volgende maand” rechtsonderin het scherm te drukken.",
+            "You can now visit the other regions to execute actions. When you’re finished you can go to the next month " + 
+            "by pressing on the “next month” button at the bottom right of the screen." };
         txtTurorialStep1.text = step6[taal];
         txtTutorialStep1BtnText.text = btnText[taal];
 
@@ -1716,10 +1718,10 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialOrganizationPopup()
     {
-        string[] step1 = { "In het organisatie menu kun je het jaarlijks inkomen zien van elke regio. Handig dus om te bepalen hoeveel je kan uitgeven het komende jaar. " +
-                "\n\nVerder kun je hier advies zien van je economische adviseur en je vervuilingsadviseur op basis van de status van die statistieken. \n\nJe kunt dit menu sluiten door op de ESC toets te drukken."
-                , "In the organization menu you can view the yearly income of each region. This can come in handy when deciding your expanses the coming year. " +
-                "\n\nYou can also view the advice from your economic advisor and your pollution advisor based on the value of these statistics. \n\nYou can close this menu by pressing the ESC key."};
+        string[] step1 = { "Het organisatie menu toont het jaarlijks inkomen per regio. " + 
+                "Ook kan je hier zien wat je adviseurs van de huidige situatie vinden en wat ze zouden willen zien.",
+            "The organisation menu shows the yearly income for each region. " + 
+            "You can also see here what your advisors are thinking about the current situation and what they would like to see."};
         string[] btnText = { "Verder", "Next" };
 
         txtTutorialOrganization.text = step1[taal];
@@ -1830,10 +1832,10 @@ public class UpdateUI : MonoBehaviour
     {
         game.tutorial.tutorialRegionActive = true;
 
-        string[] step1 = { "Elke regio bestaat uit 3 sectoren. Deze sectoren zijn Huishoudens, Landbouw en Bedrijven. \n\nDe sectoren hebben statistieken voor tevredenheid, vervuiling, milieubewustheid en welvaart. "
-                + "Deze sectoren statistieken maken het gemiddelde waar de regio statistieken uit bestaan. \n\nJe kunt deze sector statistieken zien door met je muis over de sector te hoveren."
-                , "Each region has 3 sectors. These sectors are Households, Agriculture and Companies. \n\nThese sectors have statistics for happiness, pollution, eco awareness and prosperity. " +
-                "These sector statistics create the averages which are the region statistics. It is important to keep each sector happy. \n\nYou can view these sector statistics by using your mouse to hover over the sector. "};
+        string[] step1 = { "Dit is het regio menu. De statistieken van een regio worden opgemaakt door de statistieken van de sectoren in de regio: Huishoudens, Bedrijven en Landbouw." +
+                "\n\nJe kan de statistieken van een sector zien door op de naam te klikken.",
+            "This is the region menu. The statistics of a region consist of the statistics of the sectors in the region: Households, Companies and Agriculture." + 
+            "\n\nYou can see the statistics of a sector by clicking on the name."};
         string[] btnText = { "Verder", "Next" };
 
         txtTutorialRegion.text = step1[taal];
@@ -1842,12 +1844,14 @@ public class UpdateUI : MonoBehaviour
         while (!game.tutorial.tutorialChecks[3])//tutorialStep6)
             yield return null;
 
-        string[] step2 = { "Je kunt in een regio acties uitvoeren. Acties kosten echter geld en meestal ook tijd. \n\nSommige acties kunnen ook maar 1 keer of eens in de zoveel tijd gedaan worden. "
-                + "Als je een actie kiest krijg je een aantal gegevens over de actie te zien. \n\nDaarnaast kun je kiezen op welke sectoren je de actie invloed uitoefent. Sommige acties kunnen in elke sector gedaan worden, andere in 1 of 2 van de sectoren. "
-                + "\n\nKies nu een actie, keer vervolgens terug naar de landkaart door op de ESC toets te drukken. "
-                , "You can do actions in regions. These actions cost money and most of the time also time. " +
-                "\n\nSome actions you can only do once, others you can do again after some time. When you chose an action you can see a few statistics about the action. \n\nYou also have to choose in which sectors you want the action to do things. " +
-                "Some actions can be done in each sectors, others only in 1 or 2 of the sectors. \n\nChoose an action, after that, return to the map by pressing the ESC key."};
+        string[] step2 = { "Je kan statistieken in sectoren aanpassen door acties te doen. Acties kosten tijd en geld " + 
+                "om uit te voeren. Sommige acties kan je maar 1 keer uitvoeren en anderen kan je maar eens " + 
+                "in de zoveel tijd doen, maar je kan acties wel in meerdere sectoren tegelijk doen." + 
+                "\n\nVoer een actie uit en sluit vervolgens het menu.",
+            "You can manipulate statistics in a sector by executing actions. Actions cost time and money to execute. " + 
+            "Some action you can do only once and others can only be done once in a certain timeframe, but you can do " + 
+            "an action in several sections at the same time." + 
+            "\n\nExecute an action and then close the menu. "};
 
         txtTutorialRegion.text = step2[taal];
         btnTutorialRegion.gameObject.SetActive(false);
