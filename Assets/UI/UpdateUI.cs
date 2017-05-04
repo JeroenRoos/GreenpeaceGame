@@ -159,6 +159,11 @@ public class UpdateUI : MonoBehaviour
     public Text txtQuestsDescription;
     public Text txtQuestsActive;
 
+    // Text End of Game Report
+    public Text txtEndOfGameTitle;
+    public Text txtEndOfYearInfo;
+    public Text txtEndOfYearBtn;
+
     // Text Investments Popup
     public Text txtInvestmentsTitle;
     public Text txtInvestmentsColumn;
@@ -336,6 +341,7 @@ public class UpdateUI : MonoBehaviour
     public Canvas canvasCardsPopup;
     public Canvas canvasBuildingsPopup;
     public Canvas canvasEmptyBuildingsPopup;
+    public Canvas canvasEndOfGame;
 
     // Tooltip Variables
     private string txtTooltip;
@@ -928,6 +934,9 @@ public class UpdateUI : MonoBehaviour
 
         canvasSettingsPopup.GetComponent<Canvas>();
         canvasSettingsPopup.gameObject.SetActive(false);
+
+        canvasEndOfGame.GetComponent<Canvas>();
+        canvasEndOfGame.gameObject.SetActive(false);
 
         if (game.tutorial.tutorialActive)
         {
@@ -3170,21 +3179,6 @@ public class UpdateUI : MonoBehaviour
                 yield return null;
         }
 
-        /*
-        btnTutorialNext.gameObject.SetActive(true);
-        canvasTutorial.gameObject.SetActive(true);
-
-        string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling onder de 5% moet zijn voor 2050.",
-            "You're now ready to play the game. \n\nThink about the fact that the pollution needs to be below 5% before 2050." };
-        string[] txtButton = { "Eindig handleiding", "Finish tutorial" };
-
-        txtTurorialStep1.text = step3[taal];
-        txtTutorialStep1BtnText.text = txtButton[taal];
-
-        while (!game.tutorial.tutorialChecks[12])//tutorialStep17)
-            yield return null;
-        */
-
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
@@ -3364,6 +3358,7 @@ public class UpdateUI : MonoBehaviour
             card.UseCardOnRegion(cardRegion, game.gameStatistics);
         }
 
+        game.inventory.RemoveCardFromInventory(card);
         updateCardsUI();
     }
     #endregion
@@ -3434,6 +3429,31 @@ public class UpdateUI : MonoBehaviour
         {
             txtColumnRightInfo.text += d.ToString() + "\n";
         }
+    }
+    #endregion
+
+    #region Code for End of Game Popup
+    public void initEndOfGameReport(double score)
+    {
+        popupActive = true;
+        EventManager.CallPopupIsActive();
+        canvasEndOfGame.gameObject.SetActive(true);
+
+        string[] title = { "Einde van het spel", "End of the Game" };
+        string[] info = { "", "" };
+        string[] btn = { "Naar hoofdmenu", "Return to main menu" };
+
+        txtEndOfGameTitle.text = title[taal];
+        txtEndOfYearInfo.text = info[taal];
+        txtEndOfYearBtn.text = btn[taal];
+    }
+
+    public void btnEndOfYearReturnClick(int index)
+    {
+        canvasEndOfGame.gameObject.SetActive(false);
+        EventManager.CallPlayButtonClickSFX();
+        EventManager.CallLeaveGame();
+        SceneManager.LoadSceneAsync(index);
     }
     #endregion
 

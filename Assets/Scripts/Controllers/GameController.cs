@@ -367,8 +367,7 @@ public class GameController : MonoBehaviour
     public void ShowGameScore()
     {
         double score = CalculateScore();
-
-        //display in updateUI
+        updateUI.initEndOfGameReport(score);
     }
 
     public double CalculateScore()
