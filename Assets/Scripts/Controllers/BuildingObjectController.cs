@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Text;
-using UnityEditor;
 using UnityEngine;
 
 public class BuildingObjectController : MonoBehaviour
