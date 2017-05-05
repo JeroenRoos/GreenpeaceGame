@@ -785,8 +785,11 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmallBtn.text = btnText[taal];
         btnTutorialSmallNext.gameObject.SetActive(true);
 
+        popupActive = true;
         while (!game.tutorial.tutorialChecks[6]) //tutorialstep19)
             yield return null;
+
+        popupActive = false;
 
         btnTutorialSmallNext.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
@@ -2120,8 +2123,12 @@ public class UpdateUI : MonoBehaviour
                 string[] txtSectorMoney = { "Totale kosten", "Total cost" };
                 string[] sectorDescription = { "Mogelijke sectoren", "Possible sectors" };
                 dropdownChoiceMade = true;
+                string[] uniqueText = { " <b>[uniek]</b>", " <b>[unique]</b>" };
 
                 txtRegionActionName.text = regioAction.description[taal];
+                if (regioAction.isUnique)
+                    txtRegionActionName.text += uniqueText[taal];
+
                 txtRegionActionCost.text = actionCostText[taal];
                 txtRegionActionDuration.text = actionDurationText[taal];
                 //txtRegionActionConsequences.text = getActionConsequences(action.consequences);

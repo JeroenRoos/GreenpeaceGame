@@ -3435,8 +3435,8 @@
     </RegionAction>
     <RegionAction>
       <name>
-        <string>Maak afgesloten natuurgebied</string>
-        <string>Create closed nature reserve</string>
+        <string>Maak afgesloten natuurgebied [UNIEK]</string>
+        <string>Create closed nature reserve [UNIQUE]</string>
       </name>
       <description>
         <string>Sluit een een gebied in een regio af voor een natuurgebied.</string>
