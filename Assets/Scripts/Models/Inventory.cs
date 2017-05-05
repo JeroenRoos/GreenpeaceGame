@@ -15,7 +15,7 @@ public class Inventory
 
     public void AddCardToInventory(Card card)
     {
-        card.increaseCurrentRewards(); //first increment upon receiving the card
+        //card.increaseCurrentRewards(); //first increment upon receiving the card
         ownedCards.Add(card);
     }
 
