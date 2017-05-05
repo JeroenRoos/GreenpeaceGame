@@ -6050,7 +6050,7 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>30</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>40</ecoAwareness>
             <prosperity>30</prosperity>
             <pollution>
@@ -6074,7 +6074,7 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>40</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>10</ecoAwareness>
             <prosperity>50</prosperity>
             <pollution>
@@ -6098,7 +6098,7 @@
           </sectorName>
           <statistics>
             <income>500</income>
-            <happiness>40</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>30</ecoAwareness>
             <prosperity>70</prosperity>
             <pollution>
@@ -12202,7 +12202,7 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>40</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>20</ecoAwareness>
             <prosperity>40</prosperity>
             <pollution>
@@ -12226,7 +12226,7 @@
           </sectorName>
           <statistics>
             <income>200</income>
-            <happiness>30</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>20</ecoAwareness>
             <prosperity>50</prosperity>
             <pollution>
@@ -12250,7 +12250,7 @@
           </sectorName>
           <statistics>
             <income>500</income>
-            <happiness>60</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>20</ecoAwareness>
             <prosperity>75</prosperity>
             <pollution>
@@ -18378,7 +18378,7 @@
           </sectorName>
           <statistics>
             <income>500</income>
-            <happiness>70</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>5</ecoAwareness>
             <prosperity>90</prosperity>
             <pollution>
@@ -18402,7 +18402,7 @@
           </sectorName>
           <statistics>
             <income>50</income>
-            <happiness>10</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>30</ecoAwareness>
             <prosperity>10</prosperity>
             <pollution>
@@ -24506,7 +24506,7 @@
           </sectorName>
           <statistics>
             <income>250</income>
-            <happiness>40</happiness>
+            <happiness>50</happiness>
             <ecoAwareness>10</ecoAwareness>
             <prosperity>40</prosperity>
             <pollution>

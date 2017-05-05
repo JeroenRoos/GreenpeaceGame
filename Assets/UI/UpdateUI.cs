@@ -631,13 +631,13 @@ public class UpdateUI : MonoBehaviour
         string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " + 
                 "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." + 
                 "\n\nGeld: beslissingen maken kost geld. Geld wordt per maand verhoogd door het inkomen." +
-                "\n\nVervuiling: de vervuiling in het land, neemt per maand toe of af." +
-                "\n\nMilieubewustheid: verlaagt de maandelijkse vervuiling." +
-                "\n\nWelvaart: verhoogt het inkomen." +
-                "\n\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50% is positief, onder 50% is negatief.",
+                "\nVervuiling: de vervuiling in het land, neemt per maand toe of af." +
+                "\nMilieubewustheid: verlaagt de maandelijkse vervuiling." +
+                "\nWelvaart: verhoogt het inkomen." +
+                "\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50% is positief, onder 50% is negatief.",
                 "At the top of the screen are your recourses to reduce pollution. Prosperity, eco awareness, " + 
                 "happiness and pollution are nationwide averages." +
-                "\nMoney: decisions cost money.Money increases monthly from income." +
+                "\n\nMoney: decisions cost money.Money increases monthly from income." +
                 "\nPollution: the pollution in the country, increases or decreases monthly." +
                 "\nEco Awareness: reduces monthly pollution." +
                 "\nProsperity: increases income." +
@@ -778,9 +778,9 @@ public class UpdateUI : MonoBehaviour
         //imgTutorialOverworld.gameObject.transform.position = imgNewPos;
         canvasTutorial.gameObject.SetActive(true);
         string[] step7 = { "er is een event bezig. Er kunnen elke nieuwe turn enkele events ontstaan. Er kan maar 1 event " +
-                "tegelijk in een regio zijn. \nEr kunnen wel meerdere events tegelijk zijn in meerdere regio's. \nVoor elk event heb je een aantal beurten om te beslissen wat je met de event gaat doen. "
+                "tegelijk in een regio zijn. \nEr kunnen wel meerdere events tegelijk zijn in meerdere regio's. \nVoor elk event heb je 3 beurten om te beslissen wat je met de event gaat doen. "
                 , "There is an active event running at this moment. Each turn there will be new events. There can only be one event in a region at the same time. " +
-                "\nThere can be multiple active events in the whole country. \nFor each event you have a few turns to decide what you are going to do. "  };
+                "\nThere can be multiple active events in the whole country. \nFor each event you have 3 turns to decide what you are going to do. "  };
         txtTutorialSmall.text = step7[taal];
         txtTutorialSmallBtn.text = btnText[taal];
         btnTutorialSmallNext.gameObject.SetActive(true);
@@ -996,8 +996,8 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialeventsClickable = false;
             game.tutorial.tutorialNexTurnPossibe = false;
 
-            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Organisatie menu knop gekomen. Dit is de knop voor je Missies. \n\nOpen het Missies menu door op de Missies knop te drukken. ",
-            "You can see that an extra button just appeared next to the Organization menu button. This is the button for you Quests. \n\nOpen the Quests menu by pressing the Quests button " };
+            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de organisatie menu knop gekomen. Dit is de knop voor je missies. \n\nOpen het missies menu door op de missies knop te drukken. ",
+            "You can see that an extra button just appeared next to the organization menu button. This is the button for your quests. \n\nOpen the quests menu by pressing the quests button." };
             string[] btnText = { "Verder", "Next" };
             txtTutorialSmall.text = step1[taal];
             btnTutorialSmallNext.gameObject.SetActive(false);
@@ -1033,8 +1033,8 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialInvestementsActive = true;
             game.tutorial.tutorialNexTurnPossibe = false;
 
-            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Kaarten menu knop gekomen. Dit is de knop voor Investeren. \n\nOpen het Investeer menu door op de Investeer knop te drukken. ",
-            "You can see that an extra button just appeared next to the Cards menu button. This is the button for you Investements. \n\nOpen the Investements menu by pressing the Investements button " };
+            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de kaarten menu knop gekomen. Dit is de knop voor investeren. \n\nOpen het investeer menu door op de investeer knop te drukken.",
+            "You can see that an extra button just appeared next to the cards menu button. This is the button for your investments. \n\nOpen the investments menu by pressing the investments button." };
             string[] btnText = { "Verder", "Next" };
             txtTutorialSmall.text = step1[taal];
             btnTutorialSmallNext.gameObject.SetActive(false);
@@ -1070,8 +1070,8 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialCardsActive = true;
             game.tutorial.tutorialNexTurnPossibe = false;
 
-            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de Missies menu knop gekomen. Dit is de knop voor je Kaarten. \n\nOpen het Kaarten menu door op de Kaarten knop te drukken. ",
-            "You can see that an extra button just appeared next to the Quests menu button. This is the button for you Cards. \n\nOpen the Cards menu by pressing the Quests button " };
+            string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de missies menu knop gekomen. Dit is de knop voor je kaarten. \n\nOpen het kaarten menu door op de kaarten knop te drukken. ",
+            "You can see that an extra button just appeared next to the quests menu button. This is the button for your cards. \n\nOpen the cards menu by pressing the cards button." };
             string[] btnText = { "Verder", "Next" };
             txtTutorialSmall.text = step1[taal];
             btnTutorialSmallNext.gameObject.SetActive(false);
@@ -1105,8 +1105,8 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialBuildingsActive = true;
         game.tutorial.tutorialNexTurnPossibe = false;
 
-        string[] step1 = { "INSERT BUILDINGS TUTORIAL TEXT. ",
-            "INSERT BUILDINGS TUTORIAL TEXT. " };
+        string[] step1 = { "Er zijn 4 nieuwe icoontjes op de map verschenen! Dit komt omdat de overheid heeft jouw organisatie toestemming gegeven om 1 gebouw neer te zetten in elke regio. \\Click on one of those 4 icons.",
+            "There just appeared 4 new icons on the map! This is because the government has given your organisation permission to place 1 building in each region. \n\nClick on one of those 4 icons." };
         txtTutorialSmall.text = step1[taal];
         btnTutorialSmallNext.gameObject.SetActive(false);
         game.tutorial.tutorialBuildingsClickable = true;
@@ -2879,7 +2879,8 @@ public class UpdateUI : MonoBehaviour
         else
             txtEventChoiceMadeInfo.text += "\n<b>Chosen solution: </b>" + e.choicesEnglish[e.pickedChoiceNumber];
 
-        string[] duration = { "\n<b>Duur gekozen optie:</b> " + e.eventDuration[e.pickedChoiceNumber] + " maanden", "\n<b>Duration chosen option:</b> " + e.eventDuration[e.pickedChoiceNumber] + " months" };
+        int turnsLeft = (e.onEventStartYear * 12 + e.onEventStartMonth + e.eventDuration[e.pickedChoiceNumber]) - (game.currentYear * 12 + game.currentMonth);
+        string[] duration = { "\n<b>Resterende tijd gekozen optie:</b> " + turnsLeft + " maanden", "\n<b>Remaining duration chosen option:</b> " + turnsLeft + " months" };
         txtEventChoiceMadeInfo.text += duration[taal];
 
         string[] c = { "\n\n<b>Consequenties: </b>", "\n\n<b>Consequences: </b>" };
@@ -2905,8 +2906,8 @@ public class UpdateUI : MonoBehaviour
     {
         imgTutorialBuildings.gameObject.SetActive(true);
 
-        string[] step = { "INSERT BUILDINGS TUTORIAL TEXT. ",
-            "INSERT BUILDINGS TUTORIAL TEXT. "};
+        string[] step = { "Dit is het gebouw menu. Je mag 1 gebouw in de regio neerzetten en elk gebouw heeft zijn eigen voordelen. Je kan een gebouw echter wel weer slopen om een ander gebouw neer te zetten. ",
+            "This is the building menu. You can build 1 building in each region and each building has its own benefits. You can however destroy the building to build a different one."};
         string[] txtBtn = { "Volgende", "Next" };
 
         txtTutorialBuildings.text = step[taal];
@@ -2924,8 +2925,8 @@ public class UpdateUI : MonoBehaviour
         btnTutorialSmallNext.gameObject.SetActive(true);
         canvasTutorial.gameObject.SetActive(true);
 
-        string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling onder de 5% moet zijn voor 2050.",
-            "You're now ready to play the game. \n\nThink about the fact that the pollution needs to be below 5% before 2050." };
+        string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling 0% moet zijn voor 2050.",
+            "You're now ready to play the game. \n\nDon't forget that the pollution needs to be below 0% before 2050." };
         string[] txtButton = { "Eindig handleiding", "Finish tutorial" };
 
         txtTutorialSmall.text = step3[taal];
@@ -3022,13 +3023,13 @@ public class UpdateUI : MonoBehaviour
         string[] title = { "Investeren", "Investments" };
         string[] column = { "Investeer in de organisatie", "Invest in the organization" };
         string[] description = { "Hier kun je geld investeren in je organisatie. Hoe meer geld je in een onderdeel investeert, hoe meer positief resultaat je zult zien.\nJe kunt 5 keer investeren in elk onderdeel. " +
-                "Investeren kost 5000 per keer. Investeringen kun je niet terug draaien.",
+                "Investeren kost 10000 per keer. Investeringen kun je niet terug draaien.",
             "You can invest money in your own organization. If you invest more in one of the segments you will see a larger positive result. You can invest 5 times in each segment. " + 
-            "Investing will cost you 5000 each time. You can't rollback your investments."};
-        string[] actievermindering = { "Kosten verlagen acties\nVerlaag de kosten voor elke actie.", "Cost reduction actions\nLowers the cost for all actions."};
-        string[] actieconsequences = { "Betere consequencies acties\nVerbeter de consequenties bij elke actie.", "Better consequences actions\nImprove the consequencies for all actions." };
-        string[] eventvermindering = { "Kosten verlagen events\nVerlaag de kosten voor elke event optie.", "Cost reduction events\nLowers the cost for all events options." };
-        string[] eventconsequencies = { "Betere consequencies events\nVerbeter de consequenties bij elke event optie.", "Better consequences events\nImprove the consequencies for all event options." };
+            "Investing will cost you 10000 each time. You can't rollback your investments."};
+        string[] actievermindering = { "Kosten verlagen acties\nVerlaag de kosten voor elke actie met 10%.", "Cost reduction actions\nLowers the cost for all actions with 10%."};
+        string[] actieconsequences = { "Betere consequenties acties\nVerbeter de consequenties bij elke actie met 10%.", "Better consequences actions\nImprove the consequencies for all actions with 10%." };
+        string[] eventvermindering = { "Kosten verlagen events\nVerlaag de kosten voor elke event optie met 10%.", "Cost reduction events\nLowers the cost for all events options with 10%." };
+        string[] eventconsequencies = { "Betere consequenties events\nVerbeter de consequenties bij elke event optie met 10%.", "Better consequences events\nImprove the consequencies for all event options with 10%." };
 
         txtInvestmentsTitle.text = title[taal];
         txtInvestmentsColumn.text = column[taal];
@@ -3046,10 +3047,10 @@ public class UpdateUI : MonoBehaviour
     {
         imgTutorialInvestements.gameObject.SetActive(true);
 
-        string[] step = { "Je kunt investeren om de kosten en consequenties van acties en events te verlagen en te verbeteren. Je kunt 5x investeren in elk onderdeel, dus 20x in totaal.\n\n " +
-                "Investeren kost 10.000 geld per keer. \n\nAls je geinvesteerd hebt kun je dit niet meer ongedaan maken.",
-            "You can invest money to decrease the cost and better the consequences off actions and events. You can invest 5 times in each of these, that makes a total off 20 investements." +
-            "A investment costs 10.000 money each time. When you invested your money there is no way to turn this back."};
+        string[] step = { "Je kunt investeren om de kosten en consequenties van acties en events te verlagen en te verbeteren. Je kan 5 keer investeren in elk onderdeel.\n\n " +
+                "Investeren kost 10.000 geld per keer. \n\nAls je investeert kan je dit niet meer ongedaan maken.",
+            "You can invest money to decrease the cost and increase the consequences of actions and events. You can invest 5 times in each option." +
+            "An investment costs 10.000 money each time and increases the impact of the option by 10%. If you invest you can't undo this."};
         string[] txtBtn = { "Volgende", "Next" };
 
         txtTutorialInvestements.text = step[taal];

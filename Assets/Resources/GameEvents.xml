@@ -6709,7 +6709,7 @@
       <name>NaturePollutionNewTech</name>
       <publicEventName>
         <string>Natuurvervuiling nieuwe technologie</string>
-        <string>Nature pollution new technologie</string>
+        <string>Nature pollution new technology</string>
       </publicEventName>
       <description>
         <string>Er is een nieuwe technologie beschikbaar op de markt waarmee de huidige natuurvervuiling eenmalig afneemt.</string>
