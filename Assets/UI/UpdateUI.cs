@@ -2178,6 +2178,8 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionCompanies.gameObject.SetActive(false);
         regioActionCost = 0;
 
+
+        playSelectSound = false;
         if (!checkboxHouseholds)
             checkboxRegionHouseholds.isOn = true;
 
@@ -2189,6 +2191,7 @@ public class UpdateUI : MonoBehaviour
 
         if (!game.tutorial.tutorialCheckActionDone)
             game.tutorial.tutorialCheckActionDone = true;
+        playSelectSound = true;
 
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
@@ -2446,7 +2449,7 @@ public class UpdateUI : MonoBehaviour
 
     private void setCompletedEvents(Text txt, List<GameEvent> eventsList)
     {
-        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed events:</b>\n" };
+        string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed event:</b>\n" };
         txt.text += events[taal];
 
         foreach (GameEvent e in eventsList)
@@ -2494,7 +2497,7 @@ public class UpdateUI : MonoBehaviour
 
     private void setCompletedActions(Text txt, List<RegionAction> actionsList)
     {
-        string[] acties = { "<b>Afgeronde acties:</b>\n", "\n\n<b>Completed actions:</b>\n" };
+        string[] acties = { "<b>Afgeronde acties:</b>\n", "\n\n<b>Completed action:</b>\n" };
         txt.text += acties[taal];
 
         for (int i = 0; i < monthlyCompletedActions.Length; i++)
@@ -2834,6 +2837,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoEventClick()
     {
+        EventManager.CallPlayButtonClickSFX();
         int option;
 
         if (radioEventOption1Check)
@@ -3541,7 +3545,7 @@ public class UpdateUI : MonoBehaviour
             string[] info = { "Helaas, je hebt het doel van 0% vervuiling niet gehaald. Milieuvervuiling blijft een probleem voor Nederland en de rest van de wereld.\n\nDe score " + 
                     "die je gehaald hebt is: " + score.ToString("0") + ".\n\nHet is een treurige dag voor Nederland en daarom voor de wereld.",
                 "Unfortunately you didn't reach the goal of 0% pollution. Environmental pollution still is a problem for The Netherlands and the rest of the world.\n\nYou reached a score off " +
-                score.ToString("0") + ".\n\nIt's a sad day for The Netherland and therefore the world."};
+                score.ToString("0") + ".\n\nIt's a sad day for The Netherlands and therefore the world."};
             txtEndOfYearInfo.text = info[taal];
         }
 
@@ -4373,9 +4377,9 @@ public class UpdateUI : MonoBehaviour
             string[] a = { "\nInkomen per sector: " , "\nIncome per sector: "};
 
             if (s.ecoAwareness > 0d)
-                a[taal] += "+" + s.income + "%";
+                a[taal] += "+" + s.income;
             else
-                a[taal] += s.income + "%";
+                a[taal] += s.income;
 
             consequences[taal] += a[taal];
             noConsequences = true;

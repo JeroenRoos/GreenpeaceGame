@@ -41,10 +41,8 @@ public class GameController : MonoBehaviour
     float height = Screen.height / (1080 / 55);
 
     // Use this for initialization
-    void Start()
+    private void Awake()
     {
-        SetPlayerTrackingData();
-        autoSave = true;
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
@@ -102,6 +100,12 @@ public class GameController : MonoBehaviour
             }
         }
         updateUI.LinkGame(game);
+    }
+
+    void Start()
+    {
+        SetPlayerTrackingData();
+        autoSave = true;
         
         StartCoroutine(updateUI.showBtnQuests());
 
@@ -350,6 +354,7 @@ public class GameController : MonoBehaviour
                 UpdateCards();
                 SetYearlyTrackingData();
             }
+
             GenerateNewCard();
 
             GenerateMonthlyUpdates(isNewYear);
