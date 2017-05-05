@@ -167,6 +167,24 @@ public class GameController : MonoBehaviour
         SetGameplayTrackingData();
     }
 
+    public void SetScoreTrackingData(double score)
+    {
+        Analytics.CustomEvent("GameCompletionScore", new Dictionary<string, object>
+        {
+            { "Score", score.ToString("0") },
+            { "Year", game.currentYear.ToString() },
+            { "Month", game.currentMonth.ToString() },
+            { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
+            { "Money", game.gameStatistics.money.ToString("0") },
+            { "Income", game.gameStatistics.income.ToString("0") },
+            { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
+            { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
+            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
+            { "TimePlayed", game.totalTimePlayed.ToString("0") }
+        });
+
+    }
+
     public void SetGameplayTrackingData()
     {
         game.totalTimePlayed += Time.timeSinceLevelLoad;
@@ -379,6 +397,7 @@ public class GameController : MonoBehaviour
     {
         double score = CalculateScore();
         updateUI.initEndOfGameReport(score);
+        SetScoreTrackingData(score);
     }
 
     public double CalculateScore()
