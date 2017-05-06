@@ -66,15 +66,15 @@
         <string>Increase Happiness</string>
       </name>
       <description>
-        <string>Verhoog de tevredenheid in Noord-Nederland naar 60%.</string>
-        <string>Increase the happines in The Netherlands North to 60%.</string>
+        <string>Verhoog de tevredenheid in Noord-Nederland naar 65%.</string>
+        <string>Increase the happines in The Netherlands North to 65%.</string>
       </description>
       <startYear>5</startYear>
       <startMonth>6</startMonth>
-      <questLocation>Zuid Nederland</questLocation>
+      <questLocation>Noord Nederland</questLocation>
       <questCompleteConditions>
         <income>0</income>
-        <happiness>60</happiness>
+        <happiness>65</happiness>
         <ecoAwareness>0</ecoAwareness>
         <prosperity>0</prosperity>
         <avgPollution>0</avgPollution>

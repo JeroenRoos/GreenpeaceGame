@@ -9159,7 +9159,7 @@
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign for nuclear energie</string>
+        <string>Campaign for nuclear energy</string>
         <string>Campaign for green energy</string>
       </choicesEnglish>
       <isUnique>true</isUnique>
@@ -19205,7 +19205,7 @@
       <name>GrowthAgriculture</name>
       <publicEventName>
         <string>Bevolkingsgroei Landbouw</string>
-        <string>Population growth Landbouw</string>
+        <string>Population growth Agriculture</string>
       </publicEventName>
       <description>
         <string>Door de bevolkingsgroei moet de landbouw meer produceren waardoor er extra uitstoot is.</string>
@@ -19524,7 +19524,7 @@
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign for sustainable productie</string>
+        <string>Campaign for sustainable production</string>
         <string>Force the farmers to work eco friendly</string>
       </choicesEnglish>
       <isUnique>false</isUnique>

@@ -2109,6 +2109,7 @@ public class UpdateUI : MonoBehaviour
 
     private void showInfoDropDownRegion()
     {
+        string[] cost = new string[2] { " geld", " money" };
         foreach (RegionAction action in regio.actions)
         {
             if (action.name[taal] == dropdownChoice)
@@ -2116,7 +2117,7 @@ public class UpdateUI : MonoBehaviour
                 regioAction = action;
 
                 string[] actionCostText = { "Kosten per sector: " + action.afterInvestmentActionMoneyCost + " geld",
-                    "Costs per sector: " + action.afterInvestmentActionMoneyCost + " geld" };
+                    "Costs per sector: " + action.afterInvestmentActionMoneyCost + cost[taal] };
                 string[] actionDurationText = { "Duur: " + regioAction.actionDuration.ToString() + " maanden",
                     "Duration: " + regioAction.actionDuration.ToString() + " months" };
 
