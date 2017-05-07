@@ -1308,6 +1308,7 @@ public class UpdateUI : MonoBehaviour
         }
         else if (canvasRegioPopup.gameObject.activeSelf)
         {
+            ClearActionMenu();
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
@@ -2180,6 +2181,16 @@ public class UpdateUI : MonoBehaviour
     {
         regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
+        ClearActionMenu();
+
+        string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
+        dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
+
+        updateRegionTextValues();
+    }
+
+    public void ClearActionMenu()
+    {
         btnDoActionRegionMenu.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionHouseholds.gameObject.SetActive(false);
@@ -2203,7 +2214,7 @@ public class UpdateUI : MonoBehaviour
 
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
-        updateRegionTextValues();
+
     }
 
     public void sectorCompaniesClick()
@@ -3728,6 +3739,7 @@ public class UpdateUI : MonoBehaviour
         }
         else if (canvasRegioPopup.gameObject.activeSelf && !game.tutorial.tutorialRegionActive && !imgSectorPopup.gameObject.activeSelf)
         {
+            ClearActionMenu();
             canvasRegioPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
