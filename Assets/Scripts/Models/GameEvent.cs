@@ -20,8 +20,6 @@ public class GameEvent
     public int eventIdleDuration { get; private set; } //in months
     public int eventCooldown { get; private set; } //in months
     public int[] eventDuration { get; private set; } //in months
-    public int[] temporaryConsequencesDuration { get; private set; }
-    public int onEventStartTemporaryConsequenceDuration { get; private set; }
     public double[] eventChoiceMoneyCost { get; private set; }
     public double[] afterInvestmentEventChoiceMoneyCost { get; private set; }
     public double[] eventChoiceMoneyReward { get; private set; }
@@ -33,10 +31,6 @@ public class GameEvent
 
     public SectorStatistics[] consequences { get; private set; }
     public SectorStatistics[] afterInvestmentConsequences { get; private set; }
-    public SectorStatistics[] temporaryConsequences { get; private set; }
-    public SectorStatistics[] duringEventProgressConsequences { get; private set; } //consequences after choosing an option until the event is completed
-    public SectorStatistics onEventStartConsequence { get; private set; }
-    public SectorStatistics onEventStartTemporaryConsequence { get; private set; }
 
     //choice picked events variables
     public int pickedChoiceNumber { get; private set; }
@@ -83,7 +77,7 @@ public class GameEvent
         isActive = false;
         eventStartChance += eventChoiceEventStartChanceModifier[pickedChoiceNumber];
         game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
-        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown + temporaryConsequencesDuration[pickedChoiceNumber];
+        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
     }
 
     public void SetPickedChoice(int i, Game game, Region region)
@@ -96,7 +90,6 @@ public class GameEvent
         isActive = true;
 
         game.gameStatistics.ModifyMoney(afterInvestmentEventChoiceMoneyCost[pickedChoiceNumber], false);
-        region.ImplementEventConsequences(this, duringEventProgressConsequences[pickedChoiceNumber], true, game.gameStatistics.happiness);
 
         if (eventDuration[pickedChoiceNumber] == 0)
         {

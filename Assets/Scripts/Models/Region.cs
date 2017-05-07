@@ -50,9 +50,6 @@ public class Region
     public void AddGameEvent(GameEvent gameEvent, double happiness)
     {
         inProgressGameEvents.Add(gameEvent);
-
-        ImplementEventConsequences(gameEvent, gameEvent.onEventStartConsequence, true, happiness);
-        ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, true, happiness);
     }
 
     public void UpdateEvents(Game game)
@@ -74,14 +71,8 @@ public class Region
                 CompleteEvent(gameEvent, game);
             }
 
-            if (gameEvent.onEventStartYear == game.currentYear && gameEvent.onEventStartMonth == game.currentMonth)
+            if (gameEvent.lastCompleted == game.currentMonth + game.currentYear * 12)
             {
-                ImplementEventConsequences(gameEvent, gameEvent.onEventStartTemporaryConsequence, false, game.gameStatistics.happiness);
-            }
-
-            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
-            {
-                ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false, game.gameStatistics.happiness);
                 gameEvent.FinishEvent();
             }
         }
@@ -91,8 +82,6 @@ public class Region
     public void CompleteEvent(GameEvent gameEvent, Game game)
     {
         ImplementEventConsequences(gameEvent, gameEvent.afterInvestmentConsequences[gameEvent.pickedChoiceNumber], true, game.gameStatistics.happiness);
-        ImplementEventConsequences(gameEvent, gameEvent.duringEventProgressConsequences[gameEvent.pickedChoiceNumber], false, game.gameStatistics.happiness);
-        ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true, game.gameStatistics.happiness);
         gameEvent.CompleteEvent(game);
         if (gameEvent.pickedChoiceNumber == 0)
             game.abandonedEventsCount++;

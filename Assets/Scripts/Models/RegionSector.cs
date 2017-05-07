@@ -34,8 +34,8 @@ public class RegionSector
         if (isAdded)
         {
             incomeModifier = activeBuilding.incomeModifier;
-            pollutionModifier = activeBuilding.incomeModifier;
-            happinessModifier = activeBuilding.incomeModifier;
+            pollutionModifier = activeBuilding.pollutionModifier;
+            happinessModifier = activeBuilding.happinessModifier;
 
             if (statisticIncome > 0)
                 statistics.ModifyIncome(statisticIncome);
@@ -117,9 +117,9 @@ public class RegionSector
     public double ModifyIncomeFromBuilding(double oldIncome)
     {
         if (oldIncome > 0)
-            return oldIncome + oldIncome * incomeModifier;
+            return oldIncome + oldIncome * (incomeModifier / 100);
         else
-            return oldIncome - oldIncome * incomeModifier;
+            return oldIncome - oldIncome * (incomeModifier / 100);
     }
 
     public double ModifyIncomeFromHappiness(double oldIncome, double happiness)
