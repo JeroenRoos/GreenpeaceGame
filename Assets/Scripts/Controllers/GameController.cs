@@ -180,7 +180,7 @@ public class GameController : MonoBehaviour
             { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
             { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
             { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
-            { "TimePlayed", game.totalTimePlayed.ToString("0") }
+            { "TimePlayed", game.totalTimePlayed.ToString() }
         });
 
     }
@@ -200,7 +200,7 @@ public class GameController : MonoBehaviour
             { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
             { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
             { "TimePlayed", Time.timeSinceLevelLoad.ToString("0") },
-            { "TotalTimePlayed", game.totalTimePlayed.ToString("0") }
+            { "TotalTimePlayed", game.totalTimePlayed.ToString() }
         });
 
     }
@@ -221,7 +221,7 @@ public class GameController : MonoBehaviour
             { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
             { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
             { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
-            { "TimePlayed", game.totalTimePlayed.ToString("0") }
+            { "TimePlayed", game.totalTimePlayed.ToString() }
         });
     }
 
