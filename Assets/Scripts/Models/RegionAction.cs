@@ -18,19 +18,14 @@ public class RegionAction //: MonoBehaviour
     public bool[] pickedSectors { get; private set; }
     public int actionCooldown { get; private set; } //in months
     public bool isUnique { get; private set; }
-    public int temporaryConsequencesDuration { get; private set; }
 
-    public SectorStatistics actionCosts { get; private set; }
     public SectorStatistics consequences { get; private set; }
     public SectorStatistics afterInvestmentConsequences { get; private set; }
-    public SectorStatistics temporaryConsequences { get; private set; }
-    public SectorStatistics duringActionConsequences { get; private set; }
 
     public int startYear { get; private set; }
     public int startMonth { get; private set; }
     public int lastCompleted { get; private set; } //in months
     public bool isActive { get; private set; }
-    public int endTemporaryConsequencesMonth { get; private set; }
 
     //action availability conditions
     public bool isAvailable { get; private set; }
@@ -126,7 +121,6 @@ public class RegionAction //: MonoBehaviour
     public void CompleteAction()
     {
         lastCompleted = startYear * 12 + startMonth + actionDuration;
-        endTemporaryConsequencesMonth = lastCompleted + +temporaryConsequencesDuration; 
         startYear = 0;
         startMonth = 0;
         isActive = false;

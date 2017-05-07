@@ -43,8 +43,6 @@ public class Region
                 game.gameStatistics.ModifyMoney(action.afterInvestmentActionMoneyCost, false);
         }
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
-        ImplementActionConsequences(action, action.actionCosts, false, game.gameStatistics.happiness);
-        ImplementActionConsequences(action, action.duringActionConsequences, true, game.gameStatistics.happiness);
     }
 
     public void AddGameEvent(GameEvent gameEvent, double happiness)
