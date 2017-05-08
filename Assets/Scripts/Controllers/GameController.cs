@@ -35,9 +35,9 @@ public class GameController : MonoBehaviour
     // private float time;
     public bool autoSave = true;
     public bool autoEndTurn = false;
-    public bool OnQuitTrackDataSet = false;
 
-
+    public bool trackingEnabled = false;
+    
     float height = Screen.height / (1080 / 55);
 
     // Use this for initialization
@@ -151,15 +151,17 @@ public class GameController : MonoBehaviour
         //Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
         //Analytics.SetUserGender(Gender.Unknown);
         //Analytics.SetUserBirthYear(1996);
-
-        Analytics.CustomEvent("PlayerData", new Dictionary<string, object>
+        if (trackingEnabled)
         {
-            { "UserID", SystemInfo.deviceUniqueIdentifier },
-            { "OperatingSystem", SystemInfo.operatingSystem },
-            { "DeviceModel", SystemInfo.deviceModel },
-            { "DeviceName", SystemInfo.deviceName },
-            { "DeviceType", SystemInfo.deviceType },
-        });
+            Analytics.CustomEvent("PlayerData", new Dictionary<string, object>
+            {
+                { "UserID", SystemInfo.deviceUniqueIdentifier },
+                { "OperatingSystem", SystemInfo.operatingSystem },
+                { "DeviceModel", SystemInfo.deviceModel },
+                { "DeviceName", SystemInfo.deviceName },
+                { "DeviceType", SystemInfo.deviceType },
+            });
+        }
     }
 
     private void OnApplicationQuit()
@@ -169,19 +171,22 @@ public class GameController : MonoBehaviour
 
     public void SetScoreTrackingData(double score)
     {
-        Analytics.CustomEvent("GameCompletionScore", new Dictionary<string, object>
+        if (trackingEnabled)
         {
-            { "Score", score.ToString("0") },
-            { "Year", game.currentYear.ToString() },
-            { "Month", game.currentMonth.ToString() },
-            { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
-            { "Money", game.gameStatistics.money.ToString("0") },
-            { "Income", game.gameStatistics.income.ToString("0") },
-            { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
-            { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
-            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
-            { "TimePlayed", game.totalTimePlayed.ToString() }
-        });
+            Analytics.CustomEvent("GameCompletionScore", new Dictionary<string, object>
+            {
+                { "Score", score.ToString("0") },
+                { "Year", game.currentYear.ToString() },
+                { "Month", game.currentMonth.ToString() },
+                { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
+                { "Money", game.gameStatistics.money.ToString("0") },
+                { "Income", game.gameStatistics.income.ToString("0") },
+                { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
+                { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
+                { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
+                { "TimePlayed", game.totalTimePlayed.ToString() }
+            });
+        }
 
     }
 
@@ -189,26 +194,32 @@ public class GameController : MonoBehaviour
     {
         game.totalTimePlayed += Time.timeSinceLevelLoad;
 
-        int totalMonths = game.currentMonth + game.currentYear * 12;
-        Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
+        if (trackingEnabled)
         {
-            { "TotalMonths", totalMonths.ToString() },
-            { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
-            { "Money", game.gameStatistics.money.ToString("0") },
-            { "Income", game.gameStatistics.income.ToString("0") },
-            { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
-            { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
-            { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
-            { "TimePlayed", Time.timeSinceLevelLoad.ToString("0") },
-            { "TotalTimePlayed", game.totalTimePlayed.ToString() }
-        });
+            int totalMonths = game.currentMonth + game.currentYear * 12;
+            Analytics.CustomEvent("GameStatisticsData", new Dictionary<string, object>
+            {
+                { "TotalMonths", totalMonths.ToString() },
+                { "Pollution", game.gameStatistics.pollution.ToString("0.00") },
+                { "Money", game.gameStatistics.money.ToString("0") },
+                { "Income", game.gameStatistics.income.ToString("0") },
+                { "Happiness", game.gameStatistics.happiness.ToString("0.00") },
+                { "EcoAwareness", game.gameStatistics.ecoAwareness.ToString("0.00") },
+                { "Prosperity", game.gameStatistics.prosperity.ToString("0.00") },
+                { "TimePlayed", Time.timeSinceLevelLoad.ToString("0") },
+                { "TotalTimePlayed", game.totalTimePlayed.ToString() }
+            });
+        }
 
     }
 
     public void SetYearlyTrackingData()
     {
-        SetYearlyStatistics();
-        SetYearlyCompletedFeatures();
+        if (trackingEnabled)
+        {
+            SetYearlyStatistics();
+            SetYearlyCompletedFeatures();
+        }
     }
 
     public void SetYearlyStatistics()
