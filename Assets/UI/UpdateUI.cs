@@ -2518,21 +2518,17 @@ public class UpdateUI : MonoBehaviour
     {
         string[] acties = { "<b>Afgeronde acties:</b>\n", "\n\n<b>Completed action:</b>\n" };
         txt.text += acties[taal];
-
-        for (int i = 0; i < monthlyCompletedActions.Length; i++)
+        foreach (RegionAction a in actionsList)
         {
-            foreach (RegionAction a in monthlyCompletedActions[i])
-            {
-                txt.text += a.name[taal] + " - " + a.description[taal];
-                txt.text += getChosenSectors(a.pickedSectors);
-                string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
-                txt.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
+            txt.text += a.name[taal] + " - " + a.description[taal];
+            txt.text += getChosenSectors(a.pickedSectors);
+            string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
+            txt.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
 
-                if (a.actionMoneyReward != 0)
-                {
-                    string[] line = { "\n<b>Geld beloning: </b>", "\n<b>Money reward: </b>" };
-                    txt.text += line[taal] + a.actionMoneyReward + "\n\n";
-                }
+            if (a.actionMoneyReward != 0)
+            {
+                string[] line = { "\n<b>Geld beloning: </b>", "\n<b>Money reward: </b>" };
+                txt.text += line[taal] + a.actionMoneyReward + "\n\n";
             }
         }
     }

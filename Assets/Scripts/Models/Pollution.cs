@@ -36,6 +36,9 @@ public class Pollution
         airPollution += changeValue;
         if (airPollution < 0)
             airPollution = 0;
+        else if (airPollution > 100)
+            airPollution = 100;
+        CalculateAvgPollution();
     }
 
     public void ChangeNaturePollution(double changeValue)
@@ -43,6 +46,9 @@ public class Pollution
         naturePollution += changeValue;
         if (naturePollution < 0)
             naturePollution = 0;
+        else if (naturePollution > 100)
+            naturePollution = 100;
+        CalculateAvgPollution();
     }
 
     public void ChangeWaterPollution(double changeValue)
@@ -50,6 +56,9 @@ public class Pollution
         waterPollution += changeValue;
         if (waterPollution < 0)
             waterPollution = 0;
+        else if (waterPollution > 100)
+            waterPollution = 100;
+        CalculateAvgPollution();
     }
 
     public void ChangeAirPollutionMutation(double changeValue)
@@ -68,9 +77,20 @@ public class Pollution
 
     public void mutateTimeBasedStatistics()
     {
-        airPollution += (airPollution * airPollutionIncrease / 100 / 12);
-        naturePollution += (naturePollution * naturePollutionIncrease / 100 / 12);
-        waterPollution += (waterPollution * waterPollutionIncrease / 100 / 12);
+        if (airPollution < 1)
+            airPollution -= airPollutionIncrease / 100 / 12;
+        else
+            airPollution += (airPollution * airPollutionIncrease / 100 / 12);
+
+        if (naturePollution < 1)
+            naturePollution -= naturePollutionIncrease / 100 / 12;
+        else
+            naturePollution += (naturePollution * naturePollutionIncrease / 100 / 12);
+
+        if (waterPollution < 1)
+            waterPollution += waterPollutionIncrease / 100 / 12;
+        else
+            waterPollution += (waterPollution * waterPollutionIncrease / 100 / 12);
 
         KeepPollutionValuesWithinBoundaries();
         CalculateAvgPollution();
