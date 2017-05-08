@@ -69,8 +69,9 @@ public class Region
                 CompleteEvent(gameEvent, game);
             }
 
-            if (gameEvent.lastCompleted == game.currentMonth + game.currentYear * 12)
+            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
             {
+                ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], false, game.gameStatistics.happiness);
                 gameEvent.FinishEvent();
             }
         }
@@ -80,6 +81,7 @@ public class Region
     public void CompleteEvent(GameEvent gameEvent, Game game)
     {
         ImplementEventConsequences(gameEvent, gameEvent.afterInvestmentConsequences[gameEvent.pickedChoiceNumber], true, game.gameStatistics.happiness);
+        ImplementEventConsequences(gameEvent, gameEvent.temporaryConsequences[gameEvent.pickedChoiceNumber], true, game.gameStatistics.happiness);
         gameEvent.CompleteEvent(game);
         if (gameEvent.pickedChoiceNumber == 0)
             game.abandonedEventsCount++;

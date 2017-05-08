@@ -20,6 +20,7 @@ public class GameEvent
     public int eventIdleDuration { get; private set; } //in months
     public int eventCooldown { get; private set; } //in months
     public int[] eventDuration { get; private set; } //in months
+    public int[] temporaryConsequencesDuration { get; private set; }
     public double[] eventChoiceMoneyCost { get; private set; }
     public double[] afterInvestmentEventChoiceMoneyCost { get; private set; }
     public double[] eventChoiceMoneyReward { get; private set; }
@@ -31,6 +32,7 @@ public class GameEvent
 
     public SectorStatistics[] consequences { get; private set; }
     public SectorStatistics[] afterInvestmentConsequences { get; private set; }
+    public SectorStatistics[] temporaryConsequences { get; private set; }
 
     //choice picked events variables
     public int pickedChoiceNumber { get; private set; }
@@ -77,7 +79,7 @@ public class GameEvent
         isActive = false;
         eventStartChance += eventChoiceEventStartChanceModifier[pickedChoiceNumber];
         game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
-        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown;
+        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown + temporaryConsequencesDuration[pickedChoiceNumber];
     }
 
     public void SetPickedChoice(int i, Game game, Region region)

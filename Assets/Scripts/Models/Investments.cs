@@ -56,6 +56,7 @@ public class Investments
                     foreach (RegionAction ra in region.actions)
                     {
                         ra.SetAfterInvestmentConsequences(investmentModifier);
+                        ra.SetAfterInvestmentTemporaryConsequences(investmentModifier);
                     }
                 }
                 break;

@@ -18,14 +18,18 @@ public class RegionAction //: MonoBehaviour
     public bool[] pickedSectors { get; private set; }
     public int actionCooldown { get; private set; } //in months
     public bool isUnique { get; private set; }
+    public int temporaryConsequencesDuration { get; private set; }
 
     public SectorStatistics consequences { get; private set; }
     public SectorStatistics afterInvestmentConsequences { get; private set; }
+    public SectorStatistics temporaryConsequences { get; private set; }
+    public SectorStatistics afterInvestmentTemporaryConsequences { get; private set; }
 
     public int startYear { get; private set; }
     public int startMonth { get; private set; }
     public int lastCompleted { get; private set; } //in months
     public bool isActive { get; private set; }
+    public int endTemporaryConsequencesMonth { get; private set; }
 
     //action availability conditions
     public bool isAvailable { get; private set; }
@@ -36,16 +40,6 @@ public class RegionAction //: MonoBehaviour
     public int endAvailableMonth { get; private set; }
     public SectorStatistics availableConditionsMinimum { get; private set; }
     public SectorStatistics availableConditionsMaximum { get; private set; }
-
-    public void TempMethod()
-    {
-        isAvailable = false;
-        conditionsAreRegional = true;
-        startAvailableYear = 1;
-        startAvailableMonth = 1;
-        endAvailableYear = 30;
-        endAvailableMonth = 1;
-    }
 
     private RegionAction() { }
 
@@ -121,6 +115,7 @@ public class RegionAction //: MonoBehaviour
     public void CompleteAction()
     {
         lastCompleted = startYear * 12 + startMonth + actionDuration;
+        endTemporaryConsequencesMonth = lastCompleted + +temporaryConsequencesDuration; 
         startYear = 0;
         startMonth = 0;
         isActive = false;
@@ -184,5 +179,60 @@ public class RegionAction //: MonoBehaviour
             afterInvestmentConsequences.pollution.ChangeWaterPollutionMutation(waterPollutionIncreaseChangeValue);
         else
             afterInvestmentConsequences.pollution.ChangeWaterPollutionMutation(0 - waterPollutionIncreaseChangeValue);
+    }
+
+    public void SetAfterInvestmentTemporaryConsequences(double modifier)
+    {
+        double incomeChangeValue = temporaryConsequences.income * modifier;
+        double happinessChangeValue = temporaryConsequences.happiness * modifier;
+        double ecoAwarenessChangeValue = temporaryConsequences.ecoAwareness * modifier;
+        double prosperityChangeValue = temporaryConsequences.prosperity * modifier;
+        double airPollutionChangeValue = temporaryConsequences.pollution.airPollution * modifier;
+        double naturePollutionChangeValue = temporaryConsequences.pollution.naturePollution * modifier;
+        double waterPollutionChangeValue = temporaryConsequences.pollution.waterPollution * modifier;
+        double airPollutionIncreaseChangeValue = temporaryConsequences.pollution.airPollutionIncrease * modifier;
+        double naturePollutionIncreaseChangeValue = temporaryConsequences.pollution.naturePollutionIncrease * modifier;
+        double waterPollutionIncreaseChangeValue = temporaryConsequences.pollution.waterPollutionIncrease * modifier;
+
+        if (incomeChangeValue > 0)
+            afterInvestmentTemporaryConsequences.ModifyIncome(incomeChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.ModifyIncome(0 - incomeChangeValue);
+        if (happinessChangeValue > 0)
+            afterInvestmentTemporaryConsequences.ModifyHappiness(happinessChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.ModifyHappiness(0 - happinessChangeValue);
+        if (ecoAwarenessChangeValue > 0)
+            afterInvestmentTemporaryConsequences.ModifyEcoAwareness(ecoAwarenessChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.ModifyEcoAwareness(0 - ecoAwarenessChangeValue);
+        if (prosperityChangeValue > 0)
+            afterInvestmentTemporaryConsequences.ModifyProsperity(prosperityChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.ModifyProsperity(0 - prosperityChangeValue);
+        if (airPollutionChangeValue < 0)
+            afterInvestmentTemporaryConsequences.pollution.ChangeAirPollution(airPollutionChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.pollution.ChangeAirPollution(0 - airPollutionChangeValue);
+        if (naturePollutionChangeValue < 0)
+            afterInvestmentTemporaryConsequences.pollution.ChangeNaturePollution(naturePollutionChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.pollution.ChangeNaturePollution(0 - naturePollutionChangeValue);
+        if (waterPollutionChangeValue < 0)
+            afterInvestmentTemporaryConsequences.pollution.ChangeWaterPollution(waterPollutionChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.pollution.ChangeWaterPollution(0 - waterPollutionChangeValue);
+        if (airPollutionIncreaseChangeValue < 0)
+            afterInvestmentTemporaryConsequences.pollution.ChangeAirPollutionMutation(airPollutionIncreaseChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.pollution.ChangeAirPollutionMutation(0 - airPollutionIncreaseChangeValue);
+        if (naturePollutionIncreaseChangeValue < 0)
+            afterInvestmentTemporaryConsequences.pollution.ChangeNaturePollutionMutation(naturePollutionIncreaseChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.pollution.ChangeNaturePollutionMutation(0 - naturePollutionIncreaseChangeValue);
+        if (waterPollutionIncreaseChangeValue < 0)
+            afterInvestmentTemporaryConsequences.pollution.ChangeWaterPollutionMutation(waterPollutionIncreaseChangeValue);
+        else
+            afterInvestmentTemporaryConsequences.pollution.ChangeWaterPollutionMutation(0 - waterPollutionIncreaseChangeValue);
     }
 }

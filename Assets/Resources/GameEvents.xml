@@ -31,6 +31,11 @@
         <int>2</int>
         <int>2</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -166,6 +171,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -207,6 +259,11 @@
         <int>0</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>2000</double>
@@ -339,6 +396,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -380,6 +484,11 @@
         <int>0</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>2000</double>
@@ -514,6 +623,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -555,6 +711,11 @@
         <int>2</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>2000</double>
@@ -688,6 +849,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -729,6 +937,11 @@
         <int>2</int>
         <int>2</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -864,6 +1077,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -905,6 +1165,11 @@
         <int>2</int>
         <int>2</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -1040,6 +1305,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -1081,6 +1393,11 @@
         <int>4</int>
         <int>8</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -1216,6 +1533,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -1257,6 +1621,11 @@
         <int>4</int>
         <int>8</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -1392,6 +1761,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -1433,6 +1849,11 @@
         <int>4</int>
         <int>8</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -1568,6 +1989,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -1609,6 +2077,11 @@
         <int>2</int>
         <int>6</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>2000</double>
@@ -1742,6 +2215,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -1783,6 +2303,11 @@
         <int>2</int>
         <int>6</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>2000</double>
@@ -1916,6 +2441,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -1957,6 +2529,11 @@
         <int>2</int>
         <int>6</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>2000</double>
@@ -2090,6 +2667,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -2131,6 +2755,11 @@
         <int>6</int>
         <int>2</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>7000</double>
@@ -2264,6 +2893,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -2305,6 +2981,11 @@
         <int>0</int>
         <int>4</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>0</double>
@@ -2438,6 +3119,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -2479,6 +3207,11 @@
         <int>0</int>
         <int>4</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>0</double>
@@ -2612,6 +3345,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -2653,6 +3433,11 @@
         <int>4</int>
         <int>4</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>0</double>
@@ -2788,6 +3573,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -2829,6 +3661,11 @@
         <int>0</int>
         <int>0</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>0</double>
@@ -2963,6 +3800,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -3004,6 +3888,11 @@
         <int>0</int>
         <int>0</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>0</double>
@@ -3136,6 +4025,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -3177,6 +4113,11 @@
         <int>6</int>
         <int>9</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>4000</double>
@@ -3310,6 +4251,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -3351,6 +4339,11 @@
         <int>6</int>
         <int>9</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>4000</double>
@@ -3484,6 +4477,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -3525,6 +4565,11 @@
         <int>6</int>
         <int>9</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>4000</double>
@@ -3658,6 +4703,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -3699,6 +4791,11 @@
         <int>1</int>
         <int>6</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>4000</double>
@@ -3834,6 +4931,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -3875,6 +5019,11 @@
         <int>1</int>
         <int>6</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>4000</double>
@@ -4010,6 +5159,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -4051,6 +5247,11 @@
         <int>1</int>
         <int>6</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>4000</double>
@@ -4186,6 +5387,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -4227,6 +5475,11 @@
         <int>0</int>
         <int>0</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>4000</double>
@@ -4360,6 +5613,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -4401,6 +5701,11 @@
         <int>0</int>
         <int>0</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>2000</double>
@@ -4534,6 +5839,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -4575,6 +5927,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>5</double>
         <double>5000</double>
@@ -4710,6 +6067,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -4751,6 +6155,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -4885,6 +6294,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -4926,6 +6382,11 @@
         <int>3</int>
         <int>0</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -5057,6 +6518,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -5098,6 +6606,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -5231,6 +6744,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -5272,6 +6832,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -5404,6 +6969,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -5445,6 +7057,11 @@
         <int>5</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -5578,6 +7195,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -5619,6 +7283,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -5754,6 +7423,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -5795,6 +7511,11 @@
         <int>3</int>
         <int>1</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -5928,6 +7649,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -5969,6 +7737,11 @@
         <int>2</int>
         <int>2</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -6100,6 +7873,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -6141,6 +7961,11 @@
         <int>5</int>
         <int>1</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>8000</double>
@@ -6273,6 +8098,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -6314,6 +8186,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -6449,6 +8326,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -6490,6 +8414,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -6623,6 +8552,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -6664,6 +8640,11 @@
         <int>1</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -6795,6 +8776,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -6836,6 +8864,11 @@
         <int>3</int>
         <int>1</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -6968,6 +9001,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -7009,6 +9089,11 @@
         <int>3</int>
         <int>1</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -7140,6 +9225,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -7181,6 +9313,11 @@
         <int>3</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -7315,6 +9452,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -7356,6 +9540,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -7488,6 +9677,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -7529,6 +9765,11 @@
         <int>3</int>
         <int>8</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -7662,6 +9903,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -7703,6 +9991,11 @@
         <int>3</int>
         <int>8</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -7835,6 +10128,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -7876,6 +10216,11 @@
         <int>3</int>
         <int>8</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -8008,6 +10353,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -8049,6 +10441,11 @@
         <int>3</int>
         <int>8</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -8184,6 +10581,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -8225,6 +10669,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -8360,6 +10809,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -8401,6 +10897,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -8536,6 +11037,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -8577,6 +11125,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -8712,6 +11265,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -8753,6 +11353,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -8888,6 +11493,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -8929,6 +11581,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -9064,6 +11721,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -9105,6 +11809,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -9240,6 +11949,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -9281,6 +12037,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -9416,6 +12177,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -9457,6 +12265,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -9592,6 +12405,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -9633,6 +12493,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>5000</double>
@@ -9768,6 +12633,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -9809,6 +12721,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -9944,6 +12861,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -9985,6 +12949,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>7000</double>
@@ -10118,6 +13087,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -10159,6 +13175,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -10294,6 +13315,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -10335,6 +13403,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -10470,6 +13543,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -10511,6 +13631,11 @@
         <int>3</int>
         <int>3</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -10646,6 +13771,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -10687,6 +13859,11 @@
         <int>3</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -10820,6 +13997,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -10861,6 +14085,11 @@
         <int>3</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -10994,6 +14223,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -11035,6 +14311,11 @@
         <int>3</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -11168,6 +14449,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
@@ -11209,6 +14537,11 @@
         <int>3</int>
         <int>5</int>
       </eventDuration>
+      <temporaryConsequencesDuration>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </temporaryConsequencesDuration>
       <eventChoiceMoneyCost>
         <double>0</double>
         <double>3000</double>
@@ -11342,6 +14675,53 @@
           </pollution>
         </SectorStatistics>
       </afterInvestmentConsequences>
+      <temporaryConsequences>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+        <SectorStatistics>
+          <income>0</income>
+          <happiness>0</happiness>
+          <ecoAwareness>0</ecoAwareness>
+          <prosperity>0</prosperity>
+          <pollution>
+            <avgPollution>0</avgPollution>
+            <airPollution>0</airPollution>
+            <naturePollution>0</naturePollution>
+            <waterPollution>0</waterPollution>
+            <airPollutionIncrease>0</airPollutionIncrease>
+            <naturePollutionIncrease>0</naturePollutionIncrease>
+            <waterPollutionIncrease>0</waterPollutionIncrease>
+          </pollution>
+        </SectorStatistics>
+      </temporaryConsequences>
       <pickedChoiceNumber>0</pickedChoiceNumber>
       <pickedChoiceStartYear>0</pickedChoiceStartYear>
       <pickedChoiceStartMonth>0</pickedChoiceStartMonth>
