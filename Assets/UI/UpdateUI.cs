@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class UpdateUI : MonoBehaviour
 {
+    // Green:       #00CC00
+    // Red:         #FF0000
+
     #region UI Elements
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
@@ -27,6 +30,7 @@ public class UpdateUI : MonoBehaviour
     private List<RegionAction>[] monthlyCompletedActions;
 
     public Text test;
+    public Text colorTxtTest;
 
     public bool playSelectSound;
 
@@ -2394,60 +2398,85 @@ public class UpdateUI : MonoBehaviour
 
         if (incomeDifference != 0d)
         {
-            string[] difference = { "\nInkomen: ", "\nIncome: " };
 
             if (incomeDifference > 0d)
-                difference[taal] += "+" + incomeDifference.ToString("0.00");
+            {
+                string[] difference = { "<color=#00cc00>\nInkomen: ", "<color=#00cc00>\nIncome: " };
+                difference[taal] += "+" + incomeDifference.ToString("0.00") + "</color>";
+                txt.text += difference[taal];
+            }
             else
-                difference[taal] += incomeDifference.ToString("0.00");
+            {
+                string[] difference = { "<color=#FF0000>\nInkomen: ", "<color=#FF0000>\nIncome: " };
+                difference[taal] +=  incomeDifference.ToString("0.00") + "</color>";
+                txt.text += difference[taal];
+            }
 
-            txt.text += difference[taal];
         }
         if (happinessDifference != 0d)
         {
-            string[] difference = { "\nTevredenheid: ", "\nHappiness: " };
-
             if (happinessDifference > 0d)
-                difference[taal] += "+" + happinessDifference.ToString("0.00") + "%";
+            {
+                string[] difference = { "<color=#00cc00>\nTevredenheid: ", "<color=#00cc00>\nHappiness: " };
+                difference[taal] += "+" + happinessDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
+            }
             else
-                difference[taal] += happinessDifference.ToString("0.00") + "%";
+            {
+                string[] difference = { "<color=#FF0000>\nTevredenheid: ", "<color=#FF0000>\nHappiness: " };
+                difference[taal] += happinessDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
+            }
 
-            txt.text += difference[taal];
         }
         if (ecoAwarenessDifference != 0d)
         {
-            string[] difference = { "\nMilieubewustheid: ", "\nEco awareness: " };
-
             if (ecoAwarenessDifference > 0d)
-                difference[taal] += "+" + ecoAwarenessDifference.ToString("0.00") + "%";
+            {
+                string[] difference = { "<color=#00cc00>\nMilieubewustheid: ", "<color=#00cc00>\nEco awareness: " };
+                difference[taal] += "+" + ecoAwarenessDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
+            }
             else
-                difference[taal] += ecoAwarenessDifference.ToString("0.00") + "%";
+            {
+                string[] difference = { "<color=#FF0000>\nMilieubewustheid: ", "<color=#FF0000>\nEco awareness: " };
+                difference[taal] += ecoAwarenessDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
+            }
 
-            txt.text += difference[taal];
         }
         if (pollutionDifference != 0d)
         {
-            string[] difference = { "\nVervuiling: ", "\nPollution: " };
 
             if (pollutionDifference > 0d)
-                difference[taal] += "+" + pollutionDifference.ToString("0.00") + "%";
+            {
+                string[] difference = { "<color=#FF0000>\nVervuiling: ", "<color=#FF0000>\nPollution: " };
+                difference[taal] += "+" + pollutionDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
+            }
             else
-                difference[taal] += pollutionDifference.ToString("0.00") + "%";
+            {
+                string[] difference = { "<color=#00cc00>\nVervuiling: ", "<color=#00cc00>\nPollution: " };
+                difference[taal] += "+" + pollutionDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
+            }
 
-            txt.text += difference[taal];
         }
         if (prosperityDifference != 0d)
         {
-            string[] difference = { "\nWelvaart: ", "\nProsperity: " };
-
             if (prosperityDifference > 0d)
             {
-                difference[taal] += "+" + prosperityDifference.ToString("0.00") + "%";
+                string[] difference = { "<color=#00cc00>\nWelvaart: ", "<color=#00cc00>\nProsperity: " };
+                difference[taal] += "+" + prosperityDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
             }
             else
-                difference[taal] += prosperityDifference.ToString("0.00") + "%";
+            {
+                string[] difference = { "<color=#FF0000>\nWelvaart: ", "<color=#FF0000>\nProsperity: " };
+                difference[taal] += "+" + prosperityDifference.ToString("0.00") + "%</color>";
+                txt.text += difference[taal];
+            }
 
-            txt.text += difference[taal];
         }
 
     }
@@ -4390,86 +4419,122 @@ public class UpdateUI : MonoBehaviour
         string[] consequences = {"", "" };
         if (s.income != 0d)
         {
-            string[] a = { "\nInkomen per sector: " , "\nIncome per sector: "};
-
-            if (s.ecoAwareness > 0d)
-                a[taal] += "+" + s.income;
+            if (s.income > 0d)
+            {
+                string[] a = { "<color=#00cc00>\nInkomen per sector: ", "<color=#00cc00>\nIncome per sector:" };
+                a[taal] += "+" + s.income + "</color>";
+                            consequences[taal] += a[taal];
+            }
             else
-                a[taal] += s.income;
+            {
+                string[] a = { "<color=#FF0000>\nInkomen per sector: ", "<color=#FF0000>\nIncome per sector: " };
+                a[taal] += s.income + "</color>";
+                consequences[taal] += a[taal];
+            }
 
-            consequences[taal] += a[taal];
             noConsequences = true;
         }
         if (s.happiness != 0d)
         {
-            string[] c = { "\nTevredenheid per sector: ", "\nHappiness per sector: " };
-
-            if (s.ecoAwareness > 0d)
-                c[taal] += "+" + s.happiness + "%";
+            if (s.happiness > 0d)
+            {
+                string[] c = { "<color=#00cc00>\nTevredenheid per sector: ", "\n<color=#00cc00>Happiness per sector: " };
+                c[taal] += "+" + s.happiness + "% </color>";
+                consequences[taal] += c[taal];
+            }
             else
-                c[taal] += s.happiness + "%";
+            {
+                string[] c = { "<color=#FF0000>\nTevredenheid per sector: ", "\n<color=#FF0000>Happiness per sector: " };
+                c[taal] += s.happiness + "% </color>";
+                consequences[taal] += c[taal];
+            }
 
-            consequences[taal] += c[taal];
             noConsequences = true;
         }
         if (s.ecoAwareness != 0d)
         {
-            string[] d = { "\nMilieubewustheid per sector: " , "\nEco awareness per sector: " };
-
             if (s.ecoAwareness > 0d)
-                d[taal] += "+" + s.ecoAwareness + "%";
+            {
+                string[] d = { "<color=#00cc00>\nMilieubewustheid per sector: ", "<color=#00cc00>\nEco awareness per sector: " };
+                d[taal] += s.ecoAwareness + "% </color>";
+                consequences[taal] += d[taal];
+            }
             else
-                d[taal] += s.ecoAwareness + "%";
+            {
+                string[] d = { "<color=#FF0000>\nMilieubewustheid per sector: ", "<color=#FF0000>\nEco awareness per sector: " };
+                d[taal] += s.ecoAwareness + "% </color>";
+                consequences[taal] += d[taal];
+            }
 
-            consequences[taal] += d[taal];
             noConsequences = true;
         }
         if (s.prosperity != 0d)
         {
-            string[] e = { "\nWelvaart per sector: " , "\nProsperity per sector: "};
-
             if (s.prosperity > 0d)
-                e[taal] += "+" + s.prosperity + "%";
+            {
+                string[] e = { "<color=#00cc00>\nWelvaart per sector: ", "<color=#00cc00>\nProsperity per sector: " };
+                e[taal] += "+" + s.prosperity + "% </color>";
+                consequences[taal] += e[taal];
+            }
             else
-                e[taal] += s.prosperity + "%";
+            {
+                string[] e = { "<color=#FF0000>\nWelvaart per sector: ", "<color=#FF0000>\nProsperity per sector: " };
+                e[taal] += s.prosperity + "% </color>";
+                consequences[taal] += e[taal];
+            }
 
-            consequences[taal] += e[taal];
             noConsequences = true;
         }
         if (s.pollution.airPollutionIncrease != 0d)
         {
-            string[] f = { "\nLuchtvervuiling per sector: " , "\nAir pollution per sector: " };
-
             if (s.pollution.airPollutionIncrease > 0d)
-                f[taal] += "+" + s.pollution.airPollutionIncrease + "%";
+            {
+                string[] f = { "<color=#FF0000>\nLuchtvervuiling per sector: ", "<color=#FF0000>\nAir pollution per sector: " };
+                f[taal] += "+" + s.pollution.airPollutionIncrease + "% </color>";
+                consequences[taal] += f[taal];
+            }
             else
-                f[taal] += s.pollution.airPollutionIncrease + "%";
+            {
+                string[] f = { "<color=#00cc00>\nLuchtvervuiling per sector: ", "<color=#00cc00>\nAir pollution per sector: " };
+                f[taal] += s.pollution.airPollutionIncrease + "% </color>";
+                consequences[taal] += f[taal];
+            }
 
-            consequences[taal] += f[taal];
             noConsequences = true;
         }
         if (s.pollution.waterPollutionIncrease != 0d)
         {
-            string[] g = { "\nWatervervuiling per sector: " , "\nWater pollution per sector: "};
-
             if (s.pollution.waterPollutionIncrease > 0d)
-                g[taal] +=  "+" + s.pollution.waterPollutionIncrease + "%";
+            {
+                string[] g = { "<color=#FF0000>\nWatervervuiling per sector: ", "<color=#FF0000>\nWater pollution per sector: " };
+                g[taal] += "+" + s.pollution.waterPollutionIncrease + "% </color>";
+                consequences[taal] += g[taal];
+            }
             else
-                g[taal] += s.pollution.waterPollutionIncrease + "%";
+            if (s.pollution.waterPollutionIncrease > 0d)
+            {
+                string[] g = { "<color=#00cc00>\nWatervervuiling per sector: ", "<color=#00cc00>\nWater pollution per sector: " };
+                g[taal] += s.pollution.waterPollutionIncrease + "% </color>";
+                consequences[taal] += g[taal];
+            }
 
-            consequences[taal] += g[taal];
             noConsequences = true;
         }
         if (s.pollution.naturePollutionIncrease != 0d)
         {
-            string[] h = { "\nNatuurvervuiling per sector: ", "\nNature pollution per sector: "};
-
             if (s.pollution.naturePollutionIncrease > 0d)
-                h[taal] += "+" + s.pollution.naturePollutionIncrease + "%";
+            {
+                string[] h = { "<color=#FF0000>\nNatuurvervuiling per sector: ", "<color=#FF0000>\nNature pollution per sector: " };
+                h[taal] += "+" + s.pollution.naturePollutionIncrease + "% </color>";
+                consequences[taal] += h[taal];
+            }
             else
-                h[taal] += s.pollution.naturePollutionIncrease + "%";
+            {
+                string[] h = { "<color=#00cc00>\nNatuurvervuiling per sector: ", "<color=#00cc00>\nNature pollution per sector: " };
+                h[taal] += s.pollution.naturePollutionIncrease + "% </color>";
+                consequences[taal] += h[taal];
+            }
 
-            consequences[taal] += h[taal];
             noConsequences = true;
         }
 
@@ -4492,38 +4557,56 @@ public class UpdateUI : MonoBehaviour
         if (b.happinessModifier != 0d)
         {
             noConsequences = false;
-            string[] a = { "\nTevredenheid in regio: ", "\nHappiness in region: " };
 
             if (b.happinessModifier > 0d)
-                a[taal] += "+" + b.happinessModifier + "%";
+            {
+                string[] a = { "<color=#00cc00>\nTevredenheid in regio: ", "<color=#00cc00>\nHappiness in region: " };
+                a[taal] += "+" + b.happinessModifier + "% </color>";
+                modifiers[taal] += a[taal];
+            }
             else
-                a[taal] += b.happinessModifier + "%";
+            {
+                string[] a = { "<color=#FF0000>\nTevredenheid in regio: ", "<color=#FF0000>\nHappiness in region: " };
+                a[taal] += "+" + b.happinessModifier + "% </color>";
+                modifiers[taal] += a[taal];
+            }
 
-            modifiers[taal] += a[taal];
         }
         if (b.incomeModifier != 0d)
         {
             noConsequences = false;
-            string[] a = { "\nInkomen in regio: ", "\nIncome in region: " };
 
             if (b.incomeModifier > 0d)
-                a[taal] += "+" + b.incomeModifier + "%";
+            {
+                string[] a = { "<color=#00cc00>\nInkomen in regio: ", "<color=#00cc00>\nIncome in region: " };
+                a[taal] += "+" + b.incomeModifier + "% </color>";
+                modifiers[taal] += a[taal];
+            }
             else
-                a[taal] += b.incomeModifier + "%";
+            {
+                string[] a = { "<color=#FF0000>\nInkomen in regio: ", "<color=#FF0000>\nIncome in region: " };
+                a[taal] += b.incomeModifier + "% </color>";
+                modifiers[taal] += a[taal];
+            }
 
-            modifiers[taal] += a[taal];
         }
         if (b.pollutionModifier != 0d)
         {
             noConsequences = false;
-            string[] a = { "\nVervuilig in regio: ", "\nPollution in region: " };
 
             if (b.pollutionModifier > 0d)
-                a[taal] += "+" + b.pollutionModifier + "%";
+            {
+                string[] a = { "<color=#FF0000>\nVervuilig in regio: ", "<color=#FF0000>\nPollution in region: " };
+                a[taal] += "+" + b.pollutionModifier + "% </color>";
+                modifiers[taal] += a[taal];
+            }
             else
-                a[taal] += b.pollutionModifier + "%";
+            {
+                string[] a = { "<color=#00cc00>\nVervuilig in regio: ", "<color=#00cc00>\nPollution in region: " };
+                a[taal] += b.pollutionModifier + "% </color>";
+                modifiers[taal] += a[taal];
+            }
 
-            modifiers[taal] += a[taal];
         }
 
         if (noConsequences)
