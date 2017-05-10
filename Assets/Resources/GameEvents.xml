@@ -8977,10 +8977,10 @@
           <prosperity>0</prosperity>
           <pollution>
             <avgPollution>0</avgPollution>
-            <airPollution>0</airPollution>
+            <airPollution>-2</airPollution>
             <naturePollution>0</naturePollution>
             <waterPollution>0</waterPollution>
-            <airPollutionIncrease>0</airPollutionIncrease>
+            <airPollutionIncrease>-0.4</airPollutionIncrease>
             <naturePollutionIncrease>0</naturePollutionIncrease>
             <waterPollutionIncrease>0</waterPollutionIncrease>
           </pollution>
@@ -8992,10 +8992,10 @@
           <prosperity>0</prosperity>
           <pollution>
             <avgPollution>0</avgPollution>
-            <airPollution>0</airPollution>
+            <airPollution>-4</airPollution>
             <naturePollution>0</naturePollution>
             <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-1</airPollutionIncrease>
+            <airPollutionIncrease>-0.8</airPollutionIncrease>
             <naturePollutionIncrease>0</naturePollutionIncrease>
             <waterPollutionIncrease>0</waterPollutionIncrease>
           </pollution>
@@ -9156,10 +9156,10 @@
             <avgPollution>0</avgPollution>
             <airPollution>0</airPollution>
             <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
+            <waterPollution>-2</waterPollution>
             <airPollutionIncrease>0</airPollutionIncrease>
             <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>0</waterPollutionIncrease>
+            <waterPollutionIncrease>-0.8</waterPollutionIncrease>
           </pollution>
         </SectorStatistics>
         <SectorStatistics>
@@ -9171,10 +9171,10 @@
             <avgPollution>0</avgPollution>
             <airPollution>0</airPollution>
             <naturePollution>0</naturePollution>
-            <waterPollution>0</waterPollution>
+            <waterPollution>-5</waterPollution>
             <airPollutionIncrease>0</airPollutionIncrease>
             <naturePollutionIncrease>0</naturePollutionIncrease>
-            <waterPollutionIncrease>-1</waterPollutionIncrease>
+            <waterPollutionIncrease>-2</waterPollutionIncrease>
           </pollution>
         </SectorStatistics>
       </consequences>
@@ -9865,10 +9865,10 @@
           <pollution>
             <avgPollution>0</avgPollution>
             <airPollution>4</airPollution>
-            <naturePollution>5</naturePollution>
+            <naturePollution>-5</naturePollution>
             <waterPollution>0</waterPollution>
-            <airPollutionIncrease>1</airPollutionIncrease>
-            <naturePollutionIncrease>1</naturePollutionIncrease>
+            <airPollutionIncrease>-2</airPollutionIncrease>
+            <naturePollutionIncrease>-2</naturePollutionIncrease>
             <waterPollutionIncrease>0</waterPollutionIncrease>
           </pollution>
         </SectorStatistics>
@@ -10072,11 +10072,11 @@
           <prosperity>0</prosperity>
           <pollution>
             <avgPollution>0</avgPollution>
-            <airPollution>0</airPollution>
-            <naturePollution>0</naturePollution>
+            <airPollution>-4</airPollution>
+            <naturePollution>-4</naturePollution>
             <waterPollution>0</waterPollution>
-            <airPollutionIncrease>-0.2</airPollutionIncrease>
-            <naturePollutionIncrease>-0.2</naturePollutionIncrease>
+            <airPollutionIncrease>-0.8</airPollutionIncrease>
+            <naturePollutionIncrease>-0.8</naturePollutionIncrease>
             <waterPollutionIncrease>0</waterPollutionIncrease>
           </pollution>
         </SectorStatistics>

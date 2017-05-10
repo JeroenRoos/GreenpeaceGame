@@ -399,7 +399,7 @@ public class GameController : MonoBehaviour
 
             EventManager.CallPlayNewTurnStartSFX();
 
-            if (game.currentYear == 31 || game.gameStatistics.pollution == 0)
+            if (game.currentYear == 31 || game.gameStatistics.pollution == 0d)
                 ShowGameScore();
         }
     }
