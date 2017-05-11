@@ -138,6 +138,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1b827991a8565f24482c93504ea2aea2, type: 3}
   - {fileID: 2800000, guid: aef40f7e994306a4f863feb3eecc867f, type: 3}
   - {fileID: 2800000, guid: b22accf9f14769e49b41c0493910695d, type: 3}
+  - {fileID: 2800000, guid: b22accf9f14769e49b41c0493910695d, type: 3}
   isClicked: 0
 --- !u!114 &114267844211061070
 MonoBehaviour:
