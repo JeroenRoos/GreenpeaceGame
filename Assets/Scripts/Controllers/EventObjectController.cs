@@ -65,8 +65,11 @@ public class EventObjectController : MonoBehaviour
         this.regionModel = regionModel;
         this.eventModel = eventModel;
 
-        gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
-
+        if (eventModel.isIdle)
+            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
+        else //if (eventModel.isActive)
+            gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("finished");
+        
         transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
         StartCoroutine(ChangeScale(gameObject.transform.localScale));
     }
@@ -233,9 +236,13 @@ public class EventObjectController : MonoBehaviour
 
             case "WaterPollutionNewTech":
                 return allTextures[36];
+
             case "EventEmpty":
                     return allTextures[38];
 
+            case "finished":
+                    return allTextures[39];
+                
             default: return allTextures[37];
         }
     }

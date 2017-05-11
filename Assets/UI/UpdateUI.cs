@@ -141,8 +141,8 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
-    GameEvent gameEvent;
-    Region regionEvent;
+    public GameEvent gameEvent;
+    public Region regionEvent;
     public Text txtEventName;
     public Text txtEventDescription;
     public Toggle radioEventOption1;
@@ -2879,7 +2879,7 @@ public class UpdateUI : MonoBehaviour
             btnDoEvent.interactable = false;
     }
 
-    public void btnDoEventClick()
+    public void finishEvent()
     {
         EventManager.CallPlayButtonClickSFX();
         int option;
@@ -2892,6 +2892,7 @@ public class UpdateUI : MonoBehaviour
             option = 2;
 
         gameEvent.SetPickedChoice(option, game, regionEvent);
+        
         canvasEventPopup.gameObject.SetActive(false);
         popupActive = false;
         EventManager.CallPopupIsDisabled();
@@ -4456,7 +4457,7 @@ public class UpdateUI : MonoBehaviour
             if (s.ecoAwareness > 0d)
             {
                 string[] d = { "<color=#00cc00>\nMilieubewustheid per sector: ", "<color=#00cc00>\nEco awareness per sector: " };
-                d[taal] += s.ecoAwareness + "% </color>";
+                d[taal] += "+" + s.ecoAwareness + "% </color>";
                 consequences[taal] += d[taal];
             }
             else

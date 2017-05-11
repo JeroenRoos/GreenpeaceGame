@@ -66,8 +66,6 @@ public class BuildingObjectController : MonoBehaviour
         transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
         if (building != null)
         {
-            // Hij komt in deze Method maar print nog steeds de empty
-            // Ook opent hij nog de empty als je klikt op icon terwijl dat niet moet
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
             StartCoroutine(ChangeScale(gameObject.transform.localScale, false));
         }

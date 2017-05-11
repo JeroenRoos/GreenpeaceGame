@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public Game game;
     
     GameObject[] buildingInstances; //noord,oost,west,zuid
+    GameObject eventInstance;
     public Button MonthlyReportButon;
     public Button YearlyReportButton;
     public Button CompletedButton;
@@ -95,7 +96,7 @@ public class GameController : MonoBehaviour
         {
             foreach (GameEvent e in r.inProgressGameEvents)
             {
-                GameObject eventInstance = GameController.Instantiate(eventObject);
+                /*GameObject */eventInstance = GameController.Instantiate(eventObject);
                 eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, r, e);
             }
         }
@@ -143,7 +144,7 @@ public class GameController : MonoBehaviour
         }
 
         if (game.tutorial.doTuto)
-        updateUI.startTutorialBuildings();
+            updateUI.startTutorialBuildings();
     }
 
     public void SetPlayerTrackingData()
@@ -662,7 +663,8 @@ public class GameController : MonoBehaviour
                 pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
                 game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
 
-                GameObject eventInstance = GameController.Instantiate(eventObject);
+                //Destroy(eventInstance);
+                /*GameObject */eventInstance = GameController.Instantiate(eventObject);
                 eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, pickedRegion, pickedEvent);
             }
 
@@ -936,6 +938,15 @@ public class GameController : MonoBehaviour
         }
 
         updateUI.initEmptyBuildingPopup(r);
+    }
+
+    public void btnDoEventClick()
+    {
+        updateUI.finishEvent();
+
+        Destroy(eventInstance);
+        /*GameObject */eventInstance = Instantiate(eventObject);
+        eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, updateUI.regionEvent, updateUI.gameEvent);
     }
 }
 
