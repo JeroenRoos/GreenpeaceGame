@@ -141,6 +141,11 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
+    public Button btnViewConsequencesEvent;
+    public Text txtBtnViewConsequencesEvent;
+    public Image imgEventConsequences;
+    public Text txtEventConsequences;
+    public Text txtEventConsequencesTitle;
     public GameEvent gameEvent;
     public Region regionEvent;
     public Text txtEventName;
@@ -2735,6 +2740,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for Event Popup (No Choice Made)
     public void initEventPopup(GameEvent e, Region r)
     {
+        imgEventConsequences.gameObject.SetActive(false);
         gameEvent = e;
         regionEvent = r;
         canvasEventPopup.gameObject.SetActive(true);
@@ -2783,11 +2789,13 @@ public class UpdateUI : MonoBehaviour
         playSelectSound = true;
 
         btnDoEvent.interactable = false;
+        btnViewConsequencesEvent.interactable = false;
     }
 
     private void initEventText(GameEvent e)
     {
         string[] txtBtn = { "Doe keuze", "Do choice" };
+        string[] txtBtn2 = { "Bekijk consequences", "View consequences" };
         string[] txtKosten = { "\nKosten: ", "\nCost: " };
         string[] txtMoney = { " geld", " money" };
         string[] txtDuur = { "\nDuur: ", "\nDuration: " };
@@ -2797,6 +2805,7 @@ public class UpdateUI : MonoBehaviour
         txtEventName.text = "EVENT: " + e.publicEventName[taal] + " (" + regionEvent.name[taal] + ")";
         txtEventDescription.text = e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
+        txtBtnViewConsequencesEvent.text = txtBtn2[taal];
 
         if (ApplicationModel.language == 0)
         {
@@ -2835,7 +2844,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption2.isOn = false;
             radioEventOption3.isOn = false;
             if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[0])
+            {
                 btnDoEvent.interactable = true;
+                btnViewConsequencesEvent.interactable = true;
+            }
             else
                 btnDoEvent.interactable = false;
         }
@@ -2856,7 +2868,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption1.isOn = false;
             radioEventOption3.isOn = false;
             if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[1])
+            {
                 btnDoEvent.interactable = true;
+                btnViewConsequencesEvent.interactable = true;
+            }
             else
                 btnDoEvent.interactable = false;
         }
@@ -2877,7 +2892,10 @@ public class UpdateUI : MonoBehaviour
             radioEventOption1.isOn = false;
             radioEventOption2.isOn = false;
             if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[2])
+            {
                 btnDoEvent.interactable = true;
+                btnViewConsequencesEvent.interactable = true;
+            }
             else
                 btnDoEvent.interactable = false;
         }
@@ -2890,7 +2908,10 @@ public class UpdateUI : MonoBehaviour
     private void checkIfAllFalse()
     {
         if (!radioEventOption1Check && !radioEventOption2Check && !radioEventOption3Check)
+        {
             btnDoEvent.interactable = false;
+            btnViewConsequencesEvent.interactable = false;
+        }
     }
 
     public void finishEvent()
@@ -2916,6 +2937,28 @@ public class UpdateUI : MonoBehaviour
 
         if (game.tutorial.tutorialEventsActive)
             game.tutorial.tutorialEventsActive = false;
+    }
+
+    public void btnEventConsequencesClick()
+    {
+        imgEventConsequences.gameObject.SetActive(true);
+
+        EventManager.CallPlayButtonClickSFX();
+        int option;
+
+        if (radioEventOption1Check)
+            option = 0;
+        else if (radioEventOption2Check)
+            option = 1;
+        else
+            option = 2;
+
+        if (taal == 0)
+            txtEventConsequencesTitle.text = gameEvent.choicesDutch[option];
+        else
+            txtEventConsequencesTitle.text = gameEvent.choicesEnglish[option];
+
+        txtEventConsequences.text = getSectorStatisticsConsequences(gameEvent.afterInvestmentConsequences[option]);
     }
     #endregion
 
@@ -3786,8 +3829,11 @@ public class UpdateUI : MonoBehaviour
         }
         else if (canvasRegioPopup.gameObject.activeSelf && imgSectorPopup.gameObject.activeSelf)
         {
-            Debug.Log("Sector IMG");
             imgSectorPopup.gameObject.SetActive(false);
+        }
+        else if (canvasEventPopup.gameObject.activeSelf && imgEventConsequences.gameObject.activeSelf)
+        {
+            imgEventConsequences.gameObject.SetActive(false);
         }
         else if (canvasMonthlyReport.gameObject.activeSelf && !game.tutorial.tutorialMonthlyReportActive)
         {
