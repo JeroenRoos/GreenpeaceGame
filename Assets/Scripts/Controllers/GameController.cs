@@ -382,6 +382,7 @@ public class GameController : MonoBehaviour
             if (isNewYear)
             {
                 UpdateCards();
+                IncreaseYearlyPollutionChange();
                 SetYearlyTrackingData();
             }
 
@@ -402,6 +403,20 @@ public class GameController : MonoBehaviour
 
             if (game.currentYear == 31 || game.gameStatistics.pollution == 0d)
                 ShowGameScore();
+        }
+    }
+
+    public void IncreaseYearlyPollutionChange()
+    {
+        double changeValue = 0.4 + 0.1 * game.currentYear;
+        foreach (Region r in game.regions)
+        {
+            foreach (RegionSector rs in r.sectors)
+            {
+                rs.statistics.pollution.ChangeAirPollutionMutation(changeValue);
+                rs.statistics.pollution.ChangeNaturePollutionMutation(changeValue);
+                rs.statistics.pollution.ChangeWaterPollutionMutation(changeValue);
+            }
         }
     }
 
