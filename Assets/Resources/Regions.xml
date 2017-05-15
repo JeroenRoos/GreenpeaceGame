@@ -30,9 +30,9 @@
         <avgAirPollution>28.333333333333332</avgAirPollution>
         <avgNaturePollution>31.666666666666668</avgNaturePollution>
         <avgWaterPollution>30</avgWaterPollution>
-        <avgAirPollutionIncrease>8.3333333333333339</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>11.666666666666666</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>8.3333333333333339</avgWaterPollutionIncrease>
+        <avgAirPollutionIncrease>0.83333333333333337</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>1.1666666666666667</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>0.83333333333333337</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -5428,9 +5428,9 @@
               <airPollution>20</airPollution>
               <naturePollution>20</naturePollution>
               <waterPollution>20</waterPollution>
-              <airPollutionIncrease>7.5</airPollutionIncrease>
-              <naturePollutionIncrease>7.5</naturePollutionIncrease>
-              <waterPollutionIncrease>7.5</waterPollutionIncrease>
+              <airPollutionIncrease>0.75</airPollutionIncrease>
+              <naturePollutionIncrease>0.75</naturePollutionIncrease>
+              <waterPollutionIncrease>0.75</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -5452,9 +5452,9 @@
               <airPollution>15</airPollution>
               <naturePollution>15</naturePollution>
               <waterPollution>15</waterPollution>
-              <airPollutionIncrease>7.5</airPollutionIncrease>
-              <naturePollutionIncrease>7.5</naturePollutionIncrease>
-              <waterPollutionIncrease>7.5</waterPollutionIncrease>
+              <airPollutionIncrease>0.75</airPollutionIncrease>
+              <naturePollutionIncrease>0.75</naturePollutionIncrease>
+              <waterPollutionIncrease>0.75</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -5476,9 +5476,9 @@
               <airPollution>50</airPollution>
               <naturePollution>60</naturePollution>
               <waterPollution>55</waterPollution>
-              <airPollutionIncrease>10</airPollutionIncrease>
-              <naturePollutionIncrease>20</naturePollutionIncrease>
-              <waterPollutionIncrease>10</waterPollutionIncrease>
+              <airPollutionIncrease>1</airPollutionIncrease>
+              <naturePollutionIncrease>2</naturePollutionIncrease>
+              <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -5552,9 +5552,9 @@
         <avgAirPollution>36.666666666666664</avgAirPollution>
         <avgNaturePollution>50</avgNaturePollution>
         <avgWaterPollution>43.333333333333336</avgWaterPollution>
-        <avgAirPollutionIncrease>11.666666666666666</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>10</avgWaterPollutionIncrease>
+        <avgAirPollutionIncrease>1.1666666666666667</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>1</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>1</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -5628,6 +5628,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -5741,6 +5756,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -5854,6 +5884,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -5967,6 +6012,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6080,6 +6140,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6193,6 +6268,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6306,6 +6396,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6419,6 +6524,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6532,6 +6652,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6645,6 +6780,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6758,6 +6908,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6871,6 +7036,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -6984,6 +7164,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7097,6 +7292,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7210,6 +7420,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7323,6 +7548,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7436,6 +7676,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7549,6 +7804,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7662,6 +7932,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7775,6 +8060,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -7888,6 +8188,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8001,6 +8316,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8114,6 +8444,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8227,6 +8572,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8340,6 +8700,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8453,6 +8828,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8566,6 +8956,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8679,6 +9084,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8792,6 +9212,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -8905,6 +9340,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9018,6 +9468,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9131,6 +9596,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9244,6 +9724,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9357,6 +9852,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9470,6 +9980,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9583,6 +10108,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9696,6 +10236,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9809,6 +10364,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -9922,6 +10492,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10035,6 +10620,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10148,6 +10748,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10261,6 +10876,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10320,9 +10950,9 @@
               <airPollution>30</airPollution>
               <naturePollution>50</naturePollution>
               <waterPollution>40</waterPollution>
-              <airPollutionIncrease>15</airPollutionIncrease>
-              <naturePollutionIncrease>7.5</naturePollutionIncrease>
-              <waterPollutionIncrease>7.5</waterPollutionIncrease>
+              <airPollutionIncrease>1.5</airPollutionIncrease>
+              <naturePollutionIncrease>0.75</naturePollutionIncrease>
+              <waterPollutionIncrease>0.75</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -10344,9 +10974,9 @@
               <airPollution>30</airPollution>
               <naturePollution>50</naturePollution>
               <waterPollution>40</waterPollution>
-              <airPollutionIncrease>10</airPollutionIncrease>
-              <naturePollutionIncrease>7.5</naturePollutionIncrease>
-              <waterPollutionIncrease>7.5</waterPollutionIncrease>
+              <airPollutionIncrease>1</airPollutionIncrease>
+              <naturePollutionIncrease>0.75</naturePollutionIncrease>
+              <waterPollutionIncrease>0.75</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -10368,9 +10998,9 @@
               <airPollution>50</airPollution>
               <naturePollution>50</naturePollution>
               <waterPollution>50</waterPollution>
-              <airPollutionIncrease>10</airPollutionIncrease>
-              <naturePollutionIncrease>15</naturePollutionIncrease>
-              <waterPollutionIncrease>15</waterPollutionIncrease>
+              <airPollutionIncrease>1</airPollutionIncrease>
+              <naturePollutionIncrease>1.5</naturePollutionIncrease>
+              <waterPollutionIncrease>1.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -10444,9 +11074,9 @@
         <avgAirPollution>50</avgAirPollution>
         <avgNaturePollution>40</avgNaturePollution>
         <avgWaterPollution>43.333333333333336</avgWaterPollution>
-        <avgAirPollutionIncrease>15</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>10</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>4.5</avgWaterPollutionIncrease>
+        <avgAirPollutionIncrease>1.5</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>1</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>0.75</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -10520,6 +11150,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10633,6 +11278,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10746,6 +11406,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10859,6 +11534,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -10972,6 +11662,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11085,6 +11790,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11198,6 +11918,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11311,6 +12046,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11424,6 +12174,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11537,6 +12302,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11650,6 +12430,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11763,6 +12558,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11876,6 +12686,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -11989,6 +12814,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12102,6 +12942,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12215,6 +13070,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12328,6 +13198,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12441,6 +13326,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12554,6 +13454,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12667,6 +13582,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12780,6 +13710,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -12893,6 +13838,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13006,6 +13966,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13119,6 +14094,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13232,6 +14222,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13345,6 +14350,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13458,6 +14478,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13571,6 +14606,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13684,6 +14734,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13797,6 +14862,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -13910,6 +14990,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14023,6 +15118,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14136,6 +15246,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14249,6 +15374,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14362,6 +15502,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14475,6 +15630,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14588,6 +15758,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14701,6 +15886,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14814,6 +16014,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -14927,6 +16142,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15040,6 +16270,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15153,6 +16398,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15212,8 +16472,8 @@
               <airPollution>70</airPollution>
               <naturePollution>60</naturePollution>
               <waterPollution>50</waterPollution>
-              <airPollutionIncrease>20</airPollutionIncrease>
-              <naturePollutionIncrease>10</naturePollutionIncrease>
+              <airPollutionIncrease>2</airPollutionIncrease>
+              <naturePollutionIncrease>1</naturePollutionIncrease>
               <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </statistics>
@@ -15236,9 +16496,9 @@
               <airPollution>50</airPollution>
               <naturePollution>40</naturePollution>
               <waterPollution>40</waterPollution>
-              <airPollutionIncrease>20</airPollutionIncrease>
-              <naturePollutionIncrease>15</naturePollutionIncrease>
-              <waterPollutionIncrease>7.5</waterPollutionIncrease>
+              <airPollutionIncrease>2</airPollutionIncrease>
+              <naturePollutionIncrease>1.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0.75</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -15260,9 +16520,9 @@
               <airPollution>30</airPollution>
               <naturePollution>20</naturePollution>
               <waterPollution>40</waterPollution>
-              <airPollutionIncrease>5</airPollutionIncrease>
-              <naturePollutionIncrease>5</naturePollutionIncrease>
-              <waterPollutionIncrease>5</waterPollutionIncrease>
+              <airPollutionIncrease>0.5</airPollutionIncrease>
+              <naturePollutionIncrease>0.5</naturePollutionIncrease>
+              <waterPollutionIncrease>0.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -15336,9 +16596,9 @@
         <avgAirPollution>35</avgAirPollution>
         <avgNaturePollution>41.666666666666664</avgNaturePollution>
         <avgWaterPollution>35</avgWaterPollution>
-        <avgAirPollutionIncrease>11.666666666666666</avgAirPollutionIncrease>
-        <avgNaturePollutionIncrease>11.666666666666666</avgNaturePollutionIncrease>
-        <avgWaterPollutionIncrease>11.666666666666666</avgWaterPollutionIncrease>
+        <avgAirPollutionIncrease>1.1666666666666667</avgAirPollutionIncrease>
+        <avgNaturePollutionIncrease>1.1666666666666667</avgNaturePollutionIncrease>
+        <avgWaterPollutionIncrease>1.1666666666666667</avgWaterPollutionIncrease>
       </statistics>
       <actions>
         <RegionAction>
@@ -15412,6 +16672,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15525,6 +16800,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15638,6 +16928,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15751,6 +17056,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15864,6 +17184,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -15977,6 +17312,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16090,6 +17440,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16203,6 +17568,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16316,6 +17696,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16429,6 +17824,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16542,6 +17952,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16655,6 +18080,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16768,6 +18208,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16881,6 +18336,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -16994,6 +18464,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17107,6 +18592,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17220,6 +18720,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17333,6 +18848,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17446,6 +18976,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17559,6 +19104,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17672,6 +19232,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17785,6 +19360,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -17898,6 +19488,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18011,6 +19616,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18124,6 +19744,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18237,6 +19872,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18350,6 +20000,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18463,6 +20128,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18576,6 +20256,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18689,6 +20384,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18802,6 +20512,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -18915,6 +20640,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19028,6 +20768,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19141,6 +20896,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19254,6 +21024,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19367,6 +21152,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19480,6 +21280,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19593,6 +21408,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19706,6 +21536,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19819,6 +21664,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -19932,6 +21792,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -20045,6 +21920,21 @@
               <waterPollutionIncrease>0</waterPollutionIncrease>
             </pollution>
           </temporaryConsequences>
+          <afterInvestmentTemporaryConsequences>
+            <income>0</income>
+            <happiness>0</happiness>
+            <ecoAwareness>0</ecoAwareness>
+            <prosperity>0</prosperity>
+            <pollution>
+              <avgPollution>0</avgPollution>
+              <airPollution>0</airPollution>
+              <naturePollution>0</naturePollution>
+              <waterPollution>0</waterPollution>
+              <airPollutionIncrease>0</airPollutionIncrease>
+              <naturePollutionIncrease>0</naturePollutionIncrease>
+              <waterPollutionIncrease>0</waterPollutionIncrease>
+            </pollution>
+          </afterInvestmentTemporaryConsequences>
           <startYear>0</startYear>
           <startMonth>0</startMonth>
           <lastCompleted>0</lastCompleted>
@@ -20104,9 +21994,9 @@
               <airPollution>35</airPollution>
               <naturePollution>55</naturePollution>
               <waterPollution>45</waterPollution>
-              <airPollutionIncrease>10</airPollutionIncrease>
-              <naturePollutionIncrease>10</naturePollutionIncrease>
-              <waterPollutionIncrease>10</waterPollutionIncrease>
+              <airPollutionIncrease>1</airPollutionIncrease>
+              <naturePollutionIncrease>1</naturePollutionIncrease>
+              <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -20128,9 +22018,9 @@
               <airPollution>50</airPollution>
               <naturePollution>30</naturePollution>
               <waterPollution>40</waterPollution>
-              <airPollutionIncrease>15</airPollutionIncrease>
-              <naturePollutionIncrease>10</naturePollutionIncrease>
-              <waterPollutionIncrease>10</waterPollutionIncrease>
+              <airPollutionIncrease>1.5</airPollutionIncrease>
+              <naturePollutionIncrease>1</naturePollutionIncrease>
+              <waterPollutionIncrease>1</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
@@ -20152,9 +22042,9 @@
               <airPollution>20</airPollution>
               <naturePollution>40</naturePollution>
               <waterPollution>20</waterPollution>
-              <airPollutionIncrease>10</airPollutionIncrease>
-              <naturePollutionIncrease>15</naturePollutionIncrease>
-              <waterPollutionIncrease>15</waterPollutionIncrease>
+              <airPollutionIncrease>1</airPollutionIncrease>
+              <naturePollutionIncrease>1.5</naturePollutionIncrease>
+              <waterPollutionIncrease>1.5</waterPollutionIncrease>
             </pollution>
           </statistics>
           <incomeModifier>0</incomeModifier>
