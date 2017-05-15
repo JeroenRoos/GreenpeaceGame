@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
             LoadBuildings();
             LoadCards();
 
-            foreach (Region region in game.regions)
+            /*foreach (Region region in game.regions)
             {
                 foreach (RegionSector sector in region.sectors)
                 {
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
             SaveBuildings();
             SaveGameEvents();
             SaveQuests();
-            SaveCards();
+            SaveCards();*/
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
