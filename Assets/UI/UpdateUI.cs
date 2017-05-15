@@ -187,7 +187,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtInvestmentsEventConsequences;
     public Image[] imgInvestmentActionCost;
 
-        
+
     public Button btnInvestmentActionCostInvest;
     public Image imgInvestmentActionCost01;
     public Image imgInvestmentActionCost02;
@@ -263,6 +263,14 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public RawImage imgIncomeRegion;
+    public RawImage imgHappinessRegion;
+    public RawImage imgEcoAwarenessRegion;
+    public RawImage imgPollutionRegion;
+    public RawImage imgPollutionWaterRegion;
+    public RawImage imgPollutionAirRegion;
+    public RawImage imgPollutionNatureRegion;
+    public RawImage imgProsperityRegion;
     public Text txtRegionActionConsequences;
     public RawImage imgDropdownLine;
     public RawImage imgActions;
@@ -409,7 +417,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtTutorialAfterTurnBtn;
 
     public Image imgTutorialOverworld;
-   // public Button btnTutorialOverworld;
+    // public Button btnTutorialOverworld;
     public Text txtTutorialOverworld;
     public Image imgTutorialOrganization;
     public Text txtTutorialOrganization;
@@ -499,7 +507,7 @@ public class UpdateUI : MonoBehaviour
         // GUIStyle for buttons INIT
         buttonStyle.normal.background = buttonTexture;          // Set the Texture
         buttonStyle.alignment = TextAnchor.MiddleCenter;        // Set the text in the middle of the button
-        Color c = new Color();                              
+        Color c = new Color();
         ColorUtility.TryParseHtmlString("#ccac6f", out c);      // Get the color out of the hexadecimal string
         buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
 
@@ -519,7 +527,7 @@ public class UpdateUI : MonoBehaviour
 
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
         {
-            
+
             if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
             {
                 btnDoActionRegionMenu.gameObject.SetActive(true);
@@ -620,9 +628,9 @@ public class UpdateUI : MonoBehaviour
         //imgBarBottom.gameObject.SetActive(false);
 
         game.tutorial.doTuto = true;
-        string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen " + 
+        string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen " +
                 "dat Nederland een milieubewust land wordt. De inwoners moeten begrijpen dat een groen land belangrijk is."
-                , "Welcome! The government has given your organisation the task to make The Netherlands " + 
+                , "Welcome! The government has given your organisation the task to make The Netherlands " +
                 "a country which is aware of the environment. The inhabitants need to understand the importance of a green country."};
         string[] btnText = { "Verder", "Next" };
 
@@ -649,14 +657,14 @@ public class UpdateUI : MonoBehaviour
 
         //tutorialStep3 = false;
         imgTutorialBig.transform.position = imgPosMiddle;
-        string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " + 
-                "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." + 
+        string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " +
+                "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." +
                 "\n\nGeld: beslissingen maken kost geld. Geld wordt per maand verhoogd door het inkomen." +
                 "\nVervuiling: de vervuiling in het land, neemt per maand toe of af." +
                 "\nMilieubewustheid: verlaagt de maandelijkse vervuiling." +
                 "\nWelvaart: verhoogt het inkomen." +
                 "\nTevredenheid: beïnvloedt consequenties van beslissingen. Boven 50% is positief, onder 50% is negatief.",
-                "At the top of the screen are your recourses to reduce pollution. Prosperity, eco awareness, " + 
+                "At the top of the screen are your recourses to reduce pollution. Prosperity, eco awareness, " +
                 "happiness and pollution are nationwide averages." +
                 "\n\nMoney: decisions cost money.Money increases monthly from income." +
                 "\nPollution: the pollution in the country, increases or decreases monthly." +
@@ -745,9 +753,9 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(true);
         btnNextTurn.gameObject.SetActive(true);
         imgTutorialSmall.transform.position = imgPosRight;
-        string[] step6 = { "Je kan nu ook de andere regio’s bezoeken om acties uit te voeren. Als je klaar bent " + 
+        string[] step6 = { "Je kan nu ook de andere regio’s bezoeken om acties uit te voeren. Als je klaar bent " +
                 "dan kan je naar de volgende maand gaan door op “volgende maand” rechtsonderin het scherm te drukken.",
-            "You can now visit the other regions to execute actions. When you’re finished you can go to the next month " + 
+            "You can now visit the other regions to execute actions. When you’re finished you can go to the next month " +
             "by pressing on the “next month” button at the bottom right of the screen." };
         txtTutorialSmall.text = step6[taal];
         txtTutorialSmallBtn.text = btnText[taal];
@@ -849,7 +857,7 @@ public class UpdateUI : MonoBehaviour
         while (!game.tutorial.tutorialChecks[8]) //tutorialStep21)
             yield return null;
             */
-        imgTutorialSmall.transform.position = imgPosMiddle; 
+        imgTutorialSmall.transform.position = imgPosMiddle;
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
@@ -858,7 +866,7 @@ public class UpdateUI : MonoBehaviour
         btnAfterActionReportCompleted.interactable = true;
     }
     #endregion
-    
+
     #region Init UI Elements
     void initButtons()
     {
@@ -1161,7 +1169,7 @@ public class UpdateUI : MonoBehaviour
                 currentScale.y = endScale.y;
             if (currentScale.z > endScale.z)
                 currentScale.z = endScale.z;
-            
+
             b.transform.localScale = currentScale;
 
             yield return new WaitForFixedUpdate();
@@ -1172,7 +1180,7 @@ public class UpdateUI : MonoBehaviour
     {
         organizationShakes = true;
         btnOrganizationIsClicked = false;
-        Quaternion standardRotation = new Quaternion(0,0,0,0);
+        Quaternion standardRotation = new Quaternion(0, 0, 0, 0);
         while (!btnOrganizationIsClicked)
         {
             for (int i = 0; i < 4; i++)
@@ -1738,7 +1746,7 @@ public class UpdateUI : MonoBehaviour
             + fossil + "%\nKernenergie: " + nuclear + "%",
             "Green energy " + green.ToString() + "%\nFossil energy: "
             + fossil + "%\nNuclearenergy: " + nuclear + "%"};
-        txtTooltip = tip[taal];         
+        txtTooltip = tip[taal];
     }
     #endregion
 
@@ -1777,9 +1785,9 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialOrganizationPopup()
     {
-        string[] step1 = { "Het organisatie menu toont het jaarlijks inkomen per regio. " + 
+        string[] step1 = { "Het organisatie menu toont het jaarlijks inkomen per regio. " +
                 "Ook kan je hier zien wat je adviseurs van de huidige situatie vinden en wat ze zouden willen zien.",
-            "The organisation menu shows the yearly income for each region. " + 
+            "The organisation menu shows the yearly income for each region. " +
             "You can also see here what your advisors are thinking about the current situation and what they would like to see."};
         string[] btnText = { "Verder", "Next" };
 
@@ -1895,7 +1903,7 @@ public class UpdateUI : MonoBehaviour
 
         string[] step1 = { "Dit is het regio menu. De statistieken van een regio worden opgemaakt door de statistieken van de sectoren in de regio: Huishoudens, Bedrijven en Landbouw." +
                 "\n\nJe kan de statistieken van een sector zien door op de naam te klikken.",
-            "This is the region menu. The statistics of a region consist of the statistics of the sectors in the region: Households, Companies and Agriculture." + 
+            "This is the region menu. The statistics of a region consist of the statistics of the sectors in the region: Households, Companies and Agriculture." +
             "\n\nYou can see the statistics of a sector by clicking on the name."};
         string[] btnText = { "Verder", "Next" };
 
@@ -1905,13 +1913,13 @@ public class UpdateUI : MonoBehaviour
         while (!game.tutorial.tutorialChecks[3])//tutorialStep6)
             yield return null;
 
-        string[] step2 = { "Je kan statistieken in sectoren aanpassen door acties te doen. Acties kosten tijd en geld " + 
-                "om uit te voeren. Sommige acties kan je maar 1 keer uitvoeren en anderen kan je maar eens " + 
-                "in de zoveel tijd doen, maar je kan acties wel in meerdere sectoren tegelijk doen." + 
+        string[] step2 = { "Je kan statistieken in sectoren aanpassen door acties te doen. Acties kosten tijd en geld " +
+                "om uit te voeren. Sommige acties kan je maar 1 keer uitvoeren en anderen kan je maar eens " +
+                "in de zoveel tijd doen, maar je kan acties wel in meerdere sectoren tegelijk doen." +
                 "\n\nVoer een actie uit en sluit vervolgens het menu.",
-            "You can manipulate statistics in a sector by executing actions. Actions cost time and money to execute. " + 
-            "Some action you can do only once and others can only be done once in a certain timeframe, but you can do " + 
-            "an action in several sections at the same time." + 
+            "You can manipulate statistics in a sector by executing actions. Actions cost time and money to execute. " +
+            "Some action you can do only once and others can only be done once in a certain timeframe, but you can do " +
+            "an action in several sections at the same time." +
             "\n\nExecute an action and then close the menu. "};
 
         txtTutorialRegion.text = step2[taal];
@@ -1938,6 +1946,8 @@ public class UpdateUI : MonoBehaviour
 
         // Set the right actions in the dropdown
         initDropDownRegion();
+
+        updateRegionColorValues();
 
         // Set toggles on not active
         checkboxRegionHouseholds.gameObject.SetActive(false);
@@ -2075,7 +2085,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         //code to bypass Unity bug -> can't set .value outside the dropdown range
-        dropdownRegio.options.Add(new Dropdown.OptionData() { text = " "});
+        dropdownRegio.options.Add(new Dropdown.OptionData() { text = " " });
         dropdownRegio.value = dropdownRegio.options.Count - 1;
         dropdownRegio.options.RemoveAt(dropdownRegio.options.Count - 1);
     }
@@ -2262,6 +2272,52 @@ public class UpdateUI : MonoBehaviour
         imgActions.gameObject.SetActive(true);
         string[] txtCenter = { "Doe een actie", "Do an action" };
         txtRegionColumnCenter.text = txtCenter[taal];
+    }
+
+    /*txtRegionName.text = regio.name[taal];
+        txtRegionMoney.text = regio.statistics.income.ToString("0");
+        txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
+        txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0.00") + "%";
+        txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
+        txtRegionPollution.text = regio.statistics.avgPollution.ToString("0.00") + "%";
+        txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
+        txtRegionPollutionNature.text = regio.statistics.avgNaturePollution.ToString("0.00") + "%";
+        txtRegionPollutionWater.text = regio.statistics.avgWaterPollution.ToString("0.00") + "%";
+        */
+
+    private void updateRegionColorValues()
+    {
+        //iconController(imgIncomeRegion, txtRegionMoney, regio.statistics.income);
+        iconController(imgHappinessRegion, txtRegionHappinessDescription ,txtRegionHappiness, regio.statistics.happiness);
+        iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, regio.statistics.ecoAwareness);
+        iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, regio.statistics.avgPollution);
+        iconController(imgPollutionAirRegion, txtRegionAirDescription, txtRegionPollutionAir, regio.statistics.avgAirPollution);
+        iconController(imgPollutionWaterRegion, txtRegionWaterDescription, txtRegionPollutionWater, regio.statistics.avgWaterPollution);
+        iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, regio.statistics.avgNaturePollution);
+        iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, regio.statistics.prosperity);
+    }
+
+    void iconController(RawImage img, Text description, Text txt, double value)
+    { 
+        Color lerpColor;
+        float f = (float)value / 100;
+
+        // Pollution moet laag zijn om goed te zijn, de rest hoog
+        if (img == imgPollutionAirRegion || img == imgPollutionWaterRegion || img == imgPollutionNatureRegion || img == imgPollutionRegion)
+        {
+            // Color based on third argument (value / 100)
+            lerpColor = Color.Lerp(Color.green, Color.red, f);
+        }
+        else
+        {
+            // Color based on third argument (value / 100)
+            lerpColor = Color.Lerp(Color.red, Color.green, f);
+        }
+
+        txt.text = " " + value.ToString("0") + "%";
+        txt.color = lerpColor;
+        description.color = lerpColor;
+        img.color = lerpColor;
     }
     #endregion
 
