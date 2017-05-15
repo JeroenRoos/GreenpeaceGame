@@ -263,8 +263,14 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtRegionActionConsequences;
+    public RawImage imgDropdownLine;
+    public RawImage imgActions;
+    public RawImage imgHistory;
     public Button btnViewConsequences;
     public Text txtBtnViewConsequences;
+    public Text txtBtnTabHistory;
+    public Text txtBtnTabActions;
     public Image imgSectorPopup;
     public Text txtRegionSectorTitle;
     public Text txtRegionSectorInfo;
@@ -284,7 +290,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionActionName;
     public Text txtRegionActionDuration;
     public Text txtRegionActionCost;
-    public Text txtRegionActionConsequences;
+    //public Text txtRegionActionConsequences;
     public Text txtActiveActions;
     public Text txtActiveEvents;
     public Text txtRegionActionNoMoney;
@@ -517,15 +523,17 @@ public class UpdateUI : MonoBehaviour
             if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
             {
                 btnDoActionRegionMenu.gameObject.SetActive(true);
-                btnViewConsequences.gameObject.SetActive(true);
-                txtRegionActionNoMoney.text = "";
+                //btnViewConsequences.gameObject.SetActive(true);
+                //txtRegionActionNoMoney.text = "";
+                txtRegionActionConsequences.text = getSectorStatisticsConsequences(regioAction.afterInvestmentConsequences);
             }
             else
             {
                 string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
                 txtRegionActionNoMoney.text = error[taal];
                 btnDoActionRegionMenu.gameObject.SetActive(false);
-                btnViewConsequences.gameObject.SetActive(false);
+                txtRegionActionConsequences.text = "";
+                //btnViewConsequences.gameObject.SetActive(false);
             }
         }
     }
@@ -1935,6 +1943,8 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
+        imgHistory.gameObject.SetActive(false);
+        imgActions.gameObject.SetActive(false);
     }
 
     private void initRegionText()
@@ -1949,15 +1959,18 @@ public class UpdateUI : MonoBehaviour
         string[] txtHouseholds = { "Huishoudens", "Households" };
         string[] txtAgriculture = { "Landbouw", "Agriculture" };
         string[] txtCompaines = { "Bedrijven", "Companies" };
-        string[] txtCenter = { "Actief", "Active" };
         string[] txtRight = { "Nieuwe actie", "New action" };
         string[] txtLeft = { "Regiostatistieken", "Region statistics" };
-        string[] txtActiveEvents = { "Actieve events", "Active events" };
-        string[] txtActiveActions = { "Actieve acties", "Active actions" };
+        string[] txtActiveEvents = { "Events", "Events" };
+        string[] txtActiveActions = { "Acties", "Actions" };
         string[] btnDoAction = { "Doe actie", "Do action" };
         string[] btnViewConsequences = { "Bekijk consequencies", "View consequences" };
         string[] txtProsperity = { "Welvaart", "Prosperity" };
 
+        string[] txtHistoryTab = { "Actief", "Active" };
+        txtBtnTabHistory.text = txtHistoryTab[taal];
+        string[] txtActionsTab = { "Doe actie", "Do actions" };
+        txtBtnTabActions.text = txtActionsTab[taal];
         txtRegionHappinessDescription.text = txtHappiness[taal];
         txtRegionEcoAwarenessDescription.text = txtEcoAwareness[taal];
         txtRegionIncomeDescription.text = txtIncome[taal];
@@ -1971,7 +1984,6 @@ public class UpdateUI : MonoBehaviour
         txtRegionCompainesDescription.text = txtCompaines[taal];
         txtRegionColumnLeft.text = txtLeft[taal];
         txtRegionColumnRight.text = txtRight[taal];
-        txtRegionColumnCenter.text = txtCenter[taal];
         txtActiveActionDescription.text = txtActiveActions[taal];
         txtActiveEventsDescription.text = txtActiveEvents[taal];
         btnDoActionText.text = btnDoAction[taal];
@@ -2001,6 +2013,8 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionNoMoney.text = "";
         txtRegionActionSectorTotalCostDescription.text = "";
         txtRegionActionSectorTotalCost.text = "";
+        string[] txtCenter = { "", "" };//{ "Actief", "Active" };
+        txtRegionColumnCenter.text = txtCenter[taal];
 
         txtRegionActionNoMoney.text = "";
         txtActionSectorsDescription.text = "";
@@ -2014,48 +2028,6 @@ public class UpdateUI : MonoBehaviour
         dropdownRegio.gameObject.SetActive(true);
         initDropDownRegion();
     }
-
-    /*
-    private void updateRegionSectors()
-    {
-        foreach (RegionSector sector in regio.sectors)
-        {
-            if (sector.sectorName[taal] == "Huishoudens" || sector.sectorName[taal] == "Households")
-            {
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
-                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
-                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
-
-                    "Air pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
-                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
-                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00")  + "%"};
-                txtTooltipHouseholds = tip[taal];
-            }
-            else if (sector.sectorName[taal] == "Bedrijven" || sector.sectorName[taal] == "Companies")
-            {
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
-                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
-                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
-
-                    "Air pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
-                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
-                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00")  + "%"};
-                txtTooltipCompany = tip[taal];
-            }
-            else if (sector.sectorName[taal] == "Landbouw" || sector.sectorName[taal] == "Agriculture")
-            {
-                string[] tip = { "Luchtvervuiling: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWatervervuiling: " + sector.statistics.pollution.waterPollution.ToString("0.00")
-                    + "%\nNatuurvervuiling: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nTevredenheid: " + sector.statistics.happiness.ToString("0.00")
-                    + "%\nMilieubewustheid: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nWelvaart: " + sector.statistics.prosperity.ToString("0.00")  + "%",
-
-                    "Air pollution: " + sector.statistics.pollution.airPollution.ToString("0.00") + "%\nWater pollution: " + sector.statistics.pollution.waterPollution.ToString("0.00")
-                    + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
-                    + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00") + "%"};
-
-                txtTooltipAgriculture = tip[taal];
-            }
-        }
-    }*/
 
     private void updateActiveEvents()
     {
@@ -2265,9 +2237,31 @@ public class UpdateUI : MonoBehaviour
 
     public void btnViewConsequencesClick()
     {
-        imgSectorPopup.gameObject.SetActive(true);
-        txtRegionSectorTitle.text = regioAction.description[taal];
-        txtRegionSectorInfo.text = getSectorStatisticsConsequences(regioAction.afterInvestmentConsequences);
+        //imgSectorPopup.gameObject.SetActive(true);
+        //txtRegionSectorTitle.text = regioAction.name[taal];
+        //txtRegionSectorInfo.text = getSectorStatisticsConsequences(regioAction.afterInvestmentConsequences);
+    }
+
+    public void btnHistoryTabClick()
+    {
+        if (imgActions.gameObject.activeSelf)
+            imgActions.gameObject.SetActive(false);
+
+        imgDropdownLine.gameObject.SetActive(false);
+        imgHistory.gameObject.SetActive(true);
+        string[] txtCenter = { "Actieve Acties & Events", "Active Actions & Events" };
+        txtRegionColumnCenter.text = txtCenter[taal];
+    }
+
+    public void btnActionsTabClick()
+    {
+        if (imgHistory.gameObject.activeSelf)
+            imgHistory.gameObject.SetActive(false);
+
+        imgDropdownLine.gameObject.SetActive(true);
+        imgActions.gameObject.SetActive(true);
+        string[] txtCenter = { "Doe een actie", "Do an action" };
+        txtRegionColumnCenter.text = txtCenter[taal];
     }
     #endregion
 
