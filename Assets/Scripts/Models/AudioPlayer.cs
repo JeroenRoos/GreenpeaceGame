@@ -42,12 +42,16 @@ public class AudioPlayer : MonoBehaviour
             backgroundMusic = audioSources[0];
             soundEffect = audioSources[1];
 
-            music.Add(Resources.Load("Sounds/music/LugiaTheme", typeof(AudioClip)) as AudioClip);
-            music.Add(Resources.Load("Sounds/music/AvatarTheme", typeof(AudioClip)) as AudioClip);
-            music.Add(Resources.Load("Sounds/music/MindHeist", typeof(AudioClip)) as AudioClip);
-            music.Add(Resources.Load("Sounds/music/SearchForTheGirlTheme", typeof(AudioClip)) as AudioClip);
-            music.Add(Resources.Load("Sounds/music/TheLastOfUsTheme", typeof(AudioClip)) as AudioClip);
-            music.Add(Resources.Load("Sounds/music/FlyTheme", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/funnysong", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/clearday", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/anewbeginning", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/acousticbreeze", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/goinghigher", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/jazzcomedy", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/jazzyfrenchy", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/love", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/retrosoul", typeof(AudioClip)) as AudioClip);
+            music.Add(Resources.Load("Sounds/music/slowmotion", typeof(AudioClip)) as AudioClip);
             optionSelectSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
             ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
             newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
@@ -61,6 +65,8 @@ public class AudioPlayer : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
+        backgroundMusic.clip = music[0];
+        backgroundMusic.Play();
     }
 
     public void StartBackgroundMusic()
