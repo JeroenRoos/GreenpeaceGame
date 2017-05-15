@@ -1646,15 +1646,6 @@ Prefab:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 328177335}
-    - target: {fileID: 114258326018837484, guid: 3d71e1eaef058424d829b4fe4dbda806,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1246809112377062, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
   m_IsPrefabParent: 0
@@ -2978,6 +2969,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 100209248}
+    - target: {fileID: 1161663468392044, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
   m_IsPrefabParent: 0
