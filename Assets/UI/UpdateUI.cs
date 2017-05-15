@@ -258,6 +258,8 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Button btnViewConsequences;
+    public Text txtBtnViewConsequences;
     public Image imgSectorPopup;
     public Text txtRegionSectorTitle;
     public Text txtRegionSectorInfo;
@@ -510,6 +512,7 @@ public class UpdateUI : MonoBehaviour
             if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
             {
                 btnDoActionRegionMenu.gameObject.SetActive(true);
+                btnViewConsequences.gameObject.SetActive(true);
                 txtRegionActionNoMoney.text = "";
             }
             else
@@ -517,6 +520,7 @@ public class UpdateUI : MonoBehaviour
                 string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
                 txtRegionActionNoMoney.text = error[taal];
                 btnDoActionRegionMenu.gameObject.SetActive(false);
+                btnViewConsequences.gameObject.SetActive(false);
             }
         }
     }
@@ -1946,6 +1950,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtActiveEvents = { "Actieve events", "Active events" };
         string[] txtActiveActions = { "Actieve acties", "Active actions" };
         string[] btnDoAction = { "Doe actie", "Do action" };
+        string[] btnViewConsequences = { "Bekijk consequencies", "View consequences" };
         string[] txtProsperity = { "Welvaart", "Prosperity" };
 
         txtRegionHappinessDescription.text = txtHappiness[taal];
@@ -1968,6 +1973,7 @@ public class UpdateUI : MonoBehaviour
         txtCheckboxHouseholds.text = txtHouseholds[taal];
         txtCheckboxAgriculture.text = txtAgriculture[taal];
         txtCheckboxCompanies.text = txtCompaines[taal];
+        txtBtnViewConsequences.text = btnViewConsequences[taal];
     }
 
     private void updateRegionTextValues()
@@ -1994,6 +2000,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionNoMoney.text = "";
         txtActionSectorsDescription.text = "";
         btnDoActionRegionMenu.gameObject.SetActive(false);
+        btnViewConsequences.gameObject.SetActive(false);
         dropdownChoiceMade = false;
 
         updateActiveActions();
@@ -2249,6 +2256,13 @@ public class UpdateUI : MonoBehaviour
                     + "%\nNature pollution: " + sector.statistics.pollution.naturePollution.ToString("0.00") + "%\nHappiness: " + sector.statistics.happiness.ToString("0.00")
                     + "%\nEco-awareness: " + sector.statistics.ecoAwareness.ToString("0.00") + "%\nProsperity: " + sector.statistics.prosperity.ToString("0.00")  + "%"};
         txtRegionSectorInfo.text = tip[taal];
+    }
+
+    public void btnViewConsequencesClick()
+    {
+        imgSectorPopup.gameObject.SetActive(true);
+        txtRegionSectorTitle.text = regioAction.description[taal];
+        txtRegionSectorInfo.text = getSectorStatisticsConsequences(regioAction.afterInvestmentConsequences);
     }
     #endregion
 
@@ -4422,7 +4436,7 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.income > 0d)
             {
-                string[] a = { "<color=#00cc00>\nInkomen per sector: ", "<color=#00cc00>\nIncome per sector:" };
+                string[] a = { "<color=#00cc00>\nInkomen per sector: ", "<color=#00cc00>\nIncome per sector: " };
                 a[taal] += "+" + s.income + "</color>";
                             consequences[taal] += a[taal];
             }
