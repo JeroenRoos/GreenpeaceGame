@@ -313,6 +313,14 @@ MonoBehaviour:
   txtBigDescription: {fileID: 0}
   txtAdviserEconomic: {fileID: 0}
   txtAdviserPollution: {fileID: 0}
+  imgIncomeRegion: {fileID: 0}
+  imgHappinessRegion: {fileID: 0}
+  imgEcoAwarenessRegion: {fileID: 0}
+  imgPollutionRegion: {fileID: 0}
+  imgPollutionWaterRegion: {fileID: 0}
+  imgPollutionAirRegion: {fileID: 0}
+  imgPollutionNatureRegion: {fileID: 0}
+  imgProsperityRegion: {fileID: 0}
   txtRegionActionConsequences: {fileID: 0}
   imgDropdownLine: {fileID: 0}
   imgActions: {fileID: 0}
