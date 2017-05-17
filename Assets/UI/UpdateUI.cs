@@ -2316,6 +2316,13 @@ public class UpdateUI : MonoBehaviour
         iconController(imgPollutionWaterRegion, txtRegionWaterDescription, txtRegionPollutionWater, regio.statistics.avgWaterPollution);
         iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, regio.statistics.avgNaturePollution);
         iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, regio.statistics.prosperity);
+
+        iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, regio.statistics.avgAirPollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, regio.statistics.avgNaturePollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, regio.statistics.avgWaterPollutionIncrease);
+        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 5);
+        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, -10);//regio.statistics.avgWaterPollutionIncrease);
+        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 10);
     }
 
     void iconController(RawImage img, Text description, Text txt, double value)
@@ -2335,11 +2342,48 @@ public class UpdateUI : MonoBehaviour
             lerpColor = Color.Lerp(Color.red, Color.green, f);
         }
 
-        txt.text = " " + value.ToString("0") + "%";
+        txt.text = " " + value.ToString("0.00") + "%";
         txt.color = lerpColor;
         description.color = lerpColor;
         img.color = lerpColor;
     }
+
+    // De value is tussen -5 en 5, moet deze omrekenen naar 0 - 100
+    void iconControllerPollutionIncrease(RawImage img, Text description, Text txt, double value)
+    {
+        Color lerpColor;
+
+        if (value > 1.5)
+            lerpColor = Color.red;
+        else if (value < -1.5)
+            lerpColor = Color.green;
+        else
+            ColorUtility.TryParseHtmlString("#ffa500", out lerpColor);
+
+        txt.text = " " + value.ToString("0.00") + "%";
+        txt.color = lerpColor;
+        description.color = lerpColor;
+        img.color = lerpColor;
+    }
+
+    /*private double recalculateValue(double value)
+    {
+        double colorValue;
+        if (value > 0d)
+        {
+            Debug.Log(" + " + value);
+            colorValue = value * 10;
+            Debug.Log(" + " + colorValue);
+        }
+        else
+        {
+            Debug.Log(" - " + value);
+            colorValue = ((value + value * -2) * 10) / 2;
+            Debug.Log(" - " + colorValue);
+        }
+
+        return colorValue;
+    } */
     #endregion
 
     #region Code for Monthly/Yearly Report Popup
@@ -4645,13 +4689,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.airPollutionIncrease > 0d)
             {
-                string[] f = { "<color=#FF0000>\nLuchtvervuiling per sector: ", "<color=#FF0000>\nAir pollution per sector: " };
+                string[] f = { "<color=#FF0000>\nLuchtvervuiling verhoging per sector: ", "<color=#FF0000>\nAir pollution increase per sector: " };
                 f[taal] += "+" + s.pollution.airPollutionIncrease + "% </color>";
                 consequences[taal] += f[taal];
             }
             else
             {
-                string[] f = { "<color=#00cc00>\nLuchtvervuiling per sector: ", "<color=#00cc00>\nAir pollution per sector: " };
+                string[] f = { "<color=#00cc00>\nLuchtvervuiling verhoging per sector: ", "<color=#00cc00>\nAir pollution increase per sector: " };
                 f[taal] += s.pollution.airPollutionIncrease + "% </color>";
                 consequences[taal] += f[taal];
             }
@@ -4662,14 +4706,14 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.waterPollutionIncrease > 0d)
             {
-                string[] g = { "<color=#FF0000>\nWatervervuiling per sector: ", "<color=#FF0000>\nWater pollution per sector: " };
+                string[] g = { "<color=#FF0000>\nWatervervuiling verhoging per sector: ", "<color=#FF0000>\nWater increase pollution per sector: " };
                 g[taal] += "+" + s.pollution.waterPollutionIncrease + "% </color>";
                 consequences[taal] += g[taal];
             }
             else
             if (s.pollution.waterPollutionIncrease > 0d)
             {
-                string[] g = { "<color=#00cc00>\nWatervervuiling per sector: ", "<color=#00cc00>\nWater pollution per sector: " };
+                string[] g = { "<color=#00cc00>\nWatervervuiling verhoging per sector: ", "<color=#00cc00>\nWater pollution increase per sector: " };
                 g[taal] += s.pollution.waterPollutionIncrease + "% </color>";
                 consequences[taal] += g[taal];
             }
@@ -4680,14 +4724,68 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.naturePollutionIncrease > 0d)
             {
-                string[] h = { "<color=#FF0000>\nNatuurvervuiling per sector: ", "<color=#FF0000>\nNature pollution per sector: " };
+                string[] h = { "<color=#FF0000>\nNatuurvervuiling verhoging per sector: ", "<color=#FF0000>\nNature pollution increase per sector: " };
                 h[taal] += "+" + s.pollution.naturePollutionIncrease + "% </color>";
                 consequences[taal] += h[taal];
             }
             else
             {
-                string[] h = { "<color=#00cc00>\nNatuurvervuiling per sector: ", "<color=#00cc00>\nNature pollution per sector: " };
+                string[] h = { "<color=#00cc00>\nNatuurvervuiling verhoging per sector: ", "<color=#00cc00>\nNature pollution increase per sector: " };
                 h[taal] += s.pollution.naturePollutionIncrease + "% </color>";
+                consequences[taal] += h[taal];
+            }
+
+            noConsequences = true;
+        }
+
+
+        if (s.pollution.airPollution != 0d)
+        {
+            if (s.pollution.airPollution > 0d)
+            {
+                string[] f = { "<color=#FF0000>\nLuchtvervuiling per sector: ", "<color=#FF0000>\nAir pollution per sector: " };
+                f[taal] += "+" + s.pollution.airPollution + "% </color>";
+                consequences[taal] += f[taal];
+            }
+            else
+            {
+                string[] f = { "<color=#00cc00>\nLuchtvervuiling per sector: ", "<color=#00cc00>\nAir pollution per sector: " };
+                f[taal] += s.pollution.airPollution + "% </color>";
+                consequences[taal] += f[taal];
+            }
+
+            noConsequences = true;
+        }
+        if (s.pollution.waterPollution != 0d)
+        {
+            if (s.pollution.waterPollution > 0d)
+            {
+                string[] g = { "<color=#FF0000>\nWatervervuiling per sector: ", "<color=#FF0000>\nWater pollution per sector: " };
+                g[taal] += "+" + s.pollution.waterPollution + "% </color>";
+                consequences[taal] += g[taal];
+            }
+            else
+            if (s.pollution.waterPollution > 0d)
+            {
+                string[] g = { "<color=#00cc00>\nWatervervuiling per sector: ", "<color=#00cc00>\nWater pollution per sector: " };
+                g[taal] += s.pollution.waterPollution + "% </color>";
+                consequences[taal] += g[taal];
+            }
+
+            noConsequences = true;
+        }
+        if (s.pollution.naturePollutionIncrease != 0d)
+        {
+            if (s.pollution.naturePollutionIncrease > 0d)
+            {
+                string[] h = { "<color=#FF0000>\nNatuurvervuiling per sector: ", "<color=#FF0000>\nNature pollution per sector: " };
+                h[taal] += "+" + s.pollution.naturePollution + "% </color>";
+                consequences[taal] += h[taal];
+            }
+            else
+            {
+                string[] h = { "<color=#00cc00>\nNatuurvervuiling per sector: ", "<color=#00cc00>\nNature pollution per sector: " };
+                h[taal] += s.pollution.naturePollution + "% </color>";
                 consequences[taal] += h[taal];
             }
 
