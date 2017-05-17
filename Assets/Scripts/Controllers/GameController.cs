@@ -119,10 +119,10 @@ public class GameController : MonoBehaviour
         afterActionPosition[2] = new Vector3( 5, 5 + height * 2 * 2, 0);
 
         // setup Region Controllers
-        noordNederland.GetComponent<RegionController>().Init(this);
-        oostNederland.GetComponent<RegionController>().Init(this);
-        westNederland.GetComponent<RegionController>().Init(this);
-        zuidNederland.GetComponent<RegionController>().Init(this);
+        noordNederland.GetComponent<RegionController>().Init(this, game.regions[0]);
+        oostNederland.GetComponent<RegionController>().Init(this, game.regions[1]);
+        westNederland.GetComponent<RegionController>().Init(this, game.regions[2]);
+        zuidNederland.GetComponent<RegionController>().Init(this, game.regions[3]);
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
@@ -359,8 +359,6 @@ public class GameController : MonoBehaviour
         /* Update values in Tooltips for Icons in Main UI
         if (updateUI.getTooltipActive())
             updateUITooltips(); */
-
-        UpdateRegionColor();
     }
 
     public void NextTurn()
@@ -858,34 +856,6 @@ public class GameController : MonoBehaviour
                 // objective failed.
             }
         }
-    }
-
-    // update kleur van regio
-    public void UpdateRegionColor()
-    {
-        noordNederland.GetComponent<Renderer>().material.color = Color.Lerp(
-                Color.green, 
-                Color.red, 
-                (float)game.regions[0].statistics.avgPollution / 100
-            );
-
-        oostNederland.GetComponent<Renderer>().material.color = Color.Lerp(
-                Color.green,
-                Color.red,
-                (float)game.regions[1].statistics.avgPollution / 100
-            );
-
-        westNederland.GetComponent<Renderer>().material.color = Color.Lerp(
-                Color.green,
-                Color.red,
-                (float)game.regions[2].statistics.avgPollution / 100
-            );
-
-        zuidNederland.GetComponent<Renderer>().material.color = Color.Lerp(
-                Color.green,
-                Color.red,
-                (float)game.regions[3].statistics.avgPollution / 100
-            );
     }
 
     public bool getActivePopup()

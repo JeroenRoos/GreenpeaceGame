@@ -4002,11 +4002,15 @@ public class UpdateUI : MonoBehaviour
     public void btnQuestsEnter()
     {
         btnQuestsCheck = true;
+        btnQuests.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);
     }
 
     public void btnQuestsExit()
     {
         btnQuestsCheck = false;
+        btnQuests.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);
     }
 
     // OnExit BtnMoney
@@ -4089,11 +4093,15 @@ public class UpdateUI : MonoBehaviour
     public void btnOrganizationEnter()
     {
         btnOrganizationCheck = true;
+        btnOrganization.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);
     }
 
     public void btnOrganzationExit()
     {
         btnOrganizationCheck = false;
+        btnOrganization.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);
     }
 
     public void btnMenuEnter()
@@ -4119,21 +4127,29 @@ public class UpdateUI : MonoBehaviour
     public void btnMonthlyReportEnter()
     {
         btnMonthlyReportCheck = true;
+        btnMonthlyReportStats.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);
     }
 
     public void btnMonthlyReportExit()
     {
         btnMonthlyReportCheck = false;
+        btnMonthlyReportStats.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);
     }
 
     public void btnYearlyReportEnter()
     {
         btnYearlyReportCheck = true;
+        btnYearlyReportStats.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);
     }
 
     public void btnYearlyReportExit()
     {
         btnYearlyReportCheck = false;
+        btnYearlyReportStats.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);
     }
 
     public void btnAfterActionCompletedEnter()
@@ -4179,21 +4195,29 @@ public class UpdateUI : MonoBehaviour
     public void btnInvestmentsEnter()
     {
         btnInvestementsHoverCheck = true;
+        btnInvestments.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);
     }
 
     public void btnInvestmentsExit()
     {
         btnInvestementsHoverCheck = false;
+        btnInvestments.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);
     }
 
     public void btnCardsEnter()
     {
         btnCardsHoverCheck = true;
+        btnCards.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);
     }
 
     public void btnCardsExit()
     {
         btnCardsHoverCheck = false;
+        btnCards.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);
     }
     #endregion  // 
 
