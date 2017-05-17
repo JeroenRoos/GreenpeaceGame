@@ -103,6 +103,8 @@ public class GameController : MonoBehaviour
         updateUI.LinkGame(game);
     }
 
+    
+
     void Start()
     {
         SetPlayerTrackingData();
