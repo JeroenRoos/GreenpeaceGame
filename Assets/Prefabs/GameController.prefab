@@ -313,6 +313,8 @@ MonoBehaviour:
   txtBigDescription: {fileID: 0}
   txtAdviserEconomic: {fileID: 0}
   txtAdviserPollution: {fileID: 0}
+  btnHistoryTab: {fileID: 0}
+  btnActionsTab: {fileID: 0}
   imgIncomeRegion: {fileID: 0}
   imgHappinessRegion: {fileID: 0}
   imgEcoAwarenessRegion: {fileID: 0}
@@ -320,6 +322,9 @@ MonoBehaviour:
   imgPollutionWaterRegion: {fileID: 0}
   imgPollutionAirRegion: {fileID: 0}
   imgPollutionNatureRegion: {fileID: 0}
+  imgPollutionWaterIncreaseRegion: {fileID: 0}
+  imgPollutionAirIncreaseRegion: {fileID: 0}
+  imgPollutionNatureIncreaseRegion: {fileID: 0}
   imgProsperityRegion: {fileID: 0}
   txtRegionActionConsequences: {fileID: 0}
   imgDropdownLine: {fileID: 0}
@@ -338,9 +343,16 @@ MonoBehaviour:
   txtRegionAwareness: {fileID: 0}
   txtRegionProsperity: {fileID: 0}
   txtRegionPollution: {fileID: 0}
+  txtRegionPollutionIncrease: {fileID: 0}
   txtRegionPollutionNature: {fileID: 0}
+  txtRegionPollutionNatureIncrease: {fileID: 0}
   txtRegionPollutionWater: {fileID: 0}
+  txtRegionPollutionWaterIncrease: {fileID: 0}
   txtRegionPollutionAir: {fileID: 0}
+  txtRegionPollutionAirIncrease: {fileID: 0}
+  txtRegionPollutionNatureIncreaseDescription: {fileID: 0}
+  txtRegionPollutionWaterIncreaseDescription: {fileID: 0}
+  txtRegionPollutionAirIncreaseDescription: {fileID: 0}
   txtRegionTraffic: {fileID: 0}
   txtRegionFarming: {fileID: 0}
   txtRegionHouseholds: {fileID: 0}
@@ -359,6 +371,10 @@ MonoBehaviour:
   txtRegionWaterDescription: {fileID: 0}
   txtRegionAirDescription: {fileID: 0}
   txtRegionNatureDescription: {fileID: 0}
+  txtRegionPollutionDescriptionIncrease: {fileID: 0}
+  txtRegionWaterDescriptionIncrease: {fileID: 0}
+  txtRegionAirDescriptionIncrease: {fileID: 0}
+  txtRegionNatureDescriptionIncrease: {fileID: 0}
   txtRegionHouseholdsDescription: {fileID: 0}
   txtRegionAgricultureDescription: {fileID: 0}
   txtRegionCompainesDescription: {fileID: 0}

@@ -263,6 +263,8 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Button btnHistoryTab;
+    public Button btnActionsTab;
     public RawImage imgIncomeRegion;
     public RawImage imgHappinessRegion;
     public RawImage imgEcoAwarenessRegion;
@@ -270,6 +272,9 @@ public class UpdateUI : MonoBehaviour
     public RawImage imgPollutionWaterRegion;
     public RawImage imgPollutionAirRegion;
     public RawImage imgPollutionNatureRegion;
+    public RawImage imgPollutionWaterIncreaseRegion;
+    public RawImage imgPollutionAirIncreaseRegion;
+    public RawImage imgPollutionNatureIncreaseRegion;
     public RawImage imgProsperityRegion;
     public Text txtRegionActionConsequences;
     public RawImage imgDropdownLine;
@@ -288,9 +293,16 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionAwareness;
     public Text txtRegionProsperity;
     public Text txtRegionPollution;
+    public Text txtRegionPollutionIncrease;
     public Text txtRegionPollutionNature;
+    public Text txtRegionPollutionNatureIncrease;
     public Text txtRegionPollutionWater;
+    public Text txtRegionPollutionWaterIncrease;
     public Text txtRegionPollutionAir;
+    public Text txtRegionPollutionAirIncrease;
+    public Text txtRegionPollutionNatureIncreaseDescription;
+    public Text txtRegionPollutionWaterIncreaseDescription;
+    public Text txtRegionPollutionAirIncreaseDescription;
     public Text txtRegionTraffic;
     public Text txtRegionFarming;
     public Text txtRegionHouseholds;
@@ -310,6 +322,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtRegionWaterDescription;
     public Text txtRegionAirDescription;
     public Text txtRegionNatureDescription;
+    public Text txtRegionPollutionDescriptionIncrease;
+    public Text txtRegionWaterDescriptionIncrease;
+    public Text txtRegionAirDescriptionIncrease;
+    public Text txtRegionNatureDescriptionIncrease;
     public Text txtRegionHouseholdsDescription;
     public Text txtRegionAgricultureDescription;
     public Text txtRegionCompainesDescription;
@@ -1955,6 +1971,8 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionCompanies.gameObject.SetActive(false);
         imgHistory.gameObject.SetActive(false);
         imgActions.gameObject.SetActive(false);
+        btnActionsTab.interactable = true;
+        btnHistoryTab.interactable = true;
     }
 
     private void initRegionText()
@@ -1966,6 +1984,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtAir = { "Luchtvervuiling", "Air pollution" };
         string[] txtNature = { "Natuurvervuiling", "Nature pollution" };
         string[] txtWater = { "Watervervuiling", "Water pollution" };
+        string[] txtIncrease = { "Jaarlijkse verhoging", "Yearly increase" };
         string[] txtHouseholds = { "Huishoudens", "Households" };
         string[] txtAgriculture = { "Landbouw", "Agriculture" };
         string[] txtCompaines = { "Bedrijven", "Companies" };
@@ -1989,6 +2008,9 @@ public class UpdateUI : MonoBehaviour
         txtRegionProsperityDescription.text = txtProsperity[taal];
         txtRegionNatureDescription.text = txtNature[taal];
         txtRegionWaterDescription.text = txtWater[taal];
+        txtRegionPollutionAirIncreaseDescription.text = txtIncrease[taal];
+        txtRegionPollutionWaterIncreaseDescription.text = txtIncrease[taal];
+        txtRegionPollutionNatureIncreaseDescription.text = txtIncrease[taal];
         txtRegionHouseholdsDescription.text = txtHouseholds[taal];
         txtRegionAgricultureDescription.text = txtAgriculture[taal];
         txtRegionCompainesDescription.text = txtCompaines[taal];
@@ -2014,6 +2036,10 @@ public class UpdateUI : MonoBehaviour
         txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
         txtRegionPollutionNature.text = regio.statistics.avgNaturePollution.ToString("0.00") + "%";
         txtRegionPollutionWater.text = regio.statistics.avgWaterPollution.ToString("0.00") + "%";
+        txtRegionPollutionAirIncrease.text = regio.statistics.avgAirPollutionIncrease.ToString("0.00") + "%";
+        txtRegionPollutionNatureIncrease.text = regio.statistics.avgNaturePollutionIncrease.ToString("0.00") + "%";
+        txtRegionPollutionWaterIncrease.text = regio.statistics.avgWaterPollutionIncrease.ToString("0.00") + "%";
+
 
         // Set text of actions to empty
         txtRegionActionConsequences.text = "";
@@ -2023,8 +2049,10 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionNoMoney.text = "";
         txtRegionActionSectorTotalCostDescription.text = "";
         txtRegionActionSectorTotalCost.text = "";
-        string[] txtCenter = { "", "" };//{ "Actief", "Active" };
-        txtRegionColumnCenter.text = txtCenter[taal];
+        txtRegionColumnCenter.text = "";
+
+        string[] left = { "Gemiddelde statistieken", "Average statistics" };
+        txtRegionColumnLeft.text = "";
 
         txtRegionActionNoMoney.text = "";
         txtActionSectorsDescription.text = "";
@@ -2257,6 +2285,8 @@ public class UpdateUI : MonoBehaviour
         if (imgActions.gameObject.activeSelf)
             imgActions.gameObject.SetActive(false);
 
+        btnActionsTab.interactable = true;
+        btnHistoryTab.interactable = false;
         imgDropdownLine.gameObject.SetActive(false);
         imgHistory.gameObject.SetActive(true);
         string[] txtCenter = { "Actieve Acties & Events", "Active Actions & Events" };
@@ -2268,22 +2298,13 @@ public class UpdateUI : MonoBehaviour
         if (imgHistory.gameObject.activeSelf)
             imgHistory.gameObject.SetActive(false);
 
+        btnActionsTab.interactable = false;
+        btnHistoryTab.interactable = true;
         imgDropdownLine.gameObject.SetActive(true);
         imgActions.gameObject.SetActive(true);
         string[] txtCenter = { "Doe een actie", "Do an action" };
         txtRegionColumnCenter.text = txtCenter[taal];
     }
-
-    /*txtRegionName.text = regio.name[taal];
-        txtRegionMoney.text = regio.statistics.income.ToString("0");
-        txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
-        txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0.00") + "%";
-        txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
-        txtRegionPollution.text = regio.statistics.avgPollution.ToString("0.00") + "%";
-        txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
-        txtRegionPollutionNature.text = regio.statistics.avgNaturePollution.ToString("0.00") + "%";
-        txtRegionPollutionWater.text = regio.statistics.avgWaterPollution.ToString("0.00") + "%";
-        */
 
     private void updateRegionColorValues()
     {
