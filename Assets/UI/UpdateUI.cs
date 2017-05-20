@@ -556,11 +556,14 @@ public class UpdateUI : MonoBehaviour
             {
                 btnDoActionRegionMenu.gameObject.SetActive(true);
                 //btnViewConsequences.gameObject.SetActive(true);
-                //txtRegionActionNoMoney.text = "";
+                txtRegionActionNoMoney.gameObject.SetActive(false);
+                txtRegionActionNoMoney.text = "";
                 txtRegionActionConsequences.text = getSectorStatisticsConsequences(regioAction.afterInvestmentConsequences);
             }
             else
             {
+
+                txtRegionActionNoMoney.gameObject.SetActive(false);
                 string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
                 txtRegionActionNoMoney.text = error[taal];
                 btnDoActionRegionMenu.gameObject.SetActive(false);
@@ -2017,7 +2020,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtHouseholdsTab = { "Huishoudens", "Households" };
         string[] txtCompaniesTab = { "Bedrijven", "Companies" };
         string[] txtAgricultureTab = { "Landbouw", "Agriculture" };
-        txtbtnAverageTab.text = txtActionsTab[taal];
+        txtbtnAverageTab.text = txtAverageTab[taal];
         txtbtnHouseholdsTab.text = txtHouseholdsTab[taal];
         txtbtnCompaniesTab.text = txtCompaniesTab[taal];
         txtbtnAgriculureTab.text = txtAgricultureTab[taal];
@@ -2074,7 +2077,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionColumnCenter.text = "";
 
         string[] left = { "Gemiddelde statistieken", "Average statistics" };
-        txtRegionColumnLeft.text = "";
+        txtRegionColumnLeft.text = left[taal];
 
         txtRegionActionNoMoney.text = "";
         txtActionSectorsDescription.text = "";
@@ -2234,7 +2237,7 @@ public class UpdateUI : MonoBehaviour
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
 
-        updateRegionTextValues();
+        //updateRegionTextValues();
     }
 
     public void ClearActionMenu()
@@ -2413,6 +2416,8 @@ public class UpdateUI : MonoBehaviour
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
         btnCompaniesTab.interactable = true;
+
+        updateRegionTextValues();
     }
 
     public void btnHouseholdsTabClick()
@@ -2422,6 +2427,8 @@ public class UpdateUI : MonoBehaviour
         btnAverageTab.interactable = true;
         btnAgriculureTab.interactable = true;
         btnCompaniesTab.interactable = true;
+
+        updateSectorTextValues(regio.sectors[0]);
     }
 
     public void btnAgricultureTabClick()
@@ -2431,6 +2438,8 @@ public class UpdateUI : MonoBehaviour
         btnAverageTab.interactable = true;
         btnHouseholdsTab.interactable = true;
         btnCompaniesTab.interactable = true;
+
+        updateSectorTextValues(regio.sectors[2]);
     }
 
     public void btnCompaniesTabClick()
@@ -2440,6 +2449,27 @@ public class UpdateUI : MonoBehaviour
         btnAverageTab.interactable = true;
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
+
+        updateSectorTextValues(regio.sectors[1]);
+    }
+
+    private void updateSectorTextValues(RegionSector s)
+    {
+        txtRegionColumnLeft.text = s.sectorName[taal];
+
+        txtRegionMoney.text = s.statistics.income.ToString("0");
+        txtRegionHappiness.text = s.statistics.happiness.ToString("0.00");
+        txtRegionAwareness.text = s.statistics.ecoAwareness.ToString("0.00") + "%";
+        txtRegionProsperity.text = s.statistics.prosperity.ToString("0.00") + "%";
+        txtRegionPollution.text = s.statistics.pollution.avgPollution.ToString("0.00") + "%";
+        txtRegionPollutionAir.text = s.statistics.pollution.airPollution.ToString("0.00") + "%";
+        txtRegionPollutionNature.text = s.statistics.pollution.naturePollution.ToString("0.00") + "%";
+        txtRegionPollutionWater.text = s.statistics.pollution.waterPollution.ToString("0.00") + "%";
+        txtRegionPollutionAirIncrease.text = s.statistics.pollution.airPollutionIncrease.ToString("0.00") + "%";
+        txtRegionPollutionNatureIncrease.text = s.statistics.pollution.naturePollutionIncrease.ToString("0.00") + "%";
+        txtRegionPollutionWaterIncrease.text = s.statistics.pollution.waterPollutionIncrease.ToString("0.00") + "%";
+
+        updateRegionColorValues();
     }
     #endregion
 
