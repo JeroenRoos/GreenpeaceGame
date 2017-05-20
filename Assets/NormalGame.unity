@@ -1989,6 +1989,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 328177335}
+    - target: {fileID: 1246809112377062, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
   m_IsPrefabParent: 0
@@ -3019,17 +3023,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114068199267686942, guid: 0625edd65df13ea4181604a023a2d2b7,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 328177335}
-    - target: {fileID: 114092080928630664, guid: 0625edd65df13ea4181604a023a2d2b7,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 328177335}
     - target: {fileID: 114008338887968680, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 328177335}
+    - target: {fileID: 114068199267686942, guid: 0625edd65df13ea4181604a023a2d2b7,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3042,6 +3041,11 @@ Prefab:
     - target: {fileID: 114566909888195086, guid: 0625edd65df13ea4181604a023a2d2b7,
         type: 2}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 328177335}
+    - target: {fileID: 114092080928630664, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 328177335}
     - target: {fileID: 114341461898002086, guid: 0625edd65df13ea4181604a023a2d2b7,
@@ -3059,10 +3063,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 100209248}
-    - target: {fileID: 1161663468392044, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
   m_IsPrefabParent: 0
@@ -5038,6 +5038,11 @@ Prefab:
       propertyPath: txtbtnCompaniesTab
       value: 
       objectReference: {fileID: 1126244311}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtEventConsequencesChoice
+      value: 
+      objectReference: {fileID: 1400746137}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6abd92b8b8abe346944c61f1ea190c5, type: 2}
   m_IsPrefabParent: 0
@@ -5515,6 +5520,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e24cbb3c4c374c643ace368f5e04bd60, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1400746137 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114301465957437138, guid: 0625edd65df13ea4181604a023a2d2b7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1034445435}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1410552418 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114462338725354736, guid: 58c99aa4357b50546b2cd6b6a8019444,
@@ -5830,7 +5841,7 @@ MonoBehaviour:
   m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1620826361 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114301465957437138, guid: 0625edd65df13ea4181604a023a2d2b7,
+  m_PrefabParentObject: {fileID: 114974702129760318, guid: 0625edd65df13ea4181604a023a2d2b7,
     type: 2}
   m_PrefabInternal: {fileID: 1034445435}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}

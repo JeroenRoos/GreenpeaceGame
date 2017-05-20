@@ -141,6 +141,7 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
+    public Text txtEventConsequencesChoice;
     public Button btnViewConsequencesEvent;
     public Text txtBtnViewConsequencesEvent;
     public Image imgEventConsequences;
@@ -3008,6 +3009,7 @@ public class UpdateUI : MonoBehaviour
         txtEventDescription.text = e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
         txtBtnViewConsequencesEvent.text = txtBtn2[taal];
+        txtEventConsequencesChoice.text = "";
 
         if (ApplicationModel.language == 0)
         {
@@ -3052,6 +3054,9 @@ public class UpdateUI : MonoBehaviour
             }
             else
                 btnDoEvent.interactable = false;
+
+
+            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.consequences[0]);
         }
         else
             radioEventOption1Check = false;
@@ -3076,6 +3081,9 @@ public class UpdateUI : MonoBehaviour
             }
             else
                 btnDoEvent.interactable = false;
+
+
+            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.consequences[1]);
         }
         else
             radioEventOption2Check = false;
@@ -3100,6 +3108,8 @@ public class UpdateUI : MonoBehaviour
             }
             else
                 btnDoEvent.interactable = false;
+
+            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.consequences[2]);
         }
         else
             radioEventOption3Check = false;
@@ -3113,6 +3123,7 @@ public class UpdateUI : MonoBehaviour
         {
             btnDoEvent.interactable = false;
             btnViewConsequencesEvent.interactable = false;
+            txtEventConsequencesChoice.text = "";
         }
     }
 
