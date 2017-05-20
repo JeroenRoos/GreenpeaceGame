@@ -263,6 +263,14 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtbtnAverageTab;
+    public Text txtbtnHouseholdsTab;
+    public Text txtbtnAgriculureTab;
+    public Text txtbtnCompaniesTab;
+    public Button btnAverageTab;
+    public Button btnHouseholdsTab;
+    public Button btnAgriculureTab;
+    public Button btnCompaniesTab;
     public Button btnHistoryTab;
     public Button btnActionsTab;
     public RawImage imgIncomeRegion;
@@ -1973,6 +1981,10 @@ public class UpdateUI : MonoBehaviour
         imgActions.gameObject.SetActive(false);
         btnActionsTab.interactable = true;
         btnHistoryTab.interactable = true;
+        btnAverageTab.interactable = false;
+        btnHouseholdsTab.interactable = true;
+        btnAgriculureTab.interactable = true;
+        btnCompaniesTab.interactable = true;
     }
 
     private void initRegionText()
@@ -2000,6 +2012,16 @@ public class UpdateUI : MonoBehaviour
         txtBtnTabHistory.text = txtHistoryTab[taal];
         string[] txtActionsTab = { "Doe actie", "Do actions" };
         txtBtnTabActions.text = txtActionsTab[taal];
+
+        string[] txtAverageTab = { "Gemiddelde", "Average" };
+        string[] txtHouseholdsTab = { "Huishoudens", "Households" };
+        string[] txtCompaniesTab = { "Bedrijven", "Companies" };
+        string[] txtAgricultureTab = { "Landbouw", "Agriculture" };
+        txtbtnAverageTab.text = txtActionsTab[taal];
+        txtbtnHouseholdsTab.text = txtHouseholdsTab[taal];
+        txtbtnCompaniesTab.text = txtCompaniesTab[taal];
+        txtbtnAgriculureTab.text = txtAgricultureTab[taal];
+
         txtRegionHappinessDescription.text = txtHappiness[taal];
         txtRegionEcoAwarenessDescription.text = txtEcoAwareness[taal];
         txtRegionIncomeDescription.text = txtIncome[taal];
@@ -2384,6 +2406,41 @@ public class UpdateUI : MonoBehaviour
 
         return colorValue;
     } */
+    public void btnAverageTabClick()
+    {
+        btnAverageTab.interactable = false;
+
+        btnHouseholdsTab.interactable = true;
+        btnAgriculureTab.interactable = true;
+        btnCompaniesTab.interactable = true;
+    }
+
+    public void btnHouseholdsTabClick()
+    {
+        btnHouseholdsTab.interactable = false;
+
+        btnAverageTab.interactable = true;
+        btnAgriculureTab.interactable = true;
+        btnCompaniesTab.interactable = true;
+    }
+
+    public void btnAgricultureTabClick()
+    {
+        btnAgriculureTab.interactable = false;
+
+        btnAverageTab.interactable = true;
+        btnHouseholdsTab.interactable = true;
+        btnCompaniesTab.interactable = true;
+    }
+
+    public void btnCompaniesTabClick()
+    {
+        btnCompaniesTab.interactable = false;
+
+        btnAverageTab.interactable = true;
+        btnHouseholdsTab.interactable = true;
+        btnAgriculureTab.interactable = true;
+    }
     #endregion
 
     #region Code for Monthly/Yearly Report Popup
