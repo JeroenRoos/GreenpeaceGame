@@ -13,7 +13,10 @@ public class SectorStatistics
 
     public Pollution pollution { get; private set; }
 
-    public SectorStatistics() { }
+    public SectorStatistics()
+    {
+        pollution = new Pollution();
+    }
 
     public SectorStatistics(SectorStatistics sectorStatistics)
     {
@@ -94,5 +97,15 @@ public class SectorStatistics
     public void mutateTimeBasedStatistics()
     {
         pollution.mutateTimeBasedStatistics();
+    }
+
+    public void SetPickedConsequences(SectorStatistics s, double[] modifiers, System.Random rnd)
+    {
+        income = s.income * modifiers[rnd.Next(0, modifiers.Length)];
+        happiness = s.happiness * modifiers[rnd.Next(0, modifiers.Length)];
+        ecoAwareness = s.ecoAwareness * modifiers[rnd.Next(0, modifiers.Length)];
+        prosperity = s.prosperity * modifiers[rnd.Next(0, modifiers.Length)];
+
+        pollution.SetPickedConsequences(s, modifiers, rnd);
     }
 }

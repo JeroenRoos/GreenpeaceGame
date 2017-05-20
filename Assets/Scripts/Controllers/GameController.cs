@@ -31,7 +31,8 @@ public class GameController : MonoBehaviour
 
     public GameObject eventObject;
     public GameObject buildingObject;
-    
+
+    public double[] eventConsequenceModifiers;
 
     // private float time;
     public bool autoSave = true;
@@ -47,6 +48,7 @@ public class GameController : MonoBehaviour
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
+            eventConsequenceModifiers = new double[5] { 0.8, 0.9, 1, 1.1, 1.2 };
 
             LoadRegions();
             LoadRegionActions();
@@ -674,6 +676,7 @@ public class GameController : MonoBehaviour
             {
                 Region pickedRegion = game.PickEventRegion();
                 GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
+                SetEventConsequences(pickedEvent);
                 pickedEvent.StartEvent(game.currentYear, game.currentMonth);
                 pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
                 game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
@@ -691,6 +694,19 @@ public class GameController : MonoBehaviour
         }
     }
     
+    public void SetEventConsequences(GameEvent e)
+    {
+        e.pickedConsequences = new SectorStatistics[e.consequences.Length];
+        e.pickedTemporaryConsequences = new SectorStatistics[e.consequences.Length];
+        for (int i = 0; i < e.afterInvestmentConsequences.Length; i++)
+        {
+            e.pickedConsequences[i] = new SectorStatistics();
+            e.pickedTemporaryConsequences[i] = new SectorStatistics();
+            e.pickedConsequences[i].SetPickedConsequences(e.afterInvestmentConsequences[i], eventConsequenceModifiers, game.rnd);
+            e.pickedTemporaryConsequences[i].SetPickedConsequences(e.afterInvestmentTemporaryConsequences[i], eventConsequenceModifiers, game.rnd);
+        }
+    }
+
     private void UpdateRegionsPollutionInfluence()
     {
         game.gameStatistics.UpdateRegionalAvgs(game);

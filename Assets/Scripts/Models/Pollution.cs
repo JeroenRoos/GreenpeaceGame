@@ -118,5 +118,15 @@ public class Pollution
     {
         avgPollution = ((airPollution + naturePollution + waterPollution) / 3);
     }
+
+    public void SetPickedConsequences(SectorStatistics s, double[] modifiers, System.Random rnd)
+    {
+        airPollution = s.pollution.airPollution * modifiers[rnd.Next(0, modifiers.Length)];
+        naturePollution = s.pollution.naturePollution * modifiers[rnd.Next(0, modifiers.Length)];
+        waterPollution = s.pollution.waterPollution * modifiers[rnd.Next(0, modifiers.Length)];
+        airPollutionIncrease = s.pollution.airPollutionIncrease * modifiers[rnd.Next(0, modifiers.Length)];
+        naturePollutionIncrease = s.pollution.naturePollutionIncrease * modifiers[rnd.Next(0, modifiers.Length)];
+        waterPollutionIncrease = s.pollution.waterPollutionIncrease * modifiers[rnd.Next(0, modifiers.Length)];
+    }
 }
 
