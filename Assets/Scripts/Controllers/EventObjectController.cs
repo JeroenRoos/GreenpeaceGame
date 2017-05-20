@@ -52,6 +52,18 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
+    public void OnMouseEnter()
+    {
+        transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);
+    }
+
+    public void OnMouseExit()
+    {
+        transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);
+    }
+
     public void PlaceEventIcons(GameController gameController, Region regionModel, GameEvent eventModel)
     {
         /* Event Positions in XML file
