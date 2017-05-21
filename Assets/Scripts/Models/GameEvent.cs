@@ -33,6 +33,7 @@ public class GameEvent
     public SectorStatistics[] consequences { get; private set; }
     public SectorStatistics[] afterInvestmentConsequences { get; private set; }
     public SectorStatistics[] temporaryConsequences { get; private set; }
+    public SectorStatistics[] afterInvestmentTemporaryConsequences { get; private set; }
 
     //choice picked events variables
     public int pickedChoiceNumber { get; private set; }
@@ -46,8 +47,11 @@ public class GameEvent
     public int onEventStartYear { get; private set; }
     public bool isFinished { get; private set; }
 
+    public SectorStatistics[] pickedConsequences;
+    public SectorStatistics[] pickedTemporaryConsequences;
+
     private GameEvent() { }
-    
+
     public void StartEvent(int currentYear, int currentMonth)
     {
         onEventStartYear = currentYear;
@@ -62,7 +66,7 @@ public class GameEvent
     {
         idleTurnsLeft--;
     }
-    
+
     public void FinishEvent()
     {
         pickedChoiceStartYear = 0;
@@ -72,6 +76,8 @@ public class GameEvent
         pickedChoiceNumber = 0;
 
         isFinished = true;
+        pickedConsequences = null;
+        pickedTemporaryConsequences = null;
     }
 
     public void CompleteEvent(Game game)
@@ -163,6 +169,64 @@ public class GameEvent
                 afterInvestmentConsequences[i].pollution.ChangeWaterPollutionMutation(waterPollutionIncreaseChangeValue);
             else
                 afterInvestmentConsequences[i].pollution.ChangeWaterPollutionMutation(0 - waterPollutionIncreaseChangeValue);
+        }
+    }
+
+    public void SetAfterInvestmentTemporaryConsequences(double modifier)
+    {
+        for (int i = 0; i < consequences.Length; i++)
+        {
+            double incomeChangeValue = temporaryConsequences[i].income * modifier;
+            double happinessChangeValue = temporaryConsequences[i].happiness * modifier;
+            double ecoAwarenessChangeValue = temporaryConsequences[i].ecoAwareness * modifier;
+            double prosperityChangeValue = temporaryConsequences[i].prosperity * modifier;
+            double airPollutionChangeValue = temporaryConsequences[i].pollution.airPollution * modifier;
+            double naturePollutionChangeValue = temporaryConsequences[i].pollution.naturePollution * modifier;
+            double waterPollutionChangeValue = temporaryConsequences[i].pollution.waterPollution * modifier;
+            double airPollutionIncreaseChangeValue = temporaryConsequences[i].pollution.airPollutionIncrease * modifier;
+            double naturePollutionIncreaseChangeValue = temporaryConsequences[i].pollution.naturePollutionIncrease * modifier;
+            double waterPollutionIncreaseChangeValue = temporaryConsequences[i].pollution.waterPollutionIncrease * modifier;
+
+            if (incomeChangeValue > 0)
+                afterInvestmentTemporaryConsequences[i].ModifyIncome(incomeChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].ModifyIncome(0 - incomeChangeValue);
+            if (happinessChangeValue > 0)
+                afterInvestmentTemporaryConsequences[i].ModifyHappiness(happinessChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].ModifyHappiness(0 - happinessChangeValue);
+            if (ecoAwarenessChangeValue > 0)
+                afterInvestmentTemporaryConsequences[i].ModifyEcoAwareness(ecoAwarenessChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].ModifyEcoAwareness(0 - ecoAwarenessChangeValue);
+            if (prosperityChangeValue > 0)
+                afterInvestmentTemporaryConsequences[i].ModifyProsperity(prosperityChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].ModifyProsperity(0 - prosperityChangeValue);
+            if (airPollutionChangeValue < 0)
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeAirPollution(airPollutionChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeAirPollution(0 - airPollutionChangeValue);
+            if (naturePollutionChangeValue < 0)
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeNaturePollution(naturePollutionChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeNaturePollution(0 - naturePollutionChangeValue);
+            if (waterPollutionChangeValue < 0)
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeWaterPollution(waterPollutionChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeWaterPollution(0 - waterPollutionChangeValue);
+            if (airPollutionIncreaseChangeValue < 0)
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeAirPollutionMutation(airPollutionIncreaseChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeAirPollutionMutation(0 - airPollutionIncreaseChangeValue);
+            if (naturePollutionIncreaseChangeValue < 0)
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeNaturePollutionMutation(naturePollutionIncreaseChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeNaturePollutionMutation(0 - naturePollutionIncreaseChangeValue);
+            if (waterPollutionIncreaseChangeValue < 0)
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeWaterPollutionMutation(waterPollutionIncreaseChangeValue);
+            else
+                afterInvestmentTemporaryConsequences[i].pollution.ChangeWaterPollutionMutation(0 - waterPollutionIncreaseChangeValue);
         }
     }
 }

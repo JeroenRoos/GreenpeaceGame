@@ -90,6 +90,7 @@ public class Investments
                 foreach (GameEvent ge in events)
                 {
                     ge.SetAfterInvestmentConsequences(investmentModifier);
+                    ge.SetAfterInvestmentTemporaryConsequences(investmentModifier);
                 }
                 break;
             }
