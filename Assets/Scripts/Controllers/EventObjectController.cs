@@ -243,7 +243,7 @@ public class EventObjectController : MonoBehaviour
             case "SolarPanelProject":
                 return allTextures[34];
 
-            case "TrafficJam":
+            case "TrafficJams":
                 return allTextures[35];
 
             case "WaterPollutionNewTech":
@@ -254,7 +254,88 @@ public class EventObjectController : MonoBehaviour
 
             case "finished":
                     return allTextures[39];
-                
+
+            case "Acidification":
+                return allTextures[40];
+
+            case "Asbestos":
+                return allTextures[41];
+
+            case "CompaniesPersonalProfit":
+                return allTextures[42];
+
+            case "EfficencyAgriculture":
+                return allTextures[43];
+
+            case "FoodWaste":
+                return allTextures[44];
+
+            case "GovernmentMoneyReward":
+                return allTextures[45];
+
+            case "GreenCompaniesRewardProject":
+                return allTextures[46];
+
+            case "GrowthAgriculture":
+                return allTextures[47];
+
+            case "GrowthCompanies":
+                return allTextures[48];
+
+            case "GrowthHouseholds":
+                return allTextures[49];
+
+            case "IjsselmeerThrash":
+                return allTextures[50];
+
+            case "MicroDust":
+                return allTextures[51];
+
+            case "NewCleanBoatTech":
+                return allTextures[52];
+
+            case "NewCleanCarTech":
+                return allTextures[53];
+
+            case "NewCleanEnergyTech":
+                return allTextures[54];
+
+            case "NewCleanPlaneTech":
+                return allTextures[55];
+
+            case "NewEnergySavingTech":
+                return allTextures[56];
+
+            case "NewFoodCarefulTech":
+                return allTextures[57];
+
+            case "NewRecyclingTech":
+                return allTextures[58];
+
+            case "NewSolarPanelTech":
+                return allTextures[59];
+
+            case "NoMoreFossil":
+                return allTextures[60];
+
+            case "PollutingManure":
+                return allTextures[61];
+
+            case "ToxicDump":
+                return allTextures[62];
+
+            case "WaterAlgae":
+                return allTextures[63];
+
+            case "WaterDuckWeed":
+                return allTextures[64];
+
+            case "LessCycling":
+                return allTextures[65];
+
+            case "NewFoodEfficiencyTech":
+                return allTextures[66];
+
             default: return allTextures[37];
         }
     }

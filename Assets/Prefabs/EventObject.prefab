@@ -94,6 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
+  eventModel:
+    pickedConsequences: []
+    pickedTemporaryConsequences: []
   regionModel:
     eventPositions: []
     buildingPositions: []
@@ -138,7 +141,34 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 1b827991a8565f24482c93504ea2aea2, type: 3}
   - {fileID: 2800000, guid: aef40f7e994306a4f863feb3eecc867f, type: 3}
   - {fileID: 2800000, guid: b22accf9f14769e49b41c0493910695d, type: 3}
-  - {fileID: 2800000, guid: b22accf9f14769e49b41c0493910695d, type: 3}
+  - {fileID: 2800000, guid: fa7979916267c334e9c27603cdc0483a, type: 3}
+  - {fileID: 2800000, guid: fb03301e286f97743baf7fe9a795d53a, type: 3}
+  - {fileID: 2800000, guid: 0a4ed2a00815a194ab8b7c9d71aefa07, type: 3}
+  - {fileID: 2800000, guid: 03965ce092db7794f9a75f57fd4e4a8f, type: 3}
+  - {fileID: 2800000, guid: 5fcb258d7f430b44595590580584ede2, type: 3}
+  - {fileID: 2800000, guid: cd75848eb0399f948844fb43b8dacc74, type: 3}
+  - {fileID: 2800000, guid: 0eb9fd6e99a18724c882d803fbaa5726, type: 3}
+  - {fileID: 2800000, guid: 2360891cb80c9ff4ba4ccce1fc50c134, type: 3}
+  - {fileID: 2800000, guid: d02ca0bc5f3c18848ae4adbd933f91d5, type: 3}
+  - {fileID: 2800000, guid: 60ea3db33b889a44b97c03eefb72ed4b, type: 3}
+  - {fileID: 2800000, guid: 2de1bdcad7fcee84989bcabb24183d07, type: 3}
+  - {fileID: 2800000, guid: db399263e91aff549b48c0024b13e68f, type: 3}
+  - {fileID: 2800000, guid: 36a522a3e37760a4e90431b72be72d24, type: 3}
+  - {fileID: 2800000, guid: 7451aa788d5b22d4eb96785eed189ac7, type: 3}
+  - {fileID: 2800000, guid: c0f0f8dc2de4b674780acc6fd5e9d3f1, type: 3}
+  - {fileID: 2800000, guid: a2cd5a66919a7ce449cb2f3ad75f0bb9, type: 3}
+  - {fileID: 2800000, guid: e4461b0b620f00e4493b3f0b9fb06fa7, type: 3}
+  - {fileID: 2800000, guid: fc4bc8f88dad3d640b17dba530edad88, type: 3}
+  - {fileID: 2800000, guid: b83e5c2869bcffc48baf1b14496362b9, type: 3}
+  - {fileID: 2800000, guid: 222230088209ff64598a7d3b07968ca3, type: 3}
+  - {fileID: 2800000, guid: 6b2a462c3a8be86438e2cfd16ab9bed3, type: 3}
+  - {fileID: 2800000, guid: 988ddda1157e2a34bb0af1faadfaadaf, type: 3}
+  - {fileID: 2800000, guid: 44b9ab0c91754d84c84d51b2043613e5, type: 3}
+  - {fileID: 2800000, guid: 9628c580a3e41044c9c829f9c57cd98a, type: 3}
+  - {fileID: 2800000, guid: 5b6e5a2f2a2a0ac4fbead00758ed6cde, type: 3}
+  - {fileID: 2800000, guid: 65e52f0cfdd611a4197b99f007f70790, type: 3}
+  - {fileID: 2800000, guid: 6515d79921954f44fa66980ae716a721, type: 3}
+  - {fileID: 2800000, guid: e227b02e58db6c54f855d3a42db37c74, type: 3}
   isClicked: 0
 --- !u!114 &114267844211061070
 MonoBehaviour:

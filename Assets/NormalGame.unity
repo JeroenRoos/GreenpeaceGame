@@ -1991,7 +1991,52 @@ Prefab:
       objectReference: {fileID: 328177335}
     - target: {fileID: 1246809112377062, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114946607085296206, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: e1b65f8f638d1b74aadfeadb0ecbab91, type: 3}
+    - target: {fileID: 114188958456012690, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 6c46b6ba585d667429cb7d1a34158cc7, type: 3}
+    - target: {fileID: 114797016947907806, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: c6c9c6f786556d644accc7623e59f571, type: 3}
+    - target: {fileID: 224529419942817552, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 224944844845487908, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 224637888901079860, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 224529419942817552, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 224944844845487908, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 224637888901079860, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
@@ -3063,6 +3108,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 100209248}
+    - target: {fileID: 1161663468392044, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
   m_IsPrefabParent: 0
