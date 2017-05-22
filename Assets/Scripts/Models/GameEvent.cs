@@ -69,15 +69,15 @@ public class GameEvent
 
     public void FinishEvent()
     {
-        pickedChoiceStartYear = 0;
+        /*pickedChoiceStartYear = 0;
         pickedChoiceStartMonth = 0;
         onEventStartYear = 0;
         onEventStartMonth = 0;
         pickedChoiceNumber = 0;
+        pickedConsequences = null;
+        pickedTemporaryConsequences = null;*/
 
         isFinished = true;
-        pickedConsequences = null;
-        pickedTemporaryConsequences = null;
     }
 
     public void CompleteEvent(Game game)
