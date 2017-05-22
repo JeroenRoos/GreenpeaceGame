@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Timers;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
+using Facebook.Unity;
 
 /*regions order:
 0 = noord
@@ -123,10 +124,10 @@ public class GameController : MonoBehaviour
         afterActionPosition[2] = new Vector3( 5, 5 + height * 2 * 2, 0);
 
         // setup Region Controllers
-        noordNederland.GetComponent<RegionController>().Init(this, game.regions[0]);
-        oostNederland.GetComponent<RegionController>().Init(this, game.regions[1]);
-        westNederland.GetComponent<RegionController>().Init(this, game.regions[2]);
-        zuidNederland.GetComponent<RegionController>().Init(this, game.regions[3]);
+        noordNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[0]);
+        oostNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[1]);
+        westNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[2]);
+        zuidNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[3]);
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
@@ -173,6 +174,59 @@ public class GameController : MonoBehaviour
     {
         SetGameplayTrackingData();
     }
+
+    public void ShareOnFacebook()
+    {
+        if (!FB.IsInitialized)
+            FB.Init();
+
+        else
+        {
+            var perms = new List<string>() { "public_profile", "email", "user_friends" };
+            FB.LogInWithReadPermissions(perms, AuthCallback);
+
+            FB.ShareLink(
+            new System.Uri("http://i.imgur.com/zkYlB.jpg"),
+            callback: LogCallback
+            );
+
+
+            /*FB.FeedShare(
+                string.Empty,
+                link: new System.Uri("http://i.imgur.com/zkYlB.jpg"),
+                linkName: "Test picture",
+                linkCaption: "I am sharing my amazing progress on Project Green Leader",
+                linkDescription: "Click for mystery picture",
+                picture: new System.Uri("https://gyazo.com/851dab54e6d082bca1aa3d876aca5493"),
+                callback: LogCallback);*/
+        }
+    }
+
+    private void AuthCallback(ILoginResult result)
+    {
+        if (FB.IsLoggedIn)
+        {
+            // AccessToken class will have session details
+            var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+            // Print current access token's User ID
+            Debug.Log(aToken.UserId);
+            // Print current access token's granted permissions
+            foreach (string perm in aToken.Permissions)
+            {
+                Debug.Log(perm);
+            }
+        }
+        else
+        {
+            Debug.Log("User cancelled login");
+        }
+    }
+
+    void LogCallback(IResult response)
+    {
+        Debug.Log("Worked");
+    }
+
 
     public void SetScoreTrackingData(double score)
     {
