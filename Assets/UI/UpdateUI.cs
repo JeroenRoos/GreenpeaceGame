@@ -1969,14 +1969,13 @@ public class UpdateUI : MonoBehaviour
     {
         // Set the text in the popup based on language
         //initRegionText();
+        updateRegionColorValues();
 
         updateRegionTextValues();
 
         // Set the right actions in the dropdown
         initDropDownRegion();
-
-        updateRegionColorValues();
-
+    
         // Set toggles on not active
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
@@ -1989,6 +1988,23 @@ public class UpdateUI : MonoBehaviour
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
         btnCompaniesTab.interactable = true;
+    }
+
+    private void updateRegionColorValues()
+    {
+        iconController(imgHappinessRegion, txtRegionHappinessDescription, txtRegionHappiness, regio.statistics.happiness);
+        iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, regio.statistics.ecoAwareness);
+        iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, regio.statistics.avgPollution);
+        iconController(imgPollutionAirRegion, txtRegionAirDescription, txtRegionPollutionAir, regio.statistics.avgAirPollution);
+        iconController(imgPollutionWaterRegion, txtRegionWaterDescription, txtRegionPollutionWater, regio.statistics.avgWaterPollution);
+        iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, regio.statistics.avgNaturePollution);
+        iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, regio.statistics.prosperity);
+
+        iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, regio.statistics.avgAirPollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, regio.statistics.avgNaturePollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, regio.statistics.avgWaterPollutionIncrease);
+        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 5);
+
     }
 
     private void initRegionText()
@@ -2062,9 +2078,22 @@ public class UpdateUI : MonoBehaviour
         txtRegionPollutionAir.text = regio.statistics.avgAirPollution.ToString("0.00") + "%";
         txtRegionPollutionNature.text = regio.statistics.avgNaturePollution.ToString("0.00") + "%";
         txtRegionPollutionWater.text = regio.statistics.avgWaterPollution.ToString("0.00") + "%";
-        txtRegionPollutionAirIncrease.text = regio.statistics.avgAirPollutionIncrease.ToString("0.00") + "%";
-        txtRegionPollutionNatureIncrease.text = regio.statistics.avgNaturePollutionIncrease.ToString("0.00") + "%";
-        txtRegionPollutionWaterIncrease.text = regio.statistics.avgWaterPollutionIncrease.ToString("0.00") + "%";
+
+        if (regio.statistics.avgAirPollutionIncrease > 0d)
+            txtRegionPollutionAirIncrease.text = "+" + regio.statistics.avgAirPollutionIncrease.ToString("0.00") + "%";
+        else
+            txtRegionPollutionAirIncrease.text = regio.statistics.avgAirPollutionIncrease.ToString("0.00") + "%";
+
+        if (regio.statistics.avgNaturePollutionIncrease > 0d)
+            txtRegionPollutionNatureIncrease.text = "+" + regio.statistics.avgNaturePollutionIncrease.ToString("0.00") + "%";
+        else
+            txtRegionPollutionNatureIncrease.text = regio.statistics.avgNaturePollutionIncrease.ToString("0.00") + "%";
+
+        if (regio.statistics.avgWaterPollutionIncrease > 0d)
+            txtRegionPollutionWaterIncrease.text = "+" + regio.statistics.avgWaterPollutionIncrease.ToString("0.00") + "%";
+        else
+            txtRegionPollutionWaterIncrease.text = regio.statistics.avgWaterPollutionIncrease.ToString("0.00") + "%";
+
 
 
         // Set text of actions to empty
@@ -2331,23 +2360,19 @@ public class UpdateUI : MonoBehaviour
         txtRegionColumnCenter.text = txtCenter[taal];
     }
 
-    private void updateRegionColorValues()
+    private void updateSectorColorValues(SectorStatistics s)
     {
-        //iconController(imgIncomeRegion, txtRegionMoney, regio.statistics.income);
-        iconController(imgHappinessRegion, txtRegionHappinessDescription ,txtRegionHappiness, regio.statistics.happiness);
-        iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, regio.statistics.ecoAwareness);
-        iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, regio.statistics.avgPollution);
-        iconController(imgPollutionAirRegion, txtRegionAirDescription, txtRegionPollutionAir, regio.statistics.avgAirPollution);
-        iconController(imgPollutionWaterRegion, txtRegionWaterDescription, txtRegionPollutionWater, regio.statistics.avgWaterPollution);
-        iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, regio.statistics.avgNaturePollution);
-        iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, regio.statistics.prosperity);
+        iconController(imgHappinessRegion, txtRegionHappinessDescription ,txtRegionHappiness, s.happiness);
+        iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, s.ecoAwareness);
+        iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, s.pollution.avgPollution);
+        iconController(imgPollutionAirRegion, txtRegionAirDescription, txtRegionPollutionAir, s.pollution.airPollution);
+        iconController(imgPollutionWaterRegion, txtRegionWaterDescription, txtRegionPollutionWater, s.pollution.waterPollution);
+        iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, s.pollution.naturePollution);
+        iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, s.prosperity);
 
-        iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, regio.statistics.avgAirPollutionIncrease);
-        iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, regio.statistics.avgNaturePollutionIncrease);
-        iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, regio.statistics.avgWaterPollutionIncrease);
-        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 5);
-        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, -10);//regio.statistics.avgWaterPollutionIncrease);
-        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 10);
+        iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, s.pollution.airPollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, s.pollution.naturePollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, s.pollution.waterPollutionIncrease);
     }
 
     void iconController(RawImage img, Text description, Text txt, double value)
@@ -2380,7 +2405,7 @@ public class UpdateUI : MonoBehaviour
 
         if (value > 1.5)
             lerpColor = Color.red;
-        else if (value < -1.5)
+        else if (value < 0)
             lerpColor = Color.green;
         else
             ColorUtility.TryParseHtmlString("#ffa500", out lerpColor);
@@ -2391,24 +2416,6 @@ public class UpdateUI : MonoBehaviour
         img.color = lerpColor;
     }
 
-    /*private double recalculateValue(double value)
-    {
-        double colorValue;
-        if (value > 0d)
-        {
-            Debug.Log(" + " + value);
-            colorValue = value * 10;
-            Debug.Log(" + " + colorValue);
-        }
-        else
-        {
-            Debug.Log(" - " + value);
-            colorValue = ((value + value * -2) * 10) / 2;
-            Debug.Log(" - " + colorValue);
-        }
-
-        return colorValue;
-    } */
     public void btnAverageTabClick()
     {
         btnAverageTab.interactable = false;
@@ -2455,6 +2462,7 @@ public class UpdateUI : MonoBehaviour
 
     private void updateSectorTextValues(RegionSector s)
     {
+        updateSectorColorValues(s.statistics);
         txtRegionColumnLeft.text = s.sectorName[taal];
 
         txtRegionMoney.text = s.statistics.income.ToString("0");
@@ -2465,11 +2473,22 @@ public class UpdateUI : MonoBehaviour
         txtRegionPollutionAir.text = s.statistics.pollution.airPollution.ToString("0.00") + "%";
         txtRegionPollutionNature.text = s.statistics.pollution.naturePollution.ToString("0.00") + "%";
         txtRegionPollutionWater.text = s.statistics.pollution.waterPollution.ToString("0.00") + "%";
-        txtRegionPollutionAirIncrease.text = s.statistics.pollution.airPollutionIncrease.ToString("0.00") + "%";
-        txtRegionPollutionNatureIncrease.text = s.statistics.pollution.naturePollutionIncrease.ToString("0.00") + "%";
-        txtRegionPollutionWaterIncrease.text = s.statistics.pollution.waterPollutionIncrease.ToString("0.00") + "%";
 
-        updateRegionColorValues();
+        if (regio.statistics.avgAirPollutionIncrease > 0d)
+            txtRegionPollutionAirIncrease.text = "+" + s.statistics.pollution.airPollutionIncrease.ToString("0.00") + "%";
+        else
+            txtRegionPollutionAirIncrease.text = s.statistics.pollution.airPollutionIncrease.ToString("0.00") + "%";
+
+        if (regio.statistics.avgNaturePollutionIncrease > 0d)
+            txtRegionPollutionNatureIncrease.text = "+" + s.statistics.pollution.naturePollutionIncrease.ToString("0.00") + "%";
+        else
+            txtRegionPollutionNatureIncrease.text = s.statistics.pollution.naturePollutionIncrease.ToString("0.00") + "%";
+
+        if (regio.statistics.avgWaterPollutionIncrease > 0d)
+            txtRegionPollutionWaterIncrease.text = "+" + s.statistics.pollution.waterPollutionIncrease.ToString("0.00") + "%";
+        else
+            txtRegionPollutionWaterIncrease.text = s.statistics.pollution.waterPollutionIncrease.ToString("0.00") + "%";
+
     }
     #endregion
 
