@@ -5,12 +5,14 @@ using UnityEngine;
 public class RegionController : MonoBehaviour {
 
     public GameController gameController;
+    public UpdateUI ui;
     public Region region;
     public bool isHovered;
     
-    public void Init(GameController gameController, Region r)
+    public void Init(GameController gameController, UpdateUI ui, Region r)
     {
         this.gameController = gameController;
+        this.ui = ui;
         this.region = r;
         isHovered = false;
     }
@@ -27,23 +29,24 @@ public class RegionController : MonoBehaviour {
 
     public void OnMouseDown()
     {
-        /*if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        {
-            gameController.OnRegionClick(gameObject);
-        }*/
         gameController.OnRegionClick(gameObject);
     }
 
     public void OnMouseEnter()
     {
-        isHovered = true;
-        gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, (float)165/255, 0, 1);
+        if (!ui.popupActive)
+        {
+            isHovered = true;
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, (float)165 / 255, 0, 1);
+        }
     }
 
     public void OnMouseExit()
     {
-        isHovered = false;
-        //gameObject.GetComponent<MeshRenderer>().material.SetColor("_OutlineColor", Color.black);
+        if (!ui.popupActive)
+        {
+            isHovered = false;
+        }
     }
 
 }

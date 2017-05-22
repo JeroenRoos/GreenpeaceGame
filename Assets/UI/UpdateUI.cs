@@ -2174,8 +2174,8 @@ public class UpdateUI : MonoBehaviour
                 string[] actionDurationText = { "Duur: " + regioAction.actionDuration.ToString() + " maanden",
                     "Duration: " + regioAction.actionDuration.ToString() + " months" };
 
-                string[] txtSectorMoney = { "Totale kosten", "Total cost" };
-                string[] sectorDescription = { "Mogelijke sectoren", "Possible sectors" };
+                string[] txtSectorMoney = { "Totale kosten:", "Total cost:" };
+                string[] sectorDescription = { "Selecteer (meerdere) sectoren om actie uit te voeren", "Select (multiple) sectors to perform action" };
                 dropdownChoiceMade = true;
                 string[] uniqueText = { " <b>[uniek]</b>", " <b>[unique]</b>" };
 
@@ -2188,11 +2188,10 @@ public class UpdateUI : MonoBehaviour
                 //txtRegionActionConsequences.text = getActionConsequences(action.consequences);
                 txtActionSectorsDescription.text = sectorDescription[taal];
                 txtRegionActionSectorTotalCostDescription.text = txtSectorMoney[taal];
-                txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
 
                 setCheckboxes(action);
                 regioActionCost = 0;
-                txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
+                txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
             }
         }
     }
@@ -4481,8 +4480,8 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
-        
-        txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
+
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
     }
 
     public void valueChangedAgriculture()
@@ -4505,8 +4504,8 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
-        
-        txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
+
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
     }
 
     public void valueChangedCompanies()
@@ -4529,8 +4528,8 @@ public class UpdateUI : MonoBehaviour
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
-        
-        txtRegionActionSectorTotalCost.text = regioActionCost.ToString();
+
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
     }
     #endregion
 
@@ -4719,13 +4718,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.income > 0d)
             {
-                string[] a = { "<color=#00cc00>\nInkomen per sector: ", "<color=#00cc00>\nIncome per sector: " };
+                string[] a = { "<color=#00cc00>\nInkomen per geselecteerde sector: ", "<color=#00cc00>\nIncome per selected sector: " };
                 a[taal] += "+" + s.income + "</color>";
                             consequences[taal] += a[taal];
             }
             else
             {
-                string[] a = { "<color=#FF0000>\nInkomen per sector: ", "<color=#FF0000>\nIncome per sector: " };
+                string[] a = { "<color=#FF0000>\nInkomen per geselecteerde sector: ", "<color=#FF0000>\nIncome per selected sector: " };
                 a[taal] += s.income + "</color>";
                 consequences[taal] += a[taal];
             }
@@ -4736,13 +4735,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.happiness > 0d)
             {
-                string[] c = { "<color=#00cc00>\nTevredenheid per sector: ", "\n<color=#00cc00>Happiness per sector: " };
+                string[] c = { "<color=#00cc00>\nTevredenheid per geselecteerde sector: ", "\n<color=#00cc00>Happiness per selected sector: " };
                 c[taal] += "+" + s.happiness.ToString("0.00") + "% </color>";
                 consequences[taal] += c[taal];
             }
             else
             {
-                string[] c = { "<color=#FF0000>\nTevredenheid per sector: ", "\n<color=#FF0000>Happiness per sector: " };
+                string[] c = { "<color=#FF0000>\nTevredenheid per geselecteerde sector: ", "\n<color=#FF0000>Happiness per selected sector: " };
                 c[taal] += s.happiness.ToString("0.00") + "% </color>";
                 consequences[taal] += c[taal];
             }
@@ -4753,13 +4752,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.ecoAwareness > 0d)
             {
-                string[] d = { "<color=#00cc00>\nMilieubewustheid per sector: ", "<color=#00cc00>\nEco awareness per sector: " };
+                string[] d = { "<color=#00cc00>\nMilieubewustheid per geselecteerde sector: ", "<color=#00cc00>\nEco awareness per selected sector: " };
                 d[taal] += "+" + s.ecoAwareness.ToString("0.00") + "% </color>";
                 consequences[taal] += d[taal];
             }
             else
             {
-                string[] d = { "<color=#FF0000>\nMilieubewustheid per sector: ", "<color=#FF0000>\nEco awareness per sector: " };
+                string[] d = { "<color=#FF0000>\nMilieubewustheid per geselecteerde sector: ", "<color=#FF0000>\nEco awareness per selected sector: " };
                 d[taal] += s.ecoAwareness.ToString("0.00") + "% </color>";
                 consequences[taal] += d[taal];
             }
@@ -4770,13 +4769,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.prosperity > 0d)
             {
-                string[] e = { "<color=#00cc00>\nWelvaart per sector: ", "<color=#00cc00>\nProsperity per sector: " };
+                string[] e = { "<color=#00cc00>\nWelvaart per geselecteerde sector: ", "<color=#00cc00>\nProsperity per selected sector: " };
                 e[taal] += "+" + s.prosperity.ToString("0.00") + "% </color>";
                 consequences[taal] += e[taal];
             }
             else
             {
-                string[] e = { "<color=#FF0000>\nWelvaart per sector: ", "<color=#FF0000>\nProsperity per sector: " };
+                string[] e = { "<color=#FF0000>\nWelvaart per geselecteerde sector: ", "<color=#FF0000>\nProsperity per selected sector: " };
                 e[taal] += s.prosperity.ToString("0.00") + "% </color>";
                 consequences[taal] += e[taal];
             }
@@ -4787,13 +4786,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.airPollutionIncrease > 0d)
             {
-                string[] f = { "<color=#FF0000>\nLuchtvervuiling verhoging per sector: ", "<color=#FF0000>\nAir pollution increase per sector: " };
+                string[] f = { "<color=#FF0000>\nJaarlijkse luchtvervuiling verhoging (van huidige) per geselecteerde sector: ", "<color=#FF0000>\nYearly water pollution increase (of current) per selected sector: " };
                 f[taal] += "+" + s.pollution.airPollutionIncrease.ToString("0.00") + "% </color>";
                 consequences[taal] += f[taal];
             }
             else
             {
-                string[] f = { "<color=#00cc00>\nLuchtvervuiling verhoging per sector: ", "<color=#00cc00>\nAir pollution increase per sector: " };
+                string[] f = { "<color=#00cc00>\nJaarlijkse luchtvervuiling verhoging (van huidige) per geselecteerde sector: ", "<color=#00cc00>\nYearly air pollution increase (of current) per selected sector: " };
                 f[taal] += s.pollution.airPollutionIncrease.ToString("0.00") + "% </color>";
                 consequences[taal] += f[taal];
             }
@@ -4804,13 +4803,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.waterPollutionIncrease > 0d)
             {
-                string[] g = { "<color=#FF0000>\nWatervervuiling verhoging per sector: ", "<color=#FF0000>\nWater increase pollution per sector: " };
+                string[] g = { "<color=#FF0000>\nJaarlijkse watervervuiling verhoging (van huidige) per geselecteerde sector: ", "<color=#FF0000>\nYearly water pollution increase (of current) per selected sector: " };
                 g[taal] += "+" + s.pollution.waterPollutionIncrease.ToString("0.00") + "% </color>";
                 consequences[taal] += g[taal];
             }
             else
             {
-                string[] g = { "<color=#00cc00>\nWatervervuiling verhoging per sector: ", "<color=#00cc00>\nWater pollution increase per sector: " };
+                string[] g = { "<color=#00cc00>\nJaarlijkse watervervuiling verhoging (van huidige) per geselecteerde sector: ", "<color=#00cc00>\nYearly water pollution increase (of current) per selected sector: " };
                 g[taal] += s.pollution.waterPollutionIncrease.ToString("0.00") + "% </color>";
                 consequences[taal] += g[taal];
             }
@@ -4821,13 +4820,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.naturePollutionIncrease > 0d)
             {
-                string[] h = { "<color=#FF0000>\nNatuurvervuiling verhoging per sector: ", "<color=#FF0000>\nNature pollution increase per sector: " };
+                string[] h = { "<color=#FF0000>\nJaarlijkse natuurvervuiling verhoging (van huidige) per geselecteerde sector: ", "<color=#FF0000>\nYearly nature pollution increase (of current) per selected sector: " };
                 h[taal] += "+" + s.pollution.naturePollutionIncrease.ToString("0.00") + "% </color>";
                 consequences[taal] += h[taal];
             }
             else
             {
-                string[] h = { "<color=#00cc00>\nNatuurvervuiling verhoging per sector: ", "<color=#00cc00>\nNature pollution increase per sector: " };
+                string[] h = { "<color=#00cc00>\nJaarlijkse natuurvervuiling verhoging (van huidige) per geselecteerde sector: ", "<color=#00cc00>\nYearly nature pollution increase (of current) per selected sector: " };
                 h[taal] += s.pollution.naturePollutionIncrease.ToString("0.00") + "% </color>";
                 consequences[taal] += h[taal];
             }
@@ -4840,13 +4839,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.airPollution > 0d)
             {
-                string[] f = { "<color=#FF0000>\nLuchtvervuiling per sector: ", "<color=#FF0000>\nAir pollution per sector: " };
+                string[] f = { "<color=#FF0000>\nLuchtvervuiling per geselecteerde sector: ", "<color=#FF0000>\nAir pollution per selected sector: " };
                 f[taal] += "+" + s.pollution.airPollution.ToString("0.00") + "% </color>";
                 consequences[taal] += f[taal];
             }
             else
             {
-                string[] f = { "<color=#00cc00>\nLuchtvervuiling per sector: ", "<color=#00cc00>\nAir pollution per sector: " };
+                string[] f = { "<color=#00cc00>\nLuchtvervuiling per geselecteerde sector: ", "<color=#00cc00>\nAir pollution per selected sector: " };
                 f[taal] += s.pollution.airPollution.ToString("0.00") + "% </color>";
                 consequences[taal] += f[taal];
             }
@@ -4857,14 +4856,14 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.waterPollution > 0d)
             {
-                string[] g = { "<color=#FF0000>\nWatervervuiling per sector: ", "<color=#FF0000>\nWater pollution per sector: " };
+                string[] g = { "<color=#FF0000>\nWatervervuiling per geselecteerde sector: ", "<color=#FF0000>\nWater pollution per selected sector: " };
                 g[taal] += "+" + s.pollution.waterPollution.ToString("0.00") + "% </color>";
                 consequences[taal] += g[taal];
             }
             else
             if (s.pollution.waterPollution > 0d)
             {
-                string[] g = { "<color=#00cc00>\nWatervervuiling per sector: ", "<color=#00cc00>\nWater pollution per sector: " };
+                string[] g = { "<color=#00cc00>\nWatervervuiling per geselecteerde sector: ", "<color=#00cc00>\nWater pollution per selected sector: " };
                 g[taal] += s.pollution.waterPollution.ToString("0.00") + "% </color>";
                 consequences[taal] += g[taal];
             }
@@ -4875,13 +4874,13 @@ public class UpdateUI : MonoBehaviour
         {
             if (s.pollution.naturePollution > 0d)
             {
-                string[] h = { "<color=#FF0000>\nNatuurvervuiling per sector: ", "<color=#FF0000>\nNature pollution per sector: " };
+                string[] h = { "<color=#FF0000>\nNatuurvervuiling per geselecteerde sector: ", "<color=#FF0000>\nNature pollution per selected sector: " };
                 h[taal] += "+" + s.pollution.naturePollution.ToString("0.00") + "% </color>";
                 consequences[taal] += h[taal];
             }
             else
             {
-                string[] h = { "<color=#00cc00>\nNatuurvervuiling per sector: ", "<color=#00cc00>\nNature pollution per sector: " };
+                string[] h = { "<color=#00cc00>\nNatuurvervuiling per geselecteerde sector: ", "<color=#00cc00>\nNature pollution per selected sector: " };
                 h[taal] += s.pollution.naturePollution.ToString("0.00") + "% </color>";
                 consequences[taal] += h[taal];
             }
