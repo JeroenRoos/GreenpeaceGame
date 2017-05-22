@@ -2263,6 +2263,8 @@ public class UpdateUI : MonoBehaviour
         regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
         ClearActionMenu();
+        imgActions.gameObject.SetActive(false);
+        btnActionsTab.interactable = true;
 
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
@@ -2277,6 +2279,15 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
         regioActionCost = 0;
+        txtRegionActionConsequences.text = "";
+        txtRegionActionCost.text = "";
+        txtRegionActionDuration.text = "";
+        txtRegionActionName.text = "";
+        txtRegionActionNoMoney.text = "";
+        txtRegionActionSectorTotalCostDescription.text = "";
+        txtRegionActionSectorTotalCost.text = "";
+        txtRegionColumnCenter.text = "";
+
 
 
         playSelectSound = false;
@@ -3025,7 +3036,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtMonth = { " maand", " month" };
 
         txtEventName.text = "EVENT: " + e.publicEventName[taal] + " (" + regionEvent.name[taal] + ")";
-        txtEventDescription.text = e.description[taal];
+        txtEventDescription.text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Et";//e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
         txtBtnViewConsequencesEvent.text = txtBtn2[taal];
         txtEventConsequencesChoice.text = "";
@@ -3038,9 +3049,11 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
-            radioEventOption1Text.text = e.choicesEnglish[0];
-            radioEventOption2Text.text = e.choicesEnglish[1];
-            radioEventOption3Text.text = e.choicesEnglish[2];
+            radioEventOption1Text.text = "Option 1: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Et";//e.choicesEnglish[0];
+            radioEventOption2Text.text = "Option 2: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Et";//e.choicesEnglish[0];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         //e.choicesEnglish[1];
+            radioEventOption3Text.text = "Option 3: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Et";//e.choicesEnglish[0];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         //e.choicesEnglish[2];
         }
         if (e.eventDuration[0] != 1)
             radioEventOption1Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonths[taal];
@@ -3075,7 +3088,7 @@ public class UpdateUI : MonoBehaviour
                 btnDoEvent.interactable = false;
 
 
-            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[0]);
+            txtEventConsequencesChoice.text = TempConsequences(gameEvent.pickedConsequences[0]);//getSectorStatisticsConsequences(gameEvent.pickedConsequences[0]); 
         }
         else
             radioEventOption1Check = false;
@@ -3102,7 +3115,7 @@ public class UpdateUI : MonoBehaviour
                 btnDoEvent.interactable = false;
 
 
-            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[1]);
+            txtEventConsequencesChoice.text = TempConsequences(gameEvent.pickedConsequences[1]);//getSectorStatisticsConsequences(gameEvent.pickedConsequences[1]); 
         }
         else
             radioEventOption2Check = false;
@@ -3128,7 +3141,7 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[2]);
+            txtEventConsequencesChoice.text = TempConsequences(gameEvent.pickedConsequences[2]);//getSectorStatisticsConsequences(gameEvent.pickedConsequences[2]); 
         }
         else
             radioEventOption3Check = false;
@@ -3145,6 +3158,51 @@ public class UpdateUI : MonoBehaviour
             txtEventConsequencesChoice.text = "";
         }
     }
+
+
+    private string TempConsequences(SectorStatistics s)
+    {
+        string[] consequences = { "", "" };
+
+        string[] a = { "<color=#00cc00>\nInkomen per sector: ", "<color=#00cc00>\nIncome per sector: " };
+        a[taal] += "+" + s.income + "</color>";
+        consequences[taal] += a[taal];
+
+        string[] c = { "<color=#00cc00>\nTevredenheid per sector: ", "\n<color=#00cc00>Happiness per sector: " };
+        c[taal] += "+" + s.happiness.ToString("0.00") + "% </color>";
+        consequences[taal] += c[taal];
+
+        string[] d = { "<color=#00cc00>\nMilieubewustheid per sector: ", "<color=#00cc00>\nEco awareness per sector: " };
+        d[taal] += "+" + s.ecoAwareness.ToString("0.00") + "% </color>";
+        consequences[taal] += d[taal];
+
+        string[] e = { "<color=#00cc00>\nWelvaart per sector: ", "<color=#00cc00>\nProsperity per sector: " };
+        e[taal] += "+" + s.prosperity.ToString("0.00") + "% </color>";
+        consequences[taal] += e[taal];
+
+        string[] f = { "<color=#FF0000>\nLuchtvervuiling verhoging per sector: ", "<color=#FF0000>\nAir pollution increase per sector: " };
+        f[taal] += "+" + s.pollution.airPollutionIncrease.ToString("0.00") + "% </color>";
+        consequences[taal] += f[taal];
+
+        string[] g = { "<color=#FF0000>\nWatervervuiling verhoging per sector: ", "<color=#FF0000>\nWater increase pollution per sector: " };
+        g[taal] += "+" + s.pollution.waterPollutionIncrease.ToString("0.00") + "% </color>";
+        consequences[taal] += g[taal];
+
+        string[] h = { "<color=#FF0000>\nNatuurvervuiling verhoging per sector: ", "<color=#FF0000>\nNature pollution increase per sector: " };
+        h[taal] += "+" + s.pollution.naturePollutionIncrease.ToString("0.00") + "% </color>";
+        consequences[taal] += h[taal];
+
+        string[] z = { "<color=#FF0000>\nLuchtvervuiling per sector: ", "<color=#FF0000>\nAir pollution per sector: " };
+        f[taal] += "+" + s.pollution.airPollution.ToString("0.00") + "% </color>";
+        consequences[taal] += z[taal];
+
+        string[] j = { "<color=#FF0000>\nWatervervuiling per sector: ", "<color=#FF0000>\nWater pollution per sector: " };
+        g[taal] += "+" + s.pollution.waterPollution.ToString("0.00") + "% </color>";
+        consequences[taal] += j[taal];
+
+        return consequences[taal];
+    }
+
 
     public void finishEvent()
     {
@@ -4740,7 +4798,7 @@ public class UpdateUI : MonoBehaviour
             {
                 string[] a = { "<color=#00cc00>\nInkomen per sector: ", "<color=#00cc00>\nIncome per sector: " };
                 a[taal] += "+" + s.income + "</color>";
-                            consequences[taal] += a[taal];
+                consequences[taal] += a[taal];
             }
             else
             {

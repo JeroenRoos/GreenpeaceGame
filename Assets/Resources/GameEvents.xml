@@ -16158,13 +16158,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campagne voor schoon oppervlakte water</string>
-        <string>Campagne tegen fosfaat</string>
+        <string>Voer een campagne voor schoon oppervlakte water om de hoeveelheid algen te verminderen</string>
+        <string>Voer een campagne tegen fosfaat om de hoeveelheid algen te verminderen</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign for clean surface water</string>
-        <string>Campaign against Phosphate</string>
+        <string>Campaign for clean surface water to lower the amount of algae</string>
+        <string>Campaign against Phosphate to lower the amount of algae</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -16429,17 +16429,17 @@
       </publicEventName>
       <description>
         <string>Verhoogde fosfaat concentraties hebben kroos veroorzaakt in zoet water.</string>
-        <string>high Phosphate concentrations caused duck weed in fresh water.</string>
+        <string>High Phosphate concentrations caused duck weed in fresh water.</string>
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campagne voor schoon oppervlakte water</string>
-        <string>Campagne tegen fosfaat</string>
+        <string>Voer een campagne voor schoon oppervlakte water om de hoeveelheid kroos te verminderen</string>
+        <string>Voer een campagne tegen fosfaat om de hoeveelheid kroos te verminderen</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign for clean surface water</string>
-        <string>Campaign against Phosphate</string>
+        <string>Campaign for clean surface water to lower the amount of duck weed</string>
+        <string>Campaign against Phosphate to lower the amount of duck weed</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -16708,13 +16708,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campagne tegen voedselverspililng</string>
-        <string>Boetes voor voedselverspilling uitdelen</string>
+        <string>Voer een campagne tegen voedselverspililng om de extra productie in de landbouw sector te verminderen</string>
+        <string>Boetes voor voedselverspilling uitdelen om te voorkomen dat mensen voedsel weggooien</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign against wasting food</string>
-        <string>Give fines for wasting food</string>
+        <string>Campaign against wasting food to lower the extra production in the agriculture sector</string>
+        <string>Give fines for wasting food to prevent people from throwing away food</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -16981,13 +16981,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campagne tegen luchtvervuiling</string>
-        <string>Campagne voor isoleren</string>
+        <string>Voer een campagne tegen luchtvervuiling met als doel milieubewuster te laten leven</string>
+        <string>Voer een campagne voor isoleren om onnodige luchtvervuiling tegen te gaan</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign against air pollution</string>
-        <string>Campaign for isolation</string>
+        <string>Campaign against air pollution with the aim to make sure people live eco friendly</string>
+        <string>Campaign for isolation with the aim to lower unnecessary air pollution</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -17254,13 +17254,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campagne voor duurzame landbouw</string>
-        <string>Dwingen mileuvriendelijk te werken</string>
+        <string>Campagne voor duurzame productie bij de landbouw sector</string>
+        <string>Dwingen de landbouw sector om mileuvriendelijk te werken</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign for sustainable agriculture</string>
-        <string>Force the farmers to work eco friendly</string>
+        <string>Campaign for sustainable production in the agriculture sector</string>
+        <string>Force the agriculture sector to work eco friendly</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -17527,13 +17527,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Campagne voor duurzame productie</string>
-        <string>Dwingen mileuvriendelijk te werken</string>
+        <string>Doe een campagne voor duurzame productie bij de bedrijven sector</string>
+        <string>Dwingen de bedrijven sector om mileuvriendelijk te werken</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Campaign for sustainable production</string>
-        <string>Force the farmers to work eco friendly</string>
+        <string>Campaign for sustainable production in the companies sector</string>
+        <string>Force the companies sector to work eco friendly</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
