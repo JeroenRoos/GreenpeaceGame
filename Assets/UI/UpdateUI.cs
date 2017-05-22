@@ -2363,21 +2363,17 @@ public class UpdateUI : MonoBehaviour
 
     private void updateSectorColorValues(SectorStatistics s)
     {
-        //iconController(imgIncomeRegion, txtRegionMoney, regio.statistics.income);
-        iconController(imgHappinessRegion, txtRegionHappinessDescription ,txtRegionHappiness, /*regio.statistics.*/s.happiness);
-        iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, /*regio.statistics.*/s.ecoAwareness);
-        iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, /*regio.statistics.*/s.pollution.avgPollution);
-        iconController(imgPollutionAirRegion, txtRegionAirDescription, txtRegionPollutionAir, /*regio.statistics.*/s.pollution.airPollution);
-        iconController(imgPollutionWaterRegion, txtRegionWaterDescription, txtRegionPollutionWater, /*regio.statistics.*/s.pollution.waterPollution);
-        iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, /*regio.statistics.*/s.pollution.naturePollution);
-        iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, /*regio.statistics.*/s.prosperity);
+        iconController(imgHappinessRegion, txtRegionHappinessDescription ,txtRegionHappiness, s.happiness);
+        iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, s.ecoAwareness);
+        iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, s.pollution.avgPollution);
+        iconController(imgPollutionAirRegion, txtRegionAirDescription, txtRegionPollutionAir, s.pollution.airPollution);
+        iconController(imgPollutionWaterRegion, txtRegionWaterDescription, txtRegionPollutionWater, s.pollution.waterPollution);
+        iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, s.pollution.naturePollution);
+        iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, s.prosperity);
 
-        iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, /*regio.statistics.*/s.pollution.airPollutionIncrease);
-        iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, /*regio.statistics.*/s.pollution.naturePollutionIncrease);
-        iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, /*regio.statistics.*/s.pollution.waterPollutionIncrease);
-        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 5);
-        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, -10);//regio.statistics.avgWaterPollutionIncrease);
-        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 10);
+        iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, s.pollution.airPollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, s.pollution.naturePollutionIncrease);
+        iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, s.pollution.waterPollutionIncrease);
     }
 
     void iconController(RawImage img, Text description, Text txt, double value)
@@ -2421,24 +2417,6 @@ public class UpdateUI : MonoBehaviour
         img.color = lerpColor;
     }
 
-    /*private double recalculateValue(double value)
-    {
-        double colorValue;
-        if (value > 0d)
-        {
-            Debug.Log(" + " + value);
-            colorValue = value * 10;
-            Debug.Log(" + " + colorValue);
-        }
-        else
-        {
-            Debug.Log(" - " + value);
-            colorValue = ((value + value * -2) * 10) / 2;
-            Debug.Log(" - " + colorValue);
-        }
-
-        return colorValue;
-    } */
     public void btnAverageTabClick()
     {
         btnAverageTab.interactable = false;
