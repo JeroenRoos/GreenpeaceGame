@@ -8,10 +8,16 @@ using System.IO;
 
 public class OpenScene : MonoBehaviour
 {
+    public Texture2D buttonTexture;
+    private GUIStyle buttonStyle = new GUIStyle();
+    public Button btnPosition;
+    public Text txtNoRooms;
+
     public Text txtButtonNewGame;
     public Text txtButtonLoadGame;
     public Text txtButtonQuit;
     public Text txtButtonOptions;
+    public Text txtButtonMultiplayer;
 
     public Button btnLoad;
     private int taal;
@@ -19,6 +25,7 @@ public class OpenScene : MonoBehaviour
     private float valueSFX;
 
     public Canvas canvasHomeScreen;
+    public Canvas canvasMultiplayerScreen;
 
     // Settings 
     public Canvas canvasSettings;
@@ -49,6 +56,7 @@ public class OpenScene : MonoBehaviour
         getPlayerPrefs();
         initUI();
         initText();
+        initGuiStyle();
 
         var path = Application.persistentDataPath + "/Savestate.gd";
         if (File.Exists(path))
@@ -92,10 +100,12 @@ public class OpenScene : MonoBehaviour
     private void initUI()
     {
         canvasHomeScreen.GetComponent<Canvas>();
-        //canvasHomeScreen.gameObject.SetActive(true);
 
         canvasSettings.GetComponent<Canvas>();
         canvasSettings.gameObject.SetActive(false);
+
+        canvasMultiplayerScreen.GetComponent<Canvas>();
+        canvasMultiplayerScreen.gameObject.SetActive(false);
     }
 
     private void initText()
@@ -104,11 +114,22 @@ public class OpenScene : MonoBehaviour
         string[] txtQuit = { "Spel verlaten", "Quit" };
         string[] txtLoadGame = { "Spel laden", "Load game" };
         string[] txtNewGame = { "Nieuw spel", "New Game" };
+        string txtMultiplayer = "Multiplayer";
 
         txtButtonLoadGame.text = txtLoadGame[taal];
         txtButtonNewGame.text = txtNewGame[taal];
         txtButtonQuit.text = txtQuit[taal];
         txtButtonOptions.text = txtOptions[taal];
+        txtButtonMultiplayer.text = txtMultiplayer;
+    }
+
+    private void initGuiStyle()
+    {
+        buttonStyle.normal.background = buttonTexture;
+        buttonStyle.alignment = TextAnchor.MiddleCenter;
+        Color c = new Color();
+        ColorUtility.TryParseHtmlString("#ccac6f", out c);
+        buttonStyle.normal.textColor = c;
     }
 
     public void loadSceneByIndex(int index)
@@ -149,7 +170,6 @@ public class OpenScene : MonoBehaviour
         string[] language = { "Verander taal", "Change language" };
         string[] dutch = { "Nederlands", "Dutch" };
         string[] english = { "Engels", "English" };
-
 
         txtButtonSettingsBack.text = back[taal];
         txtMusicVolume.text = music[taal];
@@ -247,4 +267,59 @@ public class OpenScene : MonoBehaviour
         PlayerPrefs.SetFloat("savedMusicVolume", valueMusic);
         PlayerPrefs.Save();
     }
+
+    public void buttonMultiplayerOnClick()
+    {
+        EventManager.CallPlayButtonClickSFX();
+        //canvasHomeScreen.gameObject.SetActive(false);
+        canvasMultiplayerScreen.gameObject.SetActive(true);
+        initMultiplayerText();
+    }
+
+    private void initMultiplayerText()
+    {
+        
+    }
+
+    void OnGUI()
+    {
+        if (canvasMultiplayerScreen.gameObject.activeSelf)
+        {
+            Debug.Log("Multiplayer Canvas Active");
+
+            RoomInfo[] lstRooms = PhotonNetwork.GetRoomList();
+
+            if (lstRooms.Length != 0)
+            {
+                txtNoRooms.gameObject.SetActive(false);
+                Debug.Log("Rooms Available");
+
+                foreach (RoomInfo game in lstRooms)
+                {
+                    float yOffset = 0f;
+
+                    RectTransform rectPosition = btnPosition.GetComponent<RectTransform>();
+                    Vector3 btnPos = btnPosition.transform.position;
+                    float screenHeight = Screen.height;
+
+                    float x = btnPos.x;
+                    float y = btnPos.z + (screenHeight / 3);
+
+                    if (GUI.Button(new Rect(0, 0 + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + "/" + game.MaxPlayers, buttonStyle))
+                    {
+                        PhotonNetwork.JoinRoom(game.Name);
+                        yOffset += 35;
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("No Rooms Available");
+                txtNoRooms.gameObject.SetActive(true);
+                string[] txt = { "Er zijn op het moment geen rooms beschikbaar", "There are no rooms available at this moment" };
+                txtNoRooms.text = txt[taal];
+            }
+        }
+    }
 }
+
