@@ -3049,15 +3049,15 @@ public class UpdateUI : MonoBehaviour
 
         if (ApplicationModel.language == 0)
         {
-            radioEventOption1Text.text = e.choicesDutch[0];
-            radioEventOption2Text.text = e.choicesDutch[1];
-            radioEventOption3Text.text = e.choicesDutch[2];
+            radioEventOption1Text.text = "<b>" + e.choicesDutch[0] + "</b>";
+            radioEventOption2Text.text = "<b>" + e.choicesDutch[1] + "</b>"; 
+            radioEventOption3Text.text = "<b>" + e.choicesDutch[2] + "</b>"; 
         }
         else
         {
-            radioEventOption1Text.text = e.choicesEnglish[0];
-            radioEventOption2Text.text = e.choicesEnglish[1];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-            radioEventOption3Text.text = e.choicesEnglish[2];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            radioEventOption1Text.text = "<b>" + e.choicesEnglish[0] + "</b>";
+            radioEventOption2Text.text = "<b>" + e.choicesEnglish[1] + "</b>";
+            radioEventOption3Text.text = "<b>" + e.choicesEnglish[2] + "</b>";
         }
 
         if (e.eventDuration[0] != 1)
