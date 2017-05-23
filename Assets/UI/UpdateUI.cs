@@ -4754,6 +4754,20 @@ public class UpdateUI : MonoBehaviour
         string[] consequences = {"", "" };
         if (s.income != 0d)
         {
+            /*
+            if (s.income > 0d)
+            {
+                string[] a = { "<color=#00cc00>\nInkomen per geselecteerde sector <b>↑</b></color>", "<color=#00cc00>\nIncome per selected sector <b>↑</b></color>" };
+                //a[taal] += "+" + s.income + "</color>";
+                consequences[taal] += a[taal];
+            }
+            else
+            {
+                string[] a = { "<color=#FF0000>\nInkomen per geselecteerde sector <b>↓</b></color>", "<color=#FF0000>\nIncome per selected sector <b>↓</b></color>" };
+                a[taal] += s.income + "</color>";
+                consequences[taal] += a[taal];
+            }
+            */
             if (s.income > 0d)
             {
                 string[] a = { "<color=#00cc00>\nInkomen per geselecteerde sector: ", "<color=#00cc00>\nIncome per selected sector: " };
