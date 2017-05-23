@@ -1989,6 +1989,20 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 328177335}
+    - target: {fileID: 1246809112377062, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114003407350557556, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114436069970448578, guid: 3d71e1eaef058424d829b4fe4dbda806,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d71e1eaef058424d829b4fe4dbda806, type: 2}
   m_IsPrefabParent: 0
@@ -3061,6 +3075,51 @@ Prefab:
       objectReference: {fileID: 100209248}
     - target: {fileID: 1161663468392044, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301465957437138, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974702129760318, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050327361612964, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346799609058238, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114700768385402760, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050327361612964, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114700768385402760, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346799609058238, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301465957437138, guid: 0625edd65df13ea4181604a023a2d2b7,
+        type: 2}
+      propertyPath: m_FontData.m_FontStyle
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
