@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &82282440 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114568190117717872, guid: 3d71e1eaef058424d829b4fe4dbda806,
+  m_PrefabParentObject: {fileID: 114970071732417754, guid: 3d71e1eaef058424d829b4fe4dbda806,
     type: 2}
   m_PrefabInternal: {fileID: 604056908}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -2000,7 +2000,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &618675196 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114058749278568582, guid: 3d71e1eaef058424d829b4fe4dbda806,
+  m_PrefabParentObject: {fileID: 114153818052535172, guid: 3d71e1eaef058424d829b4fe4dbda806,
     type: 2}
   m_PrefabInternal: {fileID: 604056908}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -3770,6 +3770,11 @@ Prefab:
       objectReference: {fileID: 1593113452}
     - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
         type: 2}
+      propertyPath: txtEventConsequencesChoice
+      value: 
+      objectReference: {fileID: 1400746137}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
       propertyPath: btnViewConsequencesEvent
       value: 
       objectReference: {fileID: 1423350857}
@@ -4203,6 +4208,56 @@ Prefab:
       propertyPath: txtAdviserPollution
       value: 
       objectReference: {fileID: 1874111203}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtRegionAvailableMoney
+      value: 
+      objectReference: {fileID: 1594937304}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtRegionAvailableMoneyDescription
+      value: 
+      objectReference: {fileID: 1924278575}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtbtnAverageTab
+      value: 
+      objectReference: {fileID: 1259237815}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtbtnHouseholdsTab
+      value: 
+      objectReference: {fileID: 1309858277}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtbtnAgriculureTab
+      value: 
+      objectReference: {fileID: 837473668}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtbtnCompaniesTab
+      value: 
+      objectReference: {fileID: 1126244311}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: btnAverageTab
+      value: 
+      objectReference: {fileID: 2075254366}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: btnHouseholdsTab
+      value: 
+      objectReference: {fileID: 749725545}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: btnAgriculureTab
+      value: 
+      objectReference: {fileID: 84320547}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: btnCompaniesTab
+      value: 
+      objectReference: {fileID: 312350768}
     - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
         type: 2}
       propertyPath: btnHistoryTab
@@ -4998,51 +5053,6 @@ Prefab:
       propertyPath: imgHighlightInvestements
       value: 
       objectReference: {fileID: 1084589745}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: btnHouseholdsTab
-      value: 
-      objectReference: {fileID: 749725545}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: btnAgriculureTab
-      value: 
-      objectReference: {fileID: 84320547}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: btnCompaniesTab
-      value: 
-      objectReference: {fileID: 312350768}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: btnAverageTab
-      value: 
-      objectReference: {fileID: 2075254366}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: txtbtnAverageTab
-      value: 
-      objectReference: {fileID: 1259237815}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: txtbtnHouseholdsTab
-      value: 
-      objectReference: {fileID: 1309858277}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: txtbtnAgriculureTab
-      value: 
-      objectReference: {fileID: 837473668}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: txtbtnCompaniesTab
-      value: 
-      objectReference: {fileID: 1126244311}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: txtEventConsequencesChoice
-      value: 
-      objectReference: {fileID: 1400746137}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6abd92b8b8abe346944c61f1ea190c5, type: 2}
   m_IsPrefabParent: 0
@@ -5820,6 +5830,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 114104079702512840, guid: 58c99aa4357b50546b2cd6b6a8019444,
     type: 2}
   m_PrefabInternal: {fileID: 854949982}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1594937304 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114058749278568582, guid: 3d71e1eaef058424d829b4fe4dbda806,
+    type: 2}
+  m_PrefabInternal: {fileID: 604056908}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1603552186 stripped
 MonoBehaviour:
@@ -6611,6 +6627,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 604056908}
   m_Script: {fileID: 853051423, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1924278575 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114568190117717872, guid: 3d71e1eaef058424d829b4fe4dbda806,
+    type: 2}
+  m_PrefabInternal: {fileID: 604056908}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1924522223 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114822090162417714, guid: d1e0d3d404ed47d4985fa4ca5acd7061,

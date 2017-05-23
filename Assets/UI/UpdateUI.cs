@@ -264,6 +264,8 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtRegionAvailableMoney;
+    public Text txtRegionAvailableMoneyDescription;
     public Text txtbtnAverageTab;
     public Text txtbtnHouseholdsTab;
     public Text txtbtnAgriculureTab;
@@ -2012,6 +2014,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtHappiness = { "Tevredenheid", "Happiness" };
         string[] txtEcoAwareness = { "Milieubewustheid", "Eco awareness" };
         string[] txtIncome = { "Inkomen", "Income" };
+        string[] txtAvailableIncome = { "Besteedbaar inkomen", "Available Money" };
         string[] txtPollution = { "Vervuiling", "Pollution" };
         string[] txtAir = { "Luchtvervuiling", "Air pollution" };
         string[] txtNature = { "Natuurvervuiling", "Nature pollution" };
@@ -2042,6 +2045,7 @@ public class UpdateUI : MonoBehaviour
         txtbtnCompaniesTab.text = txtCompaniesTab[taal];
         txtbtnAgriculureTab.text = txtAgricultureTab[taal];
 
+        txtRegionAvailableMoneyDescription.text = txtAvailableIncome[taal];
         txtRegionHappinessDescription.text = txtHappiness[taal];
         txtRegionEcoAwarenessDescription.text = txtEcoAwareness[taal];
         txtRegionIncomeDescription.text = txtIncome[taal];
@@ -2070,7 +2074,8 @@ public class UpdateUI : MonoBehaviour
     private void updateRegionTextValues()
     {
         txtRegionName.text = regio.name[taal];
-        txtRegionMoney.text = regio.statistics.income.ToString("0");
+        txtRegionAvailableMoney.text = game.gameStatistics.money.ToString("0") + " money";
+        txtRegionMoney.text = regio.statistics.income.ToString("0") + " money";
         txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0.00") + "%";
         txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
@@ -2267,6 +2272,8 @@ public class UpdateUI : MonoBehaviour
 
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
+
+        txtRegionAvailableMoney.text = game.gameStatistics.money.ToString("0") + " money"; 
 
         //updateRegionTextValues();
     }
@@ -2476,7 +2483,7 @@ public class UpdateUI : MonoBehaviour
         updateSectorColorValues(s.statistics);
         txtRegionColumnLeft.text = s.sectorName[taal];
 
-        txtRegionMoney.text = s.statistics.income.ToString("0");
+        txtRegionMoney.text = s.statistics.income.ToString("0") + " money";
         txtRegionHappiness.text = s.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = s.statistics.ecoAwareness.ToString("0.00") + "%";
         txtRegionProsperity.text = s.statistics.prosperity.ToString("0.00") + "%";
