@@ -88,7 +88,7 @@ public class GameEvent
         lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown + temporaryConsequencesDuration[pickedChoiceNumber];
     }
 
-    public void SetPickedChoice(int i, Game game, Region region)
+    public void SetPickedChoice(int i, Game game, MapRegion region)
     {
         pickedChoiceNumber = i;
         pickedChoiceStartYear = game.currentYear;

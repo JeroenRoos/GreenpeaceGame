@@ -9,7 +9,7 @@ public class EventObjectController : MonoBehaviour
 
     public GameController gameController;
     public GameEvent eventModel;
-    public Region regionModel;
+    public MapRegion regionModel;
     public Texture[] allTextures;
     private UpdateUI updateUI;
 
@@ -64,7 +64,7 @@ public class EventObjectController : MonoBehaviour
             transform.localScale.z / (float)1.2);
     }
 
-    public void PlaceEventIcons(GameController gameController, Region regionModel, GameEvent eventModel)
+    public void PlaceEventIcons(GameController gameController, MapRegion regionModel, GameEvent eventModel)
     {
         /* Event Positions in XML file
          * Noord Nederland: 15 - 1 - 20

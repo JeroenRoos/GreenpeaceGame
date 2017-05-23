@@ -11,11 +11,11 @@ using System.IO;
 public class RegionContainer
 {
     [XmlArray("Regions"), XmlArrayItem("Region")]
-    public List<Region> regions { get; private set; }
+    public List<MapRegion> regions { get; private set; }
 
     public RegionContainer() { }
 
-    public RegionContainer(List<Region> regions)
+    public RegionContainer(List<MapRegion> regions)
     {
         this.regions = regions;
     }

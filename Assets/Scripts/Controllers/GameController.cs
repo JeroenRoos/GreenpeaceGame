@@ -95,7 +95,7 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(showBuildingIcons());
 
-        foreach (Region r in game.regions)
+        foreach (MapRegion r in game.regions)
         {
             foreach (GameEvent e in r.inProgressGameEvents)
             {
@@ -352,7 +352,7 @@ public class GameController : MonoBehaviour
 
     public void LoadRegionActions()
     {
-        foreach (Region region in game.regions)
+        foreach (MapRegion region in game.regions)
         {
             RegionActionContainer regionActionContainer = RegionActionContainer.Load();
             region.LoadActions(regionActionContainer.actions);
@@ -368,7 +368,7 @@ public class GameController : MonoBehaviour
 
     public void LoadBuildings()
     {
-        foreach (Region region in game.regions)
+        foreach (MapRegion region in game.regions)
         {
             BuildingContainer buildingContainer = BuildingContainer.Load();
             region.LoadBuildings(buildingContainer.buildings);
@@ -465,7 +465,7 @@ public class GameController : MonoBehaviour
     public void IncreaseYearlyPollutionChange()
     {
         double changeValue = 0.4 + 0.1 * game.currentYear;
-        foreach (Region r in game.regions)
+        foreach (MapRegion r in game.regions)
         {
             foreach (RegionSector rs in r.sectors)
             {
@@ -663,7 +663,7 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-                    foreach (Region r in game.regions)
+                    foreach (MapRegion r in game.regions)
                     {
                         //find quest region
                         if (r.name[0] == quest.questLocation)
@@ -698,7 +698,7 @@ public class GameController : MonoBehaviour
 
     private void UpdateRegionActionAvailability()
     {
-        foreach (Region r in game.regions)
+        foreach (MapRegion r in game.regions)
         {
             foreach (RegionAction ra in r.actions)
                 ra.GetAvailableActions(game, r.statistics);
@@ -728,7 +728,7 @@ public class GameController : MonoBehaviour
         {
             if (game.PossibleEventCount() > 0 && game.GetPossibleRegionsCount() > 0)
             {
-                Region pickedRegion = game.PickEventRegion();
+                MapRegion pickedRegion = game.PickEventRegion();
                 GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
                 SetEventConsequences(pickedEvent);
                 pickedEvent.StartEvent(game.currentYear, game.currentMonth);
@@ -765,7 +765,7 @@ public class GameController : MonoBehaviour
     {
         game.gameStatistics.UpdateRegionalAvgs(game);
 
-        foreach (Region region in game.regions)
+        foreach (MapRegion region in game.regions)
         {
             double pollutionDifference = game.gameStatistics.pollution - region.statistics.avgPollution;
             double pollutionChangeValue = pollutionDifference * 0.3 / 12;
@@ -910,7 +910,7 @@ public class GameController : MonoBehaviour
                 break;
         }
 
-        Region regionModel = game.regions[pickedRegion];
+        MapRegion regionModel = game.regions[pickedRegion];
         updateUI.regionClick(regionModel);
     }
 
@@ -938,7 +938,7 @@ public class GameController : MonoBehaviour
 
     public void btnUseBuildingPress()
     {
-        Region r = updateUI.regionToBeBuild;
+        MapRegion r = updateUI.regionToBeBuild;
         Building b = updateUI.buildingToBeBuild;
 
         r.SetBuilding(b.buildingID);
@@ -975,7 +975,7 @@ public class GameController : MonoBehaviour
         buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);*/
 
 
-        Region r = updateUI.buildingRegion;
+        MapRegion r = updateUI.buildingRegion;
         Building b = updateUI.activeBuilding;
 
         r.SetBuilding(null);

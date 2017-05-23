@@ -33,9 +33,9 @@ public class ProgressReport
         completedEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
     }
 
-    public void UpdateStatistics(List<Region> regions)
+    public void UpdateStatistics(List<MapRegion> regions)
     {
-        foreach (Region region in regions)
+        foreach (MapRegion region in regions)
         {
             for (int i = 0; i < reportRegions.Length; i++)
             {
@@ -55,7 +55,7 @@ public class ProgressReport
         }
     }
 
-    public void AddCompletedAction(Region region, RegionAction action)
+    public void AddCompletedAction(MapRegion region, RegionAction action)
     {
         for (int i = 0; i < reportRegions.Length; i++)
         {
@@ -67,7 +67,7 @@ public class ProgressReport
         }
     }
 
-    public void AddNewGameEvent(Region region, GameEvent gameEvent)
+    public void AddNewGameEvent(MapRegion region, GameEvent gameEvent)
     {
         for (int i = 0; i < reportRegions.Length; i++)
         {
@@ -79,7 +79,7 @@ public class ProgressReport
         }
     }
 
-    public void AddCompletedGameEvent(Region region, GameEvent gameEvent)
+    public void AddCompletedGameEvent(MapRegion region, GameEvent gameEvent)
     {
         for (int i = 0; i < reportRegions.Length; i++)
         {
