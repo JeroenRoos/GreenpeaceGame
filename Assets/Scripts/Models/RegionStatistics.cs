@@ -28,7 +28,7 @@ public class RegionStatistics
     {
     }
 
-    public void UpdateSectorAvgs(Region region)
+    public void UpdateSectorAvgs(MapRegion region)
     {
         income = 0;
         happiness = 0;

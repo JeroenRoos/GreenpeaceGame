@@ -110,7 +110,7 @@ public class TestBot : MonoBehaviour
 
             showStatistics();
 
-            foreach (Region region in gameController.game.regions)
+            foreach (MapRegion region in gameController.game.regions)
             {
                 DoEvents(region);
 
@@ -138,7 +138,7 @@ public class TestBot : MonoBehaviour
     }
 
     //do events based on most expensive choice
-    private void DoEvents(Region region)
+    private void DoEvents(MapRegion region)
     {
         foreach (GameEvent gameEvent in region.inProgressGameEvents)
         {
@@ -159,7 +159,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    private bool CheckIfActionAvailable(Region region)
+    private bool CheckIfActionAvailable(MapRegion region)
     {
         foreach (RegionAction a in region.actions)
         {
@@ -179,7 +179,7 @@ public class TestBot : MonoBehaviour
             getNationalStats();
     }
 
-    private void RandomPlaystyle(Region region)
+    private void RandomPlaystyle(MapRegion region)
     {
         int currentMonth = gameController.game.currentYear * 12 + gameController.game.currentMonth;
         List<RegionAction> tempList = new List<RegionAction>();
@@ -198,7 +198,7 @@ public class TestBot : MonoBehaviour
             doAction(region, tempList[gameController.game.rnd.Next(0, tempList.Count)]);
     }
 
-    private void IncomePlaystyle(Region region)
+    private void IncomePlaystyle(MapRegion region)
     {
         bool actionStarted = false;
 
@@ -228,7 +228,7 @@ public class TestBot : MonoBehaviour
             actionStarted = getHighestMoneyAction(region);
     }
 
-    private void PollutionPlaystyle(Region region)
+    private void PollutionPlaystyle(MapRegion region)
     {
         bool actionStarted = false;
 
@@ -260,7 +260,7 @@ public class TestBot : MonoBehaviour
             actionStarted = getHighestMoneyAction(region);
     }
 
-    private bool getHighestMoneyAction(Region region)
+    private bool getHighestMoneyAction(MapRegion region)
     {
         int highestMoneyIndex = 0;
         bool actionFound = false;
@@ -284,7 +284,7 @@ public class TestBot : MonoBehaviour
         return actionFound;
     }
 
-    private bool getHighestIncomeConsequenceAction(Region region)
+    private bool getHighestIncomeConsequenceAction(MapRegion region)
     {
         int highestIncomeIndex = 0;
         bool actionFound = false;
@@ -308,7 +308,7 @@ public class TestBot : MonoBehaviour
         return actionFound;
     }
 
-    private bool getHighestProsperityConsequenceAction(Region region)
+    private bool getHighestProsperityConsequenceAction(MapRegion region)
     {
         int highestProsperityIndex = 0;
         bool actionFound = false;
@@ -332,7 +332,7 @@ public class TestBot : MonoBehaviour
         return actionFound;
     }
     
-    private bool getHighestEcoAwarenessConsequenceAction(Region region)
+    private bool getHighestEcoAwarenessConsequenceAction(MapRegion region)
     {
         int highestEcoAwarenessIndex = 0;
         bool actionFound = false;
@@ -356,7 +356,7 @@ public class TestBot : MonoBehaviour
         return actionFound;
     }
 
-    private bool getHighestHappinessConsequencesAction(Region region)
+    private bool getHighestHappinessConsequencesAction(MapRegion region)
     {
         int highestHappinessIndex = 0;
         bool actionFound = false;
@@ -381,7 +381,7 @@ public class TestBot : MonoBehaviour
     }
 
     // Calculate 
-    private bool getLowestPollutionConsequenceAction(Region region)
+    private bool getLowestPollutionConsequenceAction(MapRegion region)
     {
         int hightestIndex = 0;
         double tempPollutionSum = 0;
@@ -425,7 +425,7 @@ public class TestBot : MonoBehaviour
         return actionFound;
     }
 
-    private void doAction(Region region, RegionAction ra)
+    private void doAction(MapRegion region, RegionAction ra)
     {
         Debug.Log("NEW ACTION: " + ra.description[0] + " in Regio: " + region.name[0]);
         region.StartAction(ra, gameController.game, new bool[] { true, true, true });
@@ -464,7 +464,7 @@ public class TestBot : MonoBehaviour
     }
 
 
-    void doChosenOption(Region region, GameEvent gameEvent, int chosenOption)
+    void doChosenOption(MapRegion region, GameEvent gameEvent, int chosenOption)
     {
         Debug.Log("EVENT Gekozen optie: (" + chosenOption + ") - " + gameEvent.choicesDutch[chosenOption] + " bij EVENT: " + gameEvent.name);
         Debug.Log("Duur van gekozen optie: " + gameEvent.eventDuration[chosenOption]);
@@ -527,7 +527,7 @@ public class TestBot : MonoBehaviour
     private void getRegionalStats()
     {
         int i = 0;
-        foreach (Region region in gameController.game.regions)
+        foreach (MapRegion region in gameController.game.regions)
         {
             string[] arrMonths = new string[12]
                 { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
@@ -543,7 +543,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    private void getRegionalMainStats(Region region, int i)
+    private void getRegionalMainStats(MapRegion region, int i)
     {
         if (regionalIncome[i] != region.statistics.income)
         {
@@ -567,7 +567,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    private void getRegionalPollution(Region region, int i)
+    private void getRegionalPollution(MapRegion region, int i)
     {
         if (regionalAvgPollution[i] != region.statistics.avgPollution)
         {
@@ -606,7 +606,7 @@ public class TestBot : MonoBehaviour
         }
     }
 
-    private void getSectorStats(Region region, int i)
+    private void getSectorStats(MapRegion region, int i)
     {
         int j = 0;
         foreach (RegionSector sector in region.sectors)

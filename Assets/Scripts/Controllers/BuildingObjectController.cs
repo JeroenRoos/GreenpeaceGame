@@ -9,7 +9,7 @@ public class BuildingObjectController : MonoBehaviour
 {
     public GameController gameController;
     public Building building;
-    public Region region;
+    public MapRegion region;
     public Texture[] buildingTextures;
     private UpdateUI updateUI;
 
@@ -60,7 +60,7 @@ public class BuildingObjectController : MonoBehaviour
             transform.localScale.z / (float)1.2);
     }*/
 
-    public void placeBuildingIcon(GameController gameController, Region region, Building building)
+    public void placeBuildingIcon(GameController gameController, MapRegion region, Building building)
     {
 
         /* Event Positions in XML file

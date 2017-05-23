@@ -18,7 +18,7 @@ public class Game
     public int currentMonth { get; private set; }
 
     //0,1,2,3: Noord,Oost,West,Zuid
-    public List<Region> regions { get; private set; }
+    public List<MapRegion> regions { get; private set; }
 
     //game elements
     public List<GameEvent> events { get; private set; }
@@ -57,7 +57,7 @@ public class Game
         //language = 0;
         rnd = new System.Random();
         events = new List<GameEvent>();
-        regions = new List<Region>();
+        regions = new List<MapRegion>();
         actions = new List<RegionAction>();
         quests = new List<Quest>();
         monthlyReport = new ProgressReport();
@@ -85,7 +85,7 @@ public class Game
         totalTimePlayed = 0;
     }
 
-    public void LoadRegions(List<Region> regions)
+    public void LoadRegions(List<MapRegion> regions)
     {
         this.regions = regions;
     }
@@ -140,7 +140,7 @@ public class Game
         double monthlyPopulation = GetMonthlyPopulation();
         gameStatistics.ModifyPopulation(monthlyPopulation);
 
-        foreach (Region region in regions)
+        foreach (MapRegion region in regions)
         {
             foreach (RegionSector sector in region.sectors)
             {
@@ -154,7 +154,7 @@ public class Game
     {
         double income = 0;
 
-        foreach (Region region in regions)
+        foreach (MapRegion region in regions)
         {
             foreach (RegionSector sector in region.sectors)
             {
@@ -172,7 +172,7 @@ public class Game
 
     public void CompletefinishedActions()
     {
-        foreach (Region region in regions)
+        foreach (MapRegion region in regions)
         {
             foreach (RegionAction action in region.actions)
             {
@@ -196,18 +196,18 @@ public class Game
         }
     }
 
-    public void AddCompletedActionToReports(Region region, RegionAction action)
+    public void AddCompletedActionToReports(MapRegion region, RegionAction action)
     {
         monthlyReport.AddCompletedAction(region, action);
         yearlyReport.AddCompletedAction(region, action);
     }
 
-    public void AddNewEventToMonthlyReport(Region region, GameEvent gameEvent)
+    public void AddNewEventToMonthlyReport(MapRegion region, GameEvent gameEvent)
     {
         monthlyReport.AddNewGameEvent(region, gameEvent);
     }
 
-    public void AddCompletedEventToReports(Region region, GameEvent gameEvent)
+    public void AddCompletedEventToReports(MapRegion region, GameEvent gameEvent)
     {
         monthlyReport.AddCompletedGameEvent(region, gameEvent);
         yearlyReport.AddCompletedGameEvent(region, gameEvent);
@@ -216,7 +216,7 @@ public class Game
 
     public void UpdateRegionEvents()
     {
-        foreach (Region region in regions)
+        foreach (MapRegion region in regions)
         {
             region.UpdateEvents(this);
         }
@@ -245,7 +245,7 @@ public class Game
         return possibleEventCount;
     }
 
-    public GameEvent GetPickedEvent(Region region)
+    public GameEvent GetPickedEvent(MapRegion region)
     {
         List<GameEvent> possibleEvents = new List<GameEvent>();
         foreach (GameEvent gameEvent in events)
@@ -270,7 +270,7 @@ public class Game
     {
         int possibleRegionsCount = 0;
 
-        foreach (Region region in regions)
+        foreach (MapRegion region in regions)
         {
             bool isPossible = true;
             foreach (GameEvent gameEvent in region.inProgressGameEvents)
@@ -287,10 +287,10 @@ public class Game
         return possibleRegionsCount;
     }
 
-    public Region PickEventRegion()
+    public MapRegion PickEventRegion()
     {
-        List<Region> possibleRegions = new List<Region>();
-        foreach (Region region in regions)
+        List<MapRegion> possibleRegions = new List<MapRegion>();
+        foreach (MapRegion region in regions)
         {
             bool isPossible = true;
             foreach (GameEvent gameEvent in region.inProgressGameEvents)

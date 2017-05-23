@@ -25,14 +25,14 @@ public class Investments
         investmentCost = 10000;
     }
 
-    public void InvestInActionCostReduction(List<Region> regions)
+    public void InvestInActionCostReduction(List<MapRegion> regions)
     {
         for (int i = 0; i < actionCostReduction.Length; i++)
         {
             if (!actionCostReduction[i])
             {
                 actionCostReduction[i] = true;
-                foreach (Region region in regions)
+                foreach (MapRegion region in regions)
                 {
                     foreach (RegionAction ra in region.actions)
                     {
@@ -44,14 +44,14 @@ public class Investments
         }
     }
 
-    public void InvestInBetterActionConsequences(List<Region> regions)
+    public void InvestInBetterActionConsequences(List<MapRegion> regions)
     {
         for (int i = 0; i < betterActionConsequences.Length; i++)
         {
             if (!betterActionConsequences[i])
             {
                 betterActionConsequences[i] = true;
-                foreach (Region region in regions)
+                foreach (MapRegion region in regions)
                 {
                     foreach (RegionAction ra in region.actions)
                     {

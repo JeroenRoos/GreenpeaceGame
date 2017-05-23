@@ -18,7 +18,7 @@ public class UpdateUI : MonoBehaviour
     private GUIStyle buttonStyle = new GUIStyle();
     BuildingObjectController buildingObjectController;
 
-    Region regio;
+    MapRegion regio;
     RegionAction regioAction;
     Card card;
     double regioActionCost;
@@ -112,7 +112,7 @@ public class UpdateUI : MonoBehaviour
 
     // Buildings Popup
     public Building activeBuilding;
-    public Region buildingRegion;
+    public MapRegion buildingRegion;
     public Text txtBuildingsTitle;
     public Text txtBuildingsColumn;
     public Text txtBuildingsStats;
@@ -129,7 +129,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtEmptyBuildingInfo;
     public Text txtEmptyBuildingStats;
     public Building buildingToBeBuild;
-    public Region regionToBeBuild;
+    public MapRegion regionToBeBuild;
 
     // Timeline Popup
     public Text txtTimelineTitle;
@@ -148,7 +148,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtEventConsequences;
     public Text txtEventConsequencesTitle;
     public GameEvent gameEvent;
-    public Region regionEvent;
+    public MapRegion regionEvent;
     public Text txtEventName;
     public Text txtEventDescription;
     public Toggle radioEventOption1;
@@ -1781,7 +1781,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for Organization Popup
     public void updateOrganizationScreenUI()
     {
-        foreach (Region region in game.regions)
+        foreach (MapRegion region in game.regions)
         {
             if (region.name[0] == "Noord Nederland")
                 txtOrgNoordMoney.text = (region.statistics.income * 12).ToString("0");
@@ -1879,7 +1879,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for the Region Popup
-    public void regionClick(Region region)
+    public void regionClick(MapRegion region)
     {
         imgSectorPopup.gameObject.SetActive(false);
 
@@ -1914,7 +1914,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    private void startRegionPopup(Region region)
+    private void startRegionPopup(MapRegion region)
     {
         regio = region;
         canvasRegioPopup.gameObject.SetActive(true);
@@ -2959,7 +2959,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Event Popup (No Choice Made)
-    public void initEventPopup(GameEvent e, Region r)
+    public void initEventPopup(GameEvent e, MapRegion r)
     {
         imgEventConsequences.gameObject.SetActive(false);
         gameEvent = e;
@@ -3194,7 +3194,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Event Popup (Choice Made)
-    public void initEventPopupChoiceMade(GameEvent e, Region r)
+    public void initEventPopupChoiceMade(GameEvent e, MapRegion r)
     {
         canvasEventChoiceMadePopup.gameObject.SetActive(true);
         popupActive = true;
@@ -3203,7 +3203,7 @@ public class UpdateUI : MonoBehaviour
         initEventChoiceMadeText(e, r);
     }
 
-    private void initEventChoiceMadeText(GameEvent e, Region r)
+    private void initEventChoiceMadeText(GameEvent e, MapRegion r)
     {
         string[] title = { "Overzicht opgelost event: " + e.publicEventName[0] + " (" + regionEvent.name[0] + ")", "Summary solved event: " + e.publicEventName[1] + " (" + regionEvent.name[1] + ")" };
         txtEventChoiceMadeTitle.text = title[taal];
@@ -3226,7 +3226,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Empty Building Popup
-    public void initEmptyBuildingPopup(Region r)
+    public void initEmptyBuildingPopup(MapRegion r)
     {
         regionToBeBuild = r;
         popupActive = true;
@@ -3322,7 +3322,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Active Building Popup
-    public void initBuildingPopup(Building b, Region r)
+    public void initBuildingPopup(Building b, MapRegion r)
     {
         activeBuilding = b;
         buildingRegion = r;
@@ -3768,7 +3768,7 @@ public class UpdateUI : MonoBehaviour
             card.UseCardOnCountry(game.regions, game.gameStatistics);
         else
         {
-            Region cardRegion;
+            MapRegion cardRegion;
 
             if (toggleNoordNLCheck)
                 cardRegion = game.regions[0];

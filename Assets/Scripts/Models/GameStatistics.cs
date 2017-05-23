@@ -56,7 +56,7 @@ public class GameStatistics
 
         int divisionValue = 0;
 
-        foreach (Region region in game.regions)
+        foreach (MapRegion region in game.regions)
         {
             foreach (RegionSector sector in region.sectors)
             {

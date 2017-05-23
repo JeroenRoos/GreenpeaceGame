@@ -6,10 +6,10 @@ public class RegionController : MonoBehaviour {
 
     public GameController gameController;
     public UpdateUI ui;
-    public Region region;
+    public MapRegion region;
     public bool isHovered;
     
-    public void Init(GameController gameController, UpdateUI ui, Region r)
+    public void Init(GameController gameController, UpdateUI ui, MapRegion r)
     {
         this.gameController = gameController;
         this.ui = ui;
