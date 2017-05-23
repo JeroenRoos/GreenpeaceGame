@@ -5,13 +5,14 @@ using UnityEngine;
 public class Lobby : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-        PhotonNetwork.ConnectUsingSettings("0.1");
+	void Start ()
+    {
+        PhotonNetwork.automaticallySyncScene = true;
     }
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+    {
     }
 
     void OnGUI()
@@ -27,5 +28,22 @@ public class Lobby : MonoBehaviour {
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public void LeaveLobby()
+    {
+        PhotonNetwork.Disconnect();
+        PhotonNetwork.LeaveLobby();
+    }
+
+    public void JoinLobby()
+    {
+        PhotonNetwork.ConnectUsingSettings("0.1");
+        PhotonNetwork.JoinLobby();
     }
 }

@@ -46,6 +46,8 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
+        FB.Init();
+
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
@@ -177,29 +179,45 @@ public class GameController : MonoBehaviour
 
     public void ShareOnFacebook()
     {
-        if (!FB.IsInitialized)
-            FB.Init();
+        /*string url = "https://www.facebook.com/dialog/feed?";
+        string appIDURL = "1821181281535576";
+        string displayURL = "popup";
+        string linkURL = "https://developers.facebook.com/docs/";
+        string pictureURL = "http://i.imgur.com/zkYlB.jpg";
+        //Application.OpenURL("https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fi.imgur.com%2FzkYlB.jpg");
+        string facebookURL = url +
+            "app_id=" + appIDURL +
+            "&name=" + WWW.EscapeURL("Project Green Leader") +
+            "&description=" + WWW.EscapeURL("Thanks Facebook for making this way too difficult and wasting my time while I have to work on my game") +
+            "&display=" + WWW.EscapeURL(displayURL) +
+            "&link=" + WWW.EscapeURL(pictureURL) +
+            "&redirect_uri=" + WWW.EscapeURL(linkURL) +
+            "&picture=" + WWW.EscapeURL(pictureURL);*/
 
-        else
-        {
-            var perms = new List<string>() { "public_profile", "email", "user_friends" };
-            FB.LogInWithReadPermissions(perms, AuthCallback);
+        string appId = "145634995501895";
+        string pictureUrl = "http://i.imgur.com/zkYlB.jpg";
+        string linkUrl = "https://www.youtube.com/watch?v=-KqGxq5eIt0";
+    string redirectUrl = "https://www.facebook.com/profile.php";
 
-            FB.ShareLink(
-            new System.Uri("http://i.imgur.com/zkYlB.jpg"),
-            callback: LogCallback
-            );
+        string facebookURL = "https://www.facebook.com/dialog/feed?" +
+            "app_id=" + appId + "&" +
+            "display=popup&" +
+            "link=" + WWW.EscapeURL(linkUrl) + " & " +
+            "name=" + WWW.EscapeURL("Project Green Leader") + " & " +
+            "description=" + WWW.EscapeURL("Thanks Facebook for making this way too difficult and wasting my time while I have to work on my game") + " & " +
+            "picture=" + WWW.EscapeURL(pictureUrl);
 
+    Application.OpenURL(facebookURL);
 
-            /*FB.FeedShare(
-                string.Empty,
-                link: new System.Uri("http://i.imgur.com/zkYlB.jpg"),
-                linkName: "Test picture",
-                linkCaption: "I am sharing my amazing progress on Project Green Leader",
-                linkDescription: "Click for mystery picture",
-                picture: new System.Uri("https://gyazo.com/851dab54e6d082bca1aa3d876aca5493"),
-                callback: LogCallback);*/
-        }
+        /*FB.FeedShare(
+            string.Empty,
+            link: new System.Uri("http://i.imgur.com/zkYlB.jpg"),
+            linkName: "Test picture",
+            linkCaption: "I am sharing my amazing progress on Project Green Leader",
+            linkDescription: "Click for mystery picture",
+            picture: new System.Uri("https://gyazo.com/851dab54e6d082bca1aa3d876aca5493"),
+            callback: LogCallback);
+    }*/
     }
 
     private void AuthCallback(ILoginResult result)
@@ -209,12 +227,6 @@ public class GameController : MonoBehaviour
             // AccessToken class will have session details
             var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
             // Print current access token's User ID
-            Debug.Log(aToken.UserId);
-            // Print current access token's granted permissions
-            foreach (string perm in aToken.Permissions)
-            {
-                Debug.Log(perm);
-            }
         }
         else
         {
@@ -421,6 +433,7 @@ public class GameController : MonoBehaviour
 
     public void NextTurn()
     {
+        ShareOnFacebook();
         if (!updateUI.popupActive)
         {
             if (!game.tutorial.tutorialNextTurnDone)
