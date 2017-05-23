@@ -103,6 +103,7 @@ MonoBehaviour:
     type: 2}
   buildingObject: {fileID: 1032450086544258, guid: 999e9e70d4575274f9740d7e99f9edcc,
     type: 2}
+  eventConsequenceModifiers: []
   autoSave: 0
   autoEndTurn: 0
   trackingEnabled: 0
@@ -218,11 +219,15 @@ MonoBehaviour:
   dropdownTimeline: {fileID: 0}
   txtColumnLeftInfo: {fileID: 0}
   txtColumnRightInfo: {fileID: 0}
+  txtEventConsequencesChoice: {fileID: 0}
   btnViewConsequencesEvent: {fileID: 0}
   txtBtnViewConsequencesEvent: {fileID: 0}
   imgEventConsequences: {fileID: 0}
   txtEventConsequences: {fileID: 0}
   txtEventConsequencesTitle: {fileID: 0}
+  gameEvent:
+    pickedConsequences: []
+    pickedTemporaryConsequences: []
   regionEvent:
     eventPositions: []
     buildingPositions: []
@@ -313,6 +318,16 @@ MonoBehaviour:
   txtBigDescription: {fileID: 0}
   txtAdviserEconomic: {fileID: 0}
   txtAdviserPollution: {fileID: 0}
+  txtRegionAvailableMoney: {fileID: 0}
+  txtRegionAvailableMoneyDescription: {fileID: 0}
+  txtbtnAverageTab: {fileID: 0}
+  txtbtnHouseholdsTab: {fileID: 0}
+  txtbtnAgriculureTab: {fileID: 0}
+  txtbtnCompaniesTab: {fileID: 0}
+  btnAverageTab: {fileID: 0}
+  btnHouseholdsTab: {fileID: 0}
+  btnAgriculureTab: {fileID: 0}
+  btnCompaniesTab: {fileID: 0}
   btnHistoryTab: {fileID: 0}
   btnActionsTab: {fileID: 0}
   imgIncomeRegion: {fileID: 0}
