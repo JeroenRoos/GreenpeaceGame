@@ -141,6 +141,8 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
+    public Text txtEventTitle;
+    public Text txtEventColumRight;
     public Text txtEventConsequencesChoice;
     public Button btnViewConsequencesEvent;
     public Text txtBtnViewConsequencesEvent;
@@ -3027,7 +3029,8 @@ public class UpdateUI : MonoBehaviour
 
         playSelectSound = true;
 
-        btnDoEvent.interactable = false;
+        //btnDoEvent.interactable = false;
+        btnDoEvent.gameObject.SetActive(false);
         btnViewConsequencesEvent.interactable = false;
     }
 
@@ -3041,11 +3044,13 @@ public class UpdateUI : MonoBehaviour
         string[] txtMonths = { " maanden", " months" };
         string[] txtMonth = { " maand", " month" };
 
+        txtEventTitle.text = "Event";
         txtEventName.text = "EVENT: " + e.publicEventName[taal] + " (" + regionEvent.name[taal] + ")";
         txtEventDescription.text = e.description[taal];
         txtBtnDoEvent.text = txtBtn[taal];
         txtBtnViewConsequencesEvent.text = txtBtn2[taal];
         txtEventConsequencesChoice.text = "";
+        txtEventColumRight.text = "";
 
         if (ApplicationModel.language == 0)
         {
@@ -3092,7 +3097,9 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-
+            btnDoEvent.gameObject.SetActive(true);
+            string[] txt = { "Consequenties", "Consequences "};
+            txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[0]); 
         }
         else
@@ -3119,7 +3126,9 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-
+            btnDoEvent.gameObject.SetActive(true);
+            string[] txt = { "Consequenties", "Consequences " };
+            txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[1]); 
         }
         else
@@ -3146,6 +3155,9 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
+            btnDoEvent.gameObject.SetActive(true);
+            string[] txt = { "Consequenties", "Consequences " };
+            txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[2]); 
         }
         else
@@ -3158,7 +3170,9 @@ public class UpdateUI : MonoBehaviour
     {
         if (!radioEventOption1Check && !radioEventOption2Check && !radioEventOption3Check)
         {
-            btnDoEvent.interactable = false;
+            btnDoEvent.gameObject.SetActive(false);
+            txtEventColumRight.text = "";
+            //btnDoEvent.interactable = false;
             btnViewConsequencesEvent.interactable = false;
             txtEventConsequencesChoice.text = "";
         }
