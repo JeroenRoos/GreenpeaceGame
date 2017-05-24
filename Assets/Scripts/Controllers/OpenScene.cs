@@ -8,6 +8,7 @@ using System.IO;
 
 public class OpenScene : MonoBehaviour
 {
+    Lobby lobby;
     public Texture2D buttonTexture;
     private GUIStyle buttonStyle = new GUIStyle();
     public Button btnPosition;
@@ -26,6 +27,10 @@ public class OpenScene : MonoBehaviour
 
     public Canvas canvasHomeScreen;
     public Canvas canvasMultiplayerScreen;
+
+    // Multiplayer
+    public Text txtMultiplayerBack;
+    public Text txtMultiplayerCreateRoom;
 
     // Settings 
     public Canvas canvasSettings;
@@ -50,6 +55,7 @@ public class OpenScene : MonoBehaviour
 
     void Start()
     {
+        lobby = new Lobby();
         Application.runInBackground = true;
 
         EventManager.CallPlayBackgroundMusic();
@@ -273,12 +279,30 @@ public class OpenScene : MonoBehaviour
         EventManager.CallPlayButtonClickSFX();
         //canvasHomeScreen.gameObject.SetActive(false);
         canvasMultiplayerScreen.gameObject.SetActive(true);
+        lobby.JoinLobby();
         initMultiplayerText();
     }
 
     private void initMultiplayerText()
     {
-        
+        string[] txtBack = { "Terug", "Back" };
+        string[] txtCreate = { "Maak een room", "Create room" };
+
+        txtMultiplayerBack.text = txtBack[taal];
+        txtMultiplayerCreateRoom.text = txtCreate[taal];
+    }
+
+    public void buttonMultiplayerBackClick()
+    {
+        EventManager.CallPlayButtonClickSFX();
+        canvasMultiplayerScreen.gameObject.SetActive(false);
+        lobby.LeaveLobby();
+    }
+
+    public void buttonCreateRoomClick()
+    {
+        Debug.Log("CREATE");
+        lobby.CreateRoom("TestRoom");
     }
 
     void OnGUI()
