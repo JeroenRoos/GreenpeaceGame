@@ -10,4 +10,6 @@ static public class ApplicationModel
 
     static public float valueSFX = 1;
     static public float valueMusic = 1;
+
+    static public bool multiplayer = false;
 }

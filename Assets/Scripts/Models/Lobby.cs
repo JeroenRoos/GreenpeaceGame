@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lobby : Photon.PunBehaviour
 {
@@ -44,6 +45,7 @@ public class Lobby : Photon.PunBehaviour
 
     public void JoinLobby()
     {
+<<<<<<< HEAD
         PhotonNetwork.JoinLobby();
     }
 
@@ -68,5 +70,18 @@ public class Lobby : Photon.PunBehaviour
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
+=======
+        PhotonNetwork.ConnectUsingSettings("1");
+        PhotonNetwork.JoinLobby();
+    }
+
+    public void StartGame(int index)
+    {
+        ApplicationModel.multiplayer = true;
+        if (PhotonNetwork.isMasterClient)
+        {
+            SceneManager.LoadSceneAsync(index);
+        }
+>>>>>>> c613a2be1bff8fd289c9379b45a1ca0fd7e1ea1a
     }
 }

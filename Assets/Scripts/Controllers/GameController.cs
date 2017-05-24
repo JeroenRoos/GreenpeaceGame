@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     
     float height = Screen.height / (1080 / 55);
 
+
     // Use this for initialization
     private void Awake()
     {
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
+
             eventConsequenceModifiers = new double[5] { 0.8, 0.9, 1, 1.1, 1.2 };
 
             LoadRegions();
@@ -76,6 +78,9 @@ public class GameController : MonoBehaviour
             SaveGameEvents();
             SaveQuests();
             SaveCards();*/
+
+            if (ApplicationModel.multiplayer)
+                game.ChangeGameForMultiplayer();
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
@@ -798,11 +803,15 @@ public class GameController : MonoBehaviour
     {
         // Update Text and Color values in main UI
         updateUI.updateDate(game.currentMonth, game.currentYear);
-        updateUI.updateMoney(game.gameStatistics.money);
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateProsperity(game.gameStatistics.prosperity);
         updateUI.updateHappiness(game.gameStatistics.happiness);
+
+        if (!ApplicationModel.multiplayer)
+            updateUI.updateMoney(game.gameStatistics.money);
+        else
+            updateUI.updateMoney(game.gameStatistics.GetPlayerMoney(game.players));
 
         //updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         //updateUI.updatePopulation(game.gameStatistics.population);

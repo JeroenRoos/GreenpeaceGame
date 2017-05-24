@@ -169,6 +169,7 @@ public class OpenScene : MonoBehaviour
     #region Main Menu Code
     public void loadSceneByIndex(int index)
     {
+        ApplicationModel.multiplayer = false;
         EventManager.CallPlayButtonClickSFX();
         ApplicationModel.loadGame = false;
         SceneManager.LoadSceneAsync(index);

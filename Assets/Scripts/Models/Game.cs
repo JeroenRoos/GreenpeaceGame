@@ -52,6 +52,9 @@ public class Game
 
     public Tutorial tutorial;
 
+    //multiplayer
+    public string[] players { get; private set; }
+
     public Game()
     {
         //language = 0;
@@ -134,8 +137,7 @@ public class Game
 
     public void MutateMonthlyStatistics()
     {
-        double monthlyIncome = GetMonthlyIncome();
-        gameStatistics.ModifyMoney(monthlyIncome, true);
+        GetRegionIncome();
 
         double monthlyPopulation = GetMonthlyPopulation();
         gameStatistics.ModifyPopulation(monthlyPopulation);
@@ -308,5 +310,56 @@ public class Game
         int value = rnd.Next(0, possibleRegions.Count);
 
         return possibleRegions[value];
+    }
+
+    //multiplayer
+    public void ChangeGameForMultiplayer()
+    {
+        players = new string[2] { PhotonNetwork.playerList[0].UserId, PhotonNetwork.playerList[1].UserId };
+
+        regions[0].SetRegionOwner(players[0]);
+        regions[1].SetRegionOwner(players[0]);
+        regions[2].SetRegionOwner(players[1]);
+        regions[3].SetRegionOwner(players[1]);
+
+        gameStatistics.SetMoneyMultiplayer();
+    }
+
+    public int GetPlayerListPosition()
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i] == PhotonNetwork.player.UserId)
+                return i;
+        }
+
+        return 0;
+    }
+
+    public double GetMoney()
+    {
+        if (!ApplicationModel.multiplayer)
+            return gameStatistics.money;
+        else
+            return gameStatistics.GetPlayerMoney(players);
+    }
+
+    public void GetRegionIncome()
+    {
+        if (!ApplicationModel.multiplayer)
+        {
+            gameStatistics.ModifyMoney(GetMonthlyIncome(), true);
+        }
+        else
+        {
+            foreach (MapRegion r in regions)
+            {
+                double income = 0;
+                foreach (RegionSector rs in r.sectors)
+                    income += rs.statistics.income;
+
+                gameStatistics.ModifyMoneyMultiplayer(income, true, GetPlayerListPosition());
+            }
+        }
     }
 }
