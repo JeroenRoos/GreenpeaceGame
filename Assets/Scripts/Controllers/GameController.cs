@@ -433,7 +433,6 @@ public class GameController : MonoBehaviour
 
     public void NextTurn()
     {
-        ShareOnFacebook();
         if (!updateUI.popupActive)
         {
             if (!game.tutorial.tutorialNextTurnDone)
