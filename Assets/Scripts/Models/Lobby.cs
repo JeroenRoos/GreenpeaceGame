@@ -45,7 +45,6 @@ public class Lobby : Photon.PunBehaviour
 
     public void JoinLobby()
     {
-<<<<<<< HEAD
         PhotonNetwork.JoinLobby();
     }
 
@@ -53,7 +52,7 @@ public class Lobby : Photon.PunBehaviour
     {
         Debug.Log("Joined Lobby");
         base.OnJoinedLobby();
-        PhotonNetwork.JoinRandomRoom();
+        //PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnConnectedToMaster()
@@ -70,8 +69,7 @@ public class Lobby : Photon.PunBehaviour
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
-=======
-        PhotonNetwork.ConnectUsingSettings("1");
+        //PhotonNetwork.ConnectUsingSettings("1");
         PhotonNetwork.JoinLobby();
     }
 
@@ -82,6 +80,5 @@ public class Lobby : Photon.PunBehaviour
         {
             SceneManager.LoadSceneAsync(index);
         }
->>>>>>> c613a2be1bff8fd289c9379b45a1ca0fd7e1ea1a
     }
 }
