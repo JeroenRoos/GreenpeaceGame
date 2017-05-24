@@ -43,9 +43,6 @@ public class GameController : MonoBehaviour
     
     float height = Screen.height / (1080 / 55);
 
-    //multiplayer
-    public string[] players { get; private set; }
-
 
     // Use this for initialization
     private void Awake()
@@ -82,7 +79,8 @@ public class GameController : MonoBehaviour
             SaveQuests();
             SaveCards();*/
 
-            ChangeGameForMultiplayer();
+            if (ApplicationModel.multiplayer)
+                game.ChangeGameForMultiplayer();
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
@@ -805,11 +803,15 @@ public class GameController : MonoBehaviour
     {
         // Update Text and Color values in main UI
         updateUI.updateDate(game.currentMonth, game.currentYear);
-        updateUI.updateMoney(game.gameStatistics.money);
         updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
         updateUI.updatePollution(game.gameStatistics.pollution);
         updateUI.updateProsperity(game.gameStatistics.prosperity);
         updateUI.updateHappiness(game.gameStatistics.happiness);
+
+        if (!ApplicationModel.multiplayer)
+            updateUI.updateMoney(game.gameStatistics.money);
+        else
+            updateUI.updateMoney(game.gameStatistics.GetPlayerMoney(game.players));
 
         //updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         //updateUI.updatePopulation(game.gameStatistics.population);
@@ -1023,18 +1025,6 @@ public class GameController : MonoBehaviour
         Destroy(eventInstance);
         /*GameObject */eventInstance = Instantiate(eventObject);
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, updateUI.regionEvent, updateUI.gameEvent);
-    }
-
-    public void ChangeGameForMultiplayer()
-    {
-        players = new string[2] { PhotonNetwork.playerList[0].UserId, PhotonNetwork.playerList[1].UserId };
-
-        game.regions[0].SetRegionOwner(PhotonNetwork.playerList[0].UserId);
-        game.regions[1].SetRegionOwner(PhotonNetwork.playerList[0].UserId);
-        game.regions[2].SetRegionOwner(PhotonNetwork.playerList[1].UserId);
-        game.regions[3].SetRegionOwner(PhotonNetwork.playerList[1].UserId);
-
-        game.gameStatistics.SetMoneyMultiplayer();
     }
 }
 

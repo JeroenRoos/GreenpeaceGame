@@ -95,5 +95,17 @@ public class GameStatistics
         else
             playerMoney[playerNumber] -= changevalue;
     }
+
+    public double GetPlayerMoney(string[] players)
+    {
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i] == PhotonNetwork.player.UserId)
+            {
+                return playerMoney[i];
+            }
+        }
+        return 0;
+    }
 }
 

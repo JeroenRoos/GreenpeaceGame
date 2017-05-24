@@ -1797,7 +1797,7 @@ public class UpdateUI : MonoBehaviour
                 txtOrgWestMoney.text = (region.statistics.income * 12).ToString("0");
         }
 
-        txtOrgBank.text = game.gameStatistics.money.ToString("0");
+        txtOrgBank.text = game.GetMoney().ToString("0");
 
         imgTutorialOrganization.enabled = false;
         txtTutorialOrganization.enabled = false;
@@ -2076,7 +2076,7 @@ public class UpdateUI : MonoBehaviour
     private void updateRegionTextValues()
     {
         txtRegionName.text = regio.name[taal];
-        txtRegionAvailableMoney.text = game.gameStatistics.money.ToString("0") + " money";
+        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money";
         txtRegionMoney.text = regio.statistics.income.ToString("0") + " money";
         txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0.00") + "%";
@@ -2275,7 +2275,7 @@ public class UpdateUI : MonoBehaviour
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
 
-        txtRegionAvailableMoney.text = game.gameStatistics.money.ToString("0") + " money"; 
+        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money"; 
 
         //updateRegionTextValues();
     }
@@ -3089,7 +3089,7 @@ public class UpdateUI : MonoBehaviour
             radioEventOption1Check = true;
             radioEventOption2.isOn = false;
             radioEventOption3.isOn = false;
-            if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[0])
+            if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[0])
             {
                 btnDoEvent.interactable = true;
                 btnViewConsequencesEvent.interactable = true;
@@ -3118,7 +3118,7 @@ public class UpdateUI : MonoBehaviour
             radioEventOption2Check = true;
             radioEventOption1.isOn = false;
             radioEventOption3.isOn = false;
-            if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[1])
+            if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[1])
             {
                 btnDoEvent.interactable = true;
                 btnViewConsequencesEvent.interactable = true;
@@ -3147,7 +3147,7 @@ public class UpdateUI : MonoBehaviour
             radioEventOption3Check = true;
             radioEventOption1.isOn = false;
             radioEventOption2.isOn = false;
-            if (game.gameStatistics.money >= gameEvent.afterInvestmentEventChoiceMoneyCost[2])
+            if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[2])
             {
                 btnDoEvent.interactable = true;
                 btnViewConsequencesEvent.interactable = true;
@@ -3344,7 +3344,7 @@ public class UpdateUI : MonoBehaviour
 
         txtEmptyBuildingStats.text += getBuildingModifiers(b);
 
-        if (game.gameStatistics.money >= buildingToBeBuild.buildingMoneyCost)
+        if (game.GetMoney() >= buildingToBeBuild.buildingMoneyCost)
             btnUseBuilding.interactable = true;
         else
             btnUseBuilding.interactable = false;  
@@ -3508,7 +3508,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnInvestActionCost()
     {
-        if (game.gameStatistics.money >= game.investments.investmentCost)
+        if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInActionCostReduction(game.regions);
             setActionCostReductionInvestments();
@@ -3523,7 +3523,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnInvestActionConsequences()
     {
-        if (game.gameStatistics.money >= game.investments.investmentCost)
+        if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterActionConsequences(game.regions);
             setActionConsequencesInvestments();
@@ -3538,7 +3538,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnInvestEventCost()
     {
-        if (game.gameStatistics.money >= game.investments.investmentCost)
+        if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInGameEventCostReduction(game.events);
             setEventCostReductionInvestments();
@@ -3553,7 +3553,7 @@ public class UpdateUI : MonoBehaviour
 
     public void btnInvestEventConsequences()
     {
-        if (game.gameStatistics.money >= game.investments.investmentCost)
+        if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterGameEventConsequences(game.events);
             setEventConsequencesInvestments();
@@ -3569,7 +3569,7 @@ public class UpdateUI : MonoBehaviour
 
     private void updateInvestButtonsInteractable()
     {
-        if (game.gameStatistics.money < game.investments.investmentCost)
+        if (game.GetMoney() < game.investments.investmentCost)
         {
             btnInvestmentActionCostInvest.interactable = false;
             btnInvestmentActionConsequenceInvest.interactable = false;
@@ -4528,7 +4528,7 @@ public class UpdateUI : MonoBehaviour
             regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
-        if (game.gameStatistics.money > regioActionCost)
+        if (game.GetMoney() > regioActionCost)
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
@@ -4552,7 +4552,7 @@ public class UpdateUI : MonoBehaviour
             regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
-        if (game.gameStatistics.money > regioActionCost)
+        if (game.GetMoney() > regioActionCost)
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
@@ -4576,7 +4576,7 @@ public class UpdateUI : MonoBehaviour
             regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
-        if (game.gameStatistics.money > regioActionCost)
+        if (game.GetMoney() > regioActionCost)
             btnDoActionRegionMenu.interactable = true;
         else
             btnDoActionRegionMenu.interactable = false;
