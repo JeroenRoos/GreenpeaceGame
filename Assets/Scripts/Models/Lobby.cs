@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lobby : MonoBehaviour {
-
-	// Use this for initialization
-	void Start ()
+public class Lobby : Photon.PunBehaviour
+{
+    public Lobby()
     {
+        Debug.Log("Start Lobby");
+        PhotonNetwork.ConnectUsingSettings("0.1");
         PhotonNetwork.automaticallySyncScene = true;
-        PhotonNetwork.ConnectUsingSettings("1.0");
     }
 	
 	// Update is called once per frame
@@ -23,7 +23,7 @@ public class Lobby : MonoBehaviour {
 
     public void CreateRoom(string roomName)
     {
-        PhotonNetwork.CreateRoom(name);
+        PhotonNetwork.CreateRoom(roomName, new RoomOptions() { MaxPlayers = 2 } , null);
     }
 
     public void JoinRoom(string roomName)
@@ -44,7 +44,29 @@ public class Lobby : MonoBehaviour {
 
     public void JoinLobby()
     {
-        PhotonNetwork.ConnectUsingSettings("0.1");
         PhotonNetwork.JoinLobby();
+    }
+
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Joined Lobby");
+        base.OnJoinedLobby();
+        PhotonNetwork.JoinRandomRoom();
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("Connected to Master");
+        base.OnConnectedToMaster();
+    }
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
     }
 }

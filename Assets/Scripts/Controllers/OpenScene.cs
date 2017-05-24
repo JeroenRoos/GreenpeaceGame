@@ -8,6 +8,9 @@ using System.IO;
 
 public class OpenScene : MonoBehaviour
 {
+    #region Variables
+    private RoomInfo[] rooms;
+
     Lobby lobby;
     public Texture2D buttonTexture;
     private GUIStyle buttonStyle = new GUIStyle();
@@ -26,9 +29,14 @@ public class OpenScene : MonoBehaviour
     private float valueSFX;
 
     public Canvas canvasHomeScreen;
-    public Canvas canvasMultiplayerScreen;
+    public Canvas canvasLobby;
+    public Canvas canvasRoom;
 
-    // Multiplayer
+    // Lobby
+    public Button btnRefreshLobby;
+    public Text txtRefreshLobby;
+    public Text txtLobby;
+    public Text txtRoom;
     private string roomName;
     public Text txtMultiplayerBack;
     public Text txtMultiplayerCreateRoom;
@@ -40,6 +48,11 @@ public class OpenScene : MonoBehaviour
     public Text txtCancelCreateRoom;
     public Button btnPopupCreate;
     public Text txtPopupCreate;
+
+    // Room
+    private RoomInfo roomInfo;
+    public Text txtRoomInfo;
+    public Text txtRoomBack;
 
     // Settings 
     public Canvas canvasSettings;
@@ -61,7 +74,9 @@ public class OpenScene : MonoBehaviour
 
     public AudioSource musicSource;
     public AudioSource effectsSource;
+    #endregion
 
+    #region Start(), PlayerPrefs, Init's
     void Start()
     {
         lobby = new Lobby();
@@ -119,8 +134,11 @@ public class OpenScene : MonoBehaviour
         canvasSettings.GetComponent<Canvas>();
         canvasSettings.gameObject.SetActive(false);
 
-        canvasMultiplayerScreen.GetComponent<Canvas>();
-        canvasMultiplayerScreen.gameObject.SetActive(false);
+        canvasLobby.GetComponent<Canvas>();
+        canvasLobby.gameObject.SetActive(false);
+
+        canvasRoom.GetComponent<Canvas>();
+        canvasRoom.gameObject.SetActive(false);
     }
 
     private void initText()
@@ -146,7 +164,9 @@ public class OpenScene : MonoBehaviour
         ColorUtility.TryParseHtmlString("#ccac6f", out c);
         buttonStyle.normal.textColor = c;
     }
+    #endregion
 
+    #region Main Menu Code
     public void loadSceneByIndex(int index)
     {
         EventManager.CallPlayButtonClickSFX();
@@ -176,7 +196,9 @@ public class OpenScene : MonoBehaviour
         initSettingsText();
         initSettingsUI();
     }
+    #endregion
 
+    #region Settings Code
     private void initSettingsText()
     {
         string[] back = { "Terug", "Back" };
@@ -282,31 +304,33 @@ public class OpenScene : MonoBehaviour
         PlayerPrefs.SetFloat("savedMusicVolume", valueMusic);
         PlayerPrefs.Save();
     }
+    #endregion
 
+    #region Code for Multiplayer Lobby
     public void buttonMultiplayerOnClick()
     {
         EventManager.CallPlayButtonClickSFX();
-        //canvasHomeScreen.gameObject.SetActive(false);
-        canvasMultiplayerScreen.gameObject.SetActive(true);
-        lobby.JoinLobby();
-        initMultiplayerText();
+        canvasLobby.gameObject.SetActive(true);
+        initLobbyText();
+        getRoomList();
     }
 
-    private void initMultiplayerText()
+    private void initLobbyText()
     {
         string[] txtBack = { "Terug", "Back" };
         string[] txtCreate = { "Maak een room", "Create room" };
+        string[] txtRefresh = { "Vernieuwen", "Refresh" };
 
         txtMultiplayerBack.text = txtBack[taal];
         txtMultiplayerCreateRoom.text = txtCreate[taal];
+        txtRefreshLobby.text = txtRefresh[taal];
         imgCreateRoom.gameObject.SetActive(false);
     }
 
     public void buttonMultiplayerBackClick()
     {
         EventManager.CallPlayButtonClickSFX();
-        canvasMultiplayerScreen.gameObject.SetActive(false);
-        lobby.LeaveLobby();
+        canvasLobby.gameObject.SetActive(false);
     }
 
     public void buttonCreateRoomClick()
@@ -314,6 +338,7 @@ public class OpenScene : MonoBehaviour
         imgCreateRoom.gameObject.SetActive(true);
         btnCreateRoom.interactable = false;
         btnMultiplayerBack.interactable = false;
+        btnRefreshLobby.interactable = false;
 
         string[] txtCancel = { "Annuleer", "Cancel" };
         txtCancelCreateRoom.text = txtCancel[taal];
@@ -325,21 +350,29 @@ public class OpenScene : MonoBehaviour
 
     public void inputRoomNameValueChanged()
     {
-        roomName = inputRoomName.text.Trim();
+        inputRoomName.text.Trim();
 
-        if (roomName != "")
+        if (inputRoomName.text != "")
         {
+            roomName = inputRoomName.text;
             btnPopupCreate.gameObject.SetActive(true);
             string[] txtBtn = { "Maak", "Create" };
             txtPopupCreate.text = txtBtn[taal];
         }
         else
+        {
             btnPopupCreate.gameObject.SetActive(false);
+        }
     }
 
     public void buttonCreateClick()
     {
         lobby.CreateRoom(roomName);
+        imgCreateRoom.gameObject.SetActive(false);
+        btnCreateRoom.interactable = true;
+        btnMultiplayerBack.interactable = true;
+
+        initRoomText();
     }
 
     public void buttonCancelCreateRoom()
@@ -347,33 +380,86 @@ public class OpenScene : MonoBehaviour
         imgCreateRoom.gameObject.SetActive(false);
         btnCreateRoom.interactable = true;
         btnMultiplayerBack.interactable = true;
+        btnRefreshLobby.interactable = true;
     }
 
+    private void getRoomList()
+    {
+        rooms = PhotonNetwork.GetRoomList();
+    }
+
+    public void buttonRefreshLobbyClick()
+    {
+        getRoomList();
+    }
+    #endregion
+
+    #region Code for Multiplayer Room
+    private void initRoomText()
+    {
+        canvasLobby.gameObject.SetActive(false);
+        canvasRoom.gameObject.SetActive(true);
+        getRoomList();
+        string[] txtBack = { "Terug", "Back" };
+        txtRoomBack.text = txtBack[taal];
+
+        RoomInfo room = null;
+        foreach (RoomInfo i in rooms)
+            if (i.Name == roomName)
+                room = i;
+
+        if (room != null)
+            txtRoomInfo.text = room.Name + " " + room.PlayerCount + "/" + room.MaxPlayers;
+        else
+            txtRoomInfo.text = "Room is NULL, even though, YOU ARE IN A ROOM!!!";
+    }
+
+    public void buttonRoomBack()
+    {
+        canvasLobby.gameObject.SetActive(true);
+        canvasRoom.gameObject.SetActive(false);
+        initLobbyText();
+        getRoomList();
+    }
+    #endregion
+
+    #region OnGUI Code
     void OnGUI()
     {
-        if (canvasMultiplayerScreen.gameObject.activeSelf)
-        {
-            RoomInfo[] lstRooms = PhotonNetwork.GetRoomList();
+        GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
 
-            if (lstRooms.Length != 0)
+        if (canvasLobby.gameObject.activeSelf)
+        {
+            if (PhotonNetwork.insideLobby)
+                txtLobby.text = "You are in a lobby!";
+            else
+                txtLobby.text = "You are NOT in a lobby!";
+
+            if (PhotonNetwork.inRoom)
+                txtRoom.text = "You are in a room (" + PhotonNetwork.room.Name + ")";
+            else
+                txtRoom.text = "You are NOT in a room!";
+
+            if (rooms.Length != 0)
             {
                 txtNoRooms.gameObject.SetActive(false);
-                Debug.Log("Rooms Available");
 
-                foreach (RoomInfo game in lstRooms)
+                foreach (RoomInfo game in rooms)
                 {
                     float yOffset = 0f;
 
                     RectTransform rectPosition = btnPosition.GetComponent<RectTransform>();
-                    Vector3 btnPos = btnPosition.transform.position;
+                    Vector3 btnPos = txtNoRooms.transform.position;
                     float screenHeight = Screen.height;
 
                     float x = btnPos.x;
                     float y = btnPos.z + (screenHeight / 3);
 
-                    if (GUI.Button(new Rect(0, 0 + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + "/" + game.MaxPlayers, buttonStyle))
+                    if (GUI.Button(new Rect(0, 0 + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + " players", buttonStyle))
                     {
-                        PhotonNetwork.JoinRoom(game.Name);
+                        lobby.JoinRoom(game.Name);
+                        roomName = game.Name;
+                        initRoomText();
                         yOffset += 35;
                     }
                 }
@@ -386,5 +472,6 @@ public class OpenScene : MonoBehaviour
             }
         }
     }
+    #endregion
 }
 
