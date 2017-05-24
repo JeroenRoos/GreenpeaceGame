@@ -9,6 +9,7 @@ public class Lobby : MonoBehaviour {
 	void Start ()
     {
         PhotonNetwork.automaticallySyncScene = true;
+        PhotonNetwork.ConnectUsingSettings("1.0");
     }
 	
 	// Update is called once per frame

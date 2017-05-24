@@ -8,6 +8,7 @@ using System.IO;
 
 public class OpenScene : MonoBehaviour
 {
+    Lobby lobby;
     public Texture2D buttonTexture;
     private GUIStyle buttonStyle = new GUIStyle();
     public Button btnPosition;
@@ -26,6 +27,19 @@ public class OpenScene : MonoBehaviour
 
     public Canvas canvasHomeScreen;
     public Canvas canvasMultiplayerScreen;
+
+    // Multiplayer
+    private string roomName;
+    public Text txtMultiplayerBack;
+    public Text txtMultiplayerCreateRoom;
+    public RawImage imgCreateRoom;
+    public Text txtCreateRoomInfo;
+    public InputField inputRoomName;
+    public Button btnMultiplayerBack;
+    public Button btnCreateRoom;
+    public Text txtCancelCreateRoom;
+    public Button btnPopupCreate;
+    public Text txtPopupCreate;
 
     // Settings 
     public Canvas canvasSettings;
@@ -50,6 +64,7 @@ public class OpenScene : MonoBehaviour
 
     void Start()
     {
+        lobby = new Lobby();
         Application.runInBackground = true;
 
         EventManager.CallPlayBackgroundMusic();
@@ -274,20 +289,71 @@ public class OpenScene : MonoBehaviour
         EventManager.CallPlayButtonClickSFX();
         //canvasHomeScreen.gameObject.SetActive(false);
         canvasMultiplayerScreen.gameObject.SetActive(true);
+        lobby.JoinLobby();
         initMultiplayerText();
     }
 
     private void initMultiplayerText()
     {
-        
+        string[] txtBack = { "Terug", "Back" };
+        string[] txtCreate = { "Maak een room", "Create room" };
+
+        txtMultiplayerBack.text = txtBack[taal];
+        txtMultiplayerCreateRoom.text = txtCreate[taal];
+        imgCreateRoom.gameObject.SetActive(false);
+    }
+
+    public void buttonMultiplayerBackClick()
+    {
+        EventManager.CallPlayButtonClickSFX();
+        canvasMultiplayerScreen.gameObject.SetActive(false);
+        lobby.LeaveLobby();
+    }
+
+    public void buttonCreateRoomClick()
+    {
+        imgCreateRoom.gameObject.SetActive(true);
+        btnCreateRoom.interactable = false;
+        btnMultiplayerBack.interactable = false;
+
+        string[] txtCancel = { "Annuleer", "Cancel" };
+        txtCancelCreateRoom.text = txtCancel[taal];
+        string[] txtInfo = { "Geef een room naam:", "Enter a room name:" };
+        txtCreateRoomInfo.text = txtInfo[taal];
+
+        btnPopupCreate.gameObject.SetActive(false);
+    }
+
+    public void inputRoomNameValueChanged()
+    {
+        roomName = inputRoomName.text.Trim();
+
+        if (roomName != "")
+        {
+            btnPopupCreate.gameObject.SetActive(true);
+            string[] txtBtn = { "Maak", "Create" };
+            txtPopupCreate.text = txtBtn[taal];
+        }
+        else
+            btnPopupCreate.gameObject.SetActive(false);
+    }
+
+    public void buttonCreateClick()
+    {
+        lobby.CreateRoom(roomName);
+    }
+
+    public void buttonCancelCreateRoom()
+    {
+        imgCreateRoom.gameObject.SetActive(false);
+        btnCreateRoom.interactable = true;
+        btnMultiplayerBack.interactable = true;
     }
 
     void OnGUI()
     {
         if (canvasMultiplayerScreen.gameObject.activeSelf)
         {
-            Debug.Log("Multiplayer Canvas Active");
-
             RoomInfo[] lstRooms = PhotonNetwork.GetRoomList();
 
             if (lstRooms.Length != 0)
@@ -315,7 +381,6 @@ public class OpenScene : MonoBehaviour
             }
             else
             {
-                Debug.Log("No Rooms Available");
                 txtNoRooms.gameObject.SetActive(true);
                 string[] txt = { "Er zijn op het moment geen rooms beschikbaar", "There are no rooms available at this moment" };
                 txtNoRooms.text = txt[taal];
