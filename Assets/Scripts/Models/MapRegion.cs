@@ -23,6 +23,9 @@ public class MapRegion
     public List<Building> possibleBuildings { get; private set; }
     public Building activeBuilding { get; private set; }
 
+    //muliplayer
+    public string regionOwner { get; private set; }
+
     public MapRegion() { }
 
     public void LoadBuildings(List<Building> possibleBuildings)
@@ -190,6 +193,12 @@ public class MapRegion
                 }
             }
         }
+    }
+
+    //multiplayer
+    public void SetRegionOwner(string playerID)
+    {
+        regionOwner = playerID;
     }
 }
 

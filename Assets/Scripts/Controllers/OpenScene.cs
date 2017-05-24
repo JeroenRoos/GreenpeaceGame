@@ -134,6 +134,7 @@ public class OpenScene : MonoBehaviour
 
     public void loadSceneByIndex(int index)
     {
+        ApplicationModel.multiplayer = false;
         EventManager.CallPlayButtonClickSFX();
         ApplicationModel.loadGame = false;
         SceneManager.LoadSceneAsync(index);

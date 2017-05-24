@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lobby : MonoBehaviour {
 
@@ -43,7 +44,16 @@ public class Lobby : MonoBehaviour {
 
     public void JoinLobby()
     {
-        PhotonNetwork.ConnectUsingSettings("0.1");
+        PhotonNetwork.ConnectUsingSettings("1");
         PhotonNetwork.JoinLobby();
+    }
+
+    public void StartGame(int index)
+    {
+        ApplicationModel.multiplayer = true;
+        if (PhotonNetwork.isMasterClient)
+        {
+            SceneManager.LoadSceneAsync(index);
+        }
     }
 }

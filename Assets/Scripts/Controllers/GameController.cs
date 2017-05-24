@@ -43,6 +43,10 @@ public class GameController : MonoBehaviour
     
     float height = Screen.height / (1080 / 55);
 
+    //multiplayer
+    public string[] players { get; private set; }
+
+
     // Use this for initialization
     private void Awake()
     {
@@ -51,6 +55,7 @@ public class GameController : MonoBehaviour
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
+
             eventConsequenceModifiers = new double[5] { 0.8, 0.9, 1, 1.1, 1.2 };
 
             LoadRegions();
@@ -76,6 +81,8 @@ public class GameController : MonoBehaviour
             SaveGameEvents();
             SaveQuests();
             SaveCards();*/
+
+            ChangeGameForMultiplayer();
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
@@ -1016,6 +1023,18 @@ public class GameController : MonoBehaviour
         Destroy(eventInstance);
         /*GameObject */eventInstance = Instantiate(eventObject);
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, updateUI.regionEvent, updateUI.gameEvent);
+    }
+
+    public void ChangeGameForMultiplayer()
+    {
+        players = new string[2] { PhotonNetwork.playerList[0].UserId, PhotonNetwork.playerList[1].UserId };
+
+        game.regions[0].SetRegionOwner(PhotonNetwork.playerList[0].UserId);
+        game.regions[1].SetRegionOwner(PhotonNetwork.playerList[0].UserId);
+        game.regions[2].SetRegionOwner(PhotonNetwork.playerList[1].UserId);
+        game.regions[3].SetRegionOwner(PhotonNetwork.playerList[1].UserId);
+
+        game.gameStatistics.SetMoneyMultiplayer();
     }
 }
 
