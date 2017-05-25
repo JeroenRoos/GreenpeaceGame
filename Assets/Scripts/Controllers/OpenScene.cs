@@ -6,7 +6,7 @@ using System;
 using UnityEngine.UI;
 using System.IO;
 
-public class OpenScene : MonoBehaviour
+public class OpenScene : Photon.PunBehaviour
 {
     #region Variables
     private RoomInfo[] rooms;
@@ -38,8 +38,17 @@ public class OpenScene : MonoBehaviour
     public Text txtLobby;
     public Text txtRoom;
     private string roomName;
+    private string nickName;
     public Text txtMultiplayerBack;
     public Text txtMultiplayerCreateRoom;
+
+    public RawImage imgNickname;
+    public Text txtNicknameInfo;
+    public InputField inputNickname;
+    public Button btnChooseNickname;
+    public Text txtChooseNickname;
+    public Text txtCancelChooseNickname;
+
     public RawImage imgCreateRoom;
     public Text txtCreateRoomInfo;
     public InputField inputRoomName;
@@ -53,6 +62,10 @@ public class OpenScene : MonoBehaviour
     private RoomInfo roomInfo;
     public Text txtRoomInfo;
     public Text txtRoomBack;
+    public Button btnStartGameFromRoom;
+    public Text txtStartGameFromRoom;
+    public Text txtPlayersInRoom;
+    public Text txtReadyToStart;
 
     // Settings 
     public Canvas canvasSettings;
@@ -312,8 +325,55 @@ public class OpenScene : MonoBehaviour
     {
         EventManager.CallPlayButtonClickSFX();
         canvasLobby.gameObject.SetActive(true);
-        initLobbyText();
+
+        initChooseNickname();
         getRoomList();
+    }
+
+    private void initChooseNickname()
+    {
+        imgNickname.gameObject.SetActive(true);
+        btnCreateRoom.interactable = false;
+        btnMultiplayerBack.interactable = false;
+        btnRefreshLobby.interactable = false;
+
+        string[] txtCancel = { "Annuleer", "Cancel" };
+        txtCancelChooseNickname.text = txtCancel[taal];
+        string[] txtInfo = { "Voer een naam in:", "Choose a nickname:" };
+        txtNicknameInfo.text = txtInfo[taal];
+
+        btnChooseNickname.gameObject.SetActive(false);
+
+    }
+    public void inputNicknameValueChanged()
+    {
+        inputNickname.text.Trim();
+
+        if (inputNickname.text != "")
+        {
+            nickName = inputNickname.text;
+            btnChooseNickname.gameObject.SetActive(true);
+            string[] txtBtn = { "Kies naam", "Choose name" };
+            txtChooseNickname.text = txtBtn[taal];
+        }
+        else
+        {
+            btnChooseNickname.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void buttonCancelChooseNickname()
+    {
+        EventManager.CallPlayButtonClickSFX();
+        canvasLobby.gameObject.SetActive(false);
+    }
+
+    public void buttonChooseNickname()
+    {
+        PhotonNetwork.player.NickName = nickName;
+        imgNickname.gameObject.SetActive(false);
+        initLobbyText();
     }
 
     private void initLobbyText()
@@ -326,6 +386,9 @@ public class OpenScene : MonoBehaviour
         txtMultiplayerCreateRoom.text = txtCreate[taal];
         txtRefreshLobby.text = txtRefresh[taal];
         imgCreateRoom.gameObject.SetActive(false);
+        btnCreateRoom.interactable = true;
+        btnMultiplayerBack.interactable = true;
+        btnRefreshLobby.interactable = true;
     }
 
     public void buttonMultiplayerBackClick()
@@ -368,16 +431,18 @@ public class OpenScene : MonoBehaviour
 
     public void buttonCreateClick()
     {
+        EventManager.CallPlayButtonClickSFX();
+
         lobby.CreateRoom(roomName);
         imgCreateRoom.gameObject.SetActive(false);
         btnCreateRoom.interactable = true;
         btnMultiplayerBack.interactable = true;
-
-        initRoomText();
+        btnRefreshLobby.interactable = true;
     }
 
     public void buttonCancelCreateRoom()
     {
+        EventManager.CallPlayButtonClickSFX();
         imgCreateRoom.gameObject.SetActive(false);
         btnCreateRoom.interactable = true;
         btnMultiplayerBack.interactable = true;
@@ -391,6 +456,7 @@ public class OpenScene : MonoBehaviour
 
     public void buttonRefreshLobbyClick()
     {
+        EventManager.CallPlayButtonClickSFX();
         getRoomList();
     }
     #endregion
@@ -403,31 +469,84 @@ public class OpenScene : MonoBehaviour
         getRoomList();
         string[] txtBack = { "Terug", "Back" };
         txtRoomBack.text = txtBack[taal];
-
         RoomInfo room = null;
+
         foreach (RoomInfo i in rooms)
+        {
+            Debug.Log("FOREACH");
+
             if (i.Name == roomName)
                 room = i;
-
-        if (room != null)
-            txtRoomInfo.text = room.Name + " " + room.PlayerCount + "/" + room.MaxPlayers;
-        else
-            txtRoomInfo.text = "Room is NULL, even though, YOU ARE IN A ROOM!!!";
+        }
     }
 
     public void buttonRoomBack()
     {
+        EventManager.CallPlayButtonClickSFX();
         canvasLobby.gameObject.SetActive(true);
         canvasRoom.gameObject.SetActive(false);
-        initLobbyText();
+        //initLobbyText();
+        lobby.LeaveRoom();
         getRoomList();
+    }
+
+    public void buttonRoomStartGame()
+    {
+        EventManager.CallPlayButtonClickSFX();
+        lobby.StartGame(1);
     }
     #endregion
 
     #region OnGUI Code
     void OnGUI()
     {
+        Debug.Log(PhotonNetwork.player.NickName);
         GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+
+        if (canvasRoom.gameObject.activeSelf)
+        {
+            if (PhotonNetwork.inRoom)
+                txtRoom.text = "You are in a room (" + PhotonNetwork.room.Name + ")";
+            else
+                txtRoom.text = "You are NOT in a room!";
+
+            string[] txtInfoRoom = {"Je hebt 2 spelers nodig om het spel te starten: \n\n" +
+                PhotonNetwork.room.Name + " \nAantal spelers: " + PhotonNetwork.room.PlayerCount + "\nAantal spelers nodig om te starten: " + PhotonNetwork.room.MaxPlayers
+
+                , "You need 2 players to start the game: \n\n" +
+                PhotonNetwork.room.Name + " \nNumber of players: " + PhotonNetwork.room.PlayerCount + "\nNeeded amount of players: " + PhotonNetwork.room.MaxPlayers };
+            txtRoomInfo.text = txtInfoRoom[taal];
+
+            txtPlayersInRoom.text = "Players in this room:";
+            foreach (PhotonPlayer p in PhotonNetwork.playerList)
+                txtPlayersInRoom.text += "\n" + p.NickName;
+
+
+            if (PhotonNetwork.room.PlayerCount == PhotonNetwork.room.MaxPlayers)
+            {
+                string[] txtBtn = { "Start spel", "Start game" };
+                txtStartGameFromRoom.text = txtBtn[taal];
+
+                if (PhotonNetwork.isMasterClient)
+                {
+                    string[] txtInfo = { "Je kunt het spel starten!", "You are ready to start the game!" };
+                    txtReadyToStart.text = txtInfo[taal];
+                    btnStartGameFromRoom.interactable = true;
+                }
+                else
+                {
+                    string[] txtInfo = { "Alleen de host kan de game starten...", "Only the host can start the game..." };
+                    txtReadyToStart.text = txtInfo[taal];
+                    btnStartGameFromRoom.interactable = false;
+                }
+            }
+            else
+            {
+                string[] txtInfo = { "Er zijn niet genoeg spelers om het spel te starten...", "You need more players to start the game..." };
+                txtReadyToStart.text = txtInfo[taal];
+                btnStartGameFromRoom.interactable = false;
+            }
+        }
 
         if (canvasLobby.gameObject.activeSelf)
         {
@@ -436,42 +555,72 @@ public class OpenScene : MonoBehaviour
             else
                 txtLobby.text = "You are NOT in a lobby!";
 
-            if (PhotonNetwork.inRoom)
-                txtRoom.text = "You are in a room (" + PhotonNetwork.room.Name + ")";
-            else
-                txtRoom.text = "You are NOT in a room!";
-
-            if (rooms.Length != 0)
+            if (!imgNickname.gameObject.activeSelf)
             {
-                txtNoRooms.gameObject.SetActive(false);
-
-                foreach (RoomInfo game in rooms)
+                if (rooms.Length != 0)
                 {
-                    float yOffset = 0f;
+                    txtNoRooms.gameObject.SetActive(false);
 
-                    RectTransform rectPosition = btnPosition.GetComponent<RectTransform>();
-                    Vector3 btnPos = txtNoRooms.transform.position;
-                    float screenHeight = Screen.height;
-
-                    float x = btnPos.x;
-                    float y = btnPos.z + (screenHeight / 3);
-
-                    if (GUI.Button(new Rect(0, 0 + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + " players", buttonStyle))
+                    foreach (RoomInfo game in rooms)
                     {
-                        lobby.JoinRoom(game.Name);
-                        roomName = game.Name;
-                        initRoomText();
-                        yOffset += 35;
+                        if (!lobby.lstRooms.Contains(game))
+                            lobby.lstRooms.Add(game);
+
+                        float yOffset = 0f;
+
+                        RectTransform rectPosition = btnPosition.GetComponent<RectTransform>();
+                        Vector3 btnPos = txtNoRooms.transform.position;
+                        float screenHeight = Screen.height;
+
+                        float x = btnPos.x - rectPosition.rect.width;
+                        float y = btnPos.z + (screenHeight / 3);
+
+                        if (GUI.Button(new Rect(x, y + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + " players", buttonStyle))
+                        {
+                            lobby.JoinRoom(game.Name);
+                            roomName = game.Name;
+                            yOffset += 35;
+                        }
                     }
                 }
-            }
-            else
-            {
-                txtNoRooms.gameObject.SetActive(true);
-                string[] txt = { "Er zijn op het moment geen rooms beschikbaar", "There are no rooms available at this moment" };
-                txtNoRooms.text = txt[taal];
+                else
+                {
+                    txtNoRooms.gameObject.SetActive(true);
+                    string[] txt = { "Er zijn op het moment geen rooms beschikbaar", "There are no rooms available at this moment" };
+                    txtNoRooms.text = txt[taal];
+                }
             }
         }
+    }
+    #endregion
+
+    #region PUNBehaviour
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Joined Lobby");
+        base.OnJoinedLobby();
+        initLobbyText();
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("Connected to Master");
+        base.OnConnectedToMaster();
+    }
+
+    public override void OnJoinedRoom()
+    {
+        Debug.Log("Joined Room");
+        base.OnJoinedRoom();
+        initRoomText();
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+        //initLobbyText();
+        //PhotonNetwork.ConnectUsingSettings("1");
+        //PhotonNetwork.JoinLobby();
     }
     #endregion
 }

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Lobby : Photon.PunBehaviour
+public class Lobby 
 {
+    public List<RoomInfo> lstRooms;
+
     public Lobby()
     {
         Debug.Log("Start Lobby");
         PhotonNetwork.ConnectUsingSettings("0.1");
         PhotonNetwork.automaticallySyncScene = true;
+        lstRooms = new List<RoomInfo>();
     }
 	
 	// Update is called once per frame
@@ -30,6 +33,7 @@ public class Lobby : Photon.PunBehaviour
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
+
     }
 
     public void LeaveRoom()
@@ -48,11 +52,11 @@ public class Lobby : Photon.PunBehaviour
         PhotonNetwork.JoinLobby();
     }
 
+    /*
     public override void OnJoinedLobby()
     {
         Debug.Log("Joined Lobby");
         base.OnJoinedLobby();
-        //PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnConnectedToMaster()
@@ -72,6 +76,7 @@ public class Lobby : Photon.PunBehaviour
         //PhotonNetwork.ConnectUsingSettings("1");
         PhotonNetwork.JoinLobby();
     }
+    */
 
     public void StartGame(int index)
     {
