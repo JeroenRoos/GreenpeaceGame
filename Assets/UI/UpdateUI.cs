@@ -179,6 +179,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtEndOfGameTitle;
     public Text txtEndOfYearInfo;
     public Text txtEndOfYearBtn;
+    public Text txtShareFacebookButton;
 
     // Text Investments Popup
     public Text txtInvestmentsTitle;
@@ -3916,6 +3917,8 @@ public class UpdateUI : MonoBehaviour
         }
 
         string[] btn = { "Naar hoofdmenu", "Return to main menu" };
+        string[] btnShare = { "Delen op FaceBook", "Share on FaceBook" };
+        txtShareFacebookButton.text = btnShare[taal];
         txtEndOfGameTitle.text = title[taal];
         txtEndOfYearBtn.text = btn[taal];
     }
