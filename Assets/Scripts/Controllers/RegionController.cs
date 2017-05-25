@@ -43,10 +43,6 @@ public class RegionController : MonoBehaviour {
 
     public void OnMouseExit()
     {
-        if (!ui.popupActive)
-        {
             isHovered = false;
-        }
     }
-
 }

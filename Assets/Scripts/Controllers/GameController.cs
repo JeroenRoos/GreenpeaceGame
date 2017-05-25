@@ -43,12 +43,14 @@ public class GameController : MonoBehaviour
     
     float height = Screen.height / (1080 / 55);
 
+    public GameObject player;
+    public Player playerController;
 
     // Use this for initialization
     private void Awake()
     {
-        FB.Init();
-
+        Debug.Log(ApplicationModel.multiplayer);
+        Debug.Log(PhotonNetwork.countOfPlayersInRooms);
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
@@ -80,7 +82,12 @@ public class GameController : MonoBehaviour
             SaveCards();*/
 
             if (ApplicationModel.multiplayer)
+            {
+                player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12,5,9), new Quaternion(50, 0, 0, 0), 0);
+                playerController = player.GetComponent<Player>();
+                //player.AddComponent<PhotonView>();
                 game.ChangeGameForMultiplayer();
+            }
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
@@ -213,30 +220,6 @@ public class GameController : MonoBehaviour
             "picture=" + WWW.EscapeURL(pictureUrl);
 
     Application.OpenURL(facebookURL);
-
-        /*FB.FeedShare(
-            string.Empty,
-            link: new System.Uri("http://i.imgur.com/zkYlB.jpg"),
-            linkName: "Test picture",
-            linkCaption: "I am sharing my amazing progress on Project Green Leader",
-            linkDescription: "Click for mystery picture",
-            picture: new System.Uri("https://gyazo.com/851dab54e6d082bca1aa3d876aca5493"),
-            callback: LogCallback);
-    }*/
-    }
-
-    private void AuthCallback(ILoginResult result)
-    {
-        if (FB.IsLoggedIn)
-        {
-            // AccessToken class will have session details
-            var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
-            // Print current access token's User ID
-        }
-        else
-        {
-            Debug.Log("User cancelled login");
-        }
     }
 
     void LogCallback(IResult response)
@@ -434,10 +417,12 @@ public class GameController : MonoBehaviour
         /* Update values in Tooltips for Icons in Main UI
         if (updateUI.getTooltipActive())
             updateUITooltips(); */
+
     }
 
     public void NextTurn()
     {
+        playerController.photonView.RPC("SyncGame", PhotonTargets.Others, game);
         if (!updateUI.popupActive)
         {
             if (!game.tutorial.tutorialNextTurnDone)
@@ -1026,5 +1011,7 @@ public class GameController : MonoBehaviour
         /*GameObject */eventInstance = Instantiate(eventObject);
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, updateUI.regionEvent, updateUI.gameEvent);
     }
+
+    //multiplayer
 }
 

@@ -500,7 +500,6 @@ public class OpenScene : Photon.PunBehaviour
     #region OnGUI Code
     void OnGUI()
     {
-        Debug.Log(PhotonNetwork.player.NickName);
         GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
 
         if (canvasRoom.gameObject.activeSelf)

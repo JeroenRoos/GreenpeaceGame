@@ -9,7 +9,6 @@ public class Lobby
 
     public Lobby()
     {
-        Debug.Log("Start Lobby");
         PhotonNetwork.ConnectUsingSettings("0.1");
         PhotonNetwork.automaticallySyncScene = true;
         lstRooms = new List<RoomInfo>();
@@ -28,17 +27,19 @@ public class Lobby
     public void CreateRoom(string roomName)
     {
         PhotonNetwork.CreateRoom(roomName, new RoomOptions() { MaxPlayers = 2 } , null);
+        ApplicationModel.multiplayer = true;
     }
 
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
-
+        ApplicationModel.multiplayer = true;
     }
 
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
+        ApplicationModel.multiplayer = false;
     }
 
     public void LeaveLobby()
@@ -80,10 +81,11 @@ public class Lobby
 
     public void StartGame(int index)
     {
-        ApplicationModel.multiplayer = true;
+        foreach (PhotonPlayer p in PhotonNetwork.playerList)
+            Debug.Log(p.NickName);
         if (PhotonNetwork.isMasterClient)
         {
-            SceneManager.LoadSceneAsync(index);
+            PhotonNetwork.LoadLevel(index);
         }
     }
 }
