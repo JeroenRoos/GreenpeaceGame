@@ -1026,5 +1026,10 @@ public class GameController : MonoBehaviour
         /*GameObject */eventInstance = Instantiate(eventObject);
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, updateUI.regionEvent, updateUI.gameEvent);
     }
+
+    public void btnShareFacebookClick()
+    {
+        ShareOnFacebook();
+    }
 }
 

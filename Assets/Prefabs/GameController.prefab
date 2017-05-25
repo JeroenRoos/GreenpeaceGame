@@ -219,6 +219,8 @@ MonoBehaviour:
   dropdownTimeline: {fileID: 0}
   txtColumnLeftInfo: {fileID: 0}
   txtColumnRightInfo: {fileID: 0}
+  txtEventTitle: {fileID: 0}
+  txtEventColumRight: {fileID: 0}
   txtEventConsequencesChoice: {fileID: 0}
   btnViewConsequencesEvent: {fileID: 0}
   txtBtnViewConsequencesEvent: {fileID: 0}
@@ -251,6 +253,7 @@ MonoBehaviour:
   txtEndOfGameTitle: {fileID: 0}
   txtEndOfYearInfo: {fileID: 0}
   txtEndOfYearBtn: {fileID: 0}
+  txtShareFacebookButton: {fileID: 0}
   txtInvestmentsTitle: {fileID: 0}
   txtInvestmentsColumn: {fileID: 0}
   txtInvestmentsDescription: {fileID: 0}

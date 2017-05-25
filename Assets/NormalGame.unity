@@ -91,6 +91,12 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &1794946 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114961068678024268, guid: edcead85b81aa134f9d8a69880a643a7,
+    type: 2}
+  m_PrefabInternal: {fileID: 524527812}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &2572925 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114310746992657538, guid: cea38af1ce0817649a23a784e989a427,
@@ -1590,8 +1596,13 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 328177335}
+      objectReference: {fileID: 100209248}
     - target: {fileID: 114124663179005314, guid: edcead85b81aa134f9d8a69880a643a7,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 328177335}
+    - target: {fileID: 114223725613182128, guid: edcead85b81aa134f9d8a69880a643a7,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1599,16 +1610,6 @@ Prefab:
     - target: {fileID: 1306323636836468, guid: edcead85b81aa134f9d8a69880a643a7, type: 2}
       propertyPath: m_Name
       value: CanvasEndOfGameReport
-      objectReference: {fileID: 0}
-    - target: {fileID: 224155921946670672, guid: edcead85b81aa134f9d8a69880a643a7,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 27.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 224155921946670672, guid: edcead85b81aa134f9d8a69880a643a7,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 172.8
       objectReference: {fileID: 0}
     - target: {fileID: 1306323636836468, guid: edcead85b81aa134f9d8a69880a643a7, type: 2}
       propertyPath: m_IsActive
@@ -2530,7 +2531,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!114 &806284635 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114961068678024268, guid: edcead85b81aa134f9d8a69880a643a7,
+  m_PrefabParentObject: {fileID: 114796083923920380, guid: edcead85b81aa134f9d8a69880a643a7,
     type: 2}
   m_PrefabInternal: {fileID: 524527812}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -3085,6 +3086,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 100209248}
+    - target: {fileID: 1161663468392044, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0625edd65df13ea4181604a023a2d2b7, type: 2}
   m_IsPrefabParent: 0
@@ -3792,6 +3797,16 @@ Prefab:
       objectReference: {fileID: 1593113452}
     - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
         type: 2}
+      propertyPath: txtEventTitle
+      value: 
+      objectReference: {fileID: 535906938}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtEventColumRight
+      value: 
+      objectReference: {fileID: 65031995}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
       propertyPath: txtEventConsequencesChoice
       value: 
       objectReference: {fileID: 1400746137}
@@ -3915,6 +3930,11 @@ Prefab:
       propertyPath: txtEndOfYearBtn
       value: 
       objectReference: {fileID: 806284635}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtShareFacebookButton
+      value: 
+      objectReference: {fileID: 1794946}
     - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
         type: 2}
       propertyPath: txtInvestmentsTitle
@@ -5075,16 +5095,6 @@ Prefab:
       propertyPath: imgHighlightInvestements
       value: 
       objectReference: {fileID: 1084589745}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: txtEventTitle
-      value: 
-      objectReference: {fileID: 535906938}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
-      propertyPath: txtEventColumRight
-      value: 
-      objectReference: {fileID: 65031995}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6abd92b8b8abe346944c61f1ea190c5, type: 2}
   m_IsPrefabParent: 0
