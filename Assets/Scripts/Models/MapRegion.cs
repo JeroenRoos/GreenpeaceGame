@@ -200,5 +200,12 @@ public class MapRegion
     {
         regionOwner = playerID;
     }
+
+    public void StartOtherPlayerAction(RegionAction action, Game game, bool[] pickedSectors)
+    {
+        action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
+        action.isOwnAction = false;
+        Debug.Log("action received");
+    }
 }
 

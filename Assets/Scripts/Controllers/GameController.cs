@@ -83,9 +83,9 @@ public class GameController : MonoBehaviour
 
             if (ApplicationModel.multiplayer)
             {
-                player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12,5,9), new Quaternion(50, 0, 0, 0), 0);
+                player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
                 playerController = player.GetComponent<Player>();
-                //player.AddComponent<PhotonView>();
+                playerController.game = game;
                 game.ChangeGameForMultiplayer();
             }
 
@@ -146,7 +146,10 @@ public class GameController : MonoBehaviour
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
         EventManager.LeaveGame += SetGameplayTrackingData;
-        EventManager.CallNewGame();
+        //EventManager.CallNewGame();
+
+        if (ApplicationModel.multiplayer)
+            updateUI.playerController = playerController;
     }
 
     private IEnumerator showBuildingIcons()
@@ -422,7 +425,6 @@ public class GameController : MonoBehaviour
 
     public void NextTurn()
     {
-        playerController.photonView.RPC("SyncGame", PhotonTargets.Others, game);
         if (!updateUI.popupActive)
         {
             if (!game.tutorial.tutorialNextTurnDone)

@@ -41,6 +41,9 @@ public class RegionAction //: MonoBehaviour
     public SectorStatistics availableConditionsMinimum { get; private set; }
     public SectorStatistics availableConditionsMaximum { get; private set; }
 
+    //multiplayer
+    public bool isOwnAction;
+
     private RegionAction() { }
 
     public void GetAvailableActions(Game game, RegionStatistics rs)

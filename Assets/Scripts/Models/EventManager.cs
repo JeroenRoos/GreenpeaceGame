@@ -6,8 +6,8 @@ using System.Text;
 class EventManager
 {
     // Event Actions
-    public delegate void GameStart();
-    public static event GameStart NewGame;
+    /*public delegate void GameStart();
+    /public static event GameStart NewGame;*/
 
     public delegate void MonthChanged();
     public static event MonthChanged ChangeMonth;
@@ -39,10 +39,10 @@ class EventManager
     public delegate void GameIsLeft();
     public static event GameIsLeft LeaveGame;
 
-    public static void CallNewGame()
+    /*public static void CallNewGame()
     {
         NewGame();
-    }
+    }*/
 
     public static void CallChangeMonth()
     {

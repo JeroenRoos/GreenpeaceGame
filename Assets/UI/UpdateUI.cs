@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UpdateUI : MonoBehaviour
 {
+    public Player playerController;
     // Green:       #00CC00
     // Red:         #FF0000
 
@@ -2268,6 +2269,10 @@ public class UpdateUI : MonoBehaviour
     public void btnDoActionRegionMenuClick()
     {
         regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
+
+        /*if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("ActionStarted", PhotonTargets.Others, regio.name[0], regioAction.name[0],
+                new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });*/
 
         ClearActionMenu();
         imgActions.gameObject.SetActive(false);

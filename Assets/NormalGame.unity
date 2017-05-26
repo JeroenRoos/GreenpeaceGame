@@ -7265,6 +7265,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 114249450109081590, guid: 5da5f7b223399c6489046784e3d1be89,
+        type: 2}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249450109081590, guid: 5da5f7b223399c6489046784e3d1be89,
+        type: 2}
+      propertyPath: instantiationId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249450109081590, guid: 5da5f7b223399c6489046784e3d1be89,
+        type: 2}
+      propertyPath: synchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249450109081590, guid: 5da5f7b223399c6489046784e3d1be89,
+        type: 2}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5da5f7b223399c6489046784e3d1be89, type: 2}
   m_IsPrefabParent: 0

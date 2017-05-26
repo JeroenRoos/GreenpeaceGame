@@ -83,7 +83,7 @@ public class TestBot : MonoBehaviour
         Debug.Log(System.DateTime.Now);
         turnCounter = 0;
         gameController = GetComponent<GameController>();
-        EventManager.NewGame += CheckStatus;
+        //EventManager.NewGame += CheckStatus;
         EventManager.ChangeMonth += CheckStatus;
 
         playstyles = new string[] { "Random", "IncomeFocused", "PollutionFocused" };
