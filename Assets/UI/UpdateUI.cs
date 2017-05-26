@@ -2270,9 +2270,9 @@ public class UpdateUI : MonoBehaviour
     {
         regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
-        /*if (ApplicationModel.multiplayer)
+        if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("ActionStarted", PhotonTargets.Others, regio.name[0], regioAction.name[0],
-                new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });*/
+                new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
         ClearActionMenu();
         imgActions.gameObject.SetActive(false);

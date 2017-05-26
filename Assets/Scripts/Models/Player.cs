@@ -11,8 +11,6 @@ public class Player : Photon.MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        //photonView = GetComponent<PhotonView>();
-        photonView = PhotonView.Get(this);
 	}
 	
 	// Update is called once per frame
@@ -26,12 +24,12 @@ public class Player : Photon.MonoBehaviour {
         if (stream.isWriting)
         {
             // We own this player: send the others our data
-            stream.SendNext(game);
+            //stream.SendNext(game);
         }
         else
         {
             // Network player, receive data
-            game = (Game)stream.ReceiveNext();
+            //game = (Game)stream.ReceiveNext();
         }
     }
 
@@ -39,27 +37,42 @@ public class Player : Photon.MonoBehaviour {
     [PunRPC]
     void ActionStarted(string RegionName, string ActionName, bool[] pickedSectors)
     {
-        foreach (MapRegion r in game.regions)
+        Debug.Log("Action start... ismine:" + photonView.isMine);
+        Debug.Log(game.regions.Count);
+        if (game != null)
         {
-            Debug.Log(r.name[0]);
-            if (r.name[0] == RegionName)
+            foreach (MapRegion r in game.regions)
             {
-                foreach (RegionAction rA in r.actions)
+                Debug.Log(r.name[0]);
+                if (r.name[0] == RegionName)
                 {
-                    Debug.Log(rA.name[0]);
-                    if (rA.name[0] == ActionName)
+                    foreach (RegionAction rA in r.actions)
                     {
-                        r.StartOtherPlayerAction(rA, game, pickedSectors);
-                        return;
+                        Debug.Log(rA.name[0]);
+                        if (rA.name[0] == ActionName)
+                        {
+                            r.StartOtherPlayerAction(rA, game, pickedSectors);
+                            return;
+                        }
                     }
                 }
             }
         }
     }
 
-    [PunRPC]
+    /*[PunRPC]
     void syncGame(string game)
     {
-        this.game = GameContainer.XmlDeserializeFromString(game);
+        //this.game = GameContainer.XmlDeserializeFromString(game);
+
+        GameController gC = GetComponent<GameController>();
+        game = gC.game;
+    }*/
+
+    [PunRPC]
+    void syncGame()
+    {
+        GameController gC = GetComponent<GameController>();
+        game = gC.game;
     }
 }

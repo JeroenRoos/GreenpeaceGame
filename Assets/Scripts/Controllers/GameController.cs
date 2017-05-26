@@ -65,29 +65,21 @@ public class GameController : MonoBehaviour
             LoadBuildings();
             LoadCards();
 
-            /*foreach (Region region in game.regions)
+            /*foreach (MapRegion region in game.regions)
             {
                 foreach (RegionSector sector in region.sectors)
                 {
                     sector.statistics.pollution.CalculateAvgPollution();
                 }
                 region.statistics.UpdateSectorAvgs(region);
-            }
+            }*/
 
             SaveRegions();
             SaveRegionActions();
             SaveBuildings();
             SaveGameEvents();
             SaveQuests();
-            SaveCards();*/
-
-            if (ApplicationModel.multiplayer)
-            {
-                player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
-                playerController = player.GetComponent<Player>();
-                playerController.game = game;
-                game.ChangeGameForMultiplayer();
-            }
+            SaveCards();
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
@@ -100,6 +92,13 @@ public class GameController : MonoBehaviour
             //set advisors
             game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
+
+            if (ApplicationModel.multiplayer)
+            {
+                game.ChangeGameForMultiplayer();
+                player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
+                playerController = player.GetComponent<Player>();
+            }
         }
         else
             LoadGame();

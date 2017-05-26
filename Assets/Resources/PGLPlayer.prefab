@@ -56,12 +56,12 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 2
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 114737919200423466}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -78,5 +78,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2c0401ca06b0f4b98cec0b86219a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonView: {fileID: 0}
-  test: 0
+  photonView: {fileID: 114249450109081590}
+  game:
+    completedEventsCount: 0
+    abandonedEventsCount: 0
+    completedActionsCount: 0
+    completedQuestsCount: 0
+    receivedCardsCount: 0
+    totalTimePlayed: 0
+    tutorial:
+      tutorialIndex: 0
+      tutorialNoTooltip: 1
+      regionWestActivated: 0
+      tutorialOrganizationDone: 0
+      tutorialRegionDone: 0
+      tutorialNextTurnDone: 0
+      tutorialEventsDone: 0
+      tutorialMonthlyReportDone: 0
+      tutorialCheckActionDone: 0
+      tutorialCardsDone: 0
+      tutorialQuestsDone: 0
+      tutorialInvestementsDone: 0
+      tutorialBuildingsDone: 0
+      tutorialNexTurnPossibe: 0
+      tutorialQuestsActive: 0
+      tutorialeventsClickable: 0
+      tutorialRegionsClickable: 0
+      tutorialBuildingsClickable: 0
+      tutorialOnlyWestNL: 0
+      doTuto: 0
+      tutorialActive: 0
+      tutorialOrganizationActive: 0
+      tutorialCardsActive: 0
+      tutorialInvestementsActive: 0
+      tutorialBuildingsActive: 0
+      tutorialRegionActive: 0
+      tutorialEventsActive: 0
+      tutorialMonthlyReportActive: 0
+      tutorialChecks: 000000000000000000000000000000000000000000
