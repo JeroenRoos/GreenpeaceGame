@@ -55,6 +55,9 @@ public class Game
     //multiplayer
     public string[] players { get; private set; }
 
+    public bool nextTurnIsclicked;
+    public bool OtherPlayerClickedNextTurn;
+
     public Game()
     {
         //language = 0;
@@ -322,7 +325,7 @@ public class Game
         regions[2].SetRegionOwner(players[1]);
         regions[3].SetRegionOwner(players[1]);
 
-        gameStatistics.SetMoneyMultiplayer();
+        gameStatistics.SetMoneyMultiplayer(GetPlayerListPosition());
     }
 
     public int GetPlayerListPosition()
@@ -341,7 +344,7 @@ public class Game
         if (!ApplicationModel.multiplayer)
             return gameStatistics.money;
         else
-            return gameStatistics.GetPlayerMoney(players);
+            return gameStatistics.playerMoney[gameStatistics.playerNumber];
     }
 
     public void GetRegionIncome()
@@ -358,7 +361,7 @@ public class Game
                 foreach (RegionSector rs in r.sectors)
                     income += rs.statistics.income;
 
-                gameStatistics.ModifyMoneyMultiplayer(income, true, GetPlayerListPosition());
+                gameStatistics.ModifyMoney(income, true);
             }
         }
     }

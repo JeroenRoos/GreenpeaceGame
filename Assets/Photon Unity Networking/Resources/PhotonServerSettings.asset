@@ -45,4 +45,6 @@ MonoBehaviour:
   - SyncGame
   - ActionStarted
   - syncGame
+  - MoneyChanged
+  - NextTurnClicked
   DisableAutoOpenWizard: 1

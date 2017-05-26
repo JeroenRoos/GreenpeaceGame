@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 [Serializable]
 public class GameStatistics
@@ -20,6 +21,7 @@ public class GameStatistics
 
     //multiplayer
     public double[] playerMoney { get; private set; }
+    public int playerNumber { get; private set; }
 
     public GameStatistics() { }
 
@@ -32,10 +34,22 @@ public class GameStatistics
 
     public void ModifyMoney(double changevalue, bool isAdded)
     {
-        if (isAdded)
-            money += changevalue;
+        if (!ApplicationModel.multiplayer)
+        {
+            if (isAdded)
+                money += changevalue;
+            else
+                money -= changevalue;
+        }
         else
-            money -= changevalue;
+        {
+            if (isAdded)
+                playerMoney[playerNumber] += changevalue;
+            else
+                playerMoney[playerNumber] -= changevalue;
+
+            MultiplayerManager.CallChangeOwnMoney(changevalue, isAdded);
+        }
     }
 
     public void ModifyPopulation(double changevalue)
@@ -80,32 +94,34 @@ public class GameStatistics
         prosperity /= divisionValue;
     }
 
-    public void SetMoneyMultiplayer()
+    //mulgiplayer
+    public void SetMoneyMultiplayer(int playerNumber)
     {
         playerMoney = new double[2];
         playerMoney[0] = money / 2;
         playerMoney[1] = money / 2;
+
+        this.playerNumber = playerNumber;
     }
 
-    public void ModifyMoneyMultiplayer(double changevalue, bool isAdded, int playerNumber)
+    public void ModifyMoneyOtherPlayer(double changevalue, bool isAdded)
     {
-        if (isAdded)
-            playerMoney[playerNumber] += changevalue;
-
-        else
-            playerMoney[playerNumber] -= changevalue;
-    }
-
-    public double GetPlayerMoney(string[] players)
-    {
-        for (int i = 0; i < players.Length; i++)
+        if (playerNumber == 0)
         {
-            if (players[i] == PhotonNetwork.player.UserId)
-            {
-                return playerMoney[i];
-            }
+            if (isAdded)
+                playerMoney[1] += changevalue;
+            else
+                playerMoney[1] -= changevalue;
         }
-        return 0;
+        else
+        {
+            if (isAdded)
+                playerMoney[0] += changevalue;
+            else
+                playerMoney[0] -= changevalue;
+        }
+
+        Debug.Log("Money other player changed");
     }
 }
 

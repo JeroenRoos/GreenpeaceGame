@@ -201,6 +201,17 @@ public class MapRegion
         regionOwner = playerID;
     }
 
+    public void StartActionMultiplayer(RegionAction action, Game game, bool[] pickedSectors)
+    {
+        foreach (bool isTrue in pickedSectors)
+        {
+            if (isTrue)
+                game.gameStatistics.ModifyMoney(action.afterInvestmentActionMoneyCost, false);
+        }
+        action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
+        action.isOwnAction = true;
+    }
+
     public void StartOtherPlayerAction(RegionAction action, Game game, bool[] pickedSectors)
     {
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);

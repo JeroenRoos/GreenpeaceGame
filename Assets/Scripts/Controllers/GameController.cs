@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     
     float height = Screen.height / (1080 / 55);
 
+    //multiplayer
     public GameObject player;
     public Player playerController;
 
@@ -72,14 +73,14 @@ public class GameController : MonoBehaviour
                     sector.statistics.pollution.CalculateAvgPollution();
                 }
                 region.statistics.UpdateSectorAvgs(region);
-            }*/
+            }
 
             SaveRegions();
             SaveRegionActions();
             SaveBuildings();
             SaveGameEvents();
             SaveQuests();
-            SaveCards();
+            SaveCards();*/
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
@@ -98,6 +99,9 @@ public class GameController : MonoBehaviour
                 game.ChangeGameForMultiplayer();
                 player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
                 playerController = player.GetComponent<Player>();
+                SetDelegates();
+                game.nextTurnIsclicked = false;
+                game.OtherPlayerClickedNextTurn = false;
             }
         }
         else
@@ -406,7 +410,13 @@ public class GameController : MonoBehaviour
         if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
             /*game.tutorial.tutorialStep9 && */game.tutorial.tutorialNexTurnPossibe))
         {
-            EventManager.CallChangeMonth();
+            if (!ApplicationModel.multiplayer)
+                EventManager.CallChangeMonth();
+
+            else if (!game.nextTurnIsclicked)
+            {
+                MultiplayerManager.CallNextTurnClick();
+            }
         }
 
         // Update the main screen UI (Icons and date)
@@ -424,6 +434,12 @@ public class GameController : MonoBehaviour
 
     public void NextTurn()
     {
+        if (ApplicationModel.multiplayer)
+        {
+            game.nextTurnIsclicked = false;
+            game.OtherPlayerClickedNextTurn = false;
+        }
+
         if (!updateUI.popupActive)
         {
             if (!game.tutorial.tutorialNextTurnDone)
@@ -797,7 +813,7 @@ public class GameController : MonoBehaviour
         if (!ApplicationModel.multiplayer)
             updateUI.updateMoney(game.gameStatistics.money);
         else
-            updateUI.updateMoney(game.gameStatistics.GetPlayerMoney(game.players));
+            updateUI.updateMoney(game.gameStatistics.playerMoney[game.gameStatistics.playerNumber]);
 
         //updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
         //updateUI.updatePopulation(game.gameStatistics.population);
@@ -1016,6 +1032,84 @@ public class GameController : MonoBehaviour
     public void btnShareFacebookClick()
     {
         ShareOnFacebook();
+    }
+
+    //multiplayer
+    public void SetDelegates()
+    {
+        MultiplayerManager.ChangeOwnMoney += SendOwnMoneyChange;
+        MultiplayerManager.ChangeOtherPlayerMoney += game.gameStatistics.ModifyMoneyOtherPlayer;
+        MultiplayerManager.StartAction += StartOtherPlayerAction;
+        MultiplayerManager.NextTurnClick += ClickedNextTurn;
+        MultiplayerManager.NextTurnClicked += GetOtherPlayerNextTurn;
+    }
+
+    public void GetOtherPlayerNextTurn()
+    {
+        game.OtherPlayerClickedNextTurn = true;
+        if (game.nextTurnIsclicked)
+            EventManager.CallChangeMonth();
+
+        Debug.Log("next turn click received");
+    }
+
+    public void ClickedNextTurn()
+    {
+        game.nextTurnIsclicked = true;
+        playerController.photonView.RPC("NextTurnClicked", PhotonTargets.Others);
+
+        Debug.Log(game.OtherPlayerClickedNextTurn);
+        if (game.OtherPlayerClickedNextTurn)
+            EventManager.CallChangeMonth();
+    }
+
+    public void SendOwnMoneyChange(double changevalue, bool isAdded)
+    {
+        playerController.photonView.RPC("MoneyChanged", PhotonTargets.Others, changevalue, isAdded);
+    }
+
+    public void StartOtherPlayerAction(string RegionName, string ActionName, bool[] pickedSectors)
+    {
+        foreach (MapRegion r in game.regions)
+        {
+            if (r.name[0] == RegionName)
+            {
+                foreach (RegionAction rA in r.actions)
+                {
+                    Debug.Log(rA.name[0]);
+                    if (rA.name[0] == ActionName)
+                    {
+                        r.StartOtherPlayerAction(rA, game, pickedSectors);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    //master client will generate the event, so only player 2 will execute this method
+    public void GetOtherPlayerEvent()
+    {
+
+    }
+
+    public void StartOtherPlayerEventChoice()
+    {
+
+    }
+
+    public void GetOtherPlayerInvestment()
+    {
+
+    }
+
+    public void StartOtherPlayerCard()
+    {
+    }
+
+    public void GetOtherPlayerBuilding()
+    {
+
     }
 }
 

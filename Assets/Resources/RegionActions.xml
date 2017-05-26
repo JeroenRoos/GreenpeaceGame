@@ -2,6 +2,7 @@
 <RegionActionContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <RegionActions>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Geld inzamelen</string>
         <string>Raise money</string>
@@ -130,6 +131,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Geld inzamelen +1</string>
         <string>Raise money +1</string>
@@ -258,6 +260,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Geld inzamelen +2</string>
         <string>Raise money +2</string>
@@ -386,6 +389,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog productie</string>
         <string>Improve production</string>
@@ -514,6 +518,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog productie +1</string>
         <string>Improve production +1</string>
@@ -642,6 +647,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog productie +2</string>
         <string>Improve production +2</string>
@@ -770,6 +776,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog welvaart</string>
         <string>Increase prosperity</string>
@@ -898,6 +905,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog welvaart +1</string>
         <string>Increase prosperity +1</string>
@@ -1026,6 +1034,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog welvaart +2</string>
         <string>Increase prosperity +2</string>
@@ -1154,6 +1163,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog tevredenheid</string>
         <string>Increase happiness</string>
@@ -1282,6 +1292,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog tevredenheid +1</string>
         <string>Increase happiness +1</string>
@@ -1410,6 +1421,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog tevredenheid +2</string>
         <string>Increase happiness +2</string>
@@ -1538,6 +1550,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Miliebewustheid campagne</string>
         <string>Eco awareness campaign</string>
@@ -1666,6 +1679,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Miliebewustheid campagne +1</string>
         <string>Eco awareness campaign +1</string>
@@ -1794,6 +1808,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Miliebewustheid campagne +2</string>
         <string>Eco awareness campaign +2</string>
@@ -1922,6 +1937,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag luchtvervuiling</string>
         <string>Reduce airpollution</string>
@@ -2050,6 +2066,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag luchtvervuiling +1</string>
         <string>Reduce airpollution +1</string>
@@ -2178,6 +2195,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag luchtvervuiling +2</string>
         <string>Reduce airpollution +2</string>
@@ -2306,6 +2324,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag natuurvervuiling</string>
         <string>Reduce nature pollution</string>
@@ -2434,6 +2453,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag natuurvervuiling +1</string>
         <string>Reduce nature pollution +1</string>
@@ -2562,6 +2582,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag natuurvervuiling +2</string>
         <string>Reduce nature pollution +2</string>
@@ -2690,6 +2711,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag watervervuiling</string>
         <string>Reduce current water pollution</string>
@@ -2818,6 +2840,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag watervervuiling +1</string>
         <string>Reduce current water pollution +1</string>
@@ -2946,6 +2969,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag watervervuiling +2</string>
         <string>Reduce current water pollution +2</string>
@@ -3074,6 +3098,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Maak afgesloten natuurgebied [UNIEK]</string>
         <string>Create closed nature reserve [UNIQUE]</string>
@@ -3202,6 +3227,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlaag huidige vervuiling [UNIEK]</string>
         <string>Reduce current pollution [UNIQUE]</string>
@@ -3330,6 +3356,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne voor recycling</string>
         <string>Campaign for recycling</string>
@@ -3458,6 +3485,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Stel een milieuzone in</string>
         <string>Set an environment zone</string>
@@ -3586,6 +3614,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne voor de goede boer</string>
         <string>Campaign for the green farmer</string>
@@ -3714,6 +3743,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne OV</string>
         <string>Campaign public transport</string>
@@ -3842,6 +3872,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne schoon vervoer</string>
         <string>Campaign clean vehicles</string>
@@ -3970,6 +4001,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne kernenergie</string>
         <string>Campaign nuclear energy</string>
@@ -4098,6 +4130,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne fossiele energie</string>
         <string>Campaign fossil energy</string>
@@ -4226,6 +4259,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verhoog de parkeer tarieven</string>
         <string>Increase the parking ticket prices</string>
@@ -4354,6 +4388,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verminderen parkeerplaatsen</string>
         <string>Less parking space</string>
@@ -4482,6 +4517,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne fietsen</string>
         <string>Campaign bicycles</string>
@@ -4610,6 +4646,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Verlagen fijnstof grens</string>
         <string>Lower microdust border</string>
@@ -4738,6 +4775,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne giftige stoffen</string>
         <string>Campaign toxic fabrics</string>
@@ -4866,6 +4904,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne dumpen rivieren</string>
         <string>Campaign river dumping</string>
@@ -4994,6 +5033,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne Internationale Milieuorganizatie</string>
         <string>Campaign International Environmentorganization</string>
@@ -5122,6 +5162,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne Nationale Milieuorganizatie</string>
         <string>Campaign National Environmentorganization</string>
@@ -5250,6 +5291,7 @@
       </availableConditionsMaximum>
     </RegionAction>
     <RegionAction>
+      <isOwnAction>false</isOwnAction>
       <name>
         <string>Campagne Milieudefensie</string>
         <string>Campaign Milieudefensie</string>

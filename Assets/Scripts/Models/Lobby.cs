@@ -39,7 +39,6 @@ public class Lobby
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-        ApplicationModel.multiplayer = false;
     }
 
     public void LeaveLobby()

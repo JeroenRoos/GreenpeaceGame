@@ -2268,11 +2268,15 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoActionRegionMenuClick()
     {
-        regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
+        if (!ApplicationModel.multiplayer)
+            regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
+        else
+        {
+            regio.StartActionMultiplayer(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
-        if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("ActionStarted", PhotonTargets.Others, regio.name[0], regioAction.name[0],
                 new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
+        }
 
         ClearActionMenu();
         imgActions.gameObject.SetActive(false);
@@ -4486,11 +4490,16 @@ public class UpdateUI : MonoBehaviour
         if (game.tutorial.tutorialNexTurnPossibe && game.currentYear < 31)
         {
             EventManager.CallPlayButtonClickSFX();
-            EventManager.CallChangeMonth();
+            if (!ApplicationModel.multiplayer)
+            {
+                EventManager.CallChangeMonth();
 
-            if (!game.tutorial.tutorialNextTurnDone)
-                game.tutorial.tutorialNextTurnDone = true;
+                if (!game.tutorial.tutorialNextTurnDone)
+                    game.tutorial.tutorialNextTurnDone = true;
+            }
 
+            else if (!game.nextTurnIsclicked)
+                MultiplayerManager.CallNextTurnClick();
         }
     }
 
