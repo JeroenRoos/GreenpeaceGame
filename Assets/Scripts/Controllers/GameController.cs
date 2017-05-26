@@ -93,16 +93,6 @@ public class GameController : MonoBehaviour
             //set advisors
             game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
-
-            if (ApplicationModel.multiplayer)
-            {
-                game.ChangeGameForMultiplayer();
-                player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
-                playerController = player.GetComponent<Player>();
-                SetDelegates();
-                game.nextTurnIsclicked = false;
-                game.OtherPlayerClickedNextTurn = false;
-            }
         }
         else
             LoadGame();
@@ -152,7 +142,15 @@ public class GameController : MonoBehaviour
         //EventManager.CallNewGame();
 
         if (ApplicationModel.multiplayer)
+        {
+            game.ChangeGameForMultiplayer();
+            player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
+            playerController = player.GetComponent<Player>();
             updateUI.playerController = playerController;
+            SetDelegates();
+            game.nextTurnIsclicked = false;
+            game.OtherPlayerClickedNextTurn = false;
+        }
     }
 
     private IEnumerator showBuildingIcons()

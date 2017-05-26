@@ -80,11 +80,6 @@ public class Lobby
 
     public void StartGame(int index)
     {
-        foreach (PhotonPlayer p in PhotonNetwork.playerList)
-            Debug.Log(p.NickName);
-        if (PhotonNetwork.isMasterClient)
-        {
-            PhotonNetwork.LoadLevel(index);
-        }
+        PhotonNetwork.LoadLevel(index);
     }
 }
