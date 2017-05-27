@@ -41,6 +41,7 @@ public class Player : Photon.MonoBehaviour {
         double[] pickedConsequences1, double[] pickedConsequences2, double[] pickedTemporaryConsequences0,
         double[] pickedTemporaryConsequences1, double[] pickedTemporaryConsequences2)
     {
-        MultiplayerManager.CallStartAction(RegionName, ActionName, pickedSectors);
+        MultiplayerManager.CallStartEvent(regionName, eventName, pickedConsequences0, pickedConsequences1, pickedConsequences2, 
+            pickedTemporaryConsequences0, pickedTemporaryConsequences1, pickedTemporaryConsequences2);
     }
 }
