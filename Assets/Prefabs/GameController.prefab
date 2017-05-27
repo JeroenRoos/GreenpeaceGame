@@ -238,6 +238,7 @@ MonoBehaviour:
   gameEvent:
     pickedConsequences: []
     pickedTemporaryConsequences: []
+    isOwnEvent: 0
   regionEvent:
     eventPositions: []
     buildingPositions: []
@@ -329,6 +330,7 @@ MonoBehaviour:
   txtBigDescription: {fileID: 0}
   txtAdviserEconomic: {fileID: 0}
   txtAdviserPollution: {fileID: 0}
+  txtNotYourRegion: {fileID: 0}
   txtRegionAvailableMoney: {fileID: 0}
   txtRegionAvailableMoneyDescription: {fileID: 0}
   txtbtnAverageTab: {fileID: 0}

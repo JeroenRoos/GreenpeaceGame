@@ -48,4 +48,5 @@ MonoBehaviour:
   - MoneyChanged
   - NextTurnClicked
   - EventGenerated
+  - EventChoiceMade
   DisableAutoOpenWizard: 1

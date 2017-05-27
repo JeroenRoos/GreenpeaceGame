@@ -273,6 +273,7 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtNotYourRegion;
     public Text txtRegionAvailableMoney;
     public Text txtRegionAvailableMoneyDescription;
     public Text txtbtnAverageTab;
@@ -2036,10 +2037,31 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
-        imgHistory.gameObject.SetActive(false);
-        imgActions.gameObject.SetActive(false);
-        btnActionsTab.interactable = true;
-        btnHistoryTab.interactable = true;
+
+        if (regio.regionOwner == PhotonNetwork.player.UserId)
+        {
+            txtNotYourRegion.gameObject.SetActive(false);
+            imgHistory.gameObject.SetActive(false);
+            imgActions.gameObject.SetActive(false);
+
+            btnHistoryTab.gameObject.SetActive(true);
+            btnActionsTab.gameObject.SetActive(true);
+            btnActionsTab.interactable = true;
+            btnHistoryTab.interactable = true;
+        }
+        else
+        {
+            txtNotYourRegion.gameObject.SetActive(true);
+            string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren.",
+                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions." };
+            txtNotYourRegion.text = txtInfo[taal];
+
+            imgHistory.gameObject.SetActive(false);
+            imgActions.gameObject.SetActive(false);
+            btnHistoryTab.gameObject.SetActive(false);
+            btnActionsTab.gameObject.SetActive(false);
+        }
+
         btnAverageTab.interactable = false;
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
@@ -2328,24 +2350,27 @@ public class UpdateUI : MonoBehaviour
                 new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
         }
 
-        ClearActionMenu();
-        imgActions.gameObject.SetActive(false);
-        btnActionsTab.interactable = true;
+        //ClearActionMenu();
 
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
-
-        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money"; 
+        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money";
 
         //updateRegionTextValues();
+        startRegionPopup(regio);
     }
 
     public void ClearActionMenu()
     {
+        initDropDownRegion();
+
+        btnActionsTab.interactable = true;
         btnDoActionRegionMenu.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
+        btnDoActionRegionMenu.gameObject.SetActive(false);
+
         regioActionCost = 0;
         txtRegionActionConsequences.text = "";
         txtRegionActionCost.text = "";
@@ -2355,6 +2380,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionSectorTotalCostDescription.text = "";
         txtRegionActionSectorTotalCost.text = "";
         txtRegionColumnCenter.text = "";
+        txtActionSectorsDescription.text = "";
 
 
 
@@ -2374,7 +2400,7 @@ public class UpdateUI : MonoBehaviour
 
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
-
+        imgActions.gameObject.SetActive(false);
     }
 
     public void sectorCompaniesClick()
