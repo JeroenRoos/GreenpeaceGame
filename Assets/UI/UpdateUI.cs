@@ -3251,6 +3251,8 @@ public class UpdateUI : MonoBehaviour
             option = 2;
 
         gameEvent.SetPickedChoice(option, game, regionEvent);
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("EventChoiceMade", PhotonTargets.Others, regionEvent.name[0], gameEvent.name, option);
         
         canvasEventPopup.gameObject.SetActive(false);
         popupActive = false;

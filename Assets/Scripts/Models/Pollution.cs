@@ -128,5 +128,15 @@ public class Pollution
         naturePollutionIncrease = s.pollution.naturePollutionIncrease * modifiers[rnd.Next(0, modifiers.Length)];
         waterPollutionIncrease = s.pollution.waterPollutionIncrease * modifiers[rnd.Next(0, modifiers.Length)];
     }
+
+    public void SetPickedConsequencesMultiplayer(double[] consequences)
+    {
+        airPollution = consequences[4];
+        naturePollution = consequences[5];
+        waterPollution = consequences[6];
+        airPollutionIncrease = consequences[7];
+        naturePollutionIncrease = consequences[8];
+        waterPollutionIncrease = consequences[9];
+    }
 }
 

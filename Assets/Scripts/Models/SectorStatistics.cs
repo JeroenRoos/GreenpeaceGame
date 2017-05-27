@@ -108,4 +108,14 @@ public class SectorStatistics
 
         pollution.SetPickedConsequences(s, modifiers, rnd);
     }
+
+    public void SetPickedConsequencesMultiplayer(double[] consequences)
+    {
+        income = consequences[0];
+        happiness = consequences[1];
+        ecoAwareness = consequences[2];
+        prosperity = consequences[3];
+
+        pollution.SetPickedConsequencesMultiplayer(consequences);
+    }
 }
