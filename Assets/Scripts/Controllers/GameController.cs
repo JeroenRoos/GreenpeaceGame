@@ -446,7 +446,8 @@ public class GameController : MonoBehaviour
             bool isNewYear = game.UpdateCurrentMonthAndYear();
             game.ExecuteNewMonthMethods();
             UpdateRegionsPollutionInfluence();
-            UpdateEvents();
+            if (!ApplicationModel.multiplayer || PhotonNetwork.isMasterClient)
+                UpdateEvents();
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateQuests();
             UpdateRegionActionAvailability();
@@ -752,16 +753,26 @@ public class GameController : MonoBehaviour
                 pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
                 game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
 
-                //Destroy(eventInstance);
-                /*GameObject */eventInstance = GameController.Instantiate(eventObject);
+                eventInstance = GameController.Instantiate(eventObject);
                 eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, pickedRegion, pickedEvent);
+
+                if (ApplicationModel.multiplayer)
+                {
+                    GameEvent p = pickedEvent;
+                    double[] pickedConsequences0 = new double[10] { p.pickedConsequences[0].income, p.pickedConsequences[0].happiness, p.pickedConsequences[0].ecoAwareness, p.pickedConsequences[0].prosperity, p.pickedConsequences[0].pollution.airPollution, p.pickedConsequences[0].pollution.naturePollution, p.pickedConsequences[0].pollution.waterPollution, p.pickedConsequences[0].pollution.airPollutionIncrease, p.pickedConsequences[0].pollution.naturePollutionIncrease, p.pickedConsequences[0].pollution.waterPollutionIncrease };
+                    double[] pickedConsequences1 = new double[10] { p.pickedConsequences[1].income, p.pickedConsequences[1].happiness, p.pickedConsequences[1].ecoAwareness, p.pickedConsequences[1].prosperity, p.pickedConsequences[1].pollution.airPollution, p.pickedConsequences[1].pollution.naturePollution, p.pickedConsequences[1].pollution.waterPollution, p.pickedConsequences[1].pollution.airPollutionIncrease, p.pickedConsequences[1].pollution.naturePollutionIncrease, p.pickedConsequences[1].pollution.waterPollutionIncrease };
+                    double[] pickedConsequences2 = new double[10] { p.pickedConsequences[2].income, p.pickedConsequences[2].happiness, p.pickedConsequences[2].ecoAwareness, p.pickedConsequences[2].prosperity, p.pickedConsequences[2].pollution.airPollution, p.pickedConsequences[2].pollution.naturePollution, p.pickedConsequences[2].pollution.waterPollution, p.pickedConsequences[2].pollution.airPollutionIncrease, p.pickedConsequences[2].pollution.naturePollutionIncrease, p.pickedConsequences[2].pollution.waterPollutionIncrease };
+                    double[] pickedTemporaryConsequences0 = new double[10] { p.pickedTemporaryConsequences[0].income, p.pickedTemporaryConsequences[0].happiness, p.pickedTemporaryConsequences[0].ecoAwareness, p.pickedTemporaryConsequences[0].prosperity, p.pickedTemporaryConsequences[0].pollution.airPollution, p.pickedTemporaryConsequences[0].pollution.naturePollution, p.pickedTemporaryConsequences[0].pollution.waterPollution, p.pickedTemporaryConsequences[0].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[0].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[0].pollution.waterPollutionIncrease };
+                    double[] pickedTemporaryConsequences1 = new double[10] { p.pickedTemporaryConsequences[1].income, p.pickedTemporaryConsequences[1].happiness, p.pickedTemporaryConsequences[1].ecoAwareness, p.pickedTemporaryConsequences[1].prosperity, p.pickedTemporaryConsequences[1].pollution.airPollution, p.pickedTemporaryConsequences[1].pollution.naturePollution, p.pickedTemporaryConsequences[1].pollution.waterPollution, p.pickedTemporaryConsequences[1].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[1].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[1].pollution.waterPollutionIncrease };
+                    double[] pickedTemporaryConsequences2 = new double[10] { p.pickedTemporaryConsequences[2].income, p.pickedTemporaryConsequences[2].happiness, p.pickedTemporaryConsequences[2].ecoAwareness, p.pickedTemporaryConsequences[2].prosperity, p.pickedTemporaryConsequences[2].pollution.airPollution, p.pickedTemporaryConsequences[2].pollution.naturePollution, p.pickedTemporaryConsequences[2].pollution.waterPollution, p.pickedTemporaryConsequences[2].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[2].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[2].pollution.waterPollutionIncrease };
+
+                    playerController.photonView.RPC("EventGenerated", PhotonTargets.Others, pickedRegion.name[0], pickedEvent.name,
+                        pickedConsequences0, pickedConsequences1, pickedConsequences2, pickedTemporaryConsequences0,
+                        pickedTemporaryConsequences1, pickedTemporaryConsequences2);
+                }
             }
 
             eventChance -= eventChanceReduction;
-        }
-
-        if (activeCount < 1)
-        {
         }
     }
     
@@ -1035,11 +1046,12 @@ public class GameController : MonoBehaviour
     //multiplayer
     public void SetDelegates()
     {
+        MultiplayerManager.NextTurnClicked += GetOtherPlayerNextTurn;
+        MultiplayerManager.NextTurnClick += ClickedNextTurn;
         MultiplayerManager.ChangeOwnMoney += SendOwnMoneyChange;
         MultiplayerManager.ChangeOtherPlayerMoney += game.gameStatistics.ModifyMoneyOtherPlayer;
         MultiplayerManager.StartAction += StartOtherPlayerAction;
-        MultiplayerManager.NextTurnClick += ClickedNextTurn;
-        MultiplayerManager.NextTurnClicked += GetOtherPlayerNextTurn;
+        MultiplayerManager.StartEvent += GetOtherPlayerEvent;
     }
 
     public void GetOtherPlayerNextTurn()
@@ -1086,9 +1098,41 @@ public class GameController : MonoBehaviour
     }
 
     //master client will generate the event, so only player 2 will execute this method
-    public void GetOtherPlayerEvent()
+    public void GetOtherPlayerEvent(string regionName, string eventName, double[] pickedConsequences0,
+        double[] pickedConsequences1, double[] pickedConsequences2, double[] pickedTemporaryConsequences0,
+        double[] pickedTemporaryConsequences1, double[] pickedTemporaryConsequences2)
     {
+        MapRegion pickedRegion = new MapRegion();
+        GameEvent pickedEvent = new GameEvent();
+        foreach (MapRegion r in game.regions)
+        {
+            if (r.name[0] == regionName)
+            {
+                pickedRegion = r;
+                break;
+            }
+        }
+        foreach (GameEvent e in game.events)
+        {
+            if (e.name == eventName)
+            {
+                pickedEvent = e;
+            }
+        }
 
+        pickedEvent.pickedConsequences[0].SetPickedConsequencesMultiplayer(pickedConsequences0);
+        pickedEvent.pickedConsequences[1].SetPickedConsequencesMultiplayer(pickedConsequences1);
+        pickedEvent.pickedConsequences[2].SetPickedConsequencesMultiplayer(pickedConsequences2);
+        pickedEvent.pickedTemporaryConsequences[0].SetPickedConsequencesMultiplayer(pickedTemporaryConsequences0);
+        pickedEvent.pickedTemporaryConsequences[1].SetPickedConsequencesMultiplayer(pickedTemporaryConsequences1);
+        pickedEvent.pickedTemporaryConsequences[2].SetPickedConsequencesMultiplayer(pickedTemporaryConsequences2);
+
+        pickedEvent.StartEvent(game.currentYear, game.currentMonth);
+        pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
+        game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
+
+        eventInstance = GameController.Instantiate(eventObject);
+        eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, pickedRegion, pickedEvent);
     }
 
     public void StartOtherPlayerEventChoice()

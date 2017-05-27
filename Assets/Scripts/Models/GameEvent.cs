@@ -50,7 +50,9 @@ public class GameEvent
     public SectorStatistics[] pickedConsequences;
     public SectorStatistics[] pickedTemporaryConsequences;
 
-    private GameEvent() { }
+    public bool isOwnEvent;
+
+    public GameEvent() { }
 
     public void StartEvent(int currentYear, int currentMonth)
     {

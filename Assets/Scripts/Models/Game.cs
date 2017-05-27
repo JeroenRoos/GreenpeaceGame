@@ -188,7 +188,12 @@ public class Game
                     foreach (bool ps in action.pickedSectors)
                     {
                         if (ps)
-                            gameStatistics.ModifyMoney(action.actionMoneyReward, true);
+                        {
+                            if (ApplicationModel.multiplayer && !action.isOwnAction)
+                                gameStatistics.ModifyMoneyOtherPlayer(action.actionMoneyReward, true);
+                            else
+                                gameStatistics.ModifyMoney(action.actionMoneyReward, true);
+                        }
                     }
                     AddCompletedActionToReports(region, action);
                     action.CompleteAction();

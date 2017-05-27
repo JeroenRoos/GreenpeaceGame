@@ -19,7 +19,12 @@ class MultiplayerManager
 
     public delegate void ActionReceived(string RegionName, string ActionName, bool[] pickedSectors);
     public static event ActionReceived StartAction;
-    
+
+    public delegate void EventReceived(string regionName, string eventName, double[] pickedConsequences0,
+        double[] pickedConsequences1, double[] pickedConsequences2, double[] pickedTemporaryConsequences0,
+        double[] pickedTemporaryConsequences1, double[] pickedTemporaryConsequences2);
+    public static event EventReceived StartEvent;
+
     //by local player
     public static void CallNextTurnClick()
     {
@@ -45,5 +50,13 @@ class MultiplayerManager
     public static void CallStartAction(string RegionName, string ActionName, bool[] pickedSectors)
     {
         StartAction(RegionName, ActionName, pickedSectors);
+    }
+
+    public static void CallStartEvent(string regionName, string eventName, double[] pickedConsequences0,
+        double[] pickedConsequences1, double[] pickedConsequences2, double[] pickedTemporaryConsequences0,
+        double[] pickedTemporaryConsequences1, double[] pickedTemporaryConsequences2)
+    {
+        StartEvent(regionName, eventName, pickedConsequences0, pickedConsequences1, pickedConsequences2, 
+            pickedTemporaryConsequences0, pickedTemporaryConsequences1, pickedTemporaryConsequences2);
     }
 }
