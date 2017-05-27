@@ -973,6 +973,7 @@ public class GameController : MonoBehaviour
         Building b = updateUI.buildingToBeBuild;
 
         r.SetBuilding(b.buildingID);
+        playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], b.buildingID);
         updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
         updateUI.popupActive = false;
         EventManager.CallPopupIsDisabled();
@@ -994,22 +995,11 @@ public class GameController : MonoBehaviour
 
     public void btnDeleteBuildingPress()
     {
-        /*Region r = updateUI.buildingRegion;
-        Building b = updateUI.activeBuilding;
-
-        //r.DeleteBuilding(b);
-        updateUI.canvasBuildingsPopup.gameObject.SetActive(false);
-        updateUI.popupActive = false;
-        EventManager.CallPopupIsDisabled();
-
-        GameObject buildingInstance = GameController.Instantiate(buildingObject);
-        buildingInstance.GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, null);*/
-
-
         MapRegion r = updateUI.buildingRegion;
         Building b = updateUI.activeBuilding;
 
         r.SetBuilding(null);
+        playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], null);
         updateUI.canvasBuildingsPopup.gameObject.SetActive(false);
         updateUI.popupActive = false;
         EventManager.CallPopupIsDisabled();
@@ -1052,6 +1042,8 @@ public class GameController : MonoBehaviour
         MultiplayerManager.StartEvent += GetOtherPlayerEvent;
         MultiplayerManager.PickEventChoice += StartOtherPlayerEventChoice;
         MultiplayerManager.PlayCard += StartOtherPlayerCard;
+        MultiplayerManager.Invest += GetOtherPlayerInvestment;
+        MultiplayerManager.MakeBuilding += GetOtherPlayerBuilding;
     }
 
     public void GetOtherPlayerNextTurn()
@@ -1141,9 +1133,35 @@ public class GameController : MonoBehaviour
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, r, e);
     }
 
-    public void GetOtherPlayerInvestment()
+    public void GetOtherPlayerInvestment(string investmentType)
     {
-
+        switch (investmentType)
+        {
+            case "ActionCostReduction":
+                game.investments.InvestInActionCostReduction(game.regions);
+                updateUI.setActionCostReductionInvestments();
+                if (game.investments.actionCostReduction[4])
+                    updateUI.btnInvestmentActionCostInvest.gameObject.SetActive(false);
+                break;
+            case "BetterActionConsequences":
+                game.investments.InvestInBetterActionConsequences(game.regions);
+                updateUI.setActionConsequencesInvestments();
+                if (game.investments.betterActionConsequences[4])
+                    updateUI.btnInvestmentActionConsequenceInvest.gameObject.SetActive(false);
+                break;
+            case "GameEventCostReduction":
+                game.investments.InvestInGameEventCostReduction(game.events);
+                updateUI.setEventCostReductionInvestments();
+                if (game.investments.gameEventCostReduction[4])
+                    updateUI.btnInvestmentEventCostInvest.gameObject.SetActive(false);
+                break;
+            case "BetterGameEventConsequences":
+                game.investments.InvestInBetterGameEventConsequences(game.events);
+                updateUI.setEventConsequencesInvestments();
+                if (game.investments.betterGameEventConsequences[4])
+                    updateUI.btnInvestmentEventConsequenceInvest.gameObject.SetActive(false);
+                break;
+        }
     }
 
     public void StartOtherPlayerCard(string regionName, double[] cardValues, bool isGlobal)
@@ -1157,9 +1175,22 @@ public class GameController : MonoBehaviour
             c.UseCardOnRegion(GetRegion(regionName), game.gameStatistics);
     }
 
-    public void GetOtherPlayerBuilding()
+    public void GetOtherPlayerBuilding(string regionName, string buildingID)
     {
+        MapRegion r = GetRegion(regionName);
+        Building b = GetBuilding(buildingID, r);
+        r.SetBuilding(buildingID);
 
+        for (int i = 0; i < game.regions.Count; i++)
+        {
+            if (r == game.regions[i])
+            {
+                Destroy(buildingInstances[i]);
+
+                buildingInstances[i] = GameController.Instantiate(buildingObject);
+                buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
+            }
+        }
     }
 
     public MapRegion GetRegion(string regionName)
@@ -1182,6 +1213,19 @@ public class GameController : MonoBehaviour
             if (e.name == eventName)
             {
                 return e;
+            }
+        }
+
+        return null;
+    }
+
+    public Building GetBuilding(string buildingID, MapRegion r)
+    {
+        foreach (Building b in r.possibleBuildings)
+        {
+            if (b.buildingID == buildingID)
+            {
+                return b;
             }
         }
 

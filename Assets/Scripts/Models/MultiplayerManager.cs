@@ -30,6 +30,12 @@ class MultiplayerManager
 
     public delegate void CardPlayed(string regionName, double[] cardValues, bool isGlobal);
     public static event CardPlayed PlayCard;
+    
+    public delegate void InvestmentMade(string investmentType);
+    public static event InvestmentMade Invest;
+
+    public delegate void BuildingMade(string regionName, string buildingID);
+    public static event BuildingMade MakeBuilding;
 
     //by local player
     public static void CallNextTurnClick()
@@ -74,5 +80,15 @@ class MultiplayerManager
     public static void CallPlayCard(string regionName,  double[] cardValues, bool isGlobal)
     {
         PlayCard(regionName, cardValues, isGlobal);
+    }
+
+    public static void CallInvest(string investmentType)
+    {
+        Invest(investmentType);
+    }
+
+    public static void CallMakeBuilding(string regionName, string buildingID)
+    {
+        MakeBuilding(regionName, buildingID);
     }
 }

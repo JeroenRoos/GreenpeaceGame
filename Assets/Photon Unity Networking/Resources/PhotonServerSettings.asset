@@ -49,4 +49,7 @@ MonoBehaviour:
   - NextTurnClicked
   - EventGenerated
   - EventChoiceMade
+  - CardUsed
+  - InvestmentMade
+  - BuildingMade
   DisableAutoOpenWizard: 1

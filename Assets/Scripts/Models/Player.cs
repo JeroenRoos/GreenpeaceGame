@@ -7,13 +7,13 @@ public class Player : Photon.MonoBehaviour {
 
     public PhotonView photonView;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         //photonView.RPC("SyncGame", PhotonTargets.Others, GameContainer.XmlSerializeToString(game));
     }
@@ -41,7 +41,7 @@ public class Player : Photon.MonoBehaviour {
         double[] pickedConsequences1, double[] pickedConsequences2, double[] pickedTemporaryConsequences0,
         double[] pickedTemporaryConsequences1, double[] pickedTemporaryConsequences2)
     {
-        MultiplayerManager.CallStartEvent(regionName, eventName, pickedConsequences0, pickedConsequences1, pickedConsequences2, 
+        MultiplayerManager.CallStartEvent(regionName, eventName, pickedConsequences0, pickedConsequences1, pickedConsequences2,
             pickedTemporaryConsequences0, pickedTemporaryConsequences1, pickedTemporaryConsequences2);
     }
 
@@ -55,5 +55,17 @@ public class Player : Photon.MonoBehaviour {
     void CardUsed(string regionName, double[] cardValues, bool isGlobal)
     {
         MultiplayerManager.CallPlayCard(regionName, cardValues, isGlobal);
+    }
+
+    [PunRPC]
+    void InvestmentMade(string investmentType)
+    {
+        MultiplayerManager.CallInvest(investmentType);
+    }
+
+    [PunRPC]
+    void BuildingMade(string regionName, string buildingID)
+    {
+        MultiplayerManager.CallMakeBuilding(regionName, buildingID);
     }
 }

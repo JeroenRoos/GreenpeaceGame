@@ -3581,7 +3581,7 @@ public class UpdateUI : MonoBehaviour
         setEventConsequencesInvestments();
     }
 
-    private void setActionCostReductionInvestments()
+    public void setActionCostReductionInvestments()
     {
         if (game.investments.actionCostReduction[0])
             imgInvestmentActionCost01.gameObject.SetActive(true);
@@ -3595,7 +3595,7 @@ public class UpdateUI : MonoBehaviour
             imgInvestmentActionCost05.gameObject.SetActive(true);
     }
 
-    private void setActionConsequencesInvestments()
+    public void setActionConsequencesInvestments()
     {
         if (game.investments.betterActionConsequences[0])
             imgInvestmentActionConsequences01.gameObject.SetActive(true);
@@ -3609,7 +3609,7 @@ public class UpdateUI : MonoBehaviour
             imgInvestmentActionConsequences05.gameObject.SetActive(true);
     }
 
-    private void setEventCostReductionInvestments()
+    public void setEventCostReductionInvestments()
     {
         if (game.investments.gameEventCostReduction[0])
             imgInvestmentEventCost01.gameObject.SetActive(true);
@@ -3623,7 +3623,7 @@ public class UpdateUI : MonoBehaviour
             imgInvestmentEventCost05.gameObject.SetActive(true);
     }
 
-    private void setEventConsequencesInvestments()
+    public void setEventConsequencesInvestments()
     {
         if (game.investments.betterGameEventConsequences[0])
             imgInvestmentEventConsequences01.gameObject.SetActive(true);
@@ -3642,6 +3642,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInActionCostReduction(game.regions);
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "ActionCostReduction");
             setActionCostReductionInvestments();
 
             if (game.investments.actionCostReduction[4])
@@ -3657,6 +3658,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterActionConsequences(game.regions);
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "BetterActionConsequences");
             setActionConsequencesInvestments();
 
             if (game.investments.betterActionConsequences[4])
@@ -3672,6 +3674,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInGameEventCostReduction(game.events);
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "GameEventCostReduction");
             setEventCostReductionInvestments();
 
             if (game.investments.gameEventCostReduction[4])
@@ -3687,6 +3690,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterGameEventConsequences(game.events);
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "BetterGameEventConsequences");
             setEventConsequencesInvestments();
 
             if (game.investments.betterGameEventConsequences[4])
