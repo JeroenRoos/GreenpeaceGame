@@ -12,6 +12,12 @@ public class UpdateUI : MonoBehaviour
     // Red:         #FF0000
 
     #region UI Elements
+    // Multiplayer
+    public Text txtMultiplayerInfo;
+    public Text txtMultiplayerLocalPlayer;
+    public Text txtMultiplayerRemotePlayer;
+
+
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
     private GUIStyle tooltipStyle = new GUIStyle();
@@ -34,7 +40,6 @@ public class UpdateUI : MonoBehaviour
     public Text colorTxtTest;
 
     public bool playSelectSound;
-
     public Dropdown dropdownRegio;
 
     public Toggle checkboxRegionHouseholds;
@@ -142,6 +147,7 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
+    public Text txtNotYourEvent;
     public Text txtEventTitle;
     public Text txtEventColumRight;
     public Text txtEventConsequencesChoice;
@@ -268,6 +274,7 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtNotYourRegion;
     public Text txtRegionAvailableMoney;
     public Text txtRegionAvailableMoneyDescription;
     public Text txtbtnAverageTab;
@@ -549,6 +556,30 @@ public class UpdateUI : MonoBehaviour
 
         btnNextTurnText.text = nextTurnText[taal];
         buildingObjectController = GetComponent<BuildingObjectController>();
+
+        if (ApplicationModel.multiplayer)
+        {
+            txtMultiplayerLocalPlayer.gameObject.SetActive(true);
+            txtMultiplayerRemotePlayer.gameObject.SetActive(true);
+            txtMultiplayerInfo.gameObject.SetActive(true);
+            string[] txtInfo = { "Spelers: ", "Players: " };
+            txtMultiplayerInfo.text = txtInfo[taal];
+
+
+            //foreach (PhotonPlayer p in PhotonNetwork.playerList)
+            //{
+            //    string txt = "\n" + p.NickName + " - ";
+            //    txtMultiplayerPlayerInfo[taal] += txt;
+            //}
+            SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+        }
+        else
+        {
+            txtMultiplayerLocalPlayer.gameObject.SetActive(false);
+            txtMultiplayerRemotePlayer.gameObject.SetActive(false);
+            txtMultiplayerInfo.gameObject.SetActive(false);
+        }
+        
     }
 
     void Update()
@@ -578,6 +609,24 @@ public class UpdateUI : MonoBehaviour
                 //btnViewConsequences.gameObject.SetActive(false);
             }
         }
+
+        /*
+        if (ApplicationModel.multiplayer)
+        {
+            txtMultiplayerPlayers.text = "";
+            if (game.nextTurnIsclicked)
+            {
+                string[] txt = { "Klaar voor volgende beurt", "Ready for next turn" };
+                txtMultiplayerPlayerInfo[taal] += txt[taal];
+            }
+            else
+            {
+                string[] txt = { "Nederland aan het bekijken", "Looking at The Netherlands" };
+                txtMultiplayerPlayerInfo[taal] += txt[taal];
+            }
+
+            txtMultiplayerPlayers.text = txtMultiplayerPlayerInfo[taal];
+        }*/
     }
     #endregion
 
@@ -1923,6 +1972,9 @@ public class UpdateUI : MonoBehaviour
     private void startRegionPopup(MapRegion region)
     {
         regio = region;
+
+        SetLocalPlayerText(regio.name[taal] + " aan het bekijken", "Looking at " + regio.name[taal]);
+
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
         EventManager.CallPopupIsActive();
@@ -1986,10 +2038,45 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
-        imgHistory.gameObject.SetActive(false);
-        imgActions.gameObject.SetActive(false);
-        btnActionsTab.interactable = true;
-        btnHistoryTab.interactable = true;
+
+        if (ApplicationModel.multiplayer)
+        {
+            if (regio.regionOwner == PhotonNetwork.player.UserId)
+            {
+                txtNotYourRegion.gameObject.SetActive(false);
+                imgHistory.gameObject.SetActive(false);
+                imgActions.gameObject.SetActive(false);
+
+                btnHistoryTab.gameObject.SetActive(true);
+                btnActionsTab.gameObject.SetActive(true);
+                btnActionsTab.interactable = true;
+                btnHistoryTab.interactable = true;
+            }
+            else
+            {
+                txtNotYourRegion.gameObject.SetActive(true);
+                string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren.",
+                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions." };
+                txtNotYourRegion.text = txtInfo[taal];
+
+                imgHistory.gameObject.SetActive(false);
+                imgActions.gameObject.SetActive(false);
+                btnHistoryTab.gameObject.SetActive(false);
+                btnActionsTab.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            txtNotYourRegion.gameObject.SetActive(false);
+            imgHistory.gameObject.SetActive(false);
+            imgActions.gameObject.SetActive(false);
+
+            btnHistoryTab.gameObject.SetActive(true);
+            btnActionsTab.gameObject.SetActive(true);
+            btnActionsTab.interactable = true;
+            btnHistoryTab.interactable = true;
+        }
+
         btnAverageTab.interactable = false;
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
@@ -2278,24 +2365,27 @@ public class UpdateUI : MonoBehaviour
                 new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
         }
 
-        ClearActionMenu();
-        imgActions.gameObject.SetActive(false);
-        btnActionsTab.interactable = true;
+        //ClearActionMenu();
 
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
-
-        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money"; 
+        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money";
 
         //updateRegionTextValues();
+        startRegionPopup(regio);
     }
 
     public void ClearActionMenu()
     {
+        initDropDownRegion();
+
+        btnActionsTab.interactable = true;
         btnDoActionRegionMenu.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
+        btnDoActionRegionMenu.gameObject.SetActive(false);
+
         regioActionCost = 0;
         txtRegionActionConsequences.text = "";
         txtRegionActionCost.text = "";
@@ -2305,6 +2395,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionSectorTotalCostDescription.text = "";
         txtRegionActionSectorTotalCost.text = "";
         txtRegionColumnCenter.text = "";
+        txtActionSectorsDescription.text = "";
 
 
 
@@ -2324,7 +2415,7 @@ public class UpdateUI : MonoBehaviour
 
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
-
+        imgActions.gameObject.SetActive(false);
     }
 
     public void sectorCompaniesClick()
@@ -3046,6 +3137,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEventText(GameEvent e)
     {
+        txtNotYourEvent.gameObject.SetActive(false);
         string[] txtBtn = { "Doe keuze", "Do choice" };
         string[] txtBtn2 = { "Bekijk consequences", "View consequences" };
         string[] txtKosten = { "\nKosten: ", "\nCost: " };
@@ -3107,7 +3199,8 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            btnDoEvent.gameObject.SetActive(true);
+            //btnDoEvent.gameObject.SetActive(true);
+            activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences "};
             txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[0]); 
@@ -3136,7 +3229,8 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            btnDoEvent.gameObject.SetActive(true);
+            //btnDoEvent.gameObject.SetActive(true);
+            activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[1]); 
@@ -3165,7 +3259,8 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            btnDoEvent.gameObject.SetActive(true);
+            //btnDoEvent.gameObject.SetActive(true);
+            activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[2]); 
@@ -3185,6 +3280,30 @@ public class UpdateUI : MonoBehaviour
             //btnDoEvent.interactable = false;
             btnViewConsequencesEvent.interactable = false;
             txtEventConsequencesChoice.text = "";
+        }
+    }
+
+    private void activateDoEventButton()
+    {
+        if (ApplicationModel.multiplayer)
+        {
+            if (regionEvent.regionOwner == PhotonNetwork.player.UserId)
+            {
+                txtNotYourEvent.gameObject.SetActive(false);
+                btnDoEvent.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnDoEvent.gameObject.SetActive(false);
+                txtNotYourEvent.gameObject.SetActive(true);
+                string[] info = { "Omdat de event in de regio van de andere speler is kun jij hem niet oplossen.",
+                "You cannot finish this event because it belongs to the region of the other player." };
+                txtNotYourEvent.text = info[taal];
+            }
+        }
+        else
+        {
+            btnDoEvent.gameObject.SetActive(true);
         }
     }
    
@@ -3970,6 +4089,8 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive/* && tutorialStep8 */&& !game.tutorial.tutorialQuestsActive)
         {
+            SetLocalPlayerText("Organisatie aan het bekijken", "Looking at the Organization");
+
             btnOrganizationIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasOrganizationPopup.gameObject.SetActive(true);
@@ -3983,6 +4104,8 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)//tutorialStep15)
         {
+            SetLocalPlayerText("Missies aan het bekijken", "Looking at Quests");
+
             btnQuestsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasQuestsPopup.gameObject.SetActive(true);
@@ -3996,6 +4119,8 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasCardsPopup.gameObject.activeSelf && !popupActive)
         {
+            SetLocalPlayerText("Kaarten aan het bekijken", "Looking at Cards");
+
             btnCardsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasCardsPopup.gameObject.SetActive(true);
@@ -4020,6 +4145,8 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)
         {
+            SetLocalPlayerText("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
+
             EventManager.CallPlayButtonClickSFX();
             canvasMonthlyReport.gameObject.SetActive(true);
             popupActive = true;
@@ -4038,6 +4165,8 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)
         {
+            SetLocalPlayerText("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
+
             EventManager.CallPlayButtonClickSFX();
             canvasYearlyReport.gameObject.SetActive(true);
             popupActive = true;
@@ -4050,6 +4179,8 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
         {
+            SetLocalPlayerText("Investeringen aan het bekijken", "Looking at Investements");
+
             btnInvestmentsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
             canvasInvestmentsPopup.gameObject.SetActive(true);
@@ -4165,6 +4296,9 @@ public class UpdateUI : MonoBehaviour
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
+
+        SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+
     }
     #endregion
 
@@ -4511,7 +4645,11 @@ public class UpdateUI : MonoBehaviour
             }
 
             else if (!game.nextTurnIsclicked)
+            {
+                SetLocalPlayerText("Klaar voor de volgende beurt", "Ready for next turn");
+
                 MultiplayerManager.CallNextTurnClick();
+            }
         }
     }
 
@@ -5063,4 +5201,15 @@ public class UpdateUI : MonoBehaviour
         return modifiers[taal];
     }
     #endregion
+
+    private void SetLocalPlayerText(string nl, string eng)
+    {
+        string[] txtMultiplayerPlayerInfo = { "", "" };
+
+        string[] txt = { "\n" + PhotonNetwork.player.NickName + " - " + nl
+                    , "\n" + PhotonNetwork.player.NickName + " - " + eng };
+
+        txtMultiplayerPlayerInfo[taal] += txt[taal];
+        txtMultiplayerLocalPlayer.text = txtMultiplayerPlayerInfo[taal];
+    }
 }

@@ -91,6 +91,8 @@ MonoBehaviour:
       tutorialEventsActive: 0
       tutorialMonthlyReportActive: 0
       tutorialChecks: 
+    nextTurnIsclicked: 0
+    OtherPlayerClickedNextTurn: 0
   MonthlyReportButon: {fileID: 0}
   YearlyReportButton: {fileID: 0}
   CompletedButton: {fileID: 0}
@@ -107,6 +109,8 @@ MonoBehaviour:
   autoSave: 0
   autoEndTurn: 0
   trackingEnabled: 0
+  player: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &114429190090301808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5517b5e531a1c429d49ad2a9576e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  txtMultiplayerInfo: {fileID: 0}
+  txtMultiplayerLocalPlayer: {fileID: 0}
+  txtMultiplayerRemotePlayer: {fileID: 0}
   tooltipTexture: {fileID: 2800000, guid: f8069c7b1751271499c96b309c9a3d86, type: 3}
   buttonTexture: {fileID: 2800000, guid: ed46db1cfd94f5147955a3c087ff9fa1, type: 3}
   scrollbarAfterActionReport: {fileID: 0}
@@ -219,6 +227,7 @@ MonoBehaviour:
   dropdownTimeline: {fileID: 0}
   txtColumnLeftInfo: {fileID: 0}
   txtColumnRightInfo: {fileID: 0}
+  txtNotYourEvent: {fileID: 0}
   txtEventTitle: {fileID: 0}
   txtEventColumRight: {fileID: 0}
   txtEventConsequencesChoice: {fileID: 0}
@@ -230,6 +239,7 @@ MonoBehaviour:
   gameEvent:
     pickedConsequences: []
     pickedTemporaryConsequences: []
+    isOwnEvent: 0
   regionEvent:
     eventPositions: []
     buildingPositions: []
@@ -321,6 +331,7 @@ MonoBehaviour:
   txtBigDescription: {fileID: 0}
   txtAdviserEconomic: {fileID: 0}
   txtAdviserPollution: {fileID: 0}
+  txtNotYourRegion: {fileID: 0}
   txtRegionAvailableMoney: {fileID: 0}
   txtRegionAvailableMoneyDescription: {fileID: 0}
   txtbtnAverageTab: {fileID: 0}
