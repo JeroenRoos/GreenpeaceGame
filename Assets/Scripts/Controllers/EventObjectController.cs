@@ -18,6 +18,7 @@ public class EventObjectController : MonoBehaviour
     void Start()
     {
         updateUI = gameController.GetComponent<UpdateUI>();
+        EventManager.DestroySprite += DestroyFromChoiceMade;
     }
 
     void Update()
@@ -25,6 +26,16 @@ public class EventObjectController : MonoBehaviour
         if (!eventModel.isIdle && !eventModel.isActive)//!eventModel.isFinished)// && )//!eventModel.isIdle)
         {
             //eventModel.isFinished
+            EventManager.DestroySprite -= DestroyFromChoiceMade;
+            Destroy(gameObject);
+        }
+    }
+
+    void DestroyFromChoiceMade(GameEvent e)
+    {
+        if (e == eventModel)
+        {
+            EventManager.DestroySprite -= DestroyFromChoiceMade;
             Destroy(gameObject);
         }
     }

@@ -50,8 +50,6 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
-        Debug.Log(ApplicationModel.multiplayer);
-        Debug.Log(PhotonNetwork.countOfPlayersInRooms);
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
@@ -225,12 +223,6 @@ public class GameController : MonoBehaviour
 
     Application.OpenURL(facebookURL);
     }
-
-    void LogCallback(IResult response)
-    {
-        Debug.Log("Worked");
-    }
-
 
     public void SetScoreTrackingData(double score)
     {
@@ -758,7 +750,7 @@ public class GameController : MonoBehaviour
 
                 if (ApplicationModel.multiplayer)
                 {
-                    if (pickedRegion.regionOwner == PhotonNetwork.player.UserId)
+                    if (pickedRegion.regionOwner == PhotonNetwork.player.NickName)
                         pickedEvent.isOwnEvent = true;
                     else
                         pickedEvent.isOwnEvent = false;
@@ -1038,7 +1030,6 @@ public class GameController : MonoBehaviour
     {
         updateUI.finishEvent();
 
-        Destroy(eventInstance);
         /*GameObject */eventInstance = Instantiate(eventObject);
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, updateUI.regionEvent, updateUI.gameEvent);
     }
@@ -1058,6 +1049,7 @@ public class GameController : MonoBehaviour
         MultiplayerManager.StartAction += StartOtherPlayerAction;
         MultiplayerManager.StartEvent += GetOtherPlayerEvent;
         MultiplayerManager.PickEventChoice += StartOtherPlayerEventChoice;
+        MultiplayerManager.PlayCard += StartOtherPlayerCard;
     }
 
     public void GetOtherPlayerNextTurn()
@@ -1065,16 +1057,13 @@ public class GameController : MonoBehaviour
         game.OtherPlayerClickedNextTurn = true;
         if (game.nextTurnIsclicked)
             EventManager.CallChangeMonth();
-
-        Debug.Log("next turn click received");
     }
 
     public void ClickedNextTurn()
     {
         game.nextTurnIsclicked = true;
         playerController.photonView.RPC("NextTurnClicked", PhotonTargets.Others);
-
-        Debug.Log(game.OtherPlayerClickedNextTurn);
+        
         if (game.OtherPlayerClickedNextTurn)
             EventManager.CallChangeMonth();
     }
@@ -1092,7 +1081,6 @@ public class GameController : MonoBehaviour
             {
                 foreach (RegionAction rA in r.actions)
                 {
-                    Debug.Log(rA.name[0]);
                     if (rA.name[0] == ActionName)
                     {
                         r.StartOtherPlayerAction(rA, game, pickedSectors);
@@ -1111,7 +1099,7 @@ public class GameController : MonoBehaviour
         MapRegion pickedRegion = GetRegion(regionName);
         GameEvent pickedEvent = GetEvent(eventName);
 
-        if (pickedRegion.regionOwner == PhotonNetwork.player.UserId)
+        if (pickedRegion.regionOwner == PhotonNetwork.player.NickName)
             pickedEvent.isOwnEvent = true;
         else
             pickedEvent.isOwnEvent = false;
@@ -1145,6 +1133,10 @@ public class GameController : MonoBehaviour
         MapRegion r = GetRegion(regionName);
         GameEvent e = GetEvent(eventName);
         e.SetPickedChoice(pickedChoiceNumber, game, r);
+        
+        /*GameObject */
+        eventInstance = Instantiate(eventObject);
+        eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, r, e);
     }
 
     public void GetOtherPlayerInvestment()
@@ -1152,8 +1144,15 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void StartOtherPlayerCard()
+    public void StartOtherPlayerCard(string regionName, double[] cardValues, bool isGlobal)
     {
+        Card c = new Card();
+        c.SetCardReward(cardValues);
+
+        if (isGlobal)
+            c.UseCardOnCountry(game.regions, game.gameStatistics);
+        else
+            c.UseCardOnRegion(GetRegion(regionName), game.gameStatistics);
     }
 
     public void GetOtherPlayerBuilding()

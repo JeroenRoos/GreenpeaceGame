@@ -103,6 +103,8 @@ public class GameEvent
         if (!ApplicationModel.multiplayer || isOwnEvent)
             game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
 
+        EventManager.CallDestroySprite(this);
+
         if (eventDuration[pickedChoiceNumber] == 0)
         {
             game.AddCompletedEventToReports(region, this);

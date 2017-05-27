@@ -39,6 +39,9 @@ class EventManager
     public delegate void GameIsLeft();
     public static event GameIsLeft LeaveGame;
 
+    public delegate void EventChoiceMade(GameEvent e);
+    public static event EventChoiceMade DestroySprite;
+
     /*public static void CallNewGame()
     {
         NewGame();
@@ -86,5 +89,10 @@ class EventManager
     public static void CallLeaveGame()
     {
         LeaveGame();
+    }
+
+    public static void CallDestroySprite(GameEvent e)
+    {
+        DestroySprite(e);
     }
 }

@@ -120,8 +120,6 @@ public class GameStatistics
             else
                 playerMoney[0] -= changevalue;
         }
-
-        Debug.Log("Money other player changed");
     }
 }
 

@@ -50,4 +50,10 @@ public class Player : Photon.MonoBehaviour {
     {
         MultiplayerManager.CallPickEventChoice(regionName, eventName, pickedChoiceNumber);
     }
+
+    [PunRPC]
+    void CardUsed(string regionName, double[] cardValues, bool isGlobal)
+    {
+        MultiplayerManager.CallPlayCard(regionName, cardValues, isGlobal);
+    }
 }

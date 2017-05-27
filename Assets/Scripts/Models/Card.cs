@@ -23,7 +23,10 @@ public class Card
     public SectorStatistics currentSectorConsequences { get; private set; }
     public double currentMoneyReward { get; private set; }
 
-    public Card() { }
+    public Card()
+    {
+        currentSectorConsequences = new SectorStatistics();
+    }
 
     public Card(Card card)
     {
@@ -75,5 +78,12 @@ public class Card
         }
 
         gs.ModifyMoney(currentMoneyReward, true);
+    }
+
+    //multiplayer
+    public void SetCardReward(double[] cardValues)
+    {
+        currentMoneyReward = cardValues[10];
+        currentSectorConsequences.SetPickedConsequencesMultiplayer(cardValues);
     }
 }

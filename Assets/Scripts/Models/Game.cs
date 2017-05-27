@@ -321,7 +321,10 @@ public class Game
     //multiplayer
     public void ChangeGameForMultiplayer()
     {
-        players = new string[2] { PhotonNetwork.playerList[0].UserId, PhotonNetwork.playerList[1].UserId };
+        if (PhotonNetwork.isMasterClient)
+            players = new string[2] { PhotonNetwork.playerList[1].NickName, PhotonNetwork.playerList[0].NickName };
+        else
+            players = new string[2] { PhotonNetwork.playerList[0].NickName, PhotonNetwork.playerList[1].NickName };
 
         regions[0].SetRegionOwner(players[0]);
         regions[1].SetRegionOwner(players[0]);
@@ -335,7 +338,7 @@ public class Game
     {
         for (int i = 0; i < players.Length; i++)
         {
-            if (players[i] == PhotonNetwork.player.UserId)
+            if (players[i] == PhotonNetwork.player.NickName)
                 return i;
         }
 
@@ -358,15 +361,18 @@ public class Game
         }
         else
         {
+            double income = 0;
+
             foreach (MapRegion r in regions)
             {
-                double income = 0;
-                foreach (RegionSector rs in r.sectors)
-                    income += rs.statistics.income;
-
-                if (r.regionOwner == PhotonNetwork.player.UserId)
-                    gameStatistics.ModifyMoney(income, true);
+                if (r.regionOwner == PhotonNetwork.player.NickName)
+                {
+                    foreach (RegionSector rs in r.sectors)
+                        income += rs.statistics.income;
+                }
             }
+
+            gameStatistics.ModifyMoney(income, true);
         }
     }
 }

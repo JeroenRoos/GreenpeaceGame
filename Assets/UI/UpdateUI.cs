@@ -3250,7 +3250,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEventChoiceMadeText(GameEvent e, MapRegion r)
     {
-        string[] title = { "Overzicht opgelost event: " + e.publicEventName[0] + " (" + regionEvent.name[0] + ")", "Summary solved event: " + e.publicEventName[1] + " (" + regionEvent.name[1] + ")" };
+        string[] title = { "Overzicht opgelost event: " + e.publicEventName[0] + " (" + r.name[0] + ")", "Summary solved event: " + e.publicEventName[1] + " (" + r.name[1] + ")" };
         txtEventChoiceMadeTitle.text = title[taal];
         txtEventChoiceMadeInfo.text = "";
 
@@ -3809,12 +3809,12 @@ public class UpdateUI : MonoBehaviour
 
     public void btnUseCardClick()
     {
+        MapRegion cardRegion = new MapRegion();
+
         if (card.isGlobal)
             card.UseCardOnCountry(game.regions, game.gameStatistics);
         else
         {
-            MapRegion cardRegion;
-
             if (toggleNoordNLCheck)
                 cardRegion = game.regions[0];
             else if (toggleOostNLCheck)
@@ -3825,6 +3825,16 @@ public class UpdateUI : MonoBehaviour
                 cardRegion = game.regions[3];
 
             card.UseCardOnRegion(cardRegion, game.gameStatistics);
+        }
+
+        if (ApplicationModel.multiplayer)
+        {
+            SectorStatistics r = card.currentSectorConsequences;
+            double[] reward = new double[11] { r.income, r.happiness, r.ecoAwareness,
+                    r.prosperity, r.pollution.airPollution, r.pollution.naturePollution, r.pollution.waterPollution,
+                    r.pollution.airPollutionIncrease, r.pollution.naturePollutionIncrease, r.pollution.waterPollutionIncrease, card.currentMoneyReward };
+
+            playerController.photonView.RPC("CardUsed", PhotonTargets.Others, cardRegion.name[0], reward, card.isGlobal);
         }
 
         game.inventory.RemoveCardFromInventory(card);
