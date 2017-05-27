@@ -16,7 +16,8 @@ using Facebook.Unity;
 public class GameController : MonoBehaviour
 {
     public Game game;
-    
+    private int taal;
+
     GameObject[] buildingInstances; //noord,oost,west,zuid
     GameObject eventInstance;
     public Button MonthlyReportButon;
@@ -117,6 +118,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        taal = ApplicationModel.language;
         SetPlayerTrackingData();
         autoSave = true;
         
@@ -151,6 +153,33 @@ public class GameController : MonoBehaviour
             game.nextTurnIsclicked = false;
             game.OtherPlayerClickedNextTurn = false;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
+            /*game.tutorial.tutorialStep9 && */game.tutorial.tutorialNexTurnPossibe))
+        {
+            if (!ApplicationModel.multiplayer)
+                EventManager.CallChangeMonth();
+
+            else if (!game.nextTurnIsclicked)
+            {
+                MultiplayerManager.CallNextTurnClick();
+            }
+        }
+
+        // Update the main screen UI (Icons and date)
+        updateUIMainScreen();
+
+        // Update the UI in popup screen
+        if (updateUI.getPopupActive())
+            updateUIPopups();
+
+        /* Update values in Tooltips for Icons in Main UI
+        if (updateUI.getTooltipActive())
+            updateUITooltips(); */
     }
 
     private IEnumerator showBuildingIcons()
@@ -401,33 +430,6 @@ public class GameController : MonoBehaviour
     {
         CardContainer cardContainer = CardContainer.Load();
         game.LoadCards(cardContainer.cards);
-    }
-
-    // Update is called once per frame
-    void Update () {
-        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
-            /*game.tutorial.tutorialStep9 && */game.tutorial.tutorialNexTurnPossibe))
-        {
-            if (!ApplicationModel.multiplayer)
-                EventManager.CallChangeMonth();
-
-            else if (!game.nextTurnIsclicked)
-            {
-                MultiplayerManager.CallNextTurnClick();
-            }
-        }
-
-        // Update the main screen UI (Icons and date)
-        updateUIMainScreen();
-
-        // Update the UI in popup screen
-        if (updateUI.getPopupActive())
-            updateUIPopups();
-
-        /* Update values in Tooltips for Icons in Main UI
-        if (updateUI.getTooltipActive())
-            updateUITooltips(); */
-
     }
 
     public void NextTurn()
