@@ -189,9 +189,7 @@ public class Game
                     {
                         if (ps)
                         {
-                            if (ApplicationModel.multiplayer && !action.isOwnAction)
-                                gameStatistics.ModifyMoneyOtherPlayer(action.actionMoneyReward, true);
-                            else
+                            if (!ApplicationModel.multiplayer || action.isOwnAction)
                                 gameStatistics.ModifyMoney(action.actionMoneyReward, true);
                         }
                     }
@@ -366,7 +364,8 @@ public class Game
                 foreach (RegionSector rs in r.sectors)
                     income += rs.statistics.income;
 
-                gameStatistics.ModifyMoney(income, true);
+                if (r.regionOwner == PhotonNetwork.player.UserId)
+                    gameStatistics.ModifyMoney(income, true);
             }
         }
     }

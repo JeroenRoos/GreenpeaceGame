@@ -31,9 +31,9 @@ public class Player : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    void ActionStarted(string RegionName, string ActionName, bool[] pickedSectors)
+    void ActionStarted(string regionName, string actionName, bool[] pickedSectors)
     {
-        MultiplayerManager.CallStartAction(RegionName, ActionName, pickedSectors);
+        MultiplayerManager.CallStartAction(regionName, actionName, pickedSectors);
     }
 
     [PunRPC]
@@ -43,5 +43,11 @@ public class Player : Photon.MonoBehaviour {
     {
         MultiplayerManager.CallStartEvent(regionName, eventName, pickedConsequences0, pickedConsequences1, pickedConsequences2, 
             pickedTemporaryConsequences0, pickedTemporaryConsequences1, pickedTemporaryConsequences2);
+    }
+
+    [PunRPC]
+    void EventChoiceMade(string regionName, string eventName, int pickedChoiceNumber)
+    {
+        MultiplayerManager.CallPickEventChoice(regionName, eventName, pickedChoiceNumber);
     }
 }

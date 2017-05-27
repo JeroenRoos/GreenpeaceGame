@@ -10,7 +10,7 @@ public class GameEvent
 {
     public string name { get; private set; } //id
     public string[] publicEventName { get; private set; }
-    
+
     public string[] description { get; private set; }
     public string[] choicesDutch { get; private set; }
     public string[] choicesEnglish { get; private set; }
@@ -41,7 +41,7 @@ public class GameEvent
     public int pickedChoiceStartMonth { get; private set; }
     public int lastCompleted { get; private set; }
     public bool isIdle { get; private set; }
-    public int idleTurnsLeft { get; private set; } 
+    public int idleTurnsLeft { get; private set; }
     public bool isActive { get; private set; }
     public int onEventStartMonth { get; private set; }
     public int onEventStartYear { get; private set; }
@@ -86,7 +86,8 @@ public class GameEvent
     {
         isActive = false;
         eventStartChance += eventChoiceEventStartChanceModifier[pickedChoiceNumber];
-        game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
+        if (!ApplicationModel.multiplayer || isOwnEvent)
+            game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
         lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown + temporaryConsequencesDuration[pickedChoiceNumber];
     }
 
@@ -99,7 +100,8 @@ public class GameEvent
         idleTurnsLeft = 0;
         isActive = true;
 
-        game.gameStatistics.ModifyMoney(afterInvestmentEventChoiceMoneyCost[pickedChoiceNumber], false);
+        if (!ApplicationModel.multiplayer || isOwnEvent)
+            game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
 
         if (eventDuration[pickedChoiceNumber] == 0)
         {

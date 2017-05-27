@@ -17,13 +17,16 @@ class MultiplayerManager
     public delegate void OtherPlayerMoneyChanged(double changevalue, bool isAdded);
     public static event OtherPlayerMoneyChanged ChangeOtherPlayerMoney;
 
-    public delegate void ActionReceived(string RegionName, string ActionName, bool[] pickedSectors);
+    public delegate void ActionReceived(string regionName, string actionName, bool[] pickedSectors);
     public static event ActionReceived StartAction;
 
     public delegate void EventReceived(string regionName, string eventName, double[] pickedConsequences0,
         double[] pickedConsequences1, double[] pickedConsequences2, double[] pickedTemporaryConsequences0,
         double[] pickedTemporaryConsequences1, double[] pickedTemporaryConsequences2);
     public static event EventReceived StartEvent;
+
+    public delegate void EventChoiceMade(string regionName, string eventName, int pickedNumber);
+    public static event EventChoiceMade PickEventChoice;
 
     //by local player
     public static void CallNextTurnClick()
@@ -47,9 +50,9 @@ class MultiplayerManager
         ChangeOtherPlayerMoney(changevalue, isAdded);
     }
 
-    public static void CallStartAction(string RegionName, string ActionName, bool[] pickedSectors)
+    public static void CallStartAction(string regionName, string actionName, bool[] pickedSectors)
     {
-        StartAction(RegionName, ActionName, pickedSectors);
+        StartAction(regionName, actionName, pickedSectors);
     }
 
     public static void CallStartEvent(string regionName, string eventName, double[] pickedConsequences0,
@@ -58,5 +61,10 @@ class MultiplayerManager
     {
         StartEvent(regionName, eventName, pickedConsequences0, pickedConsequences1, pickedConsequences2, 
             pickedTemporaryConsequences0, pickedTemporaryConsequences1, pickedTemporaryConsequences2);
+    }
+
+    public static void CallPickEventChoice(string regionName, string eventName, int pickedNumber)
+    {
+        PickEventChoice(regionName, eventName, pickedNumber);
     }
 }

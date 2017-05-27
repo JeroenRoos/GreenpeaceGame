@@ -758,6 +758,11 @@ public class GameController : MonoBehaviour
 
                 if (ApplicationModel.multiplayer)
                 {
+                    if (pickedRegion.regionOwner == PhotonNetwork.player.UserId)
+                        pickedEvent.isOwnEvent = true;
+                    else
+                        pickedEvent.isOwnEvent = false;
+
                     GameEvent p = pickedEvent;
                     double[] pickedConsequences0 = new double[10] { p.pickedConsequences[0].income, p.pickedConsequences[0].happiness, p.pickedConsequences[0].ecoAwareness, p.pickedConsequences[0].prosperity, p.pickedConsequences[0].pollution.airPollution, p.pickedConsequences[0].pollution.naturePollution, p.pickedConsequences[0].pollution.waterPollution, p.pickedConsequences[0].pollution.airPollutionIncrease, p.pickedConsequences[0].pollution.naturePollutionIncrease, p.pickedConsequences[0].pollution.waterPollutionIncrease };
                     double[] pickedConsequences1 = new double[10] { p.pickedConsequences[1].income, p.pickedConsequences[1].happiness, p.pickedConsequences[1].ecoAwareness, p.pickedConsequences[1].prosperity, p.pickedConsequences[1].pollution.airPollution, p.pickedConsequences[1].pollution.naturePollution, p.pickedConsequences[1].pollution.waterPollution, p.pickedConsequences[1].pollution.airPollutionIncrease, p.pickedConsequences[1].pollution.naturePollutionIncrease, p.pickedConsequences[1].pollution.waterPollutionIncrease };
@@ -1052,6 +1057,7 @@ public class GameController : MonoBehaviour
         MultiplayerManager.ChangeOtherPlayerMoney += game.gameStatistics.ModifyMoneyOtherPlayer;
         MultiplayerManager.StartAction += StartOtherPlayerAction;
         MultiplayerManager.StartEvent += GetOtherPlayerEvent;
+        MultiplayerManager.PickEventChoice += StartOtherPlayerEventChoice;
     }
 
     public void GetOtherPlayerNextTurn()
@@ -1102,23 +1108,22 @@ public class GameController : MonoBehaviour
         double[] pickedConsequences1, double[] pickedConsequences2, double[] pickedTemporaryConsequences0,
         double[] pickedTemporaryConsequences1, double[] pickedTemporaryConsequences2)
     {
-        MapRegion pickedRegion = new MapRegion();
-        GameEvent pickedEvent = new GameEvent();
-        foreach (MapRegion r in game.regions)
-        {
-            if (r.name[0] == regionName)
-            {
-                pickedRegion = r;
-                break;
-            }
-        }
-        foreach (GameEvent e in game.events)
-        {
-            if (e.name == eventName)
-            {
-                pickedEvent = e;
-            }
-        }
+        MapRegion pickedRegion = GetRegion(regionName);
+        GameEvent pickedEvent = GetEvent(eventName);
+
+        if (pickedRegion.regionOwner == PhotonNetwork.player.UserId)
+            pickedEvent.isOwnEvent = true;
+        else
+            pickedEvent.isOwnEvent = false;
+
+        pickedEvent.pickedConsequences = new SectorStatistics[pickedEvent.consequences.Length];
+        pickedEvent.pickedTemporaryConsequences = new SectorStatistics[pickedEvent.consequences.Length];
+        pickedEvent.pickedConsequences[0] = new SectorStatistics();
+        pickedEvent.pickedConsequences[1] = new SectorStatistics();
+        pickedEvent.pickedConsequences[2] = new SectorStatistics();
+        pickedEvent.pickedTemporaryConsequences[0] = new SectorStatistics();
+        pickedEvent.pickedTemporaryConsequences[1] = new SectorStatistics();
+        pickedEvent.pickedTemporaryConsequences[2] = new SectorStatistics();
 
         pickedEvent.pickedConsequences[0].SetPickedConsequencesMultiplayer(pickedConsequences0);
         pickedEvent.pickedConsequences[1].SetPickedConsequencesMultiplayer(pickedConsequences1);
@@ -1135,9 +1140,11 @@ public class GameController : MonoBehaviour
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, pickedRegion, pickedEvent);
     }
 
-    public void StartOtherPlayerEventChoice()
+    public void StartOtherPlayerEventChoice(string regionName, string eventName, int pickedChoiceNumber)
     {
-
+        MapRegion r = GetRegion(regionName);
+        GameEvent e = GetEvent(eventName);
+        e.SetPickedChoice(pickedChoiceNumber, game, r);
     }
 
     public void GetOtherPlayerInvestment()
@@ -1152,6 +1159,32 @@ public class GameController : MonoBehaviour
     public void GetOtherPlayerBuilding()
     {
 
+    }
+
+    public MapRegion GetRegion(string regionName)
+    {
+        foreach (MapRegion r in game.regions)
+        {
+            if (r.name[0] == regionName)
+            {
+                return r;
+            }
+        }
+
+        return null;
+    }
+
+    public GameEvent GetEvent(string eventName)
+    {
+        foreach (GameEvent e in game.events)
+        {
+            if (e.name == eventName)
+            {
+                return e;
+            }
+        }
+
+        return null;
     }
 }
 
