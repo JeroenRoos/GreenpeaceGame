@@ -147,6 +147,7 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
+    public Text txtNotYourEvent;
     public Text txtEventTitle;
     public Text txtEventColumRight;
     public Text txtEventConsequencesChoice;
@@ -2038,7 +2039,33 @@ public class UpdateUI : MonoBehaviour
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
 
-        if (regio.regionOwner == PhotonNetwork.player.UserId)
+        if (ApplicationModel.multiplayer)
+        {
+            if (regio.regionOwner == PhotonNetwork.player.UserId)
+            {
+                txtNotYourRegion.gameObject.SetActive(false);
+                imgHistory.gameObject.SetActive(false);
+                imgActions.gameObject.SetActive(false);
+
+                btnHistoryTab.gameObject.SetActive(true);
+                btnActionsTab.gameObject.SetActive(true);
+                btnActionsTab.interactable = true;
+                btnHistoryTab.interactable = true;
+            }
+            else
+            {
+                txtNotYourRegion.gameObject.SetActive(true);
+                string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren.",
+                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions." };
+                txtNotYourRegion.text = txtInfo[taal];
+
+                imgHistory.gameObject.SetActive(false);
+                imgActions.gameObject.SetActive(false);
+                btnHistoryTab.gameObject.SetActive(false);
+                btnActionsTab.gameObject.SetActive(false);
+            }
+        }
+        else
         {
             txtNotYourRegion.gameObject.SetActive(false);
             imgHistory.gameObject.SetActive(false);
@@ -2048,18 +2075,6 @@ public class UpdateUI : MonoBehaviour
             btnActionsTab.gameObject.SetActive(true);
             btnActionsTab.interactable = true;
             btnHistoryTab.interactable = true;
-        }
-        else
-        {
-            txtNotYourRegion.gameObject.SetActive(true);
-            string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren.",
-                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions." };
-            txtNotYourRegion.text = txtInfo[taal];
-
-            imgHistory.gameObject.SetActive(false);
-            imgActions.gameObject.SetActive(false);
-            btnHistoryTab.gameObject.SetActive(false);
-            btnActionsTab.gameObject.SetActive(false);
         }
 
         btnAverageTab.interactable = false;
@@ -3122,6 +3137,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEventText(GameEvent e)
     {
+        txtNotYourEvent.gameObject.SetActive(false);
         string[] txtBtn = { "Doe keuze", "Do choice" };
         string[] txtBtn2 = { "Bekijk consequences", "View consequences" };
         string[] txtKosten = { "\nKosten: ", "\nCost: " };
@@ -3183,7 +3199,8 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            btnDoEvent.gameObject.SetActive(true);
+            //btnDoEvent.gameObject.SetActive(true);
+            activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences "};
             txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[0]); 
@@ -3212,7 +3229,8 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            btnDoEvent.gameObject.SetActive(true);
+            //btnDoEvent.gameObject.SetActive(true);
+            activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[1]); 
@@ -3241,7 +3259,8 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            btnDoEvent.gameObject.SetActive(true);
+            //btnDoEvent.gameObject.SetActive(true);
+            activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[2]); 
@@ -3261,6 +3280,30 @@ public class UpdateUI : MonoBehaviour
             //btnDoEvent.interactable = false;
             btnViewConsequencesEvent.interactable = false;
             txtEventConsequencesChoice.text = "";
+        }
+    }
+
+    private void activateDoEventButton()
+    {
+        if (ApplicationModel.multiplayer)
+        {
+            if (regionEvent.regionOwner == PhotonNetwork.player.UserId)
+            {
+                txtNotYourEvent.gameObject.SetActive(false);
+                btnDoEvent.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnDoEvent.gameObject.SetActive(false);
+                txtNotYourEvent.gameObject.SetActive(true);
+                string[] info = { "Omdat de event in de regio van de andere speler is kun jij hem niet oplossen.",
+                "You cannot finish this event because it belongs to the region of the other player." };
+                txtNotYourEvent.text = info[taal];
+            }
+        }
+        else
+        {
+            btnDoEvent.gameObject.SetActive(true);
         }
     }
    

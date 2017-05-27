@@ -227,6 +227,7 @@ MonoBehaviour:
   dropdownTimeline: {fileID: 0}
   txtColumnLeftInfo: {fileID: 0}
   txtColumnRightInfo: {fileID: 0}
+  txtNotYourEvent: {fileID: 0}
   txtEventTitle: {fileID: 0}
   txtEventColumRight: {fileID: 0}
   txtEventConsequencesChoice: {fileID: 0}
