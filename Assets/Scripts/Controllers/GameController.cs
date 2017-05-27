@@ -143,6 +143,7 @@ public class GameController : MonoBehaviour
 
         if (ApplicationModel.multiplayer)
         {
+            autoSave = false;
             game.ChangeGameForMultiplayer();
             player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
             playerController = player.GetComponent<Player>();
