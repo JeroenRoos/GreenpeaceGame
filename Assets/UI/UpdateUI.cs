@@ -176,6 +176,7 @@ public class UpdateUI : MonoBehaviour
     // Text Event Choice made
     public Text txtEventChoiceMadeTitle;
     public Text txtEventChoiceMadeInfo;
+    public Text txtEventChoiceMadeHeader;
 
     // Text Quests Popup
     public Text txtQuestsTitle;
@@ -2041,7 +2042,7 @@ public class UpdateUI : MonoBehaviour
 
         if (ApplicationModel.multiplayer)
         {
-            if (regio.regionOwner == PhotonNetwork.player.UserId)
+            if (regio.regionOwner == PhotonNetwork.player.NickName)
             {
                 txtNotYourRegion.gameObject.SetActive(false);
                 imgHistory.gameObject.SetActive(false);
@@ -3287,7 +3288,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (ApplicationModel.multiplayer)
         {
-            if (regionEvent.regionOwner == PhotonNetwork.player.UserId)
+            if (regionEvent.regionOwner == PhotonNetwork.player.NickName)
             {
                 txtNotYourEvent.gameObject.SetActive(false);
                 btnDoEvent.gameObject.SetActive(true);
@@ -3369,6 +3370,8 @@ public class UpdateUI : MonoBehaviour
 
     private void initEventChoiceMadeText(GameEvent e, MapRegion r)
     {
+        string[] header = { "Opgelost event", "Finished event" };
+        txtEventChoiceMadeHeader.text = header[taal];
         string[] title = { "Overzicht opgelost event: " + e.publicEventName[0] + " (" + r.name[0] + ")", "Summary solved event: " + e.publicEventName[1] + " (" + r.name[1] + ")" };
         txtEventChoiceMadeTitle.text = title[taal];
         txtEventChoiceMadeInfo.text = "";

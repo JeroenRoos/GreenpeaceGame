@@ -257,6 +257,7 @@ MonoBehaviour:
   txtEventAlreadyActive: {fileID: 0}
   txtEventChoiceMadeTitle: {fileID: 0}
   txtEventChoiceMadeInfo: {fileID: 0}
+  txtEventChoiceMadeHeader: {fileID: 0}
   txtQuestsTitle: {fileID: 0}
   txtQuestsDescription: {fileID: 0}
   txtQuestsActive: {fileID: 0}
