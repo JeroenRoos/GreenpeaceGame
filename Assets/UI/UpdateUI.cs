@@ -16,6 +16,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtMultiplayerInfo;
     public Text txtMultiplayerLocalPlayer;
     public Text txtMultiplayerRemotePlayer;
+    public Text txtMultiplayerRemotePlayerMoney;
+    public Button btnMultiplayerRemoteMoney;
 
 
     // Tooltip texture and GUI
@@ -539,6 +541,7 @@ public class UpdateUI : MonoBehaviour
         initRegionText();
         initInvestementsText();
         initCardsText();
+        
 
         // GUI Styles
         tooltipStyle.normal.background = tooltipTexture;
@@ -563,15 +566,11 @@ public class UpdateUI : MonoBehaviour
             txtMultiplayerLocalPlayer.gameObject.SetActive(true);
             txtMultiplayerRemotePlayer.gameObject.SetActive(true);
             txtMultiplayerInfo.gameObject.SetActive(true);
+            btnMultiplayerRemoteMoney.gameObject.SetActive(true);
+            txtMultiplayerRemotePlayerMoney.gameObject.SetActive(true);
+
             string[] txtInfo = { "Spelers: ", "Players: " };
             txtMultiplayerInfo.text = txtInfo[taal];
-
-
-            //foreach (PhotonPlayer p in PhotonNetwork.playerList)
-            //{
-            //    string txt = "\n" + p.NickName + " - ";
-            //    txtMultiplayerPlayerInfo[taal] += txt;
-            //}
             SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
         }
         else
@@ -579,12 +578,26 @@ public class UpdateUI : MonoBehaviour
             txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(false);
             txtMultiplayerInfo.gameObject.SetActive(false);
+            btnMultiplayerRemoteMoney.gameObject.SetActive(false);
+            txtMultiplayerRemotePlayerMoney.gameObject.SetActive(false);
         }
         
     }
 
     void Update()
     {
+        if (ApplicationModel.multiplayer)
+        {
+            int playerPosition = game.GetPlayerListPosition();
+
+            if (playerPosition == 0)
+                txtMultiplayerRemotePlayerMoney.text = game.gameStatistics.playerMoney[1].ToString();
+            else
+                txtMultiplayerRemotePlayerMoney.text = game.gameStatistics.playerMoney[0].ToString();
+        }
+
+
+
         if (game.tutorial.tutorialChecks[2])//tutorialStep6)
             popupController();
 
@@ -1974,7 +1987,7 @@ public class UpdateUI : MonoBehaviour
     {
         regio = region;
 
-        SetLocalPlayerText(regio.name[taal] + " aan het bekijken", "Looking at " + regio.name[taal]);
+        SetLocalPlayerText("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
 
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;

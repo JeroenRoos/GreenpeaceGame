@@ -976,7 +976,10 @@ public class GameController : MonoBehaviour
         Building b = updateUI.buildingToBeBuild;
 
         r.SetBuilding(b.buildingID);
-        playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], b.buildingID);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], b.buildingID);
+
         updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
         updateUI.popupActive = false;
         EventManager.CallPopupIsDisabled();
@@ -1002,7 +1005,10 @@ public class GameController : MonoBehaviour
         Building b = updateUI.activeBuilding;
 
         r.SetBuilding(null);
-        playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], null);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], null);
+
         updateUI.canvasBuildingsPopup.gameObject.SetActive(false);
         updateUI.popupActive = false;
         EventManager.CallPopupIsDisabled();
