@@ -10,12 +10,26 @@ public class Player : Photon.MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //photonView.RPC("SyncGame", PhotonTargets.Others, GameContainer.XmlSerializeToString(game));
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            Vector3 temp = Input.mousePosition;
+            temp.z = -3;
+            stream.SendNext(Camera.main.ScreenToWorldPoint(temp));
+        }
+        else
+        {
+            transform.position = (Vector3)stream.ReceiveNext();
+        }
     }
 
     [PunRPC]

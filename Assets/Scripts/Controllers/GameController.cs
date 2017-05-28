@@ -146,6 +146,8 @@ public class GameController : MonoBehaviour
             autoSave = false;
             game.ChangeGameForMultiplayer();
             player = PhotonNetwork.Instantiate("PGLPlayer", new Vector3(12, 5, 9), new Quaternion(50, 0, 0, 0), 0);
+            player.SetActive(true);
+            player.gameObject.SetActive(true);
             playerController = player.GetComponent<Player>();
             updateUI.playerController = playerController;
             SetDelegates();
