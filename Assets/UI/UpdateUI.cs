@@ -24,6 +24,9 @@ public class UpdateUI : MonoBehaviour
     public InputField inputChatMessage;
     public Text txtSendMessageButton;
     private string txtChatMessageToSend;
+    public RawImage imgTextMessages;
+    //public Panel panelTextMessages;
+    public Text txtActivityLog;
 
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
@@ -582,10 +585,15 @@ public class UpdateUI : MonoBehaviour
             //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
 
-            btnSendChatMessage.gameObject.SetActive(true);
+            btnSendChatMessage.gameObject.SetActive(false);
             txtChatMessages.gameObject.SetActive(true);
             inputChatMessage.gameObject.SetActive(true);
+            txtActivityLog.gameObject.SetActive(true);
             txtSendMessageButton.gameObject.SetActive(true);
+            imgTextMessages.gameObject.SetActive(true);
+
+            txtActivityLog.text = "";
+            txtChatMessages.text = "";
         }
         else
         {
@@ -599,6 +607,8 @@ public class UpdateUI : MonoBehaviour
             txtChatMessages.gameObject.SetActive(false);
             inputChatMessage.gameObject.SetActive(false);
             txtSendMessageButton.gameObject.SetActive(false);
+            txtActivityLog.gameObject.SetActive(false);
+            imgTextMessages.gameObject.SetActive(false);
         }
         
     }
@@ -5291,11 +5301,16 @@ public class UpdateUI : MonoBehaviour
 
     public void btnSendChatMessageClicked()
     {
-        playerController.photonView.RPC("UpdateChat", PhotonTargets.Others, txtChatMessageToSend, "");
+        playerController.photonView.RPC("MessageReceived", PhotonTargets.Others, txtChatMessageToSend, PhotonNetwork.player.NickName);
+        updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
+        inputChatMessage.text = "";
+        btnSendChatMessage.gameObject.SetActive(false);
+
+
     }
 
     public void updateChatMessages(string message, string sender)
     {
-        txtChatMessages.text = sender + " - " + message;
+        txtChatMessages.text += sender + ": " + message + "\n";
     }
 }
