@@ -435,8 +435,8 @@ public class GameController : MonoBehaviour
                 game.tutorial.tutorialNextTurnDone = true;
 
             bool isNewYear = game.UpdateCurrentMonthAndYear();
-            game.ExecuteNewMonthMethods();
             UpdateRegionsPollutionInfluence();
+            game.ExecuteNewMonthMethods();
             if (!ApplicationModel.multiplayer || PhotonNetwork.isMasterClient)
                 UpdateEvents();
             game.gameStatistics.UpdateRegionalAvgs(game);
@@ -793,14 +793,15 @@ public class GameController : MonoBehaviour
         {
             double pollutionDifference = game.gameStatistics.pollution - region.statistics.avgPollution;
             double pollutionChangeValue = pollutionDifference * 0.3 / 12;
-
-            foreach (RegionSector regionSector in region.sectors)
             {
-                regionSector.statistics.pollution.ChangeAirPollution(pollutionChangeValue);
-                regionSector.statistics.pollution.ChangeNaturePollution(pollutionChangeValue);
-                regionSector.statistics.pollution.ChangeWaterPollution(pollutionChangeValue);
+                foreach (RegionSector regionSector in region.sectors)
+                {
+                    regionSector.statistics.pollution.ChangeAirPollution(pollutionChangeValue);
+                    regionSector.statistics.pollution.ChangeNaturePollution(pollutionChangeValue);
+                    regionSector.statistics.pollution.ChangeWaterPollution(pollutionChangeValue);
+                }
+                region.statistics.UpdateSectorAvgs(region);
             }
-            region.statistics.UpdateSectorAvgs(region);
         }
 
         game.gameStatistics.UpdateRegionalAvgs(game);
