@@ -43,6 +43,9 @@ class MultiplayerManager
     public delegate void PlayerLogChanged(string nl, string eng);
     public static event PlayerLogChanged UpdateLogMessage;
 
+    public delegate void ActivityLogChanged(string nl, string eng);
+    public static event ActivityLogChanged UpdateActivityLog;
+
     //by local player
     public static void CallNextTurnClick()
     {
@@ -106,5 +109,10 @@ class MultiplayerManager
     public static void CallUpdateLogMessage(string nl, string eng)
     {
         UpdateLogMessage(nl, eng);
+    }
+
+    public static void CallUpdateActivity(string nl, string eng)
+    {
+        UpdateActivityLog(nl, eng);
     }
 }

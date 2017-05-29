@@ -5313,4 +5313,9 @@ public class UpdateUI : MonoBehaviour
     {
         txtChatMessages.text += sender + ": " + message + "\n";
     }
+
+    public void UpdateActivityLogText(string nl, string eng)
+    {
+        txtActivityLog.text = "";
+    }
 }

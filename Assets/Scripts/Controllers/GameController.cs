@@ -1049,6 +1049,7 @@ public class GameController : MonoBehaviour
         MultiplayerManager.MakeBuilding += GetOtherPlayerBuilding;
         MultiplayerManager.UpdateChat += updateUI.updateChatMessages;
         MultiplayerManager.UpdateLogMessage += updateUI.SetRemotePlayerText;
+        MultiplayerManager.UpdateActivityLog += updateUI.UpdateActivityLogText;
     }
 
     public void GetOtherPlayerNextTurn()

@@ -26,5 +26,31 @@ MonoBehaviour:
   PunLogging: 0
   NetworkLogging: 1
   RunInBackground: 1
-  RpcList: []
+  RpcList:
+  - ActionStarted
+  - ActivityLogChanged
+  - BuildingMade
+  - CardUsed
+  - Chat
+  - ColorRpc
+  - DestroyRpc
+  - DoJump
+  - EventChoiceMade
+  - EventGenerated
+  - Flash
+  - InstantiateRpc
+  - InvestmentMade
+  - Marco
+  - MessageReceived
+  - MoneyChanged
+  - NextTurnClicked
+  - PickupItemInit
+  - PlayerLogChanged
+  - Polo
+  - PunPickup
+  - PunPickupSimple
+  - PunRespawn
+  - RequestForPickupItems
+  - RequestForPickupTimes
+  - TaggedPlayer
   DisableAutoOpenWizard: 0
