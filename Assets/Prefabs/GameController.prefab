@@ -208,6 +208,7 @@ MonoBehaviour:
   txtBtnMenu: {fileID: 0}
   txtBtnTimeline: {fileID: 0}
   btnNextTurn: {fileID: 0}
+  txtNotYourBuilding: {fileID: 0}
   buildingRegion:
     eventPositions: []
     buildingPositions: []
@@ -217,6 +218,7 @@ MonoBehaviour:
   txtBuildingsStats: {fileID: 0}
   btnDeleteBuilding: {fileID: 0}
   txtBtnDeleteBuilding: {fileID: 0}
+  txtNotYourEmptyBuilding: {fileID: 0}
   txtEmptyBuildingsTitle: {fileID: 0}
   txtEmptyBuildingsColumnLeft: {fileID: 0}
   txtEmptyBuildingColumRight: {fileID: 0}
