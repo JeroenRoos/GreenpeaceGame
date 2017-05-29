@@ -52,4 +52,5 @@ MonoBehaviour:
   - CardUsed
   - InvestmentMade
   - BuildingMade
+  - MessageReceived
   DisableAutoOpenWizard: 1
