@@ -141,6 +141,12 @@ MonoBehaviour:
   txtMultiplayerRemotePlayer: {fileID: 0}
   txtMultiplayerRemotePlayerMoney: {fileID: 0}
   btnMultiplayerRemoteMoney: {fileID: 0}
+  btnSendChatMessage: {fileID: 0}
+  txtChatMessages: {fileID: 0}
+  inputChatMessage: {fileID: 0}
+  txtSendMessageButton: {fileID: 0}
+  imgTextMessages: {fileID: 0}
+  txtActivityLog: {fileID: 0}
   tooltipTexture: {fileID: 2800000, guid: f8069c7b1751271499c96b309c9a3d86, type: 3}
   buttonTexture: {fileID: 2800000, guid: ed46db1cfd94f5147955a3c087ff9fa1, type: 3}
   scrollbarAfterActionReport: {fileID: 0}

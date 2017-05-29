@@ -75,6 +75,7 @@ public class Player : Photon.MonoBehaviour {
     void InvestmentMade(string investmentType)
     {
         MultiplayerManager.CallInvest(investmentType);
+        
     }
 
     [PunRPC]
@@ -93,5 +94,11 @@ public class Player : Photon.MonoBehaviour {
     void PlayerLogChanged(string nl, string eng)
     {
         MultiplayerManager.CallUpdateLogMessage(nl, eng);
+    }
+
+    [PunRPC]
+    void ActivityLogChanged(string nl, string eng)
+    {
+        MultiplayerManager.CallUpdateActivity(nl, eng);
     }
 }

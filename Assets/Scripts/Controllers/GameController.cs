@@ -161,8 +161,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // UITZETTEN BIJ EEN BUILD
         if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
-            /*game.tutorial.tutorialStep9 && */game.tutorial.tutorialNexTurnPossibe))
+            game.tutorial.tutorialNexTurnPossibe))
         {
             if (!ApplicationModel.multiplayer)
                 EventManager.CallChangeMonth();
@@ -1049,6 +1050,7 @@ public class GameController : MonoBehaviour
         MultiplayerManager.MakeBuilding += GetOtherPlayerBuilding;
         MultiplayerManager.UpdateChat += updateUI.updateChatMessages;
         MultiplayerManager.UpdateLogMessage += updateUI.SetRemotePlayerText;
+        MultiplayerManager.UpdateActivityLog += updateUI.UpdateActivityLogText;
     }
 
     public void GetOtherPlayerNextTurn()
