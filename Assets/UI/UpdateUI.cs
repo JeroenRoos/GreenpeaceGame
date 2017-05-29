@@ -27,6 +27,7 @@ public class UpdateUI : MonoBehaviour
     public RawImage imgTextMessages;
     //public Panel panelTextMessages;
     public Text txtActivityLog;
+    private RectTransform rectChatMessages;
 
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
@@ -5271,6 +5272,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
+    #region Code for Multiplayer
     public void SetRemotePlayerText(string nl, string eng)
     {
         string[] txtMultiplayerPlayerInfo = { "", "" };
@@ -5305,8 +5307,6 @@ public class UpdateUI : MonoBehaviour
         updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
         inputChatMessage.text = "";
         btnSendChatMessage.gameObject.SetActive(false);
-
-
     }
 
     public void updateChatMessages(string message, string sender)
@@ -5316,6 +5316,8 @@ public class UpdateUI : MonoBehaviour
 
     public void UpdateActivityLogText(string nl, string eng)
     {
-        txtActivityLog.text = "";
+        string[] txt = { "\n" + PhotonNetwork.player.NickName + nl, "\n" + PhotonNetwork.player.NickName + eng };
+        txtActivityLog.text += txt[taal];
     }
+    #endregion
 }

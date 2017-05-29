@@ -11,6 +11,7 @@ public class Lobby
     {
         PhotonNetwork.ConnectUsingSettings("0.1");
         PhotonNetwork.automaticallySyncScene = true;
+        PhotonNetwork.autoJoinLobby = true;
         lstRooms = new List<RoomInfo>();
     }
 	

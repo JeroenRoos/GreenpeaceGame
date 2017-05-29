@@ -6,11 +6,13 @@ using Photon;
 public class Player : Photon.MonoBehaviour {
 
     public PhotonView photonView;
+    //private UpdateUI updateUI;
 
     // Use this for initialization
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
+        //updateUI.GetComponent<UpdateUI>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,8 @@ public class Player : Photon.MonoBehaviour {
     void ActionStarted(string regionName, string actionName, bool[] pickedSectors)
     {
         MultiplayerManager.CallStartAction(regionName, actionName, pickedSectors);
+        photonView.RPC("ActivityLogChanged", PhotonTargets.Others, " heeft een actie (" + actionName + ") gedaan in " + regionName,
+            " finished an action (" + actionName + ") in " + regionName);
     }
 
     [PunRPC]
@@ -63,25 +67,35 @@ public class Player : Photon.MonoBehaviour {
     void EventChoiceMade(string regionName, string eventName, int pickedChoiceNumber)
     {
         MultiplayerManager.CallPickEventChoice(regionName, eventName, pickedChoiceNumber);
+        photonView.RPC("ActivityLogChanged", PhotonTargets.Others, " heeft een event (" + eventName + ") gedaan in " + regionName,
+            " finished an event (" + eventName + ") in " + regionName);
     }
 
     [PunRPC]
     void CardUsed(string regionName, double[] cardValues, bool isGlobal)
     {
         MultiplayerManager.CallPlayCard(regionName, cardValues, isGlobal);
+        photonView.RPC("ActivityLogChanged", PhotonTargets.Others, " heeft een kaart gebruik in " + regionName,
+            " used a card in " + regionName);
     }
 
     [PunRPC]
     void InvestmentMade(string investmentType)
     {
         MultiplayerManager.CallInvest(investmentType);
-        
+        photonView.RPC("ActivityLogChanged", PhotonTargets.Others, " heeft geinvesteerd in " + investmentType,
+            " has invested in " + investmentType);
+
     }
 
     [PunRPC]
     void BuildingMade(string regionName, string buildingID)
     {
         MultiplayerManager.CallMakeBuilding(regionName, buildingID);
+        // MultiplayerManager.CallUpdateActivity(playerNickname + "heeft een " + buildingID + " gebouwed in " + regionName,
+        //     playerNickname + "build a " + buildingID + " in " + regionName);
+        photonView.RPC("ActivityLogChanged", PhotonTargets.Others, "heeft een " + buildingID + " gebouwed in " + regionName,
+            "build a " + buildingID + " in " + regionName);
     }
 
     [PunRPC]
