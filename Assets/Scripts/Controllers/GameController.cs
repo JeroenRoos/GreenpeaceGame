@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     public Game game;
     private int taal;
 
+    double score = 0;
+
     GameObject[] buildingInstances; //noord,oost,west,zuid
     GameObject eventInstance;
     public Button MonthlyReportButon;
@@ -225,32 +227,19 @@ public class GameController : MonoBehaviour
 
     public void ShareOnFacebook()
     {
-        /*string url = "https://www.facebook.com/dialog/feed?";
-        string appIDURL = "1821181281535576";
-        string displayURL = "popup";
-        string linkURL = "https://developers.facebook.com/docs/";
-        string pictureURL = "http://i.imgur.com/zkYlB.jpg";
-        //Application.OpenURL("https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fi.imgur.com%2FzkYlB.jpg");
-        string facebookURL = url +
-            "app_id=" + appIDURL +
-            "&name=" + WWW.EscapeURL("Project Green Leader") +
-            "&description=" + WWW.EscapeURL("Thanks Facebook for making this way too difficult and wasting my time while I have to work on my game") +
-            "&display=" + WWW.EscapeURL(displayURL) +
-            "&link=" + WWW.EscapeURL(pictureURL) +
-            "&redirect_uri=" + WWW.EscapeURL(linkURL) +
-            "&picture=" + WWW.EscapeURL(pictureURL);*/
-
         string appId = "145634995501895";
-        string pictureUrl = "http://i.imgur.com/zkYlB.jpg";
-        string linkUrl = "https://www.youtube.com/watch?v=-KqGxq5eIt0";
-    string redirectUrl = "https://www.facebook.com/profile.php";
+        string pictureUrl = "http://www.blikopnieuws.nl/sites/default/files/styles/nieuws-full-tn/public/artikel/logo.jpg?itok=au7xFs3Z";
+        string linkUrl = "https://www.partijvoordedieren.nl/";
+        string redirectUrl = "https://www.facebook.com/profile.php";
+        string[] description = new string[2] { "I just completed the game Project Green Leader in the name of 'Partij voor de Dieren' with a score of: " + score.ToString("0") + "!",
+            "Ik heb net het spel Project Green Leader uitgespeeld in de naam van 'Partij voor de Dieren' met een score van: " + score.ToString("0") + "!" };
 
         string facebookURL = "https://www.facebook.com/dialog/feed?" +
             "app_id=" + appId + "&" +
             "display=popup&" +
             "link=" + WWW.EscapeURL(linkUrl) + " & " +
             "name=" + WWW.EscapeURL("Project Green Leader") + " & " +
-            "description=" + WWW.EscapeURL("Thanks Facebook for making this way too difficult and wasting my time while I have to work on my game") + " & " +
+            "description=" + WWW.EscapeURL(description[taal]) + " & " +
             "picture=" + WWW.EscapeURL(pictureUrl);
 
     Application.OpenURL(facebookURL);
@@ -493,23 +482,23 @@ public class GameController : MonoBehaviour
 
     public void ShowGameScore()
     {
-        double score = CalculateScore();
+        score = CalculateScore();
         updateUI.initEndOfGameReport(score);
         SetScoreTrackingData(score);
     }
 
     public double CalculateScore()
     {
-        double score = 0;
+        double calcScore = 0;
 
-        score += game.gameStatistics.prosperity * 100;
-        score += game.gameStatistics.ecoAwareness * 100;
-        score += game.gameStatistics.happiness * 100;
-        score += game.gameStatistics.income;
-        score += 10000 - game.gameStatistics.pollution * 100;
-        score += 36000 - ((game.currentYear - 1) * 12 + (game.currentMonth - 1)) * 100;
+        calcScore += game.gameStatistics.prosperity * 100;
+        calcScore += game.gameStatistics.ecoAwareness * 100;
+        calcScore += game.gameStatistics.happiness * 100;
+        calcScore += game.gameStatistics.income;
+        calcScore += 10000 - game.gameStatistics.pollution * 100;
+        calcScore += 36000 - ((game.currentYear - 1) * 12 + (game.currentMonth - 1)) * 100;
 
-        return score;
+        return calcScore;
     }
 
     private void UpdateTimeline()
