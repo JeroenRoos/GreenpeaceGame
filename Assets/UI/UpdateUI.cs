@@ -1985,6 +1985,8 @@ public class UpdateUI : MonoBehaviour
                     game.tutorial.regionWestActivated = true;
 
                     btnTutorialRegion.gameObject.SetActive(true);
+                    imgTutorialRegion.gameObject.SetActive(true);
+                    Debug.Log("REGION TUTORIAL");
                     StartCoroutine(tutorialRegionPopup());
                 }
             }
@@ -2011,7 +2013,8 @@ public class UpdateUI : MonoBehaviour
 
         //SetLocalPlayerText("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
         //MultiplayerManager.CallUpdateLogMessage("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
-        playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
 
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
@@ -2048,10 +2051,10 @@ public class UpdateUI : MonoBehaviour
 
         txtTutorialRegion.text = step2[taal];
         btnTutorialRegion.gameObject.SetActive(false);
-        //Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
-        //Vector3 imgNewPos = imgOldPos;
-        //imgNewPos.x = imgNewPos.x - Screen.width / 4;
-        //imgTutorialRegion.gameObject.transform.position = imgNewPos;
+        Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
+        Vector3 imgNewPos = imgOldPos;
+        imgNewPos.x = imgNewPos.x - Screen.width / 5;
+        imgTutorialRegion.gameObject.transform.position = imgNewPos;
 
         while (!game.tutorial.tutorialCheckActionDone)
             yield return null;
@@ -2403,6 +2406,8 @@ public class UpdateUI : MonoBehaviour
                 new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
         }
 
+        if (!game.tutorial.tutorialCheckActionDone)
+            game.tutorial.tutorialCheckActionDone = true;
         //ClearActionMenu();
 
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
@@ -2435,8 +2440,6 @@ public class UpdateUI : MonoBehaviour
         txtRegionColumnCenter.text = "";
         txtActionSectorsDescription.text = "";
 
-
-
         playSelectSound = false;
         if (!checkboxHouseholds)
             checkboxRegionHouseholds.isOn = true;
@@ -2446,9 +2449,6 @@ public class UpdateUI : MonoBehaviour
 
         if (!checkboxCompanies)
             checkboxRegionCompanies.isOn = true;
-
-        if (!game.tutorial.tutorialCheckActionDone)
-            game.tutorial.tutorialCheckActionDone = true;
         playSelectSound = true;
 
         dropdownRegio.ClearOptions();
@@ -3716,7 +3716,9 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInActionCostReduction(game.regions);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Action cost reduction");
+
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Action cost reduction");
             setActionCostReductionInvestments();
 
             if (game.investments.actionCostReduction[4])
@@ -3732,7 +3734,9 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterActionConsequences(game.regions);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better action consequences");
+
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better action consequences");
             setActionConsequencesInvestments();
 
             if (game.investments.betterActionConsequences[4])
@@ -3748,7 +3752,9 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInGameEventCostReduction(game.events);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Event cost reduction");
+
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Event cost reduction");
             setEventCostReductionInvestments();
 
             if (game.investments.gameEventCostReduction[4])
@@ -3764,7 +3770,9 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterGameEventConsequences(game.events);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better event consequences");
+
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better event consequences");
             setEventConsequencesInvestments();
 
             if (game.investments.betterGameEventConsequences[4])
@@ -4169,7 +4177,8 @@ public class UpdateUI : MonoBehaviour
         {
             //SetLocalPlayerText("Organisatie aan het bekijken", "Looking at the Organization");
             //MultiplayerManager.CallUpdateLogMessage("Organisatie aan het bekijken", "Looking at the Organization");
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie aan het bekijken", "Looking at the Organization");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie aan het bekijken", "Looking at the Organization");
 
             btnOrganizationIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4186,7 +4195,8 @@ public class UpdateUI : MonoBehaviour
         {
             //SetLocalPlayerText("Missies aan het bekijken", "Looking at Quests");
             //MultiplayerManager.CallUpdateLogMessage("Missies aan het bekijken", "Looking at Quests");
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missies aan het bekijken", "Looking at Quests");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missies aan het bekijken", "Looking at Quests");
 
             btnQuestsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4203,7 +4213,8 @@ public class UpdateUI : MonoBehaviour
         {
             //SetLocalPlayerText("Kaarten aan het bekijken", "Looking at Cards");
             //MultiplayerManager.CallUpdateLogMessage("Kaarten aan het bekijken", "Looking at Cards");
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten aan het bekijken", "Looking at Cards");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten aan het bekijken", "Looking at Cards");
 
             btnCardsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4231,7 +4242,8 @@ public class UpdateUI : MonoBehaviour
         {
             //SetLocalPlayerText("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
             //MultiplayerManager.CallUpdateLogMessage("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
 
             EventManager.CallPlayButtonClickSFX();
             canvasMonthlyReport.gameObject.SetActive(true);
@@ -4253,7 +4265,8 @@ public class UpdateUI : MonoBehaviour
         {
             //SetLocalPlayerText("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
             // MultiplayerManager.CallUpdateLogMessage("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
 
             EventManager.CallPlayButtonClickSFX();
             canvasYearlyReport.gameObject.SetActive(true);
@@ -4389,7 +4402,8 @@ public class UpdateUI : MonoBehaviour
 
         //SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
         //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
-        playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
 
     }
     #endregion
