@@ -575,12 +575,6 @@ public class UpdateUI : MonoBehaviour
 
         if (ApplicationModel.multiplayer)
         {
-            // chatClient = new ChattingClient(this);
-            for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
-            {
-                players[i] = PhotonNetwork.playerList[i];
-            }
-
             txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(true);
             txtMultiplayerInfo.gameObject.SetActive(true);
@@ -627,10 +621,10 @@ public class UpdateUI : MonoBehaviour
         {
             int playerPosition = game.GetPlayerListPosition();
 
-            //if (playerPosition == 0)
-                txtMultiplayerRemotePlayerMoney.text = /*PhotonNetwork.playerList[1].NickName*/PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[1].ToString("0");
-            //else
-            //    txtMultiplayerRemotePlayerMoney.text = /*PhotonNetwork.playerList[0].NickName*/players[0] + ": " + game.gameStatistics.playerMoney[0].ToString("0");
+            if (playerPosition == 0)
+                txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[1].ToString("0");
+            else
+                txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[0].ToString("0");
         }
 
         if (game.tutorial.tutorialChecks[2])
