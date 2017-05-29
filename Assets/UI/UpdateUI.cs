@@ -13,6 +13,7 @@ public class UpdateUI : MonoBehaviour
 
     #region UI Elements
     // Multiplayer
+    private PhotonPlayer[] players = new PhotonPlayer[2];
     public Text txtMultiplayerInfo;
     public Text txtMultiplayerLocalPlayer;
     public Text txtMultiplayerRemotePlayer;
@@ -128,6 +129,7 @@ public class UpdateUI : MonoBehaviour
     public Button btnNextTurn;
 
     // Buildings Popup
+    public Text txtNotYourBuilding;
     public Building activeBuilding;
     public MapRegion buildingRegion;
     public Text txtBuildingsTitle;
@@ -137,6 +139,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnDeleteBuilding;
 
     // Empty Building Popup
+    public Text txtNotYourEmptyBuilding;
     public Text txtEmptyBuildingsTitle;
     public Text txtEmptyBuildingsColumnLeft;
     public Text txtEmptyBuildingColumRight;
@@ -573,6 +576,10 @@ public class UpdateUI : MonoBehaviour
         if (ApplicationModel.multiplayer)
         {
             // chatClient = new ChattingClient(this);
+            for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+            {
+                players[i] = PhotonNetwork.playerList[i];
+            }
 
             txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(true);
@@ -620,15 +627,13 @@ public class UpdateUI : MonoBehaviour
         {
             int playerPosition = game.GetPlayerListPosition();
 
-            if (playerPosition == 0)
-                txtMultiplayerRemotePlayerMoney.text = game.gameStatistics.playerMoney[1].ToString();
-            else
-                txtMultiplayerRemotePlayerMoney.text = game.gameStatistics.playerMoney[0].ToString();
+            //if (playerPosition == 0)
+                txtMultiplayerRemotePlayerMoney.text = /*PhotonNetwork.playerList[1].NickName*/PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[1].ToString("0");
+            //else
+            //    txtMultiplayerRemotePlayerMoney.text = /*PhotonNetwork.playerList[0].NickName*/players[0] + ": " + game.gameStatistics.playerMoney[0].ToString("0");
         }
 
-
-
-        if (game.tutorial.tutorialChecks[2])//tutorialStep6)
+        if (game.tutorial.tutorialChecks[2])
             popupController();
 
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
@@ -637,7 +642,6 @@ public class UpdateUI : MonoBehaviour
             if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
             {
                 btnDoActionRegionMenu.gameObject.SetActive(true);
-                //btnViewConsequences.gameObject.SetActive(true);
                 txtRegionActionNoMoney.gameObject.SetActive(false);
                 txtRegionActionNoMoney.text = "";
                 txtRegionActionConsequences.text = getSectorStatisticsConsequences(regioAction.afterInvestmentConsequences);
@@ -1666,7 +1670,17 @@ public class UpdateUI : MonoBehaviour
     // Update Money based on value
     public void updateMoney(double money)
     {
-        txtMoney.text = money.ToString("0");
+        if (ApplicationModel.multiplayer)
+        {
+            //int playerPosition = game.GetPlayerListPosition();
+
+            //if (playerPosition == 0)
+                txtMoney.text = PhotonNetwork.player.NickName + ": " + money.ToString("0");
+            //else
+            //    txtMoney.text = PhotonNetwork.playerList[0].NickName + ": " + money.ToString("0");
+        }
+        else
+            txtMoney.text = money.ToString("0");
     }
 
     // Update Awareness based on value
@@ -3487,6 +3501,7 @@ public class UpdateUI : MonoBehaviour
         txtEmptyBuildingStats.text = "";
         txtEmptyBuildingInfo.text = info[taal];
         btnUseBuilding.gameObject.SetActive(false);
+        txtNotYourEmptyBuilding.gameObject.SetActive(false);
     }
 
     private void setTextBuildingInformation(Building b)
@@ -3498,9 +3513,24 @@ public class UpdateUI : MonoBehaviour
         string[] column = { "Informatie - " + b.buildingName[0], "Information - " + b.buildingName[1] };
         txtEmptyBuildingColumRight.text = column[taal];
 
-        btnUseBuilding.gameObject.SetActive(true);
-        string[] btnTxt = { "Maak gebouw", "Build building" };
-        btnUseBuildingTxt.text = btnTxt[taal];
+        if (ApplicationModel.multiplayer)
+        {
+            if (regionToBeBuild.regionOwner != PhotonNetwork.player.NickName)
+            {
+                txtNotYourEmptyBuilding.gameObject.SetActive(true);
+                btnUseBuilding.gameObject.SetActive(false);
+
+                string[] txt = { "Dit is niet jouw regio, daarom kun je hier ook geen gebouw maken", "This is not your region, this means you can't build here." };
+                txtNotYourEmptyBuilding.text = txt[taal];
+            }
+            else
+            {
+                txtNotYourEmptyBuilding.gameObject.SetActive(false);
+                btnUseBuilding.gameObject.SetActive(true);
+                string[] btnTxt = { "Maak gebouw", "Build building" };
+                btnUseBuildingTxt.text = btnTxt[taal];
+            }
+        }
 
         string[] cost = { "Kosten:" + b.buildingMoneyCost + "\n", "Cost:" + b.buildingMoneyCost + "\n" };
         txtEmptyBuildingStats.text += cost[taal];
@@ -3520,6 +3550,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for Active Building Popup
     public void initBuildingPopup(Building b, MapRegion r)
     {
+        txtNotYourBuilding.gameObject.SetActive(false);
         activeBuilding = b;
         buildingRegion = r;
         popupActive = true;
@@ -3539,6 +3570,23 @@ public class UpdateUI : MonoBehaviour
         txtBuildingsTitle.text = title[taal]; 
         txtBuildingsColumn.text = column[taal];
         txtBtnDeleteBuilding.text = btn[taal];
+
+        if (ApplicationModel.multiplayer)
+        {
+            if (buildingRegion.regionOwner != PhotonNetwork.player.NickName)
+            {
+                btnDeleteBuilding.gameObject.SetActive(false);
+                txtNotYourBuilding.gameObject.SetActive(true);
+                string[] txt = { "Dit gebouw is niet gebouwd in jouw regio, daarom kun je er ook niks mee doen.",
+                    "This building doesn't belong to your regions, this means you can't do anything with this building." };
+                txtNotYourBuilding.text = txt[taal];
+            }
+            else
+            {
+                btnDeleteBuilding.gameObject.SetActive(true);
+                txtNotYourBuilding.gameObject.SetActive(false);
+            }
+        }
 
         // string[] cost = { "Kosten:" + activeBuilding.buildingMoneyCost + "\n", "Cost:" + activeBuilding.buildingMoneyCost + "\n" };
         // txtBuildingsStats.text += cost[taal];
