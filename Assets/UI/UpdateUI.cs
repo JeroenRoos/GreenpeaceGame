@@ -4093,7 +4093,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         string[] btn = { "Naar hoofdmenu", "Return to main menu" };
-        string[] btnShare = { "Delen op FaceBook", "Share on FaceBook" };
+        string[] btnShare = { "Delen op Facebook", "Share on Facebook" };
         txtShareFacebookButton.text = btnShare[taal];
         txtEndOfGameTitle.text = title[taal];
         txtEndOfYearBtn.text = btn[taal];
