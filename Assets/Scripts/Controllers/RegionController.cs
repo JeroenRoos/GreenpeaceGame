@@ -37,7 +37,11 @@ public class RegionController : MonoBehaviour {
         if (!ui.popupActive)
         {
             isHovered = true;
-            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, (float)165 / 255, 0, 1);
+            if (!ApplicationModel.multiplayer || region.regionOwner == PhotonNetwork.player.NickName)
+                gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, (float)165 / 255, 0, 1);
+            else
+                gameObject.GetComponent<MeshRenderer>().material.color = new Color((float)169 / 255, (float)169 / 255, (float)169 / 255, 1);
+
         }
     }
 
