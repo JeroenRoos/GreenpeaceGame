@@ -40,9 +40,6 @@ public class Tutorial
     public bool tutorialEventsActive;
     public bool tutorialMonthlyReportActive;
 
-
-    public bool[] tutorialChecks;
-
     public Tutorial()
     {
         tutorialActive = true;
@@ -67,10 +64,6 @@ public class Tutorial
         tutorialRegionsClickable = false;
         tutorialNoTooltip = true;
         regionWestActivated = false;
-        tutorialChecks = new bool[21];
-
-        for (int i = 0; i < tutorialChecks.Length; i++)
-            tutorialChecks[i] = false;
 
         tutorialOrganizationDone = false;
         tutorialRegionDone = false;

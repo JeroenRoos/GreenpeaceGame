@@ -625,7 +625,7 @@ public class UpdateUI : MonoBehaviour
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[0].ToString("0");
         }
 
-        if (game.tutorial.tutorialChecks[2])
+        if (game.tutorial.tutorialIndex > 2)
             popupController();
 
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
@@ -709,9 +709,6 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialInvestementsDone = true;
         game.tutorial.tutorialBuildingsDone = true;
 
-        for (int i = 0; i < game.tutorial.tutorialChecks.Length; i++)
-            game.tutorial.tutorialChecks[i] = true;
-
         StartCoroutine(ChangeScale(btnOrganization));
         if (!organizationShakes)
             StartCoroutine(ShakeOrganization());
@@ -747,7 +744,7 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = false;
         imgTutorialSmall.transform.position = imgPosRight;
 
-        while (!game.tutorial.tutorialChecks[0])//tutorialStep2)
+        while (game.tutorial.tutorialIndex < 1)//tutorialStep2)
             yield return null;
 
         string[] step2 = { "Jouw taak is om de vervuiling naar 0% te brengen voor 2050. Het is nu 2020 dus je hebt nog 30 jaar.",
@@ -757,7 +754,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = true;
         imgTutorialStep2Highlight2.enabled = true;
 
-        while (!game.tutorial.tutorialChecks[1])//tutorialStep3)
+        while (game.tutorial.tutorialIndex < 2)//tutorialStep3)
             yield return null;
 
         //tutorialStep3 = false;
@@ -783,7 +780,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.gameObject.SetActive(false);
         imgTutorialStep2Highlight2.gameObject.SetActive(false);
 
-        while (!game.tutorial.tutorialChecks[2])//tutorialStep4)
+        while (game.tutorial.tutorialIndex < 3)//tutorialStep4)
             yield return null;
 
         imgTutorialSmall.gameObject.transform.position = imgPosRight;
@@ -920,7 +917,7 @@ public class UpdateUI : MonoBehaviour
         btnTutorialSmallNext.gameObject.SetActive(true);
 
         popupActive = true;
-        while (!game.tutorial.tutorialChecks[6]) //tutorialstep19)
+        while (game.tutorial.tutorialIndex < 7) //tutorialstep19)
             yield return null;
 
         popupActive = false;
@@ -1899,7 +1896,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialOrganization.text = step1[taal];
         txtTutorialOrganizationBtnText.text = btnText[taal];
 
-        while (!game.tutorial.tutorialChecks[4])//tutorialStep9)
+        while (game.tutorial.tutorialIndex < 5)//tutorialStep9)
             yield return null;
 
         imgTutorialOrganization.gameObject.SetActive(false);
@@ -2019,7 +2016,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialRegion.text = step1[taal];
         txtTurorialReginoBtnText.text = btnText[taal];
 
-        while (!game.tutorial.tutorialChecks[3])//tutorialStep6)
+        while (game.tutorial.tutorialIndex < 4)//tutorialStep6)
             yield return null;
 
         string[] step2 = { "Je kan statistieken in sectoren aanpassen door acties te doen. Acties kosten tijd en geld " +
@@ -2648,7 +2645,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialAfterTurn.text = step1[taal];
         txtTutorialAfterTurnBtn.text = btnText[taal];
 
-        while (!game.tutorial.tutorialChecks[5])//tutorialStep18)
+        while (game.tutorial.tutorialIndex < 6)//tutorialStep18)
             yield return null;
         
         imgTutorialAfterTurn.gameObject.SetActive(false);
@@ -3016,7 +3013,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialQuests.text = step2[taal];
         txtTutorialQuestsBtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[8])//tutorialStep16)
+        while (game.tutorial.tutorialIndex < 9)//tutorialStep16)
             yield return null;
 
 
@@ -3133,7 +3130,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialEvent.text = txtTutorial[taal];
         txtTutorialEventBtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[7])// tutorialStep20)
+        while (game.tutorial.tutorialIndex < 8)// tutorialStep20)
             yield return null;
 
         imgTutorialEvents.gameObject.SetActive(false);
@@ -3439,7 +3436,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialBuildings.text = step[taal];
         txtTutorialBuildingsbtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[11])//tutorialStep16)
+        while (game.tutorial.tutorialIndex < 12)//tutorialStep16)
             yield return null;
 
         imgTutorialBuildings.gameObject.SetActive(false);
@@ -3458,7 +3455,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmall.text = step3[taal];
         txtTutorialSmallBtn.text = txtButton[taal];
 
-        while (!game.tutorial.tutorialChecks[12])//tutorialStep17)
+        while (game.tutorial.tutorialIndex < 13)//tutorialStep17)
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
@@ -3616,7 +3613,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialInvestements.text = step[taal];
         txtTutorialInvestementsbtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[10])//tutorialStep16)
+        while (game.tutorial.tutorialIndex < 11)//tutorialStep16)
             yield return null;
 
         imgTutorialInvestements.gameObject.SetActive(false);
@@ -3822,7 +3819,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialCards.text = step[taal];
         txtTutorialCardsBtn.text = txtBtn[taal];
 
-        while (!game.tutorial.tutorialChecks[9])//tutorialStep16)
+        while (game.tutorial.tutorialIndex < 10)//tutorialStep16)
             yield return null;
 
         imgTutorialCards.gameObject.SetActive(false);
@@ -4998,24 +4995,7 @@ public class UpdateUI : MonoBehaviour
     public void turorialButtonPress()
     {
         EventManager.CallPlayButtonClickSFX();
-        for (int i = game.tutorial.tutorialIndex; i < game.tutorial.tutorialChecks.Length; i++)
-        {
-            game.tutorial.tutorialIndex++;
-
-            if (i == 0)
-            {
-                game.tutorial.tutorialChecks[i] = true;
-                break;
-            }
-            else if (game.tutorial.tutorialChecks[i - 1])
-            {
-                if (i != game.tutorial.tutorialChecks.Length - 1)
-                {
-                    game.tutorial.tutorialChecks[i] = true;
-                    break;
-                }
-            }
-        }
+        game.tutorial.tutorialIndex++;
     }
     
     #endregion
