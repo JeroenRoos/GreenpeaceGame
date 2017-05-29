@@ -40,6 +40,9 @@ class MultiplayerManager
     public delegate void MessageReceived(string message, string senderName);
     public static event MessageReceived UpdateChat;
 
+    public delegate void PlayerLogChanged(string nl, string eng);
+    public static event PlayerLogChanged UpdateLogMessage;
+
     //by local player
     public static void CallNextTurnClick()
     {
@@ -98,5 +101,10 @@ class MultiplayerManager
     public static void CallUpdateChat(string message, string senderName)
     {
         UpdateChat(message, senderName);
+    }
+
+    public static void CallUpdateLogMessage(string nl, string eng)
+    {
+        UpdateLogMessage(nl, eng);
     }
 }

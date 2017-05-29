@@ -53,4 +53,8 @@ MonoBehaviour:
   - InvestmentMade
   - BuildingMade
   - MessageReceived
+<<<<<<< HEAD
+=======
+  - PlayerLogChanged
+>>>>>>> 99cc7a19b62f1ae473aa2e44e8c5a64af4679918
   DisableAutoOpenWizard: 1

@@ -570,20 +570,22 @@ public class UpdateUI : MonoBehaviour
         {
             // chatClient = new ChattingClient(this);
 
-            txtMultiplayerLocalPlayer.gameObject.SetActive(true);
+            txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(true);
             txtMultiplayerInfo.gameObject.SetActive(true);
             btnMultiplayerRemoteMoney.gameObject.SetActive(true);
             txtMultiplayerRemotePlayerMoney.gameObject.SetActive(true);
 
-            string[] txtInfo = { "Spelers: ", "Players: " };
+            string[] txtInfo = { "Activiteit andere speler: ", "Activity other player: " };
             txtMultiplayerInfo.text = txtInfo[taal];
-            SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+            //SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+            //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
 
-            btnSendChatMessage.gameObject.SetActive(false);
-            txtChatMessages.gameObject.SetActive(false);
-            inputChatMessage.gameObject.SetActive(false);
-            txtSendMessageButton.gameObject.SetActive(false);
+            btnSendChatMessage.gameObject.SetActive(true);
+            txtChatMessages.gameObject.SetActive(true);
+            inputChatMessage.gameObject.SetActive(true);
+            txtSendMessageButton.gameObject.SetActive(true);
         }
         else
         {
@@ -640,24 +642,6 @@ public class UpdateUI : MonoBehaviour
                 //btnViewConsequences.gameObject.SetActive(false);
             }
         }
-
-        /*
-        if (ApplicationModel.multiplayer)
-        {
-            txtMultiplayerPlayers.text = "";
-            if (game.nextTurnIsclicked)
-            {
-                string[] txt = { "Klaar voor volgende beurt", "Ready for next turn" };
-                txtMultiplayerPlayerInfo[taal] += txt[taal];
-            }
-            else
-            {
-                string[] txt = { "Nederland aan het bekijken", "Looking at The Netherlands" };
-                txtMultiplayerPlayerInfo[taal] += txt[taal];
-            }
-
-            txtMultiplayerPlayers.text = txtMultiplayerPlayerInfo[taal];
-        }*/
     }
     #endregion
 
@@ -2006,7 +1990,9 @@ public class UpdateUI : MonoBehaviour
     {
         regio = region;
 
-        SetLocalPlayerText("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
+        //SetLocalPlayerText("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
+        //MultiplayerManager.CallUpdateLogMessage("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
+        playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
 
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
@@ -4128,7 +4114,9 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive/* && tutorialStep8 */&& !game.tutorial.tutorialQuestsActive)
         {
-            SetLocalPlayerText("Organisatie aan het bekijken", "Looking at the Organization");
+            //SetLocalPlayerText("Organisatie aan het bekijken", "Looking at the Organization");
+            //MultiplayerManager.CallUpdateLogMessage("Organisatie aan het bekijken", "Looking at the Organization");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie aan het bekijken", "Looking at the Organization");
 
             btnOrganizationIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4143,7 +4131,9 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)//tutorialStep15)
         {
-            SetLocalPlayerText("Missies aan het bekijken", "Looking at Quests");
+            //SetLocalPlayerText("Missies aan het bekijken", "Looking at Quests");
+            //MultiplayerManager.CallUpdateLogMessage("Missies aan het bekijken", "Looking at Quests");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missies aan het bekijken", "Looking at Quests");
 
             btnQuestsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4158,7 +4148,9 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasCardsPopup.gameObject.activeSelf && !popupActive)
         {
-            SetLocalPlayerText("Kaarten aan het bekijken", "Looking at Cards");
+            //SetLocalPlayerText("Kaarten aan het bekijken", "Looking at Cards");
+            //MultiplayerManager.CallUpdateLogMessage("Kaarten aan het bekijken", "Looking at Cards");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten aan het bekijken", "Looking at Cards");
 
             btnCardsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4184,7 +4176,9 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)
         {
-            SetLocalPlayerText("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
+            //SetLocalPlayerText("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
+            //MultiplayerManager.CallUpdateLogMessage("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
 
             EventManager.CallPlayButtonClickSFX();
             canvasMonthlyReport.gameObject.SetActive(true);
@@ -4204,7 +4198,9 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)
         {
-            SetLocalPlayerText("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
+            //SetLocalPlayerText("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
+            // MultiplayerManager.CallUpdateLogMessage("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
 
             EventManager.CallPlayButtonClickSFX();
             canvasYearlyReport.gameObject.SetActive(true);
@@ -4218,7 +4214,9 @@ public class UpdateUI : MonoBehaviour
     {
         if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
         {
-            SetLocalPlayerText("Investeringen aan het bekijken", "Looking at Investements");
+            //SetLocalPlayerText("Investeringen aan het bekijken", "Looking at Investements");
+            //MultiplayerManager.CallUpdateLogMessage("Investeringen aan het bekijken", "Looking at Investements");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Investeringen aan het bekijken", "Looking at Investements");
 
             btnInvestmentsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4336,7 +4334,9 @@ public class UpdateUI : MonoBehaviour
             EventManager.CallPopupIsDisabled();
         }
 
-        SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+        //SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+        //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
+        playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
 
     }
     #endregion
@@ -4685,7 +4685,9 @@ public class UpdateUI : MonoBehaviour
 
             else if (!game.nextTurnIsclicked)
             {
-                SetLocalPlayerText("Klaar voor de volgende beurt", "Ready for next turn");
+                //SetLocalPlayerText("Klaar voor de volgende beurt", "Ready for next turn");
+                //MultiplayerManager.CallUpdateLogMessage("Klaar voor de volgende beurt", "Ready for next turn");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
 
                 MultiplayerManager.CallNextTurnClick();
             }
@@ -5259,15 +5261,15 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    public void SetLocalPlayerText(string nl, string eng)
+    public void SetRemotePlayerText(string nl, string eng)
     {
         string[] txtMultiplayerPlayerInfo = { "", "" };
 
-        string[] txt = { "\n" + PhotonNetwork.player.NickName + " - " + nl
-                    , "\n" + PhotonNetwork.player.NickName + " - " + eng };
+        string[] txt = { "\n" + PhotonNetwork.playerList[0].NickName + " - " + nl
+                    , "\n" + PhotonNetwork.playerList[0].NickName + " - " + eng };
 
         txtMultiplayerPlayerInfo[taal] += txt[taal];
-        txtMultiplayerLocalPlayer.text = txtMultiplayerPlayerInfo[taal];
+        txtMultiplayerRemotePlayer.text = txtMultiplayerPlayerInfo[taal];
     }
 
     public void inputChatMessagesValueChanged()
@@ -5289,6 +5291,11 @@ public class UpdateUI : MonoBehaviour
 
     public void btnSendChatMessageClicked()
     {
-        chatClient.publishMessage(PhotonNetwork.room.Name, txtChatMessageToSend);
+        playerController.photonView.RPC("UpdateChat", PhotonTargets.Others, txtChatMessageToSend, "");
+    }
+
+    public void updateChatMessages(string message, string sender)
+    {
+        txtChatMessages.text = sender + " - " + message;
     }
 }

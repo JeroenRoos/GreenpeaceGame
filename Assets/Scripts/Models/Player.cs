@@ -88,4 +88,10 @@ public class Player : Photon.MonoBehaviour {
     {
         MultiplayerManager.CallUpdateChat(message, senderName);
     }
+
+    [PunRPC]
+    void PlayerLogChanged(string nl, string eng)
+    {
+        MultiplayerManager.CallUpdateLogMessage(nl, eng);
+    }
 }

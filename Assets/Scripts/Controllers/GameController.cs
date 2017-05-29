@@ -423,7 +423,9 @@ public class GameController : MonoBehaviour
             game.nextTurnIsclicked = false;
             game.OtherPlayerClickedNextTurn = false;
 
-            updateUI.SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+            //updateUI.SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+            //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
         }
 
         if (!updateUI.popupActive)
@@ -1044,7 +1046,8 @@ public class GameController : MonoBehaviour
         MultiplayerManager.PlayCard += StartOtherPlayerCard;
         MultiplayerManager.Invest += GetOtherPlayerInvestment;
         MultiplayerManager.MakeBuilding += GetOtherPlayerBuilding;
-        //MultiplayerManager.UpdateChat += updateUI.message;
+        MultiplayerManager.UpdateChat += updateUI.updateChatMessages;
+        MultiplayerManager.UpdateLogMessage += updateUI.SetRemotePlayerText;
     }
 
     public void GetOtherPlayerNextTurn()
