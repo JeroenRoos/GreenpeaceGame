@@ -18,7 +18,12 @@ public class UpdateUI : MonoBehaviour
     public Text txtMultiplayerRemotePlayer;
     public Text txtMultiplayerRemotePlayerMoney;
     public Button btnMultiplayerRemoteMoney;
-
+    private ChattingClient chatClient;
+    public Button btnSendChatMessage;
+    public Text txtChatMessages;
+    public InputField inputChatMessage;
+    public Text txtSendMessageButton;
+    private string txtChatMessageToSend;
 
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
@@ -563,6 +568,8 @@ public class UpdateUI : MonoBehaviour
 
         if (ApplicationModel.multiplayer)
         {
+            // chatClient = new ChattingClient(this);
+
             txtMultiplayerLocalPlayer.gameObject.SetActive(true);
             txtMultiplayerRemotePlayer.gameObject.SetActive(true);
             txtMultiplayerInfo.gameObject.SetActive(true);
@@ -572,6 +579,11 @@ public class UpdateUI : MonoBehaviour
             string[] txtInfo = { "Spelers: ", "Players: " };
             txtMultiplayerInfo.text = txtInfo[taal];
             SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
+
+            btnSendChatMessage.gameObject.SetActive(false);
+            txtChatMessages.gameObject.SetActive(false);
+            inputChatMessage.gameObject.SetActive(false);
+            txtSendMessageButton.gameObject.SetActive(false);
         }
         else
         {
@@ -580,6 +592,11 @@ public class UpdateUI : MonoBehaviour
             txtMultiplayerInfo.gameObject.SetActive(false);
             btnMultiplayerRemoteMoney.gameObject.SetActive(false);
             txtMultiplayerRemotePlayerMoney.gameObject.SetActive(false);
+
+            btnSendChatMessage.gameObject.SetActive(false);
+            txtChatMessages.gameObject.SetActive(false);
+            inputChatMessage.gameObject.SetActive(false);
+            txtSendMessageButton.gameObject.SetActive(false);
         }
         
     }
@@ -1380,6 +1397,7 @@ public class UpdateUI : MonoBehaviour
             && !game.tutorial.tutorialBuildingsActive)
             closeWithEscape();
 
+        /*
         // Open and close Organization popup with O
         else if (Input.GetKeyUp(KeyCode.O))
             //if (game.tutorial.tutorialStep8)
@@ -1389,6 +1407,7 @@ public class UpdateUI : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.T))
             if (!game.tutorial.tutorialActive)
                 controllerTimelinePopup();
+                */
     }
 
     // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
@@ -4784,6 +4803,14 @@ public class UpdateUI : MonoBehaviour
 
     public void buttonExitGameOnClick()
     {
+     /*   if (ApplicationModel.multiplayer)
+        {
+            if (chatClient != null)
+            {
+                chatClient.Disconnect();
+            }
+        }*/
+
         EventManager.CallPlayButtonClickSFX();
         EventManager.CallLeaveGame();
         Application.Quit();
@@ -4797,6 +4824,16 @@ public class UpdateUI : MonoBehaviour
 
     public void loadOtherScene(int index)
     {
+        /*
+                if (ApplicationModel.multiplayer)
+        {
+            if (chatClient != null)
+            {
+                chatClient.Disconnect();
+            }
+        }
+        */
+
         EventManager.CallPlayButtonClickSFX();
         EventManager.CallLeaveGame();
         SceneManager.LoadSceneAsync(index);
@@ -5222,7 +5259,7 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    private void SetLocalPlayerText(string nl, string eng)
+    public void SetLocalPlayerText(string nl, string eng)
     {
         string[] txtMultiplayerPlayerInfo = { "", "" };
 
@@ -5231,5 +5268,27 @@ public class UpdateUI : MonoBehaviour
 
         txtMultiplayerPlayerInfo[taal] += txt[taal];
         txtMultiplayerLocalPlayer.text = txtMultiplayerPlayerInfo[taal];
+    }
+
+    public void inputChatMessagesValueChanged()
+    {
+        inputChatMessage.text.Trim();
+
+        if (inputChatMessage.text != "")
+        {
+            txtChatMessageToSend = inputChatMessage.text;
+            btnSendChatMessage.gameObject.SetActive(true);
+            string[] txtBtn = { "Stuur", "Send" };
+            txtSendMessageButton.text = txtBtn[taal];
+        }
+        else
+        {
+            btnSendChatMessage.gameObject.SetActive(false);
+        }
+    }
+
+    public void btnSendChatMessageClicked()
+    {
+        chatClient.publishMessage(PhotonNetwork.room.Name, txtChatMessageToSend);
     }
 }

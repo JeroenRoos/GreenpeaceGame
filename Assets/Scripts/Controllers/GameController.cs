@@ -433,6 +433,8 @@ public class GameController : MonoBehaviour
         {
             game.nextTurnIsclicked = false;
             game.OtherPlayerClickedNextTurn = false;
+
+            updateUI.SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
         }
 
         if (!updateUI.popupActive)
