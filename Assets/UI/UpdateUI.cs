@@ -437,6 +437,9 @@ public class UpdateUI : MonoBehaviour
     private string dropdownChoice;
 
     // Tutorial
+    private Vector3 imgPosMiddle;// = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
+    private Vector3 imgPosRight;// = imgPosMiddle;
+    private Vector3 imgPosLeft;
     public Image imgTutorialBig;
     public Text txtTutorialBig;
     public Text txtTutorialBigBtn;
@@ -716,9 +719,9 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator initTutorialText()
     {
-        Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
-        Vector3 imgPosRight = imgPosMiddle;
-        Vector3 imgPosLeft = imgPosMiddle;
+        imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
+        imgPosRight = imgPosMiddle;
+        imgPosLeft = imgPosMiddle;
         imgPosRight.x = imgPosRight.x + Screen.width / 3;                           // Rechtsmidden in het scherm
         imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                             // Linksmidden in het scherm
 
@@ -2034,10 +2037,10 @@ public class UpdateUI : MonoBehaviour
 
         txtTutorialRegion.text = step2[taal];
         btnTutorialRegion.gameObject.SetActive(false);
-        Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
-        Vector3 imgNewPos = imgOldPos;
-        imgNewPos.x = imgNewPos.x - Screen.width / 5;
-        imgTutorialRegion.gameObject.transform.position = imgNewPos;
+        //Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
+        //Vector3 imgNewPos = imgOldPos;
+        //imgNewPos.x = imgNewPos.x - Screen.width / 3;
+        imgTutorialRegion.gameObject.transform.position = imgPosLeft;
 
         while (!game.tutorial.tutorialCheckActionDone)
             yield return null;
