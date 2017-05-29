@@ -3674,7 +3674,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInActionCostReduction(game.regions);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "ActionCostReduction");
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Action cost reduction");
             setActionCostReductionInvestments();
 
             if (game.investments.actionCostReduction[4])
@@ -3690,7 +3690,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterActionConsequences(game.regions);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "BetterActionConsequences");
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better action consequences");
             setActionConsequencesInvestments();
 
             if (game.investments.betterActionConsequences[4])
@@ -3706,7 +3706,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInGameEventCostReduction(game.events);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "GameEventCostReduction");
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Event cost reduction");
             setEventCostReductionInvestments();
 
             if (game.investments.gameEventCostReduction[4])
@@ -3722,7 +3722,7 @@ public class UpdateUI : MonoBehaviour
         if (game.GetMoney() >= game.investments.investmentCost)
         {
             game.investments.InvestInBetterGameEventConsequences(game.events);
-            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "BetterGameEventConsequences");
+            playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better event consequences");
             setEventConsequencesInvestments();
 
             if (game.investments.betterGameEventConsequences[4])
@@ -5316,7 +5316,7 @@ public class UpdateUI : MonoBehaviour
 
     public void UpdateActivityLogText(string nl, string eng)
     {
-        string[] txt = { "\n" + PhotonNetwork.player.NickName + nl, "\n" + PhotonNetwork.player.NickName + eng };
+        string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
         txtActivityLog.text += txt[taal];
     }
     #endregion

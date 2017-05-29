@@ -1074,7 +1074,7 @@ public class GameController : MonoBehaviour
         playerController.photonView.RPC("MoneyChanged", PhotonTargets.Others, changevalue, isAdded);
     }
 
-    public void StartOtherPlayerAction(string RegionName, string ActionName, bool[] pickedSectors)
+    public void StartOtherPlayerAction(string RegionName, string actionName, bool[] pickedSectors)
     {
         foreach (MapRegion r in game.regions)
         {
@@ -1082,9 +1082,11 @@ public class GameController : MonoBehaviour
             {
                 foreach (RegionAction rA in r.actions)
                 {
-                    if (rA.name[0] == ActionName)
+                    if (rA.name[0] == actionName)
                     {
                         r.StartOtherPlayerAction(rA, game, pickedSectors);
+                        MultiplayerManager.CallUpdateActivity(" heeft actie (" + rA.name[0] + ") gestart in " + r.name[0],
+                            " started action (" + rA.name[0] + ") in " + r.name[1]);
                         return;
                     }
                 }
@@ -1138,48 +1140,58 @@ public class GameController : MonoBehaviour
         /*GameObject */
         eventInstance = Instantiate(eventObject);
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, r, e);
+
+        MultiplayerManager.CallUpdateActivity(" heeft keuze [" + e.choicesDutch[pickedChoiceNumber] + "] bij event (" + e.publicEventName[0] + ") gedaan in " + r.name[0],
+            " Made choice [" + e.choicesDutch[pickedChoiceNumber] + "] at event (" + e.publicEventName[1] + ") in " + r.name[1]);
     }
 
     public void GetOtherPlayerInvestment(string investmentType)
     {
         switch (investmentType)
         {
-            case "ActionCostReduction":
+            case "Action cost reduction":
                 game.investments.InvestInActionCostReduction(game.regions);
                 updateUI.setActionCostReductionInvestments();
                 if (game.investments.actionCostReduction[4])
                     updateUI.btnInvestmentActionCostInvest.gameObject.SetActive(false);
                 break;
-            case "BetterActionConsequences":
+            case "Better action consequences":
                 game.investments.InvestInBetterActionConsequences(game.regions);
                 updateUI.setActionConsequencesInvestments();
                 if (game.investments.betterActionConsequences[4])
                     updateUI.btnInvestmentActionConsequenceInvest.gameObject.SetActive(false);
                 break;
-            case "GameEventCostReduction":
+            case "Event cost reduction":
                 game.investments.InvestInGameEventCostReduction(game.events);
                 updateUI.setEventCostReductionInvestments();
                 if (game.investments.gameEventCostReduction[4])
                     updateUI.btnInvestmentEventCostInvest.gameObject.SetActive(false);
                 break;
-            case "BetterGameEventConsequences":
+            case "Better event consequences":
                 game.investments.InvestInBetterGameEventConsequences(game.events);
                 updateUI.setEventConsequencesInvestments();
                 if (game.investments.betterGameEventConsequences[4])
                     updateUI.btnInvestmentEventConsequenceInvest.gameObject.SetActive(false);
                 break;
         }
+        
+        MultiplayerManager.CallUpdateActivity(" heeft geïnvesteerd in: " + investmentType,
+            " has invested in: " + investmentType);
     }
 
     public void StartOtherPlayerCard(string regionName, double[] cardValues, bool isGlobal)
     {
         Card c = new Card();
+        MapRegion r = GetRegion(regionName);
         c.SetCardReward(cardValues);
 
         if (isGlobal)
             c.UseCardOnCountry(game.regions, game.gameStatistics);
         else
-            c.UseCardOnRegion(GetRegion(regionName), game.gameStatistics);
+            c.UseCardOnRegion(r, game.gameStatistics);
+
+        MultiplayerManager.CallUpdateActivity(" heeft een kaart gebruikt op " + r.name[0],
+            " used a card on " + r.name[1]);
     }
 
     public void GetOtherPlayerBuilding(string regionName, string buildingID)
@@ -1196,6 +1208,11 @@ public class GameController : MonoBehaviour
 
                 buildingInstances[i] = GameController.Instantiate(buildingObject);
                 buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
+
+                MultiplayerManager.CallUpdateActivity("heeft een " + b.buildingName[0] + " gebouwd in " + r.name[0],
+                    "built a " + b.buildingName[1] + " in " + r.name[1]);
+
+                return;
             }
         }
     }
