@@ -81,5 +81,6 @@ public class Lobby
     public void StartGame(int index)
     {
         PhotonNetwork.LoadLevel(index);
+        //ChattingClient c = new ChattingClient();
     }
 }
