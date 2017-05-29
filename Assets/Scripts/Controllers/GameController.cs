@@ -1055,6 +1055,7 @@ public class GameController : MonoBehaviour
         MultiplayerManager.PlayCard += StartOtherPlayerCard;
         MultiplayerManager.Invest += GetOtherPlayerInvestment;
         MultiplayerManager.MakeBuilding += GetOtherPlayerBuilding;
+        MultiplayerManager.UpdateChat += updateUI.message;
     }
 
     public void GetOtherPlayerNextTurn()

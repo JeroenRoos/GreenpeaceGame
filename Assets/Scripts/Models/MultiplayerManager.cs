@@ -37,6 +37,9 @@ class MultiplayerManager
     public delegate void BuildingMade(string regionName, string buildingID);
     public static event BuildingMade MakeBuilding;
 
+    public delegate void MessageReceived(string message, string senderName);
+    public static event MessageReceived UpdateChat;
+
     //by local player
     public static void CallNextTurnClick()
     {
@@ -90,5 +93,10 @@ class MultiplayerManager
     public static void CallMakeBuilding(string regionName, string buildingID)
     {
         MakeBuilding(regionName, buildingID);
+    }
+
+    public static void CallUpdateChat(string message, string senderName)
+    {
+        UpdateChat(message, senderName);
     }
 }

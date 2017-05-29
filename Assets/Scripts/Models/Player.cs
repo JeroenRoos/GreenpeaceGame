@@ -82,4 +82,10 @@ public class Player : Photon.MonoBehaviour {
     {
         MultiplayerManager.CallMakeBuilding(regionName, buildingID);
     }
+
+    [PunRPC]
+    void MessageReceived(string message, string senderName)
+    {
+        MultiplayerManager.CallUpdateChat(message, senderName);
+    }
 }
