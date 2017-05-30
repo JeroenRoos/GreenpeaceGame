@@ -42,7 +42,7 @@ public class Tutorial
 
     public Tutorial()
     {
-        tutorialActive = true;
+        tutorialActive = false;
 
 
 

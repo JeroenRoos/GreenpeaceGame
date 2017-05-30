@@ -5348,8 +5348,9 @@ public class UpdateUI : MonoBehaviour
 
     public void UpdateActivityLogText(string nl, string eng)
     {
+        txtActivityLog.text = "";
         string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
-        txtActivityLog.text += txt[taal];
+        txtActivityLog.text = txt[taal];
     }
     #endregion
 }
