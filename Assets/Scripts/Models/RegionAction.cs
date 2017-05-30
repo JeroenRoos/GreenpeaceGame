@@ -46,6 +46,40 @@ public class RegionAction //: MonoBehaviour
 
     private RegionAction() { }
 
+    public RegionAction(RegionAction r)
+    {
+        name = (string[])r.name.Clone();
+        description = (string[])r.description.Clone();
+        actionMoneyCost = r.actionMoneyCost;
+        afterInvestmentActionMoneyCost = r.afterInvestmentActionMoneyCost;
+        actionMoneyReward = r.actionMoneyReward;
+        actionDuration = r.actionDuration;
+        possibleSectors = (string[])r.possibleSectors.Clone();
+        pickedSectors = (bool[])r.pickedSectors.Clone();
+        actionCooldown = r.actionCooldown;
+        isUnique = r.isUnique;
+        temporaryConsequencesDuration = r.temporaryConsequencesDuration;
+
+        consequences = new SectorStatistics(r.consequences);
+        afterInvestmentConsequences = new SectorStatistics(r.afterInvestmentConsequences);
+        temporaryConsequences = new SectorStatistics(r.temporaryConsequences);
+        afterInvestmentTemporaryConsequences = new SectorStatistics(r.afterInvestmentTemporaryConsequences);
+
+        startYear = r.startYear;
+        startMonth = r.startMonth;
+        lastCompleted = r.lastCompleted;
+        isActive = r.isActive;
+        endTemporaryConsequencesMonth = r.endTemporaryConsequencesMonth;
+        isAvailable = r.isAvailable;
+        conditionsAreRegional = r.conditionsAreRegional;
+        startAvailableYear = r.startAvailableYear;
+        startAvailableMonth = r.startAvailableMonth;
+        endAvailableYear = r.endAvailableYear;
+        endAvailableMonth = r.endAvailableMonth;
+        availableConditionsMinimum = new SectorStatistics(r.availableConditionsMinimum);
+        availableConditionsMaximum = new SectorStatistics(r.availableConditionsMaximum);
+}
+
     public void GetAvailableActions(Game game, RegionStatistics rs)
     {
         if (conditionsAreRegional)

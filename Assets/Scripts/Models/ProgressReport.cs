@@ -33,6 +33,28 @@ public class ProgressReport
         completedEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
     }
 
+    public ProgressReport(ProgressReport p)
+    {
+        reportRegions = new string[4] { "Noord Nederland", "Oost Nederland", "West Nederland", "Zuid Nederland" };
+        oldIncome = new double[4] { p.oldIncome[0], p.oldIncome[1], p.oldIncome[2], p.oldIncome[3] };
+        oldHappiness = new double[4] { p.oldHappiness[0], p.oldHappiness[1], p.oldHappiness[2], p.oldHappiness[3] };
+        oldEcoAwareness = new double[4] { p.oldEcoAwareness[0], p.oldEcoAwareness[1], p.oldEcoAwareness[2], p.oldEcoAwareness[3] };
+        oldProsperity = new double[4] { p.oldProsperity[0], p.oldProsperity[1], p.oldProsperity[2], p.oldProsperity[3] };
+        oldPollution = new double[4] { p.oldPollution[0], p.oldPollution[0], p.oldPollution[2], p.oldPollution[3] };
+        completedActions = new List<RegionAction>[] { new List<RegionAction>(), new List<RegionAction>(), new List<RegionAction>(), new List<RegionAction>() };
+        newEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
+        completedEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
+        for (int i = 0; i < 4; i++)
+        {
+            foreach (RegionAction r in p.completedActions[i])
+                completedActions[i].Add(new RegionAction(r));
+            foreach (GameEvent e in p.newEvents[i])
+                newEvents[i].Add(new GameEvent(e));
+            foreach (GameEvent e in p.completedEvents[i])
+                completedEvents[i].Add(new GameEvent(e));
+        }
+    }
+
     public void UpdateStatistics(List<MapRegion> regions)
     {
         foreach (MapRegion region in regions)

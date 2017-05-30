@@ -545,7 +545,7 @@ public class UpdateUI : MonoBehaviour
 
     #region Start(), Update(), FixedUpdate()
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         taal = ApplicationModel.language;
 
@@ -831,7 +831,6 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.gameObject.SetActive(true);
         if (!organizationShakes)
             StartCoroutine(ShakeOrganization());
-        StartCoroutine(ShakeOrganization());
         //imgBarBottom.gameObject.SetActive(true);
 
         if (!game.tutorial.tutorialOrganizationDone)
@@ -952,7 +951,7 @@ public class UpdateUI : MonoBehaviour
 
         imgTutorialSmall.transform.position = imgPosMiddle;
         game.tutorial.tutorialNexTurnPossibe = true;
-        game.tutorial.tutorialActive = false;
+        //game.tutorial.tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         btnNextTurn.interactable = true;
@@ -1110,7 +1109,7 @@ public class UpdateUI : MonoBehaviour
         if (!questsShakes)
             StartCoroutine(ShakeQuests());
 
-        if (game.tutorial.doTuto)
+        if (!game.tutorial.tutorialQuestsDone)
         {
             btnNextTurn.interactable = false;
             canvasTutorial.gameObject.SetActive(true);
@@ -1148,7 +1147,7 @@ public class UpdateUI : MonoBehaviour
         if (!investmentsShakes)
             StartCoroutine(ShakeInvestments());
 
-        if (game.tutorial.doTuto)
+        if (!game.tutorial.tutorialInvestementsDone)
         {
             btnNextTurn.interactable = false;
             canvasTutorial.gameObject.SetActive(true);
@@ -1185,7 +1184,7 @@ public class UpdateUI : MonoBehaviour
         if (!cardsShakes)
             StartCoroutine(ShakeCards());
 
-        if (game.tutorial.doTuto)
+        if (!game.tutorial.tutorialCardsDone)
         {
             btnNextTurn.interactable = false;
             canvasTutorial.gameObject.SetActive(true);
@@ -1961,7 +1960,7 @@ public class UpdateUI : MonoBehaviour
         imgSectorPopup.gameObject.SetActive(false);
 
         // Ga naar WEST tijdens de tutorial
-        if (game.tutorial.tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
+        if (!popupActive && game.tutorial.tutorialActive)
         {
             if (game.tutorial.tutorialOnlyWestNL && game.tutorial.tutorialRegionsClickable)
             {
@@ -1972,7 +1971,6 @@ public class UpdateUI : MonoBehaviour
 
                     btnTutorialRegion.gameObject.SetActive(true);
                     imgTutorialRegion.gameObject.SetActive(true);
-                    Debug.Log("REGION TUTORIAL");
                     StartCoroutine(tutorialRegionPopup());
                 }
             }
@@ -1996,12 +1994,9 @@ public class UpdateUI : MonoBehaviour
     private void startRegionPopup(MapRegion region)
     {
         regio = region;
-        //SetLocalPlayerText("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
-        //MultiplayerManager.CallUpdateLogMessage("Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
-
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
-
+        
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
         EventManager.CallPopupIsActive();
@@ -2041,7 +2036,7 @@ public class UpdateUI : MonoBehaviour
         //Vector3 imgNewPos = imgOldPos;
         //imgNewPos.x = imgNewPos.x - Screen.width / 3;
         imgTutorialRegion.gameObject.transform.position = imgPosLeft;
-
+        
         while (!game.tutorial.tutorialCheckActionDone)
             yield return null;
 
@@ -2659,15 +2654,14 @@ public class UpdateUI : MonoBehaviour
 
     public void InitMonthlyReport()
     {
-        monthlyNewEvents = (List<GameEvent>[])game.monthlyReport.newEvents.Clone();
         updateTextAfterActionStats(true);
-        calculateDifference(game.monthlyReport.oldIncome, game.monthlyReport.oldHappiness, game.monthlyReport.oldEcoAwareness, game.monthlyReport.oldPollution, game.monthlyReport.oldProsperity, true);
+        calculateDifference(game.oldMonthlyReport.oldIncome, game.oldMonthlyReport.oldHappiness, game.oldMonthlyReport.oldEcoAwareness, game.oldMonthlyReport.oldPollution, game.oldMonthlyReport.oldProsperity, true);
     }
 
     public void InitYearlyReport()
     {
         updateTextAfterActionStats(false);
-        calculateDifference(game.yearlyReport.oldIncome, game.yearlyReport.oldHappiness, game.yearlyReport.oldEcoAwareness, game.yearlyReport.oldPollution, game.yearlyReport.oldProsperity, false);
+        calculateDifference(game.oldYearlyReport.oldIncome, game.oldYearlyReport.oldHappiness, game.oldYearlyReport.oldEcoAwareness, game.oldYearlyReport.oldPollution, game.oldYearlyReport.oldProsperity, false);
     }
 
     private void updateTextAfterActionStats(bool isMonthly)
@@ -2724,7 +2718,7 @@ public class UpdateUI : MonoBehaviour
         double pollutionDifference = 0;
         double prosperityDifference = 0;
 
-        for (int i = 0; i < game.monthlyReport.reportRegions.Length; i++)
+        for (int i = 0; i < game.oldMonthlyReport.reportRegions.Length; i++)
         {
             incomeDifference = game.regions[i].statistics.income - oldIncome[i];
             happinessDifference = game.regions[i].statistics.happiness - oldHappiness[i];
@@ -2734,19 +2728,19 @@ public class UpdateUI : MonoBehaviour
 
             if (isMonthly)
             {
-                if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
+                if (game.oldMonthlyReport.reportRegions[i] == "Noord Nederland")
                 {
                     setValuesChanged(txtAfterActionNoord, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
-                else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
+                else if (game.oldMonthlyReport.reportRegions[i] == "Oost Nederland")
                 {
                     setValuesChanged(txtAfterActionOost, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
-                else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
+                else if (game.oldMonthlyReport.reportRegions[i] == "Zuid Nederland")
                 {
                     setValuesChanged(txtAfterActionZuid, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
-                else if (game.monthlyReport.reportRegions[i] == "West Nederland")
+                else if (game.oldMonthlyReport.reportRegions[i] == "West Nederland")
                 {
                     setValuesChanged(txtAfterActionWest, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
@@ -2771,7 +2765,6 @@ public class UpdateUI : MonoBehaviour
                 }
             }
         }
-
         initAfterActionStatsCompletedEvents();
         initAfterActionStatsCompletedActions();
     }
@@ -3842,6 +3835,7 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
+        game.tutorial.tutorialCardsDone = true;
         btnNextTurn.interactable = true;
     }
 
@@ -4575,29 +4569,29 @@ public class UpdateUI : MonoBehaviour
     public void btnMonthlyReportEnter()
     {
         btnMonthlyReportCheck = true;
-        btnMonthlyReportStats.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
-            (float)1.2 * transform.localScale.z);
+        /*btnMonthlyReportStats.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);*/
     }
 
     public void btnMonthlyReportExit()
     {
         btnMonthlyReportCheck = false;
-        btnMonthlyReportStats.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
-            transform.localScale.z / (float)1.2);
+        /*btnMonthlyReportStats.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);*/
     }
 
     public void btnYearlyReportEnter()
     {
         btnYearlyReportCheck = true;
-        btnYearlyReportStats.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
-            (float)1.2 * transform.localScale.z);
+        /*btnYearlyReportStats.transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
+            (float)1.2 * transform.localScale.z);*/
     }
 
     public void btnYearlyReportExit()
     {
         btnYearlyReportCheck = false;
-        btnYearlyReportStats.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
-            transform.localScale.z / (float)1.2);
+        /*btnYearlyReportStats.transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
+            transform.localScale.z / (float)1.2);*/
     }
 
     public void btnAfterActionCompletedEnter()

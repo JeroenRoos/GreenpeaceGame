@@ -53,11 +53,13 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     private void Awake()
     {
+        eventConsequenceModifiers = new double[5] { 0.8, 0.9, 1, 1.1, 1.2 };
+        updateUI = GetComponent<UpdateUI>();
+
         if (!ApplicationModel.loadGame)
         {
             game = new Game();
 
-            eventConsequenceModifiers = new double[5] { 0.8, 0.9, 1, 1.1, 1.2 };
 
             LoadRegions();
             LoadRegionActions();
@@ -96,9 +98,9 @@ public class GameController : MonoBehaviour
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
         }
         else
+        {
             LoadGame();
-
-        updateUI = GetComponent<UpdateUI>();
+        }
         //setBuildingTextures();
 
         StartCoroutine(showBuildingIcons());
@@ -120,10 +122,9 @@ public class GameController : MonoBehaviour
     {
         taal = ApplicationModel.language;
         SetPlayerTrackingData();
-        autoSave = true;
-        
-        StartCoroutine(updateUI.showBtnQuests());
+        autoSave = false;
 
+        StartCoroutine(updateUI.showBtnQuests());
         StartCoroutine(updateUI.showBtnInvestments());
         StartCoroutine(updateUI.showBtnCards());
 
@@ -137,6 +138,11 @@ public class GameController : MonoBehaviour
         oostNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[1]);
         westNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[2]);
         zuidNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[3]);
+        
+        if (!(game.currentYear == 1 && game.currentMonth == 1))
+            GenerateMonthlyReport(0);
+        if (game.currentYear != 1 && game.currentMonth == 1)
+            GenerateYearlyReport(1);
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
@@ -199,7 +205,7 @@ public class GameController : MonoBehaviour
             buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, game.regions[i], game.regions[i].activeBuilding);
         }
 
-        if (game.tutorial.doTuto)
+        if (!game.tutorial.tutorialBuildingsDone)
             updateUI.startTutorialBuildings();
     }
 
@@ -544,10 +550,12 @@ public class GameController : MonoBehaviour
     {
         int index = 0;
 
+        game.oldMonthlyReport = new ProgressReport(game.monthlyReport);
         GenerateMonthlyReport(index);
         index++;
         if (isNewYear)
         {
+            game.oldYearlyReport = new ProgressReport(game.yearlyReport);
             GenerateYearlyReport(index);
             index++;
             game.yearlyReport.UpdateStatistics(game.regions);
