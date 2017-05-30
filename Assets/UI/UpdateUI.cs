@@ -13,7 +13,7 @@ public class UpdateUI : MonoBehaviour
 
     #region UI Elements
     // Multiplayer
-
+    List<string> lstMessages = new List<string>();
     List<string[]> lstText = new List<string[]>();
     private PhotonPlayer[] players = new PhotonPlayer[2];
     public Text txtMultiplayerInfo;
@@ -5345,7 +5345,25 @@ public class UpdateUI : MonoBehaviour
 
     public void updateChatMessages(string message, string sender)
     {
-        txtChatMessages.text += sender + ": " + message + "\n";
+        txtChatMessages.text = "";
+        string txt = sender + ": " + message + "\n";
+
+        if (lstMessages.Count < 8)
+        {
+            lstMessages.Add(txt);
+        }
+        else
+        {
+            lstMessages.RemoveAt(0);
+            lstMessages.Add(txt);
+        }
+
+        foreach (string text in lstMessages)
+        {
+            txtChatMessages.text += text;
+        }
+
+        //txtChatMessages.text += sender + ": " + message + "\n";
     }
 
     public void UpdateActivityLogText(string nl, string eng)
