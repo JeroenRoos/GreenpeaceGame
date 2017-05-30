@@ -103,8 +103,6 @@ public class GameController : MonoBehaviour
         }
         //setBuildingTextures();
 
-        StartCoroutine(showBuildingIcons());
-
         foreach (MapRegion r in game.regions)
         {
             foreach (GameEvent e in r.inProgressGameEvents)
@@ -127,6 +125,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(updateUI.showBtnQuests());
         StartCoroutine(updateUI.showBtnInvestments());
         StartCoroutine(updateUI.showBtnCards());
+        StartCoroutine(showBuildingIcons());
 
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5 + height * 2 * 0, 0);

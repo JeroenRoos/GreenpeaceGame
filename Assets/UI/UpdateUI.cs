@@ -3455,6 +3455,8 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmall.text = step3[taal];
         txtTutorialSmallBtn.text = txtButton[taal];
 
+        popupActive = true;
+
         while (game.tutorial.tutorialIndex < 13)//tutorialStep17)
             yield return null;
 
@@ -3463,6 +3465,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialBuildingsDone = true;
         btnNextTurn.interactable = true;
+        popupActive = false;
     }
 
     private void initEmptyBuildingText()
