@@ -33,6 +33,8 @@ public class Game
     //new turn reports
     public ProgressReport monthlyReport { get; private set; }
     public ProgressReport yearlyReport { get; private set; }
+    public ProgressReport oldMonthlyReport;
+    public ProgressReport oldYearlyReport;
     public Timeline timeline { get; private set; }
     
     //advisors
@@ -68,6 +70,8 @@ public class Game
         quests = new List<Quest>();
         monthlyReport = new ProgressReport();
         yearlyReport = new ProgressReport();
+        oldMonthlyReport = new ProgressReport();
+        oldYearlyReport = new ProgressReport();
         economyAdvisor = new EconomyAdvisor();
         pollutionAdvisor = new PollutionAdvisor();
         investments = new Investments();

@@ -54,6 +54,46 @@ public class GameEvent
 
     public GameEvent() { }
 
+    public GameEvent(GameEvent e)
+    {
+        name = e.name;
+        publicEventName = (string[])e.publicEventName.Clone();
+        description = (string[])e.description.Clone();
+        choicesDutch = (string[])e.choicesDutch.Clone();
+        choicesEnglish = (string[])e.choicesEnglish.Clone();
+        isUnique = e.isUnique;
+        isGlobal = e.isGlobal;
+        eventStartChance = e.eventStartChance;
+        eventIdleDuration = e.eventIdleDuration;
+        eventCooldown = e.eventCooldown;
+        eventDuration = (int[])e.eventDuration;
+        temporaryConsequencesDuration = (int[])e.temporaryConsequencesDuration.Clone();
+        eventChoiceMoneyCost = (double[])e.eventChoiceMoneyCost.Clone();
+        afterInvestmentEventChoiceMoneyCost = (double[])e.afterInvestmentEventChoiceMoneyCost.Clone();
+        eventChoiceMoneyReward = (double[])e.eventChoiceMoneyReward.Clone();
+        eventChoiceEventStartChanceModifier = (int[])e.eventChoiceEventStartChanceModifier.Clone();
+        possibleRegions = (string[])e.possibleRegions.Clone();
+        successChance = (int[])e.successChance.Clone();
+        increasedConsequencesModifierChance = (int[])e.increasedConsequencesModifierChance.Clone();
+        possibleSectors = (string[])e.possibleSectors.Clone();
+        pickedChoiceNumber = e.pickedChoiceNumber;
+        pickedChoiceStartYear = e.pickedChoiceStartYear;
+        pickedChoiceStartMonth = e.pickedChoiceStartMonth;
+        lastCompleted = e.lastCompleted;
+        isIdle = e.isIdle;
+        idleTurnsLeft = e.idleTurnsLeft;
+        isActive = e.isActive;
+        onEventStartMonth = e.onEventStartMonth;
+        onEventStartYear = e.onEventStartYear;
+        isFinished = e.isFinished;
+        consequences = new SectorStatistics[3] { new SectorStatistics(e.consequences[0]), new SectorStatistics(e.consequences[0]), new SectorStatistics(e.consequences[0]) };
+        afterInvestmentConsequences = new SectorStatistics[3] { new SectorStatistics(e.afterInvestmentConsequences[0]), new SectorStatistics(e.afterInvestmentConsequences[0]), new SectorStatistics(e.afterInvestmentConsequences[0]) };
+        temporaryConsequences = new SectorStatistics[3] { new SectorStatistics(e.temporaryConsequences[0]), new SectorStatistics(e.temporaryConsequences[0]), new SectorStatistics(e.temporaryConsequences[0]) };
+        afterInvestmentTemporaryConsequences = new SectorStatistics[3] { new SectorStatistics(e.afterInvestmentTemporaryConsequences[0]), new SectorStatistics(e.afterInvestmentTemporaryConsequences[0]), new SectorStatistics(e.afterInvestmentTemporaryConsequences[0]) };
+        pickedConsequences = new SectorStatistics[3] { new SectorStatistics(e.pickedConsequences[0]), new SectorStatistics(e.pickedConsequences[0]), new SectorStatistics(e.pickedConsequences[0]) };
+        pickedTemporaryConsequences = new SectorStatistics[3] { new SectorStatistics(e.pickedTemporaryConsequences[0]), new SectorStatistics(e.pickedTemporaryConsequences[0]), new SectorStatistics(e.pickedTemporaryConsequences[0]) };
+    }
+
     public void StartEvent(int currentYear, int currentMonth)
     {
         onEventStartYear = currentYear;
