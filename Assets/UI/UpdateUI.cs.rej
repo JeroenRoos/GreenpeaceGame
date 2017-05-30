@@ -1,0 +1,10 @@
+diff a/Assets/UI/UpdateUI.cs b/Assets/UI/UpdateUI.cs	(rejected hunks)
+@@ -1963,7 +1963,7 @@
+         imgSectorPopup.gameObject.SetActive(false);
+ 
+         // Ga naar WEST tijdens de tutorial
+-        if (!popupActive && game.tutorial.tutorialActive)
++        if (game.tutorial.tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
+         {
+             if (game.tutorial.tutorialOnlyWestNL && game.tutorial.tutorialRegionsClickable)
+             {
