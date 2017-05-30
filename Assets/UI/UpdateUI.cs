@@ -3464,6 +3464,9 @@ public class UpdateUI : MonoBehaviour
 
     private void initEmptyBuildingText()
     {
+        btnUseBuilding.gameObject.SetActive(true);
+        string[] btnTxt = { "Maak gebouw", "Build building" };
+        btnUseBuildingTxt.text = btnTxt[taal];
         string[] title = { "Gebouwen", "Buildings" };
         string[] column = { "Plaats een gebouw", "Place a building" };
         string[] info = { "Kies hieronder het gebouw dat je wilt maken", "Chose the building you want to make" };
@@ -3473,7 +3476,6 @@ public class UpdateUI : MonoBehaviour
         txtEmptyBuildingColumRight.text = "";
         txtEmptyBuildingStats.text = "";
         txtEmptyBuildingInfo.text = info[taal];
-        btnUseBuilding.gameObject.SetActive(false);
         txtNotYourEmptyBuilding.gameObject.SetActive(false);
     }
 
