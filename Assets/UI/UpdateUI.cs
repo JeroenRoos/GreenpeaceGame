@@ -588,7 +588,6 @@ public class UpdateUI : MonoBehaviour
 
             string[] txtInfo = { "Activiteit andere speler: ", "Activity other player: " };
             txtMultiplayerInfo.text = txtInfo[taal];
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
 
             btnSendChatMessage.gameObject.SetActive(false);
             txtChatMessages.gameObject.SetActive(true);
@@ -616,6 +615,12 @@ public class UpdateUI : MonoBehaviour
             imgTextMessages.gameObject.SetActive(false);
         }
         
+    }
+
+    void Start()
+    {
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
     }
 
     void Update()
