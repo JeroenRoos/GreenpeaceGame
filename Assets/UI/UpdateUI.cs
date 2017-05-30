@@ -1963,7 +1963,7 @@ public class UpdateUI : MonoBehaviour
         imgSectorPopup.gameObject.SetActive(false);
 
         // Ga naar WEST tijdens de tutorial
-        if (game.tutorial.tutorialActive /*&& tutorialStep5 && tutorialRegionsClickable*/)
+        if (game.tutorial.tutorialActive && !popupActive)
         {
             if (game.tutorial.tutorialOnlyWestNL && game.tutorial.tutorialRegionsClickable)
             {
