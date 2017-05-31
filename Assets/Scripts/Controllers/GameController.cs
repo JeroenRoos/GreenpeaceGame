@@ -1072,7 +1072,7 @@ public class GameController : MonoBehaviour
         updateUI.txtReadyForNextTurn.gameObject.SetActive(true);
         updateUI.imgReadyForNextTurn.gameObject.SetActive(true);
 
-        string[] txt = { PhotonNetwork.playerList[0].NickName + " is klaar voor de volgende beurt", PhotonNetwork.playerList[0].NickName +  "is ready for next turn" };
+        string[] txt = { PhotonNetwork.playerList[0].NickName + " is klaar voor de volgende maand", PhotonNetwork.playerList[0].NickName +  " is ready for next month" };
         updateUI.txtReadyForNextTurn.text = txt[taal];
 
 
