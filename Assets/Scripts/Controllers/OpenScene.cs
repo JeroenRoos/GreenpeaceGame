@@ -10,6 +10,7 @@ public class OpenScene : Photon.PunBehaviour
 {
     #region Variables
     private RoomInfo[] rooms;
+    float yOffset = 0f;
 
     Lobby lobby;
     public Texture2D buttonTexture;
@@ -342,6 +343,9 @@ public class OpenScene : Photon.PunBehaviour
         string[] txtInfo = { "Voer een naam in:", "Choose a nickname:" };
         txtNicknameInfo.text = txtInfo[taal];
 
+        string[] placeholder = { "Geef je naam...", "Enter nickname..." };
+        inputNickname.placeholder.GetComponent < Text >().text = placeholder[taal];
+
         btnChooseNickname.gameObject.SetActive(false);
 
     }
@@ -409,6 +413,9 @@ public class OpenScene : Photon.PunBehaviour
         string[] txtInfo = { "Geef een room naam:", "Enter a room name:" };
         txtCreateRoomInfo.text = txtInfo[taal];
 
+        string[] placeholder = { "Voer naam in...", "Enter roomname..." };
+        inputRoomName.placeholder.GetComponent<Text>().text = placeholder[taal];
+
         btnPopupCreate.gameObject.SetActive(false);
     }
 
@@ -469,15 +476,6 @@ public class OpenScene : Photon.PunBehaviour
         getRoomList();
         string[] txtBack = { "Terug", "Back" };
         txtRoomBack.text = txtBack[taal];
-        RoomInfo room = null;
-
-        foreach (RoomInfo i in rooms)
-        {
-            Debug.Log("FOREACH");
-
-            if (i.Name == roomName)
-                room = i;
-        }
     }
 
     public void buttonRoomBack()
@@ -485,8 +483,8 @@ public class OpenScene : Photon.PunBehaviour
         EventManager.CallPlayButtonClickSFX();
         canvasLobby.gameObject.SetActive(true);
         canvasRoom.gameObject.SetActive(false);
-        //initLobbyText();
         lobby.LeaveRoom();
+        lobby.JoinLobby();
         getRoomList();
     }
 
@@ -559,14 +557,10 @@ public class OpenScene : Photon.PunBehaviour
                 if (rooms.Length != 0)
                 {
                     txtNoRooms.gameObject.SetActive(false);
+                    yOffset = 0;
 
                     foreach (RoomInfo game in rooms)
                     {
-                        if (!lobby.lstRooms.Contains(game))
-                            lobby.lstRooms.Add(game);
-
-                        float yOffset = 0f;
-
                         RectTransform rectPosition = btnPosition.GetComponent<RectTransform>();
                         Vector3 btnPos = txtNoRooms.transform.position;
                         float screenHeight = Screen.height;
@@ -574,12 +568,15 @@ public class OpenScene : Photon.PunBehaviour
                         float x = btnPos.x - rectPosition.rect.width;
                         float y = btnPos.z + (screenHeight / 3);
 
-                        if (GUI.Button(new Rect(x, y + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + " players", buttonStyle))
+                        if (game.MaxPlayers != game.PlayerCount)
                         {
-                            lobby.JoinRoom(game.Name);
-                            roomName = game.Name;
-                            yOffset += 35;
+                            if (GUI.Button(new Rect(x, y + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + " players", buttonStyle))
+                            {
+                                lobby.JoinRoom(game.Name);
+                                roomName = game.Name;
+                            }
                         }
+                        yOffset += 35;
                     }
                 }
                 else

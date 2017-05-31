@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Lobby 
 {
-    public List<RoomInfo> lstRooms;
 
     public Lobby()
     {
         PhotonNetwork.ConnectUsingSettings("0.1");
         PhotonNetwork.automaticallySyncScene = true;
         PhotonNetwork.autoJoinLobby = true;
-        lstRooms = new List<RoomInfo>();
     }
 	
 	// Update is called once per frame

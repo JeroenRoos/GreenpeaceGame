@@ -4861,15 +4861,12 @@ public class UpdateUI : MonoBehaviour
 
     public void buttonExitGameOnClick()
     {
-     /*   if (ApplicationModel.multiplayer)
-        {
-            if (chatClient != null)
-            {
-                chatClient.Disconnect();
-            }
-        }*/
-
         EventManager.CallPlayButtonClickSFX();
+
+        if (ApplicationModel.multiplayer)
+            PhotonNetwork.LeaveRoom();
+
+        PhotonNetwork.Disconnect();
         EventManager.CallLeaveGame();
         Application.Quit();
     }
@@ -4882,17 +4879,11 @@ public class UpdateUI : MonoBehaviour
 
     public void loadOtherScene(int index)
     {
-        /*
-                if (ApplicationModel.multiplayer)
-        {
-            if (chatClient != null)
-            {
-                chatClient.Disconnect();
-            }
-        }
-        */
-
         EventManager.CallPlayButtonClickSFX();
+
+        if (ApplicationModel.multiplayer)
+            PhotonNetwork.LeaveRoom();
+
         EventManager.CallLeaveGame();
         SceneManager.LoadSceneAsync(index);
     }
@@ -4924,7 +4915,6 @@ public class UpdateUI : MonoBehaviour
         string[] language = { "Verander taal", "Change language" };
         string[] dutch = { "Nederlands", "Dutch" };
         string[] english = { "Engels", "English" };
-
 
         txtButtonSettingsBack.text = back[taal];
         txtMusicVolume.text = music[taal];
