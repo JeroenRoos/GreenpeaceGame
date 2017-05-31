@@ -43,7 +43,7 @@ public class Tutorial
     public Tutorial()
     {
         if (!ApplicationModel.multiplayer)
-            tutorialActive = true;
+            tutorialActive = false;
         else
             tutorialActive = false;
 

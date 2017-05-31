@@ -31,6 +31,8 @@ public class UpdateUI : MonoBehaviour
     //public Panel panelTextMessages;
     public Text txtActivityLog;
     private RectTransform rectChatMessages;
+    public Text txtReadyForNextTurn;
+    public RawImage imgReadyForNextTurn;
 
     // Tooltip texture and GUI
     public Texture2D tooltipTexture;
@@ -596,6 +598,9 @@ public class UpdateUI : MonoBehaviour
             txtSendMessageButton.gameObject.SetActive(true);
             imgTextMessages.gameObject.SetActive(true);
 
+            imgReadyForNextTurn.gameObject.SetActive(false);
+            txtReadyForNextTurn.gameObject.SetActive(false);
+
             txtActivityLog.text = "";
             txtChatMessages.text = "";
         }
@@ -613,6 +618,9 @@ public class UpdateUI : MonoBehaviour
             txtSendMessageButton.gameObject.SetActive(false);
             txtActivityLog.gameObject.SetActive(false);
             imgTextMessages.gameObject.SetActive(false);
+
+            imgReadyForNextTurn.gameObject.SetActive(false);
+            txtReadyForNextTurn.gameObject.SetActive(false);
         }
         
     }
@@ -4401,7 +4409,13 @@ public class UpdateUI : MonoBehaviour
         //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
 
         if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
+        {
+            //if (!game.nextTurnIsclicked)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
+            //else
+            //    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
+
+        }
 
     }
     #endregion
@@ -4750,9 +4764,10 @@ public class UpdateUI : MonoBehaviour
 
             else if (!game.nextTurnIsclicked)
             {
-                if (ApplicationModel.multiplayer)
-                    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
+                //if (ApplicationModel.multiplayer)
+                //    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
 
+                btnNextTurn.interactable = false;
                 MultiplayerManager.CallNextTurnClick();
             }
         }

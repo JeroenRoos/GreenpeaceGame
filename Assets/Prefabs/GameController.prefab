@@ -90,7 +90,6 @@ MonoBehaviour:
       tutorialRegionActive: 0
       tutorialEventsActive: 0
       tutorialMonthlyReportActive: 0
-      tutorialChecks: 
     nextTurnIsclicked: 0
     OtherPlayerClickedNextTurn: 0
   MonthlyReportButon: {fileID: 0}
@@ -147,6 +146,8 @@ MonoBehaviour:
   txtSendMessageButton: {fileID: 0}
   imgTextMessages: {fileID: 0}
   txtActivityLog: {fileID: 0}
+  txtReadyForNextTurn: {fileID: 0}
+  imgReadyForNextTurn: {fileID: 0}
   tooltipTexture: {fileID: 2800000, guid: f8069c7b1751271499c96b309c9a3d86, type: 3}
   buttonTexture: {fileID: 2800000, guid: ed46db1cfd94f5147955a3c087ff9fa1, type: 3}
   scrollbarAfterActionReport: {fileID: 0}
