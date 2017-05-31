@@ -34,6 +34,7 @@ public class OpenScene : Photon.PunBehaviour
     public Canvas canvasRoom;
 
     // Lobby
+    private string[] txtRoomButton = { "spelers", "players" };
     public Button btnRefreshLobby;
     public Text txtRefreshLobby;
     public Text txtLobby;
@@ -93,6 +94,8 @@ public class OpenScene : Photon.PunBehaviour
     #region Start(), PlayerPrefs, Init's
     void Start()
     {
+
+
         lobby = new Lobby();
         Application.runInBackground = true;
 
@@ -562,15 +565,15 @@ public class OpenScene : Photon.PunBehaviour
                     foreach (RoomInfo game in rooms)
                     {
                         RectTransform rectPosition = btnPosition.GetComponent<RectTransform>();
-                        Vector3 btnPos = txtNoRooms.transform.position;
+                        Vector3 btnPos = btnPosition.transform.position;
                         float screenHeight = Screen.height;
 
-                        float x = btnPos.x - rectPosition.rect.width;
+                        float x = btnPos.x;// - rectPosition.rect.width;
                         float y = btnPos.z + (screenHeight / 3);
 
                         if (game.MaxPlayers != game.PlayerCount)
                         {
-                            if (GUI.Button(new Rect(x, y + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + " players", buttonStyle))
+                            if (GUI.Button(new Rect(x, y + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + txtRoomButton[taal], buttonStyle))
                             {
                                 lobby.JoinRoom(game.Name);
                                 roomName = game.Name;
