@@ -103,8 +103,6 @@ public class GameController : MonoBehaviour
         }
         //setBuildingTextures();
 
-        StartCoroutine(showBuildingIcons());
-
         foreach (MapRegion r in game.regions)
         {
             foreach (GameEvent e in r.inProgressGameEvents)
@@ -127,6 +125,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(updateUI.showBtnQuests());
         StartCoroutine(updateUI.showBtnInvestments());
         StartCoroutine(updateUI.showBtnCards());
+        StartCoroutine(showBuildingIcons());
 
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5 + height * 2 * 0, 0);
@@ -168,7 +167,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // UITZETTEN BIJ EEN BUILD
-        if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
+        /*if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
             game.tutorial.tutorialNexTurnPossibe))
         {
             if (!ApplicationModel.multiplayer)
@@ -178,7 +177,7 @@ public class GameController : MonoBehaviour
             {
                 MultiplayerManager.CallNextTurnClick();
             }
-        }
+        }*/
 
         // Update the main screen UI (Icons and date)
         updateUIMainScreen();

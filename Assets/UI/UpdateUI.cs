@@ -588,7 +588,6 @@ public class UpdateUI : MonoBehaviour
 
             string[] txtInfo = { "Activiteit andere speler: ", "Activity other player: " };
             txtMultiplayerInfo.text = txtInfo[taal];
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
 
             btnSendChatMessage.gameObject.SetActive(false);
             txtChatMessages.gameObject.SetActive(true);
@@ -616,6 +615,12 @@ public class UpdateUI : MonoBehaviour
             imgTextMessages.gameObject.SetActive(false);
         }
         
+    }
+
+    void Start()
+    {
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
     }
 
     void Update()
@@ -3455,6 +3460,8 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmall.text = step3[taal];
         txtTutorialSmallBtn.text = txtButton[taal];
 
+        popupActive = true;
+
         while (game.tutorial.tutorialIndex < 13)//tutorialStep17)
             yield return null;
 
@@ -3463,6 +3470,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialBuildingsDone = true;
         btnNextTurn.interactable = true;
+        popupActive = false;
     }
 
     private void initEmptyBuildingText()
