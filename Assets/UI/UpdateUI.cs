@@ -506,6 +506,7 @@ public class UpdateUI : MonoBehaviour
     private Vector3 v3Tooltip;
     //string arrays (translations
     string[] nextTurnText = { "Volgende maand", "Next month" };
+    string[] availableMoney = { " geld", " money" };
 
     #endregion
 
@@ -2141,7 +2142,7 @@ public class UpdateUI : MonoBehaviour
         string[] txtHappiness = { "Tevredenheid", "Happiness" };
         string[] txtEcoAwareness = { "Milieubewustheid", "Eco awareness" };
         string[] txtIncome = { "Inkomen", "Income" };
-        string[] txtAvailableIncome = { "Besteedbaar inkomen", "Available Money" };
+        string[] txtAvailableIncome = { "Besteedbaar geld", "Available Money" };
         string[] txtPollution = { "Vervuiling", "Pollution" };
         string[] txtAir = { "Luchtvervuiling", "Air pollution" };
         string[] txtNature = { "Natuurvervuiling", "Nature pollution" };
@@ -2201,8 +2202,8 @@ public class UpdateUI : MonoBehaviour
     private void updateRegionTextValues()
     {
         txtRegionName.text = regio.name[taal];
-        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money";
-        txtRegionMoney.text = regio.statistics.income.ToString("0") + " money";
+        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + availableMoney[taal];
+        txtRegionMoney.text = regio.statistics.income.ToString("0") + availableMoney[taal];
         txtRegionHappiness.text = regio.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = regio.statistics.ecoAwareness.ToString("0.00") + "%";
         txtRegionProsperity.text = regio.statistics.prosperity.ToString("0.00") + "%";
@@ -2323,7 +2324,6 @@ public class UpdateUI : MonoBehaviour
 
     private void showInfoDropDownRegion()
     {
-        string[] cost = new string[2] { " geld", " money" };
         foreach (RegionAction action in regio.actions)
         {
             if (action.name[taal] == dropdownChoice)
@@ -2331,7 +2331,7 @@ public class UpdateUI : MonoBehaviour
                 regioAction = action;
 
                 string[] actionCostText = { "Kosten per sector: " + action.afterInvestmentActionMoneyCost + " geld",
-                    "Costs per sector: " + action.afterInvestmentActionMoneyCost + cost[taal] };
+                    "Costs per sector: " + action.afterInvestmentActionMoneyCost + " money" };
                 string[] actionDurationText = { "Duur: " + regioAction.actionDuration.ToString() + " maanden",
                     "Duration: " + regioAction.actionDuration.ToString() + " months" };
 
@@ -2352,7 +2352,7 @@ public class UpdateUI : MonoBehaviour
 
                 setCheckboxes(action);
                 regioActionCost = 0;
-                txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
+                txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
             }
         }
     }
@@ -2407,7 +2407,7 @@ public class UpdateUI : MonoBehaviour
 
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
-        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + " money";
+        txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + availableMoney[taal];
 
         //updateRegionTextValues();
         startRegionPopup(regio);
@@ -2619,7 +2619,7 @@ public class UpdateUI : MonoBehaviour
         updateSectorColorValues(s.statistics);
         txtRegionColumnLeft.text = s.sectorName[taal];
 
-        txtRegionMoney.text = s.statistics.income.ToString("0") + " money";
+        txtRegionMoney.text = s.statistics.income.ToString("0") + availableMoney[taal];
         txtRegionHappiness.text = s.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = s.statistics.ecoAwareness.ToString("0.00") + "%";
         txtRegionProsperity.text = s.statistics.prosperity.ToString("0.00") + "%";
@@ -4822,7 +4822,7 @@ public class UpdateUI : MonoBehaviour
         else
             btnDoActionRegionMenu.interactable = false;
 
-        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
 
     public void valueChangedAgriculture()
@@ -4846,7 +4846,7 @@ public class UpdateUI : MonoBehaviour
         else
             btnDoActionRegionMenu.interactable = false;
 
-        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
 
     public void valueChangedCompanies()
@@ -4870,7 +4870,7 @@ public class UpdateUI : MonoBehaviour
         else
             btnDoActionRegionMenu.interactable = false;
 
-        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + " money";
+        txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
     #endregion
 
