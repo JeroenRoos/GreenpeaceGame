@@ -386,7 +386,7 @@ public class OpenScene : Photon.PunBehaviour
     private void initLobbyText()
     {
         string[] txtBack = { "Terug", "Back" };
-        string[] txtCreate = { "Maak een room", "Create room" };
+        string[] txtCreate = { "Maak een kamer", "Create room" };
         string[] txtRefresh = { "Vernieuwen", "Refresh" };
 
         txtMultiplayerBack.text = txtBack[taal];
@@ -413,7 +413,7 @@ public class OpenScene : Photon.PunBehaviour
 
         string[] txtCancel = { "Annuleer", "Cancel" };
         txtCancelCreateRoom.text = txtCancel[taal];
-        string[] txtInfo = { "Geef een room naam:", "Enter a room name:" };
+        string[] txtInfo = { "Geef een kamer naam:", "Enter a room name:" };
         txtCreateRoomInfo.text = txtInfo[taal];
 
         string[] placeholder = { "Voer naam in...", "Enter roomname..." };
@@ -535,7 +535,7 @@ public class OpenScene : Photon.PunBehaviour
                 }
                 else
                 {
-                    string[] txtInfo = { "Alleen de host kan de game starten...", "Only the host can start the game..." };
+                    string[] txtInfo = { "Alleen de host kan het spel starten...", "Only the host can start the game..." };
                     txtReadyToStart.text = txtInfo[taal];
                     btnStartGameFromRoom.interactable = false;
                 }
@@ -585,7 +585,7 @@ public class OpenScene : Photon.PunBehaviour
                 else
                 {
                     txtNoRooms.gameObject.SetActive(true);
-                    string[] txt = { "Er zijn op het moment geen rooms beschikbaar", "There are no rooms available at this moment" };
+                    string[] txt = { "Er zijn op het moment geen kamers beschikbaar", "There are no rooms available at this moment" };
                     txtNoRooms.text = txt[taal];
                 }
             }
