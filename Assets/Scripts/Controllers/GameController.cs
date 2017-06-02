@@ -438,7 +438,7 @@ public class GameController : MonoBehaviour
             string[] txt = { "Volgende maand", "Next month" };
             updateUI.btnNextTurnText.text = txt[taal];
 
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
         }
 
         if (!updateUI.popupActive)

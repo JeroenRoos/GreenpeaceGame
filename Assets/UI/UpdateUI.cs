@@ -628,7 +628,7 @@ public class UpdateUI : MonoBehaviour
     void Start()
     {
         if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
     }
 
     void Update()
@@ -2009,7 +2009,7 @@ public class UpdateUI : MonoBehaviour
     {
         regio = region;
         if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region (" + regio.name[taal] + ")");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio scherm (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region screen(" + regio.name[taal] + ")");
         
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
@@ -4178,7 +4178,7 @@ public class UpdateUI : MonoBehaviour
             //SetLocalPlayerText("Organisatie aan het bekijken", "Looking at the Organization");
             //MultiplayerManager.CallUpdateLogMessage("Organisatie aan het bekijken", "Looking at the Organization");
             if (ApplicationModel.multiplayer)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie aan het bekijken", "Looking at the Organization");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie scherm aan het bekijken", "Looking at the Organization screen");
 
             btnOrganizationIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4196,7 +4196,7 @@ public class UpdateUI : MonoBehaviour
             //SetLocalPlayerText("Missies aan het bekijken", "Looking at Quests");
             //MultiplayerManager.CallUpdateLogMessage("Missies aan het bekijken", "Looking at Quests");
             if (ApplicationModel.multiplayer)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missies aan het bekijken", "Looking at Quests");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
 
             btnQuestsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4215,7 +4215,7 @@ public class UpdateUI : MonoBehaviour
             //MultiplayerManager.CallUpdateLogMessage("Kaarten aan het bekijken", "Looking at Cards");
 
             if (ApplicationModel.multiplayer)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten aan het bekijken", "Looking at Cards");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
 
             btnCardsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4245,7 +4245,7 @@ public class UpdateUI : MonoBehaviour
             //MultiplayerManager.CallUpdateLogMessage("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
 
             if (ApplicationModel.multiplayer)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Maandelijks Rapport scherm aan het bekijken", "Looking at The Monthly Report screen");
 
             EventManager.CallPlayButtonClickSFX();
             canvasMonthlyReport.gameObject.SetActive(true);
@@ -4270,7 +4270,7 @@ public class UpdateUI : MonoBehaviour
             // MultiplayerManager.CallUpdateLogMessage("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
 
             if (ApplicationModel.multiplayer)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Jaarlijks Rapport scherm aan het bekijken", "Looking at The Yearly Report screen");
 
             EventManager.CallPlayButtonClickSFX();
             canvasYearlyReport.gameObject.SetActive(true);
@@ -4285,7 +4285,7 @@ public class UpdateUI : MonoBehaviour
         if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
         {
             if (ApplicationModel.multiplayer)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Investeringen aan het bekijken", "Looking at Investements");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Investeringen scherm aan het bekijken", "Looking at Investements screen");
 
             btnInvestmentsIsClicked = true;
             EventManager.CallPlayButtonClickSFX();
@@ -4410,7 +4410,7 @@ public class UpdateUI : MonoBehaviour
         if (ApplicationModel.multiplayer)
         {
             //if (!game.nextTurnIsclicked)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
             //else
             //    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
 
@@ -4766,7 +4766,7 @@ public class UpdateUI : MonoBehaviour
                 //if (ApplicationModel.multiplayer)
                 //    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
 
-                string[] txt = { "Wachten...", "Waiting..." };
+                string[] txt = { "Wachten op andere speler...", "Waiting for other player..." };
                 btnNextTurnText.text = txt[taal];
 
                 btnNextTurn.interactable = false;
