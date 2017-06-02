@@ -641,6 +641,13 @@ public class UpdateUI : MonoBehaviour
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[1].ToString("0");
             else
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[0].ToString("0");
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                playerController.photonView.RPC("MessageReceived", PhotonTargets.Others, txtChatMessageToSend, PhotonNetwork.player.NickName);
+                updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
+                inputChatMessage.text = "";
+            }
         }
 
         if (game.tutorial.tutorialIndex > 2)
@@ -5374,6 +5381,20 @@ public class UpdateUI : MonoBehaviour
     public void UpdateActivityLogText(string nl, string eng)
     {
         txtActivityLog.text = "";
+        if (taal == 0)
+        {
+            //string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
+            updateChatMessages(PhotonNetwork.playerList[0].NickName + nl, "LOG");
+
+        }
+        else
+        {
+            //string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
+            updateChatMessages(PhotonNetwork.playerList[0].NickName + eng, "LOG");
+        }
+
+        /*
+        txtActivityLog.text = "";
         string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
 
         if (lstText.Count < 4)
@@ -5389,6 +5410,7 @@ public class UpdateUI : MonoBehaviour
             Debug.Log("Foreach");
             txtActivityLog.text += text[taal];
         }
+        */
     }
     #endregion
 }
