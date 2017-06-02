@@ -391,12 +391,12 @@
     <RegionAction>
       <isOwnAction>false</isOwnAction>
       <name>
-        <string>Verhoog productie</string>
-        <string>Improve production</string>
+        <string>Verhoog inkomen</string>
+        <string>Increase income</string>
       </name>
       <description>
-        <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-        <string>Improve the production in the region to generate a higher income.</string>
+        <string>Neem economische maatregelen in de regio om een hoger inkomen te genereren.</string>
+        <string>Take economical actions in the region to generate a higher income.</string>
       </description>
       <actionMoneyCost>0</actionMoneyCost>
       <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -520,12 +520,12 @@
     <RegionAction>
       <isOwnAction>false</isOwnAction>
       <name>
-        <string>Verhoog productie +1</string>
-        <string>Improve production +1</string>
+        <string>Verhoog inkomen +1</string>
+        <string>Increase income +1</string>
       </name>
       <description>
         <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-        <string>Improve the production in the region to generate a higher income.</string>
+        <string>Take economical actions in the region to generate a higher income.</string>
       </description>
       <actionMoneyCost>0</actionMoneyCost>
       <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -649,12 +649,12 @@
     <RegionAction>
       <isOwnAction>false</isOwnAction>
       <name>
-        <string>Verhoog productie +2</string>
-        <string>Improve production +2</string>
+        <string>Verhoog inkomen +2</string>
+        <string>Increase income +2</string>
       </name>
       <description>
         <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-        <string>Improve the production in the region to generate a higher income.</string>
+        <string>Take economical actions in the region to generate a higher income.</string>
       </description>
       <actionMoneyCost>0</actionMoneyCost>
       <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -783,7 +783,7 @@
       </name>
       <description>
         <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-        <string>Increase the prosperity by investing more in the economy</string>
+        <string>Increase the prosperity by investing more in the economy.</string>
       </description>
       <actionMoneyCost>3000</actionMoneyCost>
       <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -912,7 +912,7 @@
       </name>
       <description>
         <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-        <string>Increase the prosperity by investing more in the economy</string>
+        <string>Increase the prosperity by investing more in the economy.</string>
       </description>
       <actionMoneyCost>3000</actionMoneyCost>
       <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -1041,7 +1041,7 @@
       </name>
       <description>
         <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-        <string>Increase the prosperity by investing more in the economy</string>
+        <string>Increase the prosperity by investing more in the economy.</string>
       </description>
       <actionMoneyCost>3000</actionMoneyCost>
       <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -1169,7 +1169,7 @@
         <string>Increase happiness</string>
       </name>
       <description>
-        <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
+        <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
       <actionMoneyCost>1500</actionMoneyCost>
@@ -1298,7 +1298,7 @@
         <string>Increase happiness +1</string>
       </name>
       <description>
-        <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
+        <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
       <actionMoneyCost>1500</actionMoneyCost>
@@ -1427,7 +1427,7 @@
         <string>Increase happiness +2</string>
       </name>
       <description>
-        <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
+        <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
       <actionMoneyCost>1500</actionMoneyCost>
