@@ -435,7 +435,10 @@ public class GameController : MonoBehaviour
 
             //updateUI.SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
             //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Nederland aan het bekijken", "Looking at The Netherlands");
+            string[] txt = { "Volgende maand", "Next month" };
+            updateUI.btnNextTurnText.text = txt[taal];
+
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
         }
 
         if (!updateUI.popupActive)
@@ -1067,15 +1070,12 @@ public class GameController : MonoBehaviour
     public void GetOtherPlayerNextTurn()
     {
         game.OtherPlayerClickedNextTurn = true;
-
-        //updateUI.btnNextTurn.interactable = false;
+        
         updateUI.txtReadyForNextTurn.gameObject.SetActive(true);
         updateUI.imgReadyForNextTurn.gameObject.SetActive(true);
 
         string[] txt = { PhotonNetwork.playerList[0].NickName + " is klaar voor de volgende maand", PhotonNetwork.playerList[0].NickName +  " is ready for next month" };
         updateUI.txtReadyForNextTurn.text = txt[taal];
-
-
 
         if (game.nextTurnIsclicked)
             EventManager.CallChangeMonth();
