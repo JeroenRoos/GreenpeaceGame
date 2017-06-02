@@ -664,7 +664,6 @@ public class UpdateUI : MonoBehaviour
                 txtRegionActionNoMoney.text = error[taal];
                 btnDoActionRegionMenu.gameObject.SetActive(false);
                 txtRegionActionConsequences.text = "";
-                //btnViewConsequences.gameObject.SetActive(false);
             }
         }
     }
@@ -4767,6 +4766,9 @@ public class UpdateUI : MonoBehaviour
                 //if (ApplicationModel.multiplayer)
                 //    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
 
+                string[] txt = { "Wachten...", "Waiting..." };
+                btnNextTurnText.text = txt[taal];
+
                 btnNextTurn.interactable = false;
                 MultiplayerManager.CallNextTurnClick();
             }
@@ -5337,15 +5339,14 @@ public class UpdateUI : MonoBehaviour
             txtSendMessageButton.text = txtBtn[taal];
         }
         else
-        {
             btnSendChatMessage.gameObject.SetActive(false);
-        }
     }
 
     public void btnSendChatMessageClicked()
     {
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("MessageReceived", PhotonTargets.Others, txtChatMessageToSend, PhotonNetwork.player.NickName);
+
         updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
         inputChatMessage.text = "";
         btnSendChatMessage.gameObject.SetActive(false);
@@ -5357,9 +5358,7 @@ public class UpdateUI : MonoBehaviour
         string txt = sender + ": " + message + "\n";
 
         if (lstMessages.Count < 8)
-        {
             lstMessages.Add(txt);
-        }
         else
         {
             lstMessages.RemoveAt(0);
@@ -5370,8 +5369,6 @@ public class UpdateUI : MonoBehaviour
         {
             txtChatMessages.text += text;
         }
-
-        //txtChatMessages.text += sender + ": " + message + "\n";
     }
 
     public void UpdateActivityLogText(string nl, string eng)
@@ -5380,13 +5377,9 @@ public class UpdateUI : MonoBehaviour
         string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
 
         if (lstText.Count < 4)
-        {
             lstText.Add(txt);
-            Debug.Log("Less than 4");
-        }
         else
         {
-            Debug.Log("Remove and add");
             lstText.RemoveAt(0);
             lstText.Add(txt);
         }
