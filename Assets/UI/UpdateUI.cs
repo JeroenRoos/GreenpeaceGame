@@ -2502,7 +2502,7 @@ public class UpdateUI : MonoBehaviour
 
         btnActionsTab.interactable = true;
         btnHistoryTab.interactable = false;
-        imgDropdownLine.gameObject.SetActive(false);
+        //imgDropdownLine.gameObject.SetActive(false);
         imgHistory.gameObject.SetActive(true);
         string[] txtCenter = { "Actieve Acties & Events", "Active Actions & Events" };
         txtRegionColumnCenter.text = txtCenter[taal];
@@ -2515,7 +2515,7 @@ public class UpdateUI : MonoBehaviour
 
         btnActionsTab.interactable = false;
         btnHistoryTab.interactable = true;
-        imgDropdownLine.gameObject.SetActive(true);
+        //imgDropdownLine.gameObject.SetActive(true);
         imgActions.gameObject.SetActive(true);
         string[] txtCenter = { "Doe een actie", "Do an action" };
         txtRegionColumnCenter.text = txtCenter[taal];
