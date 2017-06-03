@@ -4425,46 +4425,7 @@ public class UpdateUI : MonoBehaviour
 
     }
     #endregion
-
-    // Game Controller
-    #region Language Change Code
-    public void btnNLClick()
-    {
-        EventManager.CallPlayButtonClickSFX();
-        if (taal != 0)
-        {
-            game.ChangeLanguage("dutch");
-            taal = ApplicationModel.language;
-            btnNextTurnText.text = nextTurnText[taal];
-            txtBtnTimeline.text = "Tijdlijn";
-            txtBtnMenu.text = "Menu";
-            initButtonText();
-            initOrganizationText();
-            initRegionText();
-            initInvestementsText();
-            initCardsText();
-        }
-    }
-
-    public void btnENGClick()
-    {
-        EventManager.CallPlayButtonClickSFX();
-        if (taal != 1)
-        {
-            game.ChangeLanguage("english");
-            taal = ApplicationModel.language;
-            btnNextTurnText.text = nextTurnText[taal];
-            txtBtnTimeline.text = "Timeline";
-            txtBtnMenu.text = "Menu";
-            initButtonText();
-            initOrganizationText();
-            initRegionText();
-            initInvestementsText();
-            initCardsText();
-        }
-    }
-    #endregion  // GameController
-
+   
     // Game Controller
     #region Mouse Enter & Exit Code for Icons
     // OnEnter BtnMoney
@@ -4986,6 +4947,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!toggleDutchCheck)
         {
+            EventManager.CallPlayButtonClickSFX();
             toggleDutchCheck = true;
             toggleEnglish.isOn = false;
             ApplicationModel.language = 0;
@@ -4993,6 +4955,16 @@ public class UpdateUI : MonoBehaviour
             PlayerPrefs.SetInt("savedLanguage", taal);
             PlayerPrefs.Save();
             initSettingsText();
+
+            game.ChangeLanguage("dutch");
+            btnNextTurnText.text = nextTurnText[taal];
+            txtBtnTimeline.text = "Tijdlijn";
+            txtBtnMenu.text = "Menu";
+            initButtonText();
+            initOrganizationText();
+            initRegionText();
+            initInvestementsText();
+            initCardsText();
         }
         else
             toggleDutchCheck = false;
@@ -5002,6 +4974,7 @@ public class UpdateUI : MonoBehaviour
     {
         if (!toggleEnglishCheck)
         {
+            EventManager.CallPlayButtonClickSFX();
             toggleEnglishCheck = true;
             toggleDutch.isOn = false;
             ApplicationModel.language = 1;
@@ -5009,11 +4982,19 @@ public class UpdateUI : MonoBehaviour
             PlayerPrefs.SetInt("savedLanguage", taal);
             PlayerPrefs.Save();
             initSettingsText();
+
+            game.ChangeLanguage("english");
+            btnNextTurnText.text = nextTurnText[taal];
+            txtBtnTimeline.text = "Timeline";
+            txtBtnMenu.text = "Menu";
+            initButtonText();
+            initOrganizationText();
+            initRegionText();
+            initInvestementsText();
+            initCardsText();
         }
         else
-        {
             toggleEnglishCheck = false;
-        }
     }
 
     public void sliderEffectsValueChanged()
