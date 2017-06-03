@@ -5067,11 +5067,6 @@ Prefab:
       objectReference: {fileID: 138429201}
     - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
         type: 2}
-      propertyPath: imgDropdownLine
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
-        type: 2}
       propertyPath: imgActions
       value: 
       objectReference: {fileID: 1483161266}
@@ -6101,6 +6096,21 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 328177335}
+    - target: {fileID: 224823123885326528, guid: cea38af1ce0817649a23a784e989a427,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224823123885326528, guid: cea38af1ce0817649a23a784e989a427,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224823123885326528, guid: cea38af1ce0817649a23a784e989a427,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cea38af1ce0817649a23a784e989a427, type: 2}
   m_IsPrefabParent: 0

@@ -569,7 +569,7 @@ public class UpdateUI : MonoBehaviour
         buttonStyle.normal.background = buttonTexture;          // Set the Texture
         buttonStyle.alignment = TextAnchor.MiddleCenter;        // Set the text in the middle of the button
         Color c = new Color();
-        ColorUtility.TryParseHtmlString("#ccac6f", out c);      // Get the color out of the hexadecimal string
+        ColorUtility.TryParseHtmlString("#ffffff", out c);      // Get the color out of the hexadecimal string
         buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
 
         if (game.tutorial.tutorialActive)
