@@ -2,10 +2,10 @@
 <BuildingContainer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Buildings>
     <Building>
-      <buildingID>EconomyBuiding</buildingID>
+      <buildingID>EconomyBuilding</buildingID>
       <buildingName>
         <string>Aandelenbeurs</string>
-        <string>StockExchange</string>
+        <string>Stock exchange</string>
       </buildingName>
       <incomeModifier>20</incomeModifier>
       <pollutionModifier>0</pollutionModifier>

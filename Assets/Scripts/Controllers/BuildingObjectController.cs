@@ -139,7 +139,7 @@ public class BuildingObjectController : MonoBehaviour
     {
         switch (description)
         {
-            case "EconomyBuiding":
+            case "EconomyBuilding":
                 return buildingTextures[0];
 
             case "PollutionBuilding":

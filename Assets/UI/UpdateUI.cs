@@ -3536,7 +3536,7 @@ public class UpdateUI : MonoBehaviour
             }
         }
 
-        string[] cost = { "Kosten:" + b.buildingMoneyCost + "\n", "Cost:" + b.buildingMoneyCost + "\n" };
+        string[] cost = { "Kosten: " + b.buildingMoneyCost + " geld\n", "Costs: " + b.buildingMoneyCost + " geld\n" };
         txtEmptyBuildingStats.text += cost[taal];
 
         txtEmptyBuildingStats.text += getBuildingModifiers(b);
