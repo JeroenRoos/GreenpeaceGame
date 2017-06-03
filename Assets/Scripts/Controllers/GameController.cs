@@ -96,6 +96,7 @@ public class GameController : MonoBehaviour
             //set advisors
             game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
+            game.happinessAnalyst.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.happiness);
         }
         else
         {
@@ -470,6 +471,7 @@ public class GameController : MonoBehaviour
 
             game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
+            game.happinessAnalyst.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.happiness);
 
             if (autoSave)
                 EventManager.CallSaveGame();

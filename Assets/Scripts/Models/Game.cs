@@ -40,7 +40,8 @@ public class Game
     //advisors
     public EconomyAdvisor economyAdvisor { get; private set; }
     public PollutionAdvisor pollutionAdvisor { get; private set; }
-    
+    public HappinessAnalyst happinessAnalyst { get; private set; }
+
     //public int language { get; private set; } //0 = Dutch, 1 = English
     public System.Random rnd { get; private set; }
 
@@ -74,6 +75,7 @@ public class Game
         oldYearlyReport = new ProgressReport();
         economyAdvisor = new EconomyAdvisor();
         pollutionAdvisor = new PollutionAdvisor();
+        happinessAnalyst = new HappinessAnalyst();
         investments = new Investments();
         cards = new List<Card>();
         inventory = new Inventory();
