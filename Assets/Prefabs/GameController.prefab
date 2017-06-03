@@ -148,8 +148,8 @@ MonoBehaviour:
   txtActivityLog: {fileID: 0}
   txtReadyForNextTurn: {fileID: 0}
   imgReadyForNextTurn: {fileID: 0}
-  tooltipTexture: {fileID: 2800000, guid: f8069c7b1751271499c96b309c9a3d86, type: 3}
-  buttonTexture: {fileID: 2800000, guid: ed46db1cfd94f5147955a3c087ff9fa1, type: 3}
+  tooltipTexture: {fileID: 2800000, guid: e28cc1beacd7dbb4d9f1a06335c579ce, type: 3}
+  buttonTexture: {fileID: 2800000, guid: e28cc1beacd7dbb4d9f1a06335c579ce, type: 3}
   scrollbarAfterActionReport: {fileID: 0}
   test: {fileID: 0}
   colorTxtTest: {fileID: 0}

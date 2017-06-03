@@ -43,6 +43,7 @@ public class OpenScene : Photon.PunBehaviour
     private string nickName;
     public Text txtMultiplayerBack;
     public Text txtMultiplayerCreateRoom;
+    public Text txtAanrading;
 
     public RawImage imgNickname;
     public Text txtNicknameInfo;
@@ -388,7 +389,9 @@ public class OpenScene : Photon.PunBehaviour
         string[] txtBack = { "Terug", "Back" };
         string[] txtCreate = { "Maak een kamer", "Create room" };
         string[] txtRefresh = { "Vernieuwen", "Refresh" };
+        string[] txt = { "Wij raden aan om het spel al een keer gespeeld te hebben voordat je aan multiplayer begint.", "We recommend to first play singleplayer before starting a multiplayer game." };
 
+        txtAanrading.text = txt[taal];
         txtMultiplayerBack.text = txtBack[taal];
         txtMultiplayerCreateRoom.text = txtCreate[taal];
         txtRefreshLobby.text = txtRefresh[taal];
