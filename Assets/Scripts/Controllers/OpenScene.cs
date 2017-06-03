@@ -520,7 +520,8 @@ public class OpenScene : Photon.PunBehaviour
                 PhotonNetwork.room.Name + " \nNumber of players: " + PhotonNetwork.room.PlayerCount + "\nNeeded amount of players: " + PhotonNetwork.room.MaxPlayers };
             txtRoomInfo.text = txtInfoRoom[taal];
 
-            txtPlayersInRoom.text = "Players in this room:";
+            string[] txtplayersInroom = { "Spelers in deze kamer:", "Players in this room:" };
+            txtPlayersInRoom.text = txtplayersInroom[taal];
             foreach (PhotonPlayer p in PhotonNetwork.playerList)
                 txtPlayersInRoom.text += "\n" + p.NickName;
 

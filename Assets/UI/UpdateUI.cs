@@ -2417,7 +2417,11 @@ public class UpdateUI : MonoBehaviour
         txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + availableMoney[taal];
 
         //updateRegionTextValues();
-        startRegionPopup(regio);
+        //startRegionPopup(regio);
+        dropdownRegio.ClearOptions();
+        dropdownRegio.RefreshShownValue();
+        updateRegionScreenUI();
+        btnActionsTabClick();
     }
 
     public void ClearActionMenu()
