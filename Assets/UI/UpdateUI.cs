@@ -2101,13 +2101,13 @@ public class UpdateUI : MonoBehaviour
             else
             {
                 txtNotYourRegion.gameObject.SetActive(true);
-                string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren.",
-                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions." };
+                string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren. Je kunt wel de actieve acties en events tab bekijken in deze regio.",
+                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions. You are able to view the active events and actions tab in this region." };
                 txtNotYourRegion.text = txtInfo[taal];
 
                 imgHistory.gameObject.SetActive(false);
                 imgActions.gameObject.SetActive(false);
-                btnHistoryTab.gameObject.SetActive(false);
+                btnHistoryTab.gameObject.SetActive(true);
                 btnActionsTab.gameObject.SetActive(false);
             }
         }
