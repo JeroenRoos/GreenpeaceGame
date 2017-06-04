@@ -288,6 +288,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtBigDescription;
     public Text txtAdviserEconomic;
     public Text txtAdviserPollution;
+    public Text txtAdviserHappiness;
 
     private int taal;
     //  double totalOrgBank;
@@ -1932,6 +1933,7 @@ public class UpdateUI : MonoBehaviour
     {
         txtAdviserEconomic.text = game.economyAdvisor.name[taal] + "\n" + game.economyAdvisor.displayMessage[taal];
         txtAdviserPollution.text = game.pollutionAdvisor.name[taal] + "\n" + game.pollutionAdvisor.displayMessage[taal];
+        txtAdviserHappiness.text = game.happinessAnalyst.name[taal] + "\n" + game.happinessAnalyst.displayMessage[taal];
     }
 
     private void initOrganizationText()
@@ -2099,13 +2101,13 @@ public class UpdateUI : MonoBehaviour
             else
             {
                 txtNotYourRegion.gameObject.SetActive(true);
-                string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren.",
-                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions." };
+                string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren. Je kunt wel de actieve acties en events tab bekijken in deze regio.",
+                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions. You are able to view the active events and actions tab in this region." };
                 txtNotYourRegion.text = txtInfo[taal];
 
                 imgHistory.gameObject.SetActive(false);
                 imgActions.gameObject.SetActive(false);
-                btnHistoryTab.gameObject.SetActive(false);
+                btnHistoryTab.gameObject.SetActive(true);
                 btnActionsTab.gameObject.SetActive(false);
             }
         }
@@ -2510,6 +2512,9 @@ public class UpdateUI : MonoBehaviour
         imgHistory.gameObject.SetActive(true);
         string[] txtCenter = { "Actieve Acties & Events", "Active Actions & Events" };
         txtRegionColumnCenter.text = txtCenter[taal];
+
+        if (ApplicationModel.multiplayer)
+            txtNotYourRegion.text = "";
     }
 
     public void btnActionsTabClick()
