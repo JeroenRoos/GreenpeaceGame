@@ -2116,7 +2116,7 @@ public class UpdateUI : MonoBehaviour
                 imgHistory.gameObject.SetActive(false);
                 imgActions.gameObject.SetActive(false);
                 btnHistoryTab.gameObject.SetActive(true);
-                btnActionsTab.gameObject.SetActive(false);
+                btnActionsTab.gameObject.SetActive(true);
             }
         }
         else
@@ -2532,10 +2532,21 @@ public class UpdateUI : MonoBehaviour
 
         btnActionsTab.interactable = false;
         btnHistoryTab.interactable = true;
-        //imgDropdownLine.gameObject.SetActive(true);
-        imgActions.gameObject.SetActive(true);
-        string[] txtCenter = { "Doe een actie", "Do an action" };
-        txtRegionColumnCenter.text = txtCenter[taal];
+
+        if (ApplicationModel.multiplayer)
+        {
+            imgActions.gameObject.SetActive(false);
+            string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren. Je kunt wel de actieve acties en events tab bekijken in deze regio.",
+                "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions. You are able to view the active events and actions tab in this region." };
+            txtNotYourRegion.text = txtInfo[taal];
+        }
+        else
+        {
+            //imgDropdownLine.gameObject.SetActive(true);
+            imgActions.gameObject.SetActive(true);
+            string[] txtCenter = { "Doe een actie", "Do an action" };
+            txtRegionColumnCenter.text = txtCenter[taal];
+        }
     }
 
     private void updateSectorColorValues(SectorStatistics s)
