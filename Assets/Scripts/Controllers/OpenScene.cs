@@ -35,7 +35,7 @@ public class OpenScene : Photon.PunBehaviour
 
     // Lobby
     public Text txtLobbyTitle;
-    private string[] txtRoomButton = { "spelers", "players" };
+    private string[] txtRoomButton = { " spelers", " players" };
     public Button btnRefreshLobby;
     public Text txtRefreshLobby;
     public Text txtLobby;
@@ -98,8 +98,6 @@ public class OpenScene : Photon.PunBehaviour
     #region Start(), PlayerPrefs, Init's
     void Start()
     {
-
-
         lobby = new Lobby();
         Application.runInBackground = true;
 

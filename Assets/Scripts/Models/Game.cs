@@ -60,6 +60,7 @@ public class Game
 
     public bool nextTurnIsclicked;
     public bool OtherPlayerClickedNextTurn;
+    public bool isWaiting;
 
     public Game()
     {

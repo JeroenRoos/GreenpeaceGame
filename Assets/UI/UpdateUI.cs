@@ -996,7 +996,6 @@ public class UpdateUI : MonoBehaviour
         btnPollution.GetComponent<Button>();
         btnPopulation.GetComponent<Button>();
         btnProsperity.GetComponent<Button>();
-
         btnMonthlyReportStats.GetComponent<Button>();
         btnYearlyReportStats.GetComponent<Button>();
         btnMonthlyReportStats.gameObject.SetActive(false);
@@ -1124,8 +1123,11 @@ public class UpdateUI : MonoBehaviour
     #region Coroutines Buttons and Start Tutorial Quests/Investments/Cards
     public IEnumerator showBtnQuests()
     {
-        while (game.currentMonth < 6 && game.currentYear < 2)
-            yield return null;
+        if (!ApplicationModel.multiplayer)
+        {
+            while (game.currentMonth < 6 && game.currentYear < 2)
+                yield return null;
+        }
 
         btnQuests.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnQuests));
@@ -1162,8 +1164,11 @@ public class UpdateUI : MonoBehaviour
 
     public IEnumerator showBtnInvestments()
     {
-        while (game.currentYear < 6)
-            yield return null;
+        if (!ApplicationModel.multiplayer)
+        {
+            while (game.currentYear < 6)
+                yield return null;
+        }
 
         btnInvestments.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnInvestments));
@@ -1199,8 +1204,11 @@ public class UpdateUI : MonoBehaviour
 
     public IEnumerator showBtnCards()
     {
-        while (game.currentYear < 4)
-            yield return null;
+        if (!ApplicationModel.multiplayer)
+        {
+            while (game.currentYear < 4)
+                yield return null;
+        }
 
         btnCards.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnCards));
@@ -4740,16 +4748,38 @@ public class UpdateUI : MonoBehaviour
 
             else if (!game.nextTurnIsclicked)
             {
-                //if (ApplicationModel.multiplayer)
-                //    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
+                if (!game.OtherPlayerClickedNextTurn)
+                {
+                    game.isWaiting = true;
+                    StartCoroutine(NextTurnWaiting());
+                }
 
-                string[] txt = { "Wachten op andere speler...", "Waiting for other player..." };
-                btnNextTurnText.text = txt[taal];
-
-                btnNextTurn.interactable = false;
                 MultiplayerManager.CallNextTurnClick();
+                btnNextTurn.interactable = false;
             }
         }
+    }
+
+    IEnumerator NextTurnWaiting()
+    {
+        string[] txt;
+        while (game.isWaiting)
+        {
+            txt = new string[2] { "Wachten op andere speler", "Waiting for other player" };
+            btnNextTurnText.text = txt[taal];
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (game.isWaiting) //neccesary so it won't write more dots while still in the for loop (when next turn starts)
+                {
+                    btnNextTurnText.text += ".";
+                    yield return new WaitForSeconds((float)0.5);
+                }
+            }
+        }
+
+        //txt = new string[2] { "Volgende maand", "Next month" };
+        //btnNextTurnText.text = txt[ApplicationModel.language];
     }
 
     public void nextTurnOnEnter()
