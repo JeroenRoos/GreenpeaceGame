@@ -1316,6 +1316,10 @@ Prefab:
       propertyPath: m_Name
       value: CanvasMainMenuPopup
       objectReference: {fileID: 0}
+    - target: {fileID: 1761396148445994, guid: cb8e37d5b1d091e48b874ef6f22f00b9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb8e37d5b1d091e48b874ef6f22f00b9, type: 2}
   m_IsPrefabParent: 0
