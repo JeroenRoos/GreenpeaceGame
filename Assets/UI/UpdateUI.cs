@@ -2512,6 +2512,9 @@ public class UpdateUI : MonoBehaviour
         imgHistory.gameObject.SetActive(true);
         string[] txtCenter = { "Actieve Acties & Events", "Active Actions & Events" };
         txtRegionColumnCenter.text = txtCenter[taal];
+
+        if (ApplicationModel.multiplayer)
+            txtNotYourRegion.text = "";
     }
 
     public void btnActionsTabClick()
