@@ -137,11 +137,6 @@ public class GameController : MonoBehaviour
         oostNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[1]);
         westNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[2]);
         zuidNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[3]);
-        
-        if (!(game.currentYear == 1 && game.currentMonth == 1))
-            GenerateMonthlyReport(0);
-        if (game.currentYear != 1 && game.currentMonth == 1)
-            GenerateYearlyReport(1);
 
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
@@ -159,6 +154,16 @@ public class GameController : MonoBehaviour
             SetDelegates();
             game.nextTurnIsclicked = false;
             game.OtherPlayerClickedNextTurn = false;
+            game.isWaiting = false;
+        }
+
+        //load in the monthly/yearly reports from previous save
+        if (ApplicationModel.loadGame)
+        {
+            if (!(game.currentYear == 1 && game.currentMonth == 1))
+                GenerateMonthlyReport(0);
+            if (game.currentYear != 1 && game.currentMonth == 1)
+                GenerateYearlyReport(1);
         }
     }
 
@@ -206,8 +211,11 @@ public class GameController : MonoBehaviour
     //Coroutine that will not show the building icons once the designated time is reached (year 11)
     private IEnumerator showBuildingIcons()
     {
-        while (game.currentYear < 11)
-            yield return null;
+        if (!ApplicationModel.multiplayer)
+        {
+            while (game.currentYear < 11)
+                yield return null;
+        }
 
         buildingInstances = new GameObject[4] { Instantiate(buildingObject), Instantiate(buildingObject),
                                                 Instantiate(buildingObject), Instantiate(buildingObject) };
@@ -422,6 +430,7 @@ public class GameController : MonoBehaviour
     {
         if (ApplicationModel.multiplayer)
         {
+            game.isWaiting = false;
             game.nextTurnIsclicked = false;
             game.OtherPlayerClickedNextTurn = false;
 
