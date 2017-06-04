@@ -7918,7 +7918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e3b5af246adef4a84329366b992fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonTexture: {fileID: 2800000, guid: a235054a8c989c24aaa1ccdaff3584ff, type: 3}
+  buttonTexture: {fileID: 2800000, guid: e28cc1beacd7dbb4d9f1a06335c579ce, type: 3}
   btnPosition: {fileID: 786439818}
   txtNoRooms: {fileID: 1031323962}
   txtButtonNewGame: {fileID: 1988210328}

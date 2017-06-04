@@ -182,7 +182,7 @@ public class OpenScene : Photon.PunBehaviour
         buttonStyle.normal.background = buttonTexture;
         buttonStyle.alignment = TextAnchor.MiddleCenter;
         Color c = new Color();
-        ColorUtility.TryParseHtmlString("#ccac6f", out c);
+        ColorUtility.TryParseHtmlString("#ffffff", out c);
         buttonStyle.normal.textColor = c;
     }
     #endregion
