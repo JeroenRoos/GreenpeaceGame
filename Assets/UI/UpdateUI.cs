@@ -288,6 +288,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtBigDescription;
     public Text txtAdviserEconomic;
     public Text txtAdviserPollution;
+    public Text txtAdviserHappiness;
 
     private int taal;
     //  double totalOrgBank;
@@ -1932,6 +1933,7 @@ public class UpdateUI : MonoBehaviour
     {
         txtAdviserEconomic.text = game.economyAdvisor.name[taal] + "\n" + game.economyAdvisor.displayMessage[taal];
         txtAdviserPollution.text = game.pollutionAdvisor.name[taal] + "\n" + game.pollutionAdvisor.displayMessage[taal];
+        txtAdviserHappiness.text = game.happinessAnalyst.name[taal] + "\n" + game.happinessAnalyst.displayMessage[taal];
     }
 
     private void initOrganizationText()

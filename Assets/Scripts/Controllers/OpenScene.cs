@@ -34,6 +34,7 @@ public class OpenScene : Photon.PunBehaviour
     public Canvas canvasRoom;
 
     // Lobby
+    public Text txtLobbyTitle;
     private string[] txtRoomButton = { "spelers", "players" };
     public Button btnRefreshLobby;
     public Text txtRefreshLobby;
@@ -62,6 +63,7 @@ public class OpenScene : Photon.PunBehaviour
     public Text txtPopupCreate;
 
     // Room
+    public Text txtRoomTitle;
     private RoomInfo roomInfo;
     public Text txtRoomInfo;
     public Text txtRoomBack;
@@ -71,6 +73,7 @@ public class OpenScene : Photon.PunBehaviour
     public Text txtReadyToStart;
 
     // Settings 
+    public Text txtSettingsTitle;
     public Canvas canvasSettings;
     public Button btnSettingsBack;
     public Text txtButtonSettingsBack;
@@ -161,7 +164,7 @@ public class OpenScene : Photon.PunBehaviour
 
     private void initText()
     {
-        string[] txtOptions = { "Opties", "Options" };
+        string[] txtOptions = { "Instellingen", "Settings" };
         string[] txtQuit = { "Spel verlaten", "Quit" };
         string[] txtLoadGame = { "Spel laden", "Load game" };
         string[] txtNewGame = { "Nieuw spel", "New Game" };
@@ -226,7 +229,9 @@ public class OpenScene : Photon.PunBehaviour
         string[] language = { "Verander taal", "Change language" };
         string[] dutch = { "Nederlands", "Dutch" };
         string[] english = { "Engels", "English" };
+        string[] title = { "Instellingen", "Settings"};
 
+        txtSettingsTitle.text = title[taal];
         txtButtonSettingsBack.text = back[taal];
         txtMusicVolume.text = music[taal];
         txtEffectsVolume.text = effects[taal];
@@ -390,7 +395,9 @@ public class OpenScene : Photon.PunBehaviour
         string[] txtCreate = { "Maak een kamer", "Create room" };
         string[] txtRefresh = { "Vernieuwen", "Refresh" };
         string[] txt = { "Wij raden aan om het spel al een keer gespeeld te hebben voordat je aan multiplayer begint.", "We recommend to first play singleplayer before starting a multiplayer game." };
+        string[] title = { "Multiplayer lobby", "Multiplayer Lobby" };
 
+        txtLobbyTitle.text = title[taal];
         txtAanrading.text = txt[taal];
         txtMultiplayerBack.text = txtBack[taal];
         txtMultiplayerCreateRoom.text = txtCreate[taal];
@@ -481,6 +488,10 @@ public class OpenScene : Photon.PunBehaviour
         canvasRoom.gameObject.SetActive(true);
         getRoomList();
         string[] txtBack = { "Terug", "Back" };
+
+        string[] title = { "Multiplayer kamer - " + PhotonNetwork.room.Name, "Multiplayer room - " + PhotonNetwork.room.Name };
+
+        txtRoomTitle.text = title[taal];
         txtRoomBack.text = txtBack[taal];
     }
 
