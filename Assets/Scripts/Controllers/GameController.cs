@@ -16,7 +16,6 @@ using Facebook.Unity;
 public class GameController : MonoBehaviour
 {
     public Game game;
-    private int taal;
 
     double score = 0;
 
@@ -50,6 +49,7 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public Player playerController;
 
+    #region Awake/Start/Update
     // Use this for initialization
     private void Awake()
     {
@@ -119,7 +119,6 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        taal = ApplicationModel.language;
         SetPlayerTrackingData();
         autoSave = false;
 
@@ -147,7 +146,6 @@ public class GameController : MonoBehaviour
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
         EventManager.LeaveGame += SetGameplayTrackingData;
-        //EventManager.CallNewGame();
 
         if (ApplicationModel.multiplayer)
         {
@@ -183,15 +181,29 @@ public class GameController : MonoBehaviour
         // Update the main screen UI (Icons and date)
         updateUIMainScreen();
 
-        // Update the UI in popup screen
-        if (updateUI.getPopupActive())
-            updateUIPopups();
-
         /* Update values in Tooltips for Icons in Main UI
         if (updateUI.getTooltipActive())
             updateUITooltips(); */
     }
 
+    private void updateUIMainScreen()
+    {
+        // Update Text and Color values in main UI
+        updateUI.updateDate(game.currentMonth, game.currentYear);
+        updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
+        updateUI.updatePollution(game.gameStatistics.pollution);
+        updateUI.updateProsperity(game.gameStatistics.prosperity);
+        updateUI.updateHappiness(game.gameStatistics.happiness);
+
+        if (!ApplicationModel.multiplayer)
+            updateUI.updateMoney(game.gameStatistics.money);
+        else
+            updateUI.updateMoney(game.gameStatistics.playerMoney[game.gameStatistics.playerNumber]);
+    }
+    #endregion
+
+    #region coroutines
+    //Coroutine that will not show the building icons once the designated time is reached (year 11)
     private IEnumerator showBuildingIcons()
     {
         while (game.currentYear < 11)
@@ -208,12 +220,11 @@ public class GameController : MonoBehaviour
         if (!game.tutorial.tutorialBuildingsDone)
             updateUI.startTutorialBuildings();
     }
+    #endregion
 
+    #region Unity analytics
     public void SetPlayerTrackingData()
     {
-        //Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
-        //Analytics.SetUserGender(Gender.Unknown);
-        //Analytics.SetUserBirthYear(1996);
         if (trackingEnabled)
         {
             Analytics.CustomEvent("PlayerData", new Dictionary<string, object>
@@ -225,31 +236,6 @@ public class GameController : MonoBehaviour
                 { "DeviceType", SystemInfo.deviceType },
             });
         }
-    }
-
-    private void OnApplicationQuit()
-    {
-        SetGameplayTrackingData();
-    }
-
-    public void ShareOnFacebook()
-    {
-        string appId = "145634995501895";
-        string pictureUrl = "http://www.blikopnieuws.nl/sites/default/files/styles/nieuws-full-tn/public/artikel/logo.jpg?itok=au7xFs3Z";
-        string linkUrl = "https://www.partijvoordedieren.nl/";
-        string redirectUrl = "https://www.facebook.com/profile.php";
-        string[] description = new string[2] { "I just completed the game Project Green Leader in the name of 'Partij voor de Dieren' with a score of: " + score.ToString("0") + "!",
-            "Ik heb net het spel Project Green Leader uitgespeeld in de naam van 'Partij voor de Dieren' met een score van: " + score.ToString("0") + "!" };
-
-        string facebookURL = "https://www.facebook.com/dialog/feed?" +
-            "app_id=" + appId + "&" +
-            "display=popup&" +
-            "link=" + WWW.EscapeURL(linkUrl) + " & " +
-            "name=" + WWW.EscapeURL("Project Green Leader") + " & " +
-            "description=" + WWW.EscapeURL(description[taal]) + " & " +
-            "picture=" + WWW.EscapeURL(pictureUrl);
-
-    Application.OpenURL(facebookURL);
     }
 
     public void SetScoreTrackingData(double score)
@@ -293,7 +279,6 @@ public class GameController : MonoBehaviour
                 { "TotalTimePlayed", game.totalTimePlayed.ToString() }
             });
         }
-
     }
 
     public void SetYearlyTrackingData()
@@ -332,6 +317,13 @@ public class GameController : MonoBehaviour
 
     }
 
+    private void OnApplicationQuit()
+    {
+        SetGameplayTrackingData();
+    }
+    #endregion
+
+    #region Load/Save Data
     public void SaveGame()
     {
         GameContainer gameContainer = new GameContainer(game);
@@ -422,7 +414,10 @@ public class GameController : MonoBehaviour
         CardContainer cardContainer = CardContainer.Load();
         game.LoadCards(cardContainer.cards);
     }
+    #endregion
 
+    #region next turn methods
+    //method that's responsible for updating the game when going to the next turn
     public void NextTurn()
     {
         if (ApplicationModel.multiplayer)
@@ -434,57 +429,53 @@ public class GameController : MonoBehaviour
             updateUI.txtReadyForNextTurn.gameObject.SetActive(false);
             updateUI.imgReadyForNextTurn.gameObject.SetActive(false);
 
-            //updateUI.SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
-            //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
             string[] txt = { "Volgende maand", "Next month" };
-            updateUI.btnNextTurnText.text = txt[taal];
+            updateUI.btnNextTurnText.text = txt[ApplicationModel.language];
 
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
         }
 
-        if (!updateUI.popupActive)
+        if (!game.tutorial.tutorialNextTurnDone)
+            game.tutorial.tutorialNextTurnDone = true;
+
+        bool isNewYear = game.UpdateCurrentMonthAndYear();
+        UpdateRegionsPollutionInfluence();
+        game.ExecuteNewMonthMethods();
+        if (!ApplicationModel.multiplayer || PhotonNetwork.isMasterClient)
+            UpdateEvents();
+        game.gameStatistics.UpdateRegionalAvgs(game);
+        UpdateQuests();
+        UpdateRegionActionAvailability();
+
+
+        if (isNewYear)
         {
-            if (!game.tutorial.tutorialNextTurnDone)
-                game.tutorial.tutorialNextTurnDone = true;
-
-            bool isNewYear = game.UpdateCurrentMonthAndYear();
-            UpdateRegionsPollutionInfluence();
-            game.ExecuteNewMonthMethods();
-            if (!ApplicationModel.multiplayer || PhotonNetwork.isMasterClient)
-                UpdateEvents();
-            game.gameStatistics.UpdateRegionalAvgs(game);
-            UpdateQuests();
-            UpdateRegionActionAvailability();
-
-
-            if (isNewYear)
-            {
-                UpdateCards();
-                IncreaseYearlyPollutionChange();
-                SetYearlyTrackingData();
-            }
-
-            GenerateNewCard();
-
-            GenerateMonthlyUpdates(isNewYear);
-            UpdateTimeline();
-
-            game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
-            game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
-            game.happinessAnalyst.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.happiness);
-
-            if (autoSave)
-                EventManager.CallSaveGame();
-
-            updateUI.setNextTurnButtonNotInteractable();
-
-            EventManager.CallPlayNewTurnStartSFX();
-
-            if (game.currentYear == 31 || game.gameStatistics.pollution == 0d)
-                ShowGameScore();
+            UpdateCards();
+            IncreaseYearlyPollutionChange();
+            SetYearlyTrackingData();
         }
+
+        GenerateNewCard();
+
+        GenerateMonthlyUpdates(isNewYear);
+        UpdateTimeline();
+
+        game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
+        game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
+        game.happinessAnalyst.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.happiness);
+
+        if (autoSave)
+            EventManager.CallSaveGame();
+
+        updateUI.setNextTurnButtonNotInteractable();
+
+        EventManager.CallPlayNewTurnStartSFX();
+
+        if (game.currentYear == 31 || game.gameStatistics.pollution == 0d)
+            ShowGameScore();
     }
 
+    //method to increase the pollution each year
     public void IncreaseYearlyPollutionChange()
     {
         double changeValue = 0.4 + 0.1 * game.currentYear;
@@ -499,6 +490,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    #region gamescore
     public void ShowGameScore()
     {
         score = CalculateScore();
@@ -519,7 +511,9 @@ public class GameController : MonoBehaviour
 
         return calcScore;
     }
+    #endregion
 
+    //timeline not used
     private void UpdateTimeline()
     {
         game.timeline.StoreTurnInTimeLine(game.gameStatistics, game.currentYear, game.currentMonth);
@@ -544,7 +538,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //yearly reward increase
+    //increase the current reward for cards (if possible)
     private void UpdateCards()
     {
         foreach (Card card in game.inventory.ownedCards)
@@ -554,6 +548,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    #region monthly/yearly reports
     private void GenerateMonthlyUpdates(bool isNewYear)
     {
         int index = 0;
@@ -633,6 +628,7 @@ public class GameController : MonoBehaviour
 
         updateUI.btnYearlyReportStats.interactable = true;
     }
+    #endregion
 
     private bool checkNewEvents()
     {
@@ -822,120 +818,10 @@ public class GameController : MonoBehaviour
 
         game.gameStatistics.UpdateRegionalAvgs(game);
     }
+    #endregion
 
-    private void updateUIMainScreen()
-    {
-        // Update Text and Color values in main UI
-        updateUI.updateDate(game.currentMonth, game.currentYear);
-        updateUI.updateAwarness(game.gameStatistics.ecoAwareness);
-        updateUI.updatePollution(game.gameStatistics.pollution);
-        updateUI.updateProsperity(game.gameStatistics.prosperity);
-        updateUI.updateHappiness(game.gameStatistics.happiness);
-
-        if (!ApplicationModel.multiplayer)
-            updateUI.updateMoney(game.gameStatistics.money);
-        else
-            updateUI.updateMoney(game.gameStatistics.playerMoney[game.gameStatistics.playerNumber]);
-
-        //updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
-        //updateUI.updatePopulation(game.gameStatistics.population);
-    }
-
-
-    /* Tooltips worden niet meer getoont atm, bewaren voor als we van mening veranderen
-    private void updateUITooltips()
-    {
-        if (updateUI.getBtnMoneyHover())
-            updateUI.updateMoneyTooltip(game.gameStatistics.income);
-
-        if (updateUI.getBtnHappinessHover())
-            updateHappiness();
-
-        if (updateUI.getBtnAwarenessHover())
-            updateAwareness();
-
-        if (updateUI.getBtnPollutionHover())
-            updatePollution();
-
-        if (updateUI.getBtnProsperityHover())
-            updateProsperity();
-
-        if (updateUI.getBtnEnergyHover())
-            updateUI.updateEnergyTooltip(game.gameStatistics.energy.cleanSource,
-            game.gameStatistics.energy.fossilSource, game.gameStatistics.energy.nuclearSource);
-    }
-
-    private void updateHappiness()
-    {
-        for (int j = 0; j < game.regions.Count; j++)
-        {
-            updateUI.updateHappinessTooltip(game.regions[j].statistics.happiness, j);
-        }
-    }
-
-    private void updateAwareness()
-    {
-        for (int j = 0; j < game.regions.Count; j++)
-        {
-            updateUI.updateAwarnessTooltip(game.regions[j].statistics.ecoAwareness, j);
-        }
-    }
-
-    private void updatePollution()
-    {
-        for (int j = 0; j < game.regions.Count; j++)
-        {
-            updateUI.updatePollutionTooltip(game.regions[j].statistics.avgPollution, j);
-        }
-    }
-
-    private void updateProsperity()
-    {
-        for (int j = 0; j < game.regions.Count; j++)
-        {
-            updateUI.updateProsperityTooltip(game.regions[j].statistics.prosperity, j);
-        }
-    } 
-    */
-
-    private void updateUIPopups()
-    {
-        if (updateUI.canvasOrganizationPopup.gameObject.activeSelf)
-            updateUIOrganizationScreen();
-
-        if (updateUI.canvasRegioPopup.gameObject.activeSelf)
-            updateUIRegioScreen();
-
-        if (updateUI.canvasTimelinePopup.gameObject.activeSelf)
-            updateUITimelineScreen();
-    }
-
-    private void updateUIOrganizationScreen()
-    {
-        //int i = 0;
-        //foreach (Region region in game.regions)
-        //{
-            // Send the income for each region, use i to determine the region
-         //   updateUI.updateOrganizationScreenUI(region.statistics.income * 12, i, game.gameStatistics.money);
-          //  i++;            
-       // }
-    }
-
-    private void updateUIRegioScreen()
-    {
-
-    }
-
-    private void updateUITimelineScreen()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-        
-    }
-
+    #region button clicks
+    //finds the correct region that was clicked
     public void OnRegionClick(GameObject region)
     {
         int pickedRegion = 0;
@@ -955,32 +841,10 @@ public class GameController : MonoBehaviour
                 break;
         }
 
-        MapRegion regionModel = game.regions[pickedRegion];
-        updateUI.regionClick(regionModel);
+        updateUI.regionClick(game.regions[pickedRegion]);
     }
 
-    void CheckEndOfGame()
-    {
-        if (game.currentYear == 2050)
-        {
-            autoEndTurn = false;
-            if(game.gameStatistics.pollution < 20)
-            {
-                // you did it!
-            }
-            else
-            {
-                // objective failed.
-            }
-        }
-    }
-
-    public bool getActivePopup()
-    {
-        return updateUI.getPopupActive();
-    }
-
-
+    //builds the building that was selected in the proper region
     public void btnUseBuildingPress()
     {
         MapRegion r = updateUI.regionToBeBuild;
@@ -1010,6 +874,7 @@ public class GameController : MonoBehaviour
         updateUI.initBuildingPopup(b, r);
     }
 
+    //deletes the building that was selected
     public void btnDeleteBuildingPress()
     {
         MapRegion r = updateUI.buildingRegion;
@@ -1048,10 +913,26 @@ public class GameController : MonoBehaviour
 
     public void btnShareFacebookClick()
     {
-        ShareOnFacebook();
-    }
+        string appId = "145634995501895";
+        string pictureUrl = "http://www.blikopnieuws.nl/sites/default/files/styles/nieuws-full-tn/public/artikel/logo.jpg?itok=au7xFs3Z";
+        string linkUrl = "https://www.partijvoordedieren.nl/";
+        string redirectUrl = "https://www.facebook.com/profile.php";
+        string[] description = new string[2] { "I just completed the game Project Green Leader in the name of 'Partij voor de Dieren' with a score of: " + score.ToString("0") + "!",
+            "Ik heb net het spel Project Green Leader uitgespeeld in de naam van 'Partij voor de Dieren' met een score van: " + score.ToString("0") + "!" };
 
-    //multiplayer
+        string facebookURL = "https://www.facebook.com/dialog/feed?" +
+            "app_id=" + appId + "&" +
+            "display=popup&" +
+            "link=" + WWW.EscapeURL(linkUrl) + " & " +
+            "name=" + WWW.EscapeURL("Project Green Leader") + " & " +
+            "description=" + WWW.EscapeURL(description[ApplicationModel.language]) + " & " +
+            "picture=" + WWW.EscapeURL(pictureUrl);
+
+        Application.OpenURL(facebookURL);
+    }
+    #endregion
+
+    #region Multiplayer methods
     public void SetDelegates()
     {
         MultiplayerManager.NextTurnClicked += GetOtherPlayerNextTurn;
@@ -1077,7 +958,7 @@ public class GameController : MonoBehaviour
         updateUI.imgReadyForNextTurn.gameObject.SetActive(true);
 
         string[] txt = { PhotonNetwork.playerList[0].NickName + " is klaar voor de volgende maand", PhotonNetwork.playerList[0].NickName +  " is ready for next month" };
-        updateUI.txtReadyForNextTurn.text = txt[taal];
+        updateUI.txtReadyForNextTurn.text = txt[ApplicationModel.language];
 
         if (game.nextTurnIsclicked)
             EventManager.CallChangeMonth();
@@ -1278,5 +1159,6 @@ public class GameController : MonoBehaviour
 
         return null;
     }
+    #endregion
 }
 
