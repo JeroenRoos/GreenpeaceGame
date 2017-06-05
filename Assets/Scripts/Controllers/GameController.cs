@@ -1184,29 +1184,34 @@ public class GameController : MonoBehaviour
 
     public void GetOtherPlayerInvestment(string investmentType)
     {
+        string dutchInvestmentType = investmentType;
         switch (investmentType)
         {
             case "Action cost reduction":
                 game.investments.InvestInActionCostReduction(game.regions);
                 updateUI.setActionCostReductionInvestments();
+                dutchInvestmentType = "Kosten verlagen acties";
                 if (game.investments.actionCostReduction[4])
                     updateUI.btnInvestmentActionCostInvest.gameObject.SetActive(false);
                 break;
             case "Better action consequences":
                 game.investments.InvestInBetterActionConsequences(game.regions);
                 updateUI.setActionConsequencesInvestments();
+                dutchInvestmentType = "Betere consequenties acties";
                 if (game.investments.betterActionConsequences[4])
                     updateUI.btnInvestmentActionConsequenceInvest.gameObject.SetActive(false);
                 break;
             case "Event cost reduction":
                 game.investments.InvestInGameEventCostReduction(game.events);
                 updateUI.setEventCostReductionInvestments();
+                dutchInvestmentType = "Kosten verlagen events";
                 if (game.investments.gameEventCostReduction[4])
                     updateUI.btnInvestmentEventCostInvest.gameObject.SetActive(false);
                 break;
             case "Better event consequences":
                 game.investments.InvestInBetterGameEventConsequences(game.events);
                 updateUI.setEventConsequencesInvestments();
+                dutchInvestmentType = "Betere consequenties events";
                 if (game.investments.betterGameEventConsequences[4])
                     updateUI.btnInvestmentEventConsequenceInvest.gameObject.SetActive(false);
                 break;

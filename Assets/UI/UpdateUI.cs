@@ -3683,7 +3683,12 @@ public class UpdateUI : MonoBehaviour
     private void initBuildingText()
     {
         string[] title = { "Gebouwen", "Buildings" };
-        string[] column = { "Actief gebouw: " + /*activeBuilding.buildingName[0]*/buildingRegion.activeBuilding.buildingName[0], "Active building: " + buildingRegion.activeBuilding.buildingName[1] };
+        string[] column = { "", "" };
+        if (buildingRegion.activeBuilding != null)
+        {
+            column = new string[2]{ "Actief gebouw: " + /*activeBuilding.buildingName[0]*/buildingRegion.activeBuilding.buildingName[0], "Active building: " + buildingRegion.activeBuilding.buildingName[1] };
+        }
+
         string[] btn = { "Sloop gebouw", "Destroy building" };
 
         txtEmptyBuildingColumRight.text = "";
