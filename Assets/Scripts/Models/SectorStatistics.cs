@@ -71,6 +71,9 @@ public class SectorStatistics
         pollution.ChangeAirPollutionMutation(pollutionChangeValue);
         pollution.ChangeNaturePollutionMutation(pollutionChangeValue);
         pollution.ChangeWaterPollutionMutation(pollutionChangeValue);
+
+        double happinessChangeValue = changeValue / 10;
+        ModifyHappiness(happinessChangeValue);
     }
 
     public void ModifyProsperity(double changeValue)
@@ -92,6 +95,9 @@ public class SectorStatistics
 
         double incomeChangeValue = changeValue * 5;
         ModifyIncome(incomeChangeValue);
+
+        double happinessChangeValue = changeValue / 10;
+        ModifyHappiness(happinessChangeValue);
     }
 
     public void mutateTimeBasedStatistics()
