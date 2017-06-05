@@ -29,6 +29,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>EcoAwarenessNational</questID>
@@ -58,6 +59,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>HappinesNN</questID>
@@ -87,6 +89,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>PollutionNW</questID>
@@ -116,6 +119,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>PollutionNE</questID>
@@ -145,6 +149,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>IncomeNational</questID>
@@ -174,6 +179,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>ProsperityNational</questID>
@@ -203,6 +209,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>PollutionNN</questID>
@@ -232,6 +239,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>EcoAwarenessNational2</questID>
@@ -261,6 +269,7 @@
       </questCompleteConditions>
       <questMoneyReward>20000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
     <Quest>
       <questID>PollutionNational</questID>
@@ -290,6 +299,7 @@
       </questCompleteConditions>
       <questMoneyReward>30000</questMoneyReward>
       <isActive>false</isActive>
+      <isCompleted>false</isCompleted>
     </Quest>
   </Quests>
 </QuestContainer>
