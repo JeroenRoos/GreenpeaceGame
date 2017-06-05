@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class UpdateUI : MonoBehaviour
 {
     public Player playerController;
-    // Green:       #00CC00
-    // Red:         #FF0000
+    // Green:       #00CC00.
+    // Red:         #FF0000.
 
     #region UI Elements
     // Multiplayer
@@ -653,9 +653,14 @@ public class UpdateUI : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                playerController.photonView.RPC("MessageReceived", PhotonTargets.Others, txtChatMessageToSend, PhotonNetwork.player.NickName);
-                updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
-                inputChatMessage.text = "";
+                Debug.Log(txtChatMessageToSend);
+                if (txtChatMessageToSend != null)
+                {
+                    playerController.photonView.RPC("MessageReceived", PhotonTargets.Others, txtChatMessageToSend, PhotonNetwork.player.NickName);
+                    updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
+                    txtChatMessageToSend = null;
+                    inputChatMessage.text = "";
+                }
             }
         }
 
@@ -2110,12 +2115,13 @@ public class UpdateUI : MonoBehaviour
             {
                 txtNotYourRegion.gameObject.SetActive(false);
                 imgHistory.gameObject.SetActive(false);
-                imgActions.gameObject.SetActive(false);
+                //imgActions.gameObject.SetActive(false);
 
                 btnHistoryTab.gameObject.SetActive(true);
                 btnActionsTab.gameObject.SetActive(true);
-                btnActionsTab.interactable = true;
-                btnHistoryTab.interactable = true;
+                //btnActionsTab.interactable = true;
+                //btnHistoryTab.interactable = true;
+                btnActionsTabClick();
             }
             else
             {
@@ -2140,6 +2146,7 @@ public class UpdateUI : MonoBehaviour
             btnActionsTab.gameObject.SetActive(true);
             btnActionsTab.interactable = true;
             btnHistoryTab.interactable = true;
+            btnActionsTabClick();
         }
 
         btnAverageTab.interactable = false;
@@ -2148,7 +2155,6 @@ public class UpdateUI : MonoBehaviour
         btnCompaniesTab.interactable = true;
 
 
-        btnActionsTabClick();
     }
 
     private void updateRegionColorValues()
@@ -2550,10 +2556,23 @@ public class UpdateUI : MonoBehaviour
 
         if (ApplicationModel.multiplayer)
         {
-            imgActions.gameObject.SetActive(false);
-            string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren. Je kunt wel de actieve acties en events tab bekijken in deze regio.",
+            if (regio.regionOwner != PhotonNetwork.player.NickName)
+            {
+                imgActions.gameObject.SetActive(false);
+                string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren. Je kunt wel de actieve acties en events tab bekijken in deze regio.",
                 "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions. You are able to view the active events and actions tab in this region." };
-            txtNotYourRegion.text = txtInfo[taal];
+                txtNotYourRegion.text = txtInfo[taal];
+            }
+            else
+            {
+                //imgDropdownLine.gameObject.SetActive(true);
+                imgActions.gameObject.SetActive(true);
+                string[] txtCenter = { "Doe een actie", "Do an action" };
+                txtRegionColumnCenter.text = txtCenter[taal];
+
+                string[] txt = { "Kies hier een actie", "Choose an action" };
+                txtRegionInfo.text = txt[taal];
+            }
         }
         else
         {
@@ -3060,6 +3079,13 @@ public class UpdateUI : MonoBehaviour
                 activeQuests[taal] += beloning[taal] + q.questMoneyReward + "\n\n";
                 txtQuestsActive.text = activeQuests[taal];
                 activeQuest = true;
+            }
+            else if (q.isCompleted)
+            {
+                activeQuests[taal] += "<color=#00cc00>[COMPLETED] - " + q.name[taal] + " - " + q.description[taal] + "\n";
+                activeQuests[taal] += getCompleteConditions(q.questCompleteConditions);
+                activeQuests[taal] += beloning[taal] + q.questMoneyReward + "\n\n</color>";
+                txtQuestsActive.text = activeQuests[taal];
             }
         }
         if (!activeQuest)
@@ -5465,20 +5491,26 @@ public class UpdateUI : MonoBehaviour
 
     public void updateChatMessages(string message, string sender)
     {
-        txtChatMessages.text = "";
-        string txt = sender + ": " + message + "\n";
-
-        if (lstMessages.Count < 6)
-            lstMessages.Add(txt);
-        else
+        if (message != null)
         {
-            lstMessages.RemoveAt(0);
-            lstMessages.Add(txt);
-        }
+            txtChatMessages.text = "";
+            string txt = sender + ": " + message + "\n";
 
-        foreach (string text in lstMessages)
-        {
-            txtChatMessages.text += text;
+            if (lstMessages.Count < 6)
+                lstMessages.Add(txt);
+            else
+            {
+                lstMessages.RemoveAt(0);
+                lstMessages.Add(txt);
+            }
+
+            foreach (string text in lstMessages)
+            {
+                txtChatMessages.text += text;
+            }
+
+            txtChatMessageToSend = null;
+            inputChatMessage.text = "";
         }
     }
 
