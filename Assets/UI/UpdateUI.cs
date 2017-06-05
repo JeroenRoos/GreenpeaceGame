@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class UpdateUI : MonoBehaviour
 {
     public Player playerController;
-    // Green:       #00CC00
-    // Red:         #FF0000
+    // Green:       #00CC00.
+    // Red:         #FF0000.
 
     #region UI Elements
     // Multiplayer
