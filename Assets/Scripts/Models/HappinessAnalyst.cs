@@ -25,13 +25,14 @@ public class HappinessAnalyst : Advisor
         double calcValue = happiness - 50;
         if (calcValue >= 0)
         {
-            dutchStatusMessages = "Door de tevredenheid zijn de consequenties van acties en events " + calcValue.ToString("0.00") + "% beter";
-            englishStatusMessages = "Because of the happiness the consequences for actions and events are " + calcValue.ToString("0.00") + "% better";
+            dutchStatusMessages = "Door de tevredenheid zijn de consequenties van acties en events " + calcValue.ToString("0.00") + "% beter.";
+            englishStatusMessages = "Because of the happiness the consequences for actions and events are " + calcValue.ToString("0.00") + "% better.";
         }
         else
         {
-            dutchStatusMessages = "Door de tevredenheid zijn de consequenties van acties en events " + calcValue.ToString("0.00") + "% slechter";
-            englishStatusMessages = "Because of the happiness the consequences for actions and events are " + calcValue.ToString("0.00") + "% worse";
+            calcValue *= -1;
+            dutchStatusMessages = "Door de tevredenheid zijn de consequenties van acties en events " + calcValue.ToString("0.00") + "% slechter.";
+            englishStatusMessages = "Because of the happiness the consequences for actions and events are " + calcValue.ToString("0.00") + "% worse.";
         }
         displayMessage = new string[2] { dutchStatusMessages, englishStatusMessages };
     }

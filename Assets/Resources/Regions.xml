@@ -25,7 +25,7 @@
         <income>900</income>
         <happiness>50</happiness>
         <ecoAwareness>26.666666666666668</ecoAwareness>
-        <prosperity>50</prosperity>
+        <prosperity>26.666666666666668</prosperity>
         <avgPollution>30</avgPollution>
         <avgAirPollution>28.333333333333332</avgAirPollution>
         <avgNaturePollution>31.666666666666668</avgNaturePollution>
@@ -1203,8 +1203,8 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
-            <string>Increase happiness by implementing ideas of the people.</string>
+            <string>Verhoog de tevredenheid door suggesties van het volk te implementeren.</string>
+            <string>Increase happiness by implementing suggestions of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>
           <afterInvestmentActionMoneyCost>1500</afterInvestmentActionMoneyCost>
@@ -5464,7 +5464,7 @@
             <income>200</income>
             <happiness>50</happiness>
             <ecoAwareness>40</ecoAwareness>
-            <prosperity>30</prosperity>
+            <prosperity>20</prosperity>
             <pollution>
               <avgPollution>20</avgPollution>
               <airPollution>20</airPollution>
@@ -5488,7 +5488,7 @@
             <income>200</income>
             <happiness>50</happiness>
             <ecoAwareness>10</ecoAwareness>
-            <prosperity>50</prosperity>
+            <prosperity>30</prosperity>
             <pollution>
               <avgPollution>15</avgPollution>
               <airPollution>15</airPollution>
@@ -5512,7 +5512,7 @@
             <income>500</income>
             <happiness>50</happiness>
             <ecoAwareness>30</ecoAwareness>
-            <prosperity>70</prosperity>
+            <prosperity>30</prosperity>
             <pollution>
               <avgPollution>55</avgPollution>
               <airPollution>50</airPollution>
@@ -5589,7 +5589,7 @@
         <income>900</income>
         <happiness>50</happiness>
         <ecoAwareness>20</ecoAwareness>
-        <prosperity>55</prosperity>
+        <prosperity>28.333333333333332</prosperity>
         <avgPollution>43.333333333333336</avgPollution>
         <avgAirPollution>36.666666666666664</avgAirPollution>
         <avgNaturePollution>50</avgNaturePollution>
@@ -6767,8 +6767,8 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
-            <string>Increase happiness by implementing ideas of the people.</string>
+            <string>Verhoog de tevredenheid door suggesties van het volk te implementeren.</string>
+            <string>Increase happiness by implementing suggestions of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>
           <afterInvestmentActionMoneyCost>1500</afterInvestmentActionMoneyCost>
@@ -11028,7 +11028,7 @@
             <income>200</income>
             <happiness>50</happiness>
             <ecoAwareness>20</ecoAwareness>
-            <prosperity>40</prosperity>
+            <prosperity>20</prosperity>
             <pollution>
               <avgPollution>40</avgPollution>
               <airPollution>30</airPollution>
@@ -11052,7 +11052,7 @@
             <income>200</income>
             <happiness>50</happiness>
             <ecoAwareness>20</ecoAwareness>
-            <prosperity>50</prosperity>
+            <prosperity>30</prosperity>
             <pollution>
               <avgPollution>40</avgPollution>
               <airPollution>30</airPollution>
@@ -11076,7 +11076,7 @@
             <income>500</income>
             <happiness>50</happiness>
             <ecoAwareness>20</ecoAwareness>
-            <prosperity>75</prosperity>
+            <prosperity>35</prosperity>
             <pollution>
               <avgPollution>50</avgPollution>
               <airPollution>50</airPollution>
@@ -11153,7 +11153,7 @@
         <income>1300</income>
         <happiness>50</happiness>
         <ecoAwareness>20</ecoAwareness>
-        <prosperity>60</prosperity>
+        <prosperity>33.333333333333336</prosperity>
         <avgPollution>44.44444444444445</avgPollution>
         <avgAirPollution>50</avgAirPollution>
         <avgNaturePollution>40</avgNaturePollution>
@@ -12331,8 +12331,8 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
-            <string>Increase happiness by implementing ideas of the people.</string>
+            <string>Verhoog de tevredenheid door suggesties van het volk te implementeren.</string>
+            <string>Increase happiness by implementing suggestions of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>
           <afterInvestmentActionMoneyCost>1500</afterInvestmentActionMoneyCost>
@@ -16592,7 +16592,7 @@
             <income>750</income>
             <happiness>50</happiness>
             <ecoAwareness>25</ecoAwareness>
-            <prosperity>80</prosperity>
+            <prosperity>40</prosperity>
             <pollution>
               <avgPollution>60</avgPollution>
               <airPollution>70</airPollution>
@@ -16616,7 +16616,7 @@
             <income>500</income>
             <happiness>50</happiness>
             <ecoAwareness>5</ecoAwareness>
-            <prosperity>90</prosperity>
+            <prosperity>50</prosperity>
             <pollution>
               <avgPollution>43.333333333333336</avgPollution>
               <airPollution>50</airPollution>
@@ -16717,7 +16717,7 @@
         <income>450</income>
         <happiness>50</happiness>
         <ecoAwareness>11.666666666666666</ecoAwareness>
-        <prosperity>61.666666666666664</prosperity>
+        <prosperity>41.666666666666664</prosperity>
         <avgPollution>37.222222222222221</avgPollution>
         <avgAirPollution>35</avgAirPollution>
         <avgNaturePollution>41.666666666666664</avgNaturePollution>
@@ -17895,8 +17895,8 @@
             <string>Increase happiness</string>
           </name>
           <description>
-            <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
-            <string>Increase happiness by implementing ideas of the people.</string>
+            <string>Verhoog de tevredenheid door suggesties van het volk te implementeren.</string>
+            <string>Increase happiness by implementing suggestions of the people.</string>
           </description>
           <actionMoneyCost>1500</actionMoneyCost>
           <afterInvestmentActionMoneyCost>1500</afterInvestmentActionMoneyCost>
@@ -22156,7 +22156,7 @@
             <income>250</income>
             <happiness>50</happiness>
             <ecoAwareness>10</ecoAwareness>
-            <prosperity>40</prosperity>
+            <prosperity>20</prosperity>
             <pollution>
               <avgPollution>45</avgPollution>
               <airPollution>35</airPollution>
@@ -22180,7 +22180,7 @@
             <income>100</income>
             <happiness>50</happiness>
             <ecoAwareness>5</ecoAwareness>
-            <prosperity>70</prosperity>
+            <prosperity>50</prosperity>
             <pollution>
               <avgPollution>40</avgPollution>
               <airPollution>50</airPollution>
@@ -22204,7 +22204,7 @@
             <income>100</income>
             <happiness>50</happiness>
             <ecoAwareness>20</ecoAwareness>
-            <prosperity>75</prosperity>
+            <prosperity>55</prosperity>
             <pollution>
               <avgPollution>26.666666666666668</avgPollution>
               <airPollution>20</airPollution>
