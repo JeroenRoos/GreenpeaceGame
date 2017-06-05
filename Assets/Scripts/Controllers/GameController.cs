@@ -1217,7 +1217,7 @@ public class GameController : MonoBehaviour
                 break;
         }
         
-        MultiplayerManager.CallUpdateActivity(" heeft geïnvesteerd in: " + investmentType,
+        MultiplayerManager.CallUpdateActivity(" heeft geïnvesteerd in: " + dutchInvestmentType,
             " has invested in: " + investmentType);
     }
 
