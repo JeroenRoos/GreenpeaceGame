@@ -1246,7 +1246,7 @@ public class GameController : MonoBehaviour
                 buildingInstances[i] = GameController.Instantiate(buildingObject);
                 buildingInstances[i].GetComponent<BuildingObjectController>().placeBuildingIcon(this, r, b);
 
-                MultiplayerManager.CallUpdateActivity("heeft een " + b.buildingName[0] + " gebouwd in " + r.name[0],
+                MultiplayerManager.CallUpdateActivity(" heeft een " + b.buildingName[0] + " gebouwd in " + r.name[0],
                     "built a " + b.buildingName[1] + " in " + r.name[1]);
 
                 return;

@@ -77,10 +77,6 @@ public class Player : Photon.MonoBehaviour {
     void InvestmentMade(string investmentType)
     {
         MultiplayerManager.CallInvest(investmentType);
-
-        photonView.RPC("ActivityLogChanged", PhotonTargets.Others, " heeft geinvesteerd in " + investmentType,
-            " has invested in " + investmentType);
-
     }
 
     [PunRPC]
@@ -89,9 +85,6 @@ public class Player : Photon.MonoBehaviour {
         MultiplayerManager.CallMakeBuilding(regionName, buildingID);
         // MultiplayerManager.CallUpdateActivity(playerNickname + "heeft een " + buildingID + " gebouwed in " + regionName,
         //     playerNickname + "build a " + buildingID + " in " + regionName);
-
-        photonView.RPC("ActivityLogChanged", PhotonTargets.Others, "heeft een " + buildingID + " gebouwed in " + regionName,
-            "build a " + buildingID + " in " + regionName);
     }
 
     [PunRPC]

@@ -417,9 +417,9 @@
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <consequences>
         <income>50</income>
-        <happiness>1</happiness>
+        <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
-        <prosperity>2</prosperity>
+        <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
@@ -432,9 +432,9 @@
       </consequences>
       <afterInvestmentConsequences>
         <income>50</income>
-        <happiness>1</happiness>
+        <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
-        <prosperity>2</prosperity>
+        <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
@@ -546,9 +546,9 @@
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <consequences>
         <income>70</income>
-        <happiness>1.5</happiness>
+        <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
-        <prosperity>3</prosperity>
+        <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
@@ -561,9 +561,9 @@
       </consequences>
       <afterInvestmentConsequences>
         <income>70</income>
-        <happiness>1.5</happiness>
+        <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
-        <prosperity>3</prosperity>
+        <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
@@ -675,9 +675,9 @@
       <temporaryConsequencesDuration>0</temporaryConsequencesDuration>
       <consequences>
         <income>90</income>
-        <happiness>2</happiness>
+        <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
-        <prosperity>4</prosperity>
+        <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
@@ -690,9 +690,9 @@
       </consequences>
       <afterInvestmentConsequences>
         <income>90</income>
-        <happiness>2</happiness>
+        <happiness>0</happiness>
         <ecoAwareness>0</ecoAwareness>
-        <prosperity>4</prosperity>
+        <prosperity>0</prosperity>
         <pollution>
           <avgPollution>0</avgPollution>
           <airPollution>0</airPollution>
