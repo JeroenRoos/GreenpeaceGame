@@ -173,6 +173,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // UITZETTEN BIJ EEN BUILD
+        /*
         if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
             game.tutorial.tutorialNexTurnPossibe))
         {
@@ -184,6 +185,7 @@ public class GameController : MonoBehaviour
                 MultiplayerManager.CallNextTurnClick();
             }
         }
+        */
 
         // Update the main screen UI (Icons and date)
         updateUIMainScreen();
@@ -1174,7 +1176,7 @@ public class GameController : MonoBehaviour
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, r, e);
 
         MultiplayerManager.CallUpdateActivity(" heeft keuze [" + e.choicesDutch[pickedChoiceNumber] + "] bij event (" + e.publicEventName[0] + ") gedaan in " + r.name[0],
-            " Made choice [" + e.choicesDutch[pickedChoiceNumber] + "] at event (" + e.publicEventName[1] + ") in " + r.name[1]);
+            " Made choice [" + e.choicesEnglish[pickedChoiceNumber] + "] at event (" + e.publicEventName[1] + ") in " + r.name[1]);
     }
 
     public void GetOtherPlayerInvestment(string investmentType)

@@ -5460,7 +5460,7 @@ public class UpdateUI : MonoBehaviour
         txtChatMessages.text = "";
         string txt = sender + ": " + message + "\n";
 
-        if (lstMessages.Count < 8)
+        if (lstMessages.Count < 6)
             lstMessages.Add(txt);
         else
         {
