@@ -34,16 +34,16 @@ public class BuildingObjectController : MonoBehaviour
                 isClicked = true;
                 EventManager.CallPlayButtonClickSFX();
 
-                if (building != null)
-                {
+                //if (building != null)
+               // {
                     //gameController.activeBuildingUI(building, region);
-                    updateUI.initBuildingPopup(building, region);
-                }
-                else
-                {
+               //     updateUI.initBuildingPopup(building, region);
+               // }
+                //else
+                //{
                     //gameController.activeEmptyBuildingUI(region);
                     updateUI.initEmptyBuildingPopup(region);
-                }
+                //}
             }
         }
     }

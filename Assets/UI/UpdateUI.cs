@@ -143,6 +143,8 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnDeleteBuilding;
 
     // Empty Building Popup
+    public Text txtNotYourBuildingDestory;
+    public Text txtBuildingAlreadyActive;
     public Text txtNotYourEmptyBuilding;
     public Text txtEmptyBuildingsTitle;
     public Text txtEmptyBuildingsColumnLeft;
@@ -154,6 +156,10 @@ public class UpdateUI : MonoBehaviour
     public Text txtEmptyBuildingStats;
     public Building buildingToBeBuild;
     public MapRegion regionToBeBuild;
+    public Text txtNewBuildingsColumn;
+    public Text txtNewBuildingsStats;
+    public Button btnNewDeleteBuilding;
+    public Text txtNewBtnDeleteBuilding;
 
     // Timeline Popup
     public Text txtTimelineTitle;
@@ -1619,10 +1625,14 @@ public class UpdateUI : MonoBehaviour
 
             foreach (Building b in regionToBeBuild.possibleBuildings)
             {
-                if (GUI.Button(new Rect(x, y + yOffset, rectBtnBuildingsPosition.rect.width + 50, rectBtnBuildingsPosition.rect.height), b.buildingName[taal], buttonStyle))
-                    setTextBuildingInformation(b);
+                if (b != buildingRegion.activeBuilding)
+                {
+                    if (GUI.Button(new Rect(x, y + yOffset, rectBtnBuildingsPosition.rect.width + 50, rectBtnBuildingsPosition.rect.height), b.buildingName[taal], buttonStyle))
+                        setTextBuildingInformation(b);
 
-                yOffset += 35;
+
+                    yOffset += 35;
+                }
             }
         }
     }
@@ -3517,7 +3527,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEmptyBuildingText()
     {
-        btnUseBuilding.gameObject.SetActive(true);
+        btnUseBuilding.gameObject.SetActive(false);
         string[] btnTxt = { "Maak gebouw", "Build building" };
         btnUseBuildingTxt.text = btnTxt[taal];
         string[] title = { "Gebouwen", "Buildings" };
@@ -3527,19 +3537,63 @@ public class UpdateUI : MonoBehaviour
         txtEmptyBuildingsTitle.text = title[taal]; ;
         txtEmptyBuildingsColumnLeft.text = column[taal];
         txtEmptyBuildingColumRight.text = "";
+        txtEmptyBuildingColumRight.text = "";
         txtEmptyBuildingStats.text = "";
         txtEmptyBuildingInfo.text = info[taal];
         txtNotYourEmptyBuilding.gameObject.SetActive(false);
+        txtNotYourBuildingDestory.gameObject.SetActive(false);
+        txtNewBuildingsStats.text = "";
+        txtNewBuildingsColumn.text = "";
+        txtBuildingAlreadyActive.gameObject.SetActive(false);
+        btnNewDeleteBuilding.gameObject.SetActive(false);
+
+        if (!ApplicationModel.multiplayer)
+        {
+            if (regionToBeBuild.activeBuilding != null)
+            {
+                initBuildingPopup(regionToBeBuild.activeBuilding, regionToBeBuild);
+                btnUseBuilding.gameObject.SetActive(false);
+                txtBuildingAlreadyActive.gameObject.SetActive(true);
+
+                string[] active = { "Er staat al een gebouw in deze regio. Je moet eerst dit gebouw slopen voordat je een nieuwe kunt bouwen.",
+                "There already exists a building in this region. You first have to destory the other building before building a new one." };
+                txtBuildingAlreadyActive.text = active[taal];
+
+            }
+        }
+        else
+        {
+            initBuildingPopup(regionToBeBuild.activeBuilding, regionToBeBuild);
+            btnUseBuilding.gameObject.SetActive(false);
+            txtBuildingAlreadyActive.gameObject.SetActive(false);
+        }
     }
 
     private void setTextBuildingInformation(Building b)
     {
         buildingToBeBuild = b;
 
+        btnUseBuilding.gameObject.SetActive(true);
         txtEmptyBuildingColumRight.text = "";
         txtEmptyBuildingStats.text = "";
         string[] column = { "Informatie - " + b.buildingName[0], "Information - " + b.buildingName[1] };
         txtEmptyBuildingColumRight.text = column[taal];
+
+        string[] cost = { "Kosten: " + b.buildingMoneyCost + " geld\n", "Costs: " + b.buildingMoneyCost + " geld\n" };
+        txtEmptyBuildingStats.text += cost[taal];
+
+        txtEmptyBuildingStats.text += getBuildingModifiers(b);
+
+        if (game.GetMoney() >= buildingToBeBuild.buildingMoneyCost)
+            btnUseBuilding.interactable = true;
+        else
+            btnUseBuilding.interactable = false;
+
+        if (regionToBeBuild.activeBuilding != null)
+        {
+            btnUseBuilding.gameObject.SetActive(false);
+
+        }
 
         if (ApplicationModel.multiplayer)
         {
@@ -3559,16 +3613,14 @@ public class UpdateUI : MonoBehaviour
                 btnUseBuildingTxt.text = btnTxt[taal];
             }
         }
-
-        string[] cost = { "Kosten: " + b.buildingMoneyCost + " geld\n", "Costs: " + b.buildingMoneyCost + " geld\n" };
-        txtEmptyBuildingStats.text += cost[taal];
-
-        txtEmptyBuildingStats.text += getBuildingModifiers(b);
-
-        if (game.GetMoney() >= buildingToBeBuild.buildingMoneyCost)
-            btnUseBuilding.interactable = true;
         else
-            btnUseBuilding.interactable = false;  
+        {
+            txtBuildingAlreadyActive.gameObject.SetActive(true);
+
+            string[] active = { "Er staat al een gebouw in deze regio. Je moet eerst dit gebouw slopen voordat je een nieuwe kunt bouwen.",
+                "There already exists a building in this region. You first have to destory the other building before building a new one." };
+            txtBuildingAlreadyActive.text = active[taal];
+        }
     }
 
     // Afhandelen van BtnUseBuilding Click wordt in GameController gedaan
@@ -3578,50 +3630,60 @@ public class UpdateUI : MonoBehaviour
     #region Code for Active Building Popup
     public void initBuildingPopup(Building b, MapRegion r)
     {
-        txtNotYourBuilding.gameObject.SetActive(false);
+        //txtNotYourBuilding.gameObject.SetActive(false);
         activeBuilding = b;
         buildingRegion = r;
         popupActive = true;
         EventManager.CallPopupIsActive();
-        canvasBuildingsPopup.gameObject.SetActive(true);
-
+        btnNewDeleteBuilding.gameObject.SetActive(false);
         initBuildingText();
+
+        //canvasBuildingsPopup.gameObject.SetActive(true);
+        //canvasEmptyBuildingsPopup.gameObject.SetActive(true);
+        //initEmptyBuildingText();
     }
 
     private void initBuildingText()
     {
         string[] title = { "Gebouwen", "Buildings" };
-        string[] column = { "Actief gebouw: " + activeBuilding.buildingName[0], "Active building: " + activeBuilding.buildingName[0] };
+        string[] column = { "Actief gebouw: " + /*activeBuilding.buildingName[0]*/buildingRegion.activeBuilding.buildingName[0], "Active building: " + buildingRegion.activeBuilding.buildingName[1] };
         string[] btn = { "Sloop gebouw", "Destroy building" };
 
-        txtBuildingsStats.text = "";
-        txtBuildingsTitle.text = title[taal]; 
-        txtBuildingsColumn.text = column[taal];
-        txtBtnDeleteBuilding.text = btn[taal];
+        txtEmptyBuildingColumRight.text = "";
+        txtNewBuildingsStats.text = "";
+        //txtNewBuildingsTitle.text = title[taal];
+        txtNewBuildingsColumn.text = column[taal];
+        txtNewBtnDeleteBuilding.text = btn[taal];
+
+        txtEmptyBuildingStats.text = "";
+        btnUseBuilding.gameObject.SetActive(false);
 
         if (ApplicationModel.multiplayer)
         {
             if (buildingRegion.regionOwner != PhotonNetwork.player.NickName)
             {
-                btnDeleteBuilding.gameObject.SetActive(false);
-                txtNotYourBuilding.gameObject.SetActive(true);
+                btnNewDeleteBuilding.gameObject.SetActive(false);
+                txtNotYourBuildingDestory.gameObject.SetActive(true);
                 string[] txt = { "Dit gebouw is niet gebouwd in jouw regio, daarom kun je er ook niks mee doen.",
                     "This building doesn't belong to your regions, this means you can't do anything with this building." };
-                txtNotYourBuilding.text = txt[taal];
+                txtNotYourBuildingDestory.text = txt[taal];
             }
             else
             {
-                btnDeleteBuilding.gameObject.SetActive(true);
-                txtNotYourBuilding.gameObject.SetActive(false);
+                btnNewDeleteBuilding.gameObject.SetActive(true);
+                txtNotYourBuildingDestory.gameObject.SetActive(false);
             }
         }
+        else
+            btnNewDeleteBuilding.gameObject.SetActive(true);
+
 
         // string[] cost = { "Kosten:" + activeBuilding.buildingMoneyCost + "\n", "Cost:" + activeBuilding.buildingMoneyCost + "\n" };
         // txtBuildingsStats.text += cost[taal];
 
         string[] info = { "Effecten van " + activeBuilding.buildingName[0], "Effects caused by " + activeBuilding.buildingName[1] };
-        txtBuildingsStats.text = info[taal];
-        txtBuildingsStats.text += getBuildingModifiers(activeBuilding);
+        txtNewBuildingsStats.text = info[taal];
+        txtNewBuildingsStats.text += getBuildingModifiers(activeBuilding);
 
     }
     #endregion

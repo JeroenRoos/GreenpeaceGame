@@ -1000,9 +1000,9 @@ public class GameController : MonoBehaviour
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], b.buildingID);
 
-        updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
-        updateUI.popupActive = false;
-        EventManager.CallPopupIsDisabled();
+        //updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
+        //updateUI.popupActive = false;
+        //EventManager.CallPopupIsDisabled();
 
         for (int i = 0; i < game.regions.Count; i++)
         {
