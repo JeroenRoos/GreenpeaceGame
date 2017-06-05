@@ -300,6 +300,7 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtRegionInfo;
     public Text txtNotYourRegion;
     public Text txtRegionAvailableMoney;
     public Text txtRegionAvailableMoneyDescription;
@@ -2097,7 +2098,7 @@ public class UpdateUI : MonoBehaviour
 
         // Set the right actions in the dropdown
         initDropDownRegion();
-    
+
         // Set toggles on not active
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
@@ -2145,6 +2146,9 @@ public class UpdateUI : MonoBehaviour
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
         btnCompaniesTab.interactable = true;
+
+
+        btnActionsTabClick();
     }
 
     private void updateRegionColorValues()
@@ -2265,6 +2269,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionSectorTotalCostDescription.text = "";
         txtRegionActionSectorTotalCost.text = "";
         txtRegionColumnCenter.text = "";
+        txtRegionInfo.text = "";
 
         string[] left = { "Gemiddelde statistieken", "Average statistics" };
         txtRegionColumnLeft.text = left[taal];
@@ -2556,6 +2561,9 @@ public class UpdateUI : MonoBehaviour
             imgActions.gameObject.SetActive(true);
             string[] txtCenter = { "Doe een actie", "Do an action" };
             txtRegionColumnCenter.text = txtCenter[taal];
+
+            string[] txt = { "Kies hier een actie", "Choose an action" };
+            txtRegionInfo.text = txt[taal];
         }
     }
 
