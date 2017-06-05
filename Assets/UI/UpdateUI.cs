@@ -3080,6 +3080,13 @@ public class UpdateUI : MonoBehaviour
                 txtQuestsActive.text = activeQuests[taal];
                 activeQuest = true;
             }
+            else if (q.isCompleted)
+            {
+                activeQuests[taal] += "<color=#00cc00>[COMPLETED] - " + q.name[taal] + " - " + q.description[taal] + "\n";
+                activeQuests[taal] += getCompleteConditions(q.questCompleteConditions);
+                activeQuests[taal] += beloning[taal] + q.questMoneyReward + "\n\n</color>";
+                txtQuestsActive.text = activeQuests[taal];
+            }
         }
         if (!activeQuest)
             txtQuestsActive.text = noActiveQuests[taal];       
