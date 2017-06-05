@@ -1169,8 +1169,8 @@
         <string>Increase happiness</string>
       </name>
       <description>
-        <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
-        <string>Increase happiness by implementing ideas of the people.</string>
+        <string>Verhoog de tevredenheid door suggesties van het volk te implementeren.</string>
+        <string>Increase happiness by implementing suggestions of the people.</string>
       </description>
       <actionMoneyCost>1500</actionMoneyCost>
       <afterInvestmentActionMoneyCost>1500</afterInvestmentActionMoneyCost>
@@ -1298,7 +1298,7 @@
         <string>Increase happiness +1</string>
       </name>
       <description>
-        <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
+        <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
       <actionMoneyCost>1500</actionMoneyCost>
@@ -1427,7 +1427,7 @@
         <string>Increase happiness +2</string>
       </name>
       <description>
-        <string>Verhoog de tevredenheid door ideeën van het volk te implementeren.</string>
+        <string>Verhoog de tevredenheid door ideen van het volk te implementeren.</string>
         <string>Increase happiness by implementing ideas of the people.</string>
       </description>
       <actionMoneyCost>1500</actionMoneyCost>

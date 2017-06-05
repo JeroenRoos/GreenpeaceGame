@@ -425,12 +425,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie</string>
-            <string>Improve production</string>
+            <string>Verhoog inkomen</string>
+            <string>Increase income</string>
           </name>
           <description>
-            <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Neem economische maatregelen in de regio om een hoger inkomen te genereren.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -554,12 +554,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +1</string>
-            <string>Improve production +1</string>
+            <string>Verhoog inkomen +1</string>
+            <string>Increase income +1</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -683,12 +683,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +2</string>
-            <string>Improve production +2</string>
+            <string>Verhoog inkomen +2</string>
+            <string>Increase income +2</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -817,7 +817,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -946,7 +946,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -1075,7 +1075,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -5531,10 +5531,10 @@
       <inProgressGameEvents />
       <possibleBuildings>
         <Building>
-          <buildingID>EconomyBuiding</buildingID>
+          <buildingID>EconomyBuilding</buildingID>
           <buildingName>
             <string>Aandelenbeurs</string>
-            <string>StockExchange</string>
+            <string>Stock exchange</string>
           </buildingName>
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
@@ -5989,12 +5989,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie</string>
-            <string>Improve production</string>
+            <string>Verhoog inkomen</string>
+            <string>Increase income</string>
           </name>
           <description>
-            <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Neem economische maatregelen in de regio om een hoger inkomen te genereren.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -6118,12 +6118,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +1</string>
-            <string>Improve production +1</string>
+            <string>Verhoog inkomen +1</string>
+            <string>Increase income +1</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -6247,12 +6247,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +2</string>
-            <string>Improve production +2</string>
+            <string>Verhoog inkomen +2</string>
+            <string>Increase income +2</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -6381,7 +6381,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -6510,7 +6510,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -6639,7 +6639,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -11095,10 +11095,10 @@
       <inProgressGameEvents />
       <possibleBuildings>
         <Building>
-          <buildingID>EconomyBuiding</buildingID>
+          <buildingID>EconomyBuilding</buildingID>
           <buildingName>
             <string>Aandelenbeurs</string>
-            <string>StockExchange</string>
+            <string>Stock exchange</string>
           </buildingName>
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
@@ -11553,12 +11553,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie</string>
-            <string>Improve production</string>
+            <string>Verhoog inkomen</string>
+            <string>Increase income</string>
           </name>
           <description>
-            <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Neem economische maatregelen in de regio om een hoger inkomen te genereren.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -11682,12 +11682,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +1</string>
-            <string>Improve production +1</string>
+            <string>Verhoog inkomen +1</string>
+            <string>Increase income +1</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -11811,12 +11811,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +2</string>
-            <string>Improve production +2</string>
+            <string>Verhoog inkomen +2</string>
+            <string>Increase income +2</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -11945,7 +11945,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -12074,7 +12074,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -12203,7 +12203,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -16659,10 +16659,10 @@
       <inProgressGameEvents />
       <possibleBuildings>
         <Building>
-          <buildingID>EconomyBuiding</buildingID>
+          <buildingID>EconomyBuilding</buildingID>
           <buildingName>
             <string>Aandelenbeurs</string>
-            <string>StockExchange</string>
+            <string>Stock exchange</string>
           </buildingName>
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>
@@ -17117,12 +17117,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie</string>
-            <string>Improve production</string>
+            <string>Verhoog inkomen</string>
+            <string>Increase income</string>
           </name>
           <description>
-            <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Neem economische maatregelen in de regio om een hoger inkomen te genereren.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -17246,12 +17246,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +1</string>
-            <string>Improve production +1</string>
+            <string>Verhoog inkomen +1</string>
+            <string>Increase income +1</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -17375,12 +17375,12 @@
         <RegionAction>
           <isOwnAction>false</isOwnAction>
           <name>
-            <string>Verhoog productie +2</string>
-            <string>Improve production +2</string>
+            <string>Verhoog inkomen +2</string>
+            <string>Increase income +2</string>
           </name>
           <description>
             <string>Verhoog de productie in de regio om een hoger inkomen te genereren.</string>
-            <string>Improve the production in the region to generate a higher income.</string>
+            <string>Take economical actions in the region to generate a higher income.</string>
           </description>
           <actionMoneyCost>0</actionMoneyCost>
           <afterInvestmentActionMoneyCost>0</afterInvestmentActionMoneyCost>
@@ -17509,7 +17509,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -17638,7 +17638,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -17767,7 +17767,7 @@
           </name>
           <description>
             <string>Verhoog de welvaart door meer te investeren in de economie.</string>
-            <string>Increase the prosperity by investing more in the economy</string>
+            <string>Increase the prosperity by investing more in the economy.</string>
           </description>
           <actionMoneyCost>3000</actionMoneyCost>
           <afterInvestmentActionMoneyCost>3000</afterInvestmentActionMoneyCost>
@@ -22223,10 +22223,10 @@
       <inProgressGameEvents />
       <possibleBuildings>
         <Building>
-          <buildingID>EconomyBuiding</buildingID>
+          <buildingID>EconomyBuilding</buildingID>
           <buildingName>
             <string>Aandelenbeurs</string>
-            <string>StockExchange</string>
+            <string>Stock exchange</string>
           </buildingName>
           <incomeModifier>20</incomeModifier>
           <pollutionModifier>0</pollutionModifier>

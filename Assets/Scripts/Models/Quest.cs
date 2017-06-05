@@ -17,6 +17,7 @@ public class Quest
     public double questMoneyReward { get; private set; }
 
     public bool isActive { get; private set; }
+    public bool isCompleted { get; private set; }
 
     public Quest()
     {
@@ -39,6 +40,7 @@ public class Quest
     public void CompleteQuest()
     {
         isActive = false;
+        isCompleted = true;
     }
 
     public bool RegionalCompleteConditionsMet(RegionStatistics s)
