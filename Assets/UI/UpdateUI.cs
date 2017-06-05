@@ -3615,11 +3615,14 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
-            txtBuildingAlreadyActive.gameObject.SetActive(true);
+            if (regionToBeBuild.activeBuilding != null)
+            {
+                txtBuildingAlreadyActive.gameObject.SetActive(true);
 
-            string[] active = { "Er staat al een gebouw in deze regio. Je moet eerst dit gebouw slopen voordat je een nieuwe kunt bouwen.",
+                string[] active = { "Er staat al een gebouw in deze regio. Je moet eerst dit gebouw slopen voordat je een nieuwe kunt bouwen.",
                 "There already exists a building in this region. You first have to destory the other building before building a new one." };
-            txtBuildingAlreadyActive.text = active[taal];
+                txtBuildingAlreadyActive.text = active[taal];
+            }
         }
     }
 
