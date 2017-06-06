@@ -40,7 +40,7 @@ public class ProgressReport
         oldHappiness = new double[4] { p.oldHappiness[0], p.oldHappiness[1], p.oldHappiness[2], p.oldHappiness[3] };
         oldEcoAwareness = new double[4] { p.oldEcoAwareness[0], p.oldEcoAwareness[1], p.oldEcoAwareness[2], p.oldEcoAwareness[3] };
         oldProsperity = new double[4] { p.oldProsperity[0], p.oldProsperity[1], p.oldProsperity[2], p.oldProsperity[3] };
-        oldPollution = new double[4] { p.oldPollution[0], p.oldPollution[0], p.oldPollution[2], p.oldPollution[3] };
+        oldPollution = new double[4] { p.oldPollution[0], p.oldPollution[1], p.oldPollution[2], p.oldPollution[3] };
         completedActions = new List<RegionAction>[] { new List<RegionAction>(), new List<RegionAction>(), new List<RegionAction>(), new List<RegionAction>() };
         newEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
         completedEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };

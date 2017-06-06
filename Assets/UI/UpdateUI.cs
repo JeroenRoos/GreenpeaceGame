@@ -2922,7 +2922,7 @@ public class UpdateUI : MonoBehaviour
             else
             {
                 string[] difference = { "<color=#00cc00>\nVervuiling: ", "<color=#00cc00>\nPollution: " };
-                difference[taal] += "+" + pollutionDifference.ToString("0.00") + "%</color>";
+                difference[taal] += pollutionDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
 
@@ -2938,7 +2938,7 @@ public class UpdateUI : MonoBehaviour
             else
             {
                 string[] difference = { "<color=#FF0000>\nWelvaart: ", "<color=#FF0000>\nProsperity: " };
-                difference[taal] += "+" + prosperityDifference.ToString("0.00") + "%</color>";
+                difference[taal] += prosperityDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
 
