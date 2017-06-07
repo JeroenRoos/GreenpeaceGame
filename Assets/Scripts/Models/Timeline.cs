@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+//this class is currently not used due to lacking the expertise of creating a line graph
+
 [Serializable]
 public class Timeline
 {

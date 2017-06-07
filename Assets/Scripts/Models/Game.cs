@@ -54,13 +54,13 @@ public class Game
     public int receivedCardsCount;
     public float totalTimePlayed;
 
-
     //multiplayer
     public string[] players { get; private set; }
     public bool nextTurnIsclicked;
     public bool OtherPlayerClickedNextTurn;
     public bool isWaiting;
 
+    //set all the variables required for a new game
     public Game()
     {
         //language = 0;
@@ -79,7 +79,7 @@ public class Game
         investments = new Investments();
         cards = new List<Card>();
         inventory = new Inventory();
-        timeline = new Timeline();
+        timeline = new Timeline(); //not used
         tutorial = new Tutorial();
 
 
@@ -151,7 +151,7 @@ public class Game
         {
             foreach (RegionSector sector in region.sectors)
             {
-                sector.statistics.mutateTimeBasedStatistics();
+                sector.statistics.pollution.mutateTimeBasedStatistics();
             }
             region.statistics.UpdateSectorAvgs(region);
         }
@@ -187,7 +187,7 @@ public class Game
                 if (action.isActive && ((action.startMonth + action.actionDuration + action.startYear * 12) == (currentMonth + currentYear * 12)))
                 {
                     region.ImplementActionConsequences(action, action.afterInvestmentConsequences, true, gameStatistics.happiness);
-                    region.ImplementActionConsequences(action, action.afterInvestmentConsequences, true, gameStatistics.happiness);
+                    region.ImplementActionConsequences(action, action.afterInvestmentTemporaryConsequences, true, gameStatistics.happiness);
                     foreach (bool ps in action.pickedSectors)
                     {
                         if (ps)
@@ -225,11 +225,54 @@ public class Game
 
     }
 
+    //cycles through all in-progress events and updates where neccesary
     public void UpdateRegionEvents()
     {
         foreach (MapRegion region in regions)
         {
-            region.UpdateEvents(this);
+            foreach (GameEvent gameEvent in region.inProgressGameEvents)
+            {
+                GameEventCheckIfIdle(gameEvent, region);
+                GameEventCheckIfCompleted(gameEvent, region);
+                GameEventCheckIfFinished(gameEvent, region);
+            }
+            region.RemoveFinishedEvents();
+        }
+    }
+
+    /*keeps track of how long the event is still available the player hasn't made a choice yet
+    /will do the event with option 0 (do nothing) if player fails to make a choice within the time limit*/
+    public void GameEventCheckIfIdle(GameEvent gameEvent, MapRegion region)
+    {
+        if (gameEvent.isIdle)
+        {
+            gameEvent.SubtractIdleTurnsLeft();
+            if (gameEvent.idleTurnsLeft == 0)
+            {
+                gameEvent.SetPickedChoice(0, this, region);
+            }
+        }
+
+    }
+
+    //completes the event after the correct amount of turns has been waited after making a decision
+    public void GameEventCheckIfCompleted(GameEvent gameEvent, MapRegion region)
+    {
+        if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (currentMonth + currentYear * 12)))
+        {
+            AddCompletedEventToReports(region, gameEvent);
+            region.CompleteEvent(gameEvent, this);
+        }
+
+    }
+
+    //finishes the event after the correct amount of turns has been waited after completing the event (temporary consequences)
+    public void GameEventCheckIfFinished(GameEvent gameEvent, MapRegion region)
+    {
+        if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == currentMonth + currentYear * 12)
+        {
+            region.ImplementEventConsequences(gameEvent, gameEvent.pickedTemporaryConsequences[gameEvent.pickedChoiceNumber], false, gameStatistics.happiness);
+            gameEvent.FinishEvent();
         }
     }
 

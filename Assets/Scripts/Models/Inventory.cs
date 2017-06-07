@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+//The inventory class was created with having more than just cards within it in mind.
+
 [Serializable]
 public class Inventory
 {
@@ -15,7 +17,6 @@ public class Inventory
 
     public void AddCardToInventory(Card card)
     {
-        //card.increaseCurrentRewards(); //first increment upon receiving the card
         ownedCards.Add(card);
     }
 

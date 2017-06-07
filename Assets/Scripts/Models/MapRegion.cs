@@ -28,6 +28,7 @@ public class MapRegion
 
     public MapRegion() { }
 
+    #region LoadData
     public void LoadBuildings(List<Building> possibleBuildings)
     {
         this.possibleBuildings = possibleBuildings;
@@ -37,7 +38,9 @@ public class MapRegion
     {
         this.actions = actions;
     }
+    #endregion
 
+    #region RegionActionMethods
     public void StartAction(RegionAction action, Game game, bool[] pickedSectors)
     {
         foreach (bool isTrue in pickedSectors)
@@ -48,37 +51,28 @@ public class MapRegion
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
     }
 
+    /*updates the sector statistics with the consequences of the action, method received both the action and statistics because
+    /the statistics can be either normal consequences or temporary consequences*/
+    public void ImplementActionConsequences(RegionAction regionAction, SectorStatistics statistics, bool isAdded, double happiness)
+    {
+        for (int i = 0; i < regionAction.possibleSectors.Count(); i++)
+        {
+            if (regionAction.pickedSectors[i])
+            {
+                foreach (RegionSector sector in sectors)
+                {
+                    if (sector.sectorName[0] == regionAction.possibleSectors[i])
+                        sector.ImplementStatisticValues(statistics, isAdded, happiness);
+                }
+            }
+        }
+    }
+    #endregion
+
+    #region GameEventMethods
     public void AddGameEvent(GameEvent gameEvent, double happiness)
     {
         inProgressGameEvents.Add(gameEvent);
-    }
-
-    public void UpdateEvents(Game game)
-    {
-        foreach (GameEvent gameEvent in inProgressGameEvents)
-        {
-            if (gameEvent.isIdle)
-            {
-                gameEvent.SubtractIdleTurnsLeft();
-                if (gameEvent.idleTurnsLeft == 0)
-                {
-                    gameEvent.SetPickedChoice(0, game, this);
-                }
-            }
-
-            if (gameEvent.isActive && ((gameEvent.pickedChoiceStartMonth + gameEvent.eventDuration[gameEvent.pickedChoiceNumber] + gameEvent.pickedChoiceStartYear * 12) == (game.currentMonth + game.currentYear * 12)))
-            {
-                game.AddCompletedEventToReports(this, gameEvent);
-                CompleteEvent(gameEvent, game);
-            }
-
-            if (gameEvent.lastCompleted + gameEvent.temporaryConsequencesDuration[gameEvent.pickedChoiceNumber] == game.currentMonth + game.currentYear * 12)
-            {
-                ImplementEventConsequences(gameEvent, gameEvent.pickedTemporaryConsequences[gameEvent.pickedChoiceNumber], false, game.gameStatistics.happiness);
-                gameEvent.FinishEvent();
-            }
-        }
-        RemoveFinishedEvents();
     }
 
     public void CompleteEvent(GameEvent gameEvent, Game game)
@@ -92,6 +86,7 @@ public class MapRegion
             game.completedEventsCount++;
     }
 
+    //cleans the list "inProgressGameEvents" list, removes events that are completely finished from this list
     public void RemoveFinishedEvents()
     {
         for (int i = inProgressGameEvents.Count - 1; i >= 0; i--)
@@ -100,17 +95,29 @@ public class MapRegion
                 inProgressGameEvents.Remove(inProgressGameEvents[i]);
         }
     }
-    
+
+    public void ImplementEventConsequences(GameEvent gameEvent, SectorStatistics statistics, bool isAdded, double happiness)
+    {
+        for (int i = 0; i < gameEvent.possibleSectors.Length; i++)
+        {
+            foreach (RegionSector sector in sectors)
+            {
+                if (sector.sectorName[0] == gameEvent.possibleSectors[i])
+                    sector.ImplementStatisticValues(statistics, isAdded, happiness);
+            }
+        }
+    }
+    #endregion
+
+    #region BuildingMethods
     public void SetBuilding(string buildingID)
     {
         if (activeBuilding != null)
         {
-            foreach (RegionSector rs in sectors)
-            {
-                rs.ImplementBuildingStatistics(activeBuilding, false);
-            }
+            RemoveBuildingStatistics();
         }
 
+        //add new building statistics to the regionsectors
         if (buildingID != null)
         {
             foreach (Building b in possibleBuildings)
@@ -131,71 +138,17 @@ public class MapRegion
             activeBuilding = null;
     }
 
-    /*public void DeleteBuilding(Building building)
+    //remove old building statistics from the regionsectors
+    public void RemoveBuildingStatistics()
     {
-        ImplementBuildingValues(building.statistics, false);
-        buildings.Remove(building);
-    }*/
-
-    /*public void ModifyBuilding(Building building, BuildingStatistics statistics)
-    {
-        ImplementBuildingValues(statistics, true);
-        building.ModifyBuildingStatistics(statistics);
-    }*/
-
-    /*public void ImplementBuildingValues(BuildingStatistics statistics, bool isAdded) //if a building is removed for example, isAdded is false
-    {
-        if (isAdded)
+        foreach (RegionSector rs in sectors)
         {
-            this.statistics.ChangeIncome(statistics.income);
-            this.statistics.ChangeProsperity(statistics.prosperity); //change households and companies instead of region prosperity
-
-            //temporary methods (incomplete)
-            this.statistics.pollution.ChangeAirPollutionMutation(statistics.pollution.airPollutionIncrease);
-            this.statistics.pollution.ChangeNaturePollutionMutation(statistics.pollution.naturePollutionIncrease);
-            this.statistics.pollution.ChangeWaterPollutionMutation(statistics.pollution.waterPollutionIncrease);
-        }
-
-        else
-        {
-            this.statistics.ChangeIncome(0 - statistics.income);
-            this.statistics.ChangeProsperity(0 - statistics.prosperity); //change households and companies instead of region prosperity
-
-            //temporary methods (incomplete)
-            this.statistics.pollution.ChangeAirPollutionMutation(0 - statistics.pollution.airPollutionIncrease);
-            this.statistics.pollution.ChangeNaturePollutionMutation(0 - statistics.pollution.naturePollutionIncrease);
-            this.statistics.pollution.ChangeWaterPollutionMutation(0 - statistics.pollution.waterPollutionIncrease);
-        }
-    }*/
-
-    public void ImplementEventConsequences(GameEvent gameEvent, SectorStatistics statistics, bool isAdded, double happiness)
-    {
-        for (int i = 0; i < gameEvent.possibleSectors.Length; i++)
-        {
-            foreach (RegionSector sector in sectors)
-            {
-                if (sector.sectorName[0] == gameEvent.possibleSectors[i])
-                    sector.ImplementStatisticValues(statistics, isAdded, happiness);
-            }
+            rs.ImplementBuildingStatistics(activeBuilding, false);
         }
     }
+    #endregion
 
-    public void ImplementActionConsequences(RegionAction regionAction, SectorStatistics statistics, bool isAdded, double happiness)
-    {
-        for (int i = 0; i < regionAction.possibleSectors.Count(); i++)
-        {
-            if (regionAction.pickedSectors[i])
-            {
-                foreach (RegionSector sector in sectors)
-                {
-                    if (sector.sectorName[0] == regionAction.possibleSectors[i])
-                        sector.ImplementStatisticValues(statistics, isAdded, happiness);
-                }
-            }
-        }
-    }
-
-    //multiplayer
+    #region Multiplayer
     public void SetRegionOwner(string playerID)
     {
         regionOwner = playerID;
@@ -216,7 +169,7 @@ public class MapRegion
     {
         action.ActivateAction(game.currentYear, game.currentMonth, pickedSectors);
         action.isOwnAction = false;
-        Debug.Log("action received");
     }
+    #endregion
 }
 

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-
-//monthly report class
+/*because the progress report needs to be reset each month in order to keep track of the new changes, 2 new reports have to be
+ * created in order to keep track of the old turn. This is required for when the player saves and quits the game and on a later time
+ * loads in the game again. The old reports will then be able to initialize the monthly (and yearly report if necessary).
+*/
 [Serializable]
 public class ProgressReport
 {
@@ -33,6 +35,7 @@ public class ProgressReport
         completedEvents = new List<GameEvent>[] { new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>(), new List<GameEvent>() };
     }
 
+    //creates a new Progressreport as a copy to avoid references
     public ProgressReport(ProgressReport p)
     {
         reportRegions = new string[4] { "Noord Nederland", "Oost Nederland", "West Nederland", "Zuid Nederland" };
@@ -55,6 +58,7 @@ public class ProgressReport
         }
     }
 
+    #region UpdateReport
     public void UpdateStatistics(List<MapRegion> regions)
     {
         foreach (MapRegion region in regions)
@@ -112,4 +116,5 @@ public class ProgressReport
             }
         }
     }
+    #endregion
 }

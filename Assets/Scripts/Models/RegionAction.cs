@@ -46,6 +46,7 @@ public class RegionAction //: MonoBehaviour
 
     private RegionAction() { }
 
+    //method used for copying RegionAction without reference
     public RegionAction(RegionAction r)
     {
         name = (string[])r.name.Clone();
@@ -80,6 +81,7 @@ public class RegionAction //: MonoBehaviour
         availableConditionsMaximum = new SectorStatistics(r.availableConditionsMaximum);
 }
 
+    #region FindActionConditions
     public void GetAvailableActions(Game game, RegionStatistics rs)
     {
         if (conditionsAreRegional)
@@ -88,6 +90,7 @@ public class RegionAction //: MonoBehaviour
             GetGlobalAvailability(game.currentYear, game.currentMonth, game.gameStatistics);
     }
 
+    //checks if all statistics of the region are within the required range for this action to be available
     public void GetRegionalAvailability(int currentYear, int currentMonth, RegionStatistics rs)
     {
         int monthTotal = currentYear * 12 + currentMonth;
@@ -114,6 +117,7 @@ public class RegionAction //: MonoBehaviour
             isAvailable = false;
     }
 
+    //checks if all statistics of the country (global) are within the required range for this action to be available
     public void GetGlobalAvailability(int currentYear, int currentMonth, GameStatistics gs)
     {
         int monthTotal = currentYear * 12 + currentMonth;
@@ -140,7 +144,9 @@ public class RegionAction //: MonoBehaviour
             isAvailable = false;
 
     }
+    #endregion
 
+    #region ActionStatusMethods
     public void ActivateAction(int startYear, int startMonth, bool[] pickedSectors)
     {
         this.pickedSectors = pickedSectors;
@@ -157,12 +163,16 @@ public class RegionAction //: MonoBehaviour
         startMonth = 0;
         isActive = false;
     }
+    #endregion
 
+    #region UpdateActionVariablesMethods
+    //changes the costs per sector
     public void SetAfterInvestmentActionCost(double modifier)
     {
         afterInvestmentActionMoneyCost -= actionMoneyCost * modifier;
     }
 
+    //changes variables of the consequences
     public void SetAfterInvestmentConsequences(double modifier)
     {
         double incomeChangeValue = consequences.income * modifier;
@@ -218,6 +228,7 @@ public class RegionAction //: MonoBehaviour
             afterInvestmentConsequences.pollution.ChangeWaterPollutionMutation(0 - waterPollutionIncreaseChangeValue);
     }
 
+    //changes variables of the temporary consequences
     public void SetAfterInvestmentTemporaryConsequences(double modifier)
     {
         double incomeChangeValue = temporaryConsequences.income * modifier;
@@ -272,4 +283,5 @@ public class RegionAction //: MonoBehaviour
         else
             afterInvestmentTemporaryConsequences.pollution.ChangeWaterPollutionMutation(0 - waterPollutionIncreaseChangeValue);
     }
+    #endregion
 }

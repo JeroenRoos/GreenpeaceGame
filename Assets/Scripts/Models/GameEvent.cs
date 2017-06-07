@@ -53,7 +53,8 @@ public class GameEvent
     public bool isOwnEvent;
 
     public GameEvent() { }
-
+    
+    //method used for copying GameEvent without reference
     public GameEvent(GameEvent e)
     {
         name = e.name;
@@ -94,6 +95,7 @@ public class GameEvent
         pickedTemporaryConsequences = new SectorStatistics[3] { new SectorStatistics(e.pickedTemporaryConsequences[0]), new SectorStatistics(e.pickedTemporaryConsequences[0]), new SectorStatistics(e.pickedTemporaryConsequences[0]) };
     }
 
+    #region EventStatusMethods
     public void StartEvent(int currentYear, int currentMonth)
     {
         onEventStartYear = currentYear;
@@ -107,28 +109,6 @@ public class GameEvent
     public void SubtractIdleTurnsLeft()
     {
         idleTurnsLeft--;
-    }
-
-    public void FinishEvent()
-    {
-        /*pickedChoiceStartYear = 0;
-        pickedChoiceStartMonth = 0;
-        onEventStartYear = 0;
-        onEventStartMonth = 0;
-        pickedChoiceNumber = 0;
-        pickedConsequences = null;
-        pickedTemporaryConsequences = null;*/
-
-        isFinished = true;
-    }
-
-    public void CompleteEvent(Game game)
-    {
-        isActive = false;
-        eventStartChance += eventChoiceEventStartChanceModifier[pickedChoiceNumber];
-        if (!ApplicationModel.multiplayer || isOwnEvent)
-            game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
-        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown + temporaryConsequencesDuration[pickedChoiceNumber];
     }
 
     public void SetPickedChoice(int i, Game game, MapRegion region)
@@ -152,6 +132,23 @@ public class GameEvent
         }
     }
 
+    public void CompleteEvent(Game game)
+    {
+        isActive = false;
+        eventStartChance += eventChoiceEventStartChanceModifier[pickedChoiceNumber];
+        if (!ApplicationModel.multiplayer || isOwnEvent)
+            game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
+        lastCompleted = pickedChoiceStartYear * 12 + pickedChoiceStartMonth + eventCooldown + temporaryConsequencesDuration[pickedChoiceNumber];
+    }
+
+    public void FinishEvent()
+    {
+        isFinished = true;
+    }
+    #endregion
+
+    #region UpdateEventVariablesMethods
+    //changes the costs of the choices
     public void SetAfterInvestmentEventChoiceMoneyCost(double modifier)
     {
         for (int i = 0; i < afterInvestmentEventChoiceMoneyCost.Length; i++)
@@ -160,6 +157,7 @@ public class GameEvent
         }
     }
 
+    //changes variables of the consequences
     public void SetAfterInvestmentConsequences(double modifier)
     {
         for (int i = 0; i < consequences.Length; i++)
@@ -218,6 +216,7 @@ public class GameEvent
         }
     }
 
+    //changes variables of the temporary consequences
     public void SetAfterInvestmentTemporaryConsequences(double modifier)
     {
         for (int i = 0; i < consequences.Length; i++)
@@ -275,5 +274,6 @@ public class GameEvent
                 afterInvestmentTemporaryConsequences[i].pollution.ChangeWaterPollutionMutation(0 - waterPollutionIncreaseChangeValue);
         }
     }
+    #endregion
 }
 

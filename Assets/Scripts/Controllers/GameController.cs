@@ -387,6 +387,7 @@ public class GameController : MonoBehaviour
         regionActionContainer.Save();
     }
 
+    //Actions are loaded in each region seperately to avoid references
     public void LoadRegionActions()
     {
         foreach (MapRegion region in game.regions)
