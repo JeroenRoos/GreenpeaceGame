@@ -8,6 +8,7 @@ public class Lobby
 
     public Lobby()
     {
+        // Zorgt ervoor dat de speler een lobby joined
         PhotonNetwork.ConnectUsingSettings("0.1");
         PhotonNetwork.automaticallySyncScene = true;
         PhotonNetwork.autoJoinLobby = true;

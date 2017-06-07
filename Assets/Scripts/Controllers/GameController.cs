@@ -104,6 +104,7 @@ public class GameController : MonoBehaviour
         }
         //setBuildingTextures();
 
+        // Instantiate elk event die bezig is en zet het icoontje op de map
         foreach (MapRegion r in game.regions)
         {
             foreach (GameEvent e in r.inProgressGameEvents)
@@ -112,6 +113,8 @@ public class GameController : MonoBehaviour
                 eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, r, e);
             }
         }
+
+        // Geef de Game Class aan UpdateUI
         updateUI.LinkGame(game);
     }
 
@@ -123,6 +126,7 @@ public class GameController : MonoBehaviour
         SetPlayerTrackingData();
         autoSave = false;
 
+        // De coroutines die de buttons omhoog brengen op het moment dat ze beschikbaar moeten worden
         StartCoroutine(updateUI.showBtnQuests());
         StartCoroutine(updateUI.showBtnInvestments());
         StartCoroutine(updateUI.showBtnCards());
@@ -440,12 +444,12 @@ public class GameController : MonoBehaviour
             game.nextTurnIsclicked = false;
             game.OtherPlayerClickedNextTurn = false;
 
+            // Zet de Next Turn button weer op interactable en de tekst en image die bij de andere speler aangeeft dat een speler naar de volgende beurt wil weer op false
             updateUI.btnNextTurn.interactable = true;
             updateUI.txtReadyForNextTurn.gameObject.SetActive(false);
             updateUI.imgReadyForNextTurn.gameObject.SetActive(false);
 
-            //updateUI.SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
-            //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
+            // Zet de tekst van de button weer naar volgende maand in plaats van "Waiting..."
             string[] txt = { "Volgende maand", "Next month" };
             updateUI.btnNextTurnText.text = txt[taal];
 
@@ -850,9 +854,6 @@ public class GameController : MonoBehaviour
             updateUI.updateMoney(game.gameStatistics.money);
         else
             updateUI.updateMoney(game.gameStatistics.playerMoney[game.gameStatistics.playerNumber]);
-
-        //updateUI.updateEnergy(game.gameStatistics.energy.cleanSource);
-        //updateUI.updatePopulation(game.gameStatistics.population);
     }
 
 
@@ -912,6 +913,7 @@ public class GameController : MonoBehaviour
     } 
     */
 
+    // Wordt vanuit de UpdateUI class geregeld, deze code wordt niet meer gebruikt
     private void updateUIPopups()
     {
         if (updateUI.canvasOrganizationPopup.gameObject.activeSelf)
@@ -994,21 +996,20 @@ public class GameController : MonoBehaviour
         return updateUI.getPopupActive();
     }
 
-
+    // Toegewezen aan de button "Maak Gebouw" vanuit de inspector
     public void btnUseBuildingPress()
     {
         MapRegion r = updateUI.regionToBeBuild;
         Building b = updateUI.buildingToBeBuild;
 
+        // Set de building in de regio
         r.SetBuilding(b.buildingID);
 
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("BuildingMade", PhotonTargets.Others, r.name[0], b.buildingID);
 
-        //updateUI.canvasEmptyBuildingsPopup.gameObject.SetActive(false);
-        //updateUI.popupActive = false;
-        //EventManager.CallPopupIsDisabled();
-
+        // Destory de juiste building instance en verplaats hem met de nieuwe
+        // Op deze manier wordt het icoontje op de map geupdate
         for (int i = 0; i < game.regions.Count; i++)
         {
             if (r == game.regions[i])
@@ -1020,15 +1021,20 @@ public class GameController : MonoBehaviour
             }
         }
 
+        // Haal de kosten van het gebouw af van je money
         game.gameStatistics.ModifyMoney(b.buildingMoneyCost, false);
+
+        // Start de popup voor building vanuit UpdateUI
         updateUI.initBuildingPopup(b, r);
     }
 
+    // Toegewezen aan de button "Sloop Gebouw" vanuit de inspector
     public void btnDeleteBuildingPress()
     {
         MapRegion r = updateUI.buildingRegion;
         Building b = updateUI.activeBuilding;
 
+        // Zet de building weer op null zodat er later een nieuwe gebouwd kan worden
         r.SetBuilding(null);
 
         if (ApplicationModel.multiplayer)
@@ -1038,6 +1044,8 @@ public class GameController : MonoBehaviour
         updateUI.popupActive = false;
         EventManager.CallPopupIsDisabled();
 
+        // Destory de juiste building instance en verplaats hem met de nieuwe
+        // Op deze manier wordt het icoontje op de map geupdate
         for (int i = 0; i < game.regions.Count; i++)
         {
             if (r == game.regions[i])
@@ -1049,17 +1057,22 @@ public class GameController : MonoBehaviour
             }
         }
 
+        // Open de popup vanuit UpdateUI
         updateUI.initEmptyBuildingPopup(r);
     }
 
+    // Toegewezen aan de button "Doe Event" vanuit de inspector
     public void btnDoEventClick()
     {
+        // Event wordt afgerond vanuit UpdateUI
         updateUI.finishEvent();
 
-        /*GameObject */eventInstance = Instantiate(eventObject);
+        // Veranderd het icoontje van de event
+        eventInstance = Instantiate(eventObject);
         eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, updateUI.regionEvent, updateUI.gameEvent);
     }
 
+    // Toegewezen aan de "Share on Facebook" button vanuit de Inspector
     public void btnShareFacebookClick()
     {
         ShareOnFacebook();
