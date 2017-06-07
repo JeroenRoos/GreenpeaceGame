@@ -3418,6 +3418,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Event Popup (No Choice Made)
+    // De method die wordt aangeroepen als er op de event button wordt gedrukt en er is nog geen keuze gemaakt
     public void initEventPopup(GameEvent e, MapRegion r)
     {
         imgEventConsequences.gameObject.SetActive(false);
@@ -3427,11 +3428,14 @@ public class UpdateUI : MonoBehaviour
         popupActive = true;
         EventManager.CallPopupIsActive();
 
+        // Initialize de tekst en UI
         initEventUI();
         initEventText(e);
 
-        if (game.tutorial.tutorialActive && game.tutorial.tutorialEventsActive)//tutorialstep12)
+        // Als de tutorial actief is en nog niet afgerond is voor dit onderdeel
+        if (game.tutorial.tutorialActive && game.tutorial.tutorialEventsActive)
         {
+            // Start de tutorial
             imgTutorialEvents.gameObject.SetActive(true);
             StartCoroutine(eventTutorial());
         }
@@ -3439,7 +3443,7 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator eventTutorial()
     {
-        //tutorialEventsActive = true;
+        // Tekst voor het Event onderdeel van de tutorial
         string[] txtTutorial = { "Bij elk event heb je altijd 3 keuzes. Van elke keuze kun je de kosten en de duur zien. Elke keuze brengt weer andere consequenties met zich mee voor de verschillende statistieken. "
                 + "Het is dus cruciaal dat je goed nadenkt over je beslissingen. \n\nLos nu dit event op door een oplossing te kiezen."
                 , "You always have 3 choices for each event. You can see the cost and duration from each choice. Each choice brings other consequences for the different statistics. " +
@@ -3448,14 +3452,17 @@ public class UpdateUI : MonoBehaviour
         txtTutorialEvent.text = txtTutorial[taal];
         txtTutorialEventBtn.text = txtBtn[taal];
 
-        while (game.tutorial.tutorialIndex < 8)// tutorialStep20)
+        // Zolang er niet op verder wordt gedrukt
+        while (game.tutorial.tutorialIndex < 8)
             yield return null;
 
         imgTutorialEvents.gameObject.SetActive(false);
     }
 
+    // Method die de UI initialized
     private void initEventUI()
     {
+        // Alle radio buttons worden op false gezet
         playSelectSound = false;
         if (radioEventOption1Check)
             radioEventOption1.isOn = false;
@@ -3468,11 +3475,11 @@ public class UpdateUI : MonoBehaviour
 
         playSelectSound = true;
 
-        //btnDoEvent.interactable = false;
         btnDoEvent.gameObject.SetActive(false);
         btnViewConsequencesEvent.interactable = false;
     }
 
+    // Alle tekst wordt ingesteld
     private void initEventText(GameEvent e)
     {
         txtNotYourEvent.gameObject.SetActive(false);
@@ -3492,12 +3499,14 @@ public class UpdateUI : MonoBehaviour
         txtEventConsequencesChoice.text = "";
         txtEventColumRight.text = "";
 
+        // Als de taal NL is > gebruik de Nederlandse keuzes
         if (ApplicationModel.language == 0)
         {
             radioEventOption1Text.text = "<b>" + e.choicesDutch[0] + "</b>";
             radioEventOption2Text.text = "<b>" + e.choicesDutch[1] + "</b>"; 
             radioEventOption3Text.text = "<b>" + e.choicesDutch[2] + "</b>"; 
         }
+        // Als de taal ENG is > gebruik de Engelse keuzes
         else
         {
             radioEventOption1Text.text = "<b>" + e.choicesEnglish[0] + "</b>";
@@ -3505,30 +3514,40 @@ public class UpdateUI : MonoBehaviour
             radioEventOption3Text.text = "<b>" + e.choicesEnglish[2] + "</b>";
         }
 
+        // Controle of de duur van de eerste optie groter is dan 1, moet gedaan worden omdat er Maand of Maanden moet komen te staan
         if (e.eventDuration[0] != 1)
-            radioEventOption1Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonths[taal];
+            radioEventOption1Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonths[taal];   
         else
             radioEventOption1Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[0] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[0] + txtMonth[taal];
+
+        // Controle of de duur van de tweede optie groter is dan 1, moet gedaan worden omdat er Maand of Maanden moet komen te staan
         if (e.eventDuration[1] != 1)
             radioEventOption2Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonths[taal];
         else
             radioEventOption2Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[1] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[1] + txtMonth[taal];
+
+        // Controle of de duur van de derde optie groter is dan 1, moet gedaan worden omdat er Maand of Maanden moet komen te staan
         if (e.eventDuration[2] != 1)
             radioEventOption3Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonths[taal];
         else
             radioEventOption3Text.text += txtKosten[taal] + e.afterInvestmentEventChoiceMoneyCost[2] + txtMoney[taal] + txtDuur[taal] + e.eventDuration[2] + txtMonth[taal];
     }
 
+    // Aangewezen voor de on value changed voor de radio button van optie 1 in de inspector
     public void valueChangedOption1()
     {
         if (playSelectSound)
             EventManager.CallPlayOptionSelectSFX();
 
+        // Kijk of hij al true was
         if (!radioEventOption1Check)
         {
+            // Zet de andere radio buttons op false en deze op true
             radioEventOption1Check = true;
             radioEventOption2.isOn = false;
             radioEventOption3.isOn = false;
+
+            // Controleer of de ksoten van de gekozen optie niet meer is dan je op je bank hebt staan
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[0])
             {
                 btnDoEvent.interactable = true;
@@ -3536,29 +3555,37 @@ public class UpdateUI : MonoBehaviour
             }
             else
                 btnDoEvent.interactable = false;
-
-            //btnDoEvent.gameObject.SetActive(true);
+            
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences "};
             txtEventColumRight.text = txt[taal];
+
+            // Haal de consequenties op uit de method getSectorStatisticsConsequences()
             txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[0]); 
         }
+        // Als hij niet true was wordt hij weer of false gezet
         else
             radioEventOption1Check = false;
 
+        // Controle of alle radio buttons op false staan, als dit zo is moet de button voor "Do Event" weer op niet interactable worden gezet
         checkIfAllFalse();
     }
 
+    // Aangewezen voor de on value changed voor de radio button van optie 2 in de inspector
     public void valueChangedOption2()
     {
         if (playSelectSound)
             EventManager.CallPlayOptionSelectSFX();
 
+        // Kijk of hij al true was
         if (!radioEventOption2Check)
         {
+            // Zet de andere radio buttons op false en deze op true
             radioEventOption2Check = true;
             radioEventOption1.isOn = false;
             radioEventOption3.isOn = false;
+
+            // Controleer of de ksoten van de gekozen optie niet meer is dan je op je bank hebt staan
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[1])
             {
                 btnDoEvent.interactable = true;
@@ -3566,29 +3593,37 @@ public class UpdateUI : MonoBehaviour
             }
             else
                 btnDoEvent.interactable = false;
-
-            //btnDoEvent.gameObject.SetActive(true);
+            
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
-            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[1]); 
+
+            // Haal de consequenties op uit de method getSectorStatisticsConsequences()
+            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[1]);
         }
+        // Als hij niet true was wordt hij weer of false gezet
         else
             radioEventOption2Check = false;
 
+        // Controle of alle radio buttons op false staan, als dit zo is moet de button voor "Do Event" weer op niet interactable worden gezet
         checkIfAllFalse();
     }
 
+    // Aangewezen voor de on value changed voor de radio button van optie 3 in de inspector
     public void valueChangedOption3()
     {
         if (playSelectSound)
             EventManager.CallPlayOptionSelectSFX();
 
+        // Kijk of hij al true was
         if (!radioEventOption3Check)
         {
+            // Zet de andere radio buttons op false en deze op true
             radioEventOption3Check = true;
             radioEventOption1.isOn = false;
             radioEventOption2.isOn = false;
+
+            // Controleer of de kosten van de gekozen optie niet meer is dan je op je bank hebt staan
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[2])
             {
                 btnDoEvent.interactable = true;
@@ -3597,39 +3632,47 @@ public class UpdateUI : MonoBehaviour
             else
                 btnDoEvent.interactable = false;
 
-            //btnDoEvent.gameObject.SetActive(true);
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
-            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[2]); 
+
+            // Haal de consequenties op uit de method getSectorStatisticsConsequences()
+            txtEventConsequencesChoice.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[2]);
         }
+        // Als hij niet true was wordt hij weer of false gezet
         else
             radioEventOption3Check = false;
 
+        // Controle of alle radio buttons op false staan, als dit zo is moet de button voor "Do Event" weer op niet interactable worden gezet
         checkIfAllFalse();
     }
 
+    // De method die controleerd of alle radiobuttons false zijn
     private void checkIfAllFalse()
     {
+        // Als ze allemaal false zijn moet de button do event weer op niet interactable worden gezet
         if (!radioEventOption1Check && !radioEventOption2Check && !radioEventOption3Check)
         {
             btnDoEvent.gameObject.SetActive(false);
             txtEventColumRight.text = "";
-            //btnDoEvent.interactable = false;
             btnViewConsequencesEvent.interactable = false;
             txtEventConsequencesChoice.text = "";
         }
     }
 
+    // Method die de do event button op true/false zet
     private void activateDoEventButton()
     {
+        // Als het multiplayer is
         if (ApplicationModel.multiplayer)
         {
+            // Als jij de owner bent van de regio kun je de event oplossen
             if (regionEvent.regionOwner == PhotonNetwork.player.NickName)
             {
                 txtNotYourEvent.gameObject.SetActive(false);
                 btnDoEvent.gameObject.SetActive(true);
             }
+            // Als jij niet de owner bent van de regio kun je de event niet oplossen en krijg je text te zien ipv de button
             else
             {
                 btnDoEvent.gameObject.SetActive(false);
@@ -3639,72 +3682,61 @@ public class UpdateUI : MonoBehaviour
                 txtNotYourEvent.text = info[taal];
             }
         }
+        // Als het geen multiplayer is, is de button altijd te zien
         else
         {
             btnDoEvent.gameObject.SetActive(true);
         }
     }
-   
+
+    // Wordt aangeroepen vanuit GameController als er op de button Finish Event wordt gedrukt
     public void finishEvent()
     {
         EventManager.CallPlayButtonClickSFX();
         int option;
 
+        // Kijk welke radio button geselecteerd is
         if (radioEventOption1Check)
             option = 0;
         else if (radioEventOption2Check)
             option = 1;
-        else 
+        else
             option = 2;
 
+        // Geef de gekozen optie mee en los het event op met die optie
         gameEvent.SetPickedChoice(option, game, regionEvent);
+
+        // Als het multiplayer is > zet dan in het log van de andere speler dat er een event opgelost is
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("EventChoiceMade", PhotonTargets.Others, regionEvent.name[0], gameEvent.name, option);
-        
+
+        // Event popup wordt weer uitgezet
         canvasEventPopup.gameObject.SetActive(false);
         popupActive = false;
         EventManager.CallPopupIsDisabled();
 
+        // Tutorial booleans die aan/uit gezet moeten worden
         if (!game.tutorial.tutorialEventsDone)
             game.tutorial.tutorialEventsDone = true;
-
         if (game.tutorial.tutorialEventsActive)
             game.tutorial.tutorialEventsActive = false;
     }
 
-    public void btnEventConsequencesClick()
-    {
-        imgEventConsequences.gameObject.SetActive(true);
-
-        EventManager.CallPlayButtonClickSFX();
-        int option;
-
-        if (radioEventOption1Check)
-            option = 0;
-        else if (radioEventOption2Check)
-            option = 1;
-        else
-            option = 2;
-
-        if (taal == 0)
-            txtEventConsequencesTitle.text = gameEvent.choicesDutch[option];
-        else
-            txtEventConsequencesTitle.text = gameEvent.choicesEnglish[option];
-
-        txtEventConsequences.text = getSectorStatisticsConsequences(gameEvent.pickedConsequences[option]);
-    }
     #endregion
 
     #region Code for Event Popup (Choice Made)
+    // Wordt aangeroepen als er op de event button wordt gedrukt bij een event die al opgelost is
     public void initEventPopupChoiceMade(GameEvent e, MapRegion r)
     {
         canvasEventChoiceMadePopup.gameObject.SetActive(true);
         popupActive = true;
         EventManager.CallPopupIsActive();
 
+        // Initialize de tekst voor event
         initEventChoiceMadeText(e, r);
     }
 
+    // Set alle tekst in de popup
     private void initEventChoiceMadeText(GameEvent e, MapRegion r)
     {
         string[] header = { "Opgelost event", "Finished event" };
@@ -3724,12 +3756,14 @@ public class UpdateUI : MonoBehaviour
         string[] duration = { "\n<b>Resterende tijd gekozen optie:</b> " + turnsLeft + " maanden", "\n<b>Remaining duration chosen option:</b> " + turnsLeft + " months" };
         txtEventChoiceMadeInfo.text += duration[taal];
 
+        // Haal de consequences van event op uit de method getSectorStatisticsConsequences()
         string[] c = { "\n\n<b>Consequenties: </b>", "\n\n<b>Consequences: </b>" };
         txtEventChoiceMadeInfo.text += c[taal] + getSectorStatisticsConsequences(e.pickedConsequences[e.pickedChoiceNumber]);
     }
     #endregion
 
     #region Code for Empty Building Popup
+    // Wordt gecalled als er op de button Building wordt gedrukt of als de er op de button destroy building wordt gedrukt
     public void initEmptyBuildingPopup(MapRegion r)
     {
         regionToBeBuild = r;
@@ -3737,9 +3771,11 @@ public class UpdateUI : MonoBehaviour
         EventManager.CallPopupIsActive();
         canvasEmptyBuildingsPopup.gameObject.SetActive(true);
 
+        //  Als de tutorial actief en is dit onderdeel nog niet is afgerond
         if (game.tutorial.tutorialBuildingsActive && game.tutorial.doTuto)
             StartCoroutine(tutorialBuildingsPopup());
 
+        // Set de buildings text
         initEmptyBuildingText();
     }
 
@@ -3747,6 +3783,7 @@ public class UpdateUI : MonoBehaviour
     {
         imgTutorialBuildings.gameObject.SetActive(true);
 
+        // Tekst voor het buildings onderdeel van de tutorial
         string[] step = { "Dit is het gebouw menu. Je mag 1 gebouw in de regio neerzetten en elk gebouw heeft zijn eigen voordelen. Je kan een gebouw echter wel weer slopen om een ander gebouw neer te zetten. ",
             "This is the building menu. You can build 1 building in each region and each building has its own benefits. You can however destroy the building to build a different one."};
         string[] txtBtn = { "Volgende", "Next" };
@@ -3754,18 +3791,21 @@ public class UpdateUI : MonoBehaviour
         txtTutorialBuildings.text = step[taal];
         txtTutorialBuildingsbtn.text = txtBtn[taal];
 
-        while (game.tutorial.tutorialIndex < 12)//tutorialStep16)
+        // Zolang er niet op verder wordt gedrukt
+        while (game.tutorial.tutorialIndex < 12)
             yield return null;
 
         imgTutorialBuildings.gameObject.SetActive(false);
         game.tutorial.tutorialBuildingsActive = false;
 
+        // Zolang de canvas van buildings niet active is
         while (canvasEmptyBuildingsPopup.gameObject.activeSelf)
             yield return null;
 
         btnTutorialSmallNext.gameObject.SetActive(true);
         canvasTutorial.gameObject.SetActive(true);
 
+        // Tekst voor buildings onderdeel van de tutorial
         string[] step3 = {"Je bent nu klaar om het hele spel te spelen. \n\nDenk eraan dat de vervuiling 0% moet zijn voor 2050.",
             "You're now ready to play the game. \n\nDon't forget that the pollution needs to be below 0% before 2050." };
         string[] txtButton = { "Eindig handleiding", "Finish tutorial" };
@@ -3775,7 +3815,8 @@ public class UpdateUI : MonoBehaviour
 
         popupActive = true;
 
-        while (game.tutorial.tutorialIndex < 13)//tutorialStep17)
+        // Zolang er niet op verder wordt gedrukt
+        while (game.tutorial.tutorialIndex < 13)
             yield return null;
 
         canvasTutorial.gameObject.SetActive(false);
@@ -3788,6 +3829,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEmptyBuildingText()
     {
+        // Set de tekst van de buildings
         btnUseBuilding.gameObject.SetActive(false);
         string[] btnTxt = { "Maak gebouw", "Build building" };
         btnUseBuildingTxt.text = btnTxt[taal];
@@ -3808,8 +3850,10 @@ public class UpdateUI : MonoBehaviour
         txtBuildingAlreadyActive.gameObject.SetActive(false);
         btnNewDeleteBuilding.gameObject.SetActive(false);
 
+        // Als het multiplayer is
         if (!ApplicationModel.multiplayer)
         {
+            // Als er al een gebouw actief is in de regio
             if (regionToBeBuild.activeBuilding != null)
             {
                 initBuildingPopup(regionToBeBuild.activeBuilding, regionToBeBuild);
@@ -3822,6 +3866,7 @@ public class UpdateUI : MonoBehaviour
 
             }
         }
+        // Als het geen multiplayer is
         else
         {
             initBuildingPopup(regionToBeBuild.activeBuilding, regionToBeBuild);
@@ -3830,6 +3875,8 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Wordt aangeroepen vanuit onGUI in UpdateUI
+    // Set de tekst voor de gekozen building
     private void setTextBuildingInformation(Building b)
     {
         buildingToBeBuild = b;
@@ -3843,21 +3890,23 @@ public class UpdateUI : MonoBehaviour
         string[] cost = { "Kosten: " + b.buildingMoneyCost + " geld\n", "Costs: " + b.buildingMoneyCost + " geld\n" };
         txtEmptyBuildingStats.text += cost[taal];
 
+        // Haal de modifiers van de building op uit deze method
         txtEmptyBuildingStats.text += getBuildingModifiers(b);
 
+        // Controleer of je wel genoeg geld hebt om het gebouw te maken
         if (game.GetMoney() >= buildingToBeBuild.buildingMoneyCost)
             btnUseBuilding.interactable = true;
         else
             btnUseBuilding.interactable = false;
 
+        // Als er al een building in de regio staat kun je er niet nog een maken en is de button niet actief
         if (regionToBeBuild.activeBuilding != null)
-        {
             btnUseBuilding.gameObject.SetActive(false);
 
-        }
-
+        // Als het multiplayer is
         if (ApplicationModel.multiplayer)
         {
+            // Als je niet de owner van de regio bent
             if (regionToBeBuild.regionOwner != PhotonNetwork.player.NickName)
             {
                 txtNotYourEmptyBuilding.gameObject.SetActive(true);
@@ -3866,6 +3915,7 @@ public class UpdateUI : MonoBehaviour
                 string[] txt = { "Dit is niet jouw regio, daarom kun je hier ook geen gebouw maken", "This is not your region, this means you can't build here." };
                 txtNotYourEmptyBuilding.text = txt[taal];
             }
+            // Als je wel de owner van de regio bent
             else
             {
                 txtNotYourEmptyBuilding.gameObject.SetActive(false);
@@ -3874,8 +3924,10 @@ public class UpdateUI : MonoBehaviour
                 btnUseBuildingTxt.text = btnTxt[taal];
             }
         }
+        // Als het geen multiplayer is
         else
         {
+            // Als er al een gebouw actief is in de regio
             if (regionToBeBuild.activeBuilding != null)
             {
                 txtBuildingAlreadyActive.gameObject.SetActive(true);
@@ -3892,43 +3944,43 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Active Building Popup
+    // Wordt aangeroepen als er al een actief gebouw staat in de regio
     public void initBuildingPopup(Building b, MapRegion r)
     {
-        //txtNotYourBuilding.gameObject.SetActive(false);
         activeBuilding = b;
         buildingRegion = r;
         popupActive = true;
         EventManager.CallPopupIsActive();
         btnNewDeleteBuilding.gameObject.SetActive(false);
-        initBuildingText();
 
-        //canvasBuildingsPopup.gameObject.SetActive(true);
-        //canvasEmptyBuildingsPopup.gameObject.SetActive(true);
-        //initEmptyBuildingText();
+        // Initialize de text 
+        initBuildingText();
     }
 
+    // Initialize de text in de popup
     private void initBuildingText()
     {
         string[] title = { "Gebouwen", "Buildings" };
         string[] column = { "", "" };
+
         if (buildingRegion.activeBuilding != null)
-        {
-            column = new string[2]{ "Actief gebouw: " + /*activeBuilding.buildingName[0]*/buildingRegion.activeBuilding.buildingName[0], "Active building: " + buildingRegion.activeBuilding.buildingName[1] };
-        }
+            column = new string[2] { "Actief gebouw: " + buildingRegion.activeBuilding.buildingName[0], "Active building: " + buildingRegion.activeBuilding.buildingName[1] };
+
 
         string[] btn = { "Sloop gebouw", "Destroy building" };
 
         txtEmptyBuildingColumRight.text = "";
         txtNewBuildingsStats.text = "";
-        //txtNewBuildingsTitle.text = title[taal];
         txtNewBuildingsColumn.text = column[taal];
         txtNewBtnDeleteBuilding.text = btn[taal];
 
         txtEmptyBuildingStats.text = "";
         btnUseBuilding.gameObject.SetActive(false);
 
+        // Als het multiplayer is
         if (ApplicationModel.multiplayer)
         {
+            // Als jij niet de owner bent van de regio kun je geen gebouwen slopen in de regio
             if (buildingRegion.regionOwner != PhotonNetwork.player.NickName)
             {
                 btnNewDeleteBuilding.gameObject.SetActive(false);
@@ -3937,27 +3989,29 @@ public class UpdateUI : MonoBehaviour
                     "This building doesn't belong to your regions, this means you can't do anything with this building." };
                 txtNotYourBuildingDestory.text = txt[taal];
             }
+            // Als je wel de owner bent kun je wel een gebouw slopen
             else
             {
                 btnNewDeleteBuilding.gameObject.SetActive(true);
                 txtNotYourBuildingDestory.gameObject.SetActive(false);
             }
         }
+        // Als het geen multiplayer is
         else
             btnNewDeleteBuilding.gameObject.SetActive(true);
 
 
-        // string[] cost = { "Kosten:" + activeBuilding.buildingMoneyCost + "\n", "Cost:" + activeBuilding.buildingMoneyCost + "\n" };
-        // txtBuildingsStats.text += cost[taal];
-
         string[] info = { "Effecten van " + activeBuilding.buildingName[0], "Effects caused by " + activeBuilding.buildingName[1] };
         txtNewBuildingsStats.text = info[taal];
+
+        // Haal de modifiers op uit deze method en voeg het toe aan de text variabele
         txtNewBuildingsStats.text += getBuildingModifiers(activeBuilding);
 
     }
     #endregion
 
     #region Code for Investments Popup
+    // De tekst voor de popup
     private void initInvestementsText()
     {
         string[] title = { "Investeren", "Investments" };
@@ -3979,6 +4033,7 @@ public class UpdateUI : MonoBehaviour
         txtInvestmentsEventCost.text = eventvermindering[taal];
         txtInvestmentsEventConsequences.text = eventconsequencies[taal];
 
+        // Als de tutorial actief is en dit onderdeel nog niet is afgerond > start de tutorial
         if (game.tutorial.tutorialInvestementsActive && game.tutorial.doTuto)
             StartCoroutine(tutorialInvestementsPopup());
     }
@@ -3987,6 +4042,7 @@ public class UpdateUI : MonoBehaviour
     {
         imgTutorialInvestements.gameObject.SetActive(true);
 
+        // De tekst voor investeringen onderdeel van de tutorial
         string[] step = { "Je kunt investeren om de kosten en consequenties van acties en events te verlagen en te verbeteren. Je kan 5 keer investeren in elk onderdeel.\n\n " +
                 "Investeren kost 10.000 geld per keer. \n\nAls je investeert kan je dit niet meer ongedaan maken.",
             "You can invest money to decrease the cost and increase the consequences of actions and events. You can invest 5 times in each option." +
@@ -3996,12 +4052,14 @@ public class UpdateUI : MonoBehaviour
         txtTutorialInvestements.text = step[taal];
         txtTutorialInvestementsbtn.text = txtBtn[taal];
 
-        while (game.tutorial.tutorialIndex < 11)//tutorialStep16)
+        // Zolang er niet op verder wordt gedrukt
+        while (game.tutorial.tutorialIndex < 11)
             yield return null;
 
         imgTutorialInvestements.gameObject.SetActive(false);
         game.tutorial.tutorialInvestementsActive = false;
 
+        // Zolang de popup voor investements actief blijft
         while (canvasInvestmentsPopup.gameObject.activeSelf)
             yield return null;
 
@@ -4012,6 +4070,7 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = true;
     }
 
+    // Set de investeringen images voor elke onderdeel
     private void initInvestmentsImages()
     {
         setActionCostReductionInvestments();
@@ -4020,8 +4079,10 @@ public class UpdateUI : MonoBehaviour
         setEventConsequencesInvestments();
     }
 
+    // Set de images voor de action cost reduction 
     public void setActionCostReductionInvestments()
     {
+        // Als de boolean true is (en er is dus geinvesteerd) wordt de image op true gezet
         if (game.investments.actionCostReduction[0])
             imgInvestmentActionCost01.gameObject.SetActive(true);
         if (game.investments.actionCostReduction[1])
@@ -4034,8 +4095,10 @@ public class UpdateUI : MonoBehaviour
             imgInvestmentActionCost05.gameObject.SetActive(true);
     }
 
+    // Set de images voor de betere action consequences 
     public void setActionConsequencesInvestments()
     {
+        // Als de boolean true is (en er is dus geinvesteerd) wordt de image op true gezet
         if (game.investments.betterActionConsequences[0])
             imgInvestmentActionConsequences01.gameObject.SetActive(true);
         if (game.investments.betterActionConsequences[1])
@@ -4048,8 +4111,10 @@ public class UpdateUI : MonoBehaviour
             imgInvestmentActionConsequences05.gameObject.SetActive(true);
     }
 
+    // Set de images voor de event cost reduction 
     public void setEventCostReductionInvestments()
     {
+        // Als de boolean true is (en er is dus geinvesteerd) wordt de image op true gezet
         if (game.investments.gameEventCostReduction[0])
             imgInvestmentEventCost01.gameObject.SetActive(true);
         if (game.investments.gameEventCostReduction[1])
@@ -4062,8 +4127,10 @@ public class UpdateUI : MonoBehaviour
             imgInvestmentEventCost05.gameObject.SetActive(true);
     }
 
+    // Set de images voor de betere event consequences 
     public void setEventConsequencesInvestments()
     {
+        // Als de boolean true is (en er is dus geinvesteerd) wordt de image op true gezet
         if (game.investments.betterGameEventConsequences[0])
             imgInvestmentEventConsequences01.gameObject.SetActive(true);
         if (game.investments.betterGameEventConsequences[1])
@@ -4076,81 +4143,114 @@ public class UpdateUI : MonoBehaviour
             imgInvestmentEventConsequences05.gameObject.SetActive(true);
     }
 
+    // Toegewezen in  de inspecter aan de button voor de investering in action cost reduction
     public void btnInvestActionCost()
     {
+        // Controle of je wel genoeg geld hebt voor de investering
         if (game.GetMoney() >= game.investments.investmentCost)
         {
+            // Stuur de investering door, de consequenties van de investering worden daar afgehandeld
             game.investments.InvestInActionCostReduction(game.regions);
 
+            // Als het multiplayer is wordt de log geupdate met de investering
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Action cost reduction");
             setActionCostReductionInvestments();
 
+            // Als je al 5x hebt geinvesteerd kun je niet meer investeren en wordt de investeer button uit gezet
             if (game.investments.actionCostReduction[4])
                 btnInvestmentActionCostInvest.gameObject.SetActive(false);
 
+            // Modify je bank door de investeerksosten eraf te halen
             game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
         }
+
+        // Kijk of je nog genoeg geld hebt om nog een keer te investeren
         updateInvestButtonsInteractable();
     }
 
+    // Toegewezen in  de inspecter aan de button voor de investering in action consequences
     public void btnInvestActionConsequences()
     {
+        // Controle of je wel genoeg geld hebt voor de investering
         if (game.GetMoney() >= game.investments.investmentCost)
         {
+            // Stuur de investering door, de consequenties van de investering worden daar afgehandeld
             game.investments.InvestInBetterActionConsequences(game.regions);
 
+            // Als het multiplayer is wordt de log geupdate met de investering
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better action consequences");
             setActionConsequencesInvestments();
 
+            // Als je al 5x hebt geinvesteerd kun je niet meer investeren en wordt de investeer button uit gezet
             if (game.investments.betterActionConsequences[4])
                 btnInvestmentActionConsequenceInvest.gameObject.SetActive(false);
 
+            // Modify je bank door de investeerksosten eraf te halen
             game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
         }
+
+        // Kijk of je nog genoeg geld hebt om nog een keer te investeren
         updateInvestButtonsInteractable();
     }
 
+    // Toegewezen in  de inspecter aan de button voor de investering in event cost reduction
     public void btnInvestEventCost()
     {
+        // Controle of je wel genoeg geld hebt voor de investering
         if (game.GetMoney() >= game.investments.investmentCost)
         {
+            // Stuur de investering door, de consequenties van de investering worden daar afgehandeld
             game.investments.InvestInGameEventCostReduction(game.events);
 
+            // Als het multiplayer is wordt de log geupdate met de investering
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Event cost reduction");
             setEventCostReductionInvestments();
 
+            // Als je al 5x hebt geinvesteerd kun je niet meer investeren en wordt de investeer button uit gezet
             if (game.investments.gameEventCostReduction[4])
                 btnInvestmentEventCostInvest.gameObject.SetActive(false);
 
+            // Modify je bank door de investeerksosten eraf te halen
             game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
         }
+
+        // Kijk of je nog genoeg geld hebt om nog een keer te investeren
         updateInvestButtonsInteractable();
     }
 
+    // Toegewezen in  de inspecter aan de button voor de investering in betere event consequences
     public void btnInvestEventConsequences()
     {
+        // Controle of je wel genoeg geld hebt voor de investering
         if (game.GetMoney() >= game.investments.investmentCost)
         {
+            // Stuur de investering door, de consequenties van de investering worden daar afgehandeld
             game.investments.InvestInBetterGameEventConsequences(game.events);
 
+            // Als het multiplayer is wordt de log geupdate met de investering
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("InvestmentMade", PhotonTargets.Others, "Better event consequences");
             setEventConsequencesInvestments();
 
+            // Als je al 5x hebt geinvesteerd kun je niet meer investeren en wordt de investeer button uit gezet
             if (game.investments.betterGameEventConsequences[4])
                 btnInvestmentEventConsequenceInvest.gameObject.SetActive(false);
 
+            // Modify je bank door de investeerksosten eraf te halen
             game.gameStatistics.ModifyMoney(game.investments.investmentCost, false);
         }
 
+        // Kijk of je nog genoeg geld hebt om nog een keer te investeren
         updateInvestButtonsInteractable(); 
     }
 
+    // Update of de button interactable is of niet
     private void updateInvestButtonsInteractable()
     {
+        // Als je niet genoeg geld hebt wordt de button niet interactable
         if (game.GetMoney() < game.investments.investmentCost)
         {
             btnInvestmentActionCostInvest.interactable = false;
@@ -4169,6 +4269,8 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Cards Popup
+    // Aangeroepen als er op de button Cards gedrukt wordt
+    // Initialize de Text in deze popup
     private void initCardsText()
     {
         string[] title = { "Kaarten", "Cards" };
@@ -4180,6 +4282,7 @@ public class UpdateUI : MonoBehaviour
         txtCardsOptionInformation.text = "";
     }
 
+    // Initialize de UI in deze popup
     private void updateCardsUI()
     {
         txtCardsColumnRight.text = "";
@@ -4190,6 +4293,7 @@ public class UpdateUI : MonoBehaviour
         toggleZuidNL.gameObject.SetActive(false);
         toggleWestNL.gameObject.SetActive(false);
 
+        // Als de tutorial actief is en dit onderdeel is nog niet afgerond > start tutorial
         if (game.tutorial.tutorialCardsActive && game.tutorial.doTuto)
             StartCoroutine(tutorialCardsPopup());
     }
@@ -4198,6 +4302,7 @@ public class UpdateUI : MonoBehaviour
     {
         imgTutorialCards.gameObject.SetActive(true);
 
+        // De tekst voor het cards onderdeel van de tutorial
         string[] step = { "Je hebt elke beurt een 2% kans om een kaart te krijgen. Je kunt kaarten bewaren om de gevolgen van de kaart groter te maken. \n\nKaarten werken op " +
                 "nationaal niveau of regionaal niveau. Je kunt een kaart maar 1x inzetten.",
             "Each turn you have a 2% chance to get a card. You can increase the effects off your card by not playing it immediately.\n\nCard can be used on regional or national level. You can only play a card once." };
@@ -4206,7 +4311,8 @@ public class UpdateUI : MonoBehaviour
         txtTutorialCards.text = step[taal];
         txtTutorialCardsBtn.text = txtBtn[taal];
 
-        while (game.tutorial.tutorialIndex < 10)//tutorialStep16)
+        // Zolang er niet op verder wordt gedrukt
+        while (game.tutorial.tutorialIndex < 10)
             yield return null;
 
         imgTutorialCards.gameObject.SetActive(false);
@@ -4225,8 +4331,10 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = true;
     }
 
+    // Deze methode wordt aangeroepen vanuit de onGUI in UpdateUI als er op een button voor een card wordt gedrukt
     private void setTextCardInformation(Card c)
     {
+        // Set alle text die bij de kaart hoort
         txtCardsOptionInformation.text = "";
         card = c;
         btnUseCard.gameObject.SetActive(true);
@@ -4249,6 +4357,8 @@ public class UpdateUI : MonoBehaviour
         txtCardsOptionInformation.text += increment[taal];
         string[] txtIncrement = { "\nToename consequencies per jaar:", "\nIncrement consequences per year:" };
         txtCardsOptionInformation.text += txtIncrement[taal];
+
+        // Haal de consequences van de kaart op uit deze method
         txtCardsOptionInformation.text += getSectorStatisticsConsequences(card.sectorConsequencesPerTurn);
 
         if (card.moneyRewardPerTurn != 0)
@@ -4266,12 +4376,14 @@ public class UpdateUI : MonoBehaviour
             txtCardsOptionInformation.text += moneyReward[taal];
         }
 
+        // Als de kaart niet globaal maar regionaal is worden de radio buttons voor de regio's active gezet
         if (!card.isGlobal)
         {
             initCardRadioButtons();
         }
     }
 
+    // Initialize de radio buttons voor de regio's
     private void initCardRadioButtons()
     {
         if (toggleNoordNLCheck)
@@ -4304,6 +4416,7 @@ public class UpdateUI : MonoBehaviour
         btnUseCard.interactable = false;
     }
 
+    // In inspector toegewezen aan de on value changed van de Noord NL radio button
     public void valueChangedNoordNL()
     {
         if (!toggleNoordNLCheck)
@@ -4317,10 +4430,12 @@ public class UpdateUI : MonoBehaviour
         else
             toggleNoordNLCheck = false;
 
-        // Method in Code for Event Region
+
+        // Controleer of alle radio buttons op false staan 
         checkIfAllFalseCards();
     }
 
+    // In inspector toegewezen aan de on value changed van de Oost NL radio button
     public void valueChangedOostNL()
     {
         if (!toggleOostNLCheck)
@@ -4334,10 +4449,12 @@ public class UpdateUI : MonoBehaviour
         else
             toggleOostNLCheck = false;
 
-        // Method in Code for Event Region
+
+        // Controleer of alle radio buttons op false staan
         checkIfAllFalseCards();
     }
 
+    // In inspector toegewezen aan de on value changed van de Zuid NL radio button
     public void valueChangedZuidNL()
     {
         if (!toggleZuidNLCheck)
@@ -4351,10 +4468,11 @@ public class UpdateUI : MonoBehaviour
         else
             toggleZuidNLCheck = false;
 
-        // Method in Code for Event Region
+        // Controleer of alle radio buttons op false staan 
         checkIfAllFalseCards();
     }
 
+    // In inspector toegewezen aan de on value changed van de West NL radio button
     public void valueChangedWestNL()
     {
         if (!toggleWestNLCheck)
@@ -4368,22 +4486,27 @@ public class UpdateUI : MonoBehaviour
         else
             toggleWestNLCheck = false;
 
-        // Method in Code for Event Region
+
+        // Controleer of alle radio buttons op false staan 
         checkIfAllFalseCards();
     }
 
+    // Als alle radio buttons op false staan wordt de button inactive
     private void checkIfAllFalseCards()
     {
         if (!toggleNoordNLCheck && !toggleOostNLCheck && !toggleWestNLCheck && !toggleZuidNLCheck)
             btnUseCard.interactable = false;
     }
 
+    // In de inspector toegewezen aan de button Use Card
     public void btnUseCardClick()
     {
         MapRegion cardRegion = new MapRegion();
 
+        // Als de kaart global is wordt hij doorgestuurd naar deze method waar de consequenties van de kaart afgehandeld worden
         if (card.isGlobal)
             card.UseCardOnCountry(game.regions, game.gameStatistics);
+        // Als de kaart regionaal was wordt er gekeken op welke regio de kaart moet worden ingezet
         else
         {
             if (toggleNoordNLCheck)
@@ -4395,9 +4518,10 @@ public class UpdateUI : MonoBehaviour
             else
                 cardRegion = game.regions[3];
 
+            // Doorgestuurd naar deze method waar de consequenties van de kaart afgehandeld worden
             card.UseCardOnRegion(cardRegion, game.gameStatistics);
         }
-
+        // Als het multiplayer is
         if (ApplicationModel.multiplayer)
         {
             SectorStatistics r = card.currentSectorConsequences;
@@ -4408,12 +4532,14 @@ public class UpdateUI : MonoBehaviour
             playerController.photonView.RPC("CardUsed", PhotonTargets.Others, cardRegion.name[0], reward, card.isGlobal);
         }
 
+        // Haal de kaart uit de list met beschikbare kaarten
         game.inventory.RemoveCardFromInventory(card);
         updateCardsUI();
     }
     #endregion
 
-    #region Code for Timeline Popup
+    #region Code for Timeline Popup (Op het moment niet in gebruik)
+    /*
     private void initTimelinePopup()
     {
         string[] title = { "Tijdlijn", "Timeline" };
@@ -4480,6 +4606,7 @@ public class UpdateUI : MonoBehaviour
             txtColumnRightInfo.text += d.ToString() + "\n";
         }
     }
+    */
     #endregion
 
     #region Code for End of Game Popup
@@ -4533,7 +4660,7 @@ public class UpdateUI : MonoBehaviour
             canvasTimelinePopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
-            initTimelinePopup();
+            //initTimelinePopup();
         }
     }
 
