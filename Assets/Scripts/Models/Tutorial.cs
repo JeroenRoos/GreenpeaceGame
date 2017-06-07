@@ -42,6 +42,7 @@ public class Tutorial
 
     public Tutorial()
     {
+        // Zet tutorial op actief als het singleplayer is
         if (!ApplicationModel.multiplayer)
             tutorialActive = true;
         else

@@ -8,6 +8,7 @@ using System.IO;
 
 public class OpenScene : Photon.PunBehaviour
 {
+    // De variabele die gebruikt worden in deze class en in de inspector
     #region Variables
     private RoomInfo[] rooms;
     float yOffset = 0f;
@@ -98,15 +99,21 @@ public class OpenScene : Photon.PunBehaviour
     #region Start(), PlayerPrefs, Init's
     void Start()
     {
+        // Begin een nieuwe lobby en zorgt in constructor van Lobby ervoor dat speler automatisch een lobby joined
         lobby = new Lobby();
         Application.runInBackground = true;
 
         EventManager.CallPlayBackgroundMusic();
+
+        // Haalt de playerPrefs op
         getPlayerPrefs();
+
+        // Initialize de UI en Text
         initUI();
         initText();
         initGuiStyle();
 
+        // Als er een save aanwezig is wordt de button "Verder spelen" op interactable gezet
         var path = Application.persistentDataPath + "/Savestate.gd";
         if (File.Exists(path))
         {
@@ -148,6 +155,7 @@ public class OpenScene : Photon.PunBehaviour
 
     private void initUI()
     {
+        // Initialized alle canvassen die in deze scene gebruikt kunnen worden en zet ze op false
         canvasHomeScreen.GetComponent<Canvas>();
 
         canvasSettings.GetComponent<Canvas>();
@@ -162,6 +170,7 @@ public class OpenScene : Photon.PunBehaviour
 
     private void initText()
     {
+        // Initialize de tekst die in de buttons komen te staan
         string[] txtOptions = { "Instellingen", "Settings" };
         string[] txtQuit = { "Spel verlaten", "Quit" };
         string[] txtLoadGame = { "Spel laden", "Load game" };
@@ -177,6 +186,7 @@ public class OpenScene : Photon.PunBehaviour
 
     private void initGuiStyle()
     {
+        // Initialize de GuiStyle waar later in de lobby canvas gebruik van wordt gemaakt
         buttonStyle.normal.background = buttonTexture;
         buttonStyle.alignment = TextAnchor.MiddleCenter;
         Color c = new Color();
@@ -186,33 +196,45 @@ public class OpenScene : Photon.PunBehaviour
     #endregion
 
     #region Main Menu Code
+
+    // Toegewezen aan button "Nieuw Spel" in inspector
     public void loadSceneByIndex(int index)
     {
         ApplicationModel.multiplayer = false;
         EventManager.CallPlayButtonClickSFX();
+
+        // Laad de volgende scene met load game op false
         ApplicationModel.loadGame = false;
         SceneManager.LoadSceneAsync(index);
     }
 
+    // Toegewezen aan button "Spel Verlaten" in inspector
     public void buttonExitOnClick()
     {
         EventManager.CallPlayButtonClickSFX();
         Application.Quit();
     }
 
+    // Toegewezen aan button "Spel Laden" in inspector
     public void buttonLoadGameClick()
     {
         EventManager.CallPlayButtonClickSFX();
+
+        // Laad de volgende scene met load game op true
         ApplicationModel.loadGame = true;
         SceneManager.LoadSceneAsync(1);
     }
 
+    // Toegewezen aan button "Instellingen" in inspector
     public void buttonSettingsClick()
     {
         EventManager.CallPlayButtonClickSFX();
+
+        // Zet huidige canvas op false en openen nieuwe canvas van de Settings
         canvasHomeScreen.gameObject.SetActive(false);
         canvasSettings.gameObject.SetActive(true);
 
+        // Initialize de tekst en UI uit het canvas settings
         initSettingsText();
         initSettingsUI();
     }
@@ -221,6 +243,7 @@ public class OpenScene : Photon.PunBehaviour
     #region Settings Code
     private void initSettingsText()
     {
+        // De tekst uit het canvas worden geset
         string[] back = { "Terug", "Back" };
         string[] music = { "Muziek volume", "Music volume" };
         string[] effects = { "Geluidseffecten volume", "Sounds effects volume" };
@@ -237,11 +260,11 @@ public class OpenScene : Photon.PunBehaviour
         txtToggleDutch.text = dutch[taal];
         txtToggleEnglish.text = english[taal];
 
-        //ApplicationModel.valueSFX = AudioPlayer.Instance.soundEffect.volume * 100;
+        // De tekst waarde achter de slider voor SFX wordt geset
         sliderEffectsVolume.value = valueSFX;
         txtEffectsVolumeSliderValue.text = (valueSFX * 100).ToString("0");
 
-        //ApplicationModel.valueMusic = AudioPlayer.Instance.backgroundMusic.volume * 100;
+        // De tekst waarde achter de slider voor Music wordt geset
         sliderMusicVolume.value = valueMusic;
         txtMusicVolumeSliderValue.text = (valueMusic * 100).ToString("0");
     }
@@ -250,6 +273,7 @@ public class OpenScene : Photon.PunBehaviour
     {
         if (taal == 0)
         {
+            // Als het spel op NL staat wordt de radiobutton voor NL op true gezet en die van ENG op false
             toggleDutch.isOn = true;
             toggleDutchCheck = true;
             toggleEnglishCheck = false;
@@ -257,6 +281,7 @@ public class OpenScene : Photon.PunBehaviour
         }
         else
         {
+            // Als het spel op ENG staat wordt de radiobutton voor ENG op true gezet en die van NL op false
             toggleEnglish.isOn = true;
             toggleEnglishCheck = true;
             toggleDutchCheck = false;
@@ -264,65 +289,94 @@ public class OpenScene : Photon.PunBehaviour
         }
     }
 
+    // Toegewezen aan de button "Terug" in de inspector
     public void buttonSettingsBackClick()
     {
+        // Als er op de terug button wordt gedrukt wordt het juiste canvas weer actief gezet
         EventManager.CallPlayButtonClickSFX();
         canvasSettings.gameObject.SetActive(false);
         canvasHomeScreen.gameObject.SetActive(true);
 
+        // Set de tekst van het home screen opnieuw
         initText();
     }
 
+    // Toegewezen aan de radiobutton "Nederlands" in de inspector
     public void toggleDutchValueChanged()
     {
         if (!toggleDutchCheck)
         {
             toggleDutchCheck = true;
             toggleEnglish.isOn = false;
+
+            // Zet de taal naar 0/NL
             ApplicationModel.language = 0;
             taal = ApplicationModel.language;
+
+            // Sla de gekozen taal op in PlayerPrefs
             PlayerPrefs.SetInt("savedLanguage", taal);
             PlayerPrefs.Save();
+
+            // Initialize de Text van settings opnieuw omdat taal veranderd is
             initSettingsText();
         }
         else
             toggleDutchCheck = false;
     }
 
+    // Toegewezen aan de radiobutton "Engels" in de inspector
     public void toggleEnglishValueChanged()
     {
         if (!toggleEnglishCheck)
         {
+            // Zet de taal naar Engels
             toggleEnglishCheck = true;
             toggleDutch.isOn = false;
+
+            // Zet det taal naar 1/ENG
             ApplicationModel.language = 1;
             taal = ApplicationModel.language;
+
+            // Sla de gekozen taal op in PlayerPrefs
             PlayerPrefs.SetInt("savedLanguage", taal);
             PlayerPrefs.Save();
+
+            // Initialize de Text van settings opnieuw omdat taal veranderd is
             initSettingsText();
         }
         else
-        {
             toggleEnglishCheck = false;
-        }
+
     }
 
+    // Toegewezen aan de slider "SFX" in de inspector
     public void sliderEffectsValueChanged()
     {
+        // Zet de value van de slider in een variable en gebruik deze om de text waarde achter de slider aan te passen
         valueSFX = sliderEffectsVolume.value;
         txtEffectsVolumeSliderValue.text = (valueSFX * 100).ToString("0");
+
+        // Verander het volume van de SFX
         AudioPlayer.Instance.changeVolumeEffects(valueSFX);
         ApplicationModel.valueSFX = valueSFX;
+
+        // Sla het volume van de SFX op in PlayerPrefs
         PlayerPrefs.SetFloat("savedSFXVolume", valueSFX);
         PlayerPrefs.Save();
     }
 
+    // Toegewezen aan de slider "Music" in de inspector
     public void sliderMusicValueChanged()
     {
+        // Zet de value van de slider in een variable en gebruik deze om de text waarde achter de slider aan te passen
         valueMusic = sliderMusicVolume.value;
         txtMusicVolumeSliderValue.text = (valueMusic * 100).ToString("0");
+
+        // Verander het volume van de Music
         AudioPlayer.Instance.changeVolumeMusic(valueMusic);
         ApplicationModel.valueMusic = valueMusic;
+
+        // Sla het volume van de Music op in PlayerPrefs
         PlayerPrefs.SetFloat("savedMusicVolume", valueMusic);
         PlayerPrefs.Save();
     }

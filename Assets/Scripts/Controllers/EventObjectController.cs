@@ -44,7 +44,7 @@ public class EventObjectController : MonoBehaviour
     {
         if (!updateUI.popupActive)
         {
-            // Nog geen optie gekozen
+            // Nog geen optie gekozen voor event
             if (gameController.game.tutorial.tutorialeventsClickable && eventModel.isIdle)
             {
                 isClicked = true;
@@ -52,7 +52,7 @@ public class EventObjectController : MonoBehaviour
                 updateUI.popupActive = false;
                 updateUI.initEventPopup(eventModel, regionModel);
             }
-            // Optie gekozen
+            // Wel een optie gekozen en dus opent er een andere popup
             else
             {
                 isClicked = true;
@@ -142,6 +142,8 @@ public class EventObjectController : MonoBehaviour
         StartCoroutine(Shake());
     }
 
+
+    // Kiest de juiste texture om op de map te laten zien
     private Texture SelectTexture(string description)
     {
         switch (description)
