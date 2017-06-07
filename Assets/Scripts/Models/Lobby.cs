@@ -19,17 +19,20 @@ public class Lobby
     {
     }
 
+    // Geef de detailed connection string for debugging
     void OnGUI()
     {
         GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
     }
 
+    // Create een room met maximaal 2 spelers
     public void CreateRoom(string roomName)
     {
         PhotonNetwork.CreateRoom(roomName, new RoomOptions() { MaxPlayers = 2 } , null);
         ApplicationModel.multiplayer = true;
     }
 
+    // Join een room based on room name, je wordt hierheen gestuurd vanuit de onGUI in de OpenScene class
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
@@ -41,46 +44,22 @@ public class Lobby
         PhotonNetwork.LeaveRoom();
     }
 
+    // Stuurt je door naar Photonnetwork leave lobby en disconnect
     public void LeaveLobby()
     {
         PhotonNetwork.Disconnect();
         PhotonNetwork.LeaveLobby();
     }
 
+    // Stuurt door naar de join lobby in Photonnetwork
     public void JoinLobby()
     {
         PhotonNetwork.JoinLobby();
     }
 
-    /*
-    public override void OnJoinedLobby()
-    {
-        Debug.Log("Joined Lobby");
-        base.OnJoinedLobby();
-    }
-
-    public override void OnConnectedToMaster()
-    {
-        Debug.Log("Connected to Master");
-        base.OnConnectedToMaster();
-    }
-
-    public override void OnJoinedRoom()
-    {
-        base.OnJoinedRoom();
-    }
-
-    public override void OnLeftRoom()
-    {
-        base.OnLeftRoom();
-        //PhotonNetwork.ConnectUsingSettings("1");
-        PhotonNetwork.JoinLobby();
-    }
-    */
-
+    // Start de game als de masterclient op start game drukt
     public void StartGame(int index)
     {
         PhotonNetwork.LoadLevel(index);
-        //ChattingClient c = new ChattingClient();
     }
 }

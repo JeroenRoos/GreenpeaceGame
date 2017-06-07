@@ -25,44 +25,24 @@ public class BuildingObjectController : MonoBehaviour
         
     }
 
+    // Open de building popup als er op het icoontje gedrukt wordt
     public void OnMouseDown()
     {
-        if (!updateUI.popupActive)// && gameController.game.tutorial.tutorialBuildingsActive)
+        if (!updateUI.popupActive)
         {
             if (gameController.game.tutorial.tutorialBuildingsClickable)
             {
                 isClicked = true;
                 EventManager.CallPlayButtonClickSFX();
 
-                //if (building != null)
-               // {
-                    //gameController.activeBuildingUI(building, region);
-               //     updateUI.initBuildingPopup(building, region);
-               // }
-                //else
-                //{
-                    //gameController.activeEmptyBuildingUI(region);
-                    updateUI.initEmptyBuildingPopup(region);
-                //}
+                // Initialize popup in UpdateUI Class
+                updateUI.initEmptyBuildingPopup(region);
             }
         }
     }
 
-    /*public void OnMouseEnter()
-    {
-        transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
-            (float)1.2 * transform.localScale.z);
-    }
-
-    public void OnMouseExit()
-    {
-        transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
-            transform.localScale.z / (float)1.2);
-    }*/
-
     public void placeBuildingIcon(GameController gameController, MapRegion region, Building building)
     {
-
         /* Event Positions in XML file
          * Noord Nederland: 16.5 - 1 - 20
          * Oost Nederland:  17.5 - 1 - 13
@@ -76,20 +56,28 @@ public class BuildingObjectController : MonoBehaviour
 
 
         transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
+
+        // Als de building niet null is wordt het juiste icoontje geplaatst
         if (building != null)
         {
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(building.buildingID);
+
+            // Coroutine voor het klein > groot effect van icon
             StartCoroutine(ChangeScale(gameObject.transform.localScale, false));
         }
+        // Als de buliding null is wordt het "Empty" icoontje geplaatst
         else
         {
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("empty");
             transform.position = new Vector3(region.buildingPositions[0], region.buildingPositions[1], region.buildingPositions[2]);
+
+            // Coroutine voor het klein > groot effect van icon
             StartCoroutine(ChangeScale(gameObject.transform.localScale, true));
         }
 
     }
 
+    // Zorgt voor het shake effect
     public IEnumerator Shake()
     {
         Quaternion standardRotation = transform.rotation;
@@ -111,6 +99,7 @@ public class BuildingObjectController : MonoBehaviour
         transform.rotation = standardRotation;
     }
 
+    // Het effect waardoor het icoontje klein begint en steeds groter wordt
     IEnumerator ChangeScale(Vector3 endScale, bool shouldShake)
     {
         Vector3 currentScale = new Vector3(0, 0, 0);
@@ -135,6 +124,9 @@ public class BuildingObjectController : MonoBehaviour
             StartCoroutine(Shake());
     }
 
+
+    // Kiest de juiste texture om op de map te laten zien
+    // Textures zijn in inspector toegevoegd aan de List
     private Texture SelectTexture(string description)
     {
         switch (description)

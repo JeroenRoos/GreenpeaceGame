@@ -23,9 +23,9 @@ public class EventObjectController : MonoBehaviour
 
     void Update()
     {
-        if (!eventModel.isIdle && !eventModel.isActive)//!eventModel.isFinished)// && )//!eventModel.isIdle)
+        // Als de event model niet meer idle (afwachtend van actie) en actief (gekozen actie is bezig) is wordt hij gedstroyed en van de map gehaald
+        if (!eventModel.isIdle && !eventModel.isActive)
         {
-            //eventModel.isFinished
             EventManager.DestroySprite -= DestroyFromChoiceMade;
             Destroy(gameObject);
         }
@@ -40,6 +40,7 @@ public class EventObjectController : MonoBehaviour
         }
     }
 
+    // Open de event popup als er op het icoontje gedrukt wordt
     public void OnMouseDown()
     {
         if (!updateUI.popupActive)
@@ -65,12 +66,14 @@ public class EventObjectController : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        // ALs je over het icoontje hovered wordt hij groter
         transform.localScale = new Vector3((float)1.2 * transform.localScale.x, (float)1.2 * transform.localScale.y,
             (float)1.2 * transform.localScale.z);
     }
 
     public void OnMouseExit()
     {
+        // On mouse exit wordt het icoontje weer de normale grootte
         transform.localScale = new Vector3(transform.localScale.x / (float)1.2, transform.localScale.y / (float)1.2,
             transform.localScale.z / (float)1.2);
     }
@@ -89,14 +92,23 @@ public class EventObjectController : MonoBehaviour
         this.eventModel = eventModel;
 
         if (eventModel.isIdle)
+        {
+            // Set het icoontje dat bij event hoort als texture
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture(eventModel.name);
-        else //if (eventModel.isActive)
+        }
+        // Als event model active is
+        else
+        {
+            // Zet het "Finished" texture als icoontje
             gameObject.GetComponent<Renderer>().material.mainTexture = SelectTexture("finished");
+        }
         
+        // Start de coroutine waardoor het shake effect ontstaat
         transform.position = new Vector3(regionModel.eventPositions[0], regionModel.eventPositions[1], regionModel.eventPositions[2]);
         StartCoroutine(ChangeScale(gameObject.transform.localScale));
     }
 
+    // Het shake effect van het icoontje
     public IEnumerator Shake()
     {
         Quaternion standardRotation = transform.rotation;
@@ -118,6 +130,7 @@ public class EventObjectController : MonoBehaviour
         transform.rotation = standardRotation;
     }
 
+    // Het effect waardoor het icoontje klein begint en steeds groter wordt
     IEnumerator ChangeScale(Vector3 endScale)
     {
         Vector3 currentScale = new Vector3(0, 0, 0);
@@ -144,6 +157,7 @@ public class EventObjectController : MonoBehaviour
 
 
     // Kiest de juiste texture om op de map te laten zien
+    // Textures zijn in inspector toegevoegd aan de List
     private Texture SelectTexture(string description)
     {
         switch (description)
