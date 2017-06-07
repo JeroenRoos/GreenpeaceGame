@@ -42,31 +42,5 @@ public class GameContainer
         }
         return null;
     }
-
-    public static string XmlSerializeToString(Game objectInstance)
-    {
-        var serializer = new XmlSerializer(objectInstance.GetType());
-        var sb = new StringBuilder();
-
-        using (TextWriter writer = new StringWriter(sb))
-        {
-            serializer.Serialize(writer, objectInstance);
-        }
-
-        return sb.ToString();
-    }
-
-    public static Game XmlDeserializeFromString(string objectData)
-    {
-        var serializer = new XmlSerializer(typeof(Game));
-        object result;
-
-        using (TextReader reader = new StringReader(objectData))
-        {
-            result = serializer.Deserialize(reader);
-        }
-
-        return result as Game;
-    }
 }
 

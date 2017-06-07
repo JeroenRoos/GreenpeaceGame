@@ -41,24 +41,6 @@ public class QuestContainer
 
     public static QuestContainer Load()
     {
-        /*try
-        {
-            var file = Application.dataPath + "/GameFiles/Quests.xml";
-            XmlSerializer reader = new XmlSerializer(typeof(QuestContainer));
-
-            using (var stream = new FileStream(file, FileMode.Open))
-            {
-                return reader.Deserialize(stream) as QuestContainer;
-            }
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-            Debug.Log("Quests loading failed");
-            return new QuestContainer();
-        }*/
-
         //resources reading for build
         TextAsset textAsset = (TextAsset)Resources.Load("Quests");
         XmlDocument xml = new XmlDocument();

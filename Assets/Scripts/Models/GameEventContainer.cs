@@ -41,24 +41,6 @@ public class GameEventContainer
 
     public static GameEventContainer Load()
     {
-        /*try
-        {
-            var file = Application.dataPath + "/GameFiles/GameEvents.xml";
-            XmlSerializer reader = new XmlSerializer(typeof(GameEventContainer));
-
-            using (var stream = new FileStream(file, FileMode.Open))
-            {
-                return reader.Deserialize(stream) as GameEventContainer;
-            }
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-            Debug.Log("Event loading failed");
-            return new GameEventContainer();
-        }*/
-
         //resources reading for build
         TextAsset textAsset = (TextAsset)Resources.Load("GameEvents");
         XmlDocument xml = new XmlDocument();

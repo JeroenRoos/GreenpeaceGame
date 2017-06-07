@@ -5,10 +5,6 @@ using System.Text;
 
 class EventManager
 {
-    // Event Actions
-    /*public delegate void GameStart();
-    /public static event GameStart NewGame;*/
-
     public delegate void MonthChanged();
     public static event MonthChanged ChangeMonth;
 
@@ -41,11 +37,6 @@ class EventManager
 
     public delegate void EventChoiceMade(GameEvent e);
     public static event EventChoiceMade DestroySprite;
-
-    /*public static void CallNewGame()
-    {
-        NewGame();
-    }*/
 
     public static void CallChangeMonth()
     {

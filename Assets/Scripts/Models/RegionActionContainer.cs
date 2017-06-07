@@ -41,24 +41,6 @@ public class RegionActionContainer
 
     public static RegionActionContainer Load()
     {
-        /*try
-        {
-            var file = Application.dataPath + "/GameFiles/RegionActions.xml";
-            XmlSerializer reader = new XmlSerializer(typeof(RegionActionContainer));
-
-            using (var stream = new FileStream(file, FileMode.Open))
-            {
-                return reader.Deserialize(stream) as RegionActionContainer;
-            }
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-            Debug.Log("RegionAction loading failed");
-            return new RegionActionContainer();
-        }*/
-
         //resources reading for build
         TextAsset textAsset = (TextAsset)Resources.Load("RegionActions");
         XmlDocument xml = new XmlDocument();
