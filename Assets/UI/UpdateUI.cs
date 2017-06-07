@@ -8,9 +8,12 @@ using UnityEngine.SceneManagement;
 public class UpdateUI : MonoBehaviour
 {
     public Player playerController;
+
+    // Hexcodes van kleuren
     // Green:       #00CC00.
     // Red:         #FF0000.
 
+    // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
     // Multiplayer
     List<string> lstMessages = new List<string>();
@@ -518,6 +521,7 @@ public class UpdateUI : MonoBehaviour
 
     #endregion
 
+    // Boolean variabele die in deze class worden gebruikt
     #region Boolean Variables
     // Booleans
     private bool btnMoneyHoverCheck;
@@ -560,8 +564,10 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        // Ingestelde taal wordt opgehaald
         taal = ApplicationModel.language;
 
+        // De tekst van alle popups wordt geset aan de hand van de taal
         initButtons();
         initButtonText();
         initCanvas();
@@ -574,23 +580,33 @@ public class UpdateUI : MonoBehaviour
         // GUI Styles
         tooltipStyle.normal.background = tooltipTexture;
 
-        // GUIStyle for buttons INIT
-        buttonStyle.normal.background = buttonTexture;          // Set the Texture
-        buttonStyle.alignment = TextAnchor.MiddleCenter;        // Set the text in the middle of the button
-        Color c = new Color();
-        ColorUtility.TryParseHtmlString("#ffffff", out c);      // Get the color out of the hexadecimal string
-        buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
+        // GUIStyle for buttons 
+        // Set the Texture
+        buttonStyle.normal.background = buttonTexture;
 
+        // Set the text in the middle of the button    
+        buttonStyle.alignment = TextAnchor.MiddleCenter;
+
+        // Get the color out of the hexadecimal string     
+        Color c = new Color();
+        ColorUtility.TryParseHtmlString("#ffffff", out c);
+
+        // Set the color of the text to above color     
+        buttonStyle.normal.textColor = c;                       
+
+        // Kijk of de tutorial aan staat en begin de tutorial wel of niet
         if (game.tutorial.tutorialActive)
             initTutorialActive();
         else
             initTutorialNotActive();
 
+        // Tekst van next turn button wordt geset
         btnNextTurnText.text = nextTurnText[taal];
         buildingObjectController = GetComponent<BuildingObjectController>();
 
         if (ApplicationModel.multiplayer)
         {
+            // Als het een mulitplayer potje is wordt de Multiplayer UI aan gezet
             txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(true);
             txtMultiplayerInfo.gameObject.SetActive(true);
@@ -615,6 +631,7 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
+            // Als het geen multiplayer potje is wordt de Multiplayer UI op inactive gezet
             txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(false);
             txtMultiplayerInfo.gameObject.SetActive(false);
@@ -636,42 +653,54 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
+        // De status van wat je aan het doen bent begint met Naar Nederland Kijken en wordt gestuurd naar andere speler
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
     }
 
     void Update()
     {
+        // Als het een multiplayer potje is
         if (ApplicationModel.multiplayer)
         {
             int playerPosition = game.GetPlayerListPosition();
 
+            // Het geld van de andere speler wordt geupdate
             if (playerPosition == 0)
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[1].ToString("0");
             else
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[0].ToString("0");
 
+            // Als er op ENTER wordt gedrukt (en de speler een chatbericht wil sturen)
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Debug.Log(txtChatMessageToSend);
+                // Controle of het chatbericht niet leeg is
                 if (txtChatMessageToSend != null)
                 {
+                    // Chat bericht wordt gestuurd naar andere speler
                     playerController.photonView.RPC("MessageReceived", PhotonTargets.Others, txtChatMessageToSend, PhotonNetwork.player.NickName);
+
+                    // Chat bericht wordt ook lokaal getoont
                     updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
+
+                    // Na het sturen wordt inputfield tekst en chatbericht weer op null/empty gezet 
                     txtChatMessageToSend = null;
                     inputChatMessage.text = "";
                 }
             }
         }
 
+        // Popups sluiten met ESC toets
         if (game.tutorial.tutorialIndex > 2)
             popupController();
 
+        // Als de regio popup actief is
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
         {
-
             if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
             {
+                // Als een van de checkboxes bij het kiezen van een actie op true staat
                 btnDoActionRegionMenu.gameObject.SetActive(true);
                 txtRegionActionNoMoney.gameObject.SetActive(false);
                 txtRegionActionNoMoney.text = "";
@@ -679,7 +708,7 @@ public class UpdateUI : MonoBehaviour
             }
             else
             {
-
+                // ALs geen van de checkboxes op true staat
                 txtRegionActionNoMoney.gameObject.SetActive(false);
                 string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
                 txtRegionActionNoMoney.text = error[taal];
@@ -691,6 +720,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Tutorial Main Steps
+    // Initialize van tutorial UI als tutorial active is
     private void initTutorialActive()
     {
         canvasTutorial.gameObject.SetActive(true);
@@ -705,6 +735,7 @@ public class UpdateUI : MonoBehaviour
         StartCoroutine(initTutorialText());
     }
 
+    // Alle tutorial booleans wordt geset voor als de tutorial niet active is
     private void initTutorialNotActive()
     {
         imgTutorialStep2Highlight1.enabled = false;
@@ -747,26 +778,32 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialInvestementsDone = true;
         game.tutorial.tutorialBuildingsDone = true;
 
+        // Groter worden effect en shake effect voor de organization button
         StartCoroutine(ChangeScale(btnOrganization));
         if (!organizationShakes)
             StartCoroutine(ShakeOrganization());
     }
 
+    // Method waarin de tekst van de Tutorial contstant wordt geupdate
     IEnumerator initTutorialText()
     {
-        imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
+        imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;    
         imgPosRight = imgPosMiddle;
         imgPosLeft = imgPosMiddle;
-        imgPosRight.x = imgPosRight.x + Screen.width / 3;                           // Rechtsmidden in het scherm
-        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                             // Linksmidden in het scherm
+
+        // Positie van de tutorial image > rechts in het scherm
+        imgPosRight.x = imgPosRight.x + Screen.width / 3;
+
+        // Positie van de tutorial image > links in het scherm
+        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                            
 
         btnOrganization.gameObject.SetActive(false);
         btnNextTurn.gameObject.SetActive(false);
         btnInvestments.gameObject.SetActive(false);
         btnCards.gameObject.SetActive(false);
         imgBarBottom.gameObject.SetActive(false);
-        //imgBarBottom.gameObject.SetActive(false);
 
+        // Tekst voor stap 1 van de tutorial
         game.tutorial.doTuto = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen " +
                 "dat Nederland een milieubewust land wordt. De inwoners moeten begrijpen dat een groen land belangrijk is."
@@ -777,14 +814,14 @@ public class UpdateUI : MonoBehaviour
         imgTutorialBig.gameObject.SetActive(false);
         txtTutorialSmall.text = step1[taal];
         txtTutorialSmallBtn.text = btnText[taal];
-        //btnOrganization.interactable = false;
-        //btnInvestments.interactable = false;
         btnNextTurn.interactable = false;
         imgTutorialSmall.transform.position = imgPosRight;
 
-        while (game.tutorial.tutorialIndex < 1)//tutorialStep2)
+        // Zolang er niet op de verder button wordt gedrukt blijft dit doorgaan
+        while (game.tutorial.tutorialIndex < 1)
             yield return null;
 
+        // Tekst voor stap 2 van de tutorial
         string[] step2 = { "Jouw taak is om de vervuiling naar 0% te brengen voor 2050. Het is nu 2020 dus je hebt nog 30 jaar.",
             "Your task is to reduce the pollution to 0% before 2050. It is now 2020 so you still have 30 years."};
         txtTutorialSmall.text = step2[taal];
@@ -792,10 +829,11 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = true;
         imgTutorialStep2Highlight2.enabled = true;
 
-        while (game.tutorial.tutorialIndex < 2)//tutorialStep3)
+        // Zolang er niet op de verder button wordt gedrukt blijft dit doorgaan
+        while (game.tutorial.tutorialIndex < 2)
             yield return null;
 
-        //tutorialStep3 = false;
+        // Tekst voor stap 3 van de tutorial
         imgTutorialBig.transform.position = imgPosMiddle;
         string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " +
                 "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." +
@@ -818,9 +856,11 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.gameObject.SetActive(false);
         imgTutorialStep2Highlight2.gameObject.SetActive(false);
 
-        while (game.tutorial.tutorialIndex < 3)//tutorialStep4)
+        // Zolang er niet op de verder button wordt gedrukt blijft dit doorgaan
+        while (game.tutorial.tutorialIndex < 3)
             yield return null;
 
+        // Tekst voor stap 4 van de tutorial
         imgTutorialSmall.gameObject.transform.position = imgPosRight;
         game.tutorial.tutorialOnlyWestNL = true;
         game.tutorial.tutorialRegionsClickable = true;
@@ -836,8 +876,10 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmallBtn.text = btnText[taal];
         btnTutorialSmallNext.gameObject.SetActive(false);
 
+        // Controle of de tutorial voor de regio als af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialRegionDone)
         {
+            // Zolang de popup voor regio niet actief is blijft dit doorgaan
             while (!canvasRegioPopup.gameObject.activeSelf)
                 yield return null;
 
@@ -1411,6 +1453,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for controlling popups
     void popupController()
     {
+        // Het sluiten van een popup met ESC, hele hoop controlles omdat dit nog niet kan tijdens de tutorial
         // Close active popup with Escape / Open Menu popup with Escape if no popup is active
         if (Input.GetKeyUp(KeyCode.Escape) && !game.tutorial.tutorialRegionActive && !game.tutorial.tutorialEventsActive &&
             !game.tutorial.tutorialQuestsActive && !game.tutorial.tutorialOrganizationActive &&
@@ -1418,6 +1461,7 @@ public class UpdateUI : MonoBehaviour
             && !game.tutorial.tutorialBuildingsActive)
             closeWithEscape();
 
+        // Hotkeys die we eerst hadden
         /*
         // Open and close Organization popup with O
         else if (Input.GetKeyUp(KeyCode.O))
