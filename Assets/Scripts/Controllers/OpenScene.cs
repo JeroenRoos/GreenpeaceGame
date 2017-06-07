@@ -383,39 +383,52 @@ public class OpenScene : Photon.PunBehaviour
     #endregion
 
     #region Code for Multiplayer Lobby
+
+    // Toegewezen aan de button "Multiplayer" in de inspector
     public void buttonMultiplayerOnClick()
     {
+        // Zet juiste canvas op true
         EventManager.CallPlayButtonClickSFX();
         canvasLobby.gameObject.SetActive(true);
 
+        // Method die de "Choose Nickname Popup" opent
         initChooseNickname();
+
+        // List met Rooms wordt geupdate
         getRoomList();
     }
 
     private void initChooseNickname()
     {
+        // Popup image wordt op true gezet, buttons op niet interactable
         imgNickname.gameObject.SetActive(true);
         btnCreateRoom.interactable = false;
         btnMultiplayerBack.interactable = false;
         btnRefreshLobby.interactable = false;
 
+        // De tekst wordt geset
         string[] txtCancel = { "Annuleer", "Cancel" };
         txtCancelChooseNickname.text = txtCancel[taal];
         string[] txtInfo = { "Voer een naam in:", "Choose a nickname:" };
         txtNicknameInfo.text = txtInfo[taal];
 
+        // Placeholder van inputfield wordt geset
         string[] placeholder = { "Geef je naam...", "Enter nickname..." };
         inputNickname.placeholder.GetComponent < Text >().text = placeholder[taal];
 
         btnChooseNickname.gameObject.SetActive(false);
 
     }
+
+    // Toegewezen aan de inputfield "Nickname" in de inspector
     public void inputNicknameValueChanged()
     {
         inputNickname.text.Trim();
 
+        // Controle of input niet leeg is
         if (inputNickname.text != "")
         {
+            // Button om verder te gaan wordt active
             nickName = inputNickname.text;
             btnChooseNickname.gameObject.SetActive(true);
             string[] txtBtn = { "Kies naam", "Choose name" };
@@ -423,26 +436,32 @@ public class OpenScene : Photon.PunBehaviour
         }
         else
         {
+            // Button om verder te gaan wordt niet active als de tekst "" is
             btnChooseNickname.gameObject.SetActive(false);
         }
     }
 
 
+    // Toegewezen aan de button "Cancel" in de inspector
     public void buttonCancelChooseNickname()
     {
         EventManager.CallPlayButtonClickSFX();
         canvasLobby.gameObject.SetActive(false);
     }
 
+    // Toegewezen aan de button "Kies naam" in de inspector
     public void buttonChooseNickname()
     {
         PhotonNetwork.player.NickName = nickName;
         imgNickname.gameObject.SetActive(false);
+
+        // Initialize de tekst van de rest van de lobby
         initLobbyText();
     }
 
     private void initLobbyText()
     {
+        // Set de tekst in het canvas
         string[] txtBack = { "Terug", "Back" };
         string[] txtCreate = { "Maak een kamer", "Create room" };
         string[] txtRefresh = { "Vernieuwen", "Refresh" };
@@ -460,14 +479,17 @@ public class OpenScene : Photon.PunBehaviour
         btnRefreshLobby.interactable = true;
     }
 
+    // Toegewezen aan de button "Terug" in de inspector
     public void buttonMultiplayerBackClick()
     {
         EventManager.CallPlayButtonClickSFX();
         canvasLobby.gameObject.SetActive(false);
     }
 
+    // Toegewezen aan de button "Maak Room" in de inspector
     public void buttonCreateRoomClick()
     {
+        // Set de tekst, buttons en images
         imgCreateRoom.gameObject.SetActive(true);
         btnCreateRoom.interactable = false;
         btnMultiplayerBack.interactable = false;
@@ -484,12 +506,15 @@ public class OpenScene : Photon.PunBehaviour
         btnPopupCreate.gameObject.SetActive(false);
     }
 
+    // Toegewezen aan de inputfield "Roomname" in de inspector
     public void inputRoomNameValueChanged()
     {
         inputRoomName.text.Trim();
 
+        // Controleert of inputfield niet leeg is
         if (inputRoomName.text != "")
         {
+            // Button om verder te gaan wordt active als de tekst "" is
             roomName = inputRoomName.text;
             btnPopupCreate.gameObject.SetActive(true);
             string[] txtBtn = { "Maak", "Create" };
@@ -497,10 +522,12 @@ public class OpenScene : Photon.PunBehaviour
         }
         else
         {
+            // Button om verder te gaan wordt niet active als de tekst "" is
             btnPopupCreate.gameObject.SetActive(false);
         }
     }
 
+    // Toegewezen aan de button "Maak Room" in de inspector
     public void buttonCreateClick()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -512,6 +539,7 @@ public class OpenScene : Photon.PunBehaviour
         btnRefreshLobby.interactable = true;
     }
 
+    // Toegewezen aan de button "Cancel Room" in de inspector
     public void buttonCancelCreateRoom()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -521,11 +549,13 @@ public class OpenScene : Photon.PunBehaviour
         btnRefreshLobby.interactable = true;
     }
 
+    // De list met Rooms uit de lobby wordt opgehaald
     private void getRoomList()
     {
         rooms = PhotonNetwork.GetRoomList();
     }
 
+    // Toegewezen aan de button "Vernieuwen" in de inspector
     public void buttonRefreshLobbyClick()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -536,6 +566,7 @@ public class OpenScene : Photon.PunBehaviour
     #region Code for Multiplayer Room
     private void initRoomText()
     {
+        // Set de tekst 
         canvasLobby.gameObject.SetActive(false);
         canvasRoom.gameObject.SetActive(true);
         getRoomList();
@@ -547,6 +578,7 @@ public class OpenScene : Photon.PunBehaviour
         txtRoomBack.text = txtBack[taal];
     }
 
+    // Toegewezen aan de button "Back" in de inspector
     public void buttonRoomBack()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -554,9 +586,12 @@ public class OpenScene : Photon.PunBehaviour
         canvasRoom.gameObject.SetActive(false);
         lobby.LeaveRoom();
         lobby.JoinLobby();
+
+        // Je gaat terug naar Lobby waar je een room kunt kiezen, dus list met rooms wordt opnieuw opgehaald
         getRoomList();
     }
 
+    // Toegewezen aan de button "Start" in de inspector
     public void buttonRoomStartGame()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -571,11 +606,13 @@ public class OpenScene : Photon.PunBehaviour
 
         if (canvasRoom.gameObject.activeSelf)
         {
+            // Controle om te kijken of speler in room zit (gebruikt bij debuggen)
             if (PhotonNetwork.inRoom)
                 txtRoom.text = "You are in a room (" + PhotonNetwork.room.Name + ")";
             else
                 txtRoom.text = "You are NOT in a room!";
 
+            // Tekst wordt geset
             string[] txtInfoRoom = {"Je hebt 2 spelers nodig om het spel te starten: \n\n" +
                 PhotonNetwork.room.Name + " \nAantal spelers: " + PhotonNetwork.room.PlayerCount + "\nAantal spelers nodig om te starten: " + PhotonNetwork.room.MaxPlayers
 
@@ -588,12 +625,13 @@ public class OpenScene : Photon.PunBehaviour
             foreach (PhotonPlayer p in PhotonNetwork.playerList)
                 txtPlayersInRoom.text += "\n" + p.NickName;
 
-
+            // Als je genoeg spelers hebt om het spel te starten (in ons geval 2)
             if (PhotonNetwork.room.PlayerCount == PhotonNetwork.room.MaxPlayers)
             {
                 string[] txtBtn = { "Start spel", "Start game" };
                 txtStartGameFromRoom.text = txtBtn[taal];
 
+                // Je kunt alleen de game starten als je de master client bent
                 if (PhotonNetwork.isMasterClient)
                 {
                     string[] txtInfo = { "Je kunt het spel starten!", "You are ready to start the game!" };
@@ -609,28 +647,35 @@ public class OpenScene : Photon.PunBehaviour
             }
             else
             {
+                // Er zijn niet genoeg spelers om het spel te starten
                 string[] txtInfo = { "Er zijn niet genoeg spelers om het spel te starten...", "You need more players to start the game..." };
                 txtReadyToStart.text = txtInfo[taal];
                 btnStartGameFromRoom.interactable = false;
             }
         }
 
+        // Als je in de lobby zit
         if (canvasLobby.gameObject.activeSelf)
         {
+            // Controle om te kijken of speler in lobby zit (gebruikt bij debuggen)
             if (PhotonNetwork.insideLobby)
                 txtLobby.text = "You are in a lobby!";
             else
                 txtLobby.text = "You are NOT in a lobby!";
 
+            // Als de image voor het kiezen van nickname inactive is, dus nadat je nickname hebt gekozen
             if (!imgNickname.gameObject.activeSelf)
             {
+                // Als de lijst met rooms niet 0 is
                 if (rooms.Length != 0)
                 {
                     txtNoRooms.gameObject.SetActive(false);
                     yOffset = 0;
 
+                    // Voor elke room in de list met rooms wordt een button gemaakt om de room te joinen
                     foreach (RoomInfo game in rooms)
                     {
+                        // De grote en positie van de button wordt opgehaald
                         RectTransform rectPosition = btnPosition.GetComponent<RectTransform>();
                         Vector3 btnPos = btnPosition.transform.position;
                         float screenHeight = Screen.height;
@@ -638,19 +683,25 @@ public class OpenScene : Photon.PunBehaviour
                         float x = btnPos.x;// - rectPosition.rect.width;
                         float y = btnPos.z + (screenHeight / 3);
 
+                        // Als er nog ruimte is in de room
                         if (game.MaxPlayers != game.PlayerCount)
                         {
+                            // De plaats, grote, tekst en style van de button wordt geset
+                            // Als er op de button voor de room wordt gedrukt > JoinRoom();
                             if (GUI.Button(new Rect(x, y + yOffset, rectPosition.rect.width + 50, rectPosition.rect.height), game.Name + " " + game.PlayerCount + " / " + game.MaxPlayers + txtRoomButton[taal], buttonStyle))
                             {
                                 lobby.JoinRoom(game.Name);
                                 roomName = game.Name;
                             }
                         }
+
+                        // De offset gaat omhoog zodat de buttons onder elkeaar komen te staan
                         yOffset += 35;
                     }
                 }
                 else
                 {
+                    // Als er geen rooms zijn, laat deze tekst zien
                     txtNoRooms.gameObject.SetActive(true);
                     string[] txt = { "Er zijn op het moment geen kamers beschikbaar", "There are no rooms available at this moment" };
                     txtNoRooms.text = txt[taal];
@@ -661,8 +712,10 @@ public class OpenScene : Photon.PunBehaviour
     #endregion
 
     #region PUNBehaviour
+    // Photon PUNBehaviours
     public override void OnJoinedLobby()
     {
+        // Als je een lobby joined wordt de lobby text geset
         Debug.Log("Joined Lobby");
         base.OnJoinedLobby();
         initLobbyText();
@@ -676,6 +729,7 @@ public class OpenScene : Photon.PunBehaviour
 
     public override void OnJoinedRoom()
     {
+        // Als je een room joined wordt de room text geset
         Debug.Log("Joined Room");
         base.OnJoinedRoom();
         initRoomText();

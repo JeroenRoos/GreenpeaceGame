@@ -8,9 +8,12 @@ using UnityEngine.SceneManagement;
 public class UpdateUI : MonoBehaviour
 {
     public Player playerController;
+
+    // Hexcodes van kleuren
     // Green:       #00CC00.
     // Red:         #FF0000.
 
+    // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
     // Multiplayer
     List<string> lstMessages = new List<string>();
@@ -518,6 +521,7 @@ public class UpdateUI : MonoBehaviour
 
     #endregion
 
+    // Boolean variabele die in deze class worden gebruikt
     #region Boolean Variables
     // Booleans
     private bool btnMoneyHoverCheck;
@@ -560,8 +564,10 @@ public class UpdateUI : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        // Ingestelde taal wordt opgehaald
         taal = ApplicationModel.language;
 
+        // De tekst van alle popups wordt geset aan de hand van de taal
         initButtons();
         initButtonText();
         initCanvas();
@@ -574,23 +580,33 @@ public class UpdateUI : MonoBehaviour
         // GUI Styles
         tooltipStyle.normal.background = tooltipTexture;
 
-        // GUIStyle for buttons INIT
-        buttonStyle.normal.background = buttonTexture;          // Set the Texture
-        buttonStyle.alignment = TextAnchor.MiddleCenter;        // Set the text in the middle of the button
-        Color c = new Color();
-        ColorUtility.TryParseHtmlString("#ffffff", out c);      // Get the color out of the hexadecimal string
-        buttonStyle.normal.textColor = c;                       // Set the color of the text to above color
+        // GUIStyle for buttons 
+        // Set the Texture
+        buttonStyle.normal.background = buttonTexture;
 
+        // Set the text in the middle of the button    
+        buttonStyle.alignment = TextAnchor.MiddleCenter;
+
+        // Get the color out of the hexadecimal string     
+        Color c = new Color();
+        ColorUtility.TryParseHtmlString("#ffffff", out c);
+
+        // Set the color of the text to above color     
+        buttonStyle.normal.textColor = c;                       
+
+        // Kijk of de tutorial aan staat en begin de tutorial wel of niet
         if (game.tutorial.tutorialActive)
             initTutorialActive();
         else
             initTutorialNotActive();
 
+        // Tekst van next turn button wordt geset
         btnNextTurnText.text = nextTurnText[taal];
         buildingObjectController = GetComponent<BuildingObjectController>();
 
         if (ApplicationModel.multiplayer)
         {
+            // Als het een mulitplayer potje is wordt de Multiplayer UI aan gezet
             txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(true);
             txtMultiplayerInfo.gameObject.SetActive(true);
@@ -615,6 +631,7 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
+            // Als het geen multiplayer potje is wordt de Multiplayer UI op inactive gezet
             txtMultiplayerLocalPlayer.gameObject.SetActive(false);
             txtMultiplayerRemotePlayer.gameObject.SetActive(false);
             txtMultiplayerInfo.gameObject.SetActive(false);
@@ -636,42 +653,54 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
+        // De status van wat je aan het doen bent begint met Naar Nederland Kijken en wordt gestuurd naar andere speler
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
     }
 
     void Update()
     {
+        // Als het een multiplayer potje is
         if (ApplicationModel.multiplayer)
         {
             int playerPosition = game.GetPlayerListPosition();
 
+            // Het geld van de andere speler wordt geupdate
             if (playerPosition == 0)
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[1].ToString("0");
             else
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[0].ToString("0");
 
+            // Als er op ENTER wordt gedrukt (en de speler een chatbericht wil sturen)
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Debug.Log(txtChatMessageToSend);
+                // Controle of het chatbericht niet leeg is
                 if (txtChatMessageToSend != null)
                 {
+                    // Chat bericht wordt gestuurd naar andere speler
                     playerController.photonView.RPC("MessageReceived", PhotonTargets.Others, txtChatMessageToSend, PhotonNetwork.player.NickName);
+
+                    // Chat bericht wordt ook lokaal getoont
                     updateChatMessages(txtChatMessageToSend, PhotonNetwork.player.NickName);
+
+                    // Na het sturen wordt inputfield tekst en chatbericht weer op null/empty gezet 
                     txtChatMessageToSend = null;
                     inputChatMessage.text = "";
                 }
             }
         }
 
+        // Popups sluiten met ESC toets
         if (game.tutorial.tutorialIndex > 2)
             popupController();
 
+        // Als de regio popup actief is
         if (canvasRegioPopup.gameObject.activeSelf && dropdownChoiceMade)
         {
-
             if (checkboxAgriculture || checkboxCompanies || checkboxHouseholds)
             {
+                // Als een van de checkboxes bij het kiezen van een actie op true staat
                 btnDoActionRegionMenu.gameObject.SetActive(true);
                 txtRegionActionNoMoney.gameObject.SetActive(false);
                 txtRegionActionNoMoney.text = "";
@@ -679,7 +708,7 @@ public class UpdateUI : MonoBehaviour
             }
             else
             {
-
+                // ALs geen van de checkboxes op true staat
                 txtRegionActionNoMoney.gameObject.SetActive(false);
                 string[] error = { "Je moet een sector kiezen", "You have to chose a sector" };
                 txtRegionActionNoMoney.text = error[taal];
@@ -691,6 +720,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Tutorial Main Steps
+    // Initialize van tutorial UI als tutorial active is
     private void initTutorialActive()
     {
         canvasTutorial.gameObject.SetActive(true);
@@ -705,6 +735,7 @@ public class UpdateUI : MonoBehaviour
         StartCoroutine(initTutorialText());
     }
 
+    // Alle tutorial booleans wordt geset voor als de tutorial niet active is
     private void initTutorialNotActive()
     {
         imgTutorialStep2Highlight1.enabled = false;
@@ -747,26 +778,32 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialInvestementsDone = true;
         game.tutorial.tutorialBuildingsDone = true;
 
+        // Groter worden effect en shake effect voor de organization button
         StartCoroutine(ChangeScale(btnOrganization));
         if (!organizationShakes)
             StartCoroutine(ShakeOrganization());
     }
 
+    // Method waarin de tekst van de Tutorial contstant wordt geupdate
     IEnumerator initTutorialText()
     {
-        imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;     // Midden in het scherm
+        imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;    
         imgPosRight = imgPosMiddle;
         imgPosLeft = imgPosMiddle;
-        imgPosRight.x = imgPosRight.x + Screen.width / 3;                           // Rechtsmidden in het scherm
-        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                             // Linksmidden in het scherm
+
+        // Positie van de tutorial image > rechts in het scherm
+        imgPosRight.x = imgPosRight.x + Screen.width / 3;
+
+        // Positie van de tutorial image > links in het scherm
+        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                            
 
         btnOrganization.gameObject.SetActive(false);
         btnNextTurn.gameObject.SetActive(false);
         btnInvestments.gameObject.SetActive(false);
         btnCards.gameObject.SetActive(false);
         imgBarBottom.gameObject.SetActive(false);
-        //imgBarBottom.gameObject.SetActive(false);
 
+        // Tekst voor stap 1 van de tutorial
         game.tutorial.doTuto = true;
         string[] step1 = { "Welkom! De overheid heeft jouw organisatie de opdracht gegeven om ervoor te zorgen " +
                 "dat Nederland een milieubewust land wordt. De inwoners moeten begrijpen dat een groen land belangrijk is."
@@ -777,14 +814,14 @@ public class UpdateUI : MonoBehaviour
         imgTutorialBig.gameObject.SetActive(false);
         txtTutorialSmall.text = step1[taal];
         txtTutorialSmallBtn.text = btnText[taal];
-        //btnOrganization.interactable = false;
-        //btnInvestments.interactable = false;
         btnNextTurn.interactable = false;
         imgTutorialSmall.transform.position = imgPosRight;
 
-        while (game.tutorial.tutorialIndex < 1)//tutorialStep2)
+        // Zolang er niet op de verder button wordt gedrukt blijft dit doorgaan
+        while (game.tutorial.tutorialIndex < 1)
             yield return null;
 
+        // Tekst voor stap 2 van de tutorial
         string[] step2 = { "Jouw taak is om de vervuiling naar 0% te brengen voor 2050. Het is nu 2020 dus je hebt nog 30 jaar.",
             "Your task is to reduce the pollution to 0% before 2050. It is now 2020 so you still have 30 years."};
         txtTutorialSmall.text = step2[taal];
@@ -792,10 +829,11 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.enabled = true;
         imgTutorialStep2Highlight2.enabled = true;
 
-        while (game.tutorial.tutorialIndex < 2)//tutorialStep3)
+        // Zolang er niet op de verder button wordt gedrukt blijft dit doorgaan
+        while (game.tutorial.tutorialIndex < 2)
             yield return null;
 
-        //tutorialStep3 = false;
+        // Tekst voor stap 3 van de tutorial
         imgTutorialBig.transform.position = imgPosMiddle;
         string[] step3 = { "Bovenin het scherm staan jouw resources om de vervuiling te verlagen. Welvaart, " +
                 "milieubewustheid, tevredenheid en vervuiling zijn landelijke gemiddelden." +
@@ -818,9 +856,11 @@ public class UpdateUI : MonoBehaviour
         imgTutorialStep2Highlight1.gameObject.SetActive(false);
         imgTutorialStep2Highlight2.gameObject.SetActive(false);
 
-        while (game.tutorial.tutorialIndex < 3)//tutorialStep4)
+        // Zolang er niet op de verder button wordt gedrukt blijft dit doorgaan
+        while (game.tutorial.tutorialIndex < 3)
             yield return null;
 
+        // Tekst voor stap 4 van de tutorial
         imgTutorialSmall.gameObject.transform.position = imgPosRight;
         game.tutorial.tutorialOnlyWestNL = true;
         game.tutorial.tutorialRegionsClickable = true;
@@ -836,22 +876,27 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmallBtn.text = btnText[taal];
         btnTutorialSmallNext.gameObject.SetActive(false);
 
+        // Controle of de tutorial voor de regio als af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialRegionDone)
         {
+            // Zolang de popup voor regio niet actief is blijft dit doorgaan
             while (!canvasRegioPopup.gameObject.activeSelf)
                 yield return null;
 
             canvasTutorial.gameObject.SetActive(false);
 
+            // Zolang de tutorial voor de regio niet klaar is blijft dit doorgaan
             while (!game.tutorial.tutorialCheckActionDone)
                 yield return null;
 
+            // Zolang de popup voor regio actief is blijft dit doorgaan
             while (canvasRegioPopup.gameObject.activeSelf)
                 yield return null;
         }
         else
             canvasTutorial.gameObject.SetActive(false);
 
+        // Tekst voor stap 5 van de Tutorial
         game.tutorial.tutorialOnlyWestNL = false;
         canvasTutorial.gameObject.SetActive(true);
         imgBarBottom.gameObject.SetActive(true);
@@ -866,19 +911,22 @@ public class UpdateUI : MonoBehaviour
         btnOrganization.gameObject.SetActive(true);
         if (!organizationShakes)
             StartCoroutine(ShakeOrganization());
-        //imgBarBottom.gameObject.SetActive(true);
 
+        // Controle of de tutorial voor de regio als af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialOrganizationDone)
         {
+            // Zolang de Organisatie popup niet actief is blijft dit doorgaan
             while (!canvasOrganizationPopup.gameObject.activeSelf)
                 yield return null;
 
             imgTutorialStepOrgMenuHightlight.gameObject.SetActive(false);
             canvasTutorial.gameObject.SetActive(false);
 
+            // Zolang de tutorial van de organization niet klaar is blijft dit doorgaan
             while (!game.tutorial.tutorialOrganizationDone)
                 yield return null;
 
+            // Zolang de popup van de organisatie actief is blijft dit doorgaan
             while (canvasOrganizationPopup.gameObject.activeSelf)
                 yield return null;
         }
@@ -888,6 +936,7 @@ public class UpdateUI : MonoBehaviour
             canvasTutorial.gameObject.SetActive(false);
         }
 
+        // Tekst voor stap 6 van de tutorial
         btnNextTurn.interactable = true;
         canvasTutorial.gameObject.SetActive(true);
         btnNextTurn.gameObject.SetActive(true);
@@ -899,8 +948,10 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmall.text = step6[taal];
         txtTutorialSmallBtn.text = btnText[taal];
 
+        // Je kunt niet next turn doen
         game.tutorial.tutorialNexTurnPossibe = true;
 
+        // Controle of de tutorial voor de next turn al af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialNextTurnDone)
         {
             while (!game.tutorial.tutorialNextTurnDone)
@@ -910,7 +961,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialNexTurnPossibe = false;
         btnNextTurn.interactable = false;
 
-
+        // Tekst voor tutorial stap 7
         game.tutorial.tutorialeventsClickable = false;
         canvasTutorial.gameObject.SetActive(true);
         string[] step9 = { "Je kunt linksonder in je scherm ook een knop zien. Deze knop geeft een overzicht van de veranderingen tussen de huidige en de vorige maand. Je krijgt dit rapport elke maand.  " +
@@ -923,6 +974,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialMonthlyReportActive = true;
         imgTutorialSmall.transform.position = imgPosLeft;
 
+        // Controle of de tutorial voor de monthly report al af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialMonthlyReportDone)
         {
             while (!canvasMonthlyReport.gameObject.activeSelf)
@@ -943,7 +995,7 @@ public class UpdateUI : MonoBehaviour
             imgHighlightMonthlyReport.gameObject.SetActive(false);
         }
 
-        //imgTutorialOverworld.gameObject.transform.position = imgNewPos;
+        // Tekst voor tutorial stap 8
         canvasTutorial.gameObject.SetActive(true);
         string[] step7 = { "er is een event bezig. Er kunnen elke nieuwe turn enkele events ontstaan. Er kan maar 1 event " +
                 "tegelijk in een regio zijn. \nEr kunnen wel meerdere events tegelijk zijn in meerdere regio's. \nVoor elk event heb je 3 beurten om te beslissen wat je met de event gaat doen. "
@@ -954,11 +1006,12 @@ public class UpdateUI : MonoBehaviour
         btnTutorialSmallNext.gameObject.SetActive(true);
 
         popupActive = true;
-        while (game.tutorial.tutorialIndex < 7) //tutorialstep19)
+        while (game.tutorial.tutorialIndex < 7)
             yield return null;
 
         popupActive = false;
 
+        // Tekst voor tutorial stap 9
         btnTutorialSmallNext.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         string[] step8 = { "Door op het icoon van de event te klikken krijg je een pop-up. In deze pop-up kun je kiezen welke actie je bij dit event wil nemen. " +
@@ -968,6 +1021,7 @@ public class UpdateUI : MonoBehaviour
         txtTutorialSmallBtn.text = btnText[taal];
         game.tutorial.tutorialEventsActive = true;
 
+        // Controle of de tutorial voor de events al af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialEventsDone)
         {
             while (!canvasEventPopup.gameObject.activeSelf)
@@ -986,7 +1040,6 @@ public class UpdateUI : MonoBehaviour
 
         imgTutorialSmall.transform.position = imgPosMiddle;
         game.tutorial.tutorialNexTurnPossibe = true;
-        //game.tutorial.tutorialActive = false;
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         btnNextTurn.interactable = true;
@@ -1016,6 +1069,7 @@ public class UpdateUI : MonoBehaviour
         btnAfterActionReportCompleted.GetComponent<Button>();
         btnAfterActionReportCompleted.gameObject.SetActive(false);
 
+        // Bepaalde buttons worden pas zichtbaar na een paar jaar
         btnQuests.GetComponent<Button>();
         if (game.currentMonth < 6 && game.currentYear < 2)
             btnQuests.gameObject.SetActive(false);
@@ -1033,6 +1087,7 @@ public class UpdateUI : MonoBehaviour
 
     void setBooleans()
     {
+        // Alle booleans worden geset
         btnMoneyHoverCheck = false;
         btnHappinessHoverCheck = false;
         btnAwarenessHoverCheck = false;
@@ -1068,6 +1123,7 @@ public class UpdateUI : MonoBehaviour
 
     void initCanvas()
     {
+        // Alle canvassen worden geset en op niet active gezet 
         canvasMenuPopup.GetComponent<Canvas>();
         canvasMenuPopup.gameObject.SetActive(false);
 
@@ -1123,6 +1179,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // De methode die de Game class linkt aan UpdateUI
     public void LinkGame(Game game)
     {
         this.game = game;
@@ -1135,17 +1192,21 @@ public class UpdateUI : MonoBehaviour
     #region Coroutines Buttons and Start Tutorial Quests/Investments/Cards
     public IEnumerator showBtnQuests()
     {
+        // Als het een multiplayer game is zijn alle buttons meteen beschikbaar
         if (!ApplicationModel.multiplayer)
         {
+            // Als het geen multiplayer game is blijft hij hier totdat het de juiste jaar/maand is
             while (game.currentMonth < 6 && game.currentYear < 2)
                 yield return null;
         }
 
+        // Zet Button op true en start shake effect
         btnQuests.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnQuests));
         if (!questsShakes)
             StartCoroutine(ShakeQuests());
 
+        // Controle of de tutorial voor de quests als af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialQuestsDone)
         {
             btnNextTurn.interactable = false;
@@ -1157,6 +1218,7 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialeventsClickable = false;
             game.tutorial.tutorialNexTurnPossibe = false;
 
+            // Tekst voor het Quests gedeelte van de tutorial
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de organisatie menu knop gekomen. Dit is de knop voor je missies. \n\nOpen het missies menu door op de missies knop te drukken. ",
             "You can see that an extra button just appeared next to the organization menu button. This is the button for your quests. \n\nOpen the quests menu by pressing the quests button." };
             string[] btnText = { "Verder", "Next" };
@@ -1175,18 +1237,22 @@ public class UpdateUI : MonoBehaviour
     }
 
     public IEnumerator showBtnInvestments()
-    {
+    {        
+        // Als het een multiplayer game is zijn alle buttons meteen beschikbaar
         if (!ApplicationModel.multiplayer)
         {
+            // Als het geen multiplayer game is blijft hij hier totdat het de juiste jaar/maand is
             while (game.currentYear < 6)
                 yield return null;
         }
 
+        // Zet de button op active en start shake effect
         btnInvestments.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnInvestments));
         if (!investmentsShakes)
             StartCoroutine(ShakeInvestments());
 
+        // Controle of de tutorial voor de investements als af is (dit is voor als de gebruiker een save game gebruikt)
         if (!game.tutorial.tutorialInvestementsDone)
         {
             btnNextTurn.interactable = false;
@@ -1197,6 +1263,7 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialInvestementsActive = true;
             game.tutorial.tutorialNexTurnPossibe = false;
 
+            // Tekst voor het Investements gedeelte van de tutorial
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de kaarten menu knop gekomen. Dit is de knop voor investeren. \n\nOpen het investeer menu door op de investeer knop te drukken.",
             "You can see that an extra button just appeared next to the cards menu button. This is the button for your investments. \n\nOpen the investments menu by pressing the investments button." };
             string[] btnText = { "Verder", "Next" };
@@ -1216,17 +1283,21 @@ public class UpdateUI : MonoBehaviour
 
     public IEnumerator showBtnCards()
     {
+        // Als het een multiplayer game is zijn alle buttons meteen beschikbaar
         if (!ApplicationModel.multiplayer)
         {
+            // Als het geen multiplayer game is blijft hij hier totdat het de juiste jaar/maand is
             while (game.currentYear < 4)
                 yield return null;
         }
 
+        // Zet de button op active en start shake effect
         btnCards.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnCards));
         if (!cardsShakes)
             StartCoroutine(ShakeCards());
 
+        // Tekst voor het Cards gedeelte van de tutorial
         if (!game.tutorial.tutorialCardsDone)
         {
             btnNextTurn.interactable = false;
@@ -1237,6 +1308,7 @@ public class UpdateUI : MonoBehaviour
             game.tutorial.tutorialCardsActive = true;
             game.tutorial.tutorialNexTurnPossibe = false;
 
+            // Tekst voor het Cards gedeelte van de tutorial
             string[] step1 = { "Zoals je misschien hebt gezien is er een extra knop naast de missies menu knop gekomen. Dit is de knop voor je kaarten. \n\nOpen het kaarten menu door op de kaarten knop te drukken. ",
             "You can see that an extra button just appeared next to the quests menu button. This is the button for your cards. \n\nOpen the cards menu by pressing the cards button." };
             string[] btnText = { "Verder", "Next" };
@@ -1261,9 +1333,10 @@ public class UpdateUI : MonoBehaviour
 
     private IEnumerator tutorialBuildings()
     {
-        Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;      // Midden in het scherm
+        // Zet positie van de image naar links
+        Vector3 imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;      
         Vector3 imgPosLeft = imgPosMiddle;
-        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                                 // Linksmidden in het scherm
+        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                                
 
         btnNextTurn.interactable = false;
         canvasTutorial.gameObject.SetActive(true);
@@ -1272,6 +1345,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialBuildingsActive = true;
         game.tutorial.tutorialNexTurnPossibe = false;
 
+        // Tekst voor het Building gedeelte van de tutorial
         string[] step1 = { "Er zijn 4 nieuwe icoontjes op de map verschenen! Dit komt omdat de overheid heeft jouw organisatie toestemming gegeven om 1 gebouw neer te zetten in elke regio. \\Click on one of those 4 icons.",
             "There just appeared 4 new icons on the map! This is because the government has given your organisation permission to place 1 building in each region. \n\nClick on one of those 4 icons." };
         txtTutorialSmall.text = step1[taal];
@@ -1288,6 +1362,7 @@ public class UpdateUI : MonoBehaviour
         imgTutorialSmall.transform.position = imgPosMiddle;
     }
 
+    // Het effect dat de button klein begint en steeds groter wordt als het voor het eerst op komt
     public IEnumerator ChangeScale(Button b)
     {
         Vector3 currentScale = new Vector3(0, 0, 0);
@@ -1311,6 +1386,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Method die ht shake effect voor de Organisatie button maakt
     public IEnumerator ShakeOrganization()
     {
         organizationShakes = true;
@@ -1335,6 +1411,7 @@ public class UpdateUI : MonoBehaviour
         organizationShakes = false;
     }
 
+    // Method die ht shake effect voor de Quests button maakt
     public IEnumerator ShakeQuests()
     {
         questsShakes = true;
@@ -1359,6 +1436,7 @@ public class UpdateUI : MonoBehaviour
         questsShakes = false;
     }
 
+    // Method die ht shake effect voor de Cards button maakt
     public IEnumerator ShakeCards()
     {
         cardsShakes = true;
@@ -1383,6 +1461,7 @@ public class UpdateUI : MonoBehaviour
         cardsShakes = false;
     }
 
+    // Method die ht shake effect voor de Investements button maakt
     public IEnumerator ShakeInvestments()
     {
         investmentsShakes = true;
@@ -1411,6 +1490,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for controlling popups
     void popupController()
     {
+        // Het sluiten van een popup met ESC, hele hoop controlles omdat dit nog niet kan tijdens de tutorial
         // Close active popup with Escape / Open Menu popup with Escape if no popup is active
         if (Input.GetKeyUp(KeyCode.Escape) && !game.tutorial.tutorialRegionActive && !game.tutorial.tutorialEventsActive &&
             !game.tutorial.tutorialQuestsActive && !game.tutorial.tutorialOrganizationActive &&
@@ -1418,6 +1498,7 @@ public class UpdateUI : MonoBehaviour
             && !game.tutorial.tutorialBuildingsActive)
             closeWithEscape();
 
+        // Hotkeys die we eerst hadden
         /*
         // Open and close Organization popup with O
         else if (Input.GetKeyUp(KeyCode.O))
@@ -1435,13 +1516,16 @@ public class UpdateUI : MonoBehaviour
     void closeWithEscape()
     {
         EventManager.CallPlayButtonClickSFX();
-        if (!popupActive)// && !tutorialActive)
+        // Als er geen popup actief is opent de ESC toest het menu
+        if (!popupActive)
         {
             canvasMenuPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
             initButtonText();
         }
+
+        // Anders controleert het welke popup actief is en sluit het deze
         else if (canvasOrganizationPopup.gameObject.activeSelf)
         {;
             canvasOrganizationPopup.gameObject.SetActive(false);
@@ -1569,6 +1653,7 @@ public class UpdateUI : MonoBehaviour
         Rect lblReqt;
         lblReqt = GUILayoutUtility.GetRect(new GUIContent(txtTooltip), tooltipStyle);
 
+        // Code die we hadden om tooltips te laten zien, wordt niet meer gebruikt
         if (checkTooltip() && !popupActive)// && game.tutorial.tutorialStep3)
         {
             lblReqt.x = v3Tooltip.x + 10; lblReqt.y = v3Tooltip.z + 40;
@@ -1597,6 +1682,8 @@ public class UpdateUI : MonoBehaviour
             GUI.Label(lblReqt, "<color=#ccac6f>" + txtTooltipCompany + "</color>", tooltipStyle);
             updateRegionSectors();
         }*/
+
+        // Als de popup voor cards actief is
         else if (canvasCardsPopup.gameObject.activeSelf)
         {
             float yOffset = 0f;
@@ -1609,19 +1696,24 @@ public class UpdateUI : MonoBehaviour
             float x = btnPos.x;
             float y = btnPos.z + (screenHeight / 3);
 
-            //foreach (Card c in game.cards)
+            // Maak voor elke button in de list ownedCards een button aan
             foreach (Card c in game.inventory.ownedCards)
             {
+                // Als je op de button drukt ga je naar de method setTextCardInformation()
                 if (GUI.Button(new Rect(x, y + yOffset, rectBtnCardsPosition.rect.width + 50, rectBtnCardsPosition.rect.height), c.name[taal], buttonStyle))
                     setTextCardInformation(c);
 
+                // Offset zodat de buttons oner elkaar komen te staan
                 yOffset += 35;
             }
         }
+
+        // Als de popup voor Buildings actief is
         else if (canvasEmptyBuildingsPopup.gameObject.activeSelf)
         {
             float yOffset = 0f;
 
+            // Positie en grote van button
             RectTransform rectBtnBuildingsPosition = btnCardsPosition.GetComponent<RectTransform>();
             Vector3 btnPos = btnEmptyBuildingPosition.transform.position;
             float screenHeight = Screen.height;
@@ -1629,20 +1721,24 @@ public class UpdateUI : MonoBehaviour
             float x = btnPos.x;
             float y = btnPos.z + (screenHeight / 3);
 
+            // Maak voor elke button in de list ownedCards een button aan
             foreach (Building b in regionToBeBuild.possibleBuildings)
             {
+                // Als er al een building actief is hoeft hier geen button meer voor te zijn
                 if (b != buildingRegion.activeBuilding)
                 {
+                    // Als je op de button drukt ga je naar de method setTextCardInformation()
                     if (GUI.Button(new Rect(x, y + yOffset, rectBtnBuildingsPosition.rect.width + 50, rectBtnBuildingsPosition.rect.height), b.buildingName[taal], buttonStyle))
                         setTextBuildingInformation(b);
 
-
+                    // Offset zodat de buttons oner elkaar komen te staan
                     yOffset += 35;
                 }
             }
         }
     }
 
+    // Method die controleert of er over een statistiek gehovered wordt, als dit zo is wordt de positie waar de tooltip moet komen geset
     bool checkTooltip()
     {
         if (btnPollutionHoverCheck)
@@ -1685,26 +1781,24 @@ public class UpdateUI : MonoBehaviour
     public void updateDate(int month, int year)
     {
         month = month - 1;
+
+        // Array met alle maanden
         string[,] arrMonths = new string[2, 12]
         {
             { "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" },
             { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }
         };
+
+        // Set de tekst van de maand 
         txtDate.text = arrMonths[taal, month] + " - " + (year + 2019).ToString();
     }
 
     // Update Money based on value
     public void updateMoney(double money)
     {
+        // Als het multiplayer is wordt niet alleen aantal geld maar ook naam van de player getoont
         if (ApplicationModel.multiplayer)
-        {
-            //int playerPosition = game.GetPlayerListPosition();
-
-            //if (playerPosition == 0)
-                txtMoney.text = PhotonNetwork.player.NickName + ": " + money.ToString("0");
-            //else
-            //    txtMoney.text = PhotonNetwork.playerList[0].NickName + ": " + money.ToString("0");
-        }
+            txtMoney.text = PhotonNetwork.player.NickName + ": " + money.ToString("0");
         else
             txtMoney.text = money.ToString("0");
     }
@@ -1732,23 +1826,10 @@ public class UpdateUI : MonoBehaviour
         iconController(btnHappiness, txtHappiness, happiness);
     }
 
-    /* Update Energy based on value
-    public void updateEnergy(double energy)
-    {
-        iconController(btnEnergy, energy);
-    } */
-
-
-    /* Update Population based on value
-    public void updatePopulation(double population)
-    {
-        int popu = Convert.ToInt32(population);
-        txtPopulation.text = popu.ToString();
-    }*/
-
     // Change color of the button based on value
     void iconController(Button btn, Text txt, double value)
     {
+        // Maak een colorblok aan voor de kleuren
         ColorBlock cb;
         Color lerpColor;
         float f = (float)value / 100;
@@ -1766,6 +1847,7 @@ public class UpdateUI : MonoBehaviour
             lerpColor = Color.Lerp(Color.red, Color.green, f);
         }
 
+        // Set de color van de tekst en icon
         cb.normalColor = lerpColor;
         cb.highlightedColor = lerpColor;
         cb.pressedColor = lerpColor;
@@ -1776,13 +1858,15 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Update UI in Tooltips
+    // Methode waar de tekst voor de tooltip wordt gezet, txttooltip wordt dan gebruikt in de onGUI methode als tekst van de tooltip
     public void updateMoneyTooltip(double income)
     {
         string[] tip = { "Inkomen: " + income.ToString("0"),
             "Income: " + income.ToString("0") };
-        txtTooltip = tip[taal];                 //"Donaties: " + donations + "\nInkomen: " + income;
+        txtTooltip = tip[taal];                 
     }
 
+    // Methode waar de tekst voor de tooltip wordt gezet, txttooltip wordt dan gebruikt in de onGUI methode als tekst van de tooltip
     public void updateHappinessTooltip(double happ, int i)
     {
         switch (i)
@@ -1810,6 +1894,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Methode waar de tekst voor de tooltip wordt gezet, txttooltip wordt dan gebruikt in de onGUI methode als tekst van de tooltip
     public void updateAwarnessTooltip(double awareness, int i)
     {
         switch (i)
@@ -1837,6 +1922,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Methode waar de tekst voor de tooltip wordt gezet, txttooltip wordt dan gebruikt in de onGUI methode als tekst van de tooltip
     public void updatePollutionTooltip(double pollution, int i)
     {
         switch (i)
@@ -1864,6 +1950,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Methode waar de tekst voor de tooltip wordt gezet, txttooltip wordt dan gebruikt in de onGUI methode als tekst van de tooltip
     public void updateProsperityTooltip(double prosperity, int i)
     {
         switch (i)
@@ -1891,6 +1978,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Methode waar de tekst voor de tooltip wordt gezet, txttooltip wordt dan gebruikt in de onGUI methode als tekst van de tooltip
     public void updateEnergyTooltip(double green, double fossil, double nuclear)
     {
         string[] tip = { "Groene energie: " + green.ToString() + "%\nFossiele energie: "
@@ -1902,8 +1990,10 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Organization Popup
+    // Methode wordt aangeroepen als er op de button Organisatie wordt gedrukt
     public void updateOrganizationScreenUI()
     {
+        // Haal het inkomen van elke regio op en zet de tekst value
         foreach (MapRegion region in game.regions)
         {
             if (region.name[0] == "Noord Nederland")
@@ -1916,16 +2006,18 @@ public class UpdateUI : MonoBehaviour
                 txtOrgWestMoney.text = (region.statistics.income * 12).ToString("0");
         }
 
+        // Set de hoeveelheid geld van de bank
         txtOrgBank.text = game.GetMoney().ToString("0");
 
         imgTutorialOrganization.enabled = false;
         txtTutorialOrganization.enabled = false;
         btnTutorialOrganization.gameObject.SetActive(false);
 
-        //initOrganizationText();
+        // Initialize de tekst die de advisers weer moeten geven
         initAdvisersText();
 
-        if (/*tutorialStep8 && */game.tutorial.tutorialActive && game.tutorial.tutorialOrganizationActive)
+        // Als de tutorial actief is en dit stuk van dit tutorial nog niet gedaan is > start de tutorial
+        if (game.tutorial.tutorialActive && game.tutorial.tutorialOrganizationActive)
         {
             imgTutorialOrganization.enabled = true;
             txtTutorialOrganization.enabled = true;
@@ -1936,6 +2028,7 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialOrganizationPopup()
     {
+        // Tekst voor het Organization tutorial
         string[] step1 = { "Het organisatie menu toont het jaarlijks inkomen per regio. " +
                 "Ook kan je hier zien wat je adviseurs van de huidige situatie vinden en wat ze zouden willen zien.",
             "The organisation menu shows the yearly income for each region. " +
@@ -1945,7 +2038,8 @@ public class UpdateUI : MonoBehaviour
         txtTutorialOrganization.text = step1[taal];
         txtTutorialOrganizationBtnText.text = btnText[taal];
 
-        while (game.tutorial.tutorialIndex < 5)//tutorialStep9)
+        // Als er niet op ready is gedrukt 
+        while (game.tutorial.tutorialIndex < 5)
             yield return null;
 
         imgTutorialOrganization.gameObject.SetActive(false);
@@ -1953,6 +2047,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialOrganizationActive = false;
     }
 
+    // Set de tekst van de advisers
     private void initAdvisersText()
     {
         txtAdviserEconomic.text = game.economyAdvisor.name[taal] + "\n" + game.economyAdvisor.displayMessage[taal];
@@ -1960,6 +2055,7 @@ public class UpdateUI : MonoBehaviour
         txtAdviserHappiness.text = game.happinessAnalyst.name[taal] + "\n" + game.happinessAnalyst.displayMessage[taal];
     }
 
+    // Set de overige tekst in deze popup
     private void initOrganizationText()
     {
         string[] left = { "Budget", "Budget" };
@@ -1984,36 +2080,25 @@ public class UpdateUI : MonoBehaviour
         txtOrgWestMoneyDescription.text = west[taal];
         txtOrgZuidMoneyDescription.text = zuid[taal];
         txtYearlyBudget.text = yearly[taal];
-
-        // Oude investeringen text
-        /* "Hier kun je een gedeelte van het geld op je bank investeren in de " + 
-     "\norganistie. Als je meer geld in een onderdeel zet heb je en grotere" + 
-     "\nkans op succes in dat onderdeel. 1 vakje is 10000", "You can invest some of your budget in your " +
-     "own organization. If you invest more in one of the segments, you have a higher" + 
-     "chance of success. One block equals 10000" }; */
-
-        // string[] demonstration = { "Demonstraties", "Demonstrations" };
-        // string[] research = { "Onderzoek", "Research" };
-        // string[] guarding = { "Eco bescherming", "Eco guarding" };
-
-        // txtDemonstration.text = demonstration[taal];
-        // txtResearch.text = research[taal];
-        // txtEcoGuarding.text = guarding[taal];
     }
     #endregion
 
     #region Code for the Region Popup
+    // Method wordt aangeroepen als er op een van de regio wordt gedrukt
     public void regionClick(MapRegion region)
     {
         imgSectorPopup.gameObject.SetActive(false);
 
-        // Ga naar WEST tijdens de tutorial
+        // Als de tutorial actief is kan er alleen op West-Nederland gedrukt worden
         if (game.tutorial.tutorialActive && !popupActive)
         {
+            // Je kunt alleen op de regio's klikken in bepaalde onderdelen van de tutorial
             if (game.tutorial.tutorialOnlyWestNL && game.tutorial.tutorialRegionsClickable)
             {
+                // Als de regio waar je op hebt gedrukt West Nederland is
                 if (region.name[0] == "West Nederland")
                 {
+                    // Start de regio popup met tutorial active
                     startRegionPopup(region);
                     game.tutorial.regionWestActivated = true;
 
@@ -2028,12 +2113,12 @@ public class UpdateUI : MonoBehaviour
                 imgTutorialRegion.gameObject.SetActive(false);
             }
         }
-        // Andere reagions clickable tijdens tutorial
-        // Na de tutorial
+        // Je kon op de map klikken door popups en buttons heen, daarom de checks of je niet in een popup zit of op een button hovered
         else if (!canvasRegioPopup.gameObject.activeSelf && !popupActive && !btnOrganizationCheck
         && !btnMenuCheck && !btnTimelineCheck && !game.tutorial.tutorialActive && !btnAfterActionStatsCheck && !btnAfterActionCompletedCheck && !btnQuestsCheck && !btnMonthlyReportCheck && !btnYearlyReportCheck
         && !btnInvestementsHoverCheck && !btnCardsHoverCheck)
         {
+            // Start de regio popup zonder tutorial
             startRegionPopup(region);
             imgTutorialRegion.gameObject.SetActive(false);
         }
@@ -2042,21 +2127,29 @@ public class UpdateUI : MonoBehaviour
     private void startRegionPopup(MapRegion region)
     {
         regio = region;
+
+        // Als het multiplayer is wordt de status geupdate 
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio scherm (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region screen(" + regio.name[taal] + ")");
         
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
         EventManager.CallPopupIsActive();
+
+        // Clear en refresh de dropdown menu voor acties
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
+
+        // Initialize de UI uit de regio
         updateRegionScreenUI();
     }
 
     IEnumerator tutorialRegionPopup()
     {
+        // Tutorial voor regio is actief
         game.tutorial.tutorialRegionActive = true;
 
+        // Tekst voor Regio gedeelte van de tutorial
         string[] step1 = { "Dit is het regio menu. De statistieken van een regio worden opgemaakt door de statistieken van de sectoren in de regio: Huishoudens, Bedrijven en Landbouw." +
                 "\n\nJe kan de statistieken van een sector zien door op de naam te klikken.",
             "This is the region menu. The statistics of a region consist of the statistics of the sectors in the region: Households, Companies and Agriculture." +
@@ -2066,9 +2159,11 @@ public class UpdateUI : MonoBehaviour
         txtTutorialRegion.text = step1[taal];
         txtTurorialReginoBtnText.text = btnText[taal];
 
-        while (game.tutorial.tutorialIndex < 4)//tutorialStep6)
+        // Zolang je niet op verder drukt
+        while (game.tutorial.tutorialIndex < 4)
             yield return null;
 
+        // Tekst voor Regio gedeelte van de tutorial
         string[] step2 = { "Je kan statistieken in sectoren aanpassen door acties te doen. Acties kosten tijd en geld " +
                 "om uit te voeren. Sommige acties kan je maar 1 keer uitvoeren en anderen kan je maar eens " +
                 "in de zoveel tijd doen, maar je kan acties wel in meerdere sectoren tegelijk doen." +
@@ -2080,9 +2175,8 @@ public class UpdateUI : MonoBehaviour
 
         txtTutorialRegion.text = step2[taal];
         btnTutorialRegion.gameObject.SetActive(false);
-        //Vector3 imgOldPos = imgTutorialRegion.gameObject.transform.position;
-        //Vector3 imgNewPos = imgOldPos;
-        //imgNewPos.x = imgNewPos.x - Screen.width / 3;
+
+        // Positie van tutorial image wordt veranderd naar links
         imgTutorialRegion.gameObject.transform.position = imgPosLeft;
 
         while (!game.tutorial.tutorialCheckActionDone)
@@ -2095,36 +2189,36 @@ public class UpdateUI : MonoBehaviour
 
     private void updateRegionScreenUI()
     {
-        // Set the text in the popup based on language
-        //initRegionText();
+        // De kleur values van de statistieken in de regio worden geset
         updateRegionColorValues();
 
+        // De tekst values van de statistieken in de regio worden geset
         updateRegionTextValues();
 
-        // Set the right actions in the dropdown
+        // Initialize de drop down en zet er de jusite acties in
         initDropDownRegion();
 
-        // Set toggles on not active
+        // Zet de toggles op niet actief
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
 
+        // Als het multiplayer is
         if (ApplicationModel.multiplayer)
         {
+            // Als jij de eigenaar bent van de regio (als je niet de eigenaar bent kun je bepaalde dingen niet doen in de regio)
             if (regio.regionOwner == PhotonNetwork.player.NickName)
             {
                 txtNotYourRegion.gameObject.SetActive(false);
                 imgHistory.gameObject.SetActive(false);
-                //imgActions.gameObject.SetActive(false);
 
                 btnHistoryTab.gameObject.SetActive(true);
                 btnActionsTab.gameObject.SetActive(true);
-                //btnActionsTab.interactable = true;
-                //btnHistoryTab.interactable = true;
                 btnActionsTabClick();
             }
             else
             {
+                // Als jij niet de eigenaar bent kun je geen acties doen
                 txtNotYourRegion.gameObject.SetActive(true);
                 string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren. Je kunt wel de actieve acties en events tab bekijken in deze regio.",
                 "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions. You are able to view the active events and actions tab in this region." };
@@ -2136,6 +2230,7 @@ public class UpdateUI : MonoBehaviour
                 btnActionsTab.gameObject.SetActive(true);
             }
         }
+        // Als het geen multiplayer is
         else
         {
             txtNotYourRegion.gameObject.SetActive(false);
@@ -2146,6 +2241,8 @@ public class UpdateUI : MonoBehaviour
             btnActionsTab.gameObject.SetActive(true);
             btnActionsTab.interactable = true;
             btnHistoryTab.interactable = true;
+
+            // De tab die als eerst meteen geopend moet worden is die van de acties
             btnActionsTabClick();
         }
 
@@ -2153,12 +2250,11 @@ public class UpdateUI : MonoBehaviour
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
         btnCompaniesTab.interactable = true;
-
-
     }
 
     private void updateRegionColorValues()
     {
+        // De kleur en tekst van de gemiddelde statistieken worden geset
         iconController(imgHappinessRegion, txtRegionHappinessDescription, txtRegionHappiness, regio.statistics.happiness);
         iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, regio.statistics.ecoAwareness);
         iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, regio.statistics.avgPollution);
@@ -2167,13 +2263,13 @@ public class UpdateUI : MonoBehaviour
         iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, regio.statistics.avgNaturePollution);
         iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, regio.statistics.prosperity);
 
+        // De kleur en tekst van de gemiddelde pollution increase statistieken worden geset
         iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, regio.statistics.avgAirPollutionIncrease);
         iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, regio.statistics.avgNaturePollutionIncrease);
         iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, regio.statistics.avgWaterPollutionIncrease);
-        //iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, 5);
-
     }
 
+    // De tekst uit de popup wordt geset
     private void initRegionText()
     {
         string[] txtHappiness = { "Tevredenheid", "Happiness" };
@@ -2236,6 +2332,7 @@ public class UpdateUI : MonoBehaviour
         txtBtnViewConsequences.text = btnViewConsequences[taal];
     }
 
+    // De tekst waarde van de statistieken wordt geset
     private void updateRegionTextValues()
     {
         txtRegionName.text = regio.name[taal];
@@ -2264,9 +2361,7 @@ public class UpdateUI : MonoBehaviour
         else
             txtRegionPollutionWaterIncrease.text = regio.statistics.avgWaterPollutionIncrease.ToString("0.00") + "%";
 
-
-
-        // Set text of actions to empty
+        // Zet alle tekst waardes van acties die leeg moeten zijn ook leeg
         txtRegionActionConsequences.text = "";
         txtRegionActionCost.text = "";
         txtRegionActionDuration.text = "";
@@ -2293,12 +2388,15 @@ public class UpdateUI : MonoBehaviour
         initDropDownRegion();
     }
 
+    // Update de actieve events
     private void updateActiveEvents()
     {
         string activeEventsRegio = "";
 
+        // Voor elke event in de list met actieve events
         foreach (GameEvent ge in regio.inProgressGameEvents)
         {
+            // Voeg de event naam toe
             if (ge.isActive || ge.isIdle)
                 activeEventsRegio += ge.publicEventName[taal] + "\n";
         }
@@ -2306,9 +2404,12 @@ public class UpdateUI : MonoBehaviour
         txtActiveEvents.text = activeEventsRegio;
     }
 
+    // Update de actieve acties
     private void updateActiveActions()
     {
         string activeActionsRegio = "";
+
+        // Voor elke actieve actie in de regio
         foreach (RegionAction action in regio.actions)
         {
             if (action.isActive)
@@ -2320,20 +2421,24 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // De dropdown voor acties wordt geinitialized
     private void initDropDownRegion()
     {
         dropdownRegio.ClearOptions();
         int currentMonth = game.currentYear * 12 + game.currentMonth;
-        string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
 
+        // Caption text van de dropdown wordt geset
+        string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
 
+        // Voor elke actie in de list met acties die available is, die niet al actief is en waar de cooldown van is afgelopen
         foreach (RegionAction action in regio.actions)
         {
             if (action.isAvailable && !action.isActive &&
                 (action.lastCompleted + action.actionCooldown <= currentMonth || action.lastCompleted == 0) &&
                 !(action.isUnique && action.lastCompleted > 0))
             {
+                // Voeg de naam van de actie toe aan de dropdown
                 dropdownRegio.options.Add(new Dropdown.OptionData() { text = action.name[taal] });
             }
         }
@@ -2344,28 +2449,33 @@ public class UpdateUI : MonoBehaviour
         dropdownRegio.options.RemoveAt(dropdownRegio.options.Count - 1);
     }
 
-    // Goes to this method from DropDownTrigger in Inspector
+    // Wordt aangeropen op de value changed van de dropdown in de inspector
     public void getDropDownValue()
     {
         EventManager.CallPlayButtonClickSFX();
         for (int i = 0; i <= dropdownRegio.options.Count; i++)
         {
+            // Pak de jusite gekozen actie uit de dropdown
             if (dropdownRegio.value == i)
             {
+                // Zet deze actie in de gekozen actie variabele
                 dropdownChoice = dropdownRegio.options[i].text;
             }
         }
 
-        // Shows the right information with the chosen option in dropdown
+        // Toont de juiste informatie van de gekozen optie
         showInfoDropDownRegion();
     }
 
     private void showInfoDropDownRegion()
     {
+        // Voor alle acties in de list met acties
         foreach (RegionAction action in regio.actions)
         {
+            // Pak de actie die gekozen is in de dropdown
             if (action.name[taal] == dropdownChoice)
             {
+                // Zet de tekst voor de actie
                 regioAction = action;
 
                 string[] actionCostText = { "Kosten per sector: " + action.afterInvestmentActionMoneyCost + " geld",
@@ -2384,10 +2494,10 @@ public class UpdateUI : MonoBehaviour
 
                 txtRegionActionCost.text = actionCostText[taal];
                 txtRegionActionDuration.text = actionDurationText[taal];
-                //txtRegionActionConsequences.text = getActionConsequences(action.consequences);
                 txtActionSectorsDescription.text = sectorDescription[taal];
                 txtRegionActionSectorTotalCostDescription.text = txtSectorMoney[taal];
 
+                // Methode die de checkboxes goed zet
                 setCheckboxes(action);
                 regioActionCost = 0;
                 txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
@@ -2397,10 +2507,12 @@ public class UpdateUI : MonoBehaviour
 
     private void setCheckboxes(RegionAction action)
     {
+        // Alle checkboxes worden op niet actief gezet
         checkboxRegionHouseholds.gameObject.SetActive(false);
         checkboxRegionAgriculture.gameObject.SetActive(false);
         checkboxRegionCompanies.gameObject.SetActive(false);
 
+        // Zet de waarde van alle checkboxes op false
         playSelectSound = false;
         if (checkboxHouseholds)
             checkboxRegionHouseholds.isOn = false;
@@ -2410,6 +2522,8 @@ public class UpdateUI : MonoBehaviour
             checkboxRegionCompanies.isOn = false;
         playSelectSound = true;
 
+        // Een actie kan niet altijd in alle sectoren gedaan worden
+        // Hier de check voor welke checkboxes zichtbaar moeten worden en welke niet
         for (int i = 0; i < action.possibleSectors.Length; i++)
         {
             if (action.possibleSectors[i] == "Huishoudens")
@@ -2429,32 +2543,45 @@ public class UpdateUI : MonoBehaviour
 
     public void btnDoActionRegionMenuClick()
     {
+        // Als het geen multiplayer is
         if (!ApplicationModel.multiplayer)
+        {
+            // Start de juiste actie, meegestuurd worden de actie, game en in welke sectoren die actie uitgevoerd moet worden
             regio.StartAction(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
+        }
         else
         {
+            // Als het wel multiplayer is
+            // Start de juiste actie, meegestuurd worden de actie, game en in welke sectoren die actie uitgevoerd moet worden
             regio.StartActionMultiplayer(regioAction, game, new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
 
+            // Stuur een update naar de log om de andere speler te laten zien dat er een actie is gestart
             playerController.photonView.RPC("ActionStarted", PhotonTargets.Others, regio.name[0], regioAction.name[0],
                 new bool[] { checkboxHouseholds, checkboxCompanies, checkboxAgriculture });
         }
 
+        // Als de tutorial voor acties nog niet done was, zet hem nu op done
         if (!game.tutorial.tutorialCheckActionDone)
             game.tutorial.tutorialCheckActionDone = true;
-        //ClearActionMenu();
 
+        // Set de caption text van de dropdown opnieuw
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
+
+        // Set de hoeveelheid geld opnieuw
         txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + availableMoney[taal];
 
-        //updateRegionTextValues();
-        //startRegionPopup(regio);
+        // Clear en Refresh de dropdown
         dropdownRegio.ClearOptions();
         dropdownRegio.RefreshShownValue();
+
         updateRegionScreenUI();
+
+        // Open de tab voor acties opnieuw zodat het scherm weer helemaal goed gereset wordt
         btnActionsTabClick();
     }
 
+    // Clear alle tekst variable die met acties te maken hebben
     public void ClearActionMenu()
     {
         initDropDownRegion();
@@ -2493,21 +2620,25 @@ public class UpdateUI : MonoBehaviour
         imgActions.gameObject.SetActive(false);
     }
 
+    // Toegewezen aan de button Companies in de inspector
     public void sectorCompaniesClick()
     {
         initRegionSectorPopup(regio.sectors[1]);
     }
 
+    // Toegewezen aan de button Households in de inspector
     public void sectorHouseholdsClick()
     {
         initRegionSectorPopup(regio.sectors[0]);
     }
 
+    // Toegewezen aan de button Agriculture in de inspector
     public void sectorAgricultureClick()
     {
         initRegionSectorPopup(regio.sectors[2]);
     }
 
+    // Set alle tekst waarde van de stasistieken naar de juiste sector 
     private void initRegionSectorPopup(RegionSector sector)
     {
         imgSectorPopup.gameObject.SetActive(true);
@@ -2523,22 +2654,19 @@ public class UpdateUI : MonoBehaviour
         txtRegionSectorInfo.text = tip[taal];
     }
 
-    public void btnViewConsequencesClick()
-    {
-        //imgSectorPopup.gameObject.SetActive(true);
-        //txtRegionSectorTitle.text = regioAction.name[taal];
-        //txtRegionSectorInfo.text = getSectorStatisticsConsequences(regioAction.afterInvestmentConsequences);
-    }
-
+    // Toegewezen aan de button History in de inspector
     public void btnHistoryTabClick()
     {
+        // Als de image voor acties actief zet, zet die of inactief
         if (imgActions.gameObject.activeSelf)
             imgActions.gameObject.SetActive(false);
 
+        // Set de juiste buttons op wel/niet interactable
         btnActionsTab.interactable = true;
         btnHistoryTab.interactable = false;
-        //imgDropdownLine.gameObject.SetActive(false);
         imgHistory.gameObject.SetActive(true);
+
+        // Set de tekst
         string[] txtCenter = { "Actieve Acties & Events", "Active Actions & Events" };
         txtRegionColumnCenter.text = txtCenter[taal];
 
@@ -2546,18 +2674,25 @@ public class UpdateUI : MonoBehaviour
             txtNotYourRegion.text = "";
     }
 
+    // Toegewezen aan de button Acties in de inspector
     public void btnActionsTabClick()
     {
+        // Als de image voor history actief zet, zet die of inactief
         if (imgHistory.gameObject.activeSelf)
             imgHistory.gameObject.SetActive(false);
+
+        // Set de juiste buttons op wel/niet interactable
 
         btnActionsTab.interactable = false;
         btnHistoryTab.interactable = true;
 
+        // Als het multiplayer is
         if (ApplicationModel.multiplayer)
         {
+            // Als jij niet de owner bent van de huidige geopende regio
             if (regio.regionOwner != PhotonNetwork.player.NickName)
             {
+                // Set de tekst 
                 imgActions.gameObject.SetActive(false);
                 string[] txtInfo = { "Dit is de regio van de andere speler. Dit betekend dat je hier alleen het gemiddelde en de sector statistieken kunt zien en geen acties kunt uitvoeren. Je kunt wel de actieve acties en events tab bekijken in deze regio.",
                 "This region belongs to the other player. This means you can only view the average and sector statistics and are not able to do actions. You are able to view the active events and actions tab in this region." };
@@ -2565,7 +2700,7 @@ public class UpdateUI : MonoBehaviour
             }
             else
             {
-                //imgDropdownLine.gameObject.SetActive(true);
+                // Als jij wel de owner bent
                 imgActions.gameObject.SetActive(true);
                 string[] txtCenter = { "Doe een actie", "Do an action" };
                 txtRegionColumnCenter.text = txtCenter[taal];
@@ -2576,7 +2711,7 @@ public class UpdateUI : MonoBehaviour
         }
         else
         {
-            //imgDropdownLine.gameObject.SetActive(true);
+            // Als het geen multiplayer is
             imgActions.gameObject.SetActive(true);
             string[] txtCenter = { "Doe een actie", "Do an action" };
             txtRegionColumnCenter.text = txtCenter[taal];
@@ -2586,8 +2721,10 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Zet de kleur waardes van de sector statistieken 
     private void updateSectorColorValues(SectorStatistics s)
     {
+        // De kleur en tekst van de gemiddelde statistieken worden geset
         iconController(imgHappinessRegion, txtRegionHappinessDescription ,txtRegionHappiness, s.happiness);
         iconController(imgEcoAwarenessRegion, txtRegionEcoAwarenessDescription, txtRegionAwareness, s.ecoAwareness);
         iconController(imgPollutionRegion, txtRegionPollutionDescription, txtRegionPollution, s.pollution.avgPollution);
@@ -2596,11 +2733,13 @@ public class UpdateUI : MonoBehaviour
         iconController(imgPollutionNatureRegion, txtRegionNatureDescription, txtRegionPollutionNature, s.pollution.naturePollution);
         iconController(imgProsperityRegion, txtRegionProsperityDescription, txtRegionProsperity, s.prosperity);
 
+        // De kleur en tekst van de pollution increase statistieken worden geset
         iconControllerPollutionIncrease(imgPollutionAirIncreaseRegion, txtRegionPollutionAirIncreaseDescription, txtRegionPollutionAirIncrease, s.pollution.airPollutionIncrease);
         iconControllerPollutionIncrease(imgPollutionNatureIncreaseRegion, txtRegionPollutionNatureIncreaseDescription, txtRegionPollutionNatureIncrease, s.pollution.naturePollutionIncrease);
         iconControllerPollutionIncrease(imgPollutionWaterIncreaseRegion, txtRegionPollutionWaterIncreaseDescription, txtRegionPollutionWaterIncrease, s.pollution.waterPollutionIncrease);
     }
 
+    // De method waar alle kleur values gekozen worden
     void iconController(RawImage img, Text description, Text txt, double value)
     { 
         Color lerpColor;
@@ -2629,11 +2768,14 @@ public class UpdateUI : MonoBehaviour
     {
         Color lerpColor;
 
+        // Als de waarde boven 1.5 > maak icon en tekst rood
         if (value > 1.5)
             lerpColor = Color.red;
+        // Als de waarde onder 0 > maak icon en tekst rood
         else if (value < 0)
             lerpColor = Color.green;
         else
+            // Als de waarde boven tussen 0 en 1.5 is > maak icon en tekst rood
             ColorUtility.TryParseHtmlString("#ffa500", out lerpColor);
 
         txt.text = " " + value.ToString("0.00") + "%";
@@ -2642,6 +2784,7 @@ public class UpdateUI : MonoBehaviour
         img.color = lerpColor;
     }
 
+    // Toegewezen aan de button Average in de inspector
     public void btnAverageTabClick()
     {
         btnAverageTab.interactable = false;
@@ -2650,9 +2793,11 @@ public class UpdateUI : MonoBehaviour
         btnAgriculureTab.interactable = true;
         btnCompaniesTab.interactable = true;
 
+        // Ga naar de method die de juiste gemiddelde statistieken toont
         updateRegionTextValues();
     }
 
+    // Toegewezen aan de button Households in de inspector
     public void btnHouseholdsTabClick()
     {
         btnHouseholdsTab.interactable = false;
@@ -2661,9 +2806,11 @@ public class UpdateUI : MonoBehaviour
         btnAgriculureTab.interactable = true;
         btnCompaniesTab.interactable = true;
 
+        // Ga naar de method die de juiste sector statistieken toont
         updateSectorTextValues(regio.sectors[0]);
     }
 
+    // Toegewezen aan de button Agriculture in de inspector
     public void btnAgricultureTabClick()
     {
         btnAgriculureTab.interactable = false;
@@ -2672,9 +2819,11 @@ public class UpdateUI : MonoBehaviour
         btnHouseholdsTab.interactable = true;
         btnCompaniesTab.interactable = true;
 
+        // Ga naar de method die de juiste sector statistieken toont
         updateSectorTextValues(regio.sectors[2]);
     }
 
+    // Toegewezen aan de button Companies in de inspector
     public void btnCompaniesTabClick()
     {
         btnCompaniesTab.interactable = false;
@@ -2683,14 +2832,18 @@ public class UpdateUI : MonoBehaviour
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
 
+        // Ga naar de method die de juiste sector statistieken toont
         updateSectorTextValues(regio.sectors[1]);
     }
 
+    // Method die de tekst waardes voor de juiste sector set
     private void updateSectorTextValues(RegionSector s)
     {
+        // Set de kleur values voor de sector statistieken
         updateSectorColorValues(s.statistics);
         txtRegionColumnLeft.text = s.sectorName[taal];
 
+        // Set alle tekst values voor de sector statistieken
         txtRegionMoney.text = s.statistics.income.ToString("0") + availableMoney[taal];
         txtRegionHappiness.text = s.statistics.happiness.ToString("0.00");
         txtRegionAwareness.text = s.statistics.ecoAwareness.ToString("0.00") + "%";
@@ -2700,6 +2853,7 @@ public class UpdateUI : MonoBehaviour
         txtRegionPollutionNature.text = s.statistics.pollution.naturePollution.ToString("0.00") + "%";
         txtRegionPollutionWater.text = s.statistics.pollution.waterPollution.ToString("0.00") + "%";
 
+        // If statements om te kijken of er een een + of - voor moet staan
         if (regio.statistics.avgAirPollutionIncrease > 0d)
             txtRegionPollutionAirIncrease.text = "+" + s.statistics.pollution.airPollutionIncrease.ToString("0.00") + "%";
         else
