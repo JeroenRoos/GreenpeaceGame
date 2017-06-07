@@ -2875,6 +2875,7 @@ public class UpdateUI : MonoBehaviour
     #region Code for Monthly/Yearly Report Popup
     IEnumerator tutorialMonthlyReport()
     {
+        // Tekst voor Montly Report Tutorial
         string[] step1 = { "In dit maandelijkse rapport kun je de veranderingen van de statistieken zien ten opzichte van vorige maand. Daarnaast kun je ook zien of er nieuwe events in een regio zijn. " +
                 "Je krijgt dit rapport elke maand opnieuw. \n\nJe kunt dit menu sluiten door op de ESC toets te drukken."
                 , "In this monthly report you can see the changes in the statistics with the previous month. You can also see if there is a new event in a region. " +
@@ -2884,7 +2885,8 @@ public class UpdateUI : MonoBehaviour
         txtTutorialAfterTurn.text = step1[taal];
         txtTutorialAfterTurnBtn.text = btnText[taal];
 
-        while (game.tutorial.tutorialIndex < 6)//tutorialStep18)
+        // Als er niet op "verder" wordt gedrukt
+        while (game.tutorial.tutorialIndex < 6)
             yield return null;
         
         imgTutorialAfterTurn.gameObject.SetActive(false);
@@ -2892,21 +2894,28 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialMonthlyReportActive = false;
     }
 
+    // Aangeroepen vanuit GameController in NextTurn() method
     public void InitMonthlyReport()
     {
+        // Update de text values (true betekend dat het een maandelijks rapport is)
         updateTextAfterActionStats(true);
+
+        // Bereken de verschillen in statistieken ten opzichte van vorige maand
         calculateDifference(game.oldMonthlyReport.oldIncome, game.oldMonthlyReport.oldHappiness, game.oldMonthlyReport.oldEcoAwareness, game.oldMonthlyReport.oldPollution, game.oldMonthlyReport.oldProsperity, true);
     }
 
     public void InitYearlyReport()
     {
+        // Update de text values (false betekend dat het een jaarlijks rapport is)
         updateTextAfterActionStats(false);
+
+        // Bereken de verschillen in statistieken ten opzichte van vorig jaar
         calculateDifference(game.oldYearlyReport.oldIncome, game.oldYearlyReport.oldHappiness, game.oldYearlyReport.oldEcoAwareness, game.oldYearlyReport.oldPollution, game.oldYearlyReport.oldProsperity, false);
     }
 
+    // Method waarin de tekst wordt geset
     private void updateTextAfterActionStats(bool isMonthly)
     {
-
         string[] txtRight = { "West-Nederland", "The Netherlands West" };
         string[] txtRightMiddle = { "Zuid-Nederland", "The Netherlands South" };
         string[] txtLeftMiddle = { "Oost-Nederland", "The Netherlands East" };
@@ -2949,7 +2958,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-
+    // Method waar alle verschillen ten opzichte van vorige maand/vorig jaar worden berekend
     private void calculateDifference(double[] oldIncome, double[] oldHappiness, double[] oldEcoAwareness, double[] oldPollution, double[] oldProsperity, bool isMonthly)
     {
         double incomeDifference = 0;
@@ -2958,6 +2967,7 @@ public class UpdateUI : MonoBehaviour
         double pollutionDifference = 0;
         double prosperityDifference = 0;
 
+        // Voor elke regio moeten deze verschillende berekend worden
         for (int i = 0; i < game.oldMonthlyReport.reportRegions.Length; i++)
         {
             incomeDifference = game.regions[i].statistics.income - oldIncome[i];
@@ -2966,46 +2976,59 @@ public class UpdateUI : MonoBehaviour
             pollutionDifference = game.regions[i].statistics.avgPollution - oldPollution[i];
             prosperityDifference = game.regions[i].statistics.prosperity - oldProsperity[i];
 
+            // De verschillen moeten in een text variabele gezet worden die bij de maand en posistie in het canvas hoort
+            // Daarom if statement voor welke regio het is
             if (isMonthly)
             {
                 if (game.oldMonthlyReport.reportRegions[i] == "Noord Nederland")
                 {
+                    // Stuur Noord Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionNoord, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
                 else if (game.oldMonthlyReport.reportRegions[i] == "Oost Nederland")
                 {
+                    // Stuur Oost Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionOost, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
                 else if (game.oldMonthlyReport.reportRegions[i] == "Zuid Nederland")
                 {
+                    // Stuur Zuid Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionZuid, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
                 else if (game.oldMonthlyReport.reportRegions[i] == "West Nederland")
                 {
+                    // Stuur West Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionWest, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
             }
             else
             {
+                // De verschillen moeten in een text variabele gezet worden die bij de jaar en posistie in het canvas hoort
+                // Daarom if statement voor welke regio het is
                 if (game.monthlyReport.reportRegions[i] == "Noord Nederland")
                 {
+                    // Stuur Noord Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionNoordYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
                 else if (game.monthlyReport.reportRegions[i] == "Oost Nederland")
                 {
+                    // Stuur Oost Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionOostYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
                 else if (game.monthlyReport.reportRegions[i] == "Zuid Nederland")
                 {
+                    // Stuur Zuid Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionZuidYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
                 else if (game.monthlyReport.reportRegions[i] == "West Nederland")
                 {
+                    // Stuur West Nederland text variabele en de statistieken van deze regio mee
                     setValuesChanged(txtAfterActionWestYearly, incomeDifference, happinessDifference, ecoAwarenessDifference, pollutionDifference, prosperityDifference);
                 }
             }
         }
 
+        // Methods die de afgeronde acties en events tonen
         initAfterActionStatsCompletedEvents();
         initAfterActionStatsCompletedActions();
     }
@@ -3013,84 +3036,109 @@ public class UpdateUI : MonoBehaviour
 
     private void setValuesChanged(Text txt, double incomeDifference, double happinessDifference, double ecoAwarenessDifference, double pollutionDifference, double prosperityDifference)
     {
+        // Kijk voor elke statistiek of er wel een verschil is tenopzichte van de vorige maand, als er geen verschil is wordt er niks getoont
+        // Bij elke statistiek is er een IF statement of om te kijken of er een + of een - bij moet en in welke kleur de tekst moet staan
         txt.text = "";
 
+        // Als het verschil niet 0 is
         if (incomeDifference != 0d)
         {
-
+            // Als het verschil groter is dan 0
             if (incomeDifference > 0d)
             {
+                // De tekst wordt nu groen en er wordt een + weergegeven
                 string[] difference = { "<color=#00cc00>\nInkomen: ", "<color=#00cc00>\nIncome: " };
                 difference[taal] += "+" + incomeDifference.ToString("0.00") + "</color>";
                 txt.text += difference[taal];
             }
+            // Als het verschil kleiner is dan 0
             else
             {
+                // De tekst wordt nu rood en er wordt een - weergegeven
                 string[] difference = { "<color=#FF0000>\nInkomen: ", "<color=#FF0000>\nIncome: " };
                 difference[taal] +=  incomeDifference.ToString("0.00") + "</color>";
                 txt.text += difference[taal];
             }
 
         }
+
+        // Als het verschil niet 0 is
         if (happinessDifference != 0d)
         {
+            // Als het verschil groter is dan 0
             if (happinessDifference > 0d)
             {
+                // De tekst wordt nu groen en er wordt een + weergegeven
                 string[] difference = { "<color=#00cc00>\nTevredenheid: ", "<color=#00cc00>\nHappiness: " };
                 difference[taal] += "+" + happinessDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
             else
             {
+                // De tekst wordt nu rood en er wordt een - weergegeven
                 string[] difference = { "<color=#FF0000>\nTevredenheid: ", "<color=#FF0000>\nHappiness: " };
                 difference[taal] += happinessDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
 
         }
+
+        // Als het verschil niet 0 is
         if (ecoAwarenessDifference != 0d)
         {
+            // Als het verschil groter is dan 0
             if (ecoAwarenessDifference > 0d)
             {
+                // De tekst wordt nu groen en er wordt een + weergegeven
                 string[] difference = { "<color=#00cc00>\nMilieubewustheid: ", "<color=#00cc00>\nEco awareness: " };
                 difference[taal] += "+" + ecoAwarenessDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
             else
             {
+                // De tekst wordt nu rood en er wordt een - weergegeven
                 string[] difference = { "<color=#FF0000>\nMilieubewustheid: ", "<color=#FF0000>\nEco awareness: " };
                 difference[taal] += ecoAwarenessDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
 
         }
+
+        // Als het verschil niet 0 is
         if (pollutionDifference != 0d)
         {
-
+            // Als het verschil groter is dan 0
             if (pollutionDifference > 0d)
             {
+                // De tekst wordt nu rood en er wordt een + weergegeven
                 string[] difference = { "<color=#FF0000>\nVervuiling: ", "<color=#FF0000>\nPollution: " };
                 difference[taal] += "+" + pollutionDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
             else
             {
+                // De tekst wordt nu groen en er wordt een - weergegeven
                 string[] difference = { "<color=#00cc00>\nVervuiling: ", "<color=#00cc00>\nPollution: " };
                 difference[taal] += pollutionDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
 
         }
+
+        // Als het verschil niet 0 is
         if (prosperityDifference != 0d)
         {
+            // Als het verschil groter is dan 0
             if (prosperityDifference > 0d)
             {
+                // De tekst wordt nu groen en er wordt een + weergegeven
                 string[] difference = { "<color=#00cc00>\nWelvaart: ", "<color=#00cc00>\nProsperity: " };
                 difference[taal] += "+" + prosperityDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
             }
             else
             {
+                // De tekst wordt nu rood en er wordt een - weergegeven
                 string[] difference = { "<color=#FF0000>\nWelvaart: ", "<color=#FF0000>\nProsperity: " };
                 difference[taal] += prosperityDifference.ToString("0.00") + "%</color>";
                 txt.text += difference[taal];
@@ -3100,10 +3148,12 @@ public class UpdateUI : MonoBehaviour
 
     }
 
+    // Method die voor elke regio kijkt of er event afgerond zijn
     public void initAfterActionStatsCompletedEvents()
     {
         monthlyCompletedEvents = (List<GameEvent>[])game.monthlyReport.completedEvents.Clone();
 
+        // Kijk voor elke regio of er afgeronde events zijn, zoja > stuur ga naar de method waar de tekst voor deze events wordt geset
         if (monthlyCompletedEvents[0].Count != 0)
             setCompletedEvents(txtAfterActionNoord, monthlyCompletedEvents[0]);
         if (monthlyCompletedEvents[1].Count != 0)
@@ -3119,9 +3169,10 @@ public class UpdateUI : MonoBehaviour
         string[] events = { "\n\n<b>Afgeronde events:</b>\n", "\n\n<b>Completed event:</b>\n" };
         txt.text += events[taal];
 
+        // Voeg elke event in de list met events toe aan de tekst variabele
         foreach (GameEvent e in eventsList)
         {
-            txt.text += e.publicEventName[taal];// + " - " + e.description[taal];
+            txt.text += e.publicEventName[taal];
 
             if (taal == 0)
                 txt.text += "\n<b>Gekozen oplossing: </b>" + e.choicesDutch[e.pickedChoiceNumber];
@@ -3129,6 +3180,8 @@ public class UpdateUI : MonoBehaviour
                 txt.text += "\n<b>Chosen solution: </b>" + e.choicesEnglish[e.pickedChoiceNumber];
 
             string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
+
+            // Haal de consequencies op uit de method getSectorStatisticsConsequences()
             txt.text += c[taal] + getSectorStatisticsConsequences(e.pickedConsequences[e.pickedChoiceNumber]);
 
             string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
@@ -3148,10 +3201,12 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Method die voor elke regio kijkt of er acties afgerond zijn
     private void initAfterActionStatsCompletedActions()
     {
         monthlyCompletedActions = (List<RegionAction>[])game.monthlyReport.completedActions.Clone();
 
+        // Kijk voor elke regio of er afgeronde actues zijn, zoja > stuur ga naar de method waar de tekst voor deze acties wordt geset
         if (monthlyCompletedActions[0].Count != 0)
             setCompletedActions(txtAfterActionNoord, monthlyCompletedActions[0]);
         if (monthlyCompletedActions[1].Count != 0)
@@ -3169,8 +3224,13 @@ public class UpdateUI : MonoBehaviour
         foreach (RegionAction a in actionsList)
         {
             txt.text += a.name[taal] + " - " + a.description[taal];
+
+            // Haal de gekozen sectoren op uit deze method
             txt.text += getChosenSectors(a.pickedSectors);
+
             string[] c = { "\n<b>Consequenties: </b>", "\n<b>Consequences: </b>" };
+
+            // Haal de consequencies op uit de method getSectorStatisticsConsequences()
             txt.text += c[taal] + getSectorStatisticsConsequences(a.afterInvestmentConsequences);
 
             if (a.actionMoneyReward != 0)
@@ -3185,6 +3245,7 @@ public class UpdateUI : MonoBehaviour
     {
         string[] sectorsPicked = { "\n<b>Sectoren: </b>\n", "\n<b>Sectors: </b>\n" };
 
+        // Kijk welke sectoren gekozen zijn en stuur deze terug
         if (sectors[0])
         {
             string[] a = { "Huishoudens ", "Households " };
@@ -3207,8 +3268,10 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Quests Popup
+    // Method wordt aangeroepen als er op de quests button wordt gedrukt
     private void initQuestsPopup()
     {
+        // Set de tekst voor de Quests canvas
         imgTutorialQuests.gameObject.SetActive(false);
         string[] title = { "Missies", "Quests" };
         string[] description = { "Actieve missies", "Active quests" };
@@ -3221,27 +3284,36 @@ public class UpdateUI : MonoBehaviour
         txtQuestsTitle.text = title[taal];
         txtQuestsDescription.text = description[taal];
 
+        // Als de tutorial actief is en nog niet afgerond voor dit onderdeel > start tutorial
         if (game.tutorial.tutorialQuestsActive && game.tutorial.doTuto)
             StartCoroutine(tutorialQuestsPopup());
 
+        // Voor elke quests in de list met quests
         foreach (Quest q in game.quests)
         {
+            // Als de quests actief is, zet hem in de text variabele
             if (q.isActive)
             {
                 activeQuests[taal] += q.name[taal] + " - " + q.description[taal] + "\n";
+
+                // Haal de condities die nodig zijn om de quest te halen op uit deze method
                 activeQuests[taal] += getCompleteConditions(q.questCompleteConditions);
                 activeQuests[taal] += beloning[taal] + q.questMoneyReward + "\n\n";
                 txtQuestsActive.text = activeQuests[taal];
                 activeQuest = true;
             }
+            // ALs de quests completed is, zet hem in de text variabele en maak de tekst groen
             else if (q.isCompleted)
             {
                 activeQuests[taal] += "<color=#00cc00>[COMPLETED] - " + q.name[taal] + " - " + q.description[taal] + "\n";
+
+                // Haal de condities die nodig zijn om de quest te halen op uit deze method
                 activeQuests[taal] += getCompleteConditions(q.questCompleteConditions);
                 activeQuests[taal] += beloning[taal] + q.questMoneyReward + "\n\n</color>";
                 txtQuestsActive.text = activeQuests[taal];
             }
         }
+        // Als er geen actieve of afgeronde quests zijn
         if (!activeQuest)
             txtQuestsActive.text = noActiveQuests[taal];       
     }
@@ -3251,6 +3323,7 @@ public class UpdateUI : MonoBehaviour
         Debug.Log("Coroutine Tutorial Quests!");
         imgTutorialQuests.gameObject.SetActive(true);
 
+        // Tekst voor de quests tutorial
         string[] step2 = { "In deze pop-up kun je zien welke actieve missies je hebt. Je krijgt om de 2 jaar een nieuwe missie. \n\nAls je aan de juiste condities voldoet haal je de missie en krijg je een beloning.",
             "In this popup you can see your active quests. You get a new quest each time 2 years pass. \n\nIf you reach the quest conditions you get a reward." };
         string[] txtBtn = { "Volgende", "Next" };
@@ -3265,22 +3338,22 @@ public class UpdateUI : MonoBehaviour
         imgTutorialQuests.gameObject.SetActive(false);
         game.tutorial.tutorialQuestsActive = false;
 
+        // Zoang er niet op verder gedrukt wordt
         while (canvasQuestsPopup.gameObject.activeSelf)
             yield return null;
 
-        //btnTutorialBigNext.gameObject.SetActive(true);
-        //canvasTutorial.gameObject.SetActive(true);
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
 
-        //canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
         game.tutorial.tutorialNexTurnPossibe = true;
         game.tutorial.tutorialQuestsDone = true;
         btnNextTurn.interactable = true;
     }
     
+    // Method die de condities ophaalt die nodig zijn om de quest te halen
+    // Kijk voor elke statistiek of hij niet 0 is, als hij 0 is wordt hij niet getoond
     private string getCompleteConditions(RegionStatistics r)
     {
         string[] consequences = { "Vereisten: ", "Requirements: " };
