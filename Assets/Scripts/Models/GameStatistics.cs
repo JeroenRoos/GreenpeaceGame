@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class GameStatistics
 {
-    // Game general statistics
+    // Game general statistics (population and energy are not used in the game currently)
     public double money { get; private set; }
     public double population { get; private set; }
     public Energy energy { get; private set; }
@@ -32,6 +32,7 @@ public class GameStatistics
         this.energy = energy;
     }
 
+    #region ModifyVariables
     public void ModifyMoney(double changevalue, bool isAdded)
     {
         if (!ApplicationModel.multiplayer)
@@ -93,8 +94,9 @@ public class GameStatistics
         ecoAwareness /= divisionValue;
         prosperity /= divisionValue;
     }
+    #endregion
 
-    //mulgiplayer
+    #region Multiplayer
     public void SetMoneyMultiplayer(int playerNumber)
     {
         playerMoney = new double[2];
@@ -121,5 +123,6 @@ public class GameStatistics
                 playerMoney[0] -= changevalue;
         }
     }
+    #endregion
 }
 
