@@ -4610,6 +4610,8 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for End of Game Popup
+    // Wordt vanuit GameController aangeroepen in het jaar 2050
+    // Set text voor de popup
     public void initEndOfGameReport(double score)
     {
         popupActive = true;
@@ -4618,6 +4620,7 @@ public class UpdateUI : MonoBehaviour
 
         string[] title = { "Einde van het spel", "End of the Game" };
 
+        // Controle of speler het spel gewonnen/verloren heeft
         if (game.gameStatistics.pollution == 0)
         {
             string[] info = { "Gefeliciteerd, je hebt het doel van 0% vervuiling gehaald!\n\nDe score die je daarbij gehaald hebt is: " + score.ToString("0") +
@@ -4641,7 +4644,8 @@ public class UpdateUI : MonoBehaviour
         txtEndOfGameTitle.text = title[taal];
         txtEndOfYearBtn.text = btn[taal];
     }
-
+    
+    // In inspector aangewezen aan de knop "Return to Main Menu"
     public void btnEndOfYearReturnClick(int index)
     {
         canvasEndOfGame.gameObject.SetActive(false);
@@ -4651,8 +4655,9 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    // Game Controller
     #region Code for Button Presses for Popups
+    // In deze region worden de button presses afgehandeld voor de verschillende buttons
+    // Deze methods zijn in de inspector toegewezen aan de juiste button
     public void btnTimelineClick()
     {
         if (!canvasTimelinePopup.gameObject.activeSelf && !popupActive && !game.tutorial.tutorialActive && !game.tutorial.tutorialQuestsActive)
@@ -4664,12 +4669,11 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Organization
     public void btnOrganizationClick()
     {
-        if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive/* && tutorialStep8 */&& !game.tutorial.tutorialQuestsActive)
+        if (!canvasOrganizationPopup.gameObject.activeSelf && !popupActive && !game.tutorial.tutorialQuestsActive)
         {
-            //SetLocalPlayerText("Organisatie aan het bekijken", "Looking at the Organization");
-            //MultiplayerManager.CallUpdateLogMessage("Organisatie aan het bekijken", "Looking at the Organization");
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie scherm aan het bekijken", "Looking at the Organization screen");
 
@@ -4682,12 +4686,11 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Quests
     public void btnQuestsClick()
     {
-        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)//tutorialStep15)
+        if (!canvasQuestsPopup.gameObject.activeSelf && !popupActive)
         {
-            //SetLocalPlayerText("Missies aan het bekijken", "Looking at Quests");
-            //MultiplayerManager.CallUpdateLogMessage("Missies aan het bekijken", "Looking at Quests");
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
 
@@ -4700,13 +4703,11 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Cards
     public void btnCardsClick()
     {
         if (!canvasCardsPopup.gameObject.activeSelf && !popupActive)
         {
-            //SetLocalPlayerText("Kaarten aan het bekijken", "Looking at Cards");
-            //MultiplayerManager.CallUpdateLogMessage("Kaarten aan het bekijken", "Looking at Cards");
-
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
 
@@ -4719,6 +4720,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Menu
     public void btnMenuClick()
     {
         if (!canvasMenuPopup.gameObject.activeSelf && !popupActive)
@@ -4730,13 +4732,11 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Monthly Report
     public void btnMonthlyReportClick()
     {
         if (!canvasMonthlyReport.gameObject.activeSelf && !popupActive)
         {
-            //SetLocalPlayerText("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
-            //MultiplayerManager.CallUpdateLogMessage("Maandelijks Rapport aan het bekijken", "Looking at The Monthly Report");
-
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Maandelijks Rapport scherm aan het bekijken", "Looking at The Monthly Report screen");
 
@@ -4754,14 +4754,11 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Yearly report
     public void btnYearlyReportClick()
     {
         if (!canvasYearlyReport.gameObject.activeSelf && !popupActive)
         {
-
-            //SetLocalPlayerText("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
-            // MultiplayerManager.CallUpdateLogMessage("Jaarlijks Rapport aan het bekijken", "Looking at The Yearly Report");
-
             if (ApplicationModel.multiplayer)
                 playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Jaarlijks Rapport scherm aan het bekijken", "Looking at The Yearly Report screen");
 
@@ -4773,6 +4770,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Investements
     public void btnInvestmentsClick()
     {
         if (!canvasInvestmentsPopup.gameObject.activeSelf && !popupActive)
@@ -4790,6 +4788,7 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // De method die de tekst voor het menu set
     private void initButtonText()
     {
         string[] resume = { "Verder spelen", "Resume" };
@@ -4804,7 +4803,9 @@ public class UpdateUI : MonoBehaviour
         txtExitMenu.text = exitmenu[taal];
         txtSettings.text = settings[taal];
     }
-
+    
+    // Elke popup heeft een "Close Button", in de insepector is deze button toegewezen aan deze button
+    // De method controleert welke popup actief is en sluit deze als er op de button wrordt gedrukt
     public void btnPopupCloseClick()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -4896,25 +4897,16 @@ public class UpdateUI : MonoBehaviour
             EventManager.CallPopupIsDisabled();
         }
 
-
-        //SetLocalPlayerText("Nederland aan het bekijken", "Looking at The Netherlands");
-        //MultiplayerManager.CallUpdateLogMessage("Nederland aan het bekijken", "Looking at The Netherlands");
-
         if (ApplicationModel.multiplayer)
-        {
-            //if (!game.nextTurnIsclicked)
-                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
-            //else
-            //    playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Klaar voor de volgende beurt", "Ready for next turn");
-
-        }
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
 
     }
     #endregion
    
-    // Game Controller
     #region Mouse Enter & Exit Code for Icons
-    // OnEnter BtnMoney
+    // Al deze methods controleren of er over een button/icon heen wordt gehovered
+    // Dit wordt bijgehouden in een boolean
+
     public void BtnMoneyEnter()
     {
         btnMoneyHoverCheck = true;
@@ -5144,6 +5136,7 @@ public class UpdateUI : MonoBehaviour
     #endregion  // 
 
     #region Return Boolean Values
+    // Returnen van een paar boolean values
     public bool getBtnMoneyHover()
     {
         return btnMoneyHoverCheck;
@@ -5185,25 +5178,11 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    #region Return Other Values
-    public GUIStyle returnTooltipStyle()
-    {
-        return tooltipStyle;
-    }
-
-    public void enterEventHover()
-    {
-    }
-
-    public void enterExitHover()
-    {
-    }
-    #endregion
-
-    // Game Controller
     #region Next Turn Button Code
+    // De methode die de next turn button click afhandeld, toegewezen aan de button next turn in de inspector
     public void nextTurnOnClick()
     {
+        // Controle of je niet in het laatste jaar zit
         if (game.tutorial.tutorialNexTurnPossibe && game.currentYear < 31)
         {
             EventManager.CallPlayButtonClickSFX();
@@ -5215,10 +5194,13 @@ public class UpdateUI : MonoBehaviour
                     game.tutorial.tutorialNextTurnDone = true;
             }
 
+            // Als de game multiplayer is moeten beide spelers op next turn hebben gedrukt voordat de next turn ook echt begint
             else if (!game.nextTurnIsclicked)
             {
+                // Hier wordt gecontroleerd of de andere speler ook ready is
                 if (!game.OtherPlayerClickedNextTurn)
                 {
+                    // Als dit niet zo is wordt er een coroutine gestart die een kleine animatie doet bij de button
                     game.isWaiting = true;
                     StartCoroutine(NextTurnWaiting());
                 }
@@ -5277,22 +5259,28 @@ public class UpdateUI : MonoBehaviour
     #endregion
     
     #region Checkboxes RegionActions Code
+    // De code voor het regelen van de checkboxes bij het doen van een actie in het regio scherm
+
+    // Toegewezen aan de checkbox Households in inspector
     public void valueChangedHouseholds()
     {
         if (playSelectSound)
             EventManager.CallPlayOptionSelectSFX();
 
+        // Als de checkbox false was wordt hij true
         if (!checkboxHouseholds)
         {
             checkboxHouseholds = true;
             regioActionCost += regioAction.afterInvestmentActionMoneyCost;
         }
+        // Als de checkbox true was wordt hij niet false
         else
         {
             checkboxHouseholds = false;
             regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
+        // Controle of je wel genoeg geld hebt om de actie te doen
         if (game.GetMoney() > regioActionCost)
             btnDoActionRegionMenu.interactable = true;
         else
@@ -5301,22 +5289,26 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
 
+    // Toegewezen aan de checkbox Agriculture in inspector
     public void valueChangedAgriculture()
     {
         if (playSelectSound)
             EventManager.CallPlayOptionSelectSFX();
 
+        // Als de checkbox false was wordt hij true
         if (!checkboxAgriculture)
         {
             checkboxAgriculture = true;
             regioActionCost += regioAction.afterInvestmentActionMoneyCost;
         }
+        // Als de checkbox true was wordt hij niet false
         else
         {
             checkboxAgriculture = false;
             regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
+        // Controle of je wel genoeg geld hebt om de actie te doen
         if (game.GetMoney() > regioActionCost)
             btnDoActionRegionMenu.interactable = true;
         else
@@ -5325,22 +5317,26 @@ public class UpdateUI : MonoBehaviour
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
 
+    // Toegewezen aan de checkbox Companies in inspector
     public void valueChangedCompanies()
     {
         if (playSelectSound)
             EventManager.CallPlayOptionSelectSFX();
 
+        // Als de checkbox false was wordt hij true
         if (!checkboxCompanies)
         {
             checkboxCompanies = true;
             regioActionCost += regioAction.afterInvestmentActionMoneyCost;
         }
+        // Als de checkbox true was wordt hij niet false
         else
         {
             checkboxCompanies = false;
             regioActionCost -= regioAction.afterInvestmentActionMoneyCost;
         }
 
+        // Controle of je wel genoeg geld hebt om de actie te doen
         if (game.GetMoney() > regioActionCost)
             btnDoActionRegionMenu.interactable = true;
         else
@@ -5350,8 +5346,9 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    // Game Controller
     #region Menu Popup Buttons Code
+    // Afhandelen van button presses uit het popup menu
+    // Resume button
     public void btnResumeMenu()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -5360,6 +5357,7 @@ public class UpdateUI : MonoBehaviour
         EventManager.CallPopupIsDisabled();
     }
 
+    // Exit game button
     public void buttonExitGameOnClick()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -5372,16 +5370,19 @@ public class UpdateUI : MonoBehaviour
         Application.Quit();
     }
 
+    // Save game button
     public void buttonSaveGame()
     {
         EventManager.CallPlayButtonClickSFX();
         EventManager.CallSaveGame();
     }
 
+    // Exit to main menu button
     public void loadOtherScene(int index)
     {
         EventManager.CallPlayButtonClickSFX();
 
+        // Als het een multiplayer is verlaat je ook de room
         if (ApplicationModel.multiplayer)
             PhotonNetwork.LeaveRoom();
 
@@ -5389,25 +5390,30 @@ public class UpdateUI : MonoBehaviour
         SceneManager.LoadSceneAsync(index);
     }
 
+    // Settings button
     public void btnSettingsClick()
     {
         EventManager.CallPlayButtonClickSFX();
         canvasMenuPopup.gameObject.SetActive(false);
         canvasSettingsPopup.gameObject.SetActive(true);
 
+        // Initialize de UI en tekst van de settings popup
         initSettingsText();
         initSettingsUI();
     }
 
+    // Back button in settings menu
     public void btnSettingsBackClick()
     {
         EventManager.CallPlayButtonClickSFX();
         canvasSettingsPopup.gameObject.SetActive(false);
         canvasMenuPopup.gameObject.SetActive(true);
 
+        // Set opnieuw de tekst van de buttons omdat de taal veranderd kan worden
         initButtonText();
     }
 
+    // Set de Text van de settings
     private void initSettingsText()
     {
         string[] back = { "Terug", "Back" };
@@ -5424,15 +5430,14 @@ public class UpdateUI : MonoBehaviour
         txtToggleDutch.text = dutch[taal];
         txtToggleEnglish.text = english[taal];
 
-        //ApplicationModel.valueSFX = AudioPlayer.Instance.soundEffect.volume * 100;
         sliderEffectsVolume.value = AudioPlayer.Instance.soundEffect.volume;
         txtEffectsVolumeSliderValue.text = (AudioPlayer.Instance.soundEffect.volume * 100).ToString("0");
 
-        //ApplicationModel.valueMusic = AudioPlayer.Instance.backgroundMusic.volume * 100;
         sliderMusicVolume.value = AudioPlayer.Instance.backgroundMusic.volume;
         txtMusicVolumeSliderValue.text = (AudioPlayer.Instance.backgroundMusic.volume * 100).ToString("0");
     }
 
+    // set de UI van de settings
     private void initSettingsUI()
     {
         if (taal == 0)
@@ -5451,19 +5456,27 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    // Als toggle van NL van waarde veranderd
     public void toggleDutchValueChanged()
     {
+        // Kijk of het niet al op Nederlands stond
         if (!toggleDutchCheck)
         {
             EventManager.CallPlayButtonClickSFX();
             toggleDutchCheck = true;
             toggleEnglish.isOn = false;
+
+            // Set de taal
             ApplicationModel.language = 0;
             taal = ApplicationModel.language;
+
+            // Sla de taal op in PlayerPrefs
             PlayerPrefs.SetInt("savedLanguage", taal);
             PlayerPrefs.Save();
             initSettingsText();
 
+            // Update alle UI in de popups naar de nieuwe taal
+            // De niet tekst in popups die niet dynamisch is wordt alleen geset als de scene geladen wordt of als de taal veranderd wordt
             ChangeLanguage("dutch");
             btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Tijdlijn";
@@ -5485,12 +5498,18 @@ public class UpdateUI : MonoBehaviour
             EventManager.CallPlayButtonClickSFX();
             toggleEnglishCheck = true;
             toggleDutch.isOn = false;
+
+            // Set de taal
             ApplicationModel.language = 1;
             taal = ApplicationModel.language;
+
+            // Sla de taal op in PlayerPrefs
             PlayerPrefs.SetInt("savedLanguage", taal);
             PlayerPrefs.Save();
             initSettingsText();
 
+            // Update alle UI in de popups naar de nieuwe taal
+            // De niet tekst in popups die niet dynamisch is wordt alleen geset als de scene geladen wordt of als de taal veranderd wordt
             ChangeLanguage("english");
             btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Timeline";
@@ -5505,6 +5524,7 @@ public class UpdateUI : MonoBehaviour
             toggleEnglishCheck = false;
     }
 
+    // Method waarin de taal wordt veranderd
     public void ChangeLanguage(string language)
     {
         if (language == "english")
@@ -5513,6 +5533,7 @@ public class UpdateUI : MonoBehaviour
             ApplicationModel.language = 0;
     }
 
+    // On value changed van de SFX slider
     public void sliderEffectsValueChanged()
     {
         float valueSFX = sliderEffectsVolume.value;
@@ -5523,6 +5544,7 @@ public class UpdateUI : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    // On value changed van de music slider
     public void sliderMusicValueChanged()
     {
         float valueMusic = sliderMusicVolume.value;
@@ -5534,8 +5556,8 @@ public class UpdateUI : MonoBehaviour
     }
     #endregion
 
-    // Game Controller
     #region Code for controlling Tutorial buttons presses
+    // Bij elke stap in de tutorial gaat de tutorialindex met 1 omhoog
     public void turorialButtonPress()
     {
         EventManager.CallPlayButtonClickSFX();
@@ -5545,6 +5567,10 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Get SectorStatiticsConsequences Method
+    // De methode die op meerdere plaatsen wordt aangeroepen om de consequenties op te halen
+    // Voor elke statistiek wordt gekeken of hij niet 0 is, als hij 0 niet of hij niet getoond te worden
+    // Daarnaast wordt er voor elke statistiek die niet 0 is gekeken om het gaat om een increase of decrease
+    // Op basis van dit wordt ook de kleur van de tekst veranderd en een - of + getoond
     private string getSectorStatisticsConsequences(SectorStatistics s)
     {
         bool noConsequences = false;
@@ -5552,20 +5578,6 @@ public class UpdateUI : MonoBehaviour
         string[] consequences = {"", "" };
         if (s.income != 0d)
         {
-            /*
-            if (s.income > 0d)
-            {
-                string[] a = { "<color=#00cc00>\nInkomen per geselecteerde sector <b>↑</b></color>", "<color=#00cc00>\nIncome per selected sector <b>↑</b></color>" };
-                //a[taal] += "+" + s.income + "</color>";
-                consequences[taal] += a[taal];
-            }
-            else
-            {
-                string[] a = { "<color=#FF0000>\nInkomen per geselecteerde sector <b>↓</b></color>", "<color=#FF0000>\nIncome per selected sector <b>↓</b></color>" };
-                a[taal] += s.income + "</color>";
-                consequences[taal] += a[taal];
-            }
-            */
             if (s.income > 0d)
             {
                 string[] a = { "<color=#00cc00>\nInkomen per geselecteerde sector: ", "<color=#00cc00>\nIncome per selected sector: " };
@@ -5738,17 +5750,23 @@ public class UpdateUI : MonoBehaviour
             noConsequences = true;
         }
 
+        // Als er geen consquenties zijn wordt deze tekst weergegeven
         if (!noConsequences)
         {
             string[] st = { "\nEr zijn geen consequenties", "\nThere are no consequences" };
             return st[taal];
         }
 
+        // Return de text
         return consequences[taal];
     }
     #endregion
 
     #region Code for Building Modifiers
+    // Deze methode geeft de consequenties speciaal voor buildings
+    // Voor elke statistiek wordt gekeken of hij niet 0 is, als hij 0 niet of hij niet getoond te worden
+    // Daarnaast wordt er voor elke statistiek die niet 0 is gekeken om het gaat om een increase of decrease
+    // Op basis van dit wordt ook de kleur van de tekst veranderd en een - of + getoond
     private string getBuildingModifiers(Building b)
     {
         bool noConsequences = true;
@@ -5820,6 +5838,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for Multiplayer
+    // Method die toont wat de andere spelers aan het doen is
     public void SetRemotePlayerText(string nl, string eng)
     {
         string[] txtMultiplayerPlayerInfo = { "", "" };
@@ -5831,10 +5850,12 @@ public class UpdateUI : MonoBehaviour
         txtMultiplayerRemotePlayer.text = txtMultiplayerPlayerInfo[taal];
     }
 
+    // Toegewezen aan de on value changed van de inputfield in de inspector
     public void inputChatMessagesValueChanged()
     {
         inputChatMessage.text.Trim();
 
+        // Controle of het bericht niet leeg is
         if (inputChatMessage.text != "")
         {
             txtChatMessageToSend = inputChatMessage.text;
@@ -5842,10 +5863,12 @@ public class UpdateUI : MonoBehaviour
             string[] txtBtn = { "Stuur", "Send" };
             txtSendMessageButton.text = txtBtn[taal];
         }
+        // Als het bericht leeg is kun je niet sturen
         else
             btnSendChatMessage.gameObject.SetActive(false);
     }
 
+    // Button Send chat message in de inspector
     public void btnSendChatMessageClicked()
     {
         if (ApplicationModel.multiplayer)
@@ -5856,13 +5879,17 @@ public class UpdateUI : MonoBehaviour
         btnSendChatMessage.gameObject.SetActive(false);
     }
 
+    // Update de chat messages
     public void updateChatMessages(string message, string sender)
     {
+        // Controle of de message niet null is
         if (message != null)
         {
             txtChatMessages.text = "";
             string txt = sender + ": " + message + "\n";
 
+            // Laat alleen de laatste 6 messages zien
+            // Dit moest gedaan worden door complicaties met een scrollbar in Unity
             if (lstMessages.Count < 6)
                 lstMessages.Add(txt);
             else
@@ -5871,49 +5898,28 @@ public class UpdateUI : MonoBehaviour
                 lstMessages.Add(txt);
             }
 
+            // Toon alle berichten in de lsit
             foreach (string text in lstMessages)
             {
                 txtChatMessages.text += text;
             }
 
+            // Zet de inputfield en message weer naar null
             txtChatMessageToSend = null;
             inputChatMessage.text = "";
         }
     }
 
+    // Update de log teksten 
     public void UpdateActivityLogText(string nl, string eng)
     {
+        // Log messages worden getoond in de chatbox en dus ook doorgestuurd naar de updateChatMessage()
         txtActivityLog.text = "";
         if (taal == 0)
-        {
-            //string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
             updateChatMessages(PhotonNetwork.playerList[0].NickName + nl, "LOG");
-
-        }
         else
-        {
-            //string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
             updateChatMessages(PhotonNetwork.playerList[0].NickName + eng, "LOG");
-        }
 
-        /*
-        txtActivityLog.text = "";
-        string[] txt = { PhotonNetwork.playerList[0].NickName + nl + "\n", PhotonNetwork.playerList[0].NickName + eng + "\n" };
-
-        if (lstText.Count < 4)
-            lstText.Add(txt);
-        else
-        {
-            lstText.RemoveAt(0);
-            lstText.Add(txt);
-        }
-
-        foreach (string[] text in lstText)
-        {
-            Debug.Log("Foreach");
-            txtActivityLog.text += text[taal];
-        }
-        */
     }
     #endregion
 }
