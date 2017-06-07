@@ -60,7 +60,6 @@ public class GameController : MonoBehaviour
         {
             game = new Game();
 
-
             LoadRegions();
             LoadRegionActions();
             LoadBuildings();
@@ -69,21 +68,7 @@ public class GameController : MonoBehaviour
             LoadBuildings();
             LoadCards();
 
-            /*foreach (MapRegion region in game.regions)
-            {
-                foreach (RegionSector sector in region.sectors)
-                {
-                    sector.statistics.pollution.CalculateAvgPollution();
-                }
-                region.statistics.UpdateSectorAvgs(region);
-            }
-
-            SaveRegions();
-            SaveRegionActions();
-            SaveBuildings();
-            SaveGameEvents();
-            SaveQuests();
-            SaveCards();*/
+            //UpdateXMLFiles();
 
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateTimeline();
@@ -102,7 +87,6 @@ public class GameController : MonoBehaviour
         {
             LoadGame();
         }
-        //setBuildingTextures();
 
         // Instantiate elk event die bezig is en zet het icoontje op de map
         foreach (MapRegion r in game.regions)
@@ -132,10 +116,11 @@ public class GameController : MonoBehaviour
         StartCoroutine(updateUI.showBtnCards());
         StartCoroutine(showBuildingIcons());
 
+        //the positions of the "dropdown" buttons for monthly/yearly report
         afterActionPosition = new Vector3[3];
         afterActionPosition[0] = new Vector3( 5, 5 + height * 2 * 0, 0);
         afterActionPosition[1] = new Vector3( 5, 5 + height * 2 * 1, 0);
-        afterActionPosition[2] = new Vector3( 5, 5 + height * 2 * 2, 0);
+        afterActionPosition[2] = new Vector3( 5, 5 + height * 2 * 2, 0); //currently not being used cause there are only 2 buttons using these positions
 
         // setup Region Controllers
         noordNederland.GetComponent<RegionController>().Init(this, updateUI, game.regions[0]);
@@ -146,8 +131,8 @@ public class GameController : MonoBehaviour
         EventManager.ChangeMonth += NextTurn;
         EventManager.SaveGame += SaveGame;
         EventManager.LeaveGame += SetGameplayTrackingData;
-        //EventManager.CallNewGame();
 
+        //necessary actions when a multiplayer game is started
         if (ApplicationModel.multiplayer)
         {
             autoSave = false;
@@ -202,6 +187,7 @@ public class GameController : MonoBehaviour
             updateUITooltips(); */
     }
 
+    #region Coroutines
     private IEnumerator showBuildingIcons()
     {
         if (!ApplicationModel.multiplayer)
@@ -221,12 +207,16 @@ public class GameController : MonoBehaviour
         if (!game.tutorial.tutorialBuildingsDone)
             updateUI.startTutorialBuildings();
     }
+    #endregion
+
+    #region Analytics
+    private void OnApplicationQuit()
+    {
+        SetGameplayTrackingData();
+    }
 
     public void SetPlayerTrackingData()
     {
-        //Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
-        //Analytics.SetUserGender(Gender.Unknown);
-        //Analytics.SetUserBirthYear(1996);
         if (trackingEnabled)
         {
             Analytics.CustomEvent("PlayerData", new Dictionary<string, object>
@@ -239,32 +229,6 @@ public class GameController : MonoBehaviour
             });
         }
     }
-
-    private void OnApplicationQuit()
-    {
-        SetGameplayTrackingData();
-    }
-
-    public void ShareOnFacebook()
-    {
-        string appId = "145634995501895";
-        string pictureUrl = "http://www.blikopnieuws.nl/sites/default/files/styles/nieuws-full-tn/public/artikel/logo.jpg?itok=au7xFs3Z";
-        string linkUrl = "https://www.partijvoordedieren.nl/";
-        string redirectUrl = "https://www.facebook.com/profile.php";
-        string[] description = new string[2] { "I just completed the game Project Green Leader in the name of 'Partij voor de Dieren' with a score of: " + score.ToString("0") + "!",
-            "Ik heb net het spel Project Green Leader uitgespeeld in de naam van 'Partij voor de Dieren' met een score van: " + score.ToString("0") + "!" };
-
-        string facebookURL = "https://www.facebook.com/dialog/feed?" +
-            "app_id=" + appId + "&" +
-            "display=popup&" +
-            "link=" + WWW.EscapeURL(linkUrl) + " & " +
-            "name=" + WWW.EscapeURL("Project Green Leader") + " & " +
-            "description=" + WWW.EscapeURL(description[taal]) + " & " +
-            "picture=" + WWW.EscapeURL(pictureUrl);
-
-    Application.OpenURL(facebookURL);
-    }
-
     public void SetScoreTrackingData(double score)
     {
         if (trackingEnabled)
@@ -283,7 +247,6 @@ public class GameController : MonoBehaviour
                 { "TimePlayed", game.totalTimePlayed.ToString() }
             });
         }
-
     }
 
     public void SetGameplayTrackingData()
@@ -306,7 +269,6 @@ public class GameController : MonoBehaviour
                 { "TotalTimePlayed", game.totalTimePlayed.ToString() }
             });
         }
-
     }
 
     public void SetYearlyTrackingData()
@@ -343,6 +305,50 @@ public class GameController : MonoBehaviour
             { "ReceivedCardsCount", game.receivedCardsCount.ToString() },
         });
 
+    }
+    #endregion
+
+    #region Facebook
+    public void ShareOnFacebook()
+    {
+        string appId = "145634995501895";
+        string pictureUrl = "http://www.blikopnieuws.nl/sites/default/files/styles/nieuws-full-tn/public/artikel/logo.jpg?itok=au7xFs3Z";
+        string linkUrl = "https://www.partijvoordedieren.nl/";
+        string redirectUrl = "https://www.facebook.com/profile.php";
+        string[] description = new string[2] { "I just completed the game Project Green Leader in the name of 'Partij voor de Dieren' with a score of: " + score.ToString("0") + "!",
+            "Ik heb net het spel Project Green Leader uitgespeeld in de naam van 'Partij voor de Dieren' met een score van: " + score.ToString("0") + "!" };
+
+        string facebookURL = "https://www.facebook.com/dialog/feed?" +
+            "app_id=" + appId + "&" +
+            "display=popup&" +
+            "link=" + WWW.EscapeURL(linkUrl) + " & " +
+            "name=" + WWW.EscapeURL("Project Green Leader") + " & " +
+            "description=" + WWW.EscapeURL(description[taal]) + " & " +
+            "picture=" + WWW.EscapeURL(pictureUrl);
+
+    Application.OpenURL(facebookURL);
+    }
+    #endregion
+
+    #region LoadAndSaveXML
+    //only called during development to update XML files of classes when something has been changed
+    public void UpdateXMLFiles()
+    {
+        foreach (MapRegion region in game.regions)
+        {
+            foreach (RegionSector sector in region.sectors)
+            {
+                sector.statistics.pollution.CalculateAvgPollution();
+            }
+            region.statistics.UpdateSectorAvgs(region);
+        }
+
+        SaveRegions();
+        SaveRegionActions();
+        SaveBuildings();
+        SaveGameEvents();
+        SaveQuests();
+        SaveCards();
     }
 
     public void SaveGame()
@@ -436,6 +442,7 @@ public class GameController : MonoBehaviour
         CardContainer cardContainer = CardContainer.Load();
         game.LoadCards(cardContainer.cards);
     }
+    #endregion
 
     public void NextTurn()
     {
@@ -470,7 +477,6 @@ public class GameController : MonoBehaviour
             game.gameStatistics.UpdateRegionalAvgs(game);
             UpdateQuests();
             UpdateRegionActionAvailability();
-
 
             if (isNewYear)
             {

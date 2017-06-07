@@ -14,59 +14,7 @@ public class RegionSector
 
     public RegionSector() { }
 
-    public void TempMethod()
-    {
-        incomeModifier = 0;
-        pollutionModifier = 0;
-        happinessModifier = 0;
-    }
-
-    public RegionSector(string[] sectorName, SectorStatistics statistics)
-    {
-        this.sectorName = sectorName;
-        this.statistics = statistics;
-    }
-
-    public void ImplementBuildingStatistics(Building activeBuilding, bool isAdded)
-    {
-        double statisticIncome = statistics.income * (activeBuilding.incomeModifier / 100);
-
-        if (isAdded)
-        {
-            incomeModifier = activeBuilding.incomeModifier;
-            pollutionModifier = activeBuilding.pollutionModifier;
-            happinessModifier = activeBuilding.happinessModifier;
-
-            if (statisticIncome > 0)
-                statistics.ModifyIncome(statisticIncome);
-            else
-                statistics.ModifyIncome(0 - statisticIncome);
-
-            statistics.ModifyHappiness(activeBuilding.happinessModifier);
-            statistics.pollution.ChangeAirPollutionMutation(activeBuilding.pollutionModifier);
-            statistics.pollution.ChangeNaturePollutionMutation(activeBuilding.pollutionModifier);
-            statistics.pollution.ChangeWaterPollutionMutation(activeBuilding.pollutionModifier);
-        }
-
-        else
-        {
-            if (statisticIncome > 0)
-            statistics.ModifyIncome(0 - statisticIncome);
-            else
-                statistics.ModifyIncome(statisticIncome);
-
-            statistics.ModifyHappiness(0 - activeBuilding.happinessModifier);
-            statistics.pollution.ChangeAirPollutionMutation(0 - activeBuilding.pollutionModifier);
-            statistics.pollution.ChangeNaturePollutionMutation(0 - activeBuilding.pollutionModifier);
-            statistics.pollution.ChangeWaterPollutionMutation(0 - activeBuilding.pollutionModifier);
-
-            incomeModifier = 0;
-            pollutionModifier = 0;
-            happinessModifier = 0;
-
-        }
-    }
-
+    #region ModifyVariablesWithHappiness
     public void ImplementStatisticValues(SectorStatistics statistics, bool isAdded, double globalHappiness) //if a statistic is removed for example, isAdded is false
     {
         double modifiedIncome = ModifyIncomeFromBuilding(statistics.income);
@@ -112,14 +60,6 @@ public class RegionSector
             this.statistics.pollution.ChangeNaturePollutionMutation(0 - modifiedNaturePollutionIncrease);
             this.statistics.pollution.ChangeWaterPollutionMutation(0 - modifiedWaterPollutionIncrease);
         }
-    }
-
-    public double ModifyIncomeFromBuilding(double oldIncome)
-    {
-        if (oldIncome > 0)
-            return oldIncome + oldIncome * (incomeModifier / 100);
-        else
-            return oldIncome - oldIncome * (incomeModifier / 100);
     }
 
     public double ModifyIncomeFromHappiness(double oldIncome, double happiness)
@@ -201,4 +141,55 @@ public class RegionSector
         else
             return oldWaterPollutionIncrease + oldWaterPollutionIncrease * ((happiness - 50) / 100);
     }
+    #endregion
+
+    #region BuildingMethods
+    public void ImplementBuildingStatistics(Building activeBuilding, bool isAdded)
+    {
+        double statisticIncome = statistics.income * (activeBuilding.incomeModifier / 100);
+
+        if (isAdded)
+        {
+            incomeModifier = activeBuilding.incomeModifier;
+            pollutionModifier = activeBuilding.pollutionModifier;
+            happinessModifier = activeBuilding.happinessModifier;
+
+            if (statisticIncome > 0)
+                statistics.ModifyIncome(statisticIncome);
+            else
+                statistics.ModifyIncome(0 - statisticIncome);
+
+            statistics.ModifyHappiness(activeBuilding.happinessModifier);
+            statistics.pollution.ChangeAirPollutionMutation(activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeNaturePollutionMutation(activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeWaterPollutionMutation(activeBuilding.pollutionModifier);
+        }
+
+        else
+        {
+            if (statisticIncome > 0)
+                statistics.ModifyIncome(0 - statisticIncome);
+            else
+                statistics.ModifyIncome(statisticIncome);
+
+            statistics.ModifyHappiness(0 - activeBuilding.happinessModifier);
+            statistics.pollution.ChangeAirPollutionMutation(0 - activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeNaturePollutionMutation(0 - activeBuilding.pollutionModifier);
+            statistics.pollution.ChangeWaterPollutionMutation(0 - activeBuilding.pollutionModifier);
+
+            incomeModifier = 0;
+            pollutionModifier = 0;
+            happinessModifier = 0;
+
+        }
+    }
+
+    public double ModifyIncomeFromBuilding(double oldIncome)
+    {
+        if (oldIncome > 0)
+            return oldIncome + oldIncome * (incomeModifier / 100);
+        else
+            return oldIncome - oldIncome * (incomeModifier / 100);
+    }
+    #endregion
 }

@@ -6,20 +6,17 @@ using Photon;
 public class Player : Photon.MonoBehaviour {
 
     public PhotonView photonView;
-    //private UpdateUI updateUI;
 
     // Use this for initialization
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
-        //updateUI.GetComponent<UpdateUI>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
+    void Update() { }
 
+    //send current mouse position if you control the prefab, otherwise receive the mouse position of the other player
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -34,6 +31,11 @@ public class Player : Photon.MonoBehaviour {
         }
     }
 
+    /*the only data sent over the network is data that is either randomly generated or manual input from a player.
+    This way the game of both players stays in sync while keeping the network usage relatively low.
+    Event generation for eample is only done on the masterclient.
+    */
+    #region OtherPlayerTriggers
     [PunRPC]
     void NextTurnClicked()
     {
@@ -104,4 +106,5 @@ public class Player : Photon.MonoBehaviour {
     {
         MultiplayerManager.CallUpdateActivity(nl, eng);
     }
+    #endregion
 }

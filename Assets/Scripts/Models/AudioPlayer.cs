@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+//singleton AudioPlayer gameobject
 public class AudioPlayer : MonoBehaviour
 {
     private static AudioPlayer instance = null;
@@ -87,6 +88,7 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
+    #region PlaySoundEffectsMethods
     public void PlayButtonClickSFX()
     {
         soundEffect.PlayOneShot(ButtonClickSFX);
@@ -101,7 +103,9 @@ public class AudioPlayer : MonoBehaviour
     {
         soundEffect.PlayOneShot(newmonthSFX);
     }
+    #endregion
 
+    #region ChangeVolumeMethods
     public void changeVolumeMusic(float value)
     {
         backgroundMusic.volume = value;
@@ -111,4 +115,5 @@ public class AudioPlayer : MonoBehaviour
     {
         soundEffect.volume = value;
     }
+    #endregion
 }

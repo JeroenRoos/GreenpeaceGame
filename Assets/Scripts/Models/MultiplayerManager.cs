@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+//Class containing all the multiplayer delegates
 class MultiplayerManager
 {
     public delegate void InitNextTurn();

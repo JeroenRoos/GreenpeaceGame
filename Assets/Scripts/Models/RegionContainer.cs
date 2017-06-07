@@ -41,24 +41,6 @@ public class RegionContainer
 
     public static RegionContainer Load()
     {
-        /*try
-        {
-            var file = Application.dataPath + "/GameFiles/Regions.xml";
-            XmlSerializer reader = new XmlSerializer(typeof(RegionContainer));
-
-            using (var stream = new FileStream(file, FileMode.Open))
-            {
-                return reader.Deserialize(stream) as RegionContainer;
-            }
-        }
-
-        catch (Exception ex)
-        {
-            Debug.Log(ex);
-            Debug.Log("Region loading failed");
-            return new RegionContainer();
-        }*/
-
         //resources reading for build
         TextAsset textAsset = (TextAsset)Resources.Load("Regions");
         XmlDocument xml = new XmlDocument();
