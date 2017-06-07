@@ -12,12 +12,14 @@ using System.IO;
 [Serializable]
 public class Game
 {
+    public Tutorial tutorial;
+
     //Game statistics
     public GameStatistics gameStatistics { get; private set; } //money, population, energy
     public int currentYear { get; private set; }
     public int currentMonth { get; private set; }
 
-    //0,1,2,3: Noord,Oost,West,Zuid
+    //0,1,2,3: North, East, West, South
     public List<MapRegion> regions { get; private set; }
 
     //game elements
@@ -27,7 +29,7 @@ public class Game
     public Investments investments { get; private set; }
     public List<Card> cards { get; private set; }
 
-    //inventory
+    //inventory (contains: cards)
     public Inventory inventory { get; private set; }
 
     //new turn reports
@@ -42,7 +44,6 @@ public class Game
     public PollutionAdvisor pollutionAdvisor { get; private set; }
     public HappinessAnalyst happinessAnalyst { get; private set; }
 
-    //public int language { get; private set; } //0 = Dutch, 1 = English
     public System.Random rnd { get; private set; }
 
     //trackdata
@@ -53,11 +54,9 @@ public class Game
     public int receivedCardsCount;
     public float totalTimePlayed;
 
-    public Tutorial tutorial;
 
     //multiplayer
     public string[] players { get; private set; }
-
     public bool nextTurnIsclicked;
     public bool OtherPlayerClickedNextTurn;
     public bool isWaiting;
@@ -98,6 +97,7 @@ public class Game
         totalTimePlayed = 0;
     }
 
+    #region Dataloading
     public void LoadRegions(List<MapRegion> regions)
     {
         this.regions = regions;
@@ -117,15 +117,9 @@ public class Game
     {
         this.cards = cards;
     }
+    #endregion
 
-    public void ChangeLanguage(string language)
-    {
-        if (language == "english")
-            ApplicationModel.language = 1;
-        else if (language == "dutch")
-            ApplicationModel.language = 0;
-    }
-
+    #region NewTurnMethods
     public bool UpdateCurrentMonthAndYear()
     {
         currentMonth++;
@@ -138,6 +132,7 @@ public class Game
         return false;
     }
 
+    //method called from GameController that functions as the "root" for all the other new turn methods that need to be called
     public void ExecuteNewMonthMethods()
     {
         CompletefinishedActions();
@@ -145,12 +140,12 @@ public class Game
         MutateMonthlyStatistics();
     }
 
+    //updates all the statistics, averages and money when a new turn is started (and population which is not used)
     public void MutateMonthlyStatistics()
     {
         GetRegionIncome();
 
-        double monthlyPopulation = GetMonthlyPopulation();
-        gameStatistics.ModifyPopulation(monthlyPopulation);
+        gameStatistics.ModifyPopulation(GetMonthlyPopulation());
 
         foreach (MapRegion region in regions)
         {
@@ -176,12 +171,13 @@ public class Game
         return income;
     }
 
+    //population currently not used within the game
     public double GetMonthlyPopulation()
     {
         double population = gameStatistics.population * 0.0046 / 12;
         return population;
     }
-
+    
     public void CompletefinishedActions()
     {
         foreach (MapRegion region in regions)
@@ -237,6 +233,7 @@ public class Game
         }
     }
 
+    //this method is used to determine the amount of active events, this is needed so a limit of events can be implemented (4 currently)
     public int getActiveEventCount()
     {
         int activeCount = 0;
@@ -248,6 +245,7 @@ public class Game
         return activeCount;
     }
 
+    //method used to determine if there is at least 1 method possible (which is 100% guaranteed currently) as an extra safety meassure
     public int PossibleEventCount()
     {
         int possibleEventCount = 0;
@@ -260,6 +258,7 @@ public class Game
         return possibleEventCount;
     }
 
+    //method to select which event will be generated, receives the region because some events cannot spawn in certain regions
     public GameEvent GetPickedEvent(MapRegion region)
     {
         List<GameEvent> possibleEvents = new List<GameEvent>();
@@ -281,6 +280,7 @@ public class Game
         return possibleEvents[rnd.Next(0, possibleEvents.Count)];
     }
 
+    //determines whether there is a possible region at all before the method "PickEventRegion()" is called
     public int GetPossibleRegionsCount()
     {
         int possibleRegionsCount = 0;
@@ -302,6 +302,7 @@ public class Game
         return possibleRegionsCount;
     }
 
+    //determines which region the event will get (this method is not called if there are 0 possibilities)
     public MapRegion PickEventRegion()
     {
         List<MapRegion> possibleRegions = new List<MapRegion>();
@@ -324,8 +325,9 @@ public class Game
 
         return possibleRegions[value];
     }
+    #endregion
 
-    //multiplayer
+    #region Multiplayer
     public void ChangeGameForMultiplayer()
     {
         if (PhotonNetwork.isMasterClient)
@@ -364,7 +366,7 @@ public class Game
     {
         if (!ApplicationModel.multiplayer)
         {
-            gameStatistics.ModifyMoney(GetMonthlyIncome(), true);
+            gameStatistics.ModifyMoney(GetMonthlyIncome(), true); //used in singeplayer
         }
         else
         {
@@ -382,4 +384,5 @@ public class Game
             gameStatistics.ModifyMoney(income, true);
         }
     }
+    #endregion
 }

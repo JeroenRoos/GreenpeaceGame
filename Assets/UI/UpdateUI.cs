@@ -5110,7 +5110,7 @@ public class UpdateUI : MonoBehaviour
             PlayerPrefs.Save();
             initSettingsText();
 
-            game.ChangeLanguage("dutch");
+            ChangeLanguage("dutch");
             btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Tijdlijn";
             txtBtnMenu.text = "Menu";
@@ -5137,7 +5137,7 @@ public class UpdateUI : MonoBehaviour
             PlayerPrefs.Save();
             initSettingsText();
 
-            game.ChangeLanguage("english");
+            ChangeLanguage("english");
             btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Timeline";
             txtBtnMenu.text = "Menu";
@@ -5149,6 +5149,14 @@ public class UpdateUI : MonoBehaviour
         }
         else
             toggleEnglishCheck = false;
+    }
+
+    public void ChangeLanguage(string language)
+    {
+        if (language == "english")
+            ApplicationModel.language = 1;
+        else if (language == "dutch")
+            ApplicationModel.language = 0;
     }
 
     public void sliderEffectsValueChanged()
