@@ -20,6 +20,7 @@ public class Pollution
 
     public Pollution() { }
 
+    //method used for copying Pollution without reference
     public Pollution(Pollution pollution)
     {
         avgPollution = 0;
@@ -31,6 +32,7 @@ public class Pollution
         waterPollutionIncrease = pollution.waterPollutionIncrease;
     }
 
+    #region ChangeVariablesMethods
     public void ChangeAirPollution(double changeValue)
     {
         airPollution += changeValue;
@@ -59,6 +61,11 @@ public class Pollution
         else if (waterPollution > 100)
             waterPollution = 100;
         CalculateAvgPollution();
+    }
+
+    public void CalculateAvgPollution()
+    {
+        avgPollution = ((airPollution + naturePollution + waterPollution) / 3);
     }
 
     public void ChangeAirPollutionMutation(double changeValue)
@@ -113,12 +120,9 @@ public class Pollution
         else if (airPollution < 0)
             waterPollution = 0;
     }
+    #endregion
 
-    public void CalculateAvgPollution()
-    {
-        avgPollution = ((airPollution + naturePollution + waterPollution) / 3);
-    }
-
+    #region GameEventMethods
     public void SetPickedConsequences(SectorStatistics s, double[] modifiers, System.Random rnd)
     {
         airPollution = s.pollution.airPollution * modifiers[rnd.Next(0, modifiers.Length)];
@@ -138,5 +142,6 @@ public class Pollution
         naturePollutionIncrease = consequences[8];
         waterPollutionIncrease = consequences[9];
     }
+    #endregion
 }
 

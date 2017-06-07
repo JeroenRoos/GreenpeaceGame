@@ -19,19 +19,9 @@ public class Quest
     public bool isActive { get; private set; }
     public bool isCompleted { get; private set; }
 
-    public Quest()
-    {
-        questID = "placeholderName";
-        name = new string[] { "dutchname", "englishname" };
-        description = new string[] { "dutchdescription", "englishdescription" };
-        startYear = 0;
-        startMonth = 0;
-        questLocation = "National";
-        questCompleteConditions = new RegionStatistics();
-        questMoneyReward = 0;
-        isActive = false;
-    }
+    public Quest() { }
 
+    #region UpdateQuestStatusMethods
     public void StartQuest()
     {
         isActive = true;
@@ -42,7 +32,9 @@ public class Quest
         isActive = false;
         isCompleted = true;
     }
+    #endregion
 
+    #region CompletionCheckMethods
     public bool RegionalCompleteConditionsMet(RegionStatistics s)
     {
         bool conditionsMet = true;
@@ -78,4 +70,5 @@ public class Quest
 
         return conditionsMet;
     }
+    #endregion
 }

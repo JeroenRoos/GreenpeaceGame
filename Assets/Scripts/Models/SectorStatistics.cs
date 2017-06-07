@@ -18,6 +18,7 @@ public class SectorStatistics
         pollution = new Pollution();
     }
 
+    //method used for copying Sectorstatistics without reference
     public SectorStatistics(SectorStatistics sectorStatistics)
     {
         income = sectorStatistics.income;
@@ -27,6 +28,7 @@ public class SectorStatistics
         pollution = new Pollution(sectorStatistics.pollution);
     }
 
+    #region ModifyVariablesMethods
     public void ModifyIncome(double changeValue)
     {
         income += changeValue;
@@ -99,12 +101,9 @@ public class SectorStatistics
         double happinessChangeValue = changeValue / 10;
         ModifyHappiness(happinessChangeValue);
     }
+    #endregion
 
-    public void mutateTimeBasedStatistics()
-    {
-        pollution.mutateTimeBasedStatistics();
-    }
-
+    #region GameEventMethods
     public void SetPickedConsequences(SectorStatistics s, double[] modifiers, System.Random rnd)
     {
         income = s.income * modifiers[rnd.Next(0, modifiers.Length)];
@@ -124,4 +123,5 @@ public class SectorStatistics
 
         pollution.SetPickedConsequencesMultiplayer(consequences);
     }
+    #endregion
 }

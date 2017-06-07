@@ -28,6 +28,7 @@ public class Card
         currentSectorConsequences = new SectorStatistics();
     }
 
+    //method used for copying Card without reference
     public Card(Card card)
     {
         cardID = card.cardID;
@@ -42,6 +43,7 @@ public class Card
         currentMoneyReward = card.currentMoneyReward;        
     }
 
+    #region UpdateCardRewardsMethods
     public void increaseCurrentRewards()
     {
         currentMoneyReward += moneyRewardPerTurn;
@@ -59,8 +61,9 @@ public class Card
 
         currentIncrementsDone++;
     }
+    #endregion
 
-
+    #region UseCardMethods
     public void UseCardOnRegion(MapRegion r, GameStatistics gs)
     {
         foreach (RegionSector rs in r.sectors)
@@ -79,11 +82,13 @@ public class Card
 
         gs.ModifyMoney(currentMoneyReward, true);
     }
+    #endregion
 
-    //multiplayer
+    #region multiplayer
     public void SetCardReward(double[] cardValues)
     {
         currentMoneyReward = cardValues[10];
         currentSectorConsequences.SetPickedConsequencesMultiplayer(cardValues);
     }
+    #endregion
 }
