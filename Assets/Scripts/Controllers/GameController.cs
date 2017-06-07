@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public Player playerController;
 
-    // Use this for initialization
+    #region Awake/Start/Update
     private void Awake()
     {
         eventConsequenceModifiers = new double[5] { 0.8, 0.9, 1, 1.1, 1.2 };
@@ -60,6 +60,7 @@ public class GameController : MonoBehaviour
         {
             game = new Game();
 
+            //loads in all the data of the game
             LoadRegions();
             LoadRegionActions();
             LoadBuildings();
@@ -186,6 +187,7 @@ public class GameController : MonoBehaviour
         if (updateUI.getTooltipActive())
             updateUITooltips(); */
     }
+    #endregion
 
     #region Coroutines
     private IEnumerator showBuildingIcons()
@@ -206,6 +208,36 @@ public class GameController : MonoBehaviour
 
         if (!game.tutorial.tutorialBuildingsDone)
             updateUI.startTutorialBuildings();
+    }
+
+    public IEnumerator SetMonthlyReportButtonLocation(Vector3 currentPosition, Vector3 endPosition)
+    {
+        float positionDiff = currentPosition.y - endPosition.y;
+        while (currentPosition.y > endPosition.y)
+        {
+            currentPosition.y -= positionDiff / 60;
+            if (currentPosition.y < endPosition.y)
+                currentPosition = endPosition;
+            updateUI.btnMonthlyReportStats.gameObject.transform.position = currentPosition;
+            yield return new WaitForFixedUpdate();
+        }
+
+        updateUI.btnMonthlyReportStats.interactable = true;
+    }
+
+    public IEnumerator SetYearlyReportButtonLocation(Vector3 currentPosition, Vector3 endPosition)
+    {
+        float positionDiff = currentPosition.y - endPosition.y;
+        while (currentPosition.y > endPosition.y)
+        {
+            currentPosition.y -= positionDiff / 60;
+            if (currentPosition.y < endPosition.y)
+                currentPosition = endPosition;
+            updateUI.btnYearlyReportStats.gameObject.transform.position = currentPosition;
+            yield return new WaitForFixedUpdate();
+        }
+
+        updateUI.btnYearlyReportStats.interactable = true;
     }
     #endregion
 
@@ -444,6 +476,7 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
+    #region NewTurnUpdates
     public void NextTurn()
     {
         if (ApplicationModel.multiplayer)
@@ -469,12 +502,16 @@ public class GameController : MonoBehaviour
             if (!game.tutorial.tutorialNextTurnDone)
                 game.tutorial.tutorialNextTurnDone = true;
 
-            bool isNewYear = game.UpdateCurrentMonthAndYear();
             UpdateRegionsPollutionInfluence();
+
+            bool isNewYear = game.UpdateCurrentMonthAndYear();
             game.ExecuteNewMonthMethods();
+
             if (!ApplicationModel.multiplayer || PhotonNetwork.isMasterClient)
                 UpdateEvents();
+
             game.gameStatistics.UpdateRegionalAvgs(game);
+
             UpdateQuests();
             UpdateRegionActionAvailability();
 
@@ -486,13 +523,14 @@ public class GameController : MonoBehaviour
             }
 
             GenerateNewCard();
-
             GenerateMonthlyUpdates(isNewYear);
-            UpdateTimeline();
 
+            //update advisors
             game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
             game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
             game.happinessAnalyst.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.happiness);
+
+            UpdateTimeline();
 
             if (autoSave)
                 EventManager.CallSaveGame();
@@ -501,11 +539,130 @@ public class GameController : MonoBehaviour
 
             EventManager.CallPlayNewTurnStartSFX();
 
+            //end of game
             if (game.currentYear == 31 || game.gameStatistics.pollution == 0d)
                 ShowGameScore();
         }
     }
 
+    #region RegionActions
+    private void UpdateRegionActionAvailability()
+    {
+        foreach (MapRegion r in game.regions)
+        {
+            foreach (RegionAction ra in r.actions)
+                ra.GetAvailableActions(game, r.statistics);
+        }
+    }
+    #endregion
+
+    #region GameEvents
+    //generate new events
+    private void UpdateEvents()
+    {
+        int activeCount = game.getActiveEventCount();
+        int eventChance = 80;
+        if (game.currentYear == 1 && game.currentMonth == 2)
+            eventChance = 100;
+
+        //determines with how much the eventchance will decrease after each generated event (eventchance = 0 means no event can spawn)
+        int eventChanceReduction = GetEventChanceReduction();
+
+        while (game.rnd.Next(1, 101) <= eventChance && activeCount < 4)
+        {
+            if (game.PossibleEventCount() > 0 && game.GetPossibleRegionsCount() > 0)
+            {
+                MapRegion pickedRegion = game.PickEventRegion();
+                GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
+                SetEventConsequences(pickedEvent);
+                pickedEvent.StartEvent(game.currentYear, game.currentMonth);
+                pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
+                game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
+
+                eventInstance = GameController.Instantiate(eventObject);
+                eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, pickedRegion, pickedEvent);
+
+                if (ApplicationModel.multiplayer)
+                {
+                    if (pickedRegion.regionOwner == PhotonNetwork.player.NickName)
+                        pickedEvent.isOwnEvent = true;
+                    else
+                        pickedEvent.isOwnEvent = false;
+
+                    GameEvent p = pickedEvent;
+                    double[] pickedConsequences0 = new double[10] { p.pickedConsequences[0].income, p.pickedConsequences[0].happiness, p.pickedConsequences[0].ecoAwareness, p.pickedConsequences[0].prosperity, p.pickedConsequences[0].pollution.airPollution, p.pickedConsequences[0].pollution.naturePollution, p.pickedConsequences[0].pollution.waterPollution, p.pickedConsequences[0].pollution.airPollutionIncrease, p.pickedConsequences[0].pollution.naturePollutionIncrease, p.pickedConsequences[0].pollution.waterPollutionIncrease };
+                    double[] pickedConsequences1 = new double[10] { p.pickedConsequences[1].income, p.pickedConsequences[1].happiness, p.pickedConsequences[1].ecoAwareness, p.pickedConsequences[1].prosperity, p.pickedConsequences[1].pollution.airPollution, p.pickedConsequences[1].pollution.naturePollution, p.pickedConsequences[1].pollution.waterPollution, p.pickedConsequences[1].pollution.airPollutionIncrease, p.pickedConsequences[1].pollution.naturePollutionIncrease, p.pickedConsequences[1].pollution.waterPollutionIncrease };
+                    double[] pickedConsequences2 = new double[10] { p.pickedConsequences[2].income, p.pickedConsequences[2].happiness, p.pickedConsequences[2].ecoAwareness, p.pickedConsequences[2].prosperity, p.pickedConsequences[2].pollution.airPollution, p.pickedConsequences[2].pollution.naturePollution, p.pickedConsequences[2].pollution.waterPollution, p.pickedConsequences[2].pollution.airPollutionIncrease, p.pickedConsequences[2].pollution.naturePollutionIncrease, p.pickedConsequences[2].pollution.waterPollutionIncrease };
+                    double[] pickedTemporaryConsequences0 = new double[10] { p.pickedTemporaryConsequences[0].income, p.pickedTemporaryConsequences[0].happiness, p.pickedTemporaryConsequences[0].ecoAwareness, p.pickedTemporaryConsequences[0].prosperity, p.pickedTemporaryConsequences[0].pollution.airPollution, p.pickedTemporaryConsequences[0].pollution.naturePollution, p.pickedTemporaryConsequences[0].pollution.waterPollution, p.pickedTemporaryConsequences[0].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[0].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[0].pollution.waterPollutionIncrease };
+                    double[] pickedTemporaryConsequences1 = new double[10] { p.pickedTemporaryConsequences[1].income, p.pickedTemporaryConsequences[1].happiness, p.pickedTemporaryConsequences[1].ecoAwareness, p.pickedTemporaryConsequences[1].prosperity, p.pickedTemporaryConsequences[1].pollution.airPollution, p.pickedTemporaryConsequences[1].pollution.naturePollution, p.pickedTemporaryConsequences[1].pollution.waterPollution, p.pickedTemporaryConsequences[1].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[1].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[1].pollution.waterPollutionIncrease };
+                    double[] pickedTemporaryConsequences2 = new double[10] { p.pickedTemporaryConsequences[2].income, p.pickedTemporaryConsequences[2].happiness, p.pickedTemporaryConsequences[2].ecoAwareness, p.pickedTemporaryConsequences[2].prosperity, p.pickedTemporaryConsequences[2].pollution.airPollution, p.pickedTemporaryConsequences[2].pollution.naturePollution, p.pickedTemporaryConsequences[2].pollution.waterPollution, p.pickedTemporaryConsequences[2].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[2].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[2].pollution.waterPollutionIncrease };
+
+                    playerController.photonView.RPC("EventGenerated", PhotonTargets.Others, pickedRegion.name[0], pickedEvent.name,
+                        pickedConsequences0, pickedConsequences1, pickedConsequences2, pickedTemporaryConsequences0,
+                        pickedTemporaryConsequences1, pickedTemporaryConsequences2);
+                }
+            }
+
+            eventChance -= eventChanceReduction;
+        }
+    }
+
+    private int GetEventChanceReduction()
+    {
+        int eventChanceReduction = 100;
+
+        if (game.currentYear >= 2)
+            eventChanceReduction -= 40;
+        if (game.currentYear >= 5)
+            eventChanceReduction -= 20;
+        if (game.currentYear >= 10)
+            eventChanceReduction -= 10;
+        if (game.currentYear >= 20)
+            eventChanceReduction -= 10;
+
+        return eventChanceReduction;
+    }
+
+    //randomly generates which consequences the event will have (from the options it can pick from)
+    public void SetEventConsequences(GameEvent e)
+    {
+        e.pickedConsequences = new SectorStatistics[e.consequences.Length];
+        e.pickedTemporaryConsequences = new SectorStatistics[e.consequences.Length];
+        for (int i = 0; i < e.afterInvestmentConsequences.Length; i++)
+        {
+            e.pickedConsequences[i] = new SectorStatistics();
+            e.pickedTemporaryConsequences[i] = new SectorStatistics();
+            e.pickedConsequences[i].SetPickedConsequences(e.afterInvestmentConsequences[i], eventConsequenceModifiers, game.rnd);
+            e.pickedTemporaryConsequences[i].SetPickedConsequences(e.afterInvestmentTemporaryConsequences[i], eventConsequenceModifiers, game.rnd);
+        }
+    }
+    #endregion
+
+    #region Pollution
+    //increases or decreases pollution in region based on the average pollution. (pollution spreads)
+    private void UpdateRegionsPollutionInfluence()
+    {
+        game.gameStatistics.UpdateRegionalAvgs(game);
+
+        foreach (MapRegion region in game.regions)
+        {
+            double pollutionDifference = game.gameStatistics.pollution - region.statistics.avgPollution;
+            double pollutionChangeValue = pollutionDifference * 0.3 / 12;
+            {
+                foreach (RegionSector regionSector in region.sectors)
+                {
+                    regionSector.statistics.pollution.ChangeAirPollution(pollutionChangeValue);
+                    regionSector.statistics.pollution.ChangeNaturePollution(pollutionChangeValue);
+                    regionSector.statistics.pollution.ChangeWaterPollution(pollutionChangeValue);
+                }
+                region.statistics.UpdateSectorAvgs(region);
+            }
+        }
+
+        game.gameStatistics.UpdateRegionalAvgs(game);
+    }
+
+    //increases the "increase of pollution per year" so the game become more difficult each year.
     public void IncreaseYearlyPollutionChange()
     {
         double changeValue = 0.4 + 0.1 * game.currentYear;
@@ -519,62 +676,9 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    public void ShowGameScore()
-    {
-        score = CalculateScore();
-        updateUI.initEndOfGameReport(score);
-        SetScoreTrackingData(score);
-    }
-
-    public double CalculateScore()
-    {
-        double calcScore = 0;
-
-        calcScore += game.gameStatistics.prosperity * 100;
-        calcScore += game.gameStatistics.ecoAwareness * 100;
-        calcScore += game.gameStatistics.happiness * 100;
-        calcScore += game.gameStatistics.income;
-        calcScore += 10000 - game.gameStatistics.pollution * 100;
-        calcScore += 36000 - ((game.currentYear - 1) * 12 + (game.currentMonth - 1)) * 100;
-
-        return calcScore;
-    }
-
-    private void UpdateTimeline()
-    {
-        game.timeline.StoreTurnInTimeLine(game.gameStatistics, game.currentYear, game.currentMonth);
-    }
-
-    public void GenerateNewCard()
-    {
-        if (game.currentYear == 3 && game.currentMonth == 1)
-        {
-            game.inventory.AddCardToInventory(new Card(game.cards[game.rnd.Next(0, game.cards.Count)]));
-            game.receivedCardsCount++;
-            if (!updateUI.cardsShakes)
-                StartCoroutine(updateUI.ShakeCards());
-        }
-
-        else if (game.rnd.Next(1, 101) <= 2 && game.currentYear >= 3)
-        {
-            game.inventory.AddCardToInventory(new Card(game.cards[game.rnd.Next(0, game.cards.Count)]));
-            game.receivedCardsCount++;
-            if (!updateUI.cardsShakes)
-                StartCoroutine(updateUI.ShakeCards());
-        }
-    }
-
-    //yearly reward increase
-    private void UpdateCards()
-    {
-        foreach (Card card in game.inventory.ownedCards)
-        {
-            if (card.currentIncrementsDone < card.maximumIncrementsDone)
-                card.increaseCurrentRewards();
-        }
-    }
-
+    #region ProgressReports
     private void GenerateMonthlyUpdates(bool isNewYear)
     {
         int index = 0;
@@ -606,7 +710,7 @@ public class GameController : MonoBehaviour
         updateUI.btnMonthlyReportStats.interactable = false;
         updateUI.InitMonthlyReport();
 
-        
+
         Vector3 monthlyReportStartPosition = new Vector3(5, 5 + height * 2 * (2 + index), 0);
         StartCoroutine(SetMonthlyReportButtonLocation(monthlyReportStartPosition, afterActionPosition[index]));
 
@@ -624,69 +728,26 @@ public class GameController : MonoBehaviour
         StartCoroutine(SetYearlyReportButtonLocation(yearlyReportPosition, afterActionPosition[index]));
         //updateUI.btnYearlyReportStats.gameObject.transform.position = afterActionPosition[index];
     }
+    #endregion
 
-    public IEnumerator SetMonthlyReportButtonLocation(Vector3 currentPosition, Vector3 endPosition)
-    {
-        float positionDiff = currentPosition.y - endPosition.y;
-        while (currentPosition.y > endPosition.y)
-        {
-            currentPosition.y -= positionDiff / 60;
-            if (currentPosition.y < endPosition.y)
-                currentPosition = endPosition;
-            updateUI.btnMonthlyReportStats.gameObject.transform.position = currentPosition;
-            yield return new WaitForFixedUpdate();
-        }
-
-        updateUI.btnMonthlyReportStats.interactable = true;
-    }
-
-    public IEnumerator SetYearlyReportButtonLocation(Vector3 currentPosition, Vector3 endPosition)
-    {
-        float positionDiff = currentPosition.y - endPosition.y;
-        while (currentPosition.y > endPosition.y)
-        {
-            currentPosition.y -= positionDiff / 60;
-            if (currentPosition.y < endPosition.y)
-                currentPosition = endPosition;
-            updateUI.btnYearlyReportStats.gameObject.transform.position = currentPosition;
-            yield return new WaitForFixedUpdate();
-        }
-
-        updateUI.btnYearlyReportStats.interactable = true;
-    }
-
-    private bool checkNewEvents()
-    {
-        for (int i = 0; i < game.monthlyReport.newEvents.Length; i++)
-        {
-            if (game.monthlyReport.newEvents[i].Count != 0)
-                return true;
-        }
-
-        return false;
-    }
-
-    private bool FindCompletedActionsAndEvents()
-    {
-        for (int i = 0; i < game.monthlyReport.completedActions.Length; i++)
-        {
-            if (game.monthlyReport.completedActions[i].Count != 0)
-                return true;
-        }
-
-        for (int j = 0; j < game.monthlyReport.completedEvents.Length; j++)
-        {
-            if (game.monthlyReport.completedEvents[j].Count != 0)
-                return true;
-        }
-
-        return false;
-    }
-
+    #region Quests
     private void UpdateQuests()
     {
         StartNewQuests();
         CompleteActiveQuests();
+    }
+
+    private void StartNewQuests()
+    {
+        foreach (Quest quest in game.quests)
+        {
+            if (quest.startYear == game.currentYear && quest.startMonth == game.currentMonth)
+            {
+                quest.StartQuest();
+                if (!updateUI.questsShakes)
+                    StartCoroutine(updateUI.ShakeQuests());
+            }
+        }
     }
 
     private void CompleteActiveQuests()
@@ -732,121 +793,70 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    private void StartNewQuests()
+    #region Cards
+    public void GenerateNewCard()
     {
-        foreach (Quest quest in game.quests)
+        if (game.currentYear == 3 && game.currentMonth == 1)
         {
-            if (quest.startYear == game.currentYear && quest.startMonth == game.currentMonth)
-            {
-                quest.StartQuest();
-                if (!updateUI.questsShakes)
-                    StartCoroutine(updateUI.ShakeQuests());
-            }
+            game.inventory.AddCardToInventory(new Card(game.cards[game.rnd.Next(0, game.cards.Count)]));
+            game.receivedCardsCount++;
+            if (!updateUI.cardsShakes)
+                StartCoroutine(updateUI.ShakeCards());
+        }
+
+        else if (game.rnd.Next(1, 101) <= 2 && game.currentYear >= 3)
+        {
+            game.inventory.AddCardToInventory(new Card(game.cards[game.rnd.Next(0, game.cards.Count)]));
+            game.receivedCardsCount++;
+            if (!updateUI.cardsShakes)
+                StartCoroutine(updateUI.ShakeCards());
         }
     }
 
-    private void UpdateRegionActionAvailability()
+    //yearly reward increase
+    private void UpdateCards()
     {
-        foreach (MapRegion r in game.regions)
+        foreach (Card card in game.inventory.ownedCards)
         {
-            foreach (RegionAction ra in r.actions)
-                ra.GetAvailableActions(game, r.statistics);
+            if (card.currentIncrementsDone < card.maximumIncrementsDone)
+                card.increaseCurrentRewards();
         }
     }
+    #endregion
 
-    private void UpdateEvents()
+    #region GameScore
+    public void ShowGameScore()
     {
-        int activeCount = game.getActiveEventCount();
-        int eventChance = 80;
-        if (game.currentYear == 1 && game.currentMonth == 2)
-            eventChance = 100;
-
-        int eventChanceReduction = 100;
-
-        //temp ugly code
-        if (game.currentYear >= 2)
-            eventChanceReduction -= 40;
-        if (game.currentYear >= 5)
-            eventChanceReduction -= 20;
-        if (game.currentYear >= 10)
-            eventChanceReduction -= 10;
-        if (game.currentYear >= 20)
-            eventChanceReduction -= 10;
-
-        while (game.rnd.Next(1, 101) <= eventChance && activeCount < 4)
-        {
-            if (game.PossibleEventCount() > 0 && game.GetPossibleRegionsCount() > 0)
-            {
-                MapRegion pickedRegion = game.PickEventRegion();
-                GameEvent pickedEvent = game.GetPickedEvent(pickedRegion);
-                SetEventConsequences(pickedEvent);
-                pickedEvent.StartEvent(game.currentYear, game.currentMonth);
-                pickedRegion.AddGameEvent(pickedEvent, game.gameStatistics.happiness);
-                game.AddNewEventToMonthlyReport(pickedRegion, pickedEvent);
-
-                eventInstance = GameController.Instantiate(eventObject);
-                eventInstance.GetComponent<EventObjectController>().PlaceEventIcons(this, pickedRegion, pickedEvent);
-
-                if (ApplicationModel.multiplayer)
-                {
-                    if (pickedRegion.regionOwner == PhotonNetwork.player.NickName)
-                        pickedEvent.isOwnEvent = true;
-                    else
-                        pickedEvent.isOwnEvent = false;
-
-                    GameEvent p = pickedEvent;
-                    double[] pickedConsequences0 = new double[10] { p.pickedConsequences[0].income, p.pickedConsequences[0].happiness, p.pickedConsequences[0].ecoAwareness, p.pickedConsequences[0].prosperity, p.pickedConsequences[0].pollution.airPollution, p.pickedConsequences[0].pollution.naturePollution, p.pickedConsequences[0].pollution.waterPollution, p.pickedConsequences[0].pollution.airPollutionIncrease, p.pickedConsequences[0].pollution.naturePollutionIncrease, p.pickedConsequences[0].pollution.waterPollutionIncrease };
-                    double[] pickedConsequences1 = new double[10] { p.pickedConsequences[1].income, p.pickedConsequences[1].happiness, p.pickedConsequences[1].ecoAwareness, p.pickedConsequences[1].prosperity, p.pickedConsequences[1].pollution.airPollution, p.pickedConsequences[1].pollution.naturePollution, p.pickedConsequences[1].pollution.waterPollution, p.pickedConsequences[1].pollution.airPollutionIncrease, p.pickedConsequences[1].pollution.naturePollutionIncrease, p.pickedConsequences[1].pollution.waterPollutionIncrease };
-                    double[] pickedConsequences2 = new double[10] { p.pickedConsequences[2].income, p.pickedConsequences[2].happiness, p.pickedConsequences[2].ecoAwareness, p.pickedConsequences[2].prosperity, p.pickedConsequences[2].pollution.airPollution, p.pickedConsequences[2].pollution.naturePollution, p.pickedConsequences[2].pollution.waterPollution, p.pickedConsequences[2].pollution.airPollutionIncrease, p.pickedConsequences[2].pollution.naturePollutionIncrease, p.pickedConsequences[2].pollution.waterPollutionIncrease };
-                    double[] pickedTemporaryConsequences0 = new double[10] { p.pickedTemporaryConsequences[0].income, p.pickedTemporaryConsequences[0].happiness, p.pickedTemporaryConsequences[0].ecoAwareness, p.pickedTemporaryConsequences[0].prosperity, p.pickedTemporaryConsequences[0].pollution.airPollution, p.pickedTemporaryConsequences[0].pollution.naturePollution, p.pickedTemporaryConsequences[0].pollution.waterPollution, p.pickedTemporaryConsequences[0].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[0].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[0].pollution.waterPollutionIncrease };
-                    double[] pickedTemporaryConsequences1 = new double[10] { p.pickedTemporaryConsequences[1].income, p.pickedTemporaryConsequences[1].happiness, p.pickedTemporaryConsequences[1].ecoAwareness, p.pickedTemporaryConsequences[1].prosperity, p.pickedTemporaryConsequences[1].pollution.airPollution, p.pickedTemporaryConsequences[1].pollution.naturePollution, p.pickedTemporaryConsequences[1].pollution.waterPollution, p.pickedTemporaryConsequences[1].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[1].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[1].pollution.waterPollutionIncrease };
-                    double[] pickedTemporaryConsequences2 = new double[10] { p.pickedTemporaryConsequences[2].income, p.pickedTemporaryConsequences[2].happiness, p.pickedTemporaryConsequences[2].ecoAwareness, p.pickedTemporaryConsequences[2].prosperity, p.pickedTemporaryConsequences[2].pollution.airPollution, p.pickedTemporaryConsequences[2].pollution.naturePollution, p.pickedTemporaryConsequences[2].pollution.waterPollution, p.pickedTemporaryConsequences[2].pollution.airPollutionIncrease, p.pickedTemporaryConsequences[2].pollution.naturePollutionIncrease, p.pickedTemporaryConsequences[2].pollution.waterPollutionIncrease };
-
-                    playerController.photonView.RPC("EventGenerated", PhotonTargets.Others, pickedRegion.name[0], pickedEvent.name,
-                        pickedConsequences0, pickedConsequences1, pickedConsequences2, pickedTemporaryConsequences0,
-                        pickedTemporaryConsequences1, pickedTemporaryConsequences2);
-                }
-            }
-
-            eventChance -= eventChanceReduction;
-        }
-    }
-    
-    public void SetEventConsequences(GameEvent e)
-    {
-        e.pickedConsequences = new SectorStatistics[e.consequences.Length];
-        e.pickedTemporaryConsequences = new SectorStatistics[e.consequences.Length];
-        for (int i = 0; i < e.afterInvestmentConsequences.Length; i++)
-        {
-            e.pickedConsequences[i] = new SectorStatistics();
-            e.pickedTemporaryConsequences[i] = new SectorStatistics();
-            e.pickedConsequences[i].SetPickedConsequences(e.afterInvestmentConsequences[i], eventConsequenceModifiers, game.rnd);
-            e.pickedTemporaryConsequences[i].SetPickedConsequences(e.afterInvestmentTemporaryConsequences[i], eventConsequenceModifiers, game.rnd);
-        }
+        score = CalculateScore();
+        updateUI.initEndOfGameReport(score);
+        SetScoreTrackingData(score);
     }
 
-    private void UpdateRegionsPollutionInfluence()
+    public double CalculateScore()
     {
-        game.gameStatistics.UpdateRegionalAvgs(game);
+        double calcScore = 0;
 
-        foreach (MapRegion region in game.regions)
-        {
-            double pollutionDifference = game.gameStatistics.pollution - region.statistics.avgPollution;
-            double pollutionChangeValue = pollutionDifference * 0.3 / 12;
-            {
-                foreach (RegionSector regionSector in region.sectors)
-                {
-                    regionSector.statistics.pollution.ChangeAirPollution(pollutionChangeValue);
-                    regionSector.statistics.pollution.ChangeNaturePollution(pollutionChangeValue);
-                    regionSector.statistics.pollution.ChangeWaterPollution(pollutionChangeValue);
-                }
-                region.statistics.UpdateSectorAvgs(region);
-            }
-        }
+        calcScore += game.gameStatistics.prosperity * 100;
+        calcScore += game.gameStatistics.ecoAwareness * 100;
+        calcScore += game.gameStatistics.happiness * 100;
+        calcScore += game.gameStatistics.income;
+        calcScore += 10000 - game.gameStatistics.pollution * 100;
+        calcScore += 36000 - ((game.currentYear - 1) * 12 + (game.currentMonth - 1)) * 100;
 
-        game.gameStatistics.UpdateRegionalAvgs(game);
+        return calcScore;
     }
+    #endregion
+
+    #region Timeline
+    private void UpdateTimeline()
+    {
+        game.timeline.StoreTurnInTimeLine(game.gameStatistics, game.currentYear, game.currentMonth);
+    }
+    #endregion
+    #endregion
+
 
     private void updateUIMainScreen()
     {
@@ -1085,7 +1095,7 @@ public class GameController : MonoBehaviour
         ShareOnFacebook();
     }
 
-    //multiplayer
+    #region Multiplayer
     public void SetDelegates()
     {
         MultiplayerManager.NextTurnClicked += GetOtherPlayerNextTurn;
@@ -1317,5 +1327,6 @@ public class GameController : MonoBehaviour
 
         return null;
     }
+    #endregion
 }
 
