@@ -174,6 +174,7 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
+    public Text txtEventNotEnoughMoney;
     public Text txtNotYourEvent;
     public Text txtEventTitle;
     public Text txtEventColumRight;
@@ -3486,6 +3487,7 @@ public class UpdateUI : MonoBehaviour
     // Alle tekst wordt ingesteld
     private void initEventText(GameEvent e)
     {
+        txtEventNotEnoughMoney.gameObject.SetActive(false);
         txtNotYourEvent.gameObject.SetActive(false);
         string[] txtBtn = { "Doe keuze", "Do choice" };
         string[] txtBtn2 = { "Bekijk consequences", "View consequences" };
@@ -3555,10 +3557,15 @@ public class UpdateUI : MonoBehaviour
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[0])
             {
                 btnDoEvent.interactable = true;
-                btnViewConsequencesEvent.interactable = true;
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
             }
             else
+            {
                 btnDoEvent.interactable = false;
+                txtEventNotEnoughMoney.gameObject.SetActive(true);
+                string[] noMoney = { "Je hebt niet genoeg geld voor deze optie.", "You do not have enough money for this option." };
+                txtEventNotEnoughMoney.text = noMoney[taal];
+            }
             
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences "};
@@ -3593,11 +3600,16 @@ public class UpdateUI : MonoBehaviour
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[1])
             {
                 btnDoEvent.interactable = true;
-                btnViewConsequencesEvent.interactable = true;
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
             }
             else
+            {
                 btnDoEvent.interactable = false;
-            
+                txtEventNotEnoughMoney.gameObject.SetActive(true);
+                string[] noMoney = { "Je hebt niet genoeg geld voor deze optie.", "You do not have enough money for this option." };
+                txtEventNotEnoughMoney.text = noMoney[taal];
+            }
+
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
@@ -3631,10 +3643,15 @@ public class UpdateUI : MonoBehaviour
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[2])
             {
                 btnDoEvent.interactable = true;
-                btnViewConsequencesEvent.interactable = true;
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
             }
             else
+            {
                 btnDoEvent.interactable = false;
+                txtEventNotEnoughMoney.gameObject.SetActive(true);
+                string[] noMoney = { "Je hebt niet genoeg geld voor deze optie.", "You do not have enough money for this option." };
+                txtEventNotEnoughMoney.text = noMoney[taal];
+            }
 
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
@@ -3679,6 +3696,7 @@ public class UpdateUI : MonoBehaviour
             // Als jij niet de owner bent van de regio kun je de event niet oplossen en krijg je text te zien ipv de button
             else
             {
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
                 btnDoEvent.gameObject.SetActive(false);
                 txtNotYourEvent.gameObject.SetActive(true);
                 string[] info = { "Omdat de event in de regio van de andere speler is kun jij hem niet oplossen.",
@@ -5285,7 +5303,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Controle of je wel genoeg geld hebt om de actie te doen
-        if (game.GetMoney() > regioActionCost)
+        if (game.GetMoney() >= regioActionCost)
         {
             btnDoActionRegionMenu.interactable = true;
             txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
@@ -5322,7 +5340,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Controle of je wel genoeg geld hebt om de actie te doen
-        if (game.GetMoney() > regioActionCost)
+        if (game.GetMoney() >= regioActionCost)
         {
             btnDoActionRegionMenu.interactable = true;
             txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
@@ -5359,7 +5377,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Controle of je wel genoeg geld hebt om de actie te doen
-        if (game.GetMoney() > regioActionCost)
+        if (game.GetMoney() >= regioActionCost)
         {
             btnDoActionRegionMenu.interactable = true;
             txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
