@@ -479,6 +479,8 @@ public class GameController : MonoBehaviour
     #region NewTurnUpdates
     public void NextTurn()
     {
+        game.gameStatistics.ModifyMoney(3000, false);
+
         if (ApplicationModel.multiplayer)
         {
             game.isWaiting = false;

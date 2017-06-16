@@ -219,6 +219,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtShareFacebookButton;
 
     // Text Investments Popup
+    public Text txtInvestementsNotEnoughMoney;
     public Text txtInvestmentsTitle;
     public Text txtInvestmentsColumn;
     public Text txtInvestmentsDescription;
@@ -515,8 +516,6 @@ public class UpdateUI : MonoBehaviour
     public Image imgHighlightQuests;
     public Image imgHighlightMonthlyReport;
     public Image imgHighlightInvestements;
-
-
 
     private Vector3 v3Tooltip;
     //string arrays (translations
@@ -4054,6 +4053,7 @@ public class UpdateUI : MonoBehaviour
     // De tekst voor de popup
     private void initInvestementsText()
     {
+        txtInvestementsNotEnoughMoney.gameObject.SetActive(false);
         string[] title = { "Investeren", "Investments" };
         string[] column = { "Investeer in de organisatie", "Invest in the organization" };
         string[] description = { "Hier kun je geld investeren in je organisatie. Hoe meer geld je in een onderdeel investeert, hoe meer positief resultaat je zult zien.\nJe kunt 5 keer investeren in elk onderdeel. " +
@@ -4072,6 +4072,7 @@ public class UpdateUI : MonoBehaviour
         txtInvestmentsActionConsequences.text = actieconsequences[taal];
         txtInvestmentsEventCost.text = eventvermindering[taal];
         txtInvestmentsEventConsequences.text = eventconsequencies[taal];
+        updateInvestButtonsInteractable();
 
         // Als de tutorial actief is en dit onderdeel nog niet is afgerond > start de tutorial
         if (game.tutorial.tutorialInvestementsActive && game.tutorial.doTuto)
@@ -4284,7 +4285,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Kijk of je nog genoeg geld hebt om nog een keer te investeren
-        updateInvestButtonsInteractable(); 
+        updateInvestButtonsInteractable();
     }
 
     // Update of de button interactable is of niet
@@ -4293,18 +4294,33 @@ public class UpdateUI : MonoBehaviour
         // Als je niet genoeg geld hebt wordt de button niet interactable
         if (game.GetMoney() < game.investments.investmentCost)
         {
-            btnInvestmentActionCostInvest.interactable = false;
-            btnInvestmentActionConsequenceInvest.interactable = false;
-            btnInvestmentEventCostInvest.interactable = false;
-            btnInvestmentEventConsequenceInvest.interactable = false;
+            btnInvestmentActionCostInvest.gameObject.SetActive(false);
+            btnInvestmentActionConsequenceInvest.gameObject.SetActive(false);
+            btnInvestmentEventCostInvest.gameObject.SetActive(false);
+            btnInvestmentEventConsequenceInvest.gameObject.SetActive(false);
+
+            txtInvestementsNotEnoughMoney.gameObject.SetActive(true);
+            string[] txt = { "Je hebt niet genoeg geld om te investeren.", "You do not have enough money to invest." };
+            txtInvestementsNotEnoughMoney.text = txt[taal];
         }
         else
         {
-            btnInvestmentActionCostInvest.interactable = true;
-            btnInvestmentActionConsequenceInvest.interactable = true;
-            btnInvestmentEventCostInvest.interactable = true;
-            btnInvestmentEventConsequenceInvest.interactable = true;
+            if (!game.investments.actionCostReduction[4])
+                btnInvestmentActionCostInvest.gameObject.SetActive(true);
+
+            if (!game.investments.betterActionConsequences[4])
+                btnInvestmentActionConsequenceInvest.gameObject.SetActive(true);
+
+            if (!game.investments.gameEventCostReduction[4])
+                btnInvestmentEventCostInvest.gameObject.SetActive(true);
+
+            if (!game.investments.betterGameEventConsequences[4])
+                btnInvestmentEventConsequenceInvest.gameObject.SetActive(true);
+
+            txtInvestementsNotEnoughMoney.gameObject.SetActive(false);
         }
+
+
     }
     #endregion
 

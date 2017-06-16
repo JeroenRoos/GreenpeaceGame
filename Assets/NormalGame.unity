@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &107762324 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114825857169339744, guid: dcad04ebaef34a74b92c90f2112f5800,
+  m_PrefabParentObject: {fileID: 114254114205047670, guid: dcad04ebaef34a74b92c90f2112f5800,
     type: 2}
   m_PrefabInternal: {fileID: 1685309331}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -2003,6 +2003,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 100209248}
+    - target: {fileID: 1700325172947586, guid: a0aa201009623d843a39d5cd93163436, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0aa201009623d843a39d5cd93163436, type: 2}
   m_IsPrefabParent: 0
@@ -5815,6 +5819,11 @@ Prefab:
       propertyPath: txtBuildingNotEnoughMoney
       value: 
       objectReference: {fileID: 2122527760}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtInvestementsNotEnoughMoney
+      value: 
+      objectReference: {fileID: 1802397258}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6abd92b8b8abe346944c61f1ea190c5, type: 2}
   m_IsPrefabParent: 0
@@ -7227,6 +7236,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 114609364109931782, guid: a0aa201009623d843a39d5cd93163436,
     type: 2}
   m_PrefabInternal: {fileID: 679317370}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1802397258 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114825857169339744, guid: dcad04ebaef34a74b92c90f2112f5800,
+    type: 2}
+  m_PrefabInternal: {fileID: 1685309331}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1813319845 stripped
 MonoBehaviour:
