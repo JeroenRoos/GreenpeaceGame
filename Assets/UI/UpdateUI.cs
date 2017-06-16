@@ -303,6 +303,7 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtRegionActionNotEnoughMoney;
     public Text txtRegionInfo;
     public Text txtNotYourRegion;
     public Text txtRegionAvailableMoney;
@@ -2246,6 +2247,7 @@ public class UpdateUI : MonoBehaviour
             btnActionsTabClick();
         }
 
+        txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
         btnAverageTab.interactable = false;
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
@@ -2567,6 +2569,8 @@ public class UpdateUI : MonoBehaviour
         // Set de caption text van de dropdown opnieuw
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
+
+        txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
 
         // Set de hoeveelheid geld opnieuw
         txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + availableMoney[taal];
@@ -5282,9 +5286,18 @@ public class UpdateUI : MonoBehaviour
 
         // Controle of je wel genoeg geld hebt om de actie te doen
         if (game.GetMoney() > regioActionCost)
+        {
             btnDoActionRegionMenu.interactable = true;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
+        }
         else
+        {
             btnDoActionRegionMenu.interactable = false;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(true);
+
+            string[] txt = { "Je hebt niet genoeg geld voor deze actie", "You do not have enough money for this action" };
+            txtRegionActionNotEnoughMoney.text = txt[taal];
+        }
 
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
@@ -5310,9 +5323,18 @@ public class UpdateUI : MonoBehaviour
 
         // Controle of je wel genoeg geld hebt om de actie te doen
         if (game.GetMoney() > regioActionCost)
+        {
             btnDoActionRegionMenu.interactable = true;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
+        }
         else
+        {
             btnDoActionRegionMenu.interactable = false;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(true);
+
+            string[] txt = { "Je hebt niet genoeg geld voor deze actie", "You do not have enough money for this action" };
+            txtRegionActionNotEnoughMoney.text = txt[taal];
+        }
 
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
@@ -5338,9 +5360,18 @@ public class UpdateUI : MonoBehaviour
 
         // Controle of je wel genoeg geld hebt om de actie te doen
         if (game.GetMoney() > regioActionCost)
+        {
             btnDoActionRegionMenu.interactable = true;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
+        }
         else
+        {
             btnDoActionRegionMenu.interactable = false;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(true);
+
+            string[] txt = { "Je hebt niet genoeg geld voor deze actie", "You do not have enough money for this action" };
+            txtRegionActionNotEnoughMoney.text = txt[taal];
+        }
 
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
