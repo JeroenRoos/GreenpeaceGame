@@ -163,7 +163,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         // UITZETTEN BIJ EEN BUILD
-        /*
+
         if (((Input.GetKeyDown(KeyCode.Return) || autoEndTurn) && game.currentYear < 31 && game.gameStatistics.pollution > 0 &&
             game.tutorial.tutorialNexTurnPossibe))
         {
@@ -175,7 +175,7 @@ public class GameController : MonoBehaviour
                 MultiplayerManager.CallNextTurnClick();
             }
         }
-        */
+        
         // Update the main screen UI (Icons and date)
         updateUIMainScreen();
 

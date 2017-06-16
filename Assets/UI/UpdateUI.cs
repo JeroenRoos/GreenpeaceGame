@@ -146,6 +146,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnDeleteBuilding;
 
     // Empty Building Popup
+    public Text txtBuildingNotEnoughMoney;
     public Text txtNotYourBuildingDestory;
     public Text txtBuildingAlreadyActive;
     public Text txtNotYourEmptyBuilding;
@@ -257,6 +258,7 @@ public class UpdateUI : MonoBehaviour
     public Image imgInvestmentEventConsequences05;
 
     // Text Cards Popup
+    public Text txtCardsNotEnoughMoney;
     public Text txtCardsTitle;
     public Text txtCardsColumn;
     public Text txtCardsColumnRight;
@@ -2132,7 +2134,7 @@ public class UpdateUI : MonoBehaviour
 
         // Als het multiplayer is wordt de status geupdate 
         if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio scherm (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region screen(" + regio.name[taal] + ")");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio scherm (" + regio.name[0] + ")" + " aan het bekijken", "Looking at region screen(" + regio.name[1] + ")");
         
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
@@ -3851,6 +3853,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEmptyBuildingText()
     {
+        txtBuildingNotEnoughMoney.gameObject.SetActive(false);
         // Set de tekst van de buildings
         btnUseBuilding.gameObject.SetActive(false);
         string[] btnTxt = { "Maak gebouw", "Build building" };
@@ -3917,9 +3920,17 @@ public class UpdateUI : MonoBehaviour
 
         // Controleer of je wel genoeg geld hebt om het gebouw te maken
         if (game.GetMoney() >= buildingToBeBuild.buildingMoneyCost)
+        {
+            txtBuildingNotEnoughMoney.gameObject.SetActive(false);
             btnUseBuilding.interactable = true;
+        }
         else
+        {
             btnUseBuilding.interactable = false;
+            txtBuildingNotEnoughMoney.gameObject.SetActive(true);
+            string[] noMoney = { "Je hebt niet genoeg geld om dit gebouw te bouwen.", "You don't hae enough money to build this building." };
+            txtBuildingNotEnoughMoney.text = noMoney[taal];
+        }
 
         // Als er al een building in de regio staat kun je er niet nog een maken en is de button niet actief
         if (regionToBeBuild.activeBuilding != null)
@@ -3933,6 +3944,7 @@ public class UpdateUI : MonoBehaviour
             {
                 txtNotYourEmptyBuilding.gameObject.SetActive(true);
                 btnUseBuilding.gameObject.SetActive(false);
+                txtBuildingNotEnoughMoney.gameObject.SetActive(true);
 
                 string[] txt = { "Dit is niet jouw regio, daarom kun je hier ook geen gebouw maken", "This is not your region, this means you can't build here." };
                 txtNotYourEmptyBuilding.text = txt[taal];
@@ -4020,7 +4032,13 @@ public class UpdateUI : MonoBehaviour
         }
         // Als het geen multiplayer is
         else
-            btnNewDeleteBuilding.gameObject.SetActive(true);
+        {
+            if (activeBuilding != null)
+                btnNewDeleteBuilding.gameObject.SetActive(true);
+            else
+                btnNewDeleteBuilding.gameObject.SetActive(false);
+
+        }
 
 
         string[] info = { "Effecten van " + activeBuilding.buildingName[0], "Effects caused by " + activeBuilding.buildingName[1] };
