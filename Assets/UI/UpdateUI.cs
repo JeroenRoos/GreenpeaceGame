@@ -1682,6 +1682,9 @@ public class UpdateUI : MonoBehaviour
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
             updateOrganizationScreenUI();
         }
         else if (canvasOrganizationPopup.gameObject.activeSelf && !game.tutorial.tutorialOrganizationActive)
@@ -1689,6 +1692,11 @@ public class UpdateUI : MonoBehaviour
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
         }
     }
 
@@ -1700,6 +1708,9 @@ public class UpdateUI : MonoBehaviour
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
             initQuestsPopup();
         }
         else if (canvasQuestsPopup.gameObject.activeSelf && !game.tutorial.tutorialQuestsActive)
@@ -1707,6 +1718,11 @@ public class UpdateUI : MonoBehaviour
             canvasQuestsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
         }
     }
 
@@ -1718,6 +1734,9 @@ public class UpdateUI : MonoBehaviour
             canvasCardsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
             updateCardsUI();
         }
         else if (canvasCardsPopup.gameObject.activeSelf && !game.tutorial.tutorialCardsActive)
@@ -1725,6 +1744,11 @@ public class UpdateUI : MonoBehaviour
             canvasCardsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
         }
     }
 
@@ -1736,6 +1760,10 @@ public class UpdateUI : MonoBehaviour
             canvasInvestmentsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
+
             initInvestementsText();
             updateInvestButtonsInteractable();
         }
@@ -1744,6 +1772,11 @@ public class UpdateUI : MonoBehaviour
             canvasInvestmentsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
         }
     }
     #endregion
@@ -5812,7 +5845,6 @@ public class UpdateUI : MonoBehaviour
         btnCardsIsClicked = true;
         EventManager.CallPlayButtonClickSFX();
         canvasCardsPopup.gameObject.SetActive(true);
-
 
         checkWhichPopupIsActive();
 
