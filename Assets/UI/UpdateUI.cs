@@ -70,6 +70,13 @@ public class UpdateUI : MonoBehaviour
     public Toggle checkboxRegionCompanies;
     private bool checkboxCompanies;
 
+    public Button btnOrganizationRight;
+    public Button btnQuestsLeft;
+    public Button btnQuestsRight;
+    public Button btnCardsLeft;
+    public Button btnCardsRight;
+    public Button btnInvestementsLeft;
+
     // Text MonthlyAfterActionReportStats
     public Text txtAfterActionStatsName;
     public Text txtAfterActionStatsColumnLeft;
@@ -1085,6 +1092,13 @@ public class UpdateUI : MonoBehaviour
         if (game.currentYear < 4)
             btnCards.gameObject.SetActive(false);
 
+        btnOrganizationRight.gameObject.SetActive(false);
+        btnQuestsLeft.gameObject.SetActive(true);
+        btnQuestsRight.gameObject.SetActive(false);
+        btnCardsLeft.gameObject.SetActive(true);
+        btnCardsRight.gameObject.SetActive(false);
+        btnInvestementsLeft.gameObject.SetActive(true);
+
         setBooleans();
     }
 
@@ -1204,6 +1218,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Zet Button op true en start shake effect
+        btnOrganizationRight.gameObject.SetActive(true);
         btnQuests.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnQuests));
         if (!questsShakes)
@@ -1250,6 +1265,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Zet de button op active en start shake effect
+        btnCardsRight.gameObject.SetActive(true);
         btnInvestments.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnInvestments));
         if (!investmentsShakes)
@@ -1295,6 +1311,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Zet de button op active en start shake effect
+        btnQuestsRight.gameObject.SetActive(true);
         btnCards.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnCards));
         if (!cardsShakes)
@@ -5646,7 +5663,88 @@ public class UpdateUI : MonoBehaviour
         EventManager.CallPlayButtonClickSFX();
         game.tutorial.tutorialIndex++;
     }
-    
+
+    #endregion
+
+    #region Code for arrow buttons in Popups
+    public void btnRightOrganization()
+    {
+        canvasOrganizationPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
+
+        btnQuestsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasQuestsPopup.gameObject.SetActive(true);
+        initQuestsPopup();
+    }
+
+    public void btnLeftQuests()
+    {
+        canvasQuestsPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie scherm aan het bekijken", "Looking at the Organization screen");
+
+        btnOrganizationIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasOrganizationPopup.gameObject.SetActive(true);
+        updateOrganizationScreenUI();
+    }
+
+    public void btnRightQuests()
+    {
+        canvasQuestsPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
+
+        btnCardsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasCardsPopup.gameObject.SetActive(true);
+        updateCardsUI();
+    }
+
+    public void btnLeftCards()
+    {
+        canvasCardsPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
+
+        btnQuestsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasQuestsPopup.gameObject.SetActive(true);
+        initQuestsPopup();
+    }
+
+    public void btnRightCards()
+    {
+        canvasCardsPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Investeringen scherm aan het bekijken", "Looking at Investements screen");
+
+        btnInvestmentsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasInvestmentsPopup.gameObject.SetActive(true);
+        initInvestementsText();
+        updateInvestButtonsInteractable();
+    }
+
+    public void btnLeftInvestements()
+    {
+        canvasInvestmentsPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
+
+        btnCardsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasCardsPopup.gameObject.SetActive(true);
+        updateCardsUI();
+    }
     #endregion
 
     #region Get SectorStatiticsConsequences Method
