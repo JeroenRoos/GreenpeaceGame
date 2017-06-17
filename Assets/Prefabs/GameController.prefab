@@ -55,12 +55,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game:
-    completedEventsCount: 0
-    abandonedEventsCount: 0
-    completedActionsCount: 0
-    completedQuestsCount: 0
-    receivedCardsCount: 0
-    totalTimePlayed: 0
     tutorial:
       tutorialIndex: 0
       tutorialNoTooltip: 0
@@ -90,8 +84,15 @@ MonoBehaviour:
       tutorialRegionActive: 0
       tutorialEventsActive: 0
       tutorialMonthlyReportActive: 0
+    completedEventsCount: 0
+    abandonedEventsCount: 0
+    completedActionsCount: 0
+    completedQuestsCount: 0
+    receivedCardsCount: 0
+    totalTimePlayed: 0
     nextTurnIsclicked: 0
     OtherPlayerClickedNextTurn: 0
+    isWaiting: 0
   MonthlyReportButon: {fileID: 0}
   YearlyReportButton: {fileID: 0}
   CompletedButton: {fileID: 0}
@@ -135,6 +136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  canvasBottomBar: {fileID: 0}
+  SpecialButtonOrganization: {fileID: 0}
+  SpecialButtonQuests: {fileID: 0}
+  SpecialButtonCards: {fileID: 0}
+  SpecialButtonInvestements: {fileID: 0}
   txtMultiplayerInfo: {fileID: 0}
   txtMultiplayerLocalPlayer: {fileID: 0}
   txtMultiplayerRemotePlayer: {fileID: 0}
@@ -158,6 +164,12 @@ MonoBehaviour:
   checkboxRegionHouseholds: {fileID: 0}
   checkboxRegionAgriculture: {fileID: 0}
   checkboxRegionCompanies: {fileID: 0}
+  btnOrganizationRight: {fileID: 0}
+  btnQuestsLeft: {fileID: 0}
+  btnQuestsRight: {fileID: 0}
+  btnCardsLeft: {fileID: 0}
+  btnCardsRight: {fileID: 0}
+  btnInvestementsLeft: {fileID: 0}
   txtAfterActionStatsName: {fileID: 0}
   txtAfterActionStatsColumnLeft: {fileID: 0}
   txtAfterActionStatsColumnLeftMiddle: {fileID: 0}
@@ -219,6 +231,9 @@ MonoBehaviour:
   txtBuildingsStats: {fileID: 0}
   btnDeleteBuilding: {fileID: 0}
   txtBtnDeleteBuilding: {fileID: 0}
+  txtBuildingNotEnoughMoney: {fileID: 0}
+  txtNotYourBuildingDestory: {fileID: 0}
+  txtBuildingAlreadyActive: {fileID: 0}
   txtNotYourEmptyBuilding: {fileID: 0}
   txtEmptyBuildingsTitle: {fileID: 0}
   txtEmptyBuildingsColumnLeft: {fileID: 0}
@@ -232,12 +247,17 @@ MonoBehaviour:
     eventPositions: []
     buildingPositions: []
     actionPositions: []
+  txtNewBuildingsColumn: {fileID: 0}
+  txtNewBuildingsStats: {fileID: 0}
+  btnNewDeleteBuilding: {fileID: 0}
+  txtNewBtnDeleteBuilding: {fileID: 0}
   txtTimelineTitle: {fileID: 0}
   txtTimelineColumnLeft: {fileID: 0}
   txtTimelineColumnRight: {fileID: 0}
   dropdownTimeline: {fileID: 0}
   txtColumnLeftInfo: {fileID: 0}
   txtColumnRightInfo: {fileID: 0}
+  txtEventNotEnoughMoney: {fileID: 0}
   txtNotYourEvent: {fileID: 0}
   txtEventTitle: {fileID: 0}
   txtEventColumRight: {fileID: 0}
@@ -276,6 +296,7 @@ MonoBehaviour:
   txtEndOfYearInfo: {fileID: 0}
   txtEndOfYearBtn: {fileID: 0}
   txtShareFacebookButton: {fileID: 0}
+  txtInvestementsNotEnoughMoney: {fileID: 0}
   txtInvestmentsTitle: {fileID: 0}
   txtInvestmentsColumn: {fileID: 0}
   txtInvestmentsDescription: {fileID: 0}
@@ -308,6 +329,7 @@ MonoBehaviour:
   imgInvestmentEventConsequences03: {fileID: 0}
   imgInvestmentEventConsequences04: {fileID: 0}
   imgInvestmentEventConsequences05: {fileID: 0}
+  txtCardsNotEnoughMoney: {fileID: 0}
   txtCardsTitle: {fileID: 0}
   txtCardsColumn: {fileID: 0}
   txtCardsColumnRight: {fileID: 0}
@@ -343,6 +365,9 @@ MonoBehaviour:
   txtBigDescription: {fileID: 0}
   txtAdviserEconomic: {fileID: 0}
   txtAdviserPollution: {fileID: 0}
+  txtAdviserHappiness: {fileID: 0}
+  txtRegionActionNotEnoughMoney: {fileID: 0}
+  txtRegionInfo: {fileID: 0}
   txtNotYourRegion: {fileID: 0}
   txtRegionAvailableMoney: {fileID: 0}
   txtRegionAvailableMoneyDescription: {fileID: 0}
