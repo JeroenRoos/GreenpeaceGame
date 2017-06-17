@@ -1519,17 +1519,34 @@ public class UpdateUI : MonoBehaviour
             closeWithEscape();
 
         // Hotkeys die we eerst hadden
-        /*
-        // Open and close Organization popup with O
-        else if (Input.GetKeyUp(KeyCode.O))
-            //if (game.tutorial.tutorialStep8)
-            controllerOrganizationHotkey();
 
-        // Open and close Timeline popup with T
-        else if (Input.GetKeyUp(KeyCode.T))
-            if (!game.tutorial.tutorialActive)
-                controllerTimelinePopup();
-                */
+        if (!ApplicationModel.multiplayer)
+        {
+            // Open and close Organization popup with O
+            if (Input.GetKeyUp(KeyCode.O))
+                controllerOrganizationHotkey();
+
+            // Open and close Quests popup with Q
+            else if (Input.GetKeyUp(KeyCode.Q))
+            {
+                if (btnQuests.gameObject.activeSelf)
+                    controllerQuestsHotkey();
+            }
+
+            // Open and close Cards popup with C
+            else if (Input.GetKeyUp(KeyCode.C))
+            {
+                if (btnCards.gameObject.activeSelf)
+                    controllerCardsHotkey();
+            }
+
+            // Open and close Investements popup with I
+            else if (Input.GetKeyUp(KeyCode.I))
+            {
+                if (btnInvestments.gameObject.activeSelf)
+                    controllerInvestementsHotkey();
+            }
+        }
     }
 
     // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
@@ -1640,8 +1657,9 @@ public class UpdateUI : MonoBehaviour
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+            updateOrganizationScreenUI();
         }
-        else if (canvasOrganizationPopup.gameObject.activeSelf)
+        else if (canvasOrganizationPopup.gameObject.activeSelf && !game.tutorial.tutorialOrganizationActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
@@ -1649,18 +1667,56 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
-    // Open and close the Timeline popup with the T key
-    void controllerTimelinePopup()
+    // Open and close the Quests popup with the Q key
+    void controllerQuestsHotkey()
     {
         if (!popupActive)
         {
-            canvasTimelinePopup.gameObject.SetActive(true);
+            canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+            initQuestsPopup();
         }
-        else if (canvasTimelinePopup.gameObject.activeSelf)
+        else if (canvasQuestsPopup.gameObject.activeSelf && !game.tutorial.tutorialQuestsActive)
         {
-            canvasTimelinePopup.gameObject.SetActive(false);
+            canvasQuestsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+    }
+
+    // Open and close the Cards popup with the C key
+    void controllerCardsHotkey()
+    {
+        if (!popupActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(true);
+            popupActive = true;
+            EventManager.CallPopupIsActive();
+            updateCardsUI();
+        }
+        else if (canvasCardsPopup.gameObject.activeSelf && !game.tutorial.tutorialCardsActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+    }
+
+    // Open and close the Investements popup with the I key
+    void controllerInvestementsHotkey()
+    {
+        if (!popupActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(true);
+            popupActive = true;
+            EventManager.CallPopupIsActive();
+            initInvestementsText();
+            updateInvestButtonsInteractable();
+        }
+        else if (canvasInvestmentsPopup.gameObject.activeSelf && !game.tutorial.tutorialInvestementsActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
         }
@@ -5682,15 +5738,18 @@ public class UpdateUI : MonoBehaviour
 
     public void btnLeftQuests()
     {
-        canvasQuestsPopup.gameObject.SetActive(false);
+        if (!game.tutorial.tutorialQuestsActive)
+        {
+            canvasQuestsPopup.gameObject.SetActive(false);
 
-        if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie scherm aan het bekijken", "Looking at the Organization screen");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie scherm aan het bekijken", "Looking at the Organization screen");
 
-        btnOrganizationIsClicked = true;
-        EventManager.CallPlayButtonClickSFX();
-        canvasOrganizationPopup.gameObject.SetActive(true);
-        updateOrganizationScreenUI();
+            btnOrganizationIsClicked = true;
+            EventManager.CallPlayButtonClickSFX();
+            canvasOrganizationPopup.gameObject.SetActive(true);
+            updateOrganizationScreenUI();
+        }
     }
 
     public void btnRightQuests()
@@ -5708,15 +5767,18 @@ public class UpdateUI : MonoBehaviour
 
     public void btnLeftCards()
     {
-        canvasCardsPopup.gameObject.SetActive(false);
+        if (!game.tutorial.tutorialCardsActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
 
-        if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
 
-        btnQuestsIsClicked = true;
-        EventManager.CallPlayButtonClickSFX();
-        canvasQuestsPopup.gameObject.SetActive(true);
-        initQuestsPopup();
+            btnQuestsIsClicked = true;
+            EventManager.CallPlayButtonClickSFX();
+            canvasQuestsPopup.gameObject.SetActive(true);
+            initQuestsPopup();
+        }
     }
 
     public void btnRightCards()
@@ -5735,15 +5797,18 @@ public class UpdateUI : MonoBehaviour
 
     public void btnLeftInvestements()
     {
-        canvasInvestmentsPopup.gameObject.SetActive(false);
+        if (!game.tutorial.tutorialInvestementsActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
 
-        if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
 
-        btnCardsIsClicked = true;
-        EventManager.CallPlayButtonClickSFX();
-        canvasCardsPopup.gameObject.SetActive(true);
-        updateCardsUI();
+            btnCardsIsClicked = true;
+            EventManager.CallPlayButtonClickSFX();
+            canvasCardsPopup.gameObject.SetActive(true);
+            updateCardsUI();
+        }
     }
     #endregion
 
