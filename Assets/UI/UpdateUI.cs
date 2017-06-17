@@ -15,6 +15,8 @@ public class UpdateUI : MonoBehaviour
 
     // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
+    public Canvas canvasMainUI;
+
     // Multiplayer
     List<string> lstMessages = new List<string>();
     List<string[]> lstText = new List<string[]>();
@@ -1188,6 +1190,8 @@ public class UpdateUI : MonoBehaviour
 
         canvasEndOfGame.GetComponent<Canvas>();
         canvasEndOfGame.gameObject.SetActive(false);
+
+        canvasMainUI.GetComponent<Canvas>();
 
         if (game.tutorial.tutorialActive)
         {
@@ -4812,6 +4816,9 @@ public class UpdateUI : MonoBehaviour
             popupActive = true;
             EventManager.CallPopupIsActive();
             updateOrganizationScreenUI();
+
+            // canvasMainUI.gameObject.SetActive(false);
+            // canvasMainUI.gameObject.SetActive(true);
         }
     }
 
