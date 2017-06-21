@@ -121,7 +121,7 @@ public class GameEvent
         isActive = true;
 
         if (!ApplicationModel.multiplayer || isOwnEvent)
-            game.gameStatistics.ModifyMoney(eventChoiceMoneyReward[pickedChoiceNumber], true);
+            game.gameStatistics.ModifyMoney(afterInvestmentEventChoiceMoneyCost[pickedChoiceNumber], false);
 
         EventManager.CallDestroySprite(this);
 
