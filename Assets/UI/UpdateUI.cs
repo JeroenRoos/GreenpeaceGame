@@ -15,6 +15,12 @@ public class UpdateUI : MonoBehaviour
 
     // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
+    public Canvas canvasBottomBar;
+    public Button SpecialButtonOrganization;
+    public Button SpecialButtonQuests;
+    public Button SpecialButtonCards;
+    public Button SpecialButtonInvestements;
+
     // Multiplayer
     List<string> lstMessages = new List<string>();
     List<string[]> lstText = new List<string[]>();
@@ -69,6 +75,13 @@ public class UpdateUI : MonoBehaviour
 
     public Toggle checkboxRegionCompanies;
     private bool checkboxCompanies;
+
+    public Button btnOrganizationRight;
+    public Button btnQuestsLeft;
+    public Button btnQuestsRight;
+    public Button btnCardsLeft;
+    public Button btnCardsRight;
+    public Button btnInvestementsLeft;
 
     // Text MonthlyAfterActionReportStats
     public Text txtAfterActionStatsName;
@@ -146,6 +159,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtBtnDeleteBuilding;
 
     // Empty Building Popup
+    public Text txtBuildingNotEnoughMoney;
     public Text txtNotYourBuildingDestory;
     public Text txtBuildingAlreadyActive;
     public Text txtNotYourEmptyBuilding;
@@ -174,6 +188,7 @@ public class UpdateUI : MonoBehaviour
     private string dropdownTimelinePick;
 
     // Text Event Popup
+    public Text txtEventNotEnoughMoney;
     public Text txtNotYourEvent;
     public Text txtEventTitle;
     public Text txtEventColumRight;
@@ -217,6 +232,7 @@ public class UpdateUI : MonoBehaviour
     public Text txtShareFacebookButton;
 
     // Text Investments Popup
+    public Text txtInvestementsNotEnoughMoney;
     public Text txtInvestmentsTitle;
     public Text txtInvestmentsColumn;
     public Text txtInvestmentsDescription;
@@ -256,6 +272,7 @@ public class UpdateUI : MonoBehaviour
     public Image imgInvestmentEventConsequences05;
 
     // Text Cards Popup
+    public Text txtCardsNotEnoughMoney;
     public Text txtCardsTitle;
     public Text txtCardsColumn;
     public Text txtCardsColumnRight;
@@ -303,6 +320,7 @@ public class UpdateUI : MonoBehaviour
     //  double totalOrgBank;
 
     // Text Region Menu
+    public Text txtRegionActionNotEnoughMoney;
     public Text txtRegionInfo;
     public Text txtNotYourRegion;
     public Text txtRegionAvailableMoney;
@@ -511,8 +529,6 @@ public class UpdateUI : MonoBehaviour
     public Image imgHighlightQuests;
     public Image imgHighlightMonthlyReport;
     public Image imgHighlightInvestements;
-
-
 
     private Vector3 v3Tooltip;
     //string arrays (translations
@@ -1082,6 +1098,17 @@ public class UpdateUI : MonoBehaviour
         if (game.currentYear < 4)
             btnCards.gameObject.SetActive(false);
 
+        btnOrganizationRight.gameObject.SetActive(false);
+        btnQuestsLeft.gameObject.SetActive(true);
+        btnQuestsRight.gameObject.SetActive(false);
+        btnCardsLeft.gameObject.SetActive(true);
+        btnCardsRight.gameObject.SetActive(false);
+        btnInvestementsLeft.gameObject.SetActive(true);
+
+        SpecialButtonCards.gameObject.SetActive(false);
+        SpecialButtonInvestements.gameObject.SetActive(false);
+        SpecialButtonQuests.gameObject.SetActive(false);
+
         setBooleans();
     }
 
@@ -1172,6 +1199,9 @@ public class UpdateUI : MonoBehaviour
         canvasEndOfGame.GetComponent<Canvas>();
         canvasEndOfGame.gameObject.SetActive(false);
 
+        canvasBottomBar.GetComponent<Canvas>();
+        canvasBottomBar.gameObject.SetActive(false);
+
         if (game.tutorial.tutorialActive)
         {
             canvasTutorial.GetComponent<Canvas>();
@@ -1201,7 +1231,9 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Zet Button op true en start shake effect
-        btnQuests.gameObject.SetActive(true);
+        btnOrganizationRight.gameObject.SetActive(true);
+        btnQuests.gameObject.SetActive(true); 
+        SpecialButtonQuests.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnQuests));
         if (!questsShakes)
             StartCoroutine(ShakeQuests());
@@ -1247,6 +1279,8 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Zet de button op active en start shake effect
+        SpecialButtonInvestements.gameObject.SetActive(true);
+        btnCardsRight.gameObject.SetActive(true);
         btnInvestments.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnInvestments));
         if (!investmentsShakes)
@@ -1292,6 +1326,8 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Zet de button op active en start shake effect
+        SpecialButtonCards.gameObject.SetActive(true);
+        btnQuestsRight.gameObject.SetActive(true);
         btnCards.gameObject.SetActive(true);
         StartCoroutine(ChangeScale(btnCards));
         if (!cardsShakes)
@@ -1499,17 +1535,34 @@ public class UpdateUI : MonoBehaviour
             closeWithEscape();
 
         // Hotkeys die we eerst hadden
-        /*
-        // Open and close Organization popup with O
-        else if (Input.GetKeyUp(KeyCode.O))
-            //if (game.tutorial.tutorialStep8)
-            controllerOrganizationHotkey();
 
-        // Open and close Timeline popup with T
-        else if (Input.GetKeyUp(KeyCode.T))
-            if (!game.tutorial.tutorialActive)
-                controllerTimelinePopup();
-                */
+        if (!ApplicationModel.multiplayer)
+        {
+            // Open and close Organization popup with O
+            if (Input.GetKeyUp(KeyCode.O))
+                controllerOrganizationHotkey();
+
+            // Open and close Quests popup with Q
+            else if (Input.GetKeyUp(KeyCode.Q))
+            {
+                if (btnQuests.gameObject.activeSelf)
+                    controllerQuestsHotkey();
+            }
+
+            // Open and close Cards popup with C
+            else if (Input.GetKeyUp(KeyCode.C))
+            {
+                if (btnCards.gameObject.activeSelf)
+                    controllerCardsHotkey();
+            }
+
+            // Open and close Investements popup with I
+            else if (Input.GetKeyUp(KeyCode.I))
+            {
+                if (btnInvestments.gameObject.activeSelf)
+                    controllerInvestementsHotkey();
+            }
+        }
     }
 
     // Close the active popup with the Escape key (and open main menu with escape if no popup is active)
@@ -1610,6 +1663,15 @@ public class UpdateUI : MonoBehaviour
             canvasSettingsPopup.gameObject.SetActive(false);
             canvasMenuPopup.gameObject.SetActive(true);
         }
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
+
+        canvasBottomBar.gameObject.SetActive(false);
+        SpecialButtonInvestements.interactable = true;
+        SpecialButtonCards.interactable = true;
+        SpecialButtonOrganization.interactable = true;
+        SpecialButtonQuests.interactable = true;
     }
 
     // Open and close the Organization popup with the O key
@@ -1620,29 +1682,101 @@ public class UpdateUI : MonoBehaviour
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
+            updateOrganizationScreenUI();
         }
-        else if (canvasOrganizationPopup.gameObject.activeSelf)
+        else if (canvasOrganizationPopup.gameObject.activeSelf && !game.tutorial.tutorialOrganizationActive)
         {
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
         }
     }
 
-    // Open and close the Timeline popup with the T key
-    void controllerTimelinePopup()
+    // Open and close the Quests popup with the Q key
+    void controllerQuestsHotkey()
     {
         if (!popupActive)
         {
-            canvasTimelinePopup.gameObject.SetActive(true);
+            canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
+            initQuestsPopup();
         }
-        else if (canvasTimelinePopup.gameObject.activeSelf)
+        else if (canvasQuestsPopup.gameObject.activeSelf && !game.tutorial.tutorialQuestsActive)
         {
-            canvasTimelinePopup.gameObject.SetActive(false);
+            canvasQuestsPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
+        }
+    }
+
+    // Open and close the Cards popup with the C key
+    void controllerCardsHotkey()
+    {
+        if (!popupActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(true);
+            popupActive = true;
+            EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
+            updateCardsUI();
+        }
+        else if (canvasCardsPopup.gameObject.activeSelf && !game.tutorial.tutorialCardsActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
+        }
+    }
+
+    // Open and close the Investements popup with the I key
+    void controllerInvestementsHotkey()
+    {
+        if (!popupActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(true);
+            popupActive = true;
+            EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
+
+            initInvestementsText();
+            updateInvestButtonsInteractable();
+        }
+        else if (canvasInvestmentsPopup.gameObject.activeSelf && !game.tutorial.tutorialInvestementsActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
         }
     }
     #endregion
@@ -2130,7 +2264,7 @@ public class UpdateUI : MonoBehaviour
 
         // Als het multiplayer is wordt de status geupdate 
         if (ApplicationModel.multiplayer)
-            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio scherm (" + regio.name[taal] + ")" + " aan het bekijken", "Looking at region screen(" + regio.name[taal] + ")");
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Regio scherm (" + regio.name[0] + ")" + " aan het bekijken", "Looking at region screen(" + regio.name[1] + ")");
         
         canvasRegioPopup.gameObject.SetActive(true);
         popupActive = true;
@@ -2246,6 +2380,7 @@ public class UpdateUI : MonoBehaviour
             btnActionsTabClick();
         }
 
+        txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
         btnAverageTab.interactable = false;
         btnHouseholdsTab.interactable = true;
         btnAgriculureTab.interactable = true;
@@ -2567,6 +2702,8 @@ public class UpdateUI : MonoBehaviour
         // Set de caption text van de dropdown opnieuw
         string[] dropdownPlaceholderText = { "Selecteer een actie", "Choose an action" };
         dropdownRegio.captionText.text = dropdownPlaceholderText[taal];
+
+        txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
 
         // Set de hoeveelheid geld opnieuw
         txtRegionAvailableMoney.text = game.GetMoney().ToString("0") + availableMoney[taal];
@@ -3271,6 +3408,7 @@ public class UpdateUI : MonoBehaviour
     // Method wordt aangeroepen als er op de quests button wordt gedrukt
     private void initQuestsPopup()
     {
+
         // Set de tekst voor de Quests canvas
         imgTutorialQuests.gameObject.SetActive(false);
         string[] title = { "Missies", "Quests" };
@@ -3482,6 +3620,7 @@ public class UpdateUI : MonoBehaviour
     // Alle tekst wordt ingesteld
     private void initEventText(GameEvent e)
     {
+        txtEventNotEnoughMoney.gameObject.SetActive(false);
         txtNotYourEvent.gameObject.SetActive(false);
         string[] txtBtn = { "Doe keuze", "Do choice" };
         string[] txtBtn2 = { "Bekijk consequences", "View consequences" };
@@ -3551,10 +3690,15 @@ public class UpdateUI : MonoBehaviour
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[0])
             {
                 btnDoEvent.interactable = true;
-                btnViewConsequencesEvent.interactable = true;
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
             }
             else
+            {
                 btnDoEvent.interactable = false;
+                txtEventNotEnoughMoney.gameObject.SetActive(true);
+                string[] noMoney = { "Je hebt niet genoeg geld voor deze optie.", "You do not have enough money for this option." };
+                txtEventNotEnoughMoney.text = noMoney[taal];
+            }
             
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences "};
@@ -3589,11 +3733,16 @@ public class UpdateUI : MonoBehaviour
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[1])
             {
                 btnDoEvent.interactable = true;
-                btnViewConsequencesEvent.interactable = true;
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
             }
             else
+            {
                 btnDoEvent.interactable = false;
-            
+                txtEventNotEnoughMoney.gameObject.SetActive(true);
+                string[] noMoney = { "Je hebt niet genoeg geld voor deze optie.", "You do not have enough money for this option." };
+                txtEventNotEnoughMoney.text = noMoney[taal];
+            }
+
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
             txtEventColumRight.text = txt[taal];
@@ -3627,10 +3776,15 @@ public class UpdateUI : MonoBehaviour
             if (game.GetMoney() >= gameEvent.afterInvestmentEventChoiceMoneyCost[2])
             {
                 btnDoEvent.interactable = true;
-                btnViewConsequencesEvent.interactable = true;
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
             }
             else
+            {
                 btnDoEvent.interactable = false;
+                txtEventNotEnoughMoney.gameObject.SetActive(true);
+                string[] noMoney = { "Je hebt niet genoeg geld voor deze optie.", "You do not have enough money for this option." };
+                txtEventNotEnoughMoney.text = noMoney[taal];
+            }
 
             activateDoEventButton();
             string[] txt = { "Consequenties", "Consequences " };
@@ -3675,6 +3829,7 @@ public class UpdateUI : MonoBehaviour
             // Als jij niet de owner bent van de regio kun je de event niet oplossen en krijg je text te zien ipv de button
             else
             {
+                txtEventNotEnoughMoney.gameObject.SetActive(false);
                 btnDoEvent.gameObject.SetActive(false);
                 txtNotYourEvent.gameObject.SetActive(true);
                 string[] info = { "Omdat de event in de regio van de andere speler is kun jij hem niet oplossen.",
@@ -3829,6 +3984,7 @@ public class UpdateUI : MonoBehaviour
 
     private void initEmptyBuildingText()
     {
+        txtBuildingNotEnoughMoney.gameObject.SetActive(false);
         // Set de tekst van de buildings
         btnUseBuilding.gameObject.SetActive(false);
         string[] btnTxt = { "Maak gebouw", "Build building" };
@@ -3895,9 +4051,17 @@ public class UpdateUI : MonoBehaviour
 
         // Controleer of je wel genoeg geld hebt om het gebouw te maken
         if (game.GetMoney() >= buildingToBeBuild.buildingMoneyCost)
+        {
+            txtBuildingNotEnoughMoney.gameObject.SetActive(false);
             btnUseBuilding.interactable = true;
+        }
         else
+        {
             btnUseBuilding.interactable = false;
+            txtBuildingNotEnoughMoney.gameObject.SetActive(true);
+            string[] noMoney = { "Je hebt niet genoeg geld om dit gebouw te bouwen.", "You don't hae enough money to build this building." };
+            txtBuildingNotEnoughMoney.text = noMoney[taal];
+        }
 
         // Als er al een building in de regio staat kun je er niet nog een maken en is de button niet actief
         if (regionToBeBuild.activeBuilding != null)
@@ -3911,6 +4075,7 @@ public class UpdateUI : MonoBehaviour
             {
                 txtNotYourEmptyBuilding.gameObject.SetActive(true);
                 btnUseBuilding.gameObject.SetActive(false);
+                txtBuildingNotEnoughMoney.gameObject.SetActive(true);
 
                 string[] txt = { "Dit is niet jouw regio, daarom kun je hier ook geen gebouw maken", "This is not your region, this means you can't build here." };
                 txtNotYourEmptyBuilding.text = txt[taal];
@@ -3998,7 +4163,13 @@ public class UpdateUI : MonoBehaviour
         }
         // Als het geen multiplayer is
         else
-            btnNewDeleteBuilding.gameObject.SetActive(true);
+        {
+            if (activeBuilding != null)
+                btnNewDeleteBuilding.gameObject.SetActive(true);
+            else
+                btnNewDeleteBuilding.gameObject.SetActive(false);
+
+        }
 
 
         string[] info = { "Effecten van " + activeBuilding.buildingName[0], "Effects caused by " + activeBuilding.buildingName[1] };
@@ -4014,6 +4185,7 @@ public class UpdateUI : MonoBehaviour
     // De tekst voor de popup
     private void initInvestementsText()
     {
+        txtInvestementsNotEnoughMoney.gameObject.SetActive(false);
         string[] title = { "Investeren", "Investments" };
         string[] column = { "Investeer in de organisatie", "Invest in the organization" };
         string[] description = { "Hier kun je geld investeren in je organisatie. Hoe meer geld je in een onderdeel investeert, hoe meer positief resultaat je zult zien.\nJe kunt 5 keer investeren in elk onderdeel. " +
@@ -4032,6 +4204,7 @@ public class UpdateUI : MonoBehaviour
         txtInvestmentsActionConsequences.text = actieconsequences[taal];
         txtInvestmentsEventCost.text = eventvermindering[taal];
         txtInvestmentsEventConsequences.text = eventconsequencies[taal];
+        updateInvestButtonsInteractable();
 
         // Als de tutorial actief is en dit onderdeel nog niet is afgerond > start de tutorial
         if (game.tutorial.tutorialInvestementsActive && game.tutorial.doTuto)
@@ -4244,7 +4417,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Kijk of je nog genoeg geld hebt om nog een keer te investeren
-        updateInvestButtonsInteractable(); 
+        updateInvestButtonsInteractable();
     }
 
     // Update of de button interactable is of niet
@@ -4253,18 +4426,33 @@ public class UpdateUI : MonoBehaviour
         // Als je niet genoeg geld hebt wordt de button niet interactable
         if (game.GetMoney() < game.investments.investmentCost)
         {
-            btnInvestmentActionCostInvest.interactable = false;
-            btnInvestmentActionConsequenceInvest.interactable = false;
-            btnInvestmentEventCostInvest.interactable = false;
-            btnInvestmentEventConsequenceInvest.interactable = false;
+            btnInvestmentActionCostInvest.gameObject.SetActive(false);
+            btnInvestmentActionConsequenceInvest.gameObject.SetActive(false);
+            btnInvestmentEventCostInvest.gameObject.SetActive(false);
+            btnInvestmentEventConsequenceInvest.gameObject.SetActive(false);
+
+            txtInvestementsNotEnoughMoney.gameObject.SetActive(true);
+            string[] txt = { "Je hebt niet genoeg geld om te investeren.", "You do not have enough money to invest." };
+            txtInvestementsNotEnoughMoney.text = txt[taal];
         }
         else
         {
-            btnInvestmentActionCostInvest.interactable = true;
-            btnInvestmentActionConsequenceInvest.interactable = true;
-            btnInvestmentEventCostInvest.interactable = true;
-            btnInvestmentEventConsequenceInvest.interactable = true;
+            if (!game.investments.actionCostReduction[4])
+                btnInvestmentActionCostInvest.gameObject.SetActive(true);
+
+            if (!game.investments.betterActionConsequences[4])
+                btnInvestmentActionConsequenceInvest.gameObject.SetActive(true);
+
+            if (!game.investments.gameEventCostReduction[4])
+                btnInvestmentEventCostInvest.gameObject.SetActive(true);
+
+            if (!game.investments.betterGameEventConsequences[4])
+                btnInvestmentEventConsequenceInvest.gameObject.SetActive(true);
+
+            txtInvestementsNotEnoughMoney.gameObject.SetActive(false);
         }
+
+
     }
     #endregion
 
@@ -4682,6 +4870,9 @@ public class UpdateUI : MonoBehaviour
             canvasOrganizationPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
             updateOrganizationScreenUI();
         }
     }
@@ -4699,6 +4890,9 @@ public class UpdateUI : MonoBehaviour
             canvasQuestsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
             initQuestsPopup();
         }
     }
@@ -4716,6 +4910,9 @@ public class UpdateUI : MonoBehaviour
             canvasCardsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
             updateCardsUI();
         }
     }
@@ -4783,6 +4980,9 @@ public class UpdateUI : MonoBehaviour
             canvasInvestmentsPopup.gameObject.SetActive(true);
             popupActive = true;
             EventManager.CallPopupIsActive();
+
+            checkWhichPopupIsActive();
+
             initInvestementsText();
             updateInvestButtonsInteractable();
         }
@@ -4899,6 +5099,12 @@ public class UpdateUI : MonoBehaviour
 
         if (ApplicationModel.multiplayer)
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
+
+        canvasBottomBar.gameObject.SetActive(false);
+        SpecialButtonInvestements.interactable = true;
+        SpecialButtonCards.interactable = true;
+        SpecialButtonOrganization.interactable = true;
+        SpecialButtonQuests.interactable = true;
 
     }
     #endregion
@@ -5281,10 +5487,19 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Controle of je wel genoeg geld hebt om de actie te doen
-        if (game.GetMoney() > regioActionCost)
+        if (game.GetMoney() >= regioActionCost)
+        {
             btnDoActionRegionMenu.interactable = true;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
+        }
         else
+        {
             btnDoActionRegionMenu.interactable = false;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(true);
+
+            string[] txt = { "Je hebt niet genoeg geld voor deze actie", "You do not have enough money for this action" };
+            txtRegionActionNotEnoughMoney.text = txt[taal];
+        }
 
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
@@ -5309,10 +5524,19 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Controle of je wel genoeg geld hebt om de actie te doen
-        if (game.GetMoney() > regioActionCost)
+        if (game.GetMoney() >= regioActionCost)
+        {
             btnDoActionRegionMenu.interactable = true;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
+        }
         else
+        {
             btnDoActionRegionMenu.interactable = false;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(true);
+
+            string[] txt = { "Je hebt niet genoeg geld voor deze actie", "You do not have enough money for this action" };
+            txtRegionActionNotEnoughMoney.text = txt[taal];
+        }
 
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
@@ -5337,10 +5561,19 @@ public class UpdateUI : MonoBehaviour
         }
 
         // Controle of je wel genoeg geld hebt om de actie te doen
-        if (game.GetMoney() > regioActionCost)
+        if (game.GetMoney() >= regioActionCost)
+        {
             btnDoActionRegionMenu.interactable = true;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(false);
+        }
         else
+        {
             btnDoActionRegionMenu.interactable = false;
+            txtRegionActionNotEnoughMoney.gameObject.SetActive(true);
+
+            string[] txt = { "Je hebt niet genoeg geld voor deze actie", "You do not have enough money for this action" };
+            txtRegionActionNotEnoughMoney.text = txt[taal];
+        }
 
         txtRegionActionSectorTotalCost.text = regioActionCost.ToString() + availableMoney[taal];
     }
@@ -5563,7 +5796,237 @@ public class UpdateUI : MonoBehaviour
         EventManager.CallPlayButtonClickSFX();
         game.tutorial.tutorialIndex++;
     }
-    
+
+    #endregion
+
+    #region Code for arrow buttons in Popups
+    public void btnRightOrganization()
+    {
+        canvasOrganizationPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
+
+        btnQuestsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasQuestsPopup.gameObject.SetActive(true);
+
+        checkWhichPopupIsActive();
+
+        initQuestsPopup();
+    }
+
+    public void btnLeftQuests()
+    {
+        if (!game.tutorial.tutorialQuestsActive)
+        {
+            canvasQuestsPopup.gameObject.SetActive(false);
+
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie scherm aan het bekijken", "Looking at the Organization screen");
+
+            btnOrganizationIsClicked = true;
+            EventManager.CallPlayButtonClickSFX();
+            canvasOrganizationPopup.gameObject.SetActive(true);
+
+            checkWhichPopupIsActive();
+
+            updateOrganizationScreenUI();
+        }
+    }
+
+    public void btnRightQuests()
+    {
+        canvasQuestsPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
+
+        btnCardsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasCardsPopup.gameObject.SetActive(true);
+
+        checkWhichPopupIsActive();
+
+        updateCardsUI();
+    }
+
+    public void btnLeftCards()
+    {
+        if (!game.tutorial.tutorialCardsActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
+
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
+
+            btnQuestsIsClicked = true;
+            EventManager.CallPlayButtonClickSFX();
+            canvasQuestsPopup.gameObject.SetActive(true);
+
+            checkWhichPopupIsActive();
+
+            initQuestsPopup();
+        }
+    }
+
+    public void btnRightCards()
+    {
+        canvasCardsPopup.gameObject.SetActive(false);
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Investeringen scherm aan het bekijken", "Looking at Investements screen");
+
+        btnInvestmentsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasInvestmentsPopup.gameObject.SetActive(true);
+
+        checkWhichPopupIsActive();
+
+        initInvestementsText();
+        updateInvestButtonsInteractable();
+    }
+
+    public void btnLeftInvestements()
+    {
+        if (!game.tutorial.tutorialInvestementsActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
+
+            if (ApplicationModel.multiplayer)
+                playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
+
+            btnCardsIsClicked = true;
+            EventManager.CallPlayButtonClickSFX();
+            canvasCardsPopup.gameObject.SetActive(true);
+
+            checkWhichPopupIsActive();
+
+            updateCardsUI();
+        }
+    }
+    #endregion
+
+    #region Code for CanvasBottomBar when popups are active
+    public void aButtonOrganizationClick()
+    {
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Organisatie scherm aan het bekijken", "Looking at the Organization screen");
+
+        closeActivePopup();
+        btnOrganizationIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasOrganizationPopup.gameObject.SetActive(true);
+
+        checkWhichPopupIsActive();
+
+        updateOrganizationScreenUI();
+    }
+
+    public void aButtonQuestsClick()
+    {
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Missie scherm aan het bekijken", "Looking at Quest screen");
+
+        closeActivePopup();
+        btnQuestsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasQuestsPopup.gameObject.SetActive(true);
+
+        checkWhichPopupIsActive();
+
+        initQuestsPopup();
+    }
+
+    public void aButtonCardsClick()
+    {
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaarten scherm aan het bekijken", "Looking at Cards screen");
+
+        closeActivePopup();
+        btnCardsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasCardsPopup.gameObject.SetActive(true);
+
+        checkWhichPopupIsActive();
+
+        updateCardsUI();
+    }
+
+    public void aButtonInvestementsClick()
+    {
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Investeringen scherm aan het bekijken", "Looking at Investements screen");
+
+        closeActivePopup();
+        btnInvestmentsIsClicked = true;
+        EventManager.CallPlayButtonClickSFX();
+        canvasInvestmentsPopup.gameObject.SetActive(true);
+
+        checkWhichPopupIsActive();
+
+        initInvestementsText();
+        updateInvestButtonsInteractable();
+    }
+
+    private void checkWhichPopupIsActive()
+    {
+        canvasBottomBar.gameObject.SetActive(false);
+
+        SpecialButtonInvestements.interactable = true;
+        SpecialButtonCards.interactable = true;
+        SpecialButtonOrganization.interactable = true;
+        SpecialButtonQuests.interactable = true;
+
+        if (canvasOrganizationPopup.gameObject.activeSelf)
+        {
+            SpecialButtonOrganization.interactable = false;
+        }
+
+        else if (canvasQuestsPopup.gameObject.activeSelf)
+        {
+            SpecialButtonQuests.interactable = false;
+        }
+
+        else if (canvasCardsPopup.gameObject.activeSelf)
+        {
+            SpecialButtonCards.interactable = false;
+        }
+
+        else if (canvasInvestmentsPopup.gameObject.activeSelf)
+        {
+            SpecialButtonInvestements.interactable = false;
+        }
+
+        canvasBottomBar.gameObject.SetActive(true);
+
+    }
+
+    private void closeActivePopup()
+    {
+        if (canvasOrganizationPopup.gameObject.activeSelf)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(false);
+        }
+
+        if (canvasQuestsPopup.gameObject.activeSelf)
+        {
+            canvasQuestsPopup.gameObject.SetActive(false);
+        }
+
+        if (canvasCardsPopup.gameObject.activeSelf)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
+        }
+
+        if (canvasInvestmentsPopup.gameObject.activeSelf)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
+        }
+    }
     #endregion
 
     #region Get SectorStatiticsConsequences Method
