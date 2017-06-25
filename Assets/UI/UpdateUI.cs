@@ -16,6 +16,9 @@ public class UpdateUI : MonoBehaviour
 
     // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
+    public RawImage imgQuestsUitroepteken;
+    public RawImage imgCardsUitroepteken;
+
     public Canvas canvasBottomBar;
     public Button SpecialButtonOrganization;
     public Button SpecialButtonQuests;
@@ -3529,6 +3532,9 @@ public class UpdateUI : MonoBehaviour
     // Method wordt aangeroepen als er op de quests button wordt gedrukt
     private void initQuestsPopup()
     {
+        if (imgQuestsUitroepteken.gameObject.activeSelf)
+            imgQuestsUitroepteken.gameObject.SetActive(false);
+
 
         // Set de tekst voor de Quests canvas
         imgTutorialQuests.gameObject.SetActive(false);
@@ -4601,6 +4607,9 @@ public class UpdateUI : MonoBehaviour
         toggleOostNL.gameObject.SetActive(false);
         toggleZuidNL.gameObject.SetActive(false);
         toggleWestNL.gameObject.SetActive(false);
+
+        if (imgCardsUitroepteken.gameObject.activeSelf)
+            imgCardsUitroepteken.gameObject.SetActive(false);
 
         // Als de tutorial actief is en dit onderdeel is nog niet afgerond > start tutorial
         if (game.tutorial.tutorialCardsActive && game.tutorial.doTuto)

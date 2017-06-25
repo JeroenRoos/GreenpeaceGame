@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  imgQuestsUitroepteken: {fileID: 0}
+  imgCardsUitroepteken: {fileID: 0}
   canvasBottomBar: {fileID: 0}
   SpecialButtonOrganization: {fileID: 0}
   SpecialButtonQuests: {fileID: 0}
