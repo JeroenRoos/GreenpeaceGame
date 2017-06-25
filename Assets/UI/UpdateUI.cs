@@ -4208,7 +4208,7 @@ public class UpdateUI : MonoBehaviour
             {
                 txtNotYourEmptyBuilding.gameObject.SetActive(true);
                 btnUseBuilding.gameObject.SetActive(false);
-                txtBuildingNotEnoughMoney.gameObject.SetActive(true);
+                txtBuildingNotEnoughMoney.gameObject.SetActive(false);
 
                 string[] txt = { "Dit is niet jouw regio, daarom kun je hier ook geen gebouw maken", "This is not your region, this means you can't build here." };
                 txtNotYourEmptyBuilding.text = txt[taal];
@@ -4290,7 +4290,7 @@ public class UpdateUI : MonoBehaviour
             // Als je wel de owner bent kun je wel een gebouw slopen
             else
             {
-                btnNewDeleteBuilding.gameObject.SetActive(true);
+                btnNewDeleteBuilding.gameObject.SetActive(false);
                 txtNotYourBuildingDestory.gameObject.SetActive(false);
             }
         }
@@ -4301,15 +4301,16 @@ public class UpdateUI : MonoBehaviour
                 btnNewDeleteBuilding.gameObject.SetActive(true);
             else
                 btnNewDeleteBuilding.gameObject.SetActive(false);
-
         }
 
+        if (activeBuilding != null)
+        {
+            string[] info = { "Effecten van " + activeBuilding.buildingName[0], "Effects caused by " + activeBuilding.buildingName[1] };
+            txtNewBuildingsStats.text = info[taal];
 
-        string[] info = { "Effecten van " + activeBuilding.buildingName[0], "Effects caused by " + activeBuilding.buildingName[1] };
-        txtNewBuildingsStats.text = info[taal];
-
-        // Haal de modifiers op uit deze method en voeg het toe aan de text variabele
-        txtNewBuildingsStats.text += getBuildingModifiers(activeBuilding);
+            // Haal de modifiers op uit deze method en voeg het toe aan de text variabele
+            txtNewBuildingsStats.text += getBuildingModifiers(activeBuilding);
+        }
 
     }
     #endregion
@@ -5852,6 +5853,13 @@ public class UpdateUI : MonoBehaviour
             btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Tijdlijn";
             txtBtnMenu.text = "Menu";
+
+            if (ApplicationModel.multiplayer)
+            {
+                string[] txtInfo = { "Activiteit andere speler: ", "Activity other player: " };
+                txtMultiplayerInfo.text = txtInfo[taal];
+            }
+
             initButtonText();
             initOrganizationText();
             initRegionText();
@@ -5885,6 +5893,13 @@ public class UpdateUI : MonoBehaviour
             btnNextTurnText.text = nextTurnText[taal];
             txtBtnTimeline.text = "Timeline";
             txtBtnMenu.text = "Menu";
+
+            if (ApplicationModel.multiplayer)
+            {
+                string[] txtInfo = { "Activiteit andere speler: ", "Activity other player: " };
+                txtMultiplayerInfo.text = txtInfo[taal];
+            }
+
             initButtonText();
             initOrganizationText();
             initRegionText();
