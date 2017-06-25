@@ -121,6 +121,20 @@ public class OpenScene : Photon.PunBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (imgCreateRoom.gameObject.activeSelf)
+        {
+            inputRoomName.Select();
+            inputRoomName.ActivateInputField();
+        }
+        if (imgNickname.gameObject.activeSelf)
+        {
+            inputNickname.Select();
+            inputNickname.ActivateInputField();
+        }
+    }
+
     private void getPlayerPrefs()
     {
         // PlayerPrefs Language

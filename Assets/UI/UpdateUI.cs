@@ -597,7 +597,6 @@ public class UpdateUI : MonoBehaviour
         initInvestementsText();
         initCardsText();
         
-
         // GUI Styles
         tooltipStyle.normal.background = tooltipTexture;
 
@@ -691,6 +690,9 @@ public class UpdateUI : MonoBehaviour
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[1].ToString("0");
             else
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[0].ToString("0");
+
+            inputChatMessage.Select();
+            inputChatMessage.ActivateInputField();
 
             // Als er op ENTER wordt gedrukt (en de speler een chatbericht wil sturen)
             if (Input.GetKeyDown(KeyCode.Return))
@@ -6490,7 +6492,7 @@ public class UpdateUI : MonoBehaviour
 
             // Laat alleen de laatste 6 messages zien
             // Dit moest gedaan worden door complicaties met een scrollbar in Unity
-            if (lstMessages.Count < 6)
+            if (lstMessages.Count < 4)
                 lstMessages.Add(txt);
             else
             {
