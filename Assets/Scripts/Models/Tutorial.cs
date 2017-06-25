@@ -54,7 +54,7 @@ public class Tutorial
         if (tutorialActive)
             tutorialIndex = 0;
         else
-            tutorialIndex = 50;
+            tutorialIndex = 100000;
 
 
 

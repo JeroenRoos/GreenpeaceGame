@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UpdateUI : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class UpdateUI : MonoBehaviour
 
     // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
+    public RawImage imgQuestsUitroepteken;
+    public RawImage imgCardsUitroepteken;
+    public RawImage aImgQuestsUitroepteken;
+    public RawImage aImgCardsUitroepteken;
+
     public Canvas canvasBottomBar;
     public Button SpecialButtonOrganization;
     public Button SpecialButtonQuests;
@@ -534,7 +540,6 @@ public class UpdateUI : MonoBehaviour
     //string arrays (translations
     string[] nextTurnText = { "Volgende maand", "Next month" };
     string[] availableMoney = { " geld", " money" };
-
     #endregion
 
     // Boolean variabele die in deze class worden gebruikt
@@ -592,7 +597,6 @@ public class UpdateUI : MonoBehaviour
         initInvestementsText();
         initCardsText();
         
-
         // GUI Styles
         tooltipStyle.normal.background = tooltipTexture;
 
@@ -687,6 +691,9 @@ public class UpdateUI : MonoBehaviour
             else
                 txtMultiplayerRemotePlayerMoney.text = PhotonNetwork.playerList[0].NickName + ": " + game.gameStatistics.playerMoney[0].ToString("0");
 
+            inputChatMessage.Select();
+            inputChatMessage.ActivateInputField();
+
             // Als er op ENTER wordt gedrukt (en de speler een chatbericht wil sturen)
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -706,6 +713,10 @@ public class UpdateUI : MonoBehaviour
                 }
             }
         }
+
+        // Popups sliuten door op background Image te drukken
+        //if (popupActive)
+        //    closeWithBackgroundImage();
 
         // Popups sluiten met ESC toets
         if (game.tutorial.tutorialIndex > 2)
@@ -1524,6 +1535,122 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region Code for controlling popups
+    public void closeWithBackgroundImage()
+    {
+        bool check = false;
+
+        if (canvasOrganizationPopup.gameObject.activeSelf && !game.tutorial.tutorialOrganizationActive)
+        {
+            canvasOrganizationPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasCardsPopup.gameObject.activeSelf && !game.tutorial.tutorialCardsActive)
+        {
+            canvasCardsPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasInvestmentsPopup.gameObject.activeSelf && !game.tutorial.tutorialInvestementsActive)
+        {
+            canvasInvestmentsPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasMenuPopup.gameObject.activeSelf)
+        {
+            canvasMenuPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasTimelinePopup.gameObject.activeSelf)
+        {
+            canvasTimelinePopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasRegioPopup.gameObject.activeSelf && !game.tutorial.tutorialRegionActive)
+        {
+            ClearActionMenu();
+            canvasRegioPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        if (canvasMonthlyReport.gameObject.activeSelf && !game.tutorial.tutorialMonthlyReportActive)
+        {
+            canvasMonthlyReport.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        if (canvasYearlyReport.gameObject.activeSelf)
+        {
+            canvasYearlyReport.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasQuestsPopup.gameObject.activeSelf && !game.tutorial.tutorialQuestsActive)
+        {
+            canvasQuestsPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEventPopup.gameObject.activeSelf && !game.tutorial.tutorialEventsActive)
+        {
+            canvasEventPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEventChoiceMadePopup.gameObject.activeSelf)
+        {
+            canvasEventChoiceMadePopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasBuildingsPopup.gameObject.activeSelf)
+        {
+            canvasBuildingsPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasEmptyBuildingsPopup.gameObject.activeSelf && !game.tutorial.tutorialBuildingsActive)
+        {
+            canvasEmptyBuildingsPopup.gameObject.SetActive(false);
+            check = true;
+            popupActive = false;
+            EventManager.CallPopupIsDisabled();
+        }
+        else if (canvasSettingsPopup.gameObject.activeSelf)
+        {
+            canvasSettingsPopup.gameObject.SetActive(false);
+            check = true;
+            canvasMenuPopup.gameObject.SetActive(true);
+        }
+
+        if (ApplicationModel.multiplayer)
+            playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
+
+        if (check)
+        {
+            canvasBottomBar.gameObject.SetActive(false);
+            SpecialButtonInvestements.interactable = true;
+            SpecialButtonCards.interactable = true;
+            SpecialButtonOrganization.interactable = true;
+            SpecialButtonQuests.interactable = true;
+        }
+    }
+
     void popupController()
     {
         // Het sluiten van een popup met ESC, hele hoop controlles omdat dit nog niet kan tijdens de tutorial
@@ -1580,7 +1707,7 @@ public class UpdateUI : MonoBehaviour
 
         // Anders controleert het welke popup actief is en sluit het deze
         else if (canvasOrganizationPopup.gameObject.activeSelf)
-        {;
+        {
             canvasOrganizationPopup.gameObject.SetActive(false);
             popupActive = false;
             EventManager.CallPopupIsDisabled();
@@ -1672,6 +1799,7 @@ public class UpdateUI : MonoBehaviour
         SpecialButtonCards.interactable = true;
         SpecialButtonOrganization.interactable = true;
         SpecialButtonQuests.interactable = true;
+
     }
 
     // Open and close the Organization popup with the O key
@@ -3408,6 +3536,11 @@ public class UpdateUI : MonoBehaviour
     // Method wordt aangeroepen als er op de quests button wordt gedrukt
     private void initQuestsPopup()
     {
+        if (imgQuestsUitroepteken.gameObject.activeSelf)
+            imgQuestsUitroepteken.gameObject.SetActive(false);
+
+        if (aImgQuestsUitroepteken.gameObject.activeSelf)
+            aImgQuestsUitroepteken.gameObject.SetActive(false);
 
         // Set de tekst voor de Quests canvas
         imgTutorialQuests.gameObject.SetActive(false);
@@ -4479,6 +4612,12 @@ public class UpdateUI : MonoBehaviour
         toggleOostNL.gameObject.SetActive(false);
         toggleZuidNL.gameObject.SetActive(false);
         toggleWestNL.gameObject.SetActive(false);
+
+        if (imgCardsUitroepteken.gameObject.activeSelf)
+            imgCardsUitroepteken.gameObject.SetActive(false);
+
+        if (aImgCardsUitroepteken.gameObject.activeSelf)
+            aImgCardsUitroepteken.gameObject.SetActive(false);
 
         // Als de tutorial actief is en dit onderdeel is nog niet afgerond > start tutorial
         if (game.tutorial.tutorialCardsActive && game.tutorial.doTuto)
@@ -6352,7 +6491,7 @@ public class UpdateUI : MonoBehaviour
 
             // Laat alleen de laatste 6 messages zien
             // Dit moest gedaan worden door complicaties met een scrollbar in Unity
-            if (lstMessages.Count < 6)
+            if (lstMessages.Count < 4)
                 lstMessages.Add(txt);
             else
             {

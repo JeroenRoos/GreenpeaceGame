@@ -748,6 +748,8 @@ public class GameController : MonoBehaviour
                 quest.StartQuest();
                 if (!updateUI.questsShakes)
                     StartCoroutine(updateUI.ShakeQuests());
+
+                updateUI.imgQuestsUitroepteken.gameObject.SetActive(true);
             }
         }
     }
@@ -806,6 +808,8 @@ public class GameController : MonoBehaviour
             game.receivedCardsCount++;
             if (!updateUI.cardsShakes)
                 StartCoroutine(updateUI.ShakeCards());
+
+            updateUI.imgCardsUitroepteken.gameObject.SetActive(true);
         }
 
         else if (game.rnd.Next(1, 101) <= 2 && game.currentYear >= 3)
@@ -814,6 +818,8 @@ public class GameController : MonoBehaviour
             game.receivedCardsCount++;
             if (!updateUI.cardsShakes)
                 StartCoroutine(updateUI.ShakeCards());
+
+            updateUI.imgCardsUitroepteken.gameObject.SetActive(true);
         }
     }
 
