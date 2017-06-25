@@ -12,6 +12,9 @@ class MultiplayerManager
     public delegate void NextTurnIsClicked();
     public static event NextTurnIsClicked NextTurnClicked;
 
+    public delegate void NextTurnIsStarted();
+    public static event NextTurnIsStarted NextTurnStarted;
+
     public delegate void OwnMoneyChanged(double changevalue, bool isAdded);
     public static event OwnMoneyChanged ChangeOwnMoney;
 
@@ -57,6 +60,11 @@ class MultiplayerManager
     public static void CallNextTurnClicked()
     {
         NextTurnClicked();
+    }
+
+    public static void CallNextTurnStarted()
+    {
+        NextTurnStarted();
     }
 
     public static void CallChangeOwnMoney(double changevalue, bool isAdded)
