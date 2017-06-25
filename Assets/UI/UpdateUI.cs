@@ -4155,7 +4155,7 @@ public class UpdateUI : MonoBehaviour
 
             }
         }
-        // Als het geen multiplayer is
+        // Als het multiplayer is
         else
         {
             initBuildingPopup(regionToBeBuild.activeBuilding, regionToBeBuild);
@@ -4192,7 +4192,7 @@ public class UpdateUI : MonoBehaviour
         {
             btnUseBuilding.interactable = false;
             txtBuildingNotEnoughMoney.gameObject.SetActive(true);
-            string[] noMoney = { "Je hebt niet genoeg geld om dit gebouw te bouwen.", "You don't hae enough money to build this building." };
+            string[] noMoney = { "Je hebt niet genoeg geld om dit gebouw te bouwen.", "You don't have enough money to build this building." };
             txtBuildingNotEnoughMoney.text = noMoney[taal];
         }
 
@@ -4279,7 +4279,7 @@ public class UpdateUI : MonoBehaviour
         if (ApplicationModel.multiplayer)
         {
             // Als jij niet de owner bent van de regio kun je geen gebouwen slopen in de regio
-            if (buildingRegion.regionOwner != PhotonNetwork.player.NickName)
+            if (buildingRegion.regionOwner != PhotonNetwork.player.NickName && buildingRegion.activeBuilding != null)
             {
                 btnNewDeleteBuilding.gameObject.SetActive(false);
                 txtNotYourBuildingDestory.gameObject.SetActive(true);
