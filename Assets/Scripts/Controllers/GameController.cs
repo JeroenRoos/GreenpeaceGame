@@ -175,6 +175,14 @@ public class GameController : MonoBehaviour
                 MultiplayerManager.CallNextTurnClick();
             }
         }
+
+        if (ApplicationModel.multiplayer && PhotonNetwork.isMasterClient && game.nextTurnIsclicked && game.OtherPlayerClickedNextTurn)
+        {
+            playerController.photonView.RPC("TurnChanged", PhotonTargets.Others);
+            game.nextTurnIsclicked = false;
+            game.OtherPlayerClickedNextTurn = false;
+            EventManager.CallChangeMonth();
+        }
         
         // Update the main screen UI (Icons and date)
         updateUIMainScreen();
@@ -482,8 +490,6 @@ public class GameController : MonoBehaviour
         if (ApplicationModel.multiplayer)
         {
             game.isWaiting = false;
-            game.nextTurnIsclicked = false;
-            game.OtherPlayerClickedNextTurn = false;
 
             // Zet de Next Turn button weer op interactable en de tekst en image die bij de andere speler aangeeft dat een speler naar de volgende beurt wil weer op false
             updateUI.btnNextTurn.interactable = true;
@@ -1106,6 +1112,7 @@ public class GameController : MonoBehaviour
     {
         MultiplayerManager.NextTurnClicked += GetOtherPlayerNextTurn;
         MultiplayerManager.NextTurnClick += ClickedNextTurn;
+        MultiplayerManager.NextTurnStarted += NextTurnStarted;
         MultiplayerManager.ChangeOwnMoney += SendOwnMoneyChange;
         MultiplayerManager.ChangeOtherPlayerMoney += game.gameStatistics.ModifyMoneyOtherPlayer;
         MultiplayerManager.StartAction += StartOtherPlayerAction;
@@ -1129,8 +1136,8 @@ public class GameController : MonoBehaviour
         string[] txt = { PhotonNetwork.playerList[0].NickName + " is klaar voor de volgende maand", PhotonNetwork.playerList[0].NickName +  " is ready for next month" };
         updateUI.txtReadyForNextTurn.text = txt[taal];
 
-        if (game.nextTurnIsclicked)
-            EventManager.CallChangeMonth();
+        /*if (game.nextTurnIsclicked)
+            EventManager.CallChangeMonth();*/
     }
 
     public void ClickedNextTurn()
@@ -1138,8 +1145,15 @@ public class GameController : MonoBehaviour
         game.nextTurnIsclicked = true;
         playerController.photonView.RPC("NextTurnClicked", PhotonTargets.Others);
         
-        if (game.OtherPlayerClickedNextTurn)
-            EventManager.CallChangeMonth();
+        /*if (game.OtherPlayerClickedNextTurn)
+            EventManager.CallChangeMonth();*/
+    }
+
+    public void NextTurnStarted()
+    {
+        game.nextTurnIsclicked = false;
+        game.OtherPlayerClickedNextTurn = false;
+        EventManager.CallChangeMonth();
     }
 
     public void SendOwnMoneyChange(double changevalue, bool isAdded)
