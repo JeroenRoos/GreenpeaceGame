@@ -44,7 +44,7 @@ public class Tutorial
     {
         // Zet tutorial op actief als het singleplayer is
         if (!ApplicationModel.multiplayer)
-            tutorialActive = true;
+            tutorialActive = false;
         else
             tutorialActive = false;
 
@@ -54,7 +54,7 @@ public class Tutorial
         if (tutorialActive)
             tutorialIndex = 0;
         else
-            tutorialIndex = 50;
+            tutorialIndex = 100000;
 
 
 

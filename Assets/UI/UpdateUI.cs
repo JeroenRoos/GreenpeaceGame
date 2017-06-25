@@ -22,8 +22,6 @@ public class UpdateUI : MonoBehaviour
     public Button SpecialButtonCards;
     public Button SpecialButtonInvestements;
 
-    public Image imgBackGroundOrganization;
-
     // Multiplayer
     List<string> lstMessages = new List<string>();
     List<string[]> lstText = new List<string[]>();
