@@ -18,6 +18,8 @@ public class UpdateUI : MonoBehaviour
     #region UI Elements
     public RawImage imgQuestsUitroepteken;
     public RawImage imgCardsUitroepteken;
+    public RawImage aImgQuestsUitroepteken;
+    public RawImage aImgCardsUitroepteken;
 
     public Canvas canvasBottomBar;
     public Button SpecialButtonOrganization;
@@ -3535,6 +3537,8 @@ public class UpdateUI : MonoBehaviour
         if (imgQuestsUitroepteken.gameObject.activeSelf)
             imgQuestsUitroepteken.gameObject.SetActive(false);
 
+        if (aImgQuestsUitroepteken.gameObject.activeSelf)
+            aImgQuestsUitroepteken.gameObject.SetActive(false);
 
         // Set de tekst voor de Quests canvas
         imgTutorialQuests.gameObject.SetActive(false);
@@ -4610,6 +4614,9 @@ public class UpdateUI : MonoBehaviour
 
         if (imgCardsUitroepteken.gameObject.activeSelf)
             imgCardsUitroepteken.gameObject.SetActive(false);
+
+        if (aImgCardsUitroepteken.gameObject.activeSelf)
+            aImgCardsUitroepteken.gameObject.SetActive(false);
 
         // Als de tutorial actief is en dit onderdeel is nog niet afgerond > start tutorial
         if (game.tutorial.tutorialCardsActive && game.tutorial.doTuto)
