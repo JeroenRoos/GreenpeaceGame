@@ -4204,7 +4204,6 @@ public class UpdateUI : MonoBehaviour
         txtInvestmentsActionConsequences.text = actieconsequences[taal];
         txtInvestmentsEventCost.text = eventvermindering[taal];
         txtInvestmentsEventConsequences.text = eventconsequencies[taal];
-        updateInvestButtonsInteractable();
 
         // Als de tutorial actief is en dit onderdeel nog niet is afgerond > start de tutorial
         if (game.tutorial.tutorialInvestementsActive && game.tutorial.doTuto)
