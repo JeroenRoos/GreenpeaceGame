@@ -50,8 +50,8 @@ public class Card
 
         currentSectorConsequences.ModifyIncome(sectorConsequencesPerTurn.income);
         currentSectorConsequences.ModifyHappiness(sectorConsequencesPerTurn.happiness);
-        currentSectorConsequences.ModifyEcoAwareness(sectorConsequencesPerTurn.ecoAwareness);
-        currentSectorConsequences.ModifyProsperity(sectorConsequencesPerTurn.prosperity);
+        currentSectorConsequences.ModifyEcoAwareness(sectorConsequencesPerTurn.ecoAwareness, false);
+        currentSectorConsequences.ModifyProsperity(sectorConsequencesPerTurn.prosperity, false);
         currentSectorConsequences.pollution.ChangeAirPollution(sectorConsequencesPerTurn.pollution.airPollution);
         currentSectorConsequences.pollution.ChangeNaturePollution(sectorConsequencesPerTurn.pollution.naturePollution);
         currentSectorConsequences.pollution.ChangeWaterPollution(sectorConsequencesPerTurn.pollution.waterPollution);

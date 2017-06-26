@@ -33,8 +33,8 @@ public class RegionSector
         {
             this.statistics.ModifyIncome(modifiedIncome);
             this.statistics.ModifyHappiness(modifiedHappiness);
-            this.statistics.ModifyEcoAwareness(modifiedEcoAwareness);
-            this.statistics.ModifyProsperity(modifiedProsperity);
+            this.statistics.ModifyEcoAwareness(modifiedEcoAwareness, true);
+            this.statistics.ModifyProsperity(modifiedProsperity, true);
             
             this.statistics.pollution.ChangeAirPollution(modifiedAirPollution);
             this.statistics.pollution.ChangeNaturePollution(modifiedNaturePollution);
@@ -49,8 +49,8 @@ public class RegionSector
         {
             this.statistics.ModifyIncome(0 - modifiedIncome);
             this.statistics.ModifyHappiness(0 - modifiedHappiness);
-            this.statistics.ModifyEcoAwareness(0 - modifiedEcoAwareness);
-            this.statistics.ModifyProsperity(0 - modifiedProsperity);
+            this.statistics.ModifyEcoAwareness(0 - modifiedEcoAwareness, true);
+            this.statistics.ModifyProsperity(0 - modifiedProsperity, true);
 
             this.statistics.pollution.ChangeAirPollution(0 - modifiedAirPollution);
             this.statistics.pollution.ChangeNaturePollution(0 - modifiedNaturePollution);

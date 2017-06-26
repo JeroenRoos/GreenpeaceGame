@@ -52,7 +52,7 @@ public class SectorStatistics
             happiness += changeValue;
     }
 
-    public void ModifyEcoAwareness(double changeValue)
+    public void ModifyEcoAwareness(double changeValue , bool isRewarded)
     {
         if (ecoAwareness + changeValue > 100)
         {
@@ -69,16 +69,19 @@ public class SectorStatistics
         else
             ecoAwareness += changeValue;
 
-        double pollutionChangeValue = 0 - (changeValue / 20);
-        pollution.ChangeAirPollutionMutation(pollutionChangeValue);
-        pollution.ChangeNaturePollutionMutation(pollutionChangeValue);
-        pollution.ChangeWaterPollutionMutation(pollutionChangeValue);
+        if (isRewarded)
+        {
+            double pollutionChangeValue = 0 - (changeValue / 20);
+            pollution.ChangeAirPollutionMutation(pollutionChangeValue);
+            pollution.ChangeNaturePollutionMutation(pollutionChangeValue);
+            pollution.ChangeWaterPollutionMutation(pollutionChangeValue);
 
-        double happinessChangeValue = changeValue / 10;
-        ModifyHappiness(happinessChangeValue);
+            double happinessChangeValue = changeValue / 10;
+            ModifyHappiness(happinessChangeValue);
+        }
     }
 
-    public void ModifyProsperity(double changeValue)
+    public void ModifyProsperity(double changeValue, bool isRewarded)
     {
         if (prosperity + changeValue > 100)
         {
@@ -95,11 +98,14 @@ public class SectorStatistics
         else
             prosperity += changeValue;
 
-        double incomeChangeValue = changeValue * 5;
-        ModifyIncome(incomeChangeValue);
+        if (isRewarded)
+        {
+            double incomeChangeValue = changeValue * 5;
+            ModifyIncome(incomeChangeValue);
 
-        double happinessChangeValue = changeValue / 10;
-        ModifyHappiness(happinessChangeValue);
+            double happinessChangeValue = changeValue / 10;
+            ModifyHappiness(happinessChangeValue);
+        }
     }
     #endregion
 

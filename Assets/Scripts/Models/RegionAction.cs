@@ -195,13 +195,13 @@ public class RegionAction //: MonoBehaviour
         else
             afterInvestmentConsequences.ModifyHappiness(0 - happinessChangeValue);
         if (ecoAwarenessChangeValue > 0)
-            afterInvestmentConsequences.ModifyEcoAwareness(ecoAwarenessChangeValue);
+            afterInvestmentConsequences.ModifyEcoAwareness(ecoAwarenessChangeValue, false);
         else
-            afterInvestmentConsequences.ModifyEcoAwareness(0 - ecoAwarenessChangeValue);
+            afterInvestmentConsequences.ModifyEcoAwareness(0 - ecoAwarenessChangeValue, false);
         if (prosperityChangeValue > 0)
-            afterInvestmentConsequences.ModifyProsperity(prosperityChangeValue);
+            afterInvestmentConsequences.ModifyProsperity(prosperityChangeValue, false);
         else
-            afterInvestmentConsequences.ModifyProsperity(0 - prosperityChangeValue);
+            afterInvestmentConsequences.ModifyProsperity(0 - prosperityChangeValue, false);
         if (airPollutionChangeValue < 0)
             afterInvestmentConsequences.pollution.ChangeAirPollution(airPollutionChangeValue);
         else
@@ -251,13 +251,13 @@ public class RegionAction //: MonoBehaviour
         else
             afterInvestmentTemporaryConsequences.ModifyHappiness(0 - happinessChangeValue);
         if (ecoAwarenessChangeValue > 0)
-            afterInvestmentTemporaryConsequences.ModifyEcoAwareness(ecoAwarenessChangeValue);
+            afterInvestmentTemporaryConsequences.ModifyEcoAwareness(ecoAwarenessChangeValue, false);
         else
-            afterInvestmentTemporaryConsequences.ModifyEcoAwareness(0 - ecoAwarenessChangeValue);
+            afterInvestmentTemporaryConsequences.ModifyEcoAwareness(0 - ecoAwarenessChangeValue, false);
         if (prosperityChangeValue > 0)
-            afterInvestmentTemporaryConsequences.ModifyProsperity(prosperityChangeValue);
+            afterInvestmentTemporaryConsequences.ModifyProsperity(prosperityChangeValue, false);
         else
-            afterInvestmentTemporaryConsequences.ModifyProsperity(0 - prosperityChangeValue);
+            afterInvestmentTemporaryConsequences.ModifyProsperity(0 - prosperityChangeValue, false);
         if (airPollutionChangeValue < 0)
             afterInvestmentTemporaryConsequences.pollution.ChangeAirPollution(airPollutionChangeValue);
         else
