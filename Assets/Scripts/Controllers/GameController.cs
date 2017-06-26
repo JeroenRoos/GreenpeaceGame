@@ -497,52 +497,49 @@ public class GameController : MonoBehaviour
             playerController.photonView.RPC("PlayerLogChanged", PhotonTargets.Others, "Kaart van Nederland aan het bekijken", "Looking at the map of The Netherlands");
         }
 
-        if (!updateUI.popupActive)
+        if (!game.tutorial.tutorialNextTurnDone)
+            game.tutorial.tutorialNextTurnDone = true;
+
+        UpdateRegionsPollutionInfluence();
+
+        bool isNewYear = game.UpdateCurrentMonthAndYear();
+        game.ExecuteNewMonthMethods();
+
+        if (!ApplicationModel.multiplayer || PhotonNetwork.isMasterClient)
+            UpdateEvents();
+
+        game.gameStatistics.UpdateRegionalAvgs(game);
+
+        UpdateQuests();
+        UpdateRegionActionAvailability();
+
+        if (isNewYear)
         {
-            if (!game.tutorial.tutorialNextTurnDone)
-                game.tutorial.tutorialNextTurnDone = true;
-
-            UpdateRegionsPollutionInfluence();
-
-            bool isNewYear = game.UpdateCurrentMonthAndYear();
-            game.ExecuteNewMonthMethods();
-
-            if (!ApplicationModel.multiplayer || PhotonNetwork.isMasterClient)
-                UpdateEvents();
-
-            game.gameStatistics.UpdateRegionalAvgs(game);
-
-            UpdateQuests();
-            UpdateRegionActionAvailability();
-
-            if (isNewYear)
-            {
-                UpdateCards();
-                IncreaseYearlyPollutionChange();
-                SetYearlyTrackingData();
-            }
-
-            GenerateNewCard();
-            GenerateMonthlyUpdates(isNewYear);
-
-            //update advisors
-            game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
-            game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
-            game.happinessAnalyst.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.happiness);
-
-            UpdateTimeline();
-
-            if (autoSave)
-                EventManager.CallSaveGame();
-
-            updateUI.setNextTurnButtonNotInteractable();
-
-            EventManager.CallPlayNewTurnStartSFX();
-
-            //end of game
-            if (game.currentYear == 31 || game.gameStatistics.pollution == 0d)
-                ShowGameScore();
+            UpdateCards();
+            IncreaseYearlyPollutionChange();
+            SetYearlyTrackingData();
         }
+
+        GenerateNewCard();
+        GenerateMonthlyUpdates(isNewYear);
+
+        //update advisors
+        game.economyAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.income);
+        game.pollutionAdvisor.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.pollution);
+        game.happinessAnalyst.DetermineDisplayMessage(game.currentYear, game.currentMonth, game.gameStatistics.happiness);
+
+        UpdateTimeline();
+
+        if (autoSave)
+            EventManager.CallSaveGame();
+
+        updateUI.setNextTurnButtonNotInteractable();
+
+        EventManager.CallPlayNewTurnStartSFX();
+
+        //end of game
+        if (game.currentYear == 31 || game.gameStatistics.pollution == 0d)
+            ShowGameScore();
     }
 
     #region RegionActions
