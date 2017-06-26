@@ -6330,6 +6330,7 @@ public class UpdateUI : MonoBehaviour
 
             noConsequences = true;
         }
+
         if (s.pollution.waterPollution != 0d)
         {
             if (s.pollution.waterPollution > 0d)
@@ -6338,8 +6339,7 @@ public class UpdateUI : MonoBehaviour
                 g[taal] += "+" + s.pollution.waterPollution.ToString("0.00") + "% </color>";
                 consequences[taal] += g[taal];
             }
-            else
-            if (s.pollution.waterPollution > 0d)
+            else //if (s.pollution.waterPollution > 0d)
             {
                 string[] g = { "<color=#00cc00>\nWatervervuiling per geselecteerde sector: ", "<color=#00cc00>\nWater pollution per selected sector: " };
                 g[taal] += s.pollution.waterPollution.ToString("0.00") + "% </color>";
