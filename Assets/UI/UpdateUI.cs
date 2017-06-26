@@ -755,6 +755,16 @@ public class UpdateUI : MonoBehaviour
     // Initialize van tutorial UI als tutorial active is
     private void initTutorialActive()
     {
+        RectTransform rectT = imgTutorialOverworld.rectTransform;
+        imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;
+        imgPosRight = imgPosMiddle;
+        imgPosLeft = imgPosMiddle;
+        // Positie van de tutorial image > rechts in het scherm
+        imgPosRight.x = imgPosMiddle.x + (Screen.width / 5);// - (rectT.rect.width / 2));
+
+        // Positie van de tutorial image > links in het scherm
+        imgPosLeft.x = imgPosMiddle.x - (Screen.width / 5);// - (rectT.rect.width / 2));
+
         buttonTutorialShareOnFacebook.gameObject.SetActive(false);
         buttonTurorialShareNext.gameObject.SetActive(false);
         canvasTutorial.gameObject.SetActive(true);
@@ -823,16 +833,7 @@ public class UpdateUI : MonoBehaviour
     // Method waarin de tekst van de Tutorial contstant wordt geupdate
     IEnumerator initTutorialText()
     {
-        imgPosMiddle = imgTutorialOverworld.gameObject.transform.position;    
-        imgPosRight = imgPosMiddle;
-        imgPosLeft = imgPosMiddle;
-
-        // Positie van de tutorial image > rechts in het scherm
-        imgPosRight.x = imgPosRight.x + Screen.width / 3;
-
-        // Positie van de tutorial image > links in het scherm
-        imgPosLeft.x = imgPosLeft.x - Screen.width / 3;                            
-
+        RectTransform rectT = imgTutorialOverworld.rectTransform;
         btnOrganization.gameObject.SetActive(false);
         btnNextTurn.gameObject.SetActive(false);
         btnInvestments.gameObject.SetActive(false);
@@ -897,7 +898,6 @@ public class UpdateUI : MonoBehaviour
             yield return null;
 
         // Tekst voor stap 4 van de tutorial
-        imgTutorialSmall.gameObject.transform.position = imgPosRight;
         game.tutorial.tutorialOnlyWestNL = true;
         game.tutorial.tutorialRegionsClickable = true;
         string[] step4 = { "Er zijn 4 regio’s: Noord, Oost, West, en Zuid. Elke regio heeft een inkomen, " +
@@ -906,6 +906,7 @@ public class UpdateUI : MonoBehaviour
                 "There are 4 regions: North, East, West and South. Each region has an income, prosperity, " +
                 "pollution, eco-awareness and happiness." +
                 "\n\nNow go to The Netherlands West by clicking on the region." };
+
         imgTutorialBig.gameObject.SetActive(false);
         imgTutorialSmall.gameObject.SetActive(true);
         txtTutorialSmall.text = step4[taal];
@@ -945,6 +946,7 @@ public class UpdateUI : MonoBehaviour
         game.tutorial.tutorialOrganizationActive = true;
         imgTutorialSmall.transform.position = imgPosMiddle;
         btnOrganization.gameObject.SetActive(true);
+
         if (!organizationShakes)
             StartCoroutine(ShakeOrganization());
 
@@ -976,7 +978,10 @@ public class UpdateUI : MonoBehaviour
         btnNextTurn.interactable = true;
         canvasTutorial.gameObject.SetActive(true);
         btnNextTurn.gameObject.SetActive(true);
+
+        imgPosRight.x = imgPosRight.x + (rectT.rect.width);
         imgTutorialSmall.transform.position = imgPosRight;
+
         string[] step6 = { "Je kan nu ook de andere regio’s bezoeken om acties uit te voeren. Als je klaar bent " +
                 "dan kan je naar de volgende maand gaan door op “volgende maand” rechtsonderin het scherm te drukken.",
             "You can now visit the other regions to execute actions. When you’re finished you can go to the next month " +
@@ -1008,6 +1013,8 @@ public class UpdateUI : MonoBehaviour
         imgHighlightMonthlyReport.enabled = true;
         btnMonthlyReportStats.interactable = true;
         game.tutorial.tutorialMonthlyReportActive = true;
+
+        //imgPosLeft.x = imgPosLeft.x;// - (rectT.rect.width);
         imgTutorialSmall.transform.position = imgPosLeft;
 
         // Controle of de tutorial voor de monthly report al af is (dit is voor als de gebruiker een save game gebruikt)
@@ -1094,7 +1101,7 @@ public class UpdateUI : MonoBehaviour
 
         popupActive = false;
         game.tutorial.tutorialIndex = 8;
-        imgTutorialSmall.transform.position = imgPosMiddle;
+        //imgTutorialSmall.transform.position = imgPosMiddle;
         btnTutorialSmallNext.gameObject.SetActive(true);
         buttonTurorialShareNext.gameObject.SetActive(false);
         buttonTutorialShareOnFacebook.gameObject.SetActive(false);
@@ -2440,6 +2447,7 @@ public class UpdateUI : MonoBehaviour
 
     IEnumerator tutorialRegionPopup()
     {
+        RectTransform rectT = imgTutorialOverworld.rectTransform;
         // Tutorial voor regio is actief
         game.tutorial.tutorialRegionActive = true;
 
@@ -2471,7 +2479,8 @@ public class UpdateUI : MonoBehaviour
         btnTutorialRegion.gameObject.SetActive(false);
 
         // Positie van tutorial image wordt veranderd naar links
-        imgTutorialRegion.gameObject.transform.position = imgPosLeft;
+        imgPosLeft.x = imgPosLeft.x - (rectT.rect.width);
+        imgTutorialRegion.transform.position = imgPosLeft;
 
         while (!game.tutorial.tutorialCheckActionDone)
             yield return null;
