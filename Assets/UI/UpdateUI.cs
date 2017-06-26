@@ -6566,6 +6566,8 @@ public class UpdateUI : MonoBehaviour
             // Zet de inputfield en message weer naar null
             txtChatMessageToSend = null;
             inputChatMessage.text = "";
+
+            EventManager.CallPlayNewMessageSFX();
         }
     }
 
@@ -6578,7 +6580,6 @@ public class UpdateUI : MonoBehaviour
             updateChatMessages(PhotonNetwork.playerList[0].NickName + nl, "LOG");
         else
             updateChatMessages(PhotonNetwork.playerList[0].NickName + eng, "LOG");
-
     }
     #endregion
 }

@@ -23,6 +23,7 @@ public class AudioPlayer : MonoBehaviour
     public AudioClip optionSelectSFX;
     public AudioClip ButtonClickSFX;
     public AudioClip newmonthSFX;
+    public AudioClip chatboxupdateSFX;
     #endregion
 
     System.Random rnd;
@@ -56,13 +57,15 @@ public class AudioPlayer : MonoBehaviour
             optionSelectSFX = Resources.Load("Sounds/sfx/btnhoverSFX", typeof(AudioClip)) as AudioClip;
             ButtonClickSFX = Resources.Load("Sounds/sfx/btnclickSFX", typeof(AudioClip)) as AudioClip;
             newmonthSFX = Resources.Load("Sounds/sfx/newmonthSFX", typeof(AudioClip)) as AudioClip;
+            chatboxupdateSFX = Resources.Load("Sounds/sfx/chatboxupdateSFX", typeof(AudioClip)) as AudioClip;
             instance = this;
 
             EventManager.PlayBackgroundMusic += StartBackgroundMusic;
             EventManager.PlayButtonClickSFX += PlayButtonClickSFX;
             EventManager.PlayOptionSelectSFX += PlayOptionSelectSFX;
             EventManager.PlayNewTurnStartSFX += PlayNewMonthSFX;
-            
+            EventManager.PlayNewMessageSFX += PlayChatboxUpdateSFX;
+
             DontDestroyOnLoad(this.gameObject);
         }
 
@@ -102,6 +105,11 @@ public class AudioPlayer : MonoBehaviour
     public void PlayNewMonthSFX()
     {
         soundEffect.PlayOneShot(newmonthSFX);
+    }
+
+    public void PlayChatboxUpdateSFX()
+    {
+        soundEffect.PlayOneShot(chatboxupdateSFX);
     }
     #endregion
 

@@ -32,6 +32,9 @@ class EventManager
     public delegate void IsNewturn();
     public static event IsNewturn PlayNewTurnStartSFX;
 
+    public delegate void IsNewMessage();
+    public static event IsNewMessage PlayNewMessageSFX;
+
     public delegate void GameIsLeft();
     public static event GameIsLeft LeaveGame;
 
@@ -72,9 +75,15 @@ class EventManager
     {
         PlayOptionSelectSFX();
     }
+
     public static void CallPlayNewTurnStartSFX()
     {
         PlayNewTurnStartSFX();
+    }
+
+    public static void CallPlayNewMessageSFX()
+    {
+        PlayNewMessageSFX();
     }
 
     public static void CallLeaveGame()
