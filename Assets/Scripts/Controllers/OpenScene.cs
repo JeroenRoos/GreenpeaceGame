@@ -99,6 +99,8 @@ public class OpenScene : Photon.PunBehaviour
     #region Start(), PlayerPrefs, Init's
     void Start()
     {
+        ApplicationModel.multiplayer = false;
+        ApplicationModel.loadGame = false;
         // Begin een nieuwe lobby en zorgt in constructor van Lobby ervoor dat speler automatisch een lobby joined
         lobby = new Lobby();
         Application.runInBackground = true;
