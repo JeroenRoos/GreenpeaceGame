@@ -16,6 +16,9 @@ public class UpdateUI : MonoBehaviour
 
     // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
+    public Text buttonTurorialShareNext;
+    public Text buttonTutorialShareOnFacebook;
+
     public RawImage imgQuestsUitroepteken;
     public RawImage imgCardsUitroepteken;
     public RawImage aImgQuestsUitroepteken;
@@ -750,6 +753,8 @@ public class UpdateUI : MonoBehaviour
     // Initialize van tutorial UI als tutorial active is
     private void initTutorialActive()
     {
+        buttonTutorialShareOnFacebook.gameObject.SetActive(false);
+        buttonTurorialShareNext.gameObject.SetActive(false);
         canvasTutorial.gameObject.SetActive(true);
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
@@ -765,6 +770,8 @@ public class UpdateUI : MonoBehaviour
     // Alle tutorial booleans wordt geset voor als de tutorial niet active is
     private void initTutorialNotActive()
     {
+        buttonTutorialShareOnFacebook.gameObject.SetActive(false);
+        buttonTurorialShareNext.gameObject.SetActive(false);
         imgTutorialStep2Highlight1.enabled = false;
         imgTutorialStep2Highlight2.enabled = false;
         imgTutorialStepOrgMenuHightlight.enabled = false;
@@ -1064,6 +1071,11 @@ public class UpdateUI : MonoBehaviour
         }
         else
             canvasTutorial.gameObject.SetActive(false);
+
+        canvasTutorial.gameObject.SetActive(true);
+        buttonTutorialShareOnFacebook.gameObject.SetActive(true);
+        buttonTurorialShareNext.gameObject.SetActive(true);
+        btnTutorialSmallNext.gameObject.SetActive(false);
 
         imgTutorialSmall.transform.position = imgPosMiddle;
         game.tutorial.tutorialNexTurnPossibe = true;
