@@ -285,17 +285,17 @@
         <string>Earthquake</string>
       </publicEventName>
       <description>
-        <string>Er is een aardbeving geweest dat schade heeft veroorzaakt.</string>
-        <string>There has been an earthquake that caused damage.</string>
+        <string>Er is een aardbeving in Noord-Nederland geweest dat schade in de regio heeft veroorzaakt.</string>
+        <string>There has been an earthquake in The Netherlands North that caused damage in the region.</string>
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Inwoners vergoeden</string>
+        <string>Geef vergoedingen aan de getroffen inwoners</string>
         <string>Toekomstige aardbevingen tegengaan (kansverlaging)</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Refund citizens</string>
+        <string>Give refunds to the affected citizens</string>
         <string>Prevent future earthquakes (chance reduction)</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
@@ -558,17 +558,17 @@
         <string>Flood</string>
       </publicEventName>
       <description>
-        <string>Er is een overstroming geweest dat schade heeft veroorzaakt.</string>
-        <string>There has been a flood that caused damage.</string>
+        <string>Er is een overstroming geweest dat schade heeft veroorzaakt in de regio.</string>
+        <string>There has been a flood that caused damage in the region.</string>
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Inwoners vergoeden</string>
+        <string>Geef vergoedingen aan de getroffen inwoners</string>
         <string>Toekomstige overstromingen tegengaan (kansverlaging)</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Refund citizens</string>
+        <string>Give refunds to the affected citizens</string>
         <string>Prevent future floods (chance reduction)</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
@@ -833,8 +833,8 @@
         <string>Forest fire</string>
       </publicEventName>
       <description>
-        <string>Er is een bosbrand geweest dat schade heeft veroorzaakt.</string>
-        <string>There has been a forest fire that caused damage.</string>
+        <string>Er is een bosbrand geweest dat schade heeft veroorzaakt in de regio.</string>
+        <string>There has been a forest fire that caused damage in the region.</string>
       </description>
       <choicesDutch>
         <string>Niets doen</string>
@@ -1664,13 +1664,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Investeren</string>
-        <string>Project uitbreiden</string>
+        <string>Investeer in het project</string>
+        <string>Project uitbreiden voor lange termijn consequenties</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Invest</string>
-        <string>Expand project</string>
+        <string>Invest in the project</string>
+        <string>Expand project for long term consequences</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -1940,13 +1940,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Investeren</string>
-        <string>Project uitbreiden</string>
+        <string>Investeer in het project</string>
+        <string>Project uitbreiden voor lange termijn consequenties</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Invest</string>
-        <string>Expand project</string>
+        <string>Invest in the project</string>
+        <string>Expand project for long term consequences</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -2216,13 +2216,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Investeren</string>
-        <string>Project uitbreiden</string>
+        <string>Investeer in het project</string>
+        <string>Project uitbreiden voor lange termijn consequenties</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Invest</string>
-        <string>Expand project</string>
+        <string>Invest in the project</string>
+        <string>Expand project for long term consequences</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -7158,12 +7158,12 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Protesteren</string>
+        <string>Protesteer tegen de kerncentrale</string>
         <string>Campagne voor schone energie</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Protest</string>
+        <string>Protest against the nuclear plant</string>
         <string>Campaign for clean energy</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
@@ -9079,12 +9079,12 @@
       <choicesDutch>
         <string>Niets doen</string>
         <string>Campagne tegen vuurwerk</string>
-        <string>Verbod op vuurwerk</string>
+        <string>Verbied vuurwerk</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
         <string>Campaign against firework</string>
-        <string>Prohibit firework</string>
+        <string>Prohibit fireworks</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -9624,13 +9624,13 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Opruimen</string>
-        <string>Verbod op dumpen</string>
+        <string>Ruim the giftige stoffen op</string>
+        <string>Verbied dumpen van giftige stoffen</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Clean the waste</string>
-        <string>Prohibit dumping</string>
+        <string>Clean the toxic waste</string>
+        <string>Prohibit dumping of toxic waste</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
       <isGlobal>false</isGlobal>
@@ -9897,12 +9897,12 @@
       </description>
       <choicesDutch>
         <string>Niets doen</string>
-        <string>Protesteren</string>
+        <string>Protesteer tegen de kolencentrale</string>
         <string>Campagne voor schone energie</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
-        <string>Protest</string>
+        <string>Protest against the coal factory</string>
         <string>Campaign for clean energy</string>
       </choicesEnglish>
       <isUnique>false</isUnique>
@@ -11265,7 +11265,7 @@
       <choicesDutch>
         <string>Niets doen</string>
         <string>Campagne voeren voor schone omgeving</string>
-        <string>Opruimen</string>
+        <string>Ruim het afval op</string>
       </choicesDutch>
       <choicesEnglish>
         <string>Do nothing</string>
