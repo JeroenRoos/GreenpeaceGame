@@ -386,6 +386,26 @@ public class GameController : MonoBehaviour
 
     Application.OpenURL(facebookURL);
     }
+
+    public void ShareOnFacebookAfterTutorial()
+    {
+        string appId = "145634995501895";
+        string pictureUrl = "http://www.blikopnieuws.nl/sites/default/files/styles/nieuws-full-tn/public/artikel/logo.jpg?itok=au7xFs3Z";
+        string linkUrl = "https://www.partijvoordedieren.nl/";
+        string redirectUrl = "https://www.facebook.com/profile.php";
+        string[] description = new string[2] { "I just completed the tutorial of the game Project Green Leader and I shall now make The Netherlands a green country!",
+            "Ik heb net de tutorial van het spel Project Green Leader uitgespeeld en ik zal nu Nederland een groen land maken!" };
+
+        string facebookURL = "https://www.facebook.com/dialog/feed?" +
+            "app_id=" + appId + "&" +
+            "display=popup&" +
+            "link=" + WWW.EscapeURL(linkUrl) + " & " +
+            "name=" + WWW.EscapeURL("Project Green Leader") + " & " +
+            "description=" + WWW.EscapeURL(description[taal]) + " & " +
+            "picture=" + WWW.EscapeURL(pictureUrl);
+
+        Application.OpenURL(facebookURL);
+    }
     #endregion
 
     #region LoadAndSaveXML
