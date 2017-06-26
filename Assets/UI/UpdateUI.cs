@@ -3551,6 +3551,7 @@ public class UpdateUI : MonoBehaviour
         string[] beloning = { "Beloning: ", "Reward: " };
 
         bool activeQuest = false;
+        bool completedQuest = false;
 
         txtQuestsTitle.text = title[taal];
         txtQuestsDescription.text = description[taal];
@@ -3582,10 +3583,11 @@ public class UpdateUI : MonoBehaviour
                 activeQuests[taal] += getCompleteConditions(q.questCompleteConditions);
                 activeQuests[taal] += beloning[taal] + q.questMoneyReward + "\n\n</color>";
                 txtQuestsActive.text = activeQuests[taal];
+                completedQuest = true;
             }
         }
         // Als er geen actieve of afgeronde quests zijn
-        if (!activeQuest)
+        if (!activeQuest && !completedQuest)
             txtQuestsActive.text = noActiveQuests[taal];       
     }
 
