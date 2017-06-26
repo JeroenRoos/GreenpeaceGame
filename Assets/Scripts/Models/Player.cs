@@ -49,12 +49,6 @@ public class Player : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    void TurnChanged()
-    {
-        MultiplayerManager.CallNextTurnStarted();
-    }
-
-    [PunRPC]
     void ActionStarted(string regionName, string actionName, bool[] pickedSectors)
     {
         MultiplayerManager.CallStartAction(regionName, actionName, pickedSectors);
