@@ -2484,7 +2484,7 @@
       <name>AgricultureHighPollution</name>
       <publicEventName>
         <string>Hoge vervuiling landbouw</string>
-        <string>Highpollution agriculture</string>
+        <string>High pollution agriculture</string>
       </publicEventName>
       <description>
         <string>De landbouw heeft een hoge vervuiling.</string>
@@ -4098,7 +4098,7 @@
         </SectorStatistics>
         <SectorStatistics>
           <income>0</income>
-          <happiness>0</happiness>
+          <happiness>0</happiness>game
           <ecoAwareness>0</ecoAwareness>
           <prosperity>0</prosperity>
           <pollution>
@@ -10708,7 +10708,7 @@
     </GameEvent>
     <GameEvent>
       <isOwnEvent>false</isOwnEvent>
-      <name>SchipholExpanding</name>
+      <name>SchipholExpansion</name>
       <publicEventName>
         <string>Uitbreiding Schiphol</string>
         <string>Expansion Schiphol airport</string>
@@ -15660,7 +15660,7 @@
       <name>EfficencyAgriculture</name>
       <publicEventName>
         <string>Vraag efficiente landbouw</string>
-        <string>Demand effiniency agriculture</string>
+        <string>Demand efficiency agriculture</string>
       </publicEventName>
       <description>
         <string>De samenleving wil dat efficienter gewerkt gaat worden in de landbouw.</string>
