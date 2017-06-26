@@ -20,10 +20,10 @@ public class Lobby
     }
 
     // Geef de detailed connection string for debugging
-    void OnGUI()
+    /*void OnGUI()
     {
         GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-    }
+    }*/
 
     // Create een room met maximaal 2 spelers
     public void CreateRoom(string roomName)
