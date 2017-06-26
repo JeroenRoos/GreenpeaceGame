@@ -556,7 +556,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Project Green Leader
 
-    1.0.0'
+    1.1.0'
 --- !u!222 &103087667
 CanvasRenderer:
   m_ObjectHideFlags: 0
