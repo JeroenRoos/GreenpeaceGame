@@ -886,7 +886,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 100209248}
-        m_MethodName: ShareOnFacebook
+        m_MethodName: ShareOnFacebookAfterTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6296,6 +6296,26 @@ Prefab:
       propertyPath: aImgQuestsUitroepteken
       value: 
       objectReference: {fileID: 61031926}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtbuttonTutorialShareOnFacebook
+      value: 
+      objectReference: {fileID: 1407877282}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: txtbuttonTurorialShareNext
+      value: 
+      objectReference: {fileID: 1579929302}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: buttonTutorialShareOnFacebook
+      value: 
+      objectReference: {fileID: 134915226}
+    - target: {fileID: 114786596019693794, guid: e6abd92b8b8abe346944c61f1ea190c5,
+        type: 2}
+      propertyPath: buttonTurorialShareNext
+      value: 
+      objectReference: {fileID: 38137520}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6abd92b8b8abe346944c61f1ea190c5, type: 2}
   m_IsPrefabParent: 0

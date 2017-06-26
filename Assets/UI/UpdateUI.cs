@@ -16,8 +16,10 @@ public class UpdateUI : MonoBehaviour
 
     // Variabelen die in deze class en Inspector worden gebruikt
     #region UI Elements
-    public Text buttonTurorialShareNext;
-    public Text buttonTutorialShareOnFacebook;
+    public Button buttonTurorialShareNext;
+    public Text txtbuttonTurorialShareNext;
+    public Button buttonTutorialShareOnFacebook;
+    public Text txtbuttonTutorialShareOnFacebook;
 
     public RawImage imgQuestsUitroepteken;
     public RawImage imgCardsUitroepteken;
@@ -1072,12 +1074,30 @@ public class UpdateUI : MonoBehaviour
         else
             canvasTutorial.gameObject.SetActive(false);
 
+        popupActive = true;
+        string[] step91 = { "Je bent nu klaar met het eerste gedeelte van de tutorial. Als er nieuwe spel elementen geintroduceerd worden zul je hier ook steeds een kleine uitleg over krijgen." +
+                "\n\nHier kun je ook de tijd nemen om je progressie te delen met je vrienden op Facebook. "
+                , "You're now finished with the first part of the tutorial. As new game elements are introduced you will get a short tutorial with some information." +
+                "You can also take your time to share your progress on Facebook."};
+        txtTutorialSmall.text = step91[taal];
         canvasTutorial.gameObject.SetActive(true);
+        imgTutorialSmall.transform.position = imgPosMiddle;
         buttonTutorialShareOnFacebook.gameObject.SetActive(true);
+        string[] btnShare = { "Delen op Facebook", "Share on Facebook" };
+        txtbuttonTutorialShareOnFacebook.text = btnShare[taal];
         buttonTurorialShareNext.gameObject.SetActive(true);
+        txtbuttonTurorialShareNext.text = btnText[taal];
         btnTutorialSmallNext.gameObject.SetActive(false);
 
+        while (game.tutorial.tutorialIndex < 9)
+            yield return null;
+
+        popupActive = false;
+        game.tutorial.tutorialIndex = 8;
         imgTutorialSmall.transform.position = imgPosMiddle;
+        btnTutorialSmallNext.gameObject.SetActive(true);
+        buttonTurorialShareNext.gameObject.SetActive(false);
+        buttonTutorialShareOnFacebook.gameObject.SetActive(false);
         game.tutorial.tutorialNexTurnPossibe = true;
         canvasTutorial.gameObject.SetActive(false);
         game.tutorial.tutorialeventsClickable = true;
