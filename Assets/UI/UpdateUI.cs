@@ -760,10 +760,10 @@ public class UpdateUI : MonoBehaviour
         imgPosRight = imgPosMiddle;
         imgPosLeft = imgPosMiddle;
         // Positie van de tutorial image > rechts in het scherm
-        imgPosRight.x = imgPosMiddle.x + (Screen.width / 5);// - (rectT.rect.width / 2));
+        imgPosRight.x = imgPosMiddle.x + (Screen.width / 3);// - (rectT.rect.width / 2));
 
         // Positie van de tutorial image > links in het scherm
-        imgPosLeft.x = imgPosMiddle.x - (Screen.width / 5);// - (rectT.rect.width / 2));
+        imgPosLeft.x = imgPosMiddle.x - (Screen.width / 3);// - (rectT.rect.width / 2));
 
         buttonTutorialShareOnFacebook.gameObject.SetActive(false);
         buttonTurorialShareNext.gameObject.SetActive(false);
@@ -979,7 +979,7 @@ public class UpdateUI : MonoBehaviour
         canvasTutorial.gameObject.SetActive(true);
         btnNextTurn.gameObject.SetActive(true);
 
-        imgPosRight.x = imgPosRight.x + (rectT.rect.width);
+        //imgPosRight.x = imgPosRight.x + (rectT.rect.width);
         imgTutorialSmall.transform.position = imgPosRight;
 
         string[] step6 = { "Je kan nu ook de andere regio’s bezoeken om acties uit te voeren. Als je klaar bent " +
@@ -2479,7 +2479,7 @@ public class UpdateUI : MonoBehaviour
         btnTutorialRegion.gameObject.SetActive(false);
 
         // Positie van tutorial image wordt veranderd naar links
-        imgPosLeft.x = imgPosLeft.x - (rectT.rect.width);
+        //imgPosLeft.x = imgPosLeft.x - (rectT.rect.width);
         imgTutorialRegion.transform.position = imgPosLeft;
 
         while (!game.tutorial.tutorialCheckActionDone)
